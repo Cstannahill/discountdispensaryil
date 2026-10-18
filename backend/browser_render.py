@@ -47,16 +47,16 @@ def _next_worker_message(messages, process, timed_out, stop_requested=None):
                 return None
 
 
-def render(url,fetcher,options=None,page_handler=None):
-    options=dict(options or {},catalog_navigation=page_handler is not None)
+def render(url,fetcher,options=None,page_handler=None,page_reader=None):
+    options=dict(options or {},catalog_navigation=page_handler is not None,page_reads=page_reader is not None)
     if options.get('transport','native')=='native' and getattr(fetcher,'native_browser_allowed',False):
         from .browser_proxy import public_browser_proxy
-        with public_browser_proxy(fetcher,max_bytes=(256 if page_handler else 64)*1024*1024,require_page_request=True) as proxy:
-            return _render(url,fetcher,options,proxy,page_handler)
-    return _render(url,fetcher,options,page_handler=page_handler)
+        with public_browser_proxy(fetcher,max_bytes=(256 if page_handler or page_reader else 64)*1024*1024,require_page_request=True) as proxy:
+            return _render(url,fetcher,options,proxy,page_handler,page_reader)
+    return _render(url,fetcher,options,page_handler=page_handler,page_reader=page_reader)
 
 
-def _render(url,fetcher,options=None,proxy=None,page_handler=None):
+def _render(url,fetcher,options=None,proxy=None,page_handler=None,page_reader=None):
     from .runtime import PipelineInterrupted
     if getattr(fetcher,'stop_requested',None) is not None and fetcher.stop_requested.is_set():
         raise PipelineInterrupted('Worker stopped before browser acquisition')
@@ -77,7 +77,7 @@ def _render(url,fetcher,options=None,proxy=None,page_handler=None):
     def expire():
         timed_out.set()
         if process.poll() is None:process.kill()
-    deadline_seconds=900 if page_handler else 90 if options.get('sample_pages') else 320 if options.get('await_menu') and options.get('scroll_menu') else 50
+    deadline_seconds=900 if page_handler else 600 if page_reader else 90 if options.get('sample_pages') else 320 if options.get('await_menu') and options.get('scroll_menu') else 50
     timer=threading.Timer(deadline_seconds,expire);timer.start()
     evidence=[];result=None;blocked=[];worker_diagnostics={}
     decisions=[];network_json=[]
@@ -128,6 +128,12 @@ def _render(url,fetcher,options=None,proxy=None,page_handler=None):
                     response=resources._record(message['url'],message['status'],body,{'content-type':'text/x-component' if message.get('flight') else 'text/html'},attempt=1,method='BROWSER_CATALOG_PAGE')
                     evidence.append(response.evidence_id)
                     reply.update(page_handler(response,dict(html=html,links=message.get('links',[]),store_labels=message.get('store_labels',[]))) or {})
+                    send(reply);continue
+                if message['method']=='PAGE_READ':
+                    # The reader (a provider) chooses the next same-origin GET reads; the page performs them.
+                    if page_reader is None:raise ValueError('Unrequested page read')
+                    reply.update(page_reader(dict(url=message['url'],observed=message.get('observed'),results=message.get('results') or [])) or {})
+                    for read in reply.get('reads') or []:resources._validate(read['url'])
                     send(reply);continue
                 if message['method']=='VALIDATE':
                     from .request_policy import decide

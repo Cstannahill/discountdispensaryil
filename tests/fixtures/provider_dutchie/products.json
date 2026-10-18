@@ -1,0 +1,1342 @@
+[
+ {
+  "_id": "685a82ab4900cba6d0fb7b74",
+  "id": "685a82ab4900cba6d0fb7b74",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "64247520522cb3005f61202d",
+  "libraryProductScore": 18.1358,
+  "brandId": "687a3e0e-6a67-44b0-bc63-e42f0311a084",
+  "brandName": "Artet",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1750762153645",
+  "updatedAt": "2026-09-30T12:34:03.261Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "67f805c51fc284000780533e",
+  "medicalOnly": false,
+  "medicalPrices": [
+   32
+  ],
+  "medicalSpecialPrices": [],
+  "Name": "Artet 25mg 12oz Spritz - Mango Ginger - 4 Pack",
+  "nonArmsLength": null,
+  "Options": [
+   "0.025g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   32
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   32
+  ],
+  "recSpecialPrices": [],
+  "special": null,
+  "specialData": null,
+  "Status": "Active",
+  "strainType": "1 to 1",
+  "subcategory": "drinks",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    2.56
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Edible",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "artet-25mg-12oz-spritz-mango-ginger-4-pack",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6a69087f91c31878e3e9487e",
+  "id": "6a69087f91c31878e3e9487e",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "691177f211137a0321ccd845",
+  "libraryProductScore": 37.793022,
+  "brandId": "de41e1b6-6273-40ff-95f1-e1ab617001f9",
+  "brandName": "Nuvata",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    9.09
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1785268351511",
+  "updatedAt": "2026-10-16T22:54:00.488Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "65a188143b270900078d7bb9",
+  "medicalOnly": false,
+  "medicalPrices": [
+   40
+  ],
+  "medicalSpecialPrices": [
+   25
+  ],
+  "Name": "NUVATA - Strawberry {Full Mind} - All-In-One) 9:1 THC:CBD",
+  "nonArmsLength": null,
+  "Options": [
+   ".5g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   40
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   40
+  ],
+  "recSpecialPrices": [
+   25
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": null,
+   "saleSpecials": [
+    {
+     "specialId": "6acfe7d4093cef002301b076",
+     "specialName": "$25ea Nuvata 0.5g All-In-One Vape",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 25,
+     "percentDiscount": false,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "1 to 1",
+  "subcategory": "disposables",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    71.3
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Vaporizers",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "nuvata-strawberry-full-mind-all-in-one-9-1-thc-cbd",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "685a82ab4900cba6d0fb7bd0",
+  "id": "685a82ab4900cba6d0fb7bd0",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "66f4c6247ae07800073a7ac8",
+  "libraryProductScore": 20.898844,
+  "brandId": "39d97aec-6899-496c-a00b-db09b5a7e4e8",
+  "brandName": "Aeriz",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0.17
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1750762153675",
+  "updatedAt": "2026-10-18T15:01:47.095Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "65d64ca5d95d7200075956e4",
+  "medicalOnly": false,
+  "medicalPrices": [
+   48
+  ],
+  "medicalSpecialPrices": [
+   33.6
+  ],
+  "Name": "Aeriz FSHO - Florida Oranges",
+  "nonArmsLength": null,
+  "Options": [
+   "1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   48
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   48
+  ],
+  "recSpecialPrices": [
+   33.6
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": null,
+   "saleSpecials": [
+    {
+     "specialId": "69728d9c6e4cf10007268b00",
+     "specialName": "30% off Aeriz 1g FSHO",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 30,
+     "percentDiscount": true,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": null,
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    75.42
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": {
+   "unit": "PERCENTAGE",
+   "range": [
+    3.14
+   ],
+   "__typename": "ProductPotency"
+  },
+  "type": "Concentrate",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "aeriz-fsho-florida-oranges",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6a5e71ae2a9d87085b272b7a",
+  "id": "6a5e71ae2a9d87085b272b7a",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "6abd461c0245a50023055010",
+  "libraryProductScore": 22.308983,
+  "brandId": "73974630-f577-4039-8d6e-420e94569142",
+  "brandName": "Cresco",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1784574382557",
+  "updatedAt": "2026-10-05T12:47:42.214Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "6a5e806459e15b00074b05d5",
+  "medicalOnly": false,
+  "medicalPrices": [
+   100
+  ],
+  "medicalSpecialPrices": [],
+  "Name": "Cresco Live Budder - Kush Cake",
+  "nonArmsLength": null,
+  "Options": [
+   "2g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   100
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   100
+  ],
+  "recSpecialPrices": [],
+  "special": null,
+  "specialData": null,
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "budder",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    76.92
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Concentrate",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "cresco-live-budder-kush-cake",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "69e26136b02f61eda8c9d8fd",
+  "id": "69e26136b02f61eda8c9d8fd",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": null,
+  "libraryProductScore": null,
+  "brandId": "b0a1917b-4065-48c4-bcac-802739a9e2c8",
+  "brandName": "Nature's Heritage",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1776443702479",
+  "updatedAt": "2026-10-17T17:17:20.449Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "69e26918f36b180007a2b385",
+  "medicalOnly": false,
+  "medicalPrices": [
+   30
+  ],
+  "medicalSpecialPrices": [
+   20
+  ],
+  "Name": "Nature's Heritage 100mg THC:THCV Mycro Dose Tablet - Spark 20 x",
+  "nonArmsLength": null,
+  "Options": [
+   ".1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   30
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   30
+  ],
+  "recSpecialPrices": [
+   20
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": null,
+   "saleSpecials": [
+    {
+     "specialId": "6acff316bb540a0023f5f663",
+     "specialName": "$20ea Nature's Heritage 100mg Mycro Dose Tablet",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 20,
+     "percentDiscount": false,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "capsules-tablets",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    10.18
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Edible",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "nature-s-heritage-100mg-thc-thcv-mycro-dose-tablet-spark-20-x",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6a04acad0a02f7550ae8e7cd",
+  "id": "6a04acad0a02f7550ae8e7cd",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": null,
+  "libraryProductScore": null,
+  "brandId": "01780d20-326a-4494-a9b1-ba34dd6b7e32",
+  "brandName": "Keef Soda",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1778691245939",
+  "updatedAt": "2026-10-18T19:13:55.610Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "6a04b026ec2c1c0007391183",
+  "medicalOnly": false,
+  "medicalPrices": [
+   7
+  ],
+  "medicalSpecialPrices": [
+   5
+  ],
+  "Name": "Keef Soda 25mg Beverage - Mr. Puffer",
+  "nonArmsLength": null,
+  "Options": [
+   "0.025g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   7
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   7
+  ],
+  "recSpecialPrices": [
+   5
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": null,
+   "saleSpecials": [
+    {
+     "specialId": "6a621614a597b00007d62899",
+     "specialName": "$5ea Keef 25mg Beverages",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 5,
+     "percentDiscount": false,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "drinks",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    2.28
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Edible",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [
+   "0.025g"
+  ],
+  "optionsBelowKioskThreshold": [
+   "0.025g"
+  ],
+  "cName": "keef-soda-25mg-beverage-mr-puffer",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6a1e021bd99d93caac33db70",
+  "id": "6a1e021bd99d93caac33db70",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": null,
+  "libraryProductScore": null,
+  "brandId": "14f3f369-abdd-45ab-be57-eef4c3674721",
+  "brandName": "Otherside",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1780351515453",
+  "updatedAt": "2026-10-18T19:13:56.071Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "6a1e1101a013d50007022074",
+  "medicalOnly": false,
+  "medicalPrices": [
+   14
+  ],
+  "medicalSpecialPrices": [],
+  "Name": "Cosmic Chews 100mg FSHO Gummies - Juicy Raspberry 1 x 100mg",
+  "nonArmsLength": null,
+  "Options": [
+   ".1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   14
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   14
+  ],
+  "recSpecialPrices": [],
+  "special": null,
+  "specialData": {
+   "bogoSpecials": [
+    {
+     "specialId": "6abea569274d930023727eb7",
+     "specialName": "2/$25 or $14ea 100mg Gummies - Ozone, Cosmic Chews, & Good News",
+     "specialType": "bogo",
+     "__typename": "Products_specialData_bogoSpecials"
+    }
+   ],
+   "saleSpecials": null,
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "gummies",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    80.07
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Edible",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [
+   ".1g"
+  ],
+  "optionsBelowKioskThreshold": [
+   ".1g"
+  ],
+  "cName": "cosmic-chews-100mg-fsho-gummies-juicy-raspberry-1-x-100mg",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "69f3cd76faaeee5657eb1ef3",
+  "id": "69f3cd76faaeee5657eb1ef3",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "6945895e3b7bdc000734ed68",
+  "libraryProductScore": 16.35577,
+  "brandId": "16d58965-d756-4c30-8678-137a564ec7e8",
+  "brandName": "High Wired",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1777585526069",
+  "updatedAt": "2026-10-14T21:15:52.972Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "69f3d2eb39f5a50007f7c3d4",
+  "medicalOnly": false,
+  "medicalPrices": [
+   65
+  ],
+  "medicalSpecialPrices": [
+   45
+  ],
+  "Name": "High Wired Infused Flower - Butterstuff",
+  "nonArmsLength": null,
+  "Options": [
+   "1/8oz"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   65
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   65
+  ],
+  "recSpecialPrices": [
+   45
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": null,
+   "saleSpecials": [
+    {
+     "specialId": "6a21ac64cfa3b7000721d5f4",
+     "specialName": "$45ea High Wired 3.5g Infused Flower",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 45,
+     "percentDiscount": false,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": null,
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    39.73
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": {
+   "unit": "PERCENTAGE",
+   "range": [
+    1.96
+   ],
+   "__typename": "ProductPotency"
+  },
+  "type": "Flower",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "high-wired-infused-flower-butterstuff",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6acfcb6f194fef0023ce9e34",
+  "id": "6acfcb6f194fef0023ce9e34",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": null,
+  "libraryProductScore": null,
+  "brandId": "ce3d9c66-6941-4d14-894b-d3b4c20a5e1c",
+  "brandName": "Khalifa Kush",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0.09
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1792002927326",
+  "updatedAt": "2026-10-16T19:27:46.014Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "6acfd367c0543900232b6480",
+  "medicalOnly": false,
+  "medicalPrices": [
+   15
+  ],
+  "medicalSpecialPrices": [],
+  "Name": "Khalifa Kush Prepack - Khalifa Kush",
+  "nonArmsLength": null,
+  "Options": [
+   "1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   15
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   15
+  ],
+  "recSpecialPrices": [],
+  "special": null,
+  "specialData": null,
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": null,
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    31.9
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": {
+   "unit": "PERCENTAGE",
+   "range": [
+    2.36
+   ],
+   "__typename": "ProductPotency"
+  },
+  "type": "Flower",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "khalifa-kush-prepack-khalifa-kush-74518",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6a5ff6e30cca7ec818b96aee",
+  "id": "6a5ff6e30cca7ec818b96aee",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "691177cc11137a0321ccd452",
+  "libraryProductScore": 3.5399318,
+  "brandId": "78c2db23-a2e2-46e2-ad5b-a653efe55fad",
+  "brandName": "Good Green",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1784674019317",
+  "updatedAt": "2026-10-18T15:33:12.173Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "6a5ffc0c8bec26000718cb7e",
+  "medicalOnly": false,
+  "medicalPrices": [
+   40,
+   70
+  ],
+  "medicalSpecialPrices": [
+   30,
+   52.5
+  ],
+  "Name": "Good Green Ground Flower - Hybrid",
+  "nonArmsLength": null,
+  "Options": [
+   "1/4oz",
+   "1/2oz"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   40,
+   70
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   40,
+   70
+  ],
+  "recSpecialPrices": [
+   30,
+   52.5
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": null,
+   "saleSpecials": [
+    {
+     "specialId": "6a9a039231dc4300075a64bc",
+     "specialName": "25% Off All Shake (Excludes Khalifa Kush (Yellow)",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 25,
+     "percentDiscount": true,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "shake-trim",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    25.38,
+    30.21
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Flower",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "good-green-ground-flower-hybrid",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "685a82ab4900cba6d0fb7cf3",
+  "id": "685a82ab4900cba6d0fb7cf3",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": "6a076a10a3b7b4000714c6c6",
+  "libraryProductId": "6a076a10a3b7b4000714c6c6",
+  "libraryProductScore": 100,
+  "brandId": "1562ecc0-15bb-4ab9-a12f-03cb2ea4c045",
+  "brandName": "RYTHM",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0,
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1750762154776",
+  "updatedAt": "2026-10-17T21:54:43.609Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "66aa6b3b0b6a1500072de777",
+  "medicalOnly": false,
+  "medicalPrices": [
+   18
+  ],
+  "medicalSpecialPrices": [
+   12.6
+  ],
+  "Name": "Maui Wowie | Infused Pre-Roll | Sativa | 1g",
+  "nonArmsLength": null,
+  "Options": [
+   "1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   18
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   18
+  ],
+  "recSpecialPrices": [
+   12.6
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": [
+    {
+     "specialId": "6aac73e5491b9a00072e4de8",
+     "specialName": "3/$35 Rythm and High Supply 1g Infused Preroll Single",
+     "specialType": "bogo",
+     "__typename": "Products_specialData_bogoSpecials"
+    }
+   ],
+   "saleSpecials": [
+    {
+     "specialId": "69f3bbabc283c90007438c85",
+     "specialName": "30% Off Rythm Remix 1g Infused Preroll",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 30,
+     "percentDiscount": true,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "infused",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    48.03
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Pre-Rolls",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "maui-wowie-infused-pre-roll-sativa-1g-62408",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6972670cd13682ef0e0dcf81",
+  "id": "6972670cd13682ef0e0dcf81",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "6abd4835cd45c40023eec078",
+  "libraryProductScore": 29.641026,
+  "brandId": "01afd1ec-d70a-46b9-b8da-6319aeb7e13e",
+  "brandName": "High Supply",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1769105164722",
+  "updatedAt": "2026-10-17T20:37:45.722Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "697271965cf9e90007df8d10",
+  "medicalOnly": false,
+  "medicalPrices": [
+   20
+  ],
+  "medicalSpecialPrices": [],
+  "Name": "High Supply Infused PreRoll - Papaya Fumez",
+  "nonArmsLength": null,
+  "Options": [
+   "1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   20
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   20
+  ],
+  "recSpecialPrices": [],
+  "special": null,
+  "specialData": {
+   "bogoSpecials": [
+    {
+     "specialId": "6aac73e5491b9a00072e4de8",
+     "specialName": "3/$35 Rythm and High Supply 1g Infused Preroll Single",
+     "specialType": "bogo",
+     "__typename": "Products_specialData_bogoSpecials"
+    }
+   ],
+   "saleSpecials": null,
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "infused",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    39.57
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Pre-Rolls",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "high-supply-infused-preroll-papaya-fumez",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6ac3d51a51ceaa0023241f49",
+  "id": "6ac3d51a51ceaa0023241f49",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": "624cb1dcb6ef2543391e92b2",
+  "libraryProductScore": 14.368302,
+  "brandId": "eb43b820-ff67-4526-951f-bb8f506f0b2b",
+  "brandName": "&Shine",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0.23
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1791218970140",
+  "updatedAt": "2026-10-17T20:48:39.996Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "6ac3d9c59dbd1300234b37f6",
+  "medicalOnly": false,
+  "medicalPrices": [
+   25,
+   40
+  ],
+  "medicalSpecialPrices": [],
+  "Name": "&Shine Cartridge - Wedding Cake",
+  "nonArmsLength": null,
+  "Options": [
+   ".5g",
+   "1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   25,
+   40
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   25,
+   40
+  ],
+  "recSpecialPrices": [],
+  "special": null,
+  "specialData": {
+   "bogoSpecials": [
+    {
+     "specialId": "6acfed761f2ec700232de038",
+     "specialName": "3/$60 or $25ea &Shine & High Supply 0.5g Carts",
+     "specialType": "bogo",
+     "__typename": "Products_specialData_bogoSpecials"
+    },
+    {
+     "specialId": "6acfeed6c6b63d0023784d93",
+     "specialName": "2/$60 or $40 Simply Herb, Mozey FX, &Shine, Joos, CultiVart, & Redbud Roots",
+     "specialType": "bogo",
+     "__typename": "Products_specialData_bogoSpecials"
+    }
+   ],
+   "saleSpecials": null,
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "cartridges",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    88.85
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Vaporizers",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [],
+  "optionsBelowKioskThreshold": [],
+  "cName": "shine-cartridge-wedding-cake-32548",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ },
+ {
+  "_id": "6a2b29e6baeda59efeece44e",
+  "id": "6a2b29e6baeda59efeece44e",
+  "AdditionalOptions": [],
+  "avgRating": null,
+  "reviewCount": null,
+  "duplicatedProductId": null,
+  "libraryProductId": null,
+  "libraryProductScore": null,
+  "brandId": "7a92942b-ee80-4ed0-b79f-3d266c94beb8",
+  "brandName": "Simply Herb",
+  "CBD": null,
+  "CBDContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    0
+   ],
+   "__typename": "ProductPotency"
+  },
+  "certificateOfAnalysisEnabled": false,
+  "collectionCardBadge": null,
+  "comingSoon": null,
+  "createdAt": "1781213670381",
+  "updatedAt": "2026-10-18T19:13:56.685Z",
+  "DispensaryID": "65772a69ac53410009424572",
+  "enterpriseProductId": "6a2b31f556c0ca0007f8fc5c",
+  "medicalOnly": false,
+  "medicalPrices": [
+   40
+  ],
+  "medicalSpecialPrices": [
+   30
+  ],
+  "Name": "Simply Herb All-In-One Vape - Pink Lemonade Blast",
+  "nonArmsLength": null,
+  "Options": [
+   "1g"
+  ],
+  "limitsPerCustomer": null,
+  "manualInventory": null,
+  "posDiscountNames": null,
+  "posSyncedPricingApplied": null,
+  "legacyPricing": null,
+  "Prices": [
+   40
+  ],
+  "pricingTierData": null,
+  "recOnly": false,
+  "recPrices": [
+   40
+  ],
+  "recSpecialPrices": [
+   30
+  ],
+  "special": true,
+  "specialData": {
+   "bogoSpecials": null,
+   "saleSpecials": [
+    {
+     "specialId": "6a29983f22f7e4000721ec7f",
+     "specialName": "$30ea Kushy Punch & Simply Herb 1g All-In-One Vape",
+     "specialType": "sale",
+     "specialRestrictions": {},
+     "paymentRestrictions": null,
+     "menuType": "both",
+     "discount": 30,
+     "percentDiscount": false,
+     "__typename": "Products_specialData_saleSpecials"
+    }
+   ],
+   "__typename": "Products_specialData"
+  },
+  "Status": "Active",
+  "strainType": "Hybrid",
+  "subcategory": "disposables",
+  "subcategories": null,
+  "THC": null,
+  "THCContent": {
+   "unit": "PERCENTAGE",
+   "range": [
+    91.05
+   ],
+   "__typename": "ProductPotency"
+  },
+  "totalTerpenes": null,
+  "type": "Vaporizers",
+  "vapeTaxApplicable": null,
+  "weight": 1000,
+  "featured": null,
+  "isBelowThreshold": false,
+  "isBelowKioskThreshold": false,
+  "optionsBelowThreshold": [
+   "1g"
+  ],
+  "optionsBelowKioskThreshold": [
+   "1g"
+  ],
+  "cName": "simply-herb-all-in-one-vape-pink-lemonade-blast",
+  "bottleDepositTaxCents": null,
+  "__typename": "Products",
+  "provider": "dutchie"
+ }
+]

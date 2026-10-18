@@ -590,3 +590,59 @@ class LimitOffsetReplayTests(unittest.TestCase):
                     self.assertEqual(found['total'],11)
                 finally:fetcher.close()
         finally:server.shutdown();server.server_close()
+
+
+@unittest.skipUnless(os.environ.get('TERPSCOUT_BROWSER_TEST')=='1','Set TERPSCOUT_BROWSER_TEST=1 for installed Chrome integration')
+class PageReadTests(unittest.TestCase):
+    """A provider reads its platform's API from inside the page (Chrome owns HTTP), building on the queries the page made."""
+    def serve(self,reader,url='http://example.com/menu'):
+        import socket
+        import threading
+        from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
+        from urllib.parse import parse_qs,urlsplit
+        from unittest.mock import patch
+        served=[]
+        class Handler(BaseHTTPRequestHandler):
+            protocol_version='HTTP/1.1'
+            def log_message(self,*args):pass
+            def send(self,body,kind):
+                self.send_response(200);self.send_header('Content-Type',kind);self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
+            def do_GET(self):
+                parts=urlsplit(self.path)
+                if parts.path=='/graphql':
+                    variables=json.loads(parse_qs(parts.query)['variables'][0]);served.append((variables['page'],self.headers.get('apollo-require-preflight')))
+                    self.send(json.dumps(dict(data=dict(page=variables['page']))).encode(),'application/json')
+                else:
+                    self.send(b'<html><body><main>Menu</main><script>fetch("/graphql?operationName=Q&variables="+encodeURIComponent(JSON.stringify({page:0})),{headers:{"apollo-require-preflight":"true"}})</script></body></html>','text/html')
+        server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
+        threading.Thread(target=server.serve_forever,daemon=True).start()
+        real_timer=threading.Timer
+        folder=tempfile.TemporaryDirectory()
+        self.addCleanup(folder.cleanup)
+        fetcher=PublicFetcher(Path(folder.name)/'evidence',transport=httpx.MockTransport(lambda req:(_ for _ in ()).throw(AssertionError('Native traffic must use the controlled test tunnel'))),resolver=lambda *a,**k:[(2,1,6,'',('93.184.216.34',80))])
+        fetcher.native_browser_allowed=True
+        try:
+            with patch('backend.browser_proxy.connect_public',side_effect=lambda *a,**k:(socket.create_connection(server.server_address,timeout=3),'93.184.216.34')),patch('backend.browser_render.threading.Timer',side_effect=lambda seconds,callback:real_timer(60,callback)):
+                return fetcher.render_reads(url,reader),served,Path(folder.name)/'evidence'
+        finally:fetcher.close();server.shutdown();server.server_close()
+
+    def test_reads_build_on_the_observed_query_and_every_response_is_retained_as_evidence(self):
+        calls=[]
+        def reader(message):
+            calls.append(message)
+            if len(calls)==1:
+                query=next(o for o in message['observed'] if '/graphql' in o['url'])
+                self.assertEqual(query['headers'].get('apollo-require-preflight'),'true')
+                return dict(reads=[dict(url=query['url'].replace('%3A0','%3A'+str(n)),headers=query['headers']) for n in (1,2)])
+            return dict(reads=[])
+        capture,served,evidence=self.serve(reader)
+        self.assertEqual([json.loads(r['body'])['data']['page'] for r in calls[1]['results']],[1,2])
+        self.assertEqual([r['status'] for r in calls[1]['results']],[200,200])
+        self.assertIn((1,'true'),served);self.assertIn((2,'true'),served)
+        diagnostics=json.loads((evidence/'browser'/f'{capture.evidence_id}.json').read_text(encoding='utf-8'))
+        self.assertEqual(sum('%3A1%7D' in entry['url'] or '%3A2%7D' in entry['url'] for entry in diagnostics['network_json']),2)
+
+    def test_reads_cannot_leave_the_page_origin(self):
+        from backend.network import FetchError
+        with self.assertRaisesRegex(FetchError,'cannot leave the page origin'):
+            self.serve(lambda message:dict(reads=[dict(url='http://other.example.com/graphql')]))

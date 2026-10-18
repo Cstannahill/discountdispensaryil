@@ -13,7 +13,7 @@ BLAZE_API = 'https://ecom-api.blaze.me/api/v1/products/'
 
 
 def provider_capabilities(provider):
-    native=provider in ('blaze','sweed','dispense','treez','joint','jane')
+    native=provider in ('blaze','sweed','dispense','treez','joint','jane','dutchie')
     structured=provider in ('generic','jane','dutchie','cresco')
     return dict(native_full_menu=native,structured_fallback=structured,
                 support='native_full_menu' if native else 'conditional_structured_fallback' if structured else 'unsupported')
@@ -301,6 +301,9 @@ def fetch_menu(endpoint, fetcher):
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'jane' and endpoint.get('provider_store_id'):
         from backend.providers.jane import fetch
+        return fetch(endpoint,fetcher)
+    if endpoint.get('provider') == 'dutchie' and endpoint.get('provider_store_id'):
+        from backend.providers.dutchie import fetch
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') in ('generic','jane','dutchie','cresco'):
         from backend.providers.generic import fetch

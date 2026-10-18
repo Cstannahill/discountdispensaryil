@@ -24,7 +24,7 @@ registry (`discovery.py`) -> candidate stores (`storage.py`) -> website/menu dis
 - `service.py`: orchestration. Retained accepted endpoints refresh first, independent of rediscovery. Per-store locks, bounded regional + targeted executors.
 - `network.py` `PublicFetcher`: all HTTP (SSRF-safe, DNS pinned, evidence recorded, POST only to an exact allowlist `_READ_ONLY_SEARCH_POSTS`). `browser_render.py` + `browser_worker.cjs` + `browser_proxy.py` + `browser_locations.cjs`: Chrome through the same boundary; age/terms/license/branch controls.
 - `runtime.py`: `PIPELINE_VERSION` source fingerprint; results from older fingerprints are not current-engine results.
-- Provider support: native full-menu = blaze, sweed, dispense, treez, joint, jane (jane needs `provider_store_id`). dutchie, cresco, and unknown sites go through the generic structured/DOM path, which rarely satisfies the completeness gate.
+- Provider support: native full-menu = blaze, sweed, dispense, treez, joint, jane, dutchie (jane and dutchie need `provider_store_id`). Dutchie's edge 403s plain HTTP, so `providers/dutchie.py` reads from inside the rendered page (`PublicFetcher.render_reads`, worker `page_reads`). cresco and unknown sites go through the generic structured/DOM path, which rarely satisfies the completeness gate.
 - Census: `backend/platforms.py` signatures; the resolver tags pages with platforms, `live_store_platforms` stores them, and `/api/v1/pipeline/stages` reports `by_platform` / `by_brand`. Fix by platform or chain, not by store (docs/PLATFORM_FIRST_PLAN.md).
 - Evidence: `data/evidence/` (gz bodies + manifests) is part of the audit trail; back up with `terpscout.db`. `index.html` and `terpscout.db.before-live.sqlite3` are preserved originals; never edit.
 

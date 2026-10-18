@@ -1,0 +1,35 @@
+{
+ "data": {
+  "filteredDispensaries": [
+   {
+    "id": "65772a69ac53410009424572",
+    "name": "NOXX E. PEORIA",
+    "cName": "noxx-peoria",
+    "chain": "noxx",
+    "address": "300 South Main Street, East Peoria, IL 61611, USA",
+    "status": "open",
+    "location": {
+     "ln1": "300 S Main St",
+     "ln2": "",
+     "city": "East Peoria",
+     "state": "IL",
+     "country": "United States",
+     "zipcode": "61611",
+     "geometry": {
+      "coordinates": [
+       -89.5828287,
+       40.66506030000001
+      ],
+      "__typename": "Dispensaries_profile_location_geometry"
+     },
+     "__typename": "Dispensaries_profile_location"
+    },
+    "recDispensary": true,
+    "medicalDispensary": true,
+    "embeddedMenuUrl": null,
+    "timezone": "America/Chicago",
+    "__typename": "Dispensaries"
+   }
+  ]
+ }
+}

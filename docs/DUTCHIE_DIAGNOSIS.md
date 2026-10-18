@@ -33,3 +33,16 @@ Probes: `data/dutchie-probe1.json`, `data/dutchie-explore*.json`, `data/dutchie-
 - Five Noxx East Peoria endpoint rows were retired with `Store.supersede_endpoint` (rows and evidence kept; reasons recorded; a before-image is in `data/noxx-endpoints-before-cleanup.json`): three other businesses/branches identified by their embed `routeRoot` (`noxx-28th-st`, `noxx-plainfield-ave`, `cookiesmd`) and two duplicates of the correct dispensary (reached by store slug and by an experiences URL, with slug-style `provider_store_id` values). The correct row `dutchie.com/embedded-menu/65772a69ac53410009424572` already had the dispensary id as its `provider_store_id`.
 - `supersede_endpoint` refuses an endpoint that holds active accepted offers, and discovery no longer revives or imports a superseded endpoint (`service.py`).
 - Targeted sync (run `df3251e2...`): `complete`, grade A, 1071 variants from 1058 products, reconciled to the platform's total of 1058; 615 variants are comparable offers (the rest lack package mass).
+
+## Update: native provider (2026-10-18)
+
+`backend/providers/dutchie.py` replaces the generic path for Dutchie endpoints. See `docs/PLATFORM_FIRST_PLAN.md`
+section 7 for details. Two findings explain why generic Dutchie captures often failed with "does not reconcile":
+
+- **Below-threshold products are counted but not returned.** `removeProductsBelowOptionThresholds: true` (the
+  storefront's setting) drops products whose every option is below the online threshold after `totalCount` is
+  computed. Noxx pages came back with 98 or 99 of 100, for 1042 of 1053. With `false`, every page is full, and the 11
+  extra products carry their options in `optionsBelowThreshold`, so they are read as unavailable.
+- **The default sort is not a stable paging order.** Under "Featured" order, Cloud9 East Peoria repeats 2 products and
+  drops 2 across page boundaries, identically on every pass. The storefront's "Price low to high" view (`sortBy: price`,
+  `isDefaultSort: false`) reconciles 1458/1458. `sortBy: "_id"` is not honored; it behaves like an unknown key.

@@ -184,3 +184,36 @@ Re-resolving the 11 Jane-signature extraction failures detected Jane store ids o
 Aurora (1,167), EarthMed (1,351), and Hatch (1,585) now grade A, and Verilife Rosemont is B. The region stands at 48
 accepted and 2 converged. The rest (RISE, NuEra Chicago Southland's filtered shop pages, Cannabist) need chain entries
 (step 5).
+
+**Step 4, Dutchie native provider: built and verified live, not yet synced** (`backend/providers/dutchie.py`).
+- **Transport:** Dutchie's edge (Cloudflare) answers our honestly identified HTTP client with 403 for both the menu page
+  and its GraphQL API. That block is respected, not worked around. Reads run inside the rendered page instead: installed
+  Chrome owns HTTP, same origin, GET only, and every response is captured as evidence. This uses a new shared primitive,
+  `PublicFetcher.render_reads` (worker `page_reads`), which any platform with the same constraint can reuse.
+- **How it reads:** the page's own `FilteredProducts` request supplies the operation, persisted-query hash, API path, and
+  client headers; nothing is hard-coded. The filter keeps only context and presentation keys (whole menu). Pages are
+  read 100 at a time to `queryInfo.totalCount`, over two traversals that must agree; price churn grades B through
+  `churn_convergence`.
+- **Two platform quirks explained the old "does not reconcile" failures:**
+  - The storefront asks the server to drop products whose every option is below its online threshold, but the server
+    counts them first (Noxx: 1053 advertised, 1042 returned). The provider reads them
+    (`removeProductsBelowOptionThresholds: false`), and `optionsBelowThreshold` marks them unavailable.
+  - The default "Featured" order has ties that repeat and drop products across page boundaries (Cloud9 East Peoria: 2
+    of 1458, the same way every pass). The page is rendered in the storefront's own "Price low to high" view
+    (`?sortby=pricelowtohigh`), whose query pages deterministically.
+- **Branch and license:** the dispensary record the page looks up (ConsumerDispensaries, by the endpoint's id or cName)
+  must match the endpoint. Its `location.ln1` must match the registry street, and its point must lie within 5 mi of the
+  registry point. Every product must carry that dispensary id. `recDispensary`/`medicalDispensary` decide the license
+  context. Sale-special prices with purchase or payment restrictions are marked conditional.
+- **Live check** (read-only: `fetch_menu` on the DB endpoints, scratch evidence, nothing written to `terpscout.db`).
+  Every row reconciled exactly over two agreeing traversals, and each branch was proven by platform address:
+
+  | Store | Products (= total) | Variants | Branch distance | Time |
+  |---|---|---|---|---|
+  | Noxx East Peoria | 1,053 | 1,066 (11 unavailable, below threshold) | 0.06 mi | 21 s |
+  | Cloud9 East Peoria | 1,458 | 1,458 | 0.06 mi | 31 s |
+  | Cloud9 Champaign | 1,110 | 1,113 | 0.04 mi | 24 s |
+
+Next: run a targeted sync for the Dutchie stores. Then supersede the remaining wrong-branch or invalid Dutchie
+endpoint rows: Supergood has seven embeds, four of them already refused as a different street, and Excelleaf's row is
+`provider_store_id = "v2"`, which the provider refuses rather than rendering.
