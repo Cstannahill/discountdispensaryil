@@ -13,6 +13,14 @@ from .domain import age_hours, digest, distance_miles, instant, normalize_offer,
 REGISTRY_URL = "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no"
 
 
+def _verification_summary(row):
+    if not row:
+        return None
+    return dict(verdict=row["verdict"], confidence=row["result"].get("confidence"), name=row["result"].get("name"),
+                website=row["result"].get("website"), menu_url=row["result"].get("menu_url"), address=row["result"].get("address"),
+                claims=len(row["claims"]), checked_at=row["created_at"])
+
+
 class Store:
     def __init__(self, db_path, evidence_dir):
         self.db_path, self.evidence_dir = Path(db_path), Path(evidence_dir)
@@ -33,6 +41,7 @@ class Store:
             conn.executescript((Path(__file__).parent / "migrations/002_store_work.sql").read_text())
             conn.executescript((Path(__file__).parent / "migrations/003_attempts_leads.sql").read_text())
             conn.executescript((Path(__file__).parent / "migrations/004_store_platforms.sql").read_text())
+            conn.executescript((Path(__file__).parent / "migrations/005_store_verifications.sql").read_text())
             # SQLite has no ADD COLUMN IF NOT EXISTS; the converged-grade timestamp is separate from last_success_at
             # so that grade B never counts as an accepted (grade A) menu.
             if 'last_converged_at' not in {row[1] for row in conn.execute("PRAGMA table_info(live_endpoints)")}:
@@ -312,6 +321,34 @@ class Store:
                              "ON CONFLICT(store_id,platform,url) DO UPDATE SET status=excluded.status,source=excluded.source,evidence_id=excluded.evidence_id,observed_at=excluded.observed_at",
                              (store_id, row['platform'], row.get('url') or '', row.get('status') or 'observed', source, row.get('evidence_id'), now))
 
+    def record_verification(self, record, now=None):
+        """A store verifier verdict. A cited menu or website URL becomes a lead for the resolver, never an endpoint."""
+        now = now or utcnow()
+        with self.connection() as conn:
+            conn.execute("INSERT INTO live_store_verifications(store_id,version,status,verdict,result_json,claims_json,dropped_json,transcript_json,evidence_json,model,steps,tokens,usd,detail,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                         (record['store_id'], record['version'], record['status'], record['verdict'], json.dumps(record.get('result') or {}),
+                          json.dumps(record.get('claims') or []), json.dumps(record.get('dropped') or []), json.dumps(record.get('transcript') or []),
+                          json.dumps(record.get('evidence') or []), record.get('model'), record.get('steps', 0), record.get('tokens', 0),
+                          record.get('usd', 0), record.get('detail'), now))
+        result = record.get('result') or {}
+        for field in ('menu_url', 'website'):
+            claims = [c for c in record.get('claims') or [] if c['field'] == field]
+            if result.get(field) and claims:
+                self.record_lead(record['store_id'], result[field], 'verifier', f'Store verifier {field} ({record.get("model")}); branch identity still requires the resolver', claims)
+
+    def verifications(self, store_id=None, latest=True):
+        with self.connection() as conn:
+            sql = "SELECT * FROM live_store_verifications" + (" WHERE store_id=?" if store_id else "") + " ORDER BY id"
+            rows = [dict(row) for row in conn.execute(sql, (store_id,) if store_id else ()).fetchall()]
+        for row in rows:
+            for key in ('result', 'claims', 'dropped', 'transcript', 'evidence'):
+                row[key] = json.loads(row.pop(key + '_json'))
+        return list({row['store_id']: row for row in rows}.values()) if latest else rows
+
+    def verifier_spend_since(self, since):
+        with self.connection() as conn:
+            return conn.execute("SELECT COALESCE(SUM(usd),0) FROM live_store_verifications WHERE created_at>=?", (since,)).fetchone()[0]
+
     def store_platforms(self, store_id=None):
         with self.connection() as conn:
             sql = "SELECT * FROM live_store_platforms" + (" WHERE store_id=?" if store_id else "") + " ORDER BY store_id,platform,url"
@@ -332,6 +369,7 @@ class Store:
             # A platform seen only on a page proven to be another branch does not describe this store.
             if row["status"] != "identity_conflict":observed.setdefault(row["store_id"], set()).add(row["platform"])
         brands = {store["id"]: brand_key(store["name"], store.get("city")) for store in stores}
+        checked = {row["store_id"]: row for row in self.verifications() if row["status"] == "verified"}
         brand_sizes = {}
         for brand in brands.values():brand_sizes[brand] = brand_sizes.get(brand, 0) + 1
         by_stage, by_code, by_platform, by_brand, rows = {}, {}, {}, {}, []
@@ -366,7 +404,8 @@ class Store:
                              current=bool(current), providers=sorted({e["provider"] for e in endpoints}),
                              platforms=platforms, brand=brands[store["id"]],
                              fresh=any(e["last_success_at"] and age_hours(e["last_success_at"], now) < 12 for e in endpoints),
-                             last_attempt_at=last["created_at"] if last else None, detail=last["detail"] if last else None))
+                             last_attempt_at=last["created_at"] if last else None, detail=last["detail"] if last else None,
+                             verification=_verification_summary(checked.get(store["id"]))))
         return dict(region=self.region(region_id), pipeline_version=pipeline_version, total_stores=len(stores),
                     by_stage=by_stage, by_code=by_code, by_platform=by_platform, by_brand=by_brand, stores=rows)
 
