@@ -34,6 +34,9 @@ _READ_ONLY_SEARCH_POSTS = {
 # Joint storefronts (WordPress plugin) each expose their own read-only product search under a per-site host.
 _JOINT_SEARCH_POST = re.compile(r'^https://[a-z0-9.-]+/wp-json/joint-ecommerce/v1/products/[a-z0-9_-]+/_search$')
 _JOINT_SEARCH_HEADERS = {'content-type', 'accept', 'origin', 'referer'}
+# Jane's storefront search (facet counts, slice ids, and hydration of further ids); the SDK key is the page's public key.
+_JANE_SEARCH_POST = re.compile(r'^https://dmerch\.iheartjane\.com/v2/(?:facets|multi|smartpage)\?jdm_api_key=[0-9a-f-]{36}&jdm_source=[a-z]+&jdm_version=[0-9.]+$')
+_JANE_SEARCH_HEADERS = {'content-type', 'accept', 'referer'}
 
 
 def _search_post_headers(url):
@@ -41,6 +44,8 @@ def _search_post_headers(url):
         return _READ_ONLY_SEARCH_POSTS[url]
     if _JOINT_SEARCH_POST.match(url):
         return _JOINT_SEARCH_HEADERS
+    if _JANE_SEARCH_POST.match(url):
+        return _JANE_SEARCH_HEADERS
     return None
 
 

@@ -207,3 +207,13 @@ class SupersededTargetTests(PipelineOrchestrationTests):
         urls=[call.args[0]['url'] for call in fetch.call_args_list]
         self.assertEqual(urls,['https://example.com/right'])
         self.assertEqual(self.store.endpoint(retired['id'])['status'],'superseded')
+
+
+class PlatformObservationTests(PipelineOrchestrationTests):
+    def test_resolution_records_platforms_seen_on_retailer_pages(self):
+        found=dict(self.endpoint('https://example.com/menu','generic'),platforms=['jane'])
+        wrong=dict(url='https://other.example/',provider='generic',license_type='recreational',status='identity_conflict',reason='x',platforms=['dutchie'])
+        self.service=SyncService(self.store,FixtureFetcher(),resolver=lambda s,f:[found,wrong],menu_fetcher=Mock(return_value=snapshot([item()],provider='generic')))
+        self.run_job()
+        rows={(r['platform'],r['status']) for r in self.store.store_platforms(self.shop['id'])}
+        self.assertEqual(rows,{('jane','observed'),('dutchie','identity_conflict')})

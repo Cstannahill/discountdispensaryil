@@ -60,7 +60,7 @@ _RULES = [
     (r'no retailer locator connector|search found no corroborated|no corroborated public menu endpoint', FailureCode.NO_LEAD),
     (r'age/terms confirmation|age gate|age-gate', FailureCode.GATE_AGE_TERMS),
     (r'license-specific|license context|license/source context', FailureCode.GATE_LICENSE),
-    (r'conflicts with registry|different street address|different branch|identity_conflict|menu changed branch address', FailureCode.BRANCH_MISMATCH),
+    (r'conflicts with registry|different street address|different location|different branch|identity_conflict|menu changed branch address', FailureCode.BRANCH_MISMATCH),
     (r'no corroborated matching address|needs matching|did not expose a corroborated|no matching branch', FailureCode.LEAD_UNVERIFIED),
     (r'locator\.click|waiting for getbyrole|shopping context|location selector', FailureCode.GATE_UNKNOWN),
     (r'ssr query cache missing|schema drift|unvalidated .* schema|required source query missing', FailureCode.DRIFT),

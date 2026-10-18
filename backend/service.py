@@ -15,7 +15,7 @@ from .storage import REGISTRY_URL
 from .runtime import PIPELINE_VERSION, PipelineInterrupted
 
 
-NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'joint')
+NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'joint', 'jane')
 
 
 def _tier(provider):
@@ -133,7 +133,7 @@ class SyncService:
             self._check_stop()
             # A queued store may have been resolved by a targeted job meanwhile.
             store=dict(store,endpoints=self.store.endpoints(store['id']))
-            self.fetcher.browser_options=dict(getattr(self.fetcher,'browser_options',{}),target_store={key:store.get(key) for key in ('id','name','address','city','state')})
+            self.fetcher.browser_options=dict(getattr(self.fetcher,'browser_options',{}),target_store={key:store.get(key) for key in ('id','name','address','city','state','latitude','longitude')})
             return self._process_store_unlocked(store,results,force_resolution)
 
     def _attempt(self,store,**fields):
@@ -202,6 +202,10 @@ class SyncService:
             try:
                 resolved=self.resolver(store,self.fetcher)
                 self._check_stop()
+                # Census input: which menu platforms this store's pages showed, including rejected (wrong-branch) pages.
+                self.store.record_platforms(store['id'],[dict(platform=name,url=found.get('url'),status=found.get('status') or 'observed',
+                                                              evidence_id=found['resolution_evidence'].get('evidence_id') if isinstance(found.get('resolution_evidence'),dict) else None)
+                                                         for found in resolved for name in found.get('platforms') or []])
                 from .site_discovery import is_directory_url, menu_document_scope
                 for endpoint in resolved:
                     if endpoint.get('status') in ('blocked','failed','identity_conflict','unresolved') or endpoint.get('license_type') not in ('recreational','medicinal') or not has_menu_contract(endpoint):

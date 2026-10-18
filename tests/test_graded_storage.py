@@ -167,3 +167,23 @@ class SupersedeEndpointTests(GradedStorageTests):
     def test_unknown_endpoint_is_an_error(self):
         with self.assertRaisesRegex(ValueError, 'unknown_menu'):
             self.db.supersede_endpoint('nope', 'x')
+
+
+class PlatformCensusTests(GradedStorageTests):
+    def test_observed_platforms_and_brand_are_reported_per_store_and_stage(self):
+        from backend.platforms import brand_key
+        self.db.record_platforms(self.shop['id'], [dict(platform='jane', url='https://example.com/menu', evidence_id='e1', status='observed'),
+                                                   dict(platform='jane', url='https://example.com/menu', evidence_id='e2', status='observed'),
+                                                   dict(platform='dutchie', url='https://other.example/', evidence_id='e3', status='identity_conflict')])
+        self.assertEqual(len(self.db.store_platforms(self.shop['id'])), 2)
+        report = self.db.stage_report(self.region['id'])
+        row = report['stores'][0]
+        # A platform seen only on a page proven to be another branch does not describe this store.
+        self.assertEqual(row['platforms'], ['jane'])
+        self.assertEqual(row['brand'], brand_key(self.shop['name'], self.shop['city']))
+        self.assertEqual(report['by_platform'], {'jane': {'not_attempted': 1}})
+
+    def test_a_native_endpoint_provider_counts_as_the_store_platform(self):
+        self.db.save_endpoint(self.shop['id'], dict(url='https://example.com/sweed', provider='sweed', provider_store_id='s1',
+                                                    license_type='recreational', resolution_evidence=['e']))
+        self.assertIn('sweed', self.db.stage_report(self.region['id'])['stores'][0]['platforms'])

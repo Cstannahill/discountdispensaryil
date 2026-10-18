@@ -32,6 +32,7 @@ class Store:
             conn.executescript((Path(__file__).parent / "migrations/001_live_catalog.sql").read_text())
             conn.executescript((Path(__file__).parent / "migrations/002_store_work.sql").read_text())
             conn.executescript((Path(__file__).parent / "migrations/003_attempts_leads.sql").read_text())
+            conn.executescript((Path(__file__).parent / "migrations/004_store_platforms.sql").read_text())
             # SQLite has no ADD COLUMN IF NOT EXISTS; the converged-grade timestamp is separate from last_success_at
             # so that grade B never counts as an accepted (grade A) menu.
             if 'last_converged_at' not in {row[1] for row in conn.execute("PRAGMA table_info(live_endpoints)")}:
@@ -302,6 +303,20 @@ class Store:
         with self.connection() as conn:
             return [dict(row) for row in conn.execute("SELECT * FROM live_leads WHERE store_id=? ORDER BY id", (store_id,)).fetchall()]
 
+    def record_platforms(self, store_id, rows, source='resolver', now=None):
+        """Platforms seen on a store's pages. The latest observation of (store, platform, url) wins."""
+        now = now or utcnow()
+        with self.connection() as conn:
+            for row in rows:
+                conn.execute("INSERT INTO live_store_platforms (store_id,platform,url,status,source,evidence_id,observed_at) VALUES (?,?,?,?,?,?,?) "
+                             "ON CONFLICT(store_id,platform,url) DO UPDATE SET status=excluded.status,source=excluded.source,evidence_id=excluded.evidence_id,observed_at=excluded.observed_at",
+                             (store_id, row['platform'], row.get('url') or '', row.get('status') or 'observed', source, row.get('evidence_id'), now))
+
+    def store_platforms(self, store_id=None):
+        with self.connection() as conn:
+            sql = "SELECT * FROM live_store_platforms" + (" WHERE store_id=?" if store_id else "") + " ORDER BY store_id,platform,url"
+            return [dict(row) for row in conn.execute(sql, (store_id,) if store_id else ()).fetchall()]
+
     def stage_report(self, region_id=None, pipeline_version=None, now=None):
         """Attribute every regional store to one stage and one failure code. Attempts from other
         pipeline versions are shown but flagged as not current."""
@@ -311,7 +326,15 @@ class Store:
             latest = {}
             for row in conn.execute("SELECT * FROM live_attempts ORDER BY id").fetchall():
                 latest.setdefault(row["store_id"], []).append(dict(row))
-        by_stage, by_code, rows = {}, {}, []
+        from .platforms import KNOWN, brand_key
+        observed = {}
+        for row in self.store_platforms():
+            # A platform seen only on a page proven to be another branch does not describe this store.
+            if row["status"] != "identity_conflict":observed.setdefault(row["store_id"], set()).add(row["platform"])
+        brands = {store["id"]: brand_key(store["name"], store.get("city")) for store in stores}
+        brand_sizes = {}
+        for brand in brands.values():brand_sizes[brand] = brand_sizes.get(brand, 0) + 1
+        by_stage, by_code, by_platform, by_brand, rows = {}, {}, {}, {}, []
         for store in stores:
             endpoints = store["endpoints"]
             accepted = [e for e in endpoints if e["last_success_at"]]
@@ -334,12 +357,18 @@ class Store:
             by_stage[stage] = by_stage.get(stage, 0) + 1
             if code:
                 by_code[code] = by_code.get(code, 0) + 1
+            platforms = sorted(observed.get(store["id"], set()) | {e["provider"] for e in endpoints if e["provider"] in KNOWN})
+            for platform in platforms:
+                counts = by_platform.setdefault(platform, {});counts[stage] = counts.get(stage, 0) + 1
+            if brand_sizes[brands[store["id"]]] > 1:
+                counts = by_brand.setdefault(brands[store["id"]], {});counts[stage] = counts.get(stage, 0) + 1
             rows.append(dict(store_id=store["id"], store_name=store["name"], stage=stage, code=code,
                              current=bool(current), providers=sorted({e["provider"] for e in endpoints}),
+                             platforms=platforms, brand=brands[store["id"]],
                              fresh=any(e["last_success_at"] and age_hours(e["last_success_at"], now) < 12 for e in endpoints),
                              last_attempt_at=last["created_at"] if last else None, detail=last["detail"] if last else None))
         return dict(region=self.region(region_id), pipeline_version=pipeline_version, total_stores=len(stores),
-                    by_stage=by_stage, by_code=by_code, stores=rows)
+                    by_stage=by_stage, by_code=by_code, by_platform=by_platform, by_brand=by_brand, stores=rows)
 
     def record_endpoint_failure(self, endpoint_id, status, error, now=None):
         with self.connection() as conn:

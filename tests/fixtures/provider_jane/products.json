@@ -1,0 +1,676 @@
+[
+ {
+  "object_id": "25446355",
+  "product_id": 1911171,
+  "store_id": 3050,
+  "search_attributes": {
+   "_geoloc": {
+    "lat": 40.547609,
+    "lng": -89.6029443
+   },
+   "activities": [
+    "Ease my mind",
+    "Stimulate my mind",
+    "Get relief",
+    "Get some sleep"
+   ],
+   "aggregate_rating": 4.6,
+   "allergens": [],
+   "allow_multiple_flower_count": true,
+   "applicable_any_discountable_special_ids": [],
+   "applicable_any_qualifier_special_ids": [],
+   "applicable_brand_specials_excluded_user_segments": -1,
+   "applicable_brand_specials_included_user_segments": -1,
+   "applicable_bundle_brand_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_bundle_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_cart_total_special_ids": [],
+   "applicable_special_ids": [
+    3498069
+   ],
+   "applicable_special_types": [
+    "product"
+   ],
+   "at_visible_store": true,
+   "available_for_delivery": false,
+   "available_for_pickup": true,
+   "available_weights": [
+    "eighth ounce",
+    "quarter ounce"
+   ],
+   "best_seller_rank": 17,
+   "brand": "nuEra",
+   "brand_logo_url": "https://product-assets.iheartjane.com/photos/43/0d/430d0f5d-d439-44f4-9bb0-6ca3797dd043.png",
+   "brand_special_prices": {},
+   "brand_subtype": "Premium Flower",
+   "bucket_price": 30,
+   "business_licenses": [],
+   "cannabinoids": [],
+   "category": "indica",
+   "collections": [
+    "Red White and Gold Two:9"
+   ],
+   "compound_names": [],
+   "custom_menu_row_ids": [],
+   "custom_product_subtype": "Premium",
+   "custom_product_type": "flower",
+   "description": "3.5G:  CBGA: 0.55% | THC: 32.07% | THC9: 0.49% | THCA: 36.01%\r\n--\r\n7G:  CBGA: 0.87% | THC: 26.48% | THC9: 0.31% | THCA: 29.84%\r\n--\r\nnuEra\u2019s premium craft flower is hand-selected, meticulously cultivated, and carefully trimmed to deliver highly potent, dense buds. nuEra flower boasts pure flavors and aromas, creating a sensory journey that can lead to whatever effects you desire. \n\nBlack Inferno| Dante's Inferno x Devil's Driver | Black Inferno is an indica dominant strain. Its aroma has notes of Ripe Fruit, Sweet Cream, Tea. Top Terpenes: Limonene, Caryophyllene, Myrcene.",
+   "discounted_price_eighth_ounce": 30,
+   "discounted_price_quarter_ounce": 44.4,
+   "effects": [],
+   "feelings": [
+    "Relaxed",
+    "Hungry",
+    "Sleepy",
+    "Pain free"
+   ],
+   "flavors": [],
+   "has_brand_discount": false,
+   "has_photos": false,
+   "has_thc_potency": true,
+   "image_urls": [
+    "https://product-assets.iheartjane.com/photos/b9/ea/b9eae041-18c0-4ced-9903-3601ac549674.jpeg"
+   ],
+   "ingredients": [],
+   "inventory_potencies": [
+    {
+     "price_id": "quarter_ounce",
+     "cbd_potency": 0.0,
+     "tac_potency": 0.0,
+     "thc_potency": 30.15,
+     "thca_potency": 0.0
+    },
+    {
+     "price_id": "eighth_ounce",
+     "cbd_potency": 0.0,
+     "tac_potency": 0.0,
+     "thc_potency": 36.5
+    }
+   ],
+   "kind": "flower",
+   "kind_brand_subtype": "flower:Premium Flower",
+   "kind_root_subtype": "flower:Premium",
+   "kind_subtype": "Premium Flower",
+   "lab_result_urls": [],
+   "lab_results": [],
+   "max_cart_quantity": 8,
+   "max_cart_quantity_each": 8,
+   "max_cart_quantity_eighth_ounce": 14,
+   "max_cart_quantity_gram": 0,
+   "max_cart_quantity_half_gram": 8,
+   "max_cart_quantity_half_ounce": 8,
+   "max_cart_quantity_ounce": 8,
+   "max_cart_quantity_quarter_ounce": 9,
+   "max_cart_quantity_two_gram": 8,
+   "name": "Black Inferno",
+   "net_weight_grams": 0,
+   "objectID": 25446355,
+   "percent_thc": 30.15,
+   "photo_weights": [],
+   "photos": [],
+   "pos_product_lookup": {
+    "gram": "4018261",
+    "eighth_ounce": "4039776",
+    "quarter_ounce": "4445283"
+   },
+   "price_eighth_ounce": 50,
+   "price_quarter_ounce": 74,
+   "product_brand_id": 21149,
+   "product_id": 1911171,
+   "product_photos": [
+    {
+     "id": "https://product-assets.iheartjane.com/photos/b9/ea/b9eae041-18c0-4ced-9903-3601ac549674.jpeg",
+     "urls": {
+      "small": "https://product-assets.iheartjane.com/cdn-cgi/image/width=174,fit=scale-down,format=auto,metadata=none/photos/b9/ea/b9eae041-18c0-4ced-9903-3601ac549674.jpeg",
+      "medium": "https://product-assets.iheartjane.com/cdn-cgi/image/width=327,fit=scale-down,format=auto,metadata=none/photos/b9/ea/b9eae041-18c0-4ced-9903-3601ac549674.jpeg",
+      "original": "https://product-assets.iheartjane.com/photos/b9/ea/b9eae041-18c0-4ced-9903-3601ac549674.jpeg",
+      "extraLarge": "https://product-assets.iheartjane.com/cdn-cgi/image/width=1000,fit=scale-down,format=auto,metadata=none/photos/b9/ea/b9eae041-18c0-4ced-9903-3601ac549674.jpeg"
+     },
+     "position": 0
+    }
+   ],
+   "quantity_units": "",
+   "recommendation": {
+    "ordinal": 41
+   },
+   "review_count": 17,
+   "root_subtype": "Premium",
+   "root_types": [
+    "flower",
+    "sale",
+    "best_selling",
+    "flower:Premium"
+   ],
+   "roots_custom_rows": [],
+   "searchable_slug": "nuera-black-inferno-1911171",
+   "special_amount": "40% OFF",
+   "special_id": 3498069,
+   "special_price_each": {},
+   "special_price_eighth_ounce": {
+    "price": "50.0",
+    "special_id": 3498069,
+    "discount_type": "percent",
+    "discount_price": "30.0",
+    "discount_amount": 20.0,
+    "discount_percent": "40.0"
+   },
+   "special_price_gram": {},
+   "special_price_half_gram": {},
+   "special_price_half_ounce": {},
+   "special_price_ounce": {},
+   "special_price_quarter_ounce": {
+    "price": "74.0",
+    "special_id": 3498069,
+    "discount_type": "percent",
+    "discount_price": "44.4",
+    "discount_amount": 29.6,
+    "discount_percent": "40.0"
+   },
+   "special_price_two_gram": {},
+   "special_title": "GET-HOUSE-OF-BRANDS-AT-40%-OFF",
+   "store_id": 3050,
+   "store_notes": "3.5G:  CBGA: 0.55% | THC: 32.07% | THC9: 0.49% | THCA: 36.01%\r\n--\r\n7G:  CBGA: 0.87% | THC: 26.48% | THC9: 0.31% | THCA: 29.84%\r\n--\r\nnuEra\u2019s premium craft flower is hand-selected, meticulously cultivated, and carefully trimmed to deliver highly potent, dense buds. nuEra flower boasts pure flavors and aromas, creating a sensory journey that can lead to whatever effects you desire. \n\nBlack Inferno| Dante's Inferno x Devil's Driver | Black Inferno is an indica dominant strain. Its aroma has notes of Ripe Fruit, Sweet Cream, Tea. Top Terpenes: Limonene, Caryophyllene, Myrcene.",
+   "store_specific_product": false,
+   "store_types": [
+    "recreational"
+   ],
+   "terpenes": [],
+   "type": "indica",
+   "unique_slug": "nuera-indica-black-inferno",
+   "url_slug": "nuera-black-inferno",
+   "visible": true
+  }
+ },
+ {
+  "object_id": "35969183",
+  "product_id": 2882406,
+  "store_id": 3050,
+  "search_attributes": {
+   "_geoloc": {
+    "lat": 40.547609,
+    "lng": -89.6029443
+   },
+   "activities": [],
+   "aggregate_rating": 0,
+   "allergens": [],
+   "allow_multiple_flower_count": true,
+   "applicable_any_discountable_special_ids": [],
+   "applicable_any_qualifier_special_ids": [],
+   "applicable_brand_specials_excluded_user_segments": -1,
+   "applicable_brand_specials_included_user_segments": -1,
+   "applicable_bundle_brand_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_bundle_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_cart_total_special_ids": [],
+   "applicable_special_ids": [
+    3498069
+   ],
+   "applicable_special_types": [
+    "product"
+   ],
+   "at_visible_store": true,
+   "available_for_delivery": false,
+   "available_for_pickup": true,
+   "available_weights": [
+    "eighth ounce",
+    "quarter ounce"
+   ],
+   "brand": "nuEra",
+   "brand_logo_url": "https://product-assets.iheartjane.com/photos/43/0d/430d0f5d-d439-44f4-9bb0-6ca3797dd043.png",
+   "brand_special_prices": {},
+   "brand_subtype": "Premium Flower",
+   "bucket_price": 30,
+   "cannabinoids": [],
+   "category": "hybrid",
+   "collections": [],
+   "compound_names": [],
+   "custom_menu_row_ids": [],
+   "custom_product_subtype": "Premium",
+   "custom_product_type": "flower",
+   "description": "3.5G:  CBGA: 0.38% | THC: 29.56% | THC9: 0.64% | THCA: 32.97%\r\n--\r\n7G:  CBGA: 0.37% | THC: 25.97% | THC9: 0.62% | THCA: 28.92%\r\n--\r\nnuEra\u2019s premium craft flower is hand-selected, meticulously cultivated, and carefully trimmed to deliver highly potent, dense buds. nuEra flower boasts pure flavors and aromas, creating a sensory journey that can lead to whatever effects you desire.",
+   "discounted_price_eighth_ounce": 30,
+   "discounted_price_quarter_ounce": 44.4,
+   "effects": [],
+   "feelings": [],
+   "flavors": [],
+   "has_brand_discount": false,
+   "has_photos": false,
+   "has_thc_potency": true,
+   "image_urls": [
+    "https://product-assets.iheartjane.com/photos/c3/a5/c3a5bf01-26dd-4bd9-a391-ba7bc704d0e5.png"
+   ],
+   "ingredients": [],
+   "inventory_potencies": [
+    {
+     "price_id": "quarter_ounce",
+     "cbd_potency": 0.0,
+     "tac_potency": 0.0,
+     "thc_potency": 29.54,
+     "thca_potency": 0.0
+    },
+    {
+     "price_id": "eighth_ounce",
+     "cbd_potency": 0.0,
+     "tac_potency": 0.0,
+     "thc_potency": 33.61,
+     "thca_potency": 0.0
+    }
+   ],
+   "kind": "flower",
+   "kind_brand_subtype": "flower:Premium Flower",
+   "kind_root_subtype": "flower:Premium",
+   "kind_subtype": "Premium Flower",
+   "lab_result_urls": [],
+   "lab_results": [],
+   "max_cart_quantity": 10,
+   "max_cart_quantity_each": 10,
+   "max_cart_quantity_eighth_ounce": 11,
+   "max_cart_quantity_gram": 10,
+   "max_cart_quantity_half_gram": 10,
+   "max_cart_quantity_half_ounce": 10,
+   "max_cart_quantity_ounce": 10,
+   "max_cart_quantity_quarter_ounce": 13,
+   "max_cart_quantity_two_gram": 10,
+   "name": "Sunset Glue",
+   "net_weight_grams": 0,
+   "objectID": 35969183,
+   "percent_thc": 29.54,
+   "photo_weights": [],
+   "photos": [],
+   "pos_product_lookup": {
+    "eighth_ounce": "4460587",
+    "quarter_ounce": "4460760"
+   },
+   "price_eighth_ounce": 50,
+   "price_quarter_ounce": 74,
+   "product_brand_id": 21149,
+   "product_id": 2882406,
+   "product_photos": [
+    {
+     "id": "https://product-assets.iheartjane.com/photos/c3/a5/c3a5bf01-26dd-4bd9-a391-ba7bc704d0e5.png",
+     "urls": {
+      "small": "https://product-assets.iheartjane.com/cdn-cgi/image/width=174,fit=scale-down,format=auto,metadata=none/photos/c3/a5/c3a5bf01-26dd-4bd9-a391-ba7bc704d0e5.png",
+      "medium": "https://product-assets.iheartjane.com/cdn-cgi/image/width=327,fit=scale-down,format=auto,metadata=none/photos/c3/a5/c3a5bf01-26dd-4bd9-a391-ba7bc704d0e5.png",
+      "original": "https://product-assets.iheartjane.com/photos/c3/a5/c3a5bf01-26dd-4bd9-a391-ba7bc704d0e5.png",
+      "extraLarge": "https://product-assets.iheartjane.com/cdn-cgi/image/width=1000,fit=scale-down,format=auto,metadata=none/photos/c3/a5/c3a5bf01-26dd-4bd9-a391-ba7bc704d0e5.png"
+     },
+     "position": 0
+    }
+   ],
+   "recommendation": {
+    "ordinal": 111
+   },
+   "review_count": 0,
+   "root_subtype": "Premium",
+   "root_types": [
+    "flower",
+    "sale",
+    "flower:Premium"
+   ],
+   "roots_custom_rows": [],
+   "searchable_slug": "nuera-sunset-glue-2882406",
+   "special_amount": "40% OFF",
+   "special_id": 3498069,
+   "special_price_each": {},
+   "special_price_eighth_ounce": {
+    "price": "50.0",
+    "special_id": 3498069,
+    "discount_type": "percent",
+    "discount_price": "30.0",
+    "discount_amount": 20.0,
+    "discount_percent": "40.0"
+   },
+   "special_price_gram": {},
+   "special_price_half_gram": {},
+   "special_price_half_ounce": {},
+   "special_price_ounce": {},
+   "special_price_quarter_ounce": {
+    "price": "74.0",
+    "special_id": 3498069,
+    "discount_type": "percent",
+    "discount_price": "44.4",
+    "discount_amount": 29.6,
+    "discount_percent": "40.0"
+   },
+   "special_price_two_gram": {},
+   "special_title": "GET-HOUSE-OF-BRANDS-AT-40%-OFF",
+   "store_id": 3050,
+   "store_notes": "3.5G:  CBGA: 0.38% | THC: 29.56% | THC9: 0.64% | THCA: 32.97%\r\n--\r\n7G:  CBGA: 0.37% | THC: 25.97% | THC9: 0.62% | THCA: 28.92%\r\n--\r\nnuEra\u2019s premium craft flower is hand-selected, meticulously cultivated, and carefully trimmed to deliver highly potent, dense buds. nuEra flower boasts pure flavors and aromas, creating a sensory journey that can lead to whatever effects you desire.",
+   "store_specific_product": false,
+   "store_types": [
+    "recreational"
+   ],
+   "terpenes": [],
+   "type": "hybrid",
+   "unique_slug": "nuera-hybrid-sunset-glue",
+   "url_slug": "nuera-sunset-glue",
+   "visible": true
+  }
+ },
+ {
+  "object_id": "35845934",
+  "product_id": 2863322,
+  "store_id": 3050,
+  "search_attributes": {
+   "_geoloc": {
+    "lat": 40.547609,
+    "lng": -89.6029443
+   },
+   "activities": [],
+   "aggregate_rating": 0,
+   "allergens": [],
+   "allow_multiple_flower_count": false,
+   "applicable_any_discountable_special_ids": [],
+   "applicable_any_qualifier_special_ids": [],
+   "applicable_brand_specials_excluded_user_segments": -1,
+   "applicable_brand_specials_included_user_segments": -1,
+   "applicable_bundle_brand_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_bundle_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_cart_total_special_ids": [],
+   "applicable_special_ids": [
+    3498069
+   ],
+   "applicable_special_types": [
+    "product"
+   ],
+   "at_visible_store": true,
+   "available_for_delivery": false,
+   "available_for_pickup": true,
+   "available_weights": [
+    "half gram"
+   ],
+   "brand": "nuEra",
+   "brand_logo_url": "https://product-assets.iheartjane.com/photos/43/0d/430d0f5d-d439-44f4-9bb0-6ca3797dd043.png",
+   "brand_special_prices": {},
+   "brand_subtype": "Live Resin Cartridge",
+   "bucket_price": 30,
+   "business_licenses": [],
+   "cannabinoids": [],
+   "category": "sativa",
+   "collections": [],
+   "compound_names": [],
+   "custom_menu_row_ids": [],
+   "custom_product_subtype": "Cartridges",
+   "custom_product_type": "vape",
+   "description": "CBC: 0.49% | CBD: 0.14% | CBG: 1.17% | CBGA: 0.35% | THC: 79.56% | THC9: 79.3% | THCA: 0.3% | THCV: 0.32%\r\n--\r\nExperience the purest form of cannabis with our Live Resin. Crafted with precision and years of expertise, we extract from freshly frozen, top-tier flower, capturing the finest attributes of cannabinoids and terpenes. The outcome is a concentrated masterpiece, delivering an unmatched and distinctive bouquet, flavor, and potency in every batch. nuEra vape cartridges feature a highly refined, double-distilled oil containing pure cannabinoids and infused terpenes with no additives or fillers. This extra step of refinement creates a clear viscous oil that resembles maple tree sap in consistency and hue.\n\nRoyal Gorilla is a sativa-dominant hybrid that brings together the powerhouse genetics of GG, GG4, Original Glue, and GG #4\u2014creating a strain that\u2019s as bold as it is balanced. With its unmistakable aroma of citrus zest, pungent diesel, and crisp pine, Royal Gorilla delivers a sensory experience that\u2019s both energizing and grounding. This strain features a dynamic terpene profile led by Myrcene, Caryophyllene, and Limonene, which work in harmony to amplify its vibrant scent and deepen its flavor complexity. The first inhale greets you with a sharp burst of citrus and earthy pine, quickly followed by a robust diesel undertone that adds grit and character to the smoke. It\u2019s a flavor journey that\u2019s punchy, layered, and undeniably memorable. This strain is celebrated for its uplifting yet soothing effects. Users often report a euphoric head high that sparks creativity and focus, while a gentle body buzz brings on a sense of relaxation and tingling calm. It\u2019s a strain that keeps you mentally alert while easing physical tension\u2014perfect for daytime unwinding or social settings where you want to stay engaged but mellow. Whether you're chasing a mood boost, looking to relieve stress, or simply craving a flavorful escape, Royal Gorilla offers a well-rounded high that\u2019s both invigorating and serene. It\u2019s a go-to for those who want the best of both worlds: clarity with calm, energy with ease.",
+   "discounted_price_half_gram": 30,
+   "effects": [],
+   "feelings": [],
+   "flavors": [],
+   "has_brand_discount": false,
+   "has_photos": false,
+   "has_thc_potency": true,
+   "image_urls": [
+    "https://product-assets.iheartjane.com/photos/06/d8/06d8a998-72e6-42e5-a28b-8d182438d248.jpeg"
+   ],
+   "ingredients": [],
+   "inventory_potencies": [
+    {
+     "price_id": "half_gram",
+     "cbd_potency": 0.14,
+     "tac_potency": 0.0,
+     "thc_potency": 79.6,
+     "thca_potency": 0.0
+    }
+   ],
+   "kind": "vape",
+   "kind_brand_subtype": "vape:Live Resin Cartridge",
+   "kind_root_subtype": "vape:Cartridges",
+   "kind_subtype": "Live Resin Cartridge",
+   "lab_result_urls": [],
+   "lab_results": [],
+   "max_cart_quantity": 5,
+   "max_cart_quantity_each": 5,
+   "max_cart_quantity_eighth_ounce": 5,
+   "max_cart_quantity_gram": 5,
+   "max_cart_quantity_half_gram": 6,
+   "max_cart_quantity_half_ounce": 5,
+   "max_cart_quantity_ounce": 5,
+   "max_cart_quantity_quarter_ounce": 5,
+   "max_cart_quantity_two_gram": 5,
+   "name": "Royal Gorilla",
+   "net_weight_grams": 0,
+   "objectID": 35845934,
+   "percent_cbd": 0.14,
+   "percent_thc": 79.6,
+   "photo_weights": [],
+   "photos": [],
+   "pos_product_lookup": {
+    "half_gram": "4460027"
+   },
+   "price_half_gram": 50,
+   "product_brand_id": 21149,
+   "product_id": 2863322,
+   "product_photos": [
+    {
+     "id": "https://product-assets.iheartjane.com/photos/06/d8/06d8a998-72e6-42e5-a28b-8d182438d248.jpeg",
+     "urls": {
+      "small": "https://product-assets.iheartjane.com/cdn-cgi/image/width=174,fit=scale-down,format=auto,metadata=none/photos/06/d8/06d8a998-72e6-42e5-a28b-8d182438d248.jpeg",
+      "medium": "https://product-assets.iheartjane.com/cdn-cgi/image/width=327,fit=scale-down,format=auto,metadata=none/photos/06/d8/06d8a998-72e6-42e5-a28b-8d182438d248.jpeg",
+      "original": "https://product-assets.iheartjane.com/photos/06/d8/06d8a998-72e6-42e5-a28b-8d182438d248.jpeg",
+      "extraLarge": "https://product-assets.iheartjane.com/cdn-cgi/image/width=1000,fit=scale-down,format=auto,metadata=none/photos/06/d8/06d8a998-72e6-42e5-a28b-8d182438d248.jpeg"
+     },
+     "position": 0
+    }
+   ],
+   "recommendation": {
+    "ordinal": 797
+   },
+   "review_count": 0,
+   "root_subtype": "Cartridges",
+   "root_types": [
+    "vape",
+    "sale",
+    "vape:Cartridges"
+   ],
+   "roots_custom_rows": [],
+   "searchable_slug": "nuera-royal-gorilla-2863322",
+   "special_amount": "40% OFF",
+   "special_id": 3498069,
+   "special_price_each": {},
+   "special_price_eighth_ounce": {},
+   "special_price_gram": {},
+   "special_price_half_gram": {
+    "price": "50.0",
+    "special_id": 3498069,
+    "discount_type": "percent",
+    "discount_price": "30.0",
+    "discount_amount": 20.0,
+    "discount_percent": "40.0"
+   },
+   "special_price_half_ounce": {},
+   "special_price_ounce": {},
+   "special_price_quarter_ounce": {},
+   "special_price_two_gram": {},
+   "special_title": "GET-HOUSE-OF-BRANDS-AT-40%-OFF",
+   "store_id": 3050,
+   "store_notes": "CBC: 0.49% | CBD: 0.14% | CBG: 1.17% | CBGA: 0.35% | THC: 79.56% | THC9: 79.3% | THCA: 0.3% | THCV: 0.32%\r\n--\r\nExperience the purest form of cannabis with our Live Resin. Crafted with precision and years of expertise, we extract from freshly frozen, top-tier flower, capturing the finest attributes of cannabinoids and terpenes. The outcome is a concentrated masterpiece, delivering an unmatched and distinctive bouquet, flavor, and potency in every batch. nuEra vape cartridges feature a highly refined, double-distilled oil containing pure cannabinoids and infused terpenes with no additives or fillers. This extra step of refinement creates a clear viscous oil that resembles maple tree sap in consistency and hue.\n\nRoyal Gorilla is a sativa-dominant hybrid that brings together the powerhouse genetics of GG, GG4, Original Glue, and GG #4\u2014creating a strain that\u2019s as bold as it is balanced. With its unmistakable aroma of citrus zest, pungent diesel, and crisp pine, Royal Gorilla delivers a sensory experience that\u2019s both energizing and grounding. This strain features a dynamic terpene profile led by Myrcene, Caryophyllene, and Limonene, which work in harmony to amplify its vibrant scent and deepen its flavor complexity. The first inhale greets you with a sharp burst of citrus and earthy pine, quickly followed by a robust diesel undertone that adds grit and character to the smoke. It\u2019s a flavor journey that\u2019s punchy, layered, and undeniably memorable. This strain is celebrated for its uplifting yet soothing effects. Users often report a euphoric head high that sparks creativity and focus, while a gentle body buzz brings on a sense of relaxation and tingling calm. It\u2019s a strain that keeps you mentally alert while easing physical tension\u2014perfect for daytime unwinding or social settings where you want to stay engaged but mellow. Whether you're chasing a mood boost, looking to relieve stress, or simply craving a flavorful escape, Royal Gorilla offers a well-rounded high that\u2019s both invigorating and serene. It\u2019s a go-to for those who want the best of both worlds: clarity with calm, energy with ease.",
+   "store_specific_product": false,
+   "store_types": [
+    "recreational"
+   ],
+   "terpenes": [],
+   "type": "vape",
+   "unique_slug": "nuera-sativa-royal-gorilla",
+   "url_slug": "nuera-royal-gorilla",
+   "visible": true
+  }
+ },
+ {
+  "object_id": "25446354",
+  "product_id": 1869936,
+  "store_id": 3050,
+  "search_attributes": {
+   "_geoloc": {
+    "lat": 40.547609,
+    "lng": -89.6029443
+   },
+   "activities": [
+    "Ease my mind",
+    "Get some sleep",
+    "Get relief"
+   ],
+   "aggregate_rating": 4.8,
+   "allergens": [],
+   "allow_multiple_flower_count": false,
+   "amount": "20pk",
+   "applicable_any_discountable_special_ids": [],
+   "applicable_any_qualifier_special_ids": [],
+   "applicable_brand_specials_excluded_user_segments": -1,
+   "applicable_brand_specials_included_user_segments": -1,
+   "applicable_bundle_brand_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_bundle_special_ids": {
+    "qualify": [],
+    "discount": []
+   },
+   "applicable_cart_total_special_ids": [],
+   "applicable_special_ids": [
+    3498069
+   ],
+   "applicable_special_types": [
+    "product"
+   ],
+   "at_visible_store": true,
+   "available_for_delivery": false,
+   "available_for_pickup": true,
+   "available_weights": [],
+   "brand": "Midweek Friday",
+   "brand_logo_url": "https://janetech-core-prod-product-assets.s3.amazonaws.com/photos/02/1f/021fba0b-deef-499c-aeab-cf03d62fc210.png",
+   "brand_special_prices": {},
+   "brand_subtype": "Gummies",
+   "bucket_price": 12,
+   "business_licenses": [],
+   "cannabinoids": [],
+   "category": "indica",
+   "collections": [],
+   "compound_names": [],
+   "custom_menu_row_ids": [],
+   "custom_product_subtype": "Candies",
+   "custom_product_type": "edible",
+   "description": "THC: 100mg/g | THC9: 1.82mg/g\r\n--\r\nYummy Gummies. We've got some epic 20-packs of 5 mgs THC gummies in three flavors, each tailor-made for different vibes and moments.\n--\nGet ready to chill with our super dreamy Doze Strawberry Gummies. These lil' treats will take you on a blissful journey. It's like a chill pill in a gummy form! Key Ingredients: 50 mg L-Theanine / 1mg Melatonin\n--\nAt Midweek Friday, we offer more for less, because we believe sharing is caring. Good times are even better with buds, that's why our products are all about community and camaraderie. We've got larger-sized goodies, so you can spread the love without breaking the bank!",
+   "discounted_price_each": 12,
+   "dosage": "100mg THC",
+   "effects": [],
+   "feelings": [
+    "Relaxed",
+    "Sleepy"
+   ],
+   "flavors": [],
+   "has_brand_discount": false,
+   "has_photos": false,
+   "has_thc_potency": false,
+   "image_urls": [
+    "https://product-assets.iheartjane.com/photos/44/d3/44d34846-3fff-449a-a3f1-560a50f17e30.png"
+   ],
+   "ingredients": [],
+   "inventory_potencies": [
+    {
+     "price_id": "each",
+     "cbd_potency": 0.0,
+     "tac_potency": 0.0,
+     "thc_potency": 0.0
+    }
+   ],
+   "kind": "edible",
+   "kind_brand_subtype": "edible:Gummies",
+   "kind_root_subtype": "edible:Candies",
+   "kind_subtype": "Gummies",
+   "lab_result_urls": [],
+   "lab_results": [],
+   "max_cart_quantity": 17,
+   "max_cart_quantity_each": 18,
+   "max_cart_quantity_eighth_ounce": 17,
+   "max_cart_quantity_gram": 17,
+   "max_cart_quantity_half_gram": 17,
+   "max_cart_quantity_half_ounce": 17,
+   "max_cart_quantity_ounce": 17,
+   "max_cart_quantity_quarter_ounce": 17,
+   "max_cart_quantity_two_gram": 17,
+   "name": "Doze [20pk] (100mg)",
+   "net_weight_grams": 0.1,
+   "objectID": 25446354,
+   "photo_weights": [],
+   "photos": [],
+   "pos_product_lookup": {
+    "each": "4018138"
+   },
+   "price_each": 20,
+   "product_brand_id": 38795,
+   "product_id": 1869936,
+   "product_photos": [
+    {
+     "id": "https://product-assets.iheartjane.com/photos/44/d3/44d34846-3fff-449a-a3f1-560a50f17e30.png",
+     "urls": {
+      "small": "https://product-assets.iheartjane.com/cdn-cgi/image/width=174,fit=scale-down,format=auto,metadata=none/photos/44/d3/44d34846-3fff-449a-a3f1-560a50f17e30.png",
+      "medium": "https://product-assets.iheartjane.com/cdn-cgi/image/width=327,fit=scale-down,format=auto,metadata=none/photos/44/d3/44d34846-3fff-449a-a3f1-560a50f17e30.png",
+      "original": "https://product-assets.iheartjane.com/photos/44/d3/44d34846-3fff-449a-a3f1-560a50f17e30.png",
+      "extraLarge": "https://product-assets.iheartjane.com/cdn-cgi/image/width=1000,fit=scale-down,format=auto,metadata=none/photos/44/d3/44d34846-3fff-449a-a3f1-560a50f17e30.png"
+     },
+     "position": 0
+    }
+   ],
+   "quantity_units": "g",
+   "quantity_value": 0.1,
+   "recommendation": {
+    "ordinal": 3
+   },
+   "review_count": 17,
+   "root_subtype": "Candies",
+   "root_types": [
+    "edible",
+    "sale",
+    "edible:Candies"
+   ],
+   "roots_custom_rows": [],
+   "searchable_slug": "midweek-friday-doze-20pk-100mg-1869936",
+   "special_amount": "40% OFF",
+   "special_id": 3498069,
+   "special_price_each": {
+    "price": "20.0",
+    "special_id": 3498069,
+    "discount_type": "percent",
+    "discount_price": "12.0",
+    "discount_amount": 8.0,
+    "discount_percent": "40.0"
+   },
+   "special_price_eighth_ounce": {},
+   "special_price_gram": {},
+   "special_price_half_gram": {},
+   "special_price_half_ounce": {},
+   "special_price_ounce": {},
+   "special_price_quarter_ounce": {},
+   "special_price_two_gram": {},
+   "special_title": "GET-HOUSE-OF-BRANDS-AT-40%-OFF",
+   "store_id": 3050,
+   "store_notes": "THC: 100mg/g | THC9: 1.82mg/g\r\n--\r\nYummy Gummies. We've got some epic 20-packs of 5 mgs THC gummies in three flavors, each tailor-made for different vibes and moments.\n--\nGet ready to chill with our super dreamy Doze Strawberry Gummies. These lil' treats will take you on a blissful journey. It's like a chill pill in a gummy form! Key Ingredients: 50 mg L-Theanine / 1mg Melatonin\n--\nAt Midweek Friday, we offer more for less, because we believe sharing is caring. Good times are even better with buds, that's why our products are all about community and camaraderie. We've got larger-sized goodies, so you can spread the love without breaking the bank!",
+   "store_specific_product": false,
+   "store_types": [
+    "recreational"
+   ],
+   "terpenes": [],
+   "type": "edible",
+   "unique_slug": "midweek-friday-indica-doze-20pk-100mg",
+   "url_slug": "midweek-friday-doze-20pk-100mg",
+   "visible": true
+  }
+ }
+]

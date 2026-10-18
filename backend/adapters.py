@@ -13,7 +13,7 @@ BLAZE_API = 'https://ecom-api.blaze.me/api/v1/products/'
 
 
 def provider_capabilities(provider):
-    native=provider in ('blaze','sweed','dispense','treez','joint')
+    native=provider in ('blaze','sweed','dispense','treez','joint','jane')
     structured=provider in ('generic','jane','dutchie','cresco')
     return dict(native_full_menu=native,structured_fallback=structured,
                 support='native_full_menu' if native else 'conditional_structured_fallback' if structured else 'unsupported')
@@ -116,6 +116,9 @@ def _detect_endpoint(url, response):
         settings = site.get('settings') or {}
         license_type = 'medicinal' if settings.get('allow_medical_customers') and not settings.get('allow_recreational_customers') else 'recreational'
         return {'url': site.get('site', {}).get('url') or url, 'provider': 'blaze', 'provider_store_id': str(site['id']), 'license_type': license_type, 'resolution_evidence': dict(evidence, method='Blaze storefront __NEXT_DATA__ tenant and customer context')}
+    hosted = re.search(r'iheartjane\.com/(?:embed/)?stores/(\d+)', response.url or url)
+    if hosted:
+        return {'url': response.url or url, 'provider': 'jane', 'provider_store_id': hosted[1], 'license_type': 'unknown', 'resolution_evidence': dict(evidence, method='Jane hosted store menu URL')}
     match = re.search(r'[\"\']storeId[\"\']\s*:\s*(\d+)', text)
     if match and 'iheartjane.com' in text:
         return {'url': url, 'provider': 'jane', 'provider_store_id': match[1], 'license_type': 'recreational' if 'adult-use' in url else 'unknown', 'resolution_evidence': dict(evidence, method='Jane partner hosted storeId; traversal unsupported')}
@@ -145,13 +148,14 @@ def has_menu_contract(endpoint):
 
 def resolve_menu(store, fetcher):
     """Bounded search/branch crawl. Platform and generic paths share evidence."""
+    from .platforms import detect as detect_platforms
     from .locators import discover_menu_candidates
     from .site_discovery import inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms
     from .providers.generic import extract
     from .documents import read_document
     import copy
     fetcher=copy.copy(fetcher)
-    fetcher.browser_options=dict(getattr(fetcher,'browser_options',{}),target_store={key:store.get(key) for key in ('id','name','address','city','state')})
+    fetcher.browser_options=dict(getattr(fetcher,'browser_options',{}),target_store={key:store.get(key) for key in ('id','name','address','city','state','latitude','longitude')})
     fetcher._branch_render_cache={}
     initial=list(dict.fromkeys(store[k] for k in ('menu_url','website','source_url','url') if isinstance(store.get(k),str) and store[k]))
     seeds=[dict(url=url,status='candidate',evidence=[]) for url in initial] if initial else discover_menu_candidates(store,fetcher)
@@ -180,6 +184,8 @@ def resolve_menu(store, fetcher):
         if url in visited:continue
         visited.add(url)
         if menu_document_scope(url)=='filtered':continue
+        # Everything this page yields (endpoints, embeds, failures) carries the platforms seen on it, for the census.
+        marks,page_platforms=(len(results),len(failures)),[]
         try:
             response=fetcher._branch_render_cache.get(url) or read_document(url,fetcher)
             if response.status_code!=200:raise ValueError(f'HTTP {response.status_code}')
@@ -191,6 +197,7 @@ def resolve_menu(store, fetcher):
                 failures.append(dict(url=url,provider='generic',provider_store_id=None,license_type='recreational',status='unresolved',
                                      reason='Third-party directory is a discovery lead, not a retailer menu',resolution_evidence=dict(url=response.url,evidence_id=response.evidence_id)))
                 continue
+            page_platforms=detect_platforms(_text(response))
             identity=inspect_page(store,response)
             # Explicit supplied URLs are useful for diagnostic probes. Registry
             # discovery accepts address OR business+locality evidence.
@@ -210,6 +217,7 @@ def resolve_menu(store, fetcher):
                         identity=inspect_page(store,response)
                         verified=(identity['identity_status'] in ('matched','name_locality') or inherited) and identity['identity_status']!='conflict'
                         observed=_observed_endpoint(url,response)
+                        page_platforms=sorted(set(page_platforms)|set(detect_platforms(_text(response))))
                 except Exception as exc:
                     failures.append(dict(url=url,provider='generic',license_type='recreational',status='failed',reason='Branch-selection browser attempt failed: '+str(exc),resolution_evidence=dict(evidence_id=getattr(exc,'evidence_id',None))))
             details=observed.get('resolution_evidence') or {}
@@ -267,6 +275,8 @@ def resolve_menu(store, fetcher):
         except Exception as exc:
             failures.append(dict(url=url,provider='generic',provider_store_id=None,license_type='recreational',status='failed',reason=str(exc),
                                  resolution_evidence=dict(url=url,evidence_id=getattr(exc,'evidence_id',None))))
+        finally:
+            for found in results[marks[0]:]+failures[marks[1]:]:found.setdefault('platforms',page_platforms)
     # Prefer actual platform menus over sibling generic landing/carousel pages.
     platforms=[x for x in results if x['provider']!='generic']
     catalog_entries=[x for x in results if x['provider']=='generic' and menu_document_scope(x['url'])=='catalog_entry']
@@ -288,6 +298,9 @@ def fetch_menu(endpoint, fetcher):
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'joint':
         from backend.providers.joint import fetch
+        return fetch(endpoint,fetcher)
+    if endpoint.get('provider') == 'jane' and endpoint.get('provider_store_id'):
+        from backend.providers.jane import fetch
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') in ('generic','jane','dutchie','cresco'):
         from backend.providers.generic import fetch
