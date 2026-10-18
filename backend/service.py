@@ -15,7 +15,7 @@ from .storage import REGISTRY_URL
 from .runtime import PIPELINE_VERSION, PipelineInterrupted
 
 
-NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez')
+NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'joint')
 
 
 def _tier(provider):

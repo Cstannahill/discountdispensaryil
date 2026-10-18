@@ -13,6 +13,7 @@ import ipaddress
 import json
 import os
 from pathlib import Path
+import re
 import socket
 import ssl
 import tempfile
@@ -30,6 +31,19 @@ _READ_ONLY_SEARCH_POSTS = {
 }
 
 # Applied under saved settings: an absent key takes the default, an explicit null (user_agent_token) turns it off.
+# Joint storefronts (WordPress plugin) each expose their own read-only product search under a per-site host.
+_JOINT_SEARCH_POST = re.compile(r'^https://[a-z0-9.-]+/wp-json/joint-ecommerce/v1/products/[a-z0-9_-]+/_search$')
+_JOINT_SEARCH_HEADERS = {'content-type', 'accept', 'origin', 'referer'}
+
+
+def _search_post_headers(url):
+    if url in _READ_ONLY_SEARCH_POSTS:
+        return _READ_ONLY_SEARCH_POSTS[url]
+    if _JOINT_SEARCH_POST.match(url):
+        return _JOINT_SEARCH_HEADERS
+    return None
+
+
 BROWSER_DEFAULTS = {'post_policy': 'platform_reads', 'user_agent_token': 'TerpScout/1.0', 'scroll_menu': True}
 
 _BROWSER_PAGE_HEADERS={'accept','rsc','next-router-state-tree','next-router-prefetch','next-url'}
@@ -271,7 +285,7 @@ class PublicFetcher:
         hosts/paths are refused. Publishable storefront header values are never
         diagnostic metadata. Search responses retain the same evidence rules.
         """
-        if url not in _READ_ONLY_SEARCH_POSTS:
+        if _search_post_headers(url) is None:
             raise ValueError('POST is permitted only for explicitly observed read-only product search endpoints')
         return self._request('POST', url, headers=headers, json_payload=json)
 
@@ -280,7 +294,7 @@ class PublicFetcher:
         if getattr(self,'stop_requested',None) is not None and self.stop_requested.is_set():
             raise PipelineInterrupted('Worker stopped before public request')
         request_headers = {key.lower(): value for key, value in (headers or {}).items()}
-        allowed_headers = {'x-store', 'accept', 'content-type'} if method == 'GET' else _READ_ONLY_SEARCH_POSTS[url]
+        allowed_headers = {'x-store', 'accept', 'content-type'} if method == 'GET' else _search_post_headers(url)
         if method=='GET' and urlsplit(url).hostname=='api.dispenseapp.com':
             allowed_headers=allowed_headers | {'api-key'}
         if browser_origin and method=='GET' and urlsplit(url).hostname==urlsplit(browser_origin).hostname:

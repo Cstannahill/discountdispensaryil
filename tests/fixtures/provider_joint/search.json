@@ -1,0 +1,181 @@
+{
+ "took": 3,
+ "timed_out": false,
+ "hits": {
+  "total": {
+   "value": 2,
+   "relation": "eq"
+  },
+  "hits": [
+   {
+    "_index": "ecommerce-production",
+    "_id": "1c5005d8-d608-483d-8042-233249f2e547",
+    "sort": [
+     35
+    ],
+    "_source": {
+     "jointId": "1c5005d8-d608-483d-8042-233249f2e547",
+     "businessId": 5449,
+     "name": "BLUEBERRY BANANA ",
+     "category": "FLOWER",
+     "subCategory": "PRE_PACK",
+     "brandName": "COOKIES",
+     "strainType": "HYBRID",
+     "menuType": [
+      "MEDICAL",
+      "RECREATIONAL"
+     ],
+     "applicableSpecials": [
+      {
+       "specialLabel": null,
+       "specialImageUrl": null,
+       "specialName": "COOKIES 25%",
+       "discountAmount": 13.75,
+       "discountType": "PERCENT_OFF",
+       "menuTypes": [
+        "RECREATIONAL",
+        "MEDICAL"
+       ],
+       "specialDescription": "",
+       "posSpecialId": "823368c9-a060-4541-a7a9-c1b9958ab282",
+       "specialId": "87a17566-e09c-4fe9-95c5-04905c941f69"
+      }
+     ],
+     "variants": [
+      {
+       "jointId": "9ca7f9e2-138b-4afd-9368-a29628ffe28b",
+       "option": "3.5 g",
+       "menuType": "MEDICAL",
+       "price": "55.00",
+       "specialPrice": "41.25",
+       "quantity": "12",
+       "appliedSpecials": [
+        {
+         "specialLabel": null,
+         "specialType": "DISCOUNT",
+         "specialImageUrl": null,
+         "specialName": "COOKIES 25%",
+         "discountAmount": 13.75,
+         "discountType": "PERCENT_OFF",
+         "menuTypes": [
+          "RECREATIONAL",
+          "MEDICAL"
+         ],
+         "specialDescription": "",
+         "posSpecialId": "823368c9-a060-4541-a7a9-c1b9958ab282",
+         "specialId": "87a17566-e09c-4fe9-95c5-04905c941f69"
+        }
+       ],
+       "purchaseLimitData": {
+        "netWeightGrams": 3.5,
+        "activeThcMg": null,
+        "concentrateGrams": null,
+        "source": "treez_feed",
+        "flowerEquivalentGrams": 3.5,
+        "derived": true,
+        "fluidVolumeMl": null,
+        "purchaseLimitCategory": "FLOWER"
+       }
+      },
+      {
+       "jointId": "1c3fd290-ec3c-4f48-a17d-b1713931b6f6",
+       "option": "3.5 g",
+       "menuType": "RECREATIONAL",
+       "price": "55.00",
+       "specialPrice": "41.25",
+       "quantity": "12",
+       "appliedSpecials": [
+        {
+         "specialLabel": null,
+         "specialType": "DISCOUNT",
+         "specialImageUrl": null,
+         "specialName": "COOKIES 25%",
+         "discountAmount": 13.75,
+         "discountType": "PERCENT_OFF",
+         "menuTypes": [
+          "RECREATIONAL",
+          "MEDICAL"
+         ],
+         "specialDescription": "",
+         "posSpecialId": "823368c9-a060-4541-a7a9-c1b9958ab282",
+         "specialId": "87a17566-e09c-4fe9-95c5-04905c941f69"
+        }
+       ],
+       "purchaseLimitData": {
+        "netWeightGrams": 3.5,
+        "activeThcMg": null,
+        "concentrateGrams": null,
+        "source": "treez_feed",
+        "flowerEquivalentGrams": 3.5,
+        "derived": true,
+        "fluidVolumeMl": null,
+        "purchaseLimitCategory": "FLOWER"
+       }
+      }
+     ]
+    }
+   },
+   {
+    "_index": "ecommerce-production",
+    "_id": "18f70923-b1c1-4447-9cb6-70842df7bf23",
+    "sort": [
+     25
+    ],
+    "_source": {
+     "jointId": "18f70923-b1c1-4447-9cb6-70842df7bf23",
+     "businessId": 5449,
+     "name": "WATERMELON LEMONADE 1:2 CBC/THC - SHOT - 100 mg",
+     "category": "EDIBLES",
+     "subCategory": "SHOT",
+     "brandName": "JOURNEYMAN",
+     "strainType": "SATIVA",
+     "menuType": [
+      "MEDICAL",
+      "RECREATIONAL"
+     ],
+     "applicableSpecials": [],
+     "variants": [
+      {
+       "jointId": "d0df8966-d4a4-43c3-bb20-27a18f346bcb",
+       "option": "100 mg",
+       "menuType": "MEDICAL",
+       "price": "16.00",
+       "specialPrice": null,
+       "quantity": "23",
+       "appliedSpecials": [],
+       "purchaseLimitData": {
+        "netWeightGrams": 0.1,
+        "activeThcMg": 100,
+        "concentrateGrams": null,
+        "source": "treez_feed",
+        "flowerEquivalentGrams": 0.1,
+        "derived": false,
+        "fluidVolumeMl": null,
+        "purchaseLimitCategory": "EDIBLES"
+       }
+      },
+      {
+       "jointId": "60b9cfb3-7c28-40d8-8225-7149f5f5bf53",
+       "option": "100 mg",
+       "menuType": "RECREATIONAL",
+       "price": "16.00",
+       "specialPrice": null,
+       "quantity": "23",
+       "appliedSpecials": [],
+       "purchaseLimitData": {
+        "netWeightGrams": 0.1,
+        "activeThcMg": 100,
+        "concentrateGrams": null,
+        "source": "treez_feed",
+        "flowerEquivalentGrams": 0.1,
+        "derived": false,
+        "fluidVolumeMl": null,
+        "purchaseLimitCategory": "EDIBLES"
+       }
+      }
+     ]
+    }
+   }
+  ]
+ }
+}
