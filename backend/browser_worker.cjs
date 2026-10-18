@@ -193,7 +193,7 @@ function noteIfPaged(url,headers,text){
  }
 }
 // Replay each paged query with the next page numbers, from inside the page, so the same cookies and headers apply.
-async function replayPagination(page,captures,deadline){
+async function replayPagination(page,captures,deadline,sample=0){
  const summary={queries:0,fetched:0,errors:0};
  const parsed=pagedQueries.map(record=>{
   try{
@@ -212,7 +212,7 @@ async function replayPagination(page,captures,deadline){
  summary.whole=parsed.some(record=>record.whole);
  for(const record of wanted){
   summary.queries++;
-  for(let next=record.variables.page+1;next<record.pages&&Date.now()<deadline&&summary.fetched<250;next++){
+  for(let next=record.variables.page+1;next<record.pages&&(!sample||next-record.variables.page<sample)&&Date.now()<deadline&&summary.fetched<250;next++){
    const target=new URL(record.target.href);
    target.searchParams.set('variables',JSON.stringify({...record.variables,page:next}));
    if(replayed.has(target.href))continue;replayed.add(target.href);
@@ -239,7 +239,7 @@ function noteIfLimited(url,headers,text){
  const full=rows.find(array=>array.length===Number(entry[1]));
  if(full)limitQueries.push({url,headers,key:entry[0],limit:Number(entry[1]),first:JSON.stringify(full[0]).slice(0,300)});
 }
-async function replayOffsets(page,captures,deadline){
+async function replayOffsets(page,captures,deadline,sample=0){
  const summary={queries:0,fetched:0,errors:0,learned:{}};
  const attempt=(url,headers)=>retried(()=>page.evaluate(async ({url,headers})=>{
   try{
@@ -260,7 +260,7 @@ async function replayOffsets(page,captures,deadline){
    const probe=await attempt(withParameter(query.url,name,name==='page'?1:query.limit),query.headers);
    if(probe.status===200&&probe.length>0&&probe.first!==query.first){chosen=name;summary.fetched++;summary.learned[path]=name;
     let step=2,last=probe;
-    while(last.length===query.limit&&step<60&&Date.now()<deadline&&summary.fetched<250){
+    while(last.length===query.limit&&step<=(sample||59)&&Date.now()<deadline&&summary.fetched<250){
      const seen=captures.length;
      last=await attempt(withParameter(query.url,name,name==='page'?step:query.limit*step),query.headers);
      if(last.status!==200||!last.length)break;summary.fetched++;step++;await waitForCapture(page,captures,seen,3000);
@@ -291,7 +291,7 @@ async function waitForCapture(page,captures,seen,timeout){
  return captures.length>seen;
 }
 // Visit each category page the storefront links to and page through it. Union and totals are reconciled by the extractor.
-async function exploreCategories(page,captures,deadline,{visitOnly=false}={}){
+async function exploreCategories(page,captures,deadline,{visitOnly=false,sample=0}={}){
  const links=await retried(()=>page.evaluate(()=>{
   const roots=[document];for(let i=0;i<roots.length;i++)for(const node of roots[i].querySelectorAll('*'))if(node.shadowRoot)roots.push(node.shadowRoot);
   const found=[];
@@ -303,7 +303,7 @@ async function exploreCategories(page,captures,deadline,{visitOnly=false}={}){
   return [...new Set(found)];
  }));
  const summary={categories:links.length,pages:0,visited:[]};
- for(const link of links.slice(0,30)){
+ for(const link of links.slice(0,sample?10:30)){
   if(Date.now()>deadline){summary.out_of_time=true;break;}
   const seen=captures.length;
   const navigation=await page.goto(link,{waitUntil:'domcontentloaded',timeout:30000}).then(()=>null,error=>error.message.slice(0,120));
@@ -312,7 +312,7 @@ async function exploreCategories(page,captures,deadline,{visitOnly=false}={}){
   // Pagination controls render after the first page of products does.
   await page.waitForTimeout(2500);
   let pages=0,stale=0;
-  for(let n=0;n<80&&Date.now()<deadline&&!visitOnly;n++){
+  for(let n=0;n<(sample?sample-1:80)&&Date.now()<deadline&&!visitOnly;n++){
    const before=captures.length;
    let advanced=await retried(()=>clickNext(page));
    // The pager mounts after the first page of products; give a slow category up to ~9 s to show one.
@@ -328,7 +328,9 @@ async function exploreCategories(page,captures,deadline,{visitOnly=false}={}){
 }
 async function scrollMenu(page,captures,options){
  let entry=await retried(()=>openAllProducts(page,captures));
- const limit=Math.min(200,Math.max(1,Number(options.scroll_max_steps)||60)),started=Date.now(),budget=Math.min(300000,Number(options.scroll_budget_ms)||200000);
+ // sample_pages (troubleshooting only): N pages per category/query, a short scroll budget, no unbounded load-more.
+ const sample=Math.max(0,Math.floor(Number(options.sample_pages)||0));
+ const limit=sample?12:Math.min(200,Math.max(1,Number(options.scroll_max_steps)||60)),started=Date.now(),budget=sample?25000:Math.min(300000,Number(options.scroll_budget_ms)||200000);
  let steps=0,clicks=0,lastHeight=0,lastCaptures=captures.length,idle=0;const trace=[];
  // Names vary ("Load more", "All products View more"); a read-only pagination control either way.
  for(let round=0;round<2;round++){
@@ -336,7 +338,7 @@ async function scrollMenu(page,captures,options){
   while(steps<limit&&idle<4&&Date.now()-started<budget){
    steps++;
    trace.push({step:steps,y:await retried(()=>page.evaluate(()=>Math.round(scrollY))),h:lastHeight});
-   if(await retried(()=>clickMore(page))){
+   if((!sample||clicks<sample-1)&&await retried(()=>clickMore(page))){
     clicks++;
     // Tracking beacons keep the network busy forever; wait for the next response to land instead of for idle.
     const seen=captures.length,waitStart=Date.now();
@@ -360,17 +362,17 @@ async function scrollMenu(page,captures,options){
  }
  let replay=null,explore=null,offsets=null;
  if(clicks===0&&options.replay_pagination!==false){
-  replay=await replayPagination(page,captures,started+budget);
+  replay=await replayPagination(page,captures,started+budget,sample);
   // Without a whole-menu query the categories must each be seen once so their own paged queries can be replayed.
   if(!replay.whole&&options.explore_categories!==false){
    // Category pages page by id lists that cannot be replayed by number, so step through them with the pager as well.
-   explore=await exploreCategories(page,captures,started+budget);
-   const more=await replayPagination(page,captures,started+budget);
+   explore=await exploreCategories(page,captures,started+budget,{sample});
+   const more=await replayPagination(page,captures,started+budget,sample);
    replay={queries:replay.queries+more.queries,fetched:replay.fetched+more.fetched,errors:replay.errors+more.errors,whole:more.whole,second_pass:true};
   }
  }
- if(clicks===0&&options.replay_pagination!==false)offsets=await replayOffsets(page,captures,started+budget);
- if(clicks===0&&!(replay&&replay.fetched)&&!(offsets&&offsets.fetched)&&!explore&&options.explore_categories!==false)explore=await exploreCategories(page,captures,started+budget);
+ if(clicks===0&&options.replay_pagination!==false)offsets=await replayOffsets(page,captures,started+budget,sample);
+ if(clicks===0&&!(replay&&replay.fetched)&&!(offsets&&offsets.fetched)&&!explore&&options.explore_categories!==false)explore=await exploreCategories(page,captures,started+budget,{sample});
  return {entry,replay,offsets,explore,trace:trace.slice(-40),steps,clicks,idle,height:lastHeight,ms:Date.now()-started,hit_limit:steps>=limit};
 }
 // A large menu's serialized DOM can exceed the response limit through presentation markup alone (inline SVG, styles,
