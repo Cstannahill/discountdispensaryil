@@ -37,7 +37,7 @@ def sample(store, endpoint, options, root, pages):
     started = time.time()
     fetcher = PublicFetcher(root, max_attempts=1, timeout_seconds=8, max_run_seconds=150)
     fetcher.browser_options = dict(options, await_menu=True, scroll_menu=True, sample_pages=pages, target_store={
-        key: store.get(key) for key in ('id', 'name', 'address', 'city', 'state')})
+        key: store.get(key) for key in ('id', 'name', 'address', 'city', 'state', 'latitude', 'longitude')})
     report = dict(store_id=store['id'], name=store['name'], provider=endpoint['provider'], url=endpoint['url'],
                   license_type=endpoint['license_type'], pages=pages)
     try:
