@@ -4,6 +4,7 @@ Branches and menu URLs are discovered from current retailer responses. The
 official registry defines candidates; an unknown retailer remains a visible gap.
 """
 import html
+import json
 import re
 import time
 from urllib.parse import urljoin, urlsplit
@@ -103,6 +104,9 @@ def _known_menu_candidates(store, fetcher):
             if not any(candidate['status']=='matched' for candidate in candidates) and _render_locator(root,store,fetcher):
                 return _known_menu_candidates(store,fetcher)
             return candidates or [dict(status='unresolved', url=response.url, reason='No matching branch in the live retailer directory', evidence=[evidence])]
+        branches = _embedded_store_list(text)
+        if branches:
+            return _directory_candidates(store, branches, response.url, evidence)
         links = list(dict.fromkeys(urljoin(response.url, html.unescape(x)) for x in
                                    re.findall(r'(?:href|src)=["\']([^"\']+)["\']', text, re.I)))
         city_words=[w for w in _tokens(store.get('city','')) if w not in ('e','w','n','s')]
@@ -134,6 +138,53 @@ def _known_menu_candidates(store, fetcher):
                      reason='Retailer requires age/terms confirmation; menu not fetched' if age_gate else 'Retailer locator did not expose a corroborated branch/menu link', evidence=[evidence])]
     except Exception as exc:
         return [dict(status='failed', url=root, reason=str(exc), evidence=[dict(url=root, evidence_id=getattr(exc, 'evidence_id', None))])]
+
+
+def _embedded_store_list(text):
+    """The chain's own branch list when its page script assigns one (e.g. `var bhData = {"stores": [...]}`): a list of
+    objects that each carry a street address, at least two of them with a menu link (coming-soon and delivery-only
+    branches have none)."""
+    decoder = json.JSONDecoder()
+    for match in re.finditer(r'\bvar\s+\w+\s*=\s*(?=[{\[])', text):
+        try:
+            value, _ = decoder.raw_decode(text, match.end())
+        except ValueError:
+            continue
+        for candidate in [value] + (list(value.values()) if isinstance(value, dict) else []):
+            if (isinstance(candidate, list) and all(isinstance(x, dict) and isinstance(x.get('address'), str) for x in candidate) and
+                    sum(bool(_menu_links(x, '')) for x in candidate) >= 2):
+                return candidate
+    return []
+
+
+def _menu_links(branch, base):
+    links = [urljoin(base, html.unescape(value).strip()) for key, value in branch.items()
+             if 'menu' in key.lower() and 'delivery' not in key.lower() and isinstance(value, str) and re.match(r'\s*(?:https?://|/)', value)]
+    links = list(dict.fromkeys(links))
+    # The retailer's own branch menu pages carry its license wording; platform embeds are used only when it has none.
+    host = urlsplit(base).hostname
+    own = [link for link in links if urlsplit(link).hostname == host]
+    return own or links
+
+
+def _directory_candidates(store, branches, base, evidence):
+    out = []
+    city = ''.join(_tokens(store.get('city', '')))
+    for branch in branches:
+        if branch.get('is_coming_soon'):
+            continue
+        address = branch['address']
+        if addresses_match(store['address'], address):
+            out += [dict(url=link, status='matched', reason='Exact normalized street address in the retailer\'s embedded store list',
+                         retailer_address=address, evidence=[evidence]) for link in _menu_links(branch, base)]
+        elif city and city in ''.join(_tokens(address)) and not out:
+            out.append(dict(url=None, status='identity_conflict', reason='Retailer branch in the same city has a different street address',
+                            retailer_address=address, evidence=[evidence]))
+    if any(x['status'] == 'matched' for x in out):
+        return [x for x in out if x['status'] == 'matched']
+    # A complete branch list without this address is an answer, not a page to crawl for siblings.
+    return out or [dict(status='unresolved', url=base, reason='Branch absent from the retailer\'s current embedded store list (closed, renamed or moved?)',
+                        evidence=[evidence], store_list=True)]
 
 
 def _render_locator(url,store,fetcher):
@@ -176,7 +227,7 @@ def discover_menu_candidates(store, fetcher):
         # must not silently replace an official site with an aggregator listing.
         return [x for x in known if x.get('url')] + searched
     if known and known[0].get('url'):
-        if known[0]['status']=='unresolved':
+        if known[0]['status']=='unresolved' and not known[0].get('store_list'):
             return [dict(known[0],status='candidate',reason='Inspect public locator and its observed branch links')]
         return known
     return [dict(status='unresolved',url=None,

@@ -40,6 +40,7 @@ class FailureClassificationTests(unittest.TestCase):
         self.check('Generic menu redirected to a different source hostname; rediscovery required; missing_traversal_evidence', FailureCode.DRIFT)
         self.check('Structured product has no stable source identity; missing_traversal_evidence', FailureCode.SCHEMA_UNKNOWN)
         self.check('Menu source belongs to a different location: 290.66 mi from the registry address', FailureCode.BRANCH_MISMATCH)
+        self.check("Branch absent from the retailer's current embedded store list (closed, renamed or moved?); Fallback website search found no corroborated branch lead", FailureCode.BRANCH_MISMATCH)
 
     def test_unknown_text_is_explicit_and_status_hints_apply(self):
         self.check('something nobody planned for', FailureCode.UNKNOWN)

@@ -57,6 +57,7 @@ ACTIONS = {
 _RULES = [
     (r'access challenge|just a moment|attention required|captcha', FailureCode.CHALLENGE_BLOCKED),
     (r'worker stopped|interrupted', FailureCode.INTERRUPTED),
+    (r'absent from the retailer', FailureCode.BRANCH_MISMATCH),
     (r'no retailer locator connector|search found no corroborated|no corroborated public menu endpoint', FailureCode.NO_LEAD),
     (r'age/terms confirmation|age gate|age-gate', FailureCode.GATE_AGE_TERMS),
     (r'license-specific|license context|license/source context', FailureCode.GATE_LICENSE),

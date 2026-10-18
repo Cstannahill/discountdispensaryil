@@ -40,6 +40,39 @@ class LocatorTests(unittest.TestCase):
         self.assertTrue(any(r['status'] == 'identity_conflict' for r in results))
         self.assertFalse(any(r['status'] == 'matched' for r in results))
 
+    def test_embedded_store_list_binds_branch_menus_by_street_address(self):
+        text = Path('tests/fixtures/provider_probe/beyond-locator.html').read_text(encoding='utf-8')
+        class Fetcher:
+            def get(self, url):
+                return Response(text, 'https://beyond-hello.com/illinois-dispensaries/')
+        results = discover_menu_candidates(dict(name='Beyond/Hello  Sauget', address='2021 Goose Lake Rd', city='Sauget'), Fetcher())
+        self.assertEqual(sorted(r['url'] for r in results if r['status'] == 'matched'),
+                         ['https://beyond-hello.com/illinois-dispensaries/goose-lake/adult-use-menu/',
+                          'https://beyond-hello.com/illinois-dispensaries/goose-lake/medical-menu/'])
+        self.assertEqual('2021 Goose Lake Road, Sauget, IL 62206', results[0]['retailer_address'])
+        # Same city, other branch: the suite-number form still matches its own street address only.
+        results = discover_menu_candidates(dict(name='Beyond Hello  Sauget Mississippi Ave', address='1401 Mississippi Ave. Ste. 17', city='Sauget'), Fetcher())
+        self.assertEqual(sorted(r['url'] for r in results if r['status'] == 'matched'),
+                         ['https://beyond-hello.com/illinois-dispensaries/st-louis-metro-east/adult-use-menu/',
+                          'https://beyond-hello.com/illinois-dispensaries/st-louis-metro-east/medical-menu/'])
+
+    def test_branch_absent_from_embedded_store_list_is_not_bound_to_a_sibling(self):
+        from backend.locators import _known_menu_candidates
+        text = Path('tests/fixtures/provider_probe/beyond-locator.html').read_text(encoding='utf-8')
+        class Fetcher:
+            def get(self, url):
+                return Response(text, 'https://beyond-hello.com/illinois-dispensaries/')
+        results = _known_menu_candidates(dict(name='Beyond/Hello - Peoria', address='7620 N IL Rt 91', city='Peoria'), Fetcher())
+        self.assertEqual(['unresolved'], [r['status'] for r in results])
+        self.assertIn('absent', results[0]['reason'])
+        class SearchFindsNothing(Fetcher):
+            def get(self, url):
+                if 'beyond-hello.com' in url:return Response(text, 'https://beyond-hello.com/illinois-dispensaries/')
+                return Response('<html>no results</html>', url)
+        results = discover_menu_candidates(dict(name='Beyond/Hello - Peoria', address='7620 N IL Rt 91', city='Peoria'), SearchFindsNothing())
+        self.assertEqual(['unresolved'], [r['status'] for r in results])
+        self.assertIn('absent', results[0]['reason'])
+
     def test_street_abbreviations_match_but_house_numbers_do_not(self):
         self.assertTrue(addresses_match('50 Gore Rd', '50 Gore Road, Morris, Illinois'))
         self.assertTrue(addresses_match('3929 W. War Memorial Dr', '3929 West War Memorial Drive, Peoria IL'))
