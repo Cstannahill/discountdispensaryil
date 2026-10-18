@@ -157,6 +157,61 @@ class VerifierTests(unittest.TestCase):
         self.assertIn('Final step', llm.seen[-1][-1]['content'])
 
 
+class ModelSelectionTests(unittest.TestCase):
+    CONFIG = dict(verifier.DEFAULTS, OPENROUTER_API_KEY='test-key', TERPSCOUT_LLM_MODELS=' ~z-ai/glm-flash-latest, xiaomi/mimo-v2.6-flash ,')
+
+    def test_model_list_and_per_run_override(self):
+        self.assertEqual(['~z-ai/glm-flash-latest', 'xiaomi/mimo-v2.6-flash', verifier.DEFAULTS['TERPSCOUT_LLM_MODEL']],
+                         verifier.models(self.CONFIG))
+        self.assertEqual('xiaomi/mimo-v2.6-flash', verifier.llm_from_config(self.CONFIG, 'xiaomi/mimo-v2.6-flash').model)
+        self.assertEqual(verifier.DEFAULTS['TERPSCOUT_LLM_MODEL'], verifier.llm_from_config(self.CONFIG).model)
+
+    def test_batch_variants_are_refused_before_any_call(self):
+        llm = FakeLLM(answer())
+        llm.model = 'anthropic/claude-haiku-5.5:batch'
+        fetcher = Fetcher()
+        record = verifier.verify_store(dict(STORE), fetcher, llm, LIMITS)
+        self.assertEqual(('unsupported_model', [], []), (record['status'], llm.seen, fetcher.urls))
+        self.assertIn('Batch API', record['detail'])
+        self.assertEqual('unsupported_model', verifier.verify_store(dict(STORE), fetcher, None, LIMITS, model='x/y:batch')['status'])
+
+    def test_openrouter_request_and_json_mode_fallback(self):
+        class Reply:
+            def __init__(self, status, body=None):
+                self.status_code, self._body = status, body
+            def json(self):
+                return self._body
+        class Client:
+            def __init__(self):
+                self.bodies, self.headers = [], []
+            def post(self, url, headers, json):
+                self.bodies.append(json); self.headers.append(headers)
+                if 'response_format' in json:
+                    return Reply(400)
+                return Reply(200, dict(choices=[dict(message=dict(content='{"action":"search","query":"x"}'))], usage=dict(total_tokens=42, cost=0.0003)))
+        client = Client()
+        llm = verifier.OpenRouter('test-key', 'xiaomi/mimo-v2.6-flash', client=client)
+        self.assertEqual(dict(text='{"action":"search","query":"x"}', tokens=42, usd=0.0003), llm.complete([dict(role='user', content='hi')]))
+        llm.complete([dict(role='user', content='again')])
+        # JSON mode is tried once; after a 400 the model is asked for JSON by prompt only.
+        self.assertEqual(['response_format' in body for body in client.bodies], [True, False, False])
+        self.assertEqual({'xiaomi/mimo-v2.6-flash'}, {body['model'] for body in client.bodies})
+        self.assertEqual('Bearer test-key', client.headers[0]['authorization'])
+
+    def test_comparison_counts_and_disagreements(self):
+        one = verifier.verify_store(dict(STORE), Fetcher(), FakeLLM(dict(action='read', url=SITE), answer()), LIMITS)
+        other_llm = FakeLLM(dict(action='read', url=SITE), answer(verdict='exists'))
+        other_llm.model = 'other/model'
+        two = verifier.verify_store(dict(STORE), Fetcher(), other_llm, LIMITS)
+        three = verifier.verify_store(dict(STORE, id='s2'), Fetcher(), other_llm, dict(LIMITS, steps=1))
+        summary = verifier.compare([one, two, three])
+        self.assertEqual({'renamed': 1}, summary['models']['fake/model']['verdicts'])
+        self.assertEqual({'verified': 1, 'budget_exceeded': 1}, summary['models']['other/model']['statuses'])
+        self.assertEqual(2, summary['models']['fake/model']['kept_claims'])
+        self.assertEqual({'s1': {'fake/model': 'renamed', 'other/model': 'exists'}}, summary['disagreements'])
+        self.assertIsNotNone(one['seconds'])
+
+
 class VerificationStorageTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -182,6 +237,19 @@ class VerificationStorageTests(unittest.TestCase):
         self.assertEqual(3, row['verification']['claims'])
         self.assertAlmostEqual(0.002, self.db.verifier_spend_since('2026-10-18T00:00:00+00:00'))
         self.assertEqual(self.shop['name'], self.db.stores_in_region(self.region['id'])[0]['name'])
+
+    def test_each_verdict_keeps_its_model_cost_tokens_and_time(self):
+        for model in ('a/one', 'b/two', 'a/one'):
+            llm = FakeLLM(dict(action='read', url=SITE), answer(), tokens=500, usd=0.004)
+            llm.model = model
+            self.db.record_verification(verifier.verify_store(dict(self.shop), Fetcher(), llm, LIMITS))
+        rows = self.db.verifications(latest=False)
+        self.assertEqual(['a/one', 'b/two', 'a/one'], [row['model'] for row in rows])
+        self.assertEqual({(1000, 0.008)}, {(row['tokens'], row['usd']) for row in rows})
+        self.assertTrue(all(row['seconds'] is not None for row in rows))
+        latest = {row['model']: row['id'] for row in self.db.verifications(per_model=True)}
+        self.assertEqual({'a/one': rows[2]['id'], 'b/two': rows[1]['id']}, latest)
+        self.assertEqual(1, len(self.db.verifications()))
 
     def test_unverified_runs_do_not_appear_in_the_stage_report(self):
         record = verifier.verify_store(dict(self.shop), Fetcher(), FakeLLM(), dict(LIMITS, steps=1))

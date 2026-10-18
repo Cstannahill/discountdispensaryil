@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS live_store_verifications (
     steps INTEGER NOT NULL DEFAULT 0,
     tokens INTEGER NOT NULL DEFAULT 0,
     usd REAL NOT NULL DEFAULT 0,
+    seconds REAL,
     detail TEXT,
     created_at TEXT NOT NULL
 );

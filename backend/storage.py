@@ -46,6 +46,8 @@ class Store:
             # so that grade B never counts as an accepted (grade A) menu.
             if 'last_converged_at' not in {row[1] for row in conn.execute("PRAGMA table_info(live_endpoints)")}:
                 conn.execute("ALTER TABLE live_endpoints ADD COLUMN last_converged_at TEXT")
+            if 'seconds' not in {row[1] for row in conn.execute("PRAGMA table_info(live_store_verifications)")}:
+                conn.execute("ALTER TABLE live_store_verifications ADD COLUMN seconds REAL")
             for key, value in (("data_version", 0), ("frequency_per_day", 4)):
                 conn.execute("INSERT OR IGNORE INTO live_settings VALUES (?,?)", (key, json.dumps(value)))
 
@@ -325,25 +327,27 @@ class Store:
         """A store verifier verdict. A cited menu or website URL becomes a lead for the resolver, never an endpoint."""
         now = now or utcnow()
         with self.connection() as conn:
-            conn.execute("INSERT INTO live_store_verifications(store_id,version,status,verdict,result_json,claims_json,dropped_json,transcript_json,evidence_json,model,steps,tokens,usd,detail,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            conn.execute("INSERT INTO live_store_verifications(store_id,version,status,verdict,result_json,claims_json,dropped_json,transcript_json,evidence_json,model,steps,tokens,usd,seconds,detail,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                          (record['store_id'], record['version'], record['status'], record['verdict'], json.dumps(record.get('result') or {}),
                           json.dumps(record.get('claims') or []), json.dumps(record.get('dropped') or []), json.dumps(record.get('transcript') or []),
                           json.dumps(record.get('evidence') or []), record.get('model'), record.get('steps', 0), record.get('tokens', 0),
-                          record.get('usd', 0), record.get('detail'), now))
+                          record.get('usd', 0), record.get('seconds'), record.get('detail'), now))
         result = record.get('result') or {}
         for field in ('menu_url', 'website'):
             claims = [c for c in record.get('claims') or [] if c['field'] == field]
             if result.get(field) and claims:
                 self.record_lead(record['store_id'], result[field], 'verifier', f'Store verifier {field} ({record.get("model")}); branch identity still requires the resolver', claims)
 
-    def verifications(self, store_id=None, latest=True):
+    def verifications(self, store_id=None, latest=True, per_model=False):
         with self.connection() as conn:
             sql = "SELECT * FROM live_store_verifications" + (" WHERE store_id=?" if store_id else "") + " ORDER BY id"
             rows = [dict(row) for row in conn.execute(sql, (store_id,) if store_id else ()).fetchall()]
         for row in rows:
             for key in ('result', 'claims', 'dropped', 'transcript', 'evidence'):
                 row[key] = json.loads(row.pop(key + '_json'))
-        return list({row['store_id']: row for row in rows}.values()) if latest else rows
+        if not latest:
+            return rows
+        return list({(row['store_id'], row['model'] if per_model else None): row for row in rows}.values())
 
     def verifier_spend_since(self, since):
         with self.connection() as conn:

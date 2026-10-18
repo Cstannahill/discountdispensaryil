@@ -13,7 +13,7 @@ cd frontend; npm test; npm run build
 .venv\Scripts\python.exe scripts/probe_browser_cohort.py --target <store_id> <url> --output data/x.json   # acquisition probe, never accepts catalogs
 .venv\Scripts\python.exe scripts/sample_stores.py <store_id ...> --pages 1     # fast troubleshooting sample, writes nothing
 .venv\Scripts\python.exe scripts/platform_census.py --region <region_id> [--write]   # platform census from evidence (live_store_platforms)
-.venv\Scripts\python.exe scripts/verify_stores.py [<store_id ...>] [--eligible --region <id> --limit 10] [--write]   # LLM store verifier (needs OPENROUTER_API_KEY in .env)
+.venv\Scripts\python.exe scripts/verify_stores.py [<store_id ...>] [--eligible --region <id> --limit 10] [--model <id>|all ...] [--write] | --compare   # LLM store verifier (needs OPENROUTER_API_KEY in .env)
 ```
 
 Normal work goes through `POST /api/v1/sync/runs` (`region_id`, `store_ids`, `discover`, `resolve_sources`). Python 3.13+, Node 22.12+.
