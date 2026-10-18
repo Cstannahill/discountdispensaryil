@@ -6,7 +6,7 @@ from pathlib import Path
 
 _root=Path(__file__).parent
 # Include executable browser and Flight parsers in each worker's source revision.
-_sources=[_root/name for name in ('runtime.py','service.py','storage.py','domain.py','discovery.py','adapters.py','locators.py','site_discovery.py','documents.py','flight.py','network.py','browser_render.py','browser_worker.cjs','browser_locations.cjs','browser_proxy.py')]+sorted((_root/'providers').glob('*.py'))
+_sources=[_root/name for name in ('runtime.py','service.py','storage.py','domain.py','discovery.py','directory.py','adapters.py','locators.py','site_discovery.py','documents.py','flight.py','network.py','browser_render.py','browser_worker.cjs','browser_locations.cjs','browser_proxy.py')]+sorted((_root/'providers').glob('*.py'))
 PIPELINE_VERSION='regional-pipeline-2.'+hashlib.sha256(b''.join(source.read_bytes() for source in _sources)).hexdigest()[:10]
 
 

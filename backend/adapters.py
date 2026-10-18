@@ -280,7 +280,7 @@ def resolve_menu(store, fetcher):
     # Prefer actual platform menus over sibling generic landing/carousel pages.
     platforms=[x for x in results if x['provider']!='generic']
     catalog_entries=[x for x in results if x['provider']=='generic' and menu_document_scope(x['url'])=='catalog_entry']
-    official_urls={candidate['url'] for candidate in seeds if candidate.get('source_role')=='retailer'}
+    official_urls={candidate['url'] for candidate in seeds if candidate.get('source_role') in ('retailer','directory')}
     official_failures=[failure for failure in failures if failure.get('url') in official_urls]
     # A hub that lists every branch is not this branch's menu when a page carrying the branch's own slug was found.
     own=[x for x in catalog_entries+[x for x in results if x['provider']=='generic'] if branch_slug_confirms(store,x['url'])]

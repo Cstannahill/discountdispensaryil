@@ -8,6 +8,7 @@ import threading
 import time
 
 from .adapters import fetch_menu, resolve_menu, has_menu_contract
+from .directory import lookup as directory_lookup
 from .discovery import parse_registry, resolve_location, REGISTRY_SOURCE_PAGE
 from .domain import age_hours, utcnow
 from .failures import FailureCode, classify
@@ -42,12 +43,12 @@ class VisibleText(HTMLParser):
 
 
 class SyncService:
-    def __init__(self, store, fetcher, *, resolver=resolve_menu, menu_fetcher=fetch_menu):
+    def __init__(self, store, fetcher, *, resolver=resolve_menu, menu_fetcher=fetch_menu, directory=directory_lookup):
         from .runtime import configure_worker_stack
         configure_worker_stack()
         self.store, self._base_fetcher = store, fetcher
         self._contexts=threading.local()
-        self.resolver, self.menu_fetcher = resolver, menu_fetcher
+        self.resolver, self.menu_fetcher, self.directory = resolver, menu_fetcher, directory
         self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="terpscout-sync")
         self.target_executor=ThreadPoolExecutor(max_workers=1,thread_name_prefix='terpscout-target')
         self.state_lock=threading.Lock()
@@ -142,6 +143,20 @@ class SyncService:
             self.store.record_attempt(store_id=store['id'],pipeline_version=PIPELINE_VERSION,job_id=getattr(self._contexts,'job_id',None),**fields)
         except Exception:pass
 
+    def _directory_leads(self,store):
+        # A directory listing is recorded as a website lead and seeds the resolver; it never becomes an endpoint,
+        # and directory trouble never blocks resolution (web search stays the fallback).
+        try:found=self.directory(store,self.fetcher)
+        except PipelineInterrupted:raise
+        except Exception as exc:found=dict(status='failed',leads=[],matches=[],error=str(exc))
+        for match in found.get('matches') or []:
+            where=f"Weedmaps listing {match.get('distance_miles')} mi from the registry location at street number {match.get('street_number')}"
+            if match.get('lead_url'):outcome=f"website {match['lead_url']} is a lead, not a menu"
+            elif match.get('error'):outcome='listing detail unavailable: '+str(match['error'])
+            else:outcome='listing names no retailer website'+(f" ({match['website']} is not one)" if match.get('website') else '')
+            self.store.record_lead(store['id'],match['listing_url'],'directory:'+str(match.get('source') or 'weedmaps'),where+'; '+outcome,[match])
+        return found
+
     def _process_store_unlocked(self,store,results,force_resolution=False):
         started=time.monotonic();attempted=set();accepted=0;had_failure=False;stages=[]
         retained=[self.store.endpoint(endpoint['id']) for endpoint in store['endpoints'] if endpoint.get('last_success_at')]
@@ -199,8 +214,9 @@ class SyncService:
 
         if not retained or not retained_ok or force_resolution:
             self._check_stop();resolution_start=time.monotonic();failures=[];targets={}
+            directory=self._directory_leads(store)
             try:
-                resolved=self.resolver(store,self.fetcher)
+                resolved=self.resolver(dict(store,directory_leads=directory.get('leads') or []),self.fetcher)
                 self._check_stop()
                 # Census input: which menu platforms this store's pages showed, including rejected (wrong-branch) pages.
                 self.store.record_platforms(store['id'],[dict(platform=name,url=found.get('url'),status=found.get('status') or 'observed',
@@ -237,7 +253,8 @@ class SyncService:
                           code=None if targets else classify(first and first.get('error'),resolution_status=first and first.get('status')),
                           items=len(targets),seconds=round(time.monotonic()-resolution_start,3),detail=(first or {}).get('error'),
                           provider=None)
-            evidence=dict(pipeline_version=PIPELINE_VERSION,failures=failures,menu_targets=list(targets))
+            evidence=dict(pipeline_version=PIPELINE_VERSION,failures=failures,menu_targets=list(targets),
+                          directory=dict(status=directory.get('status'),leads=[lead['url'] for lead in directory.get('leads') or []],error=directory.get('error')))
             if targets:
                 self.store.record_resolution(store['id'],'matched',f'Resolved {len(targets)} canonical menu target(s)',evidence)
             elif retained:
