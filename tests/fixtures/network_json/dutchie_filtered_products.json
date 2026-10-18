@@ -1,0 +1,549 @@
+{
+ "data": {
+  "filteredProducts": {
+   "products": [
+    {
+     "_id": "6a7ca12cb59c20cc870e50a6",
+     "id": "6a7ca12cb59c20cc870e50a6",
+     "Name": "&Shine Pre-Pack - Durban Candy",
+     "brandName": "&Shine",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Sativa",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      160
+     ],
+     "recPrices": [
+      160
+     ],
+     "recSpecialPrices": [
+      95
+     ],
+     "medicalPrices": [
+      160
+     ],
+     "medicalSpecialPrices": [
+      95
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       35.57
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "shine-pre-pack-durban-candy",
+     "weight": 1000
+    },
+    {
+     "_id": "6ac924499a184e0023aca3a6",
+     "id": "6ac924499a184e0023aca3a6",
+     "Name": "Good Green Prepack - Gas Guzzler",
+     "brandName": "Good Green",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Hybrid",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      160
+     ],
+     "recPrices": [
+      160
+     ],
+     "recSpecialPrices": [
+      95
+     ],
+     "medicalPrices": [
+      160
+     ],
+     "medicalSpecialPrices": [
+      95
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       34.7
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "good-green-prepack-gas-guzzler-24157",
+     "weight": 1000
+    },
+    {
+     "_id": "685a82ab4900cba6d0fb7d0c",
+     "id": "685a82ab4900cba6d0fb7d0c",
+     "Name": "Good Green Prepack - Sunset Sherbet",
+     "brandName": "Good Green",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Hybrid",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      160
+     ],
+     "recPrices": [
+      160
+     ],
+     "recSpecialPrices": [
+      95
+     ],
+     "medicalPrices": [
+      160
+     ],
+     "medicalSpecialPrices": [
+      95
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       33.98
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "good-green-prepack-sunset-sherbet",
+     "weight": 1000
+    },
+    {
+     "_id": "68dc382e7a547247ddd4ce98",
+     "id": "68dc382e7a547247ddd4ce98",
+     "Name": "&Shine Pre-Pack - Couch Candy",
+     "brandName": "&Shine",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Hybrid",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      160
+     ],
+     "recPrices": [
+      160
+     ],
+     "recSpecialPrices": [
+      95
+     ],
+     "medicalPrices": [
+      160
+     ],
+     "medicalSpecialPrices": [
+      95
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       35.52
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "shine-pre-pack-couch-candy-77304",
+     "weight": 1000
+    },
+    {
+     "_id": "6ac924499a184e0023aca3a7",
+     "id": "6ac924499a184e0023aca3a7",
+     "Name": "Good Green Prepack - Jet Fuel OG",
+     "brandName": "Good Green",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Hybrid",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      160
+     ],
+     "recPrices": [
+      160
+     ],
+     "recSpecialPrices": [
+      95
+     ],
+     "medicalPrices": [
+      160
+     ],
+     "medicalSpecialPrices": [
+      95
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       29.42
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "good-green-prepack-jet-fuel-og-51617",
+     "weight": 1000
+    },
+    {
+     "_id": "6a5ff6e30cca7ec818b96aee",
+     "id": "6a5ff6e30cca7ec818b96aee",
+     "Name": "Good Green Ground Flower - Hybrid",
+     "brandName": "Good Green",
+     "type": "Flower",
+     "subcategory": "shake-trim",
+     "strainType": "Hybrid",
+     "Status": "Active",
+     "Options": [
+      "1/4oz",
+      "1/2oz"
+     ],
+     "rawOptions": [
+      "7.0g",
+      "14.0g"
+     ],
+     "Prices": [
+      40,
+      70
+     ],
+     "recPrices": [
+      40,
+      70
+     ],
+     "recSpecialPrices": [
+      30,
+      52.5
+     ],
+     "medicalPrices": [
+      40,
+      70
+     ],
+     "medicalSpecialPrices": [
+      30,
+      52.5
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       25.38,
+       30.21
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "good-green-ground-flower-hybrid",
+     "weight": 1000
+    },
+    {
+     "_id": "6a2af8fb0cebac95818d80e2",
+     "id": "6a2af8fb0cebac95818d80e2",
+     "Name": "High Supply Popcorn - Curacao",
+     "brandName": "High Supply",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Sativa",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      160
+     ],
+     "recPrices": [
+      160
+     ],
+     "recSpecialPrices": [
+      90
+     ],
+     "medicalPrices": [
+      160
+     ],
+     "medicalSpecialPrices": [
+      90
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       26.6
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "high-supply-popcorn-curacao-28352",
+     "weight": 1000
+    },
+    {
+     "_id": "6a1edef8b2e960f385b2288e",
+     "id": "6a1edef8b2e960f385b2288e",
+     "Name": "&Shine Pre-Pack - Electric Kush",
+     "brandName": "&Shine",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Sativa",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      160
+     ],
+     "recPrices": [
+      160
+     ],
+     "recSpecialPrices": [
+      90
+     ],
+     "medicalPrices": [
+      160
+     ],
+     "medicalSpecialPrices": [
+      90
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       24.03
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "shine-pre-pack-electric-kush-32168",
+     "weight": 1000
+    },
+    {
+     "_id": "69e8dee334b55eb2ce2b15c6",
+     "id": "69e8dee334b55eb2ce2b15c6",
+     "Name": "Brownie Points | Premium Flower | Indica | 28g",
+     "brandName": "RYTHM",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Indica",
+     "Status": "Active",
+     "Options": [
+      "1oz"
+     ],
+     "rawOptions": [
+      "28.0g"
+     ],
+     "Prices": [
+      180
+     ],
+     "recPrices": [
+      180
+     ],
+     "recSpecialPrices": [
+      120
+     ],
+     "medicalPrices": [
+      180
+     ],
+     "medicalSpecialPrices": [
+      120
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       30.19
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "brownie-points-premium-flower-indica-28g-4402",
+     "weight": 1000
+    },
+    {
+     "_id": "6a4c04432226ac1004cc46b5",
+     "id": "6a4c04432226ac1004cc46b5",
+     "Name": "Rythm Pre-pack - Brownie Points",
+     "brandName": "RYTHM",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Indica",
+     "Status": "Active",
+     "Options": [
+      "1/2oz"
+     ],
+     "rawOptions": [
+      "14.0g"
+     ],
+     "Prices": [
+      100
+     ],
+     "recPrices": [
+      100
+     ],
+     "recSpecialPrices": [
+      60
+     ],
+     "medicalPrices": [
+      100
+     ],
+     "medicalSpecialPrices": [
+      60
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       29.27
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "rythm-pre-pack-brownie-points-88907",
+     "weight": 1000
+    },
+    {
+     "_id": "6a9ae08f3e3f1bbf93bb4196",
+     "id": "6a9ae08f3e3f1bbf93bb4196",
+     "Name": "MiSix Prepack - Purple Popsicle",
+     "brandName": "MISix",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Hybrid",
+     "Status": "Active",
+     "Options": [
+      "1/2oz"
+     ],
+     "rawOptions": [
+      "14.0g"
+     ],
+     "Prices": [
+      100
+     ],
+     "recPrices": [
+      100
+     ],
+     "recSpecialPrices": [
+      50
+     ],
+     "medicalPrices": [
+      100
+     ],
+     "medicalSpecialPrices": [
+      50
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       27.79
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "misix-prepack-purple-popsicle",
+     "weight": 1000
+    },
+    {
+     "_id": "687a8ae50d651319e1008b89",
+     "id": "687a8ae50d651319e1008b89",
+     "Name": "Good Green Prepack - Bubba Fett",
+     "brandName": "Good Green",
+     "type": "Flower",
+     "subcategory": "small-buds",
+     "strainType": "Indica",
+     "Status": "Active",
+     "Options": [
+      "1/2oz"
+     ],
+     "rawOptions": [
+      "14.0g"
+     ],
+     "Prices": [
+      90
+     ],
+     "recPrices": [
+      90
+     ],
+     "recSpecialPrices": [
+      55
+     ],
+     "medicalPrices": [
+      90
+     ],
+     "medicalSpecialPrices": [
+      55
+     ],
+     "THCContent": {
+      "unit": "PERCENTAGE",
+      "range": [
+       28.29
+      ],
+      "__typename": "ProductPotency"
+     },
+     "special": true,
+     "recOnly": false,
+     "medicalOnly": false,
+     "optionsBelowThreshold": [],
+     "cName": "good-green-prepack-bubba-fett",
+     "weight": 1000
+    }
+   ],
+   "queryInfo": {
+    "totalCount": 272,
+    "totalPages": 11,
+    "__typename": "queryInfoType"
+   }
+  }
+ }
+}

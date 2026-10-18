@@ -1,0 +1,582 @@
+{
+ "placements": [
+  {
+   "placement": "menu_top_row",
+   "nb_hits": 759,
+   "products": [
+    {
+     "object_id": "29188006",
+     "product_id": 1897723,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Bananaconda",
+      "brand": "RYTHM",
+      "kind": "flower",
+      "category": "hybrid",
+      "available_weights": [
+       "eighth ounce"
+      ],
+      "percent_thc": 33.01,
+      "product_id": 1897723,
+      "objectID": 29188006,
+      "price_eighth_ounce": 55,
+      "discounted_price_eighth_ounce": 38.5,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {
+       "price": "55.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "38.5",
+       "discount_amount": 16.5,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_gram": {},
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-bananaconda",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "flower",
+       "sale",
+       "flower:Premium"
+      ],
+      "brand_subtype": "Premium Flower"
+     }
+    },
+    {
+     "object_id": "35832458",
+     "product_id": 2725802,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Evercrisp",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "hybrid",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 79.75,
+      "product_id": 2725802,
+      "objectID": 35832458,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-evercrisp",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "30438391",
+     "product_id": 2061443,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Beaver Cookies",
+      "brand": "RYTHM",
+      "kind": "flower",
+      "category": "sativa",
+      "available_weights": [
+       "eighth ounce"
+      ],
+      "percent_thc": 25.3,
+      "product_id": 2061443,
+      "objectID": 30438391,
+      "price_eighth_ounce": 55,
+      "discounted_price_eighth_ounce": 38.5,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {
+       "price": "55.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "38.5",
+       "discount_amount": 16.5,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_gram": {},
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-beaver-cookies",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "flower",
+       "sale",
+       "flower:Premium"
+      ],
+      "brand_subtype": "Premium Flower"
+     }
+    },
+    {
+     "object_id": "35832454",
+     "product_id": 2061433,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Bubba Fett",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "indica",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 79.22,
+      "product_id": 2061433,
+      "objectID": 35832454,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-bubba-fett",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "35832455",
+     "product_id": 2347230,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Creamsicle Sunset",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "indica",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 87.36,
+      "product_id": 2347230,
+      "objectID": 35832455,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-creamsicle-sunset",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "35832459",
+     "product_id": 2582544,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Graham Cracker",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "indica",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 78.46,
+      "product_id": 2582544,
+      "objectID": 35832459,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-graham-cracker",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "35832453",
+     "product_id": 2300901,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Black Maple #22",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "hybrid",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 79.29,
+      "product_id": 2300901,
+      "objectID": 35832453,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-black-maple-22",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "35832394",
+     "product_id": 2246776,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Dulce De Uva",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "indica",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 79.43,
+      "product_id": 2246776,
+      "objectID": 35832394,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-dulce-de-uva",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "35832393",
+     "product_id": 1933889,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Animal Face",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "hybrid",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 85.08,
+      "product_id": 1933889,
+      "objectID": 35832393,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-animal-face",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "35833120",
+     "product_id": 2725781,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Brownie Points",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "indica",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 88.53,
+      "product_id": 2725781,
+      "objectID": 35833120,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-brownie-points",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    },
+    {
+     "object_id": "35832460",
+     "product_id": 2004759,
+     "store_id": 5362,
+     "search_attributes": {
+      "name": "Runtz S1",
+      "brand": "RYTHM",
+      "kind": "vape",
+      "category": "hybrid",
+      "available_weights": [
+       "half gram"
+      ],
+      "percent_thc": 85.06,
+      "product_id": 2004759,
+      "objectID": 35832460,
+      "price_half_gram": 50,
+      "discounted_price_half_gram": 35,
+      "special_price_each": {},
+      "special_price_gram": {},
+      "special_price_eighth_ounce": {},
+      "special_price_half_gram": {
+       "price": "50.0",
+       "special_id": 1996320,
+       "discount_type": "percent",
+       "discount_price": "35.0",
+       "discount_amount": 15.0,
+       "discount_percent": "30.0"
+      },
+      "special_price_half_ounce": {},
+      "special_price_ounce": {},
+      "special_price_quarter_ounce": {},
+      "special_price_two_gram": {},
+      "applicable_cart_total_special_ids": [],
+      "applicable_bundle_special_ids": {
+       "qualify": [],
+       "discount": []
+      },
+      "applicable_special_ids": [
+       1996320
+      ],
+      "special_title": "30% OFF GTI",
+      "url_slug": "rythm-runtz-s1",
+      "store_id": 5362,
+      "net_weight_grams": 0,
+      "root_types": [
+       "vape",
+       "sale",
+       "vape:Cartridges"
+      ],
+      "brand_subtype": "Live Rosin (Solventless) Cartridge"
+     }
+    }
+   ]
+  }
+ ]
+}

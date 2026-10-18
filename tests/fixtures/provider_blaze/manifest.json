@@ -1,0 +1,9 @@
+{
+  "captured_at": "2026-10-17",
+  "urls": [
+    "https://snapcanna.com/menu/pontiac/",
+    "https://ecom-api.blaze.me/api/v1/products/?limit=100&offset=0&delivery_type=pickup",
+    "https://ecom-api.blaze.me/api/v1/products/?limit=100&offset=100&delivery_type=pickup"
+  ],
+  "description": "Public response structures. Storefront fixture reduced to observed tenant configuration; product pages retained in full."
+}

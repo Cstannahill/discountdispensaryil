@@ -1,0 +1,19 @@
+{
+  "source_url": "https://api.zippopotam.us/us/61358",
+  "fetched_at_utc": "2026-10-17T06:48:20.309262+00:00",
+  "scope": "Third-party ZIP place centroid; not GPS, street address, or independently verified postal boundary.",
+  "response": {
+    "country": "United States",
+    "country abbreviation": "US",
+    "post code": "61358",
+    "places": [
+      {
+        "place name": "Rutland",
+        "longitude": "-89.0388",
+        "latitude": "40.9844",
+        "state": "Illinois",
+        "state abbreviation": "IL"
+      }
+    ]
+  }
+}

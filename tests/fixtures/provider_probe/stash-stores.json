@@ -1,0 +1,540 @@
+[
+  {
+    "name": "Stash Peru - Peru",
+    "short_name": "stashperu",
+    "object_id": "17e5174c-4238-43a6-9f9c-fa0a1bfaa609",
+    "phone": "8152241137",
+    "geoloc": {
+      "lat": 41.358303,
+      "lng": -89.1232669
+    },
+    "address1": "1320 38th St",
+    "address2": "",
+    "metro_area": "Peru",
+    "city": "Peru",
+    "state": "IL",
+    "zip": "61354",
+    "country": "USA",
+    "type": "",
+    "placeId": "ChIJ9c3NUC1nCYgR6ePnXehRppc",
+    "comment": "ChIJ9c3NUC1nCYgR6ePnXehRppc",
+    "longitude": -89.1232669,
+    "latitude": 41.358303,
+    "primary": false,
+    "pickup": true,
+    "delivery": false,
+    "curbside": false,
+    "delivery_hours": [],
+    "delivery_minimum": 1,
+    "delivery_zipcodes": [
+      "61354"
+    ],
+    "full_address": "1320 38th St, Peru, IL 61354",
+    "medical": false,
+    "strict_medical_enabled": false,
+    "url_slug": "stash-peru-peru",
+    "allow_custom_delivery_fee": false,
+    "mso_org_id": "4e744e4d-e1eb-43f5-826f-867e1e702a0d",
+    "mso_store_entity_id": "17e5174c-4238-43a6-9f9c-fa0a1bfaa609",
+    "delivery_minimum_total": false,
+    "display_post_tax": false,
+    "customer_type_allow": "ADULT",
+    "fulfillment_types_enabled": {
+      "DELIVERY": "",
+      "EXPRESS": "",
+      "PICKUP": "",
+      "POS": "",
+      "CURBSIDE": ""
+    },
+    "customer_source_reason": [
+      "Billboard",
+      "Culture",
+      "Facebook",
+      "Friend / Family",
+      "Google",
+      "Instagram",
+      "Leafly",
+      "Other",
+      "Twitter",
+      "Walking-by",
+      "Weedmaps",
+      "Word of mouth",
+      "Yelp"
+    ],
+    "age_restriction": {
+      "MEDICAL": 18,
+      "ADULT": 21
+    },
+    "pickup_addresses": [
+      {
+        "id": 1,
+        "street": "1320 38th St",
+        "city": "Peru",
+        "state": "IL",
+        "county": "",
+        "country": "USA",
+        "type": "",
+        "zip": "61354",
+        "placeId": "ChIJ9c3NUC1nCYgR6ePnXehRppc",
+        "comment": "ChIJ9c3NUC1nCYgR6ePnXehRppc",
+        "name": "Stash Peru - Peru",
+        "longitude": "-89.1232669",
+        "latitude": "41.358303",
+        "apt": "",
+        "primary": false
+      }
+    ],
+    "working_hours": [
+      {
+        "day_of_the_week": "THURSDAY",
+        "start": "09:00",
+        "end": "21:00"
+      },
+      {
+        "day_of_the_week": "FRIDAY",
+        "start": "09:00",
+        "end": "21:00"
+      },
+      {
+        "day_of_the_week": "SATURDAY",
+        "start": "09:00",
+        "end": "21:00"
+      },
+      {
+        "day_of_the_week": "SUNDAY",
+        "start": "09:00",
+        "end": "21:00"
+      },
+      {
+        "day_of_the_week": "MONDAY",
+        "start": "09:00",
+        "end": "21:00"
+      },
+      {
+        "day_of_the_week": "TUESDAY",
+        "start": "09:00",
+        "end": "21:00"
+      },
+      {
+        "day_of_the_week": "WEDNESDAY",
+        "start": "09:00",
+        "end": "21:00"
+      }
+    ],
+    "ecom_bulk_flower": false,
+    "ecommerce_type_express": true,
+    "dispensary_time_zone": "America/Chicago",
+    "locations": [
+      {
+        "id": "21afb3cc-03b1-40e9-979f-adef3f7de5b2",
+        "inventoryType": "ALL",
+        "name": "EVERYDAY"
+      },
+      {
+        "id": "37fe8bcc-ef63-4fbe-9d32-119698cb04e1",
+        "inventoryType": "ADULT",
+        "name": "4.25 DOOR BUSTERS"
+      },
+      {
+        "id": "5301c55a-677b-4854-9cf5-7094f5d45290",
+        "inventoryType": "ADULT",
+        "name": "710 FIRST X"
+      },
+      {
+        "id": "77d27c4e-9f95-44c2-bce5-44c40f74c61b",
+        "inventoryType": "ALL",
+        "name": "ALL EMPLOYEE SAMPLES"
+      },
+      {
+        "id": "7fbade8b-d528-4109-8823-0f9df40bf639",
+        "inventoryType": "ADULT",
+        "name": "4.20 DOOR BUSTERS"
+      },
+      {
+        "id": "91b81233-c065-4120-81d9-9dffa09b5a4e",
+        "inventoryType": "ALL",
+        "name": "NON-CAN"
+      },
+      {
+        "id": "9d648889-9b98-4cd2-ab36-d7be1f54ee43",
+        "inventoryType": "ALL",
+        "name": "PROMO ROOM | EMPLOYEE SAMPLES"
+      },
+      {
+        "id": "a07b474a-9a94-45d7-ae9f-627e6f1ab542",
+        "inventoryType": "ALL",
+        "name": "REVOLUTION"
+      },
+      {
+        "id": "a2eedcbc-15c8-44ce-9943-2e9f6c7c76db",
+        "inventoryType": "ALL",
+        "name": "PROMO PRODCUTS"
+      },
+      {
+        "id": "b1a28cce-1fa2-482d-a266-4de37e4253e1",
+        "inventoryType": "ALL",
+        "name": "NON-CAN SNACKS/DRINKS"
+      },
+      {
+        "id": "e3e94cbe-6d31-11e9-bc22-0294c7956350",
+        "inventoryType": "ALL",
+        "name": "SALES FLOOR"
+      }
+    ]
+  },
+  {
+    "name": "Stash Orland Hills - Orland Hills, IL",
+    "short_name": "stashoh",
+    "object_id": "e757fb7f-1559-4e85-bf65-0095a2c13e12",
+    "phone": "7084282296",
+    "geoloc": {
+      "lat": 41.5866734,
+      "lng": -87.8507825
+    },
+    "address1": "9545 W 167th St",
+    "address2": "",
+    "metro_area": "Orland Hills",
+    "city": "Orland Hills",
+    "state": "IL",
+    "zip": "60487",
+    "country": "USA",
+    "type": "",
+    "placeId": "Eiw5NTQ1IFcgMTY3dGggU3QsIE9ybGFuZCBIaWxscywgSUwgNjA0ODcsIFVTQSIxEi8KFAoSCU9UQ0_5Pw6IEfQJDC9XWZsmEMlKKhQKEgn5Mw31G0AOiBHDoHAuy8wUpg",
+    "comment": "Eiw5NTQ1IFcgMTY3dGggU3QsIE9ybGFuZCBIaWxscywgSUwgNjA0ODcsIFVTQSIxEi8KFAoSCU9UQ0_5Pw6IEfQJDC9XWZsmEMlKKhQKEgn5Mw31G0AOiBHDoHAuy8wUpg",
+    "longitude": -87.8507825,
+    "latitude": 41.5866734,
+    "primary": false,
+    "pickup": true,
+    "delivery": false,
+    "curbside": false,
+    "delivery_hours": [],
+    "delivery_minimum": 1,
+    "delivery_zipcodes": [
+      "60487"
+    ],
+    "full_address": "9545 W 167th St, Orland Hills, IL 60487",
+    "medical": false,
+    "strict_medical_enabled": false,
+    "url_slug": "stash-orland-hills-orland-hills-il",
+    "allow_custom_delivery_fee": false,
+    "mso_org_id": "4e744e4d-e1eb-43f5-826f-867e1e702a0d",
+    "mso_store_entity_id": "e757fb7f-1559-4e85-bf65-0095a2c13e12",
+    "delivery_minimum_total": false,
+    "display_post_tax": false,
+    "customer_type_allow": "ADULT",
+    "fulfillment_types_enabled": {
+      "DELIVERY": "",
+      "EXPRESS": "",
+      "PICKUP": "",
+      "POS": "",
+      "CURBSIDE": ""
+    },
+    "customer_source_reason": [
+      "Billboard",
+      "Culture",
+      "Facebook",
+      "Friend / Family",
+      "Google",
+      "Instagram",
+      "Leafly",
+      "Other",
+      "Twitter",
+      "Walking-by",
+      "Word of mouth",
+      "Yelp"
+    ],
+    "age_restriction": {
+      "MEDICAL": 18,
+      "ADULT": 21
+    },
+    "pickup_addresses": [
+      {
+        "id": 1,
+        "street": "9545 W 167th St",
+        "city": "Orland Hills",
+        "state": "IL",
+        "county": "",
+        "country": "USA",
+        "type": "",
+        "zip": "60487",
+        "placeId": "Eiw5NTQ1IFcgMTY3dGggU3QsIE9ybGFuZCBIaWxscywgSUwgNjA0ODcsIFVTQSIxEi8KFAoSCU9UQ0_5Pw6IEfQJDC9XWZsmEMlKKhQKEgn5Mw31G0AOiBHDoHAuy8wUpg",
+        "comment": "Eiw5NTQ1IFcgMTY3dGggU3QsIE9ybGFuZCBIaWxscywgSUwgNjA0ODcsIFVTQSIxEi8KFAoSCU9UQ0_5Pw6IEfQJDC9XWZsmEMlKKhQKEgn5Mw31G0AOiBHDoHAuy8wUpg",
+        "name": "Stash Orland Hills - Orland Hills, IL",
+        "longitude": "-87.8507825",
+        "latitude": "41.5866734",
+        "apt": "",
+        "primary": false
+      }
+    ],
+    "working_hours": [
+      {
+        "day_of_the_week": "FRIDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "SATURDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "SUNDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "MONDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "TUESDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "WEDNESDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "THURSDAY",
+        "start": "10:00",
+        "end": "22:00"
+      }
+    ],
+    "ecom_bulk_flower": false,
+    "ecommerce_type_express": true,
+    "dispensary_time_zone": "America/Chicago",
+    "locations": [
+      {
+        "id": "0faa11fc-4e5d-4fb3-b1a8-9d7a1c7845c5",
+        "inventoryType": "ALL",
+        "name": "FOH COUNTER"
+      },
+      {
+        "id": "198c2298-b042-4095-92fe-65c099be15fc",
+        "inventoryType": "ALL",
+        "name": "FRIDGE"
+      },
+      {
+        "id": "1adf2f11-5938-4fe7-94f4-9dcafa973818",
+        "inventoryType": "ALL",
+        "name": "SECURITY OFFICE"
+      },
+      {
+        "id": "4512657d-a6d9-431e-b34e-0e8b8c16d4a6",
+        "inventoryType": "ALL",
+        "name": "FOH DISPLAY 5"
+      },
+      {
+        "id": "8b88049d-64f4-4456-8ef8-ddfd2d28f6f9",
+        "inventoryType": "ALL",
+        "name": "GONDOLA"
+      },
+      {
+        "id": "8fc8d6e5-1203-4fbb-9487-6064bde25caf",
+        "inventoryType": "ALL",
+        "name": "FOH DISPLAY 4"
+      },
+      {
+        "id": "9619982c-e2bb-43a4-844e-ea87899c5791",
+        "inventoryType": "ALL",
+        "name": "FOH DISPLAY 2"
+      },
+      {
+        "id": "b3c40dc7-c78a-4558-8d45-1d0d310f624e",
+        "inventoryType": "ALL",
+        "name": "FOH DISPLAY 1"
+      },
+      {
+        "id": "bacd7494-c0b7-4a83-b2f6-c451fd76a485",
+        "inventoryType": "ALL",
+        "name": "\u2705EMPLOYEE SAMPLES"
+      },
+      {
+        "id": "bf743f04-de82-41f8-b982-25c710831a21",
+        "inventoryType": "ALL",
+        "name": "EXOTIC SNACK RACK"
+      },
+      {
+        "id": "d5fe105d-e491-42fd-9748-8d8899b5c0b9",
+        "inventoryType": "ALL",
+        "name": "HHW RACK"
+      },
+      {
+        "id": "da37dbfb-1e26-4fa4-b725-1001c8e08391",
+        "inventoryType": "ALL",
+        "name": "CURRENT SECRET STASH"
+      },
+      {
+        "id": "e3e94cbe-6d31-11e9-bc22-0294c7956350",
+        "inventoryType": "ALL",
+        "name": "SALES FLOOR"
+      },
+      {
+        "id": "ee1f3f20-8e2a-41ae-80ec-6f2de6f24845",
+        "inventoryType": "ALL",
+        "name": "FOH DISPLAY 3"
+      }
+    ]
+  },
+  {
+    "name": "Stash - Richton Park",
+    "short_name": "stashrp",
+    "object_id": "03aba1e0-7fda-41de-b686-8deee9b43ded",
+    "phone": "5551212123",
+    "geoloc": {
+      "lat": 41.4854079,
+      "lng": -87.71490399999999
+    },
+    "address1": "22214 Governors Hwy",
+    "address2": "",
+    "metro_area": "Richton Park",
+    "city": "Richton Park",
+    "state": "IL",
+    "zip": "60471",
+    "country": "USA",
+    "type": "",
+    "placeId": "ChIJfavx4rgQDogRs1UWXbkxP24",
+    "comment": "ChIJfavx4rgQDogRs1UWXbkxP24",
+    "longitude": -87.71490399999999,
+    "latitude": 41.4854079,
+    "primary": false,
+    "pickup": true,
+    "delivery": false,
+    "curbside": false,
+    "delivery_hours": [],
+    "delivery_minimum": 1,
+    "delivery_zipcodes": [
+      "60471"
+    ],
+    "full_address": "22214 Governors Hwy, Richton Park, IL 60471",
+    "medical": false,
+    "strict_medical_enabled": false,
+    "url_slug": "stash-richton-park",
+    "allow_custom_delivery_fee": false,
+    "mso_org_id": "4e744e4d-e1eb-43f5-826f-867e1e702a0d",
+    "mso_store_entity_id": "03aba1e0-7fda-41de-b686-8deee9b43ded",
+    "delivery_minimum_total": false,
+    "display_post_tax": false,
+    "customer_type_allow": "ADULT",
+    "fulfillment_types_enabled": {
+      "DELIVERY": "",
+      "EXPRESS": "",
+      "PICKUP": "",
+      "POS": "",
+      "CURBSIDE": ""
+    },
+    "customer_source_reason": [
+      "Billboard",
+      "Culture",
+      "Facebook",
+      "Friend / Family",
+      "Google",
+      "Instagram",
+      "Leafly",
+      "Other",
+      "Twitter",
+      "Walking-by",
+      "Weedmaps",
+      "Word of mouth",
+      "Yelp"
+    ],
+    "age_restriction": {
+      "MEDICAL": 18,
+      "ADULT": 21
+    },
+    "pickup_addresses": [
+      {
+        "id": 1,
+        "street": "22214 Governors Hwy",
+        "city": "Richton Park",
+        "state": "IL",
+        "county": "",
+        "country": "USA",
+        "type": "",
+        "zip": "60471",
+        "placeId": "ChIJfavx4rgQDogRs1UWXbkxP24",
+        "comment": "ChIJfavx4rgQDogRs1UWXbkxP24",
+        "name": "Stash - Richton Park",
+        "longitude": "-87.71490399999999",
+        "latitude": "41.4854079",
+        "apt": "",
+        "primary": false
+      }
+    ],
+    "working_hours": [
+      {
+        "day_of_the_week": "SATURDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "SUNDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "MONDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "TUESDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "WEDNESDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "THURSDAY",
+        "start": "10:00",
+        "end": "22:00"
+      },
+      {
+        "day_of_the_week": "FRIDAY",
+        "start": "10:00",
+        "end": "22:00"
+      }
+    ],
+    "ecom_bulk_flower": false,
+    "ecommerce_type_express": true,
+    "dispensary_time_zone": "America/Chicago",
+    "locations": [
+      {
+        "id": "4e4bf2ff-911e-414c-8bcb-d525ca30ece0",
+        "inventoryType": "ALL",
+        "name": "NON CANNABIS"
+      },
+      {
+        "id": "64e22497-5c96-46de-8c54-c4ba792ade71",
+        "inventoryType": "ALL",
+        "name": "GALAXY LABS SALES SAMPLES"
+      },
+      {
+        "id": "ca47cb3a-7f53-49ea-b809-e00119900eb8",
+        "inventoryType": "ALL",
+        "name": "CURRENT SECRET STASH"
+      },
+      {
+        "id": "cf35e82a-2d9a-4d1e-a602-f8996dceba2e",
+        "inventoryType": "ALL",
+        "name": "4.20 - FIRST X DOORBUSTERS"
+      },
+      {
+        "id": "d5de0f06-60be-4796-bc15-82b865a3614b",
+        "inventoryType": "ALL",
+        "name": "EMPLOYEE SAMPLES"
+      },
+      {
+        "id": "e3e94cbe-6d31-11e9-bc22-0294c7956350",
+        "inventoryType": "ALL",
+        "name": "FRONT OF HOUSE"
+      }
+    ]
+  }
+]

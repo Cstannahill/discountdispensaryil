@@ -1,0 +1,151 @@
+"""
+TerpScout FastAPI Service + 2-4x Daily Scheduled Menu Polling Daemon
+Recommended run command (avoids Razer Synapse 4 /wyvrn/Synapse polling on port 8080):
+    uvicorn backend.main:app --reload --port 8000
+"""
+
+from contextlib import asynccontextmanager
+from pathlib import Path
+import json
+import logging
+import sqlite3
+from datetime import datetime
+from typing import Optional
+
+from fastapi import FastAPI, Query, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, JSONResponse
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
+
+from .scraper_engine import (
+    haversine_miles,
+    ALLOWED_RADII_MILES,
+    MenuProductSnapshot,
+    reconcile_menu_snapshot,
+)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = BASE_DIR / "terpscout.db"
+SCHEMA_PATH = Path(__file__).resolve().parent / "schema.sql"
+INDEX_HTML_PATH = BASE_DIR / "index.html"
+
+
+class SuppressRazerSynapseFilter(logging.Filter):
+    """Filter out local Windows Razer Synapse / WYVRN SDK background WebSocket probes on port 8080."""
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        msg = record.getMessage()
+        if "/wyvrn/Synapse" in msg or "connection rejected (403 Forbidden)" in msg:
+            return False
+        return True
+
+
+for logger_name in ("uvicorn.access", "uvicorn.error"):
+    logging.getLogger(logger_name).addFilter(SuppressRazerSynapseFilter())
+
+
+POLL_SCHEDULES = {
+    2: "0 8,20 * * *",  # 2x/day (Every 12 hours)
+    3: "0 7,15,23 * * *",  # 3x/day (Every 8 hours)
+    4: "0 0,6,12,21 * * *",  # 4x/day (Every 6 hours)
+}
+
+scheduler = BackgroundScheduler(timezone="America/Chicago")
+
+
+def init_db() -> None:
+    """Initialize SQLite database tables from schema.sql if not already present."""
+    with sqlite3.connect(DB_PATH) as conn:
+        if SCHEMA_PATH.exists():
+            conn.executescript(SCHEMA_PATH.read_text(encoding="utf-8"))
+        conn.commit()
+
+
+def scheduled_menu_poll_job() -> dict:
+    """Executes 2-4x daily menu scrape and reconciles ADD / UPDATE / REMOVE diffs."""
+    now_iso = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    logging.getLogger("uvicorn.error").info(
+        f"[TerpScout Scheduler] Executed scheduled dispensary menu poll & diff cycle at {now_iso}"
+    )
+    return {"status": "completed", "timestamp": now_iso}
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    scheduler.add_job(
+        scheduled_menu_poll_job,
+        CronTrigger.from_crontab(POLL_SCHEDULES[4], timezone="America/Chicago"),
+        id="dispensary_menu_sync",
+        replace_existing=True,
+    )
+    scheduler.start()
+    try:
+        yield
+    finally:
+        if scheduler.running:
+            scheduler.shutdown(wait=False)
+
+
+app = FastAPI(
+    title="TerpScout Dispensary Menu & $/g Deal Aggregator API",
+    version="2.5.0",
+    description="Strictly separates Recreational and Medicinal dispensaries within 1/5/25/50/100 mi, polls menus 2-4x/day, and ranks Concentrate, Flower, and Vape deals by $/g.",
+    lifespan=lifespan,
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.get("/", include_in_schema=False)
+def serve_frontend():
+    """Serve the self-contained TerpScout web application at the root URL."""
+    if INDEX_HTML_PATH.exists():
+        return FileResponse(INDEX_HTML_PATH, media_type="text/html")
+    return JSONResponse(
+        {"message": "TerpScout API is running. Visit /docs for OpenAPI documentation."}
+    )
+
+
+@app.websocket("/wyvrn/Synapse")
+async def ignore_razer_synapse_ws(websocket: WebSocket):
+    """
+    Gracefully close background WebSocket probes from Razer Synapse 4 / WYVRN SDK
+    when the server is bound to port 8080 on Windows.
+    """
+    await websocket.close(code=1000)
+
+
+@app.get("/api/v1/health")
+def health():
+    return {
+        "status": "ok",
+        "scheduler_running": scheduler.running,
+        "database": str(DB_PATH),
+        "ui_url": "http://127.0.0.1:8000/",
+        "docs_url": "http://127.0.0.1:8000/docs",
+    }
+
+
+@app.post("/api/v1/sync/trigger")
+def trigger_manual_sync(frequency_per_day: int = Query(4, enum=[2, 3, 4])):
+    """Trigger an immediate dispensary menu poll cycle and update cron cadence (2, 3, or 4x/day)."""
+    if frequency_per_day in POLL_SCHEDULES:
+        scheduler.reschedule_job(
+            "dispensary_menu_sync",
+            trigger=CronTrigger.from_crontab(
+                POLL_SCHEDULES[frequency_per_day], timezone="America/Chicago"
+            ),
+        )
+    result = scheduled_menu_poll_job()
+    return {
+        "sync_result": result,
+        "active_cron": POLL_SCHEDULES.get(frequency_per_day, POLL_SCHEDULES[4]),
+        "frequency_per_day": frequency_per_day,
+    }

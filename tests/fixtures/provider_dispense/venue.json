@@ -1,0 +1,2196 @@
+{
+  "data": {
+    "_id": "7c6abd7d11c9ad19",
+    "config": {
+      "defaultOrderEnabled": true,
+      "defaultOrderNote": "<h2><strong>Thirsty Thursday - February 12th</strong></h2><p>Sign Up For <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://lab.alpineiq.com/join/c/2653/4372\">Aura Rewards</a> To Get 25% 3 Purchases!</p><hr><h2><strong>DOORBUSTERS</strong></h2><p><strong>\u2022Buy 7g of BG or Lula's Flower to get a 1g Infused Pre-Roll for a Penny!</strong></p><p><strong>\u2022Buy any 3 Incredibles Edibles to get a 4th pack of Incredibles Sour Cherry Tart 100mg for a Penny!</strong></p><p><strong>\u2022Buy 2 packs of Slims 5pk Pre-Rolls to get a 3rd for a Penny!</strong></p><p><strong>\u2022Thirsty Thursday: 20% Off All Beverages</strong></p><h2><strong>DISCOUNTS</strong></h2><p><strong>\u202230% Off Grassroots, GTI, IGF, &amp; NGW Brands</strong></p><p><strong>\u202225% Off Cresco, Revolution, BG, Flora, Khalifa Kush, Galaxy labs, Contract Canna, &amp; Journeyman Brands</strong></p><p><strong>\u2022Valentine's Weekend Special - Flowers &amp; Chocolates - 25% Off</strong></p><h2><strong>DEALS</strong></h2><p><strong>\u2022Flowers &amp; Chocolates Bundle: Pick 1 High Supply 8th &amp; 1 KIVA Chocolate Bar for $30</strong></p><p><strong>\u2022Wyld Gummies - 2 for $35 (Excludes Good Tide) </strong></p><p><strong>\u2022KIVA Lost Farm Edibles - 2 for $35</strong></p><p><strong>\u2022High Supply Pre-Rolls 5pk - 2 for $44</strong></p><p><strong>\u2022Revolution Pre-Rolls 5pk - 2 for $52</strong></p><p><strong>\u2022Daze Off &amp; 93 Boyz 1g Carts - $30 each, 2 for $55</strong></p><p><strong>\u2022Tales &amp; Travels 1g Vapes - $35 each, 2 for $65</strong></p><p><strong>\u2022Early Bird Discount:</strong> Save an extra 5% on purchases made between 9am \u2013 10:00am, Everyday!</p><p><strong>\u2022Rush Hour Discount: </strong>Save an extra 5% on purchases made between 4pm \u2013 6:00pm, Monday - Friday!</p><p>\u2022<strong>Last Call Discount:</strong> Save an extra 5% on purchases made between 8pm-9pm Sunday- Thursday &amp;  9pm \u2013 10:00pm, Friday-Saturday!</p><p>-DISCOUNTS DO NOT STACK UNLESS STATED - HIGHEST DISCOUNT WILL APPLY-</p><p>-DISCOUNTS &amp; REWARDS NOT SHOWN IN CART ARE APPLIED AT THE REGISTER-</p><p>-PENNY PRODUCTS PRE-SELECTED &amp; REDEEMED AT REGISTER WHILE SUPPLIES LAST</p><p>-CASH ONLY-</p><hr><h2><strong>HOURS &amp; INFO</strong></h2><p><strong>Sunday - Thursday: 9am-9pm</strong></p><p><strong>Friday - Saturday: 9am-10pm</strong></p><p><strong>Address: 1350 N Orchard Rd, Aurora, IL 60506</strong></p>"
+    },
+    "subscriptionPrivelages": {
+      "canUseCustomerChat": true,
+      "canUseSeoMenu": true
+    },
+    "subscriptionAddOns": {
+      "seoMenu": true,
+      "customerChat": true
+    },
+    "seoMenuMetaData": {
+      "home": {
+        "title": "Shop Aurora's Cannabis Dispensary | AuraLight Dispensary",
+        "description": "Shop online and visit our cannabis dispensary in Aurora, IL. Find deals, discounts and earn rewards on your favorite weed, vapes, edibles, prerolls and more!",
+        "h1": ""
+      },
+      "productCategory": {
+        "title": "Shop {{ productCategory }} | AuraLight Dispensary",
+        "description": "Shop for the best {{ productCategory }} and other cannabis deals at AuraLight Dispensary in Aurora. Order online and pickup in-store.",
+        "h1": "{{productCategory}}"
+      },
+      "productBrand": {
+        "title": "Shop {{ productBrand }} Cannabis Products | AuraLight Dispensary",
+        "description": "Shop for {{ productBrand }} cannabis products at our Aurora, IL dispensary. Find {{ productBrand }} deals and discounts. Order online and pickup in-store",
+        "h1": "Shop {{productBrand}}"
+      },
+      "productDetail": {
+        "title": "{{ productName }} ({{ productCannabisType }}) {{ productCategory }} by {{ productBrand }} | AuraLight Dispensary",
+        "description": "Shop for {{ productName }} ({{ productCannabisType }}) {{ productCategory }} from {{ productBrand }} at our Aurora cannabis dispensary."
+      },
+      "productOffer": {
+        "title": "{{ productOffer }} | AuraLight Dispensary",
+        "description": "{{ productOffer }}. Cannabis deals and discount at AuraLight Dispensary in Aurora, IL."
+      },
+      "productCannabisType": {
+        "title": "{{ productCannabisType }} Cannabis | AuraLight Dispensary",
+        "description": "Find {{ productCannabisType }} cannabis flower, vapes, edibles and more at at AuraLight Dispensary in Aurora, IL.",
+        "h1": "Shop {{productCannabisType}} products"
+      },
+      "productEffect": {
+        "title": "{{ productEffect }} | AuraLight Dispensary",
+        "description": "Find {{ productEffect }} cannabis and weed that helps you feel {{ productEffect }} at AuraLight Dispensary in Aurora, IL.",
+        "h1": "Shop {{productEffect}} products"
+      },
+      "productTerpene": {
+        "title": "{{ productTerpene }} Terpenes | AuraLight Dispensary",
+        "description": "Find cannabis with {{ productTerpene }} terpenes at AuraLight Dispensary located in Aurora, IL.",
+        "h1": "Shop {{productTerpene}} products"
+      },
+      "offerPage": {
+        "title": "Shop Special Offers at {{storeName}}",
+        "description": "Check out our latest deals, discounts, promotions, and exclusive offers online at {{storeWebsite}}.",
+        "h1": "{{offersCategoryName}} & Discounts"
+      },
+      "cartPage": {
+        "title": "Your Cart | {{storeName}}",
+        "description": "View your cart at {{storeName}}, modify items, and proceed to a secure checkout.",
+        "h1": "Cart"
+      },
+      "checkoutPage": {
+        "title": "Complete your order | {{storeName}}",
+        "description": "Complete your purchase with {{storeName}} using our secure checkout.",
+        "h1": "Checkout"
+      }
+    },
+    "leaflogix": {
+      "enabled": true,
+      "lastInventorySync": "2025-01-21T02:51:19.388Z",
+      "syncingInventory": false
+    },
+    "flowhub": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "flowhubMaui": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "alleaves": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "cova": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "blaze": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "treez": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "mjFreeway": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "weedmaps": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "leafly": {
+      "enabled": false,
+      "syncingInventory": false
+    },
+    "onfleet": {
+      "enabled": false
+    },
+    "swifter": {
+      "enabled": false
+    },
+    "kindTap": {
+      "enabled": false
+    },
+    "aeropay": {
+      "enabled": false
+    },
+    "square": {
+      "enabled": false
+    },
+    "deleted": false,
+    "platformType": "DISPENSE",
+    "testMode": false,
+    "type": "DISPENSARY",
+    "medicalDispensary": false,
+    "requireMedicalId": false,
+    "requireMedicalIdKiosk": false,
+    "currencyCode": "USD",
+    "languageCode": "en",
+    "salesTax": 0,
+    "cannabisTax": 0,
+    "cannabisTaxTaxable": false,
+    "cannabisTerms": "<p>By using our service, you agree to Aura<strong>Light's</strong> <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.auralightdispensary.com/tos/\">Terms of Service</a> and <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.auralightdispensary.com/privacy-policy/\">Privacy Policy</a>. Local regulations apply to the purchase and consumption of cannabis products. Adults 21 and older only. Keep out of reach of children. There may be health risks associated with the consumption of this product, including for women who are pregnant, breastfeeding, or planning on becoming pregnant. Do not drive a motor vehicle or operate heavy machinery while using this product. Please consume responsibly. AuraLight does not sell or distribute your personal data or information. Offers cannot be combined with other discounts and promotions unless otherwise noted at checkout. Offers are only valid for the timeframe specified in the deal. Checkout price is an estimate and is subject to change. Packaging may vary from marketing materials. </p>",
+    "inventoryTimeframe": 1,
+    "inventoryPosUpdateableKeys": [
+      "name",
+      "productCategory",
+      "subType",
+      "brand",
+      "price",
+      "quantity",
+      "image",
+      "description",
+      "size",
+      "discountValue",
+      "discountType",
+      "cannabisType",
+      "cannabisStrain",
+      "effects",
+      "weight",
+      "weightUnit",
+      "flowerEquivalentInGrams",
+      "thc",
+      "thcContentUnit",
+      "thcA",
+      "thcAContentUnit",
+      "cbd",
+      "cbdContentUnit",
+      "cbdA",
+      "cbdAContentUnit",
+      "cbn",
+      "cbnContentUnit",
+      "cbg",
+      "cbgContentUnit",
+      "alphaPinene",
+      "alphaPineneContentUnit",
+      "betaCaryophyllene",
+      "betaCaryophylleneContentUnit",
+      "betaEudesmol",
+      "betaEudesmolContentUnit",
+      "betaMyrcene",
+      "betaMyrceneContentUnit",
+      "betaPinene",
+      "betaPineneContentUnit",
+      "bisabolol",
+      "bisabololContentUnit",
+      "caryophylleneOxide",
+      "caryophylleneOxideContentUnit",
+      "guaiol",
+      "guaiolContentUnit",
+      "humulene",
+      "humuleneContentUnit",
+      "limonene",
+      "limoneneContentUnit",
+      "linalool",
+      "linaloolContentUnit",
+      "ocimene",
+      "ocimeneContentUnit",
+      "terpinene",
+      "terpineneContentUnit",
+      "terpinolene",
+      "terpinoleneContentUnit",
+      "threeCarene",
+      "threeCareneContentUnit",
+      "transNerolidol",
+      "transNerolidolContentUnit",
+      "groupId"
+    ],
+    "enableInventoryTypePosMappings": true,
+    "inventoryTypePosMappings": {
+      "ACCESSORIES": [],
+      "BEVERAGES": [
+        "Beverages"
+      ],
+      "CONCENTRATES": [],
+      "EDIBLES": [
+        "RSO"
+      ],
+      "FLOWER": [
+        "Infused Shake"
+      ],
+      "MERCHANDISE": [
+        "Shirts",
+        "Hats"
+      ],
+      "PRE_ROLLS": [
+        "Infused pack",
+        "Infused single"
+      ],
+      "TINCTURES": [],
+      "TOPICALS": [],
+      "VAPORIZERS": [],
+      "_id": "65dbb76ec9b1cc0c1b3d21c2",
+      "id": "65dbb76ec9b1cc0c1b3d21c2"
+    },
+    "enableProductReviews": true,
+    "showLoyaltyOptIn": false,
+    "showLoyaltyRewards": false,
+    "loyaltyColor": "#2558BC",
+    "isUnderReview": false,
+    "isLocked": false,
+    "externalSubscriptionInterval": 0,
+    "externalSubscriptionPlanPrice": 0,
+    "subscriptionPlan": "PLAN_2",
+    "enableCustomerChatOnMenu": true,
+    "orderConfirmationEmailSubject": "{{{ venueName }}} Order Confirmation",
+    "orderSubStatuses": [],
+    "autoConfirmOrders": true,
+    "orderTermsRequired": true,
+    "orderPickUpTypes": [
+      "IN_STORE"
+    ],
+    "orderPickUpInStorePickUpTimeRequired": true,
+    "orderPickUpInStorePickUpTimeShutoffMins": 10,
+    "orderPickUpCurbsidePickUpTimeRequired": false,
+    "orderPickUpCurbsidePickUpTimeShutoffMins": 5,
+    "orderPickUpDeliveryPickUpTimeShutoffMins": 5,
+    "orderMinimumAge": 21,
+    "orderPaymentTypesInStore": [
+      "CASH"
+    ],
+    "orderPaymentTypesCurbside": [],
+    "orderPaymentTypesDelivery": [],
+    "orderPaymentTypesShipping": [],
+    "generateOrderQRCodes": false,
+    "generateCannabisEffects": true,
+    "enableOrderQueues": false,
+    "autoPrintOrders": true,
+    "sendCustomerOrderEmail": true,
+    "sendCustomerOrderSMS": true,
+    "totalPendingProductReviews": 0,
+    "name": "AuraLight Dispensary (Rec)",
+    "timezone": "America/Chicago",
+    "organization": "dabc8a09c26d131a",
+    "schedule": [
+      {
+        "day": 0,
+        "closed": false,
+        "hours": [
+          {
+            "start": "1969-12-28T09:00:00.000Z",
+            "end": "1969-12-28T21:00:00.000Z",
+            "_id": "69e7f23a105753df3836603b",
+            "id": "69e7f23a105753df3836603b"
+          }
+        ]
+      },
+      {
+        "day": 1,
+        "closed": false,
+        "hours": [
+          {
+            "start": "1969-12-29T09:00:00.000Z",
+            "end": "1969-12-29T21:00:00.000Z",
+            "_id": "69e7f23a105753df3836603c",
+            "id": "69e7f23a105753df3836603c"
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "closed": false,
+        "hours": [
+          {
+            "start": "1969-12-30T09:00:00.000Z",
+            "end": "1969-12-30T21:00:00.000Z",
+            "_id": "69e7f23a105753df3836603d",
+            "id": "69e7f23a105753df3836603d"
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "closed": false,
+        "hours": [
+          {
+            "start": "1969-12-31T09:00:00.000Z",
+            "end": "1969-12-31T21:00:00.000Z",
+            "_id": "69e7f23a105753df3836603e",
+            "id": "69e7f23a105753df3836603e"
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "closed": false,
+        "hours": [
+          {
+            "start": "1970-01-01T09:00:00.000Z",
+            "end": "1970-01-01T21:00:00.000Z",
+            "_id": "69e7f23a105753df3836603f",
+            "id": "69e7f23a105753df3836603f"
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "closed": false,
+        "hours": [
+          {
+            "start": "1970-01-02T09:00:00.000Z",
+            "end": "1970-01-02T22:00:00.000Z",
+            "_id": "69e7f23a105753df38366040",
+            "id": "69e7f23a105753df38366040"
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "closed": false,
+        "hours": [
+          {
+            "start": "1970-01-03T09:00:00.000Z",
+            "end": "1970-01-03T22:00:00.000Z",
+            "_id": "69e7f23a105753df38366041",
+            "id": "69e7f23a105753df38366041"
+          }
+        ]
+      }
+    ],
+    "inventoryTypeNames": [
+      {
+        "_id": "63d2ebbece25af0056c5829a",
+        "name": "Flower",
+        "type": "FLOWER",
+        "slug": "flower"
+      },
+      {
+        "_id": "63d2ebbece25af0056c5829b",
+        "name": "Pre Rolls",
+        "type": "PRE_ROLLS",
+        "slug": "pre-rolls"
+      },
+      {
+        "_id": "63d2ebbece25af0056c5829c",
+        "name": "Vaporizers",
+        "type": "VAPORIZERS",
+        "slug": "vaporizers"
+      },
+      {
+        "_id": "63d2ebbece25af0056c5829d",
+        "name": "Concentrates",
+        "type": "CONCENTRATES",
+        "slug": "concentrates"
+      },
+      {
+        "_id": "63d2ebbece25af0056c5829e",
+        "name": "Edibles",
+        "type": "EDIBLES",
+        "slug": "edibles"
+      },
+      {
+        "_id": "63d2ebbece25af0056c5829f",
+        "name": "Tinctures",
+        "type": "TINCTURES",
+        "slug": "tinctures"
+      },
+      {
+        "_id": "63d2ebbece25af0056c582a0",
+        "name": "Topicals",
+        "type": "TOPICALS",
+        "slug": "topicals"
+      },
+      {
+        "_id": "63d2ebbece25af0056c582a1",
+        "name": "Accessories",
+        "type": "ACCESSORIES",
+        "slug": "accessories"
+      },
+      {
+        "_id": "63d2ebbece25af0056c582a2",
+        "name": "Beverages",
+        "type": "BEVERAGES",
+        "slug": "beverages"
+      },
+      {
+        "_id": "63d2ebbece25af0056c582a3",
+        "name": "Merchandise",
+        "type": "MERCHANDISE",
+        "slug": "merchandise"
+      }
+    ],
+    "modified": "2026-10-17T09:04:01.137Z",
+    "created": "2023-01-26T21:08:14.080Z",
+    "shippingFees": [],
+    "orderQueues": [
+      {
+        "id": "register queue?-0",
+        "order": 1,
+        "name": "Register Queue?",
+        "_id": "649e0615bca91ecdd16dec23"
+      }
+    ],
+    "__v": 0,
+    "discountStackingMode": "NO_DOUBLE_STACKING",
+    "taxes": [
+      {
+        "name": "Low Testing Cannabis Tax",
+        "amount": 0.1,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "7a4764191c94b677",
+          "b82a59c017ba2274",
+          "1c1fbe5f84e94544",
+          "f15dc0116af8c560"
+        ],
+        "deliveryZones": [],
+        "productThc": {
+          "type": "THC9_THCa",
+          "units": "%",
+          "min": 0,
+          "max": 34.99
+        }
+      },
+      {
+        "name": "High Testing Cannabis Tax",
+        "amount": 0.25,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "7a4764191c94b677",
+          "b82a59c017ba2274",
+          "f15dc0116af8c560",
+          "1c1fbe5f84e94544"
+        ],
+        "deliveryZones": [],
+        "productThc": {
+          "type": "THC9_THCa",
+          "units": "%",
+          "min": 35,
+          "max": 100
+        }
+      },
+      {
+        "name": "Infused Cannabis Tax",
+        "amount": 0.2,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "74dbc2c214f7d777",
+          "c73a145f4961a7a7",
+          "b9bf8db9f9c33a21",
+          "055ab8aaa893bbf0"
+        ],
+        "deliveryZones": []
+      },
+      {
+        "name": "CD1 Home Rule Tax",
+        "amount": 0.0125,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "7a4764191c94b677",
+          "b82a59c017ba2274",
+          "f15dc0116af8c560",
+          "1c1fbe5f84e94544",
+          "74dbc2c214f7d777",
+          "c73a145f4961a7a7",
+          "b9bf8db9f9c33a21",
+          "055ab8aaa893bbf0",
+          "7a3b79eab25c51b5",
+          "c314411dd30454ab"
+        ],
+        "deliveryZones": []
+      },
+      {
+        "name": "County Cannabis Tax",
+        "amount": 0.03,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "7a4764191c94b677",
+          "b82a59c017ba2274",
+          "f15dc0116af8c560",
+          "1c1fbe5f84e94544",
+          "74dbc2c214f7d777",
+          "c73a145f4961a7a7",
+          "b9bf8db9f9c33a21",
+          "055ab8aaa893bbf0"
+        ],
+        "deliveryZones": []
+      },
+      {
+        "name": "Municipal Cannabis Tax",
+        "amount": 0.03,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "7a4764191c94b677",
+          "b82a59c017ba2274",
+          "1c1fbe5f84e94544",
+          "f15dc0116af8c560",
+          "74dbc2c214f7d777",
+          "c73a145f4961a7a7",
+          "b9bf8db9f9c33a21",
+          "055ab8aaa893bbf0"
+        ],
+        "deliveryZones": []
+      },
+      {
+        "name": "RTA Tax",
+        "amount": 0.01,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "7a4764191c94b677",
+          "b82a59c017ba2274",
+          "f15dc0116af8c560",
+          "1c1fbe5f84e94544",
+          "74dbc2c214f7d777",
+          "c73a145f4961a7a7",
+          "b9bf8db9f9c33a21",
+          "055ab8aaa893bbf0",
+          "7a3b79eab25c51b5",
+          "c314411dd30454ab"
+        ],
+        "deliveryZones": [],
+        "productThc": null
+      },
+      {
+        "name": "State Tax",
+        "amount": 0.0625,
+        "value": 0,
+        "taxable": false,
+        "grossTax": false,
+        "productTypes": [],
+        "productCategories": [
+          "7a4764191c94b677",
+          "b82a59c017ba2274",
+          "f15dc0116af8c560",
+          "1c1fbe5f84e94544",
+          "74dbc2c214f7d777",
+          "c73a145f4961a7a7",
+          "b9bf8db9f9c33a21",
+          "055ab8aaa893bbf0",
+          "7a3b79eab25c51b5",
+          "c314411dd30454ab"
+        ],
+        "deliveryZones": [],
+        "productThc": null
+      }
+    ],
+    "orderPickUpCurbsidePickUpTimeShutoffEnabled": true,
+    "orderPickUpDeliveryPickUpTimeShutoffEnabled": true,
+    "orderPickUpDriveThroughPickUpTimeShutoffEnabled": true,
+    "orderPickUpInStorePickUpTimeShutoffEnabled": true,
+    "productCategoryConfigs": [
+      {
+        "type": "FLOWER",
+        "name": "Flower",
+        "slug": "flower",
+        "imageUrl": "https://dispense-images.imgix.net/742841f0-2701-11ee-9559-b509e4dddd72.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-flower.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411b5",
+        "id": "66734b85f4bfac12d04411b5"
+      },
+      {
+        "type": "PRE_ROLLS",
+        "name": "Pre Rolls",
+        "slug": "pre-rolls",
+        "imageUrl": "https://dispense-images.imgix.net/76b83ba0-2701-11ee-b861-dfc667089b97.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-preroll.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411b6",
+        "id": "66734b85f4bfac12d04411b6"
+      },
+      {
+        "type": "VAPORIZERS",
+        "name": "Vapes",
+        "slug": "vapes",
+        "imageUrl": "https://dispense-images.imgix.net/7b2029a0-2701-11ee-be22-91c95633bdac.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-vaporizer.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411b7",
+        "id": "66734b85f4bfac12d04411b7"
+      },
+      {
+        "type": "CONCENTRATES",
+        "name": "Concentrates",
+        "slug": "concentrates",
+        "imageUrl": "https://dispense-images.imgix.net/7f4a4b50-2701-11ee-adf0-ff59c15cd83f.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-concentrate.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411b8",
+        "id": "66734b85f4bfac12d04411b8"
+      },
+      {
+        "type": "EDIBLES",
+        "name": "Edibles",
+        "slug": "edibles",
+        "imageUrl": "https://dispense-images.imgix.net/1bf9e660-7e80-11ee-8be4-a597ef052a5c.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-edible.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411b9",
+        "id": "66734b85f4bfac12d04411b9"
+      },
+      {
+        "type": "TINCTURES",
+        "name": "Tinctures",
+        "slug": "tinctures",
+        "imageUrl": "https://dispense-images.imgix.net/1f5ac4a0-7e80-11ee-8009-cf7df7371cb7.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-tincture.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411ba",
+        "id": "66734b85f4bfac12d04411ba"
+      },
+      {
+        "type": "TOPICALS",
+        "name": "Topicals",
+        "slug": "topicals",
+        "imageUrl": "https://dispense-images.imgix.net/223cfd00-7e80-11ee-94a1-3706822b1021.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-topical.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411bb",
+        "id": "66734b85f4bfac12d04411bb"
+      },
+      {
+        "type": "ACCESSORIES",
+        "name": "Accessories",
+        "slug": "accessories",
+        "imageUrl": "https://dispense-images.imgix.net/8db4f000-2701-11ee-b430-7de5ef4fcf47.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-accessories.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411bc",
+        "id": "66734b85f4bfac12d04411bc"
+      },
+      {
+        "type": "BEVERAGES",
+        "name": "Beverages",
+        "slug": "beverages",
+        "imageUrl": "https://dispense-images.imgix.net/ddaa1340-2703-11ee-be22-91c95633bdac.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-beverage.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411bd",
+        "id": "66734b85f4bfac12d04411bd"
+      },
+      {
+        "type": "MERCHANDISE",
+        "name": "Merchandise",
+        "slug": "merchandise",
+        "imageUrl": "https://dispense-images.imgix.net/e5e7e870-2703-11ee-bfd1-6bb392896c94.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-merch.png",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411be",
+        "id": "66734b85f4bfac12d04411be"
+      },
+      {
+        "type": "OFFER",
+        "name": "Offers",
+        "slug": "offers",
+        "imageUrl": "https://dispense-images.imgix.net/25101a30-7e80-11ee-8009-cf7df7371cb7.svg",
+        "defaultProductImage": "",
+        "hidden": false,
+        "_id": "66734b85f4bfac12d04411bf",
+        "id": "66734b85f4bfac12d04411bf"
+      }
+    ],
+    "address": {
+      "number": "1350",
+      "street": "North Orchard Road",
+      "city": "Aurora",
+      "administrativeArea": "IL",
+      "country": "US",
+      "postalCode": "60506",
+      "latitude": 41.7842339,
+      "longitude": -88.3755767,
+      "administrativeAreaDisplay": "Illinois"
+    },
+    "website": "https://www.auralightdispensary.com",
+    "enableCustomFonts": false,
+    "enableGoogleFonts": true,
+    "showAgeGate": true,
+    "autoPrintOrderStatus": "CONFIRMED",
+    "orderPickUpDriveThroughPickUpTimeRequired": false,
+    "orderTerms": "By using our service, you agree to AuraLight's Terms of Service and Privacy Policy.",
+    "fontsCustomBody": [],
+    "fontsCustomNumbers": [],
+    "fontsGoogleBody": [
+      {
+        "family": "Quicksand",
+        "variants": [
+          "600"
+        ],
+        "_id": "6648fc3e23541110beafa0c3",
+        "id": "6648fc3e23541110beafa0c3"
+      }
+    ],
+    "fontsGoogleNumbers": [
+      {
+        "family": "Montserrat",
+        "variants": [
+          "700"
+        ],
+        "_id": "6648fc8a3e67c0cbcb422bf4",
+        "id": "6648fc8a3e67c0cbcb422bf4"
+      }
+    ],
+    "orderPaymentTypesDriveThrough": [],
+    "menuFiles": [],
+    "phone": "+1 331 249 8900",
+    "orderAfterHoursEnabled": true,
+    "loyaltyTerms": "I consent to signup for the {{name}} rewards program where I will receive marketing communications. By doing so, I understand that I am allowing {{name}} and it's technology provider(s) to retain my personal contact details/ engagement history for use in personalized marketing. Opt out at any time by replying \"STOP\" to messages. Standard message and calling rates may apply.",
+    "posType": "LEAF_LOGIX",
+    "seoMenuUrl": "https://www.auralightdispensary.com/shop",
+    "favicon": "https://dispense-images.imgix.net/45f0e5d0-2701-11ee-9422-632d79c711bd.png",
+    "logo": "https://imgix.dispenseapp.com/97b62ce0-6b02-11ef-8b87-5ff24604ee56.png",
+    "logoLight": "https://imgix.dispenseapp.com/06b7fdd0-6b03-11ef-8f98-958781b8c787.png",
+    "logoSquare": "https://dispense-images.imgix.net/20dc1230-2704-11ee-be22-91c95633bdac.png",
+    "logoSquareLight": "https://dispense-images.imgix.net/3e194c80-2701-11ee-be22-91c95633bdac.png",
+    "requirePhoneKiosk": false,
+    "enableProductCatalog": false,
+    "externalSubscription": {
+      "externalSubscriptionInterval": 1,
+      "externalSubscriptionIntervalUnit": "months",
+      "externalSubscriptionSalesPersonName": "",
+      "externalSubscriptionExpiresAt": null,
+      "externalSubscriptionPlanCode": "MNTHBASC",
+      "externalSubscriptionPlanName": "$250 Monthly",
+      "externalSubscriptionPlanPrice": 250,
+      "externalSubscriptionStatus": "future"
+    },
+    "externalSubscriptionId": "2445331000002171333",
+    "subscriptionStatus": "FUTURE",
+    "hideClosedMessage": true,
+    "loyaltyOptInHeader": "Join our Aura Rewards program and earn 1 orb for every $1",
+    "loyaltyOptInText": "Sign up now and be automatically enrolled in the Sapphire Tier. When you shop with AuraLight, you will earn Orbs. As you collect Orbs, you can redeem them for discounts on your purchase, get a free accessory, or some AuraLight swag!",
+    "menuJSXHeader": "<div style={{ background: \"#000000\" }}> \n  <NavContainer> \n    <div style={{ display: \"flex\", flexDirection: \"row\" }}> \n      <StoreWebsiteLink style={{ padding: \"10px\" }}> \n        <StoreLogo \n          style={{ height: \"100px\" }} \n            logo={store.logoLight} \n          logoSquare={store.logoSquareLight} \n        /> \n      </StoreWebsiteLink> \n      <div \n        style={{ \n          display: \"flex\", \n          flexDirection: \"row\", \n        }} \n      > \n        <StoreRecMedDropdown></StoreRecMedDropdown> \n      </div> \n    </div> \n  </NavContainer> \n</div>",
+    "currentOrderQueue": "register queue?-0",
+    "requireDOBKiosk": true,
+    "hideOrderTypeModal": true,
+    "chat": {
+      "enable": true,
+      "enableAutoProductRecommendations": false,
+      "enableAutoSupportResponses": false,
+      "enableHumanMonitoredChat": true,
+      "productRecommendationBrands": [
+        "Wana",
+        "NEZ",
+        "Tales & Travels",
+        "BG",
+        "Daze Off"
+      ]
+    },
+    "productCategoryCounts": {
+      "FLOWER": 106,
+      "PRE_ROLLS": 63,
+      "VAPORIZERS": 83,
+      "CONCENTRATES": 28,
+      "EDIBLES": 94,
+      "TINCTURES": 1,
+      "TOPICALS": 1,
+      "ACCESSORIES": 113,
+      "BEVERAGES": 21,
+      "MERCHANDISE": 14,
+      "OFFER": 1
+    },
+    "productCategories": [
+      {
+        "productCategory": "100673ec33243c87",
+        "type": "CUSTOM",
+        "name": "20% Off Blazy Susan Products",
+        "description": "Save on all Blazy Susan accessories!",
+        "slug": "20-off-blazy-susan-products",
+        "order": 18,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2c4",
+        "id": "6ad18b543458604a3f10e2c4"
+      },
+      {
+        "productCategory": "2de736205fc59672",
+        "type": "CUSTOM",
+        "name": "High Supply Flower & Popcorn Deals!",
+        "description": "Save on all High Supply Flower & Popcorn!",
+        "slug": "high-supply-flower-and-popcorn-deals",
+        "order": 42,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2c5",
+        "id": "6ad18b543458604a3f10e2c5"
+      },
+      {
+        "productCategory": "abb4f4d26c8f58c3",
+        "type": "CUSTOM",
+        "name": "Aeriz & UpNorth Pre-roll 5pks - $25 Each!",
+        "description": "Save on all Aeriz & UpNorth Pre-roll 5pks!",
+        "slug": "aeriz-and-upnorth-pre-roll-5pks-25-each",
+        "order": 41,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2c6",
+        "id": "6ad18b543458604a3f10e2c6"
+      },
+      {
+        "productCategory": "d8c502fb6c852beb",
+        "type": "CUSTOM",
+        "name": "High Supply Pre-roll 5pks - $20 Each!",
+        "description": "High Supply Pre-roll 5pks - $20 Each!",
+        "slug": "high-supply-pre-roll-5pks-20-each",
+        "order": 40,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2c7",
+        "id": "6ad18b543458604a3f10e2c7"
+      },
+      {
+        "productCategory": "2e02f5f15284884e",
+        "type": "CUSTOM",
+        "name": "KIVA Lost Farm Edibles - $20 Each!",
+        "description": "Save on KIVA Lost Farm Gummies & Chews!",
+        "slug": "kiva-lost-farm-edibles-20-each",
+        "order": 38,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2c8",
+        "id": "6ad18b543458604a3f10e2c8"
+      },
+      {
+        "productCategory": "b5f4f9ac2d3bad75",
+        "type": "CUSTOM",
+        "name": "Daze Off Gummy 10pks - $12 Each",
+        "description": "Save on Daze Off Gummy 10pks! (Excludes the 100mg Hundo Gummies)",
+        "slug": "daze-off-gummy-10pks-12-each",
+        "order": 37,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2c9",
+        "id": "6ad18b543458604a3f10e2c9"
+      },
+      {
+        "productCategory": "5c854b83795b0d0c",
+        "type": "CUSTOM",
+        "name": "Tales & Travels Flower Deals!",
+        "description": "Save on Tales & Travels Flower & Popcorn. 28g as low as $125 & more!",
+        "slug": "tales-and-travels-flower-deals",
+        "order": 24,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ca",
+        "id": "6ad18b543458604a3f10e2ca"
+      },
+      {
+        "productCategory": "bdfbc5f2e0d41620",
+        "type": "CUSTOM",
+        "name": "Tales & Travels Pre Roll 7pks - $25 Each",
+        "description": "Quality Pre Rolls for a great price!",
+        "slug": "tales-and-travels-pre-roll-7pks-25-each",
+        "order": 23,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2cb",
+        "id": "6ad18b543458604a3f10e2cb"
+      },
+      {
+        "productCategory": "ccba4c76533f1ac9",
+        "type": "CUSTOM",
+        "name": "Daze Off Gummies 10pks - 2 for $30",
+        "description": "Daze Off Gummies 10pks - 2 for $30",
+        "slug": "daze-off-gummies-10pks-2-for-30",
+        "order": 75,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": false,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2cc",
+        "id": "6ad18b543458604a3f10e2cc"
+      },
+      {
+        "productCategory": "4a4a8dafebbc2c86",
+        "type": "CUSTOM",
+        "name": "Super Funnies Macro Gummy 2pks - 5 for $40",
+        "description": "Super Funnies Macro Gummy 2pks - 5 for $40",
+        "slug": "super-funnies-macro-gummy-2pks-5-for-40",
+        "order": 74,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": false,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2cd",
+        "id": "6ad18b543458604a3f10e2cd"
+      },
+      {
+        "productCategory": "aa077b6678a7a874",
+        "type": "CUSTOM",
+        "name": "Buy any IC Collective Flower, Concentrate, or Vape product to get a 1g Pre Roll for $0.01!",
+        "description": "Limit 1 per customer, while supplies last",
+        "slug": "buy-any-ic-collective-flower-concentrate-or-vape-product-to-get-a-1g-pre-roll-for-001",
+        "order": 47,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ce",
+        "id": "6ad18b543458604a3f10e2ce"
+      },
+      {
+        "productCategory": "c4a8b0e3b210daec",
+        "type": "CUSTOM",
+        "name": "Super Funnies Macro 2pk Gummies - 3 for $25",
+        "description": "Super Funnies Macro 2pk Gummies - 3 for $25",
+        "slug": "super-funnies-macro-2pk-gummies-3-for-25",
+        "order": 20,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2cf",
+        "id": "6ad18b543458604a3f10e2cf"
+      },
+      {
+        "productCategory": "eac38abd0677aaa0",
+        "type": "CUSTOM",
+        "name": "Buy 2 Select 1g Cartridges to get a 3rd for $0.01!",
+        "description": "Penny items are pre-determined and redeemed at checkout. Limit 1 per customer, while supplies last.",
+        "slug": "buy-2-select-1g-cartridges-to-get-a-3rd-for-001",
+        "order": 70,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d0",
+        "id": "6ad18b543458604a3f10e2d0"
+      },
+      {
+        "productCategory": "d74a0fb799db9c28",
+        "type": "CUSTOM",
+        "name": "Buy 2 Wana Gummies to get a 3rd for $0.01!",
+        "description": "Penny items are pre-determined and redeemed at checkout. Limit 1 per customer, while supplies last.",
+        "slug": "buy-2-wana-gummies-to-get-a-3rd-for-001",
+        "order": 69,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d1",
+        "id": "6ad18b543458604a3f10e2d1"
+      },
+      {
+        "productCategory": "54ebb59a12399256",
+        "type": "CUSTOM",
+        "name": "Arbor 1g Pre Rolls - 4 for $25",
+        "description": "Mix & Match Any 4 Arbor 1g Pre Rolls for $25",
+        "slug": "arbor-1g-pre-rolls-4-for-25",
+        "order": 22,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d2",
+        "id": "6ad18b543458604a3f10e2d2"
+      },
+      {
+        "productCategory": "84c6f7a4e9a854d9",
+        "type": "CUSTOM",
+        "name": "Buy 2 Joos Vape Products to get a 0.5g Cart for $0.01!",
+        "description": "Limit 1 per customer, while supplies last",
+        "slug": "buy-2-joos-vape-products-to-get-a-05g-cart-for-001",
+        "order": 46,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d3",
+        "id": "6ad18b543458604a3f10e2d3"
+      },
+      {
+        "productCategory": "9d7b38a22e7aa9ab",
+        "type": "CUSTOM",
+        "name": "30% Off PTS Brands",
+        "description": "Save on Tonic, Paul Bunyun, Goody Bag, Mozey, The Antidote, Pure Essentials, & Front Porch Products!",
+        "slug": "30-off-pts-brands",
+        "order": 32,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d4",
+        "id": "6ad18b543458604a3f10e2d4"
+      },
+      {
+        "productCategory": "f697b7624833ac61",
+        "type": "CUSTOM",
+        "name": "Redemption & IC Collective Pre-roll Packs - $35 Each",
+        "description": "Save on Redemption 5pk & IC Collective 4pk Pre-rolls!",
+        "slug": "redemption-and-ic-collective-pre-roll-packs-35-each",
+        "order": 52,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d5",
+        "id": "6ad18b543458604a3f10e2d5"
+      },
+      {
+        "productCategory": "58e43263d778420a",
+        "type": "CUSTOM",
+        "name": "Anthem Pre-rolls - Infused 1g $15 Each, Infused 5pks $30 Each, & Uninfused 10pks $25 Each!",
+        "description": "Save Big on all Anthem Pre-rolls!",
+        "slug": "anthem-pre-rolls-infused-1g-15-each-infused-5pks-30-each-and-uninfused-10pks-25-each",
+        "order": 21,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d6",
+        "id": "6ad18b543458604a3f10e2d6"
+      },
+      {
+        "productCategory": "3913c22cca9c441b",
+        "type": "CUSTOM",
+        "name": "Jeeter Infused Pre-Rolls - 1g for $20, 2g for $35, & 5 Packs for $40",
+        "description": "#1 Pre-Rolls in the WORLD!",
+        "slug": "jeeter-infused-pre-rolls-1g-for-20-2g-for-35-and-5-packs-for-40",
+        "order": 39,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d7",
+        "id": "6ad18b543458604a3f10e2d7"
+      },
+      {
+        "productCategory": "e44311b7591b799f",
+        "type": "CUSTOM",
+        "name": "20% Off Jeeter Products",
+        "description": "Save on the #1 Pre-Rolls in the World!",
+        "slug": "20-off-jeeter-products",
+        "order": 14,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d8",
+        "id": "6ad18b543458604a3f10e2d8"
+      },
+      {
+        "productCategory": "f1da0c9cb2853451",
+        "type": "CUSTOM",
+        "name": "Craft Grower SpotLight!",
+        "description": "Includes NEZ, Otherside, Flora, Khalifa Kush, Zip, Arbor, Redemption, IC Collective, Flow State, & Skyy Products!",
+        "slug": "craft-grower-spotlight",
+        "order": 1,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2d9",
+        "id": "6ad18b543458604a3f10e2d9"
+      },
+      {
+        "productCategory": "62f55992205770cd",
+        "type": "CUSTOM",
+        "name": "Skyy 2g Cartridges & Disposables - $50 Each, 2 for $90",
+        "description": "Buy Any Skyy 2g Vape for $50, Mix & Match 2 for $90!",
+        "slug": "skyy-2g-cartridges-and-disposables-50-each-2-for-90",
+        "order": 45,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2da",
+        "id": "6ad18b543458604a3f10e2da"
+      },
+      {
+        "productCategory": "4ea4e2658398bb67",
+        "type": "CUSTOM",
+        "name": "Cresco Live Resin 1g Carts - $50 Each, 2 for $90",
+        "description": "Buy Any Cresco Live Resin 1g Cart for $50 or Buy 2 for $90!",
+        "slug": "cresco-live-resin-1g-carts-50-each-2-for-90",
+        "order": 44,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2db",
+        "id": "6ad18b543458604a3f10e2db"
+      },
+      {
+        "productCategory": "3f96319287f9fc7c",
+        "type": "CUSTOM",
+        "name": "Aeriz & UpNorth 5pk Pre-Rolls - 2 for $45",
+        "description": "Mix & Match Any 2 Aeriz & UpNorth 5pk Pre-rolls for $45!",
+        "slug": "aeriz-and-upnorth-5pk-pre-rolls-2-for-45",
+        "order": 51,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2dc",
+        "id": "6ad18b543458604a3f10e2dc"
+      },
+      {
+        "productCategory": "1a1037ac3fad8a4d",
+        "type": "CUSTOM",
+        "name": "25% Off Rove Brands",
+        "description": "Save on Rove & Drink Loud Products!",
+        "slug": "25-off-rove-brands",
+        "order": 10,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2dd",
+        "id": "6ad18b543458604a3f10e2dd"
+      },
+      {
+        "productCategory": "ce0cf4b832afc123",
+        "type": "CUSTOM",
+        "name": "30% Off Echelon Grow Brands",
+        "description": "Save on Flow State, Seed Junky, & Darby's Doobies Products!",
+        "slug": "30-off-echelon-grow-brands",
+        "order": 8,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2de",
+        "id": "6ad18b543458604a3f10e2de"
+      },
+      {
+        "productCategory": "6760ebef2a7add92",
+        "type": "CUSTOM",
+        "name": "30% Off ReaLeaf Brands",
+        "description": "Save on Fyre, Rayne, & Skyy Products!",
+        "slug": "30-off-realeaf-brands",
+        "order": 6,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2df",
+        "id": "6ad18b543458604a3f10e2df"
+      },
+      {
+        "productCategory": "83da9feec4b6f583",
+        "type": "CUSTOM",
+        "name": "30% Off Fernway Products",
+        "description": "Save on Fernway Products!",
+        "slug": "30-off-fernway-products",
+        "order": 2,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e0",
+        "id": "6ad18b543458604a3f10e2e0"
+      },
+      {
+        "productCategory": "06deff73106c46c2",
+        "type": "CUSTOM",
+        "name": "20% Off Gron Products",
+        "description": "Save on Gron Products!",
+        "slug": "20-off-gron-products",
+        "order": 17,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e1",
+        "id": "6ad18b543458604a3f10e2e1"
+      },
+      {
+        "productCategory": "06fb49e2c6081c60",
+        "type": "CUSTOM",
+        "name": "30% Off Redemption Brands",
+        "description": "Save on Redemption Redemption Botanicals, Dr. Greenthumb, Beezle, DNA Genetics, Preferred Gardens, & RARE Extracts!",
+        "slug": "30-off-redemption-brands",
+        "order": 33,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e2",
+        "id": "6ad18b543458604a3f10e2e2"
+      },
+      {
+        "productCategory": "f7050d2d493180ea",
+        "type": "CUSTOM",
+        "name": "Labor Day Weekend Savings - Shop up to 40% Off!",
+        "description": "",
+        "slug": "labor-day-weekend-savings-shop-up-to-40-off",
+        "order": 73,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e3",
+        "id": "6ad18b543458604a3f10e2e3"
+      },
+      {
+        "productCategory": "a25337eed987959d",
+        "type": "CUSTOM",
+        "name": "25% Off AiroPro & Drecisco Brands",
+        "description": "Save on AiroPro & Drecisco Brands!",
+        "slug": "25-off-airopro-and-drecisco-brands",
+        "order": 13,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e4",
+        "id": "6ad18b543458604a3f10e2e4"
+      },
+      {
+        "productCategory": "1d97f1dd110ec15b",
+        "type": "CUSTOM",
+        "name": "25% Off Flora, Khalifa Kush, Zip, Gasolina, & Arbor Brands",
+        "description": "Save on  Flora, Khalifa Kush, Zip, Gasolina, & Arbor  Products!",
+        "slug": "25-off-flora-khalifa-kush-zip-gasolina-and-arbor-brands",
+        "order": 9,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e5",
+        "id": "6ad18b543458604a3f10e2e5"
+      },
+      {
+        "productCategory": "4d1fceee9884f0bf",
+        "type": "CUSTOM",
+        "name": "Daze Off & 93 Boyz 1g Vape Carts - $30 each, 2 for $55",
+        "description": "Daze Off & 93 Boyz 1g Vape Carts - $30 each, 2 for $55",
+        "slug": "daze-off-and-93-boyz-1g-vape-carts-30-each-2-for-55",
+        "order": 43,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e6",
+        "id": "6ad18b543458604a3f10e2e6"
+      },
+      {
+        "productCategory": "07f56db78e88b239",
+        "type": "CUSTOM",
+        "name": "Select Briq 2g Vapes - $50 each, 2 for $85",
+        "description": "Select Briq 2g Vapes - $50 each, 2 for $85",
+        "slug": "select-briq-2g-vapes-50-each-2-for-85",
+        "order": 27,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e7",
+        "id": "6ad18b543458604a3f10e2e7"
+      },
+      {
+        "productCategory": "2a63a976a86c9810",
+        "type": "CUSTOM",
+        "name": "Select Vape Essentials 1g Carts - $30 Each, 2 for $55",
+        "description": "Select Vape Essentials 1g Carts - $30 Each, 2 for $55",
+        "slug": "select-vape-essentials-1g-carts-30-each-2-for-55",
+        "order": 25,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e8",
+        "id": "6ad18b543458604a3f10e2e8"
+      },
+      {
+        "productCategory": "5cfcb14cc49cc905",
+        "type": "CUSTOM",
+        "name": "25% Off Elevated Organics Brands",
+        "description": "Save on Hijinx & Snackbar Products!",
+        "slug": "25-off-elevated-organics-brands",
+        "order": 12,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2e9",
+        "id": "6ad18b543458604a3f10e2e9"
+      },
+      {
+        "productCategory": "cbf3364d7bbc26f7",
+        "type": "CUSTOM",
+        "name": "30% Off IC Collective Products",
+        "description": "Save on IC Collective Products!",
+        "slug": "30-off-ic-collective-products",
+        "order": 34,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ea",
+        "id": "6ad18b543458604a3f10e2ea"
+      },
+      {
+        "productCategory": "fbd5840e7257f025",
+        "type": "CUSTOM",
+        "name": "Daze Off Gummies - 2 for $30",
+        "description": "Daze Off Gummies - 2 for $30",
+        "slug": "daze-off-gummies-2-for-30",
+        "order": 48,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2eb",
+        "id": "6ad18b543458604a3f10e2eb"
+      },
+      {
+        "productCategory": "67255c5993d29a16",
+        "type": "CUSTOM",
+        "name": "KIVA Lost Farm Edibles - 2 for $35",
+        "description": "KIVA Lost Farm Edibles - 2 for $35",
+        "slug": "kiva-lost-farm-edibles-2-for-35",
+        "order": 49,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ec",
+        "id": "6ad18b543458604a3f10e2ec"
+      },
+      {
+        "productCategory": "071456018686b380",
+        "type": "CUSTOM",
+        "name": "High Supply Pre-Rolls 5pk - 2 for $40",
+        "description": "High Supply Pre-Rolls 5pk - 2 for $45 (Excludes Infused Pre-Rolls)",
+        "slug": "high-supply-pre-rolls-5pk-2-for-40",
+        "order": 50,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ed",
+        "id": "6ad18b543458604a3f10e2ed"
+      },
+      {
+        "productCategory": "75824478e331e634",
+        "type": "CUSTOM",
+        "name": "Tales & Travels 1g Vapes - $35 each, 2 for $65",
+        "description": "Tales & Travels 1g Vapes - $35 each, 2 for $65",
+        "slug": "tales-and-travels-1g-vapes-35-each-2-for-65",
+        "order": 26,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ee",
+        "id": "6ad18b543458604a3f10e2ee"
+      },
+      {
+        "productCategory": "3b8c1e71b5df1f53",
+        "type": "CUSTOM",
+        "name": "20% Off Wyld & Good Tide Brands",
+        "description": "Save on Wyld & Goodtide Products!",
+        "slug": "20-off-wyld-and-good-tide-brands",
+        "order": 16,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ef",
+        "id": "6ad18b543458604a3f10e2ef"
+      },
+      {
+        "productCategory": "1a67b5d3cc0a27c5",
+        "type": "CUSTOM",
+        "name": "X% Off for Y #3",
+        "description": "Includes",
+        "slug": "x-off-for-y-3",
+        "order": 72,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f0",
+        "id": "6ad18b543458604a3f10e2f0"
+      },
+      {
+        "productCategory": "c236cb32cb6caba0",
+        "type": "CUSTOM",
+        "name": "Popular - Best Sellers (Trial)",
+        "slug": "popular-best-sellers-trial",
+        "order": 71,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": false,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f1",
+        "id": "6ad18b543458604a3f10e2f1"
+      },
+      {
+        "productCategory": "bff6d36b0689f92a",
+        "type": "CUSTOM",
+        "name": "30% Off Verano Brands",
+        "description": "Save on Verano, Savvy, Encore, (the) Essence, & Avexia Products!",
+        "slug": "30-off-verano-brands",
+        "order": 7,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f2",
+        "id": "6ad18b543458604a3f10e2f2"
+      },
+      {
+        "productCategory": "b123d01570ce5860",
+        "type": "CUSTOM",
+        "name": "30% Off Ascend Brands",
+        "description": "Save on Ozone, Honor Roll, Simply Herb, 1906, High Wired, & Lowell Products!",
+        "slug": "30-off-ascend-brands",
+        "order": 31,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f3",
+        "id": "6ad18b543458604a3f10e2f3"
+      },
+      {
+        "productCategory": "261373441115c21c",
+        "type": "CUSTOM",
+        "name": "20% Off NEZ & Otherside Brands",
+        "description": "Save on NEZ & Otherside Products!",
+        "slug": "20-off-nez-and-otherside-brands",
+        "order": 15,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f4",
+        "id": "6ad18b543458604a3f10e2f4"
+      },
+      {
+        "productCategory": "60259c6f5f6f6ac4",
+        "type": "CUSTOM",
+        "name": "Wana Gummies - 2 for $32",
+        "description": "Wana Gummies - 2 for $32",
+        "slug": "wana-gummies-2-for-32",
+        "order": 19,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f5",
+        "id": "6ad18b543458604a3f10e2f5"
+      },
+      {
+        "productCategory": "6e0b15637f3ac166",
+        "type": "CUSTOM",
+        "name": "30% Off Grassroots Brands",
+        "description": "Save on Wana, Select, Grassroots, Find, Anthem, & Jams Products!",
+        "slug": "30-off-grassroots-brands",
+        "order": 28,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f6",
+        "id": "6ad18b543458604a3f10e2f6"
+      },
+      {
+        "productCategory": "c468df741a633223",
+        "type": "CUSTOM",
+        "name": "Saucy Saturday - 20% Off All Vapes",
+        "description": "Save 20% on all your favorite vapes!",
+        "slug": "saucy-saturday-20-off-all-vapes",
+        "order": 57,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad2e7245d5f68893c4cf300",
+        "id": "6ad2e7245d5f68893c4cf300"
+      },
+      {
+        "productCategory": "ee87b4c7b8d464d4",
+        "type": "CUSTOM",
+        "name": "30% Off In Grown Farms Brands",
+        "description": "Save on The Botanist & Superflux Products!",
+        "slug": "30-off-in-grown-farms-brands",
+        "order": 5,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f8",
+        "id": "6ad18b543458604a3f10e2f8"
+      },
+      {
+        "productCategory": "2c2c04d7d8b1146c",
+        "type": "CUSTOM",
+        "name": "25% Off Journeyman & Contract Canna Brands",
+        "description": "Save on Journeyman, CQ, Keef, Nuvata, Generic, Dibz, & Breez Products!",
+        "slug": "25-off-journeyman-and-contract-canna-brands",
+        "order": 35,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2f9",
+        "id": "6ad18b543458604a3f10e2f9"
+      },
+      {
+        "productCategory": "d419bb70da1fc466",
+        "type": "CUSTOM",
+        "name": "30% Off Nature's Grace Brands",
+        "description": "Save on Joos, Kaleido Smokes, Moon Walker, Nature's Grace, Funnies, Slims, & Twenty-Twenty Products!",
+        "slug": "30-off-natures-grace-brands",
+        "order": 30,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2fa",
+        "id": "6ad18b543458604a3f10e2fa"
+      },
+      {
+        "productCategory": "12871123012c3b97",
+        "type": "CUSTOM",
+        "name": "25% Off GTI Brands",
+        "description": "Save on Dogwalkers, Rythm, Good Green, &Shine, Incredibles, & Uncle Arnie's Products!",
+        "slug": "25-off-gti-brands",
+        "order": 36,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2fb",
+        "id": "6ad18b543458604a3f10e2fb"
+      },
+      {
+        "productCategory": "c63a5dc7ca7b6a2c",
+        "type": "CUSTOM",
+        "name": "25% Off Bedford Grow Brands",
+        "description": "Save on Bedford Grow, Lula's, & Dabstract Products!",
+        "slug": "25-off-bedford-grow-brands",
+        "order": 11,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2fc",
+        "id": "6ad18b543458604a3f10e2fc"
+      },
+      {
+        "productCategory": "5d10c0604014659d",
+        "type": "CUSTOM",
+        "name": "30% Off Aeriz Brands",
+        "description": "Save on Aeriz, Daze Off, 93 Boyz, Cookies, UpNorth, & Fig Farms Products!",
+        "slug": "30-off-aeriz-brands",
+        "order": 4,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2fd",
+        "id": "6ad18b543458604a3f10e2fd"
+      },
+      {
+        "productCategory": "dc4bd36ad89b9ec0",
+        "type": "CUSTOM",
+        "name": "30% Off Cresco Brands",
+        "description": "Save on Cresco, High Supply, Good News, KIVA, Lost Farm, Camino, Wonder Wellness, FloraCal, & Mindy's Products!",
+        "slug": "30-off-cresco-brands",
+        "order": 3,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2fe",
+        "id": "6ad18b543458604a3f10e2fe"
+      },
+      {
+        "productCategory": "2ebea4b27c0afc95",
+        "type": "CUSTOM",
+        "name": "30% Off Revolution Brands",
+        "description": "Save on Revolution & Tales & Travels Products!",
+        "slug": "30-off-revolution-brands",
+        "order": 29,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e2ff",
+        "id": "6ad18b543458604a3f10e2ff"
+      },
+      {
+        "productCategory": "34e3478b2d058a00",
+        "type": "OFFERS",
+        "name": "Deals",
+        "slug": "deals",
+        "order": 58,
+        "iconImage": "https://imgix.dispenseapp.com/927b8010-630c-11f0-9567-bd5da3b405d1.png",
+        "showHomeIcon": true,
+        "showHomeList": false,
+        "enable": true,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e300",
+        "id": "6ad18b543458604a3f10e300"
+      },
+      {
+        "productCategory": "3d77c4a398a3b8fd",
+        "type": "CUSTOM",
+        "name": "Tuesday Treats - 20% Off All Edibles",
+        "description": "Save 20% on all your favorite edibles!",
+        "slug": "tuesday-treats-20-off-all-edibles",
+        "order": 53,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e301",
+        "id": "6ad18b543458604a3f10e301"
+      },
+      {
+        "productCategory": "a726a16805ed5192",
+        "type": "CUSTOM",
+        "name": "Flower Friday - 20% Off All Flower",
+        "description": "Save 20% on all your favorite flower strains!",
+        "slug": "flower-friday-20-off-all-flower",
+        "order": 56,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad2e7223458604a3f6b9bad",
+        "id": "6ad2e7223458604a3f6b9bad"
+      },
+      {
+        "productCategory": "84896aa8f393f3d4",
+        "type": "CUSTOM",
+        "name": "Thirsty Thursday - 20% Off All Beverages",
+        "description": "Save 20% on all your favorite beverages!",
+        "slug": "thirsty-thursday-20-off-all-beverages",
+        "order": 55,
+        "defaultProductQuantityThreshold": 0,
+        "showHomeIcon": false,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b7283494ba0a01560f4",
+        "id": "6ad18b7283494ba0a01560f4"
+      },
+      {
+        "productCategory": "0a24e25bae3c0f46",
+        "type": "CUSTOM",
+        "name": "Wax Wednesday - 20% Off All Concentrates",
+        "description": "Save 20% on all your favorite concentrates!",
+        "slug": "wax-wednesday-20-off-all-concentrates",
+        "order": 54,
+        "showHomeList": true,
+        "enable": false,
+        "posMappings": [],
+        "_id": "6ad18b543458604a3f10e304",
+        "id": "6ad18b543458604a3f10e304"
+      },
+      {
+        "productCategory": "c314411dd30454ab",
+        "type": "SYSTEM",
+        "name": "Apparel",
+        "slug": "apparel",
+        "order": 68,
+        "iconImage": "https://dispense-images.imgix.net/e5e7e870-2703-11ee-bfd1-6bb392896c94.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-merch.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "MERCHANDISE",
+        "posMappings": [
+          "Shirts",
+          "Hats"
+        ],
+        "_id": "6ad18b543458604a3f10e305",
+        "id": "6ad18b543458604a3f10e305"
+      },
+      {
+        "productCategory": "055ab8aaa893bbf0",
+        "type": "SYSTEM",
+        "name": "Beverages",
+        "description": "",
+        "slug": "beverages",
+        "order": 64,
+        "iconImage": "https://imgix.dispenseapp.com/ce3e9d20-630d-11f0-9246-03610d5178dd.png",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-beverage.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "BEVERAGES",
+        "posMappings": [
+          "Beverages"
+        ],
+        "_id": "6ad18b543458604a3f10e306",
+        "id": "6ad18b543458604a3f10e306"
+      },
+      {
+        "productCategory": "7a3b79eab25c51b5",
+        "type": "SYSTEM",
+        "name": "Accessories",
+        "slug": "accessories",
+        "order": 67,
+        "iconImage": "https://dispense-images.imgix.net/8db4f000-2701-11ee-b430-7de5ef4fcf47.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-accessories.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "ACCESSORIES",
+        "posMappings": [
+          "Accessories"
+        ],
+        "_id": "6ad18b543458604a3f10e307",
+        "id": "6ad18b543458604a3f10e307"
+      },
+      {
+        "productCategory": "b9bf8db9f9c33a21",
+        "type": "SYSTEM",
+        "name": "Topicals",
+        "description": "",
+        "slug": "topicals",
+        "order": 66,
+        "iconImage": "https://dispense-images.imgix.net/223cfd00-7e80-11ee-94a1-3706822b1021.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-topical.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "TOPICALS",
+        "posMappings": [
+          "Topicals"
+        ],
+        "_id": "6ad18b543458604a3f10e308",
+        "id": "6ad18b543458604a3f10e308"
+      },
+      {
+        "productCategory": "c73a145f4961a7a7",
+        "type": "SYSTEM",
+        "name": "Tinctures",
+        "description": "",
+        "slug": "tinctures",
+        "order": 65,
+        "iconImage": "https://imgix.dispenseapp.com/c489df60-630d-11f0-8da5-e9b47cfa14f1.png",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-tincture.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "TINCTURES",
+        "posMappings": [
+          "Tinctures"
+        ],
+        "_id": "6ad18b543458604a3f10e309",
+        "id": "6ad18b543458604a3f10e309"
+      },
+      {
+        "productCategory": "74dbc2c214f7d777",
+        "type": "SYSTEM",
+        "name": "Edibles",
+        "description": "",
+        "slug": "edibles",
+        "order": 61,
+        "headerImage": null,
+        "iconImage": "https://imgix.dispenseapp.com/c5bb01d0-630c-11f0-86ab-1b7c6f3c3c55.png",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-edible.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "EDIBLES",
+        "posMappings": [
+          "Edibles"
+        ],
+        "_id": "6ad18b543458604a3f10e30a",
+        "id": "6ad18b543458604a3f10e30a"
+      },
+      {
+        "productCategory": "1c1fbe5f84e94544",
+        "type": "SYSTEM",
+        "name": "Concentrates",
+        "description": "",
+        "slug": "concentrates",
+        "order": 63,
+        "iconImage": "https://dispense-images.imgix.net/7f4a4b50-2701-11ee-adf0-ff59c15cd83f.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-concentrate.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "CONCENTRATES",
+        "posMappings": [
+          "Concentrates"
+        ],
+        "_id": "6ad18b543458604a3f10e30b",
+        "id": "6ad18b543458604a3f10e30b"
+      },
+      {
+        "productCategory": "f15dc0116af8c560",
+        "type": "SYSTEM",
+        "name": "Vapes",
+        "description": "",
+        "slug": "vapes",
+        "order": 60,
+        "iconImage": "https://dispense-images.imgix.net/7b2029a0-2701-11ee-be22-91c95633bdac.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-vaporizer.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "VAPORIZERS",
+        "posMappings": [
+          "Vapes"
+        ],
+        "_id": "6ad18b543458604a3f10e30c",
+        "id": "6ad18b543458604a3f10e30c"
+      },
+      {
+        "productCategory": "b82a59c017ba2274",
+        "type": "SYSTEM",
+        "name": "Pre Rolls",
+        "description": "",
+        "slug": "pre-rolls",
+        "order": 62,
+        "iconImage": "https://dispense-images.imgix.net/76b83ba0-2701-11ee-b861-dfc667089b97.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-preroll.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "PRE_ROLLS",
+        "posMappings": [
+          "Pre-Rolls"
+        ],
+        "_id": "6ad18b543458604a3f10e30d",
+        "id": "6ad18b543458604a3f10e30d"
+      },
+      {
+        "productCategory": "7a4764191c94b677",
+        "type": "SYSTEM",
+        "name": "Flower",
+        "description": "",
+        "slug": "flower",
+        "order": 59,
+        "iconImage": "https://dispense-images.imgix.net/742841f0-2701-11ee-9559-b509e4dddd72.svg",
+        "defaultProductImage": "https://dispense-images.imgix.net/default-flower.png",
+        "showHomeIcon": true,
+        "showHomeList": true,
+        "enable": true,
+        "cannabisComplianceType": "FLOWER",
+        "posMappings": [
+          "Flower"
+        ],
+        "_id": "6ad18b543458604a3f10e30e",
+        "id": "6ad18b543458604a3f10e30e"
+      }
+    ],
+    "aiqId": "10e8cc17-d20c-49ff-95d4-ae8639693c60",
+    "industryType": "CANNABIS",
+    "seoMenuEnabled": true,
+    "cartUpsell": {
+      "enable": true,
+      "dataSourceWeights": [
+        {
+          "dataSource": "PURCHASE_HISTORY",
+          "order": 1,
+          "_id": "6ab33437cfa0c2d3ceeafcf0",
+          "id": "6ab33437cfa0c2d3ceeafcf0"
+        }
+      ],
+      "purchaseHistoryEnabled": true,
+      "priceEnabled": false,
+      "priceMin": 0,
+      "brandsEnabled": false,
+      "brands": []
+    },
+    "requireEmailKiosk": false,
+    "isOverDue": false,
+    "posCategories": [
+      "Accessories",
+      "Beverages",
+      "Concentrate",
+      "Concentrates",
+      "Edibles",
+      "Flower",
+      "Merchandise",
+      "Pre-Rolls",
+      "Tinctures",
+      "Topicals",
+      "Vapes"
+    ],
+    "flourish": {
+      "syncingInventory": false
+    },
+    "posabit": {
+      "syncingInventory": false
+    },
+    "organizationName": "Aura Light",
+    "meadow": {
+      "syncingInventory": false
+    },
+    "requireAdministrativeArea": true,
+    "requireAdministrativeAreaKiosk": true,
+    "requireDOB": true,
+    "requireId": true,
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -88.3755767,
+        41.7842339
+      ]
+    },
+    "posSyncingInventory": false,
+    "posLastInventorySync": "2026-10-17T09:04:00.897Z",
+    "subscriptionEnabled": true,
+    "kioskTimeout": 30000,
+    "kioskTimer": 60000,
+    "orderPaymentTypesKiosk": [
+      "CASH"
+    ],
+    "branding": {
+      "logos": {
+        "source": "VENUE",
+        "logo": "https://imgix.dispenseapp.com/97b62ce0-6b02-11ef-8b87-5ff24604ee56.png",
+        "logoSquare": "https://dispense-images.imgix.net/20dc1230-2704-11ee-be22-91c95633bdac.png",
+        "logoLight": "https://imgix.dispenseapp.com/06b7fdd0-6b03-11ef-8f98-958781b8c787.png",
+        "logoSquareLight": "https://dispense-images.imgix.net/3e194c80-2701-11ee-be22-91c95633bdac.png",
+        "favicon": "https://dispense-images.imgix.net/45f0e5d0-2701-11ee-9422-632d79c711bd.png"
+      },
+      "colors": {
+        "source": "VENUE",
+        "brandPrimaryColor": "#6262F5",
+        "brandDangerColor": "#D93232",
+        "brandSuccessColor": "#0A803A",
+        "brandTextPrimaryColor": "#080808",
+        "brandTextSecondaryColor": "#626875",
+        "brandBackgroundPrimaryColor": "#FFFFFF",
+        "brandBackgroundSecondaryColor": "#FAFBFC"
+      },
+      "buttons": {
+        "source": "VENUE",
+        "buttonPrimaryColor": "#6262F5",
+        "buttonPrimaryTextColor": "#FFFFFF",
+        "buttonPrimaryBorderColor": "#6262F5",
+        "buttonPrimaryBorderRadius": 100,
+        "buttonSecondaryColor": "#FFFFFF",
+        "buttonSecondaryTextColor": "#080808",
+        "buttonSecondaryBorderColor": "#E2E6ED",
+        "buttonSecondaryBorderRadius": 100,
+        "loyaltyColor": "#2558BC",
+        "loyaltyTextColor": "#FFFFFF",
+        "loyaltyBorderColor": "#6262F5",
+        "loyaltyBorderRadius": 100
+      },
+      "forms": {
+        "source": "VENUE",
+        "formBorderColor": "#E2E6ED",
+        "formBorderRadius": 8
+      },
+      "fonts": {
+        "source": "VENUE",
+        "fontsGoogleBody": [
+          {
+            "family": "Quicksand",
+            "variants": [
+              "600"
+            ],
+            "_id": "6648fc3e23541110beafa0c3",
+            "id": "6648fc3e23541110beafa0c3"
+          }
+        ],
+        "fontsGoogleNumbers": [
+          {
+            "family": "Montserrat",
+            "variants": [
+              "700"
+            ],
+            "_id": "6648fc8a3e67c0cbcb422bf4",
+            "id": "6648fc8a3e67c0cbcb422bf4"
+          }
+        ],
+        "fontsCustomBody": [],
+        "fontsCustomNumbers": []
+      },
+      "customHeader": {
+        "source": "VENUE",
+        "menuJSXHeader": "<div style={{ background: \"#000000\" }}> \n  <NavContainer> \n    <div style={{ display: \"flex\", flexDirection: \"row\" }}> \n      <StoreWebsiteLink style={{ padding: \"10px\" }}> \n        <StoreLogo \n          style={{ height: \"100px\" }} \n            logo={store.logoLight} \n          logoSquare={store.logoSquareLight} \n        /> \n      </StoreWebsiteLink> \n      <div \n        style={{ \n          display: \"flex\", \n          flexDirection: \"row\", \n        }} \n      > \n        <StoreRecMedDropdown></StoreRecMedDropdown> \n      </div> \n    </div> \n  </NavContainer> \n</div>"
+      },
+      "customHeadCode": {
+        "source": "VENUE"
+      },
+      "customFiles": {
+        "source": "VENUE",
+        "menuFiles": []
+      }
+    },
+    "organizationBranding": {
+      "logos": {
+        "logo": "https://imgix.dispenseapp.com/97b62ce0-6b02-11ef-8b87-5ff24604ee56.png",
+        "logoSquare": "https://dispense-images.imgix.net/20dc1230-2704-11ee-be22-91c95633bdac.png",
+        "logoLight": "https://imgix.dispenseapp.com/06b7fdd0-6b03-11ef-8f98-958781b8c787.png",
+        "logoSquareLight": "https://dispense-images.imgix.net/3e194c80-2701-11ee-be22-91c95633bdac.png",
+        "favicon": "https://dispense-images.imgix.net/45f0e5d0-2701-11ee-9422-632d79c711bd.png"
+      },
+      "colors": {
+        "brandPrimaryColor": "#6262F5",
+        "brandDangerColor": "#D93232",
+        "brandSuccessColor": "#0A803A",
+        "brandTextPrimaryColor": "#080808",
+        "brandTextSecondaryColor": "#626875",
+        "brandBackgroundPrimaryColor": "#FFFFFF",
+        "brandBackgroundSecondaryColor": "#FAFBFC"
+      },
+      "buttons": {
+        "buttonPrimaryColor": "#6262F5",
+        "buttonPrimaryTextColor": "#FFFFFF",
+        "buttonPrimaryBorderColor": "#6262F5",
+        "buttonPrimaryBorderRadius": 100,
+        "buttonSecondaryColor": "#FFFFFF",
+        "buttonSecondaryTextColor": "#080808",
+        "buttonSecondaryBorderColor": "#E2E6ED",
+        "buttonSecondaryBorderRadius": 100,
+        "loyaltyColor": "#2558BC",
+        "loyaltyTextColor": "#FFFFFF",
+        "loyaltyBorderColor": "#6262F5",
+        "loyaltyBorderRadius": 100
+      },
+      "forms": {
+        "formBorderColor": "#E2E6ED",
+        "formBorderRadius": 8
+      },
+      "fonts": {
+        "fontsGoogleBody": [
+          {
+            "family": "Quicksand",
+            "variants": [
+              "600"
+            ],
+            "_id": "68633b07d5c7f10be2cec0a2",
+            "id": "68633b07d5c7f10be2cec0a2"
+          }
+        ],
+        "fontsGoogleNumbers": [
+          {
+            "family": "Montserrat",
+            "variants": [
+              "700"
+            ],
+            "_id": "68633b07d5c7f10be2cec0a1",
+            "id": "68633b07d5c7f10be2cec0a1"
+          }
+        ],
+        "fontsCustomBody": [],
+        "fontsCustomNumbers": []
+      },
+      "customHeader": {
+        "menuJSXHeader": "<div style={{ background: \"#000000\" }}> \n  <NavContainer> \n    <div style={{ display: \"flex\", flexDirection: \"row\" }}> \n      <StoreWebsiteLink style={{ padding: \"10px\" }}> \n        <StoreLogo \n          style={{ height: \"100px\" }} \n            logo={store.logoLight} \n          logoSquare={store.logoSquareLight} \n        /> \n      </StoreWebsiteLink> \n      <div \n        style={{ \n          display: \"flex\", \n          flexDirection: \"row\", \n        }} \n      > \n        <StoreRecMedDropdown></StoreRecMedDropdown> \n      </div> \n    </div> \n  </NavContainer> \n</div>"
+      },
+      "customHeadCode": {},
+      "customFiles": {
+        "menuFiles": []
+      }
+    },
+    "requiredFieldsFromLoyalty": {
+      "phone": true,
+      "email": true
+    },
+    "requiredFieldsFromLoyaltyLastUpdated": "2026-10-17T00:00:53.238Z",
+    "showLowStockIndicator": true,
+    "enableCurbsideArrivalForm": true,
+    "enableDriveThroughArrivalForm": true,
+    "showPayAfterOrder": true,
+    "aiqCompanyId": "2653",
+    "includeOutOfStockInSitemap": false,
+    "posDiscountSyncingEnabled": false,
+    "posSyncingDiscounts": false,
+    "posLastDiscountsSync": "2026-02-02T01:32:58.263Z",
+    "bypassPurchaseLimits": false,
+    "showCannabisEffects": true,
+    "showProductTags": false,
+    "roundingDirection": "up",
+    "roundingEnabled": false,
+    "roundingIncrement": 0.05,
+    "displayName": "AuraLight Dispensary",
+    "currencySymbol": "$",
+    "addressFormatted": "1350 North Orchard Road Aurora, IL 60506",
+    "posEnabled": true,
+    "id": "7c6abd7d11c9ad19"
+  }
+}

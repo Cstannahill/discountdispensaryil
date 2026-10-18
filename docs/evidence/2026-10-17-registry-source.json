@@ -1,0 +1,12 @@
+{
+  "source_page": "https://cannabis.illinois.gov/about/locations.html",
+  "page_reported_updated": "2026-10-08",
+  "requested_url": "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no",
+  "response_url": "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no",
+  "fetched_at_utc": "2026-10-17T06:45:52.029478+00:00",
+  "status": 200,
+  "content_type": "text/csv",
+  "bytes": 34720,
+  "sha256": "6122680651fb1bfeaf978b4d72f7e0a3d4805dc2f00acedbd95bec4f6f9a7ffa",
+  "scope": "Unfiltered public Illinois Tableau map CSV export; not independently verified as every operating store, and excludes other states."
+}
