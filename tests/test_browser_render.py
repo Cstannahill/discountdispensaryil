@@ -523,6 +523,31 @@ class MenuNavigationSafetyTests(unittest.TestCase):
 
 
 @unittest.skipUnless(os.environ.get('TERPSCOUT_BROWSER_TEST')=='1','Set TERPSCOUT_BROWSER_TEST=1 for installed Chrome integration')
+class MenuContextTests(unittest.TestCase):
+    def render(self,html,license_type='recreational'):
+        with tempfile.TemporaryDirectory() as folder:
+            handler=lambda request:httpx.Response(200,text=html,headers={'content-type':'text/html'})
+            fetcher=PublicFetcher(Path(folder)/'evidence',transport=httpx.MockTransport(handler),resolver=lambda *a,**k:[(2,1,6,'',('93.184.216.34',443))])
+            fetcher.browser_options={'transport':'captured_http','await_menu':True,'menu_readiness_ms':300,'scroll_menu':False}
+            try:
+                result=fetcher.render('https://example.com/menu/',license_type=license_type)
+                diagnostics=json.loads((Path(folder)/'evidence/browser'/f'{result.evidence_id}.json').read_text(encoding='utf-8'))
+                return result,diagnostics
+            finally:fetcher.close()
+
+    def test_an_already_selected_license_toggle_is_not_clicked_through_its_overlay(self):
+        # Real NuEra/Jane shape: the recreational toggle is already pressed, and a wrapper overlay intercepts clicks on it.
+        html='''<html><body><div role="dialog" aria-label="Shopping context"><p>Medical or Recreational</p>
+        <div style="position:relative"><button type="button" aria-pressed="true" data-selected="true" value="recreational" id="toggle-recreational">Recreational</button>
+        <div style="position:absolute;inset:0"></div></div><button type="button">Start shopping</button></div><main>Menu products</main></body></html>'''
+        result,diagnostics=self.render(html)
+        self.assertIn('Menu products',result.body.decode())
+        kinds=[t.get('kind') for t in diagnostics.get('context_transitions') or []]
+        self.assertIn('menu_context_already_selected',kinds)
+        self.assertNotIn('menu_context',kinds)
+
+
+@unittest.skipUnless(os.environ.get('TERPSCOUT_BROWSER_TEST')=='1','Set TERPSCOUT_BROWSER_TEST=1 for installed Chrome integration')
 class LimitOffsetReplayTests(unittest.TestCase):
     def test_a_full_first_page_of_a_limit_query_is_continued_by_whichever_offset_parameter_works(self):
         import socket

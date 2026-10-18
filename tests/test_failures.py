@@ -36,6 +36,10 @@ class FailureClassificationTests(unittest.TestCase):
         for message, code in cases.items():
             self.check(message, code)
 
+    def test_redirected_generic_menu_is_drift_and_unidentifiable_product_is_schema_unknown(self):
+        self.check('Generic menu redirected to a different source hostname; rediscovery required; missing_traversal_evidence', FailureCode.DRIFT)
+        self.check('Structured product has no stable source identity; missing_traversal_evidence', FailureCode.SCHEMA_UNKNOWN)
+
     def test_unknown_text_is_explicit_and_status_hints_apply(self):
         self.check('something nobody planned for', FailureCode.UNKNOWN)
         self.check('', FailureCode.UNKNOWN)

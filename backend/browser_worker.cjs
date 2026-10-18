@@ -50,9 +50,15 @@ async function selectMenuContext(page,options){
      if(await candidate.count()===1){choice=candidate;role=candidateRole;break;}
     }
     if(!choice)continue;
-    if(role==='radio')await choice.check({timeout:3000});
-    else await choice.click({timeout:3000});
-    transitions.push({kind:'menu_context',license_type:selected,frame_url:frame.url()});changed=true;
+    // An already-selected choice is not clicked: its wrapper overlay usually intercepts pointer events on it.
+    const chosen=await choice.evaluate(node=>node.getAttribute('aria-pressed')==='true'||node.getAttribute('aria-checked')==='true'||node.getAttribute('data-selected')==='true'||node.checked===true).catch(()=>false);
+    if(chosen)transitions.push({kind:'menu_context_already_selected',license_type:selected,frame_url:frame.url()});
+    else{
+     if(role==='radio')await choice.check({timeout:3000});
+     else await choice.click({timeout:3000});
+     transitions.push({kind:'menu_context',license_type:selected,frame_url:frame.url()});
+    }
+    changed=true;
     if(await dialog.isVisible()){
      const start=dialog.getByRole('button',{name:/^(?:start shopping|shop now|continue|view menu)$/i}).filter({visible:true});
      if(await start.count()===1&&await start.isEnabled())await start.click({timeout:3000});

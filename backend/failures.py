@@ -65,6 +65,8 @@ _RULES = [
     (r'locator\.click|waiting for getbyrole|shopping context|location selector', FailureCode.GATE_UNKNOWN),
     (r'ssr query cache missing|schema drift|unvalidated .* schema|required source query missing', FailureCode.DRIFT),
     (r'no structured products extracted', FailureCode.RENDER_BLANK),
+    (r'redirected to a different source hostname|rediscovery required', FailureCode.DRIFT),
+    (r'no stable source identity', FailureCode.SCHEMA_UNKNOWN),
     (r'no independently verifiable|advertises no', FailureCode.TOTAL_UNVERIFIABLE),
     (r'empty_or_large_drop|large_drop', FailureCode.SUSPICIOUS_DROP),
     (r'changed across|changed between|did not reconcile across|menu changed', FailureCode.UNSTABLE),
