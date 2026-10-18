@@ -11,7 +11,7 @@ import json
 import re
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit, urljoin
 
-VERSION = 'sweed-ssr-2'
+VERSION = 'sweed-ssr-3'
 
 
 def query_cache(text):
@@ -62,6 +62,37 @@ def observe(url, response):
     return {'url': menu_url, 'provider': 'sweed', 'provider_store_id': str(info['id']), 'license_type': canonical_license or 'unknown', 'resolution_evidence': {'url': response.url, 'evidence_id': response.evidence_id, 'fetched_at': response.fetched_at, 'method': 'Sweed SSR tenant config, store info, sale-type query context', 'retailer_name': info.get('name'), 'retailer_address': info.get('contacts', {}).get('address'), 'retailer_location': info.get('location'), 'sale_types': sale_types}}
 
 
+_MULTI_BUY = re.compile(r'\bbuy\b|\bget (?:two|three|\d)|save more|stackable|\b\d+\s+for\b', re.I)
+
+
+def _promo_text(promo):
+    return ' '.join(str(promo.get(k) or '') for k in ('name','shortName','description'))
+
+
+def _conditional_promo(promo):
+    return bool(promo.get('isConditional') is not False or promo.get('isBogo') is True or promo.get('minCartAmount') or promo.get('matchedUserSegmentIds') or promo.get('isActiveBySchedule') is False or _MULTI_BUY.search(_promo_text(promo)))
+
+
+def _plain_promo_price(promo, regular):
+    """Single-unit price a plain (unconditional) promo yields from the regular price, or None when it cannot be told."""
+    from backend.adapters import _decimal
+    if regular is None:
+        return None
+    regular, text = Decimal(regular), _promo_text(promo)
+    percent = _decimal(promo.get('discountPercent'))
+    match = re.search(r'(\d+(?:\.\d+)?)\s*%\s*off\b', text, re.I)
+    if percent is None and match: percent = match.group(1)
+    if percent is not None and 0 < Decimal(percent) < 100:
+        return _decimal((regular * (100 - Decimal(percent)) / 100).quantize(Decimal('0.01')))
+    amount = _decimal(promo.get('discountAmount'))
+    match = re.search(r'\$(\d+(?:\.\d{1,2})?)\s*off\b', text, re.I)
+    if amount is None and match: amount = match.group(1)
+    if amount is not None and 0 < Decimal(amount) < regular:
+        return _decimal(regular - Decimal(amount))
+    match = re.fullmatch(r'\s*only\s*\$(\d+(?:\.\d{1,2})?)\s*', text, re.I)
+    return _decimal(match.group(1)) if match else None
+
+
 def normalize_product(product, endpoint):
     from backend.adapters import _decimal
     if product.get('id') is None or not product.get('name') or not isinstance(product.get('variants'), list) or not product['variants']:
@@ -87,10 +118,10 @@ def normalize_product(product, endpoint):
         lab = (variant.get('labTests') or {}).get('thc') or {}
         values = lab.get('value') or []
         promos = variant.get('promos') or []
-        # Some Sweed records label a multi-buy promo isConditional=false. Keep
-        # those conditions visible and conservatively exclude their sale price.
-        conditional = any(p.get('isConditional') is not False or p.get('isBogo') is True or p.get('minCartAmount') or p.get('matchedUserSegmentIds') or p.get('isActiveBySchedule') is False or re.search(r'\bbuy\b|\bget (?:two|three|\d)|save more|stackable|\b\d+\s+for\b', ' '.join(str(p.get(k) or '') for k in ('name','shortName','description')), re.I) for p in promos)
         regular, promo = _decimal(variant.get('price')), _decimal(variant.get('promoPrice'))
+        # Some Sweed records label a multi-buy promo isConditional=false, so those stay conditional. A price that a plain
+        # promo on the same variant explains by itself (30% Off, $5 Off, Only $6) is the shelf price, despite extra tags.
+        conditional = any(_conditional_promo(p) for p in promos) and not any(_plain_promo_price(p, regular) == promo for p in promos if not _conditional_promo(p))
         qty = _decimal(variant.get('availableQty'))
         reason = (variant.get('orderingAvailability') or {}).get('reason')
         items.append({'source_id': str(product['id']), 'variant_id': str(variant['id']), 'name': product['name'], 'brand': (product.get('brand') or {}).get('name'), 'category': mapped, 'source_category': category, 'subcategory': (product.get('subcategory') or {}).get('name'), 'strain_type': ((product.get('strain') or {}).get('prevalence') or {}).get('name'), 'thc_pct': _decimal(values[0]) if len(values) == 1 and lab.get('unitAbbr') == '%' else None, 'weight_grams': weight, 'weight_label': variant.get('name'), 'regular_price': regular, 'effective_price': promo if promo is not None else regular, 'conditional': bool(conditional and promo is not None), 'available': qty is not None and Decimal(qty) > 0 and reason == 'Available', 'source_url': endpoint['url'], 'raw': {'product': product, 'variant': variant}})

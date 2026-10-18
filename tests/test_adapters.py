@@ -156,7 +156,27 @@ class AdapterTests(unittest.TestCase):
         result = normalize_product(product, SWEED_ENDPOINT)
         self.assertEqual(2, len(result))
         self.assertEqual('7', result[1]['weight_grams'])
-        self.assertTrue(result[0]['conditional'])
+        self.assertFalse(result[0]['conditional'])
+
+    def test_sweed_plain_promo_price_is_not_conditional_beside_multi_buy_tags(self):
+        from backend.providers.sweed import normalize_product
+        product = json.loads((SWEED_FIXTURES / 'treemenu.json').read_text())['state']['data']['list'][0]
+        item = normalize_product(product, SWEED_ENDPOINT)[0]
+        self.assertFalse(item['conditional'])
+        self.assertEqual('7', item['effective_price'])
+
+        def variant_with(price, promo, promos):
+            changed = copy.deepcopy(product)
+            changed['variants'][0].update(price=price, promoPrice=promo, promos=promos)
+            return normalize_product(changed, SWEED_ENDPOINT)[0]
+        plain = [p for p in product['variants'][0]['promos'] if '30%' in (p.get('shortName') or '')][0]
+        self.assertTrue(variant_with(10, 6.65, product['variants'][0]['promos'])['conditional'])
+        self.assertTrue(variant_with(10, 5, [{'name': 'BOGO', 'isConditional': False, 'isBogo': True}])['conditional'])
+        segment = dict(plain, matchedUserSegmentIds=[12])
+        self.assertTrue(variant_with(10, 7, [segment, {'name': 'Buy & Save More', 'isConditional': True}])['conditional'])
+        only = variant_with(10, 6, [{'name': 'Only $6.00', 'isConditional': False}, {'name': 'Stackable 5% Off', 'isConditional': True}])
+        self.assertFalse(only['conditional'])
+        self.assertEqual('6', only['effective_price'])
 
     def test_sweed_same_parent_in_distinct_listing_variants_is_valid(self):
         fetcher = SweedFetcher(50)
