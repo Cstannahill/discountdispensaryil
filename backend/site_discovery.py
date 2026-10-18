@@ -31,8 +31,15 @@ def is_directory_url(url):
                ('jointcommerce.com','leafly.com','weedmaps.com','yelp.com','allbud.com','potguide.com','cannabrands.com','cannabisshop.com'))
 
 
+_CATEGORY_WORDS=r'(?:flowers?|edibles?|extracts?|concentrates?|vap(?:e|es|orizers?)|carts?|cartridges?|pre-?rolls?|tinctures?|topicals?|gear|accessories|apparel|merch|deals?|specials?|sale|cbd|new|brands?|strains?|under-\d+)'
+_FILTER_KEY=re.compile(r'refinement|filter|facet|facets|sort_by|orderby',re.I)
+
+
 def menu_document_scope(url):
     parts=urlsplit(url)
+    # Storefront filters arrive as bracketed or named query keys, or as a category segment under the menu root.
+    if any(_FILTER_KEY.search(key) for key,_ in parse_qsl(parts.query)) or re.search(r'/(?:menu|shop|products|order)/'+_CATEGORY_WORDS+r'/?$',parts.path,re.I):
+        return 'filtered'
     if re.search(r'/(?:product-group|collections?|categor(?:y|ies)|brands?|products?)/[^/]+',parts.path,re.I) or any(key.lower() in ('category','brand','collection','group_id','product_id','q','query','search','searchterm','keyword','strain','deal','promotion') for key,_ in parse_qsl(parts.query)):
         return 'filtered'
     if re.search(r'/(?:menu|shop|products)(?:/(?:medical|medicinal|recreational|adult-use))?/?$',parts.path,re.I):
@@ -142,8 +149,11 @@ def provider_links(url, text):
                 # This is platform identity evidence only. Never ingest a
                 # carousel as the full catalog. Fetch verifies the target.
                 found.append(dict(url='https://dutchie.com/embedded-menu/'+match[1],provider='dutchie',provider_store_id=match[1],embed_script_url=link))
-            elif re.search(r'/(?:embedded-menu|stores)/[^/]+',parts.path):
-                found.append(dict(url=link,provider='dutchie',provider_store_id=parts.path.split('/')[2]))
+            elif re.search(r'/(?:embedded-menu|stores|kiosks)/[^/]+',parts.path):
+                # Product detail, kiosk, store-slug and experience URLs all describe one menu; keep only its root.
+                segments=[segment for segment in parts.path.split('/') if segment]
+                slug=segments[1] if segments[1]!='experiences' or len(segments)<3 else segments[2]
+                found.append(dict(url='https://dutchie.com/embedded-menu/'+slug,provider='dutchie',provider_store_id=slug))
         if parts.hostname and parts.hostname.endswith('.dispenseapp.com') and parts.hostname not in ('api.dispenseapp.com','cdn.dispenseapp.com','images.dispenseapp.com'):
             found.append(dict(url=link,provider='dispense',provider_store_id=parts.hostname.split('.')[0]))
     dutchie=[x for x in found if x['provider']=='dutchie']
@@ -178,6 +188,48 @@ def same_state(first, second):
         text=re.sub(r'[^a-z ]','',str(value or '').casefold()).strip()
         return next((abbreviation for abbreviation,name in _STATES.items() if text in (abbreviation.casefold(),name.casefold())),text)
     return code(first)==code(second)
+
+
+_STATE_CODES=frozenset(code.lower() for code in _STATES)
+_SLUG_NOISE=frozenset(('rec','med','recreational','medical','adult','use','menu','shop','order','online','dispensary','dispensaries','cannabis',
+                       'locations','location','stores','store','experiences','products','embedded','illinois'))
+_STREET_NOISE=frozenset(('st','street','ave','avenue','rd','road','dr','drive','blvd','boulevard','ln','lane','ct','court','pkwy','parkway','hwy','highway',
+                         'n','s','e','w','north','south','east','west','suite','ste','unit'))
+_SLUG_STATE=re.compile(r'^(?P<base>[a-z0-9-]+?)-(?P<state>[a-z]{2})(?:-(?:rec|med|recreational|medical|adult-use))?$')
+
+
+def _slug_candidates(url):
+    parts=urlsplit(url)
+    paths=[parts.path]+[urlsplit(value).path for key,value in parse_qsl(parts.query) if key=='routeRoot']
+    found=[]
+    for path in paths:
+        segments=[segment.lower() for segment in path.split('/') if segment]
+        for index,segment in enumerate(segments):
+            if segment in ('locations','location','stores','store') and index+1<len(segments):found.append(segments[index+1])
+            elif _SLUG_STATE.match(segment) and _SLUG_STATE.match(segment)['state'] in _STATE_CODES:found.append(segment)
+    return [slug for slug in dict.fromkeys(found) if not re.fullmatch(r'[0-9a-f]{12,}|\d+',slug) and slug not in _SLUG_NOISE]
+
+
+def branch_slug_conflict(store, *urls):
+    """True when a URL (or an embed's routeRoot) names a different locality or state than the requested store.
+    Chain sites list every sibling branch on one page; a sibling must prove itself rather than inherit the
+    requested store's identity. A URL with no location slug is never a conflict."""
+    city=set(re.findall(r'[a-z0-9]+',(store.get('city') or '').lower()))-_STREET_NOISE
+    street=set(re.findall(r'[a-z]+',(store.get('address') or '').lower()))-_STREET_NOISE
+    state=(store.get('state') or 'IL').lower()
+    for url in urls:
+        for slug in _slug_candidates(url or ''):
+            match=_SLUG_STATE.match(slug)
+            if match and match['state'] in _STATE_CODES and match['state']!=state:return True
+            tokens=set(re.findall(r'[a-z0-9]+',slug))-_SLUG_NOISE-_STREET_NOISE-{state}
+            if tokens and city and not (tokens & (city|street)):return True
+    return False
+
+
+def branch_slug_confirms(store, url):
+    """True when the URL names a location slug and it is the requested store's own (a branch-specific page,
+    as opposed to a hub that lists every branch)."""
+    return bool(_slug_candidates(url or '')) and not branch_slug_conflict(store,url)
 
 
 def inspect_page(store, response):

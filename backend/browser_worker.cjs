@@ -138,10 +138,10 @@ async function retried(operation,attempts=3){
   catch(error){if(attempt>=attempts||!detached(error))throw error;await new Promise(resolve=>setTimeout(resolve,500));}
  }
 }
-async function openAllProducts(page){
+async function openAllProducts(page,captures){
  // Activated from inside the page (open shadow roots included): the control may sit in an overflowing carousel or
  // behind a fixed bar, where a pointer click is not actionable although the element is a normal visible button.
- const before=page.url();
+ const before=page.url(),seenBefore=captures?captures.length:0;
  const clicked=await retried(()=>page.evaluate(()=>{
   const roots=[document];for(let i=0;i<roots.length;i++)for(const node of roots[i].querySelectorAll('*'))if(node.shadowRoot)roots.push(node.shadowRoot);
   const label=node=>((node.getAttribute('aria-label')||node.textContent||'').replace(/\s+/g,' ').trim());
@@ -155,7 +155,16 @@ async function openAllProducts(page){
  }));
  if(!clicked)return {opened:false};
  await page.waitForLoadState('networkidle',{timeout:5000}).catch(()=>{});
+ if(captures)await waitForCapture(page,captures,seenBefore,3000);
  await page.waitForTimeout(800);
+ // A site-navigation link ("Shop All" in a header) is not the menu's own control. If it left the menu area and
+ // nothing new loaded, go back instead of collecting from an unrelated page.
+ const here=new URL(page.url()),was=new URL(before);
+ if(page.url()!==before&&(!captures||captures.length===seenBefore)&&!(here.origin===was.origin&&here.pathname.startsWith(was.pathname.replace(/\/$/,'')))){
+  await page.goBack({waitUntil:'domcontentloaded',timeout:15000}).catch(()=>{});
+  await page.waitForTimeout(500);
+  return {opened:false,reverted:true,label:clicked.label,left:page.url()!==before?page.url():before};
+ }
  return {opened:true,method:'in_page_click',label:clicked.label,tag:clicked.tag,url_before:before,url:page.url(),url_changed:page.url()!==before};
 }
 // A visible "load more" style button, found inside open shadow roots. Names vary ("Load more", "All products View more").
@@ -216,6 +225,52 @@ async function replayPagination(page,captures,deadline){
  }
  return summary;
 }
+// REST listings that return a full first page of `limit` rows. Which parameter continues them is not declared, so it is
+// learned: the first candidate whose response differs from page one wins and is reused for the same path.
+const limitQueries=[],limitKeys=/^(?:limit|per_?page|page_?size|take|count)$/i;
+function noteIfLimited(url,headers,text){
+ if(limitQueries.length>100||text.length>4e6)return;
+ let target,value;try{target=new URL(url);value=JSON.parse(text);}catch{return;}
+ const entry=[...target.searchParams].find(([key,number])=>limitKeys.test(key)&&/^\d+$/.test(number)&&Number(number)>1);
+ if(!entry||[...target.searchParams.keys()].some(key=>/^(?:offset|skip|start|page|cursor|after)$/i.test(key)))return;
+ const rows=[];const queue=[[value,0]];
+ while(queue.length){const [node,depth]=queue.shift();if(Array.isArray(node)){if(node.length&&typeof node[0]==='object')rows.push(node);continue;}
+  if(node&&typeof node==='object'&&depth<4)for(const child of Object.values(node))queue.push([child,depth+1]);}
+ const full=rows.find(array=>array.length===Number(entry[1]));
+ if(full)limitQueries.push({url,headers,key:entry[0],limit:Number(entry[1]),first:JSON.stringify(full[0]).slice(0,300)});
+}
+async function replayOffsets(page,captures,deadline){
+ const summary={queries:0,fetched:0,errors:0,learned:{}};
+ const attempt=(url,headers)=>retried(()=>page.evaluate(async ({url,headers})=>{
+  try{
+   const response=await fetch(url,{headers,credentials:'include'});const text=await response.text();let value=null;try{value=JSON.parse(text);}catch{}
+   let first=null,length=0;const queue=[[value,0]];
+   while(queue.length){const [node,depth]=queue.shift();if(Array.isArray(node)){if(node.length&&typeof node[0]==='object'){length=node.length;first=JSON.stringify(node[0]).slice(0,300);break;}continue;}
+    if(node&&typeof node==='object'&&depth<4)for(const child of Object.values(node))queue.push([child,depth+1]);}
+   return {status:response.status,length,first};
+  }catch{return {status:0,length:0,first:null};}
+ },{url,headers}));
+ const withParameter=(url,name,value)=>{const target=new URL(url);target.searchParams.set(name,String(value));return target.href;};
+ for(const query of limitQueries.splice(0)){
+  if(Date.now()>deadline)break;summary.queries++;
+  const path=new URL(query.url).pathname;
+  const candidates=summary.learned[path]?[summary.learned[path]]:['offset','skip','start','page'];
+  let chosen=null;
+  for(const name of candidates){
+   const probe=await attempt(withParameter(query.url,name,name==='page'?1:query.limit),query.headers);
+   if(probe.status===200&&probe.length>0&&probe.first!==query.first){chosen=name;summary.fetched++;summary.learned[path]=name;
+    let step=2,last=probe;
+    while(last.length===query.limit&&step<60&&Date.now()<deadline&&summary.fetched<250){
+     const seen=captures.length;
+     last=await attempt(withParameter(query.url,name,name==='page'?step:query.limit*step),query.headers);
+     if(last.status!==200||!last.length)break;summary.fetched++;step++;await waitForCapture(page,captures,seen,3000);
+    }
+    break;}
+   if(probe.status!==200)summary.errors++;
+  }
+ }
+ return summary;
+}
 // Numbered-page pagination ("Next"), as used by storefronts that load one category page at a time.
 async function clickNext(page){
  return page.evaluate(()=>{
@@ -272,7 +327,7 @@ async function exploreCategories(page,captures,deadline,{visitOnly=false}={}){
  return summary;
 }
 async function scrollMenu(page,captures,options){
- let entry=await retried(()=>openAllProducts(page));
+ let entry=await retried(()=>openAllProducts(page,captures));
  const limit=Math.min(200,Math.max(1,Number(options.scroll_max_steps)||60)),started=Date.now(),budget=Math.min(300000,Number(options.scroll_budget_ms)||200000);
  let steps=0,clicks=0,lastHeight=0,lastCaptures=captures.length,idle=0;const trace=[];
  // Names vary ("Load more", "All products View more"); a read-only pagination control either way.
@@ -300,10 +355,10 @@ async function scrollMenu(page,captures,options){
   }
   // A featured landing view usually ends with a "Shop all products" entry; open it once and keep scrolling.
   if(entry.opened||round===1)break;
-  entry=await retried(()=>openAllProducts(page));
+  entry=await retried(()=>openAllProducts(page,captures));
   if(!entry.opened)break;
  }
- let replay=null,explore=null;
+ let replay=null,explore=null,offsets=null;
  if(clicks===0&&options.replay_pagination!==false){
   replay=await replayPagination(page,captures,started+budget);
   // Without a whole-menu query the categories must each be seen once so their own paged queries can be replayed.
@@ -314,8 +369,9 @@ async function scrollMenu(page,captures,options){
    replay={queries:replay.queries+more.queries,fetched:replay.fetched+more.fetched,errors:replay.errors+more.errors,whole:more.whole,second_pass:true};
   }
  }
- if(clicks===0&&!(replay&&replay.fetched)&&!explore&&options.explore_categories!==false)explore=await exploreCategories(page,captures,started+budget);
- return {entry,replay,explore,trace:trace.slice(-40),steps,clicks,idle,height:lastHeight,ms:Date.now()-started,hit_limit:steps>=limit};
+ if(clicks===0&&options.replay_pagination!==false)offsets=await replayOffsets(page,captures,started+budget);
+ if(clicks===0&&!(replay&&replay.fetched)&&!(offsets&&offsets.fetched)&&!explore&&options.explore_categories!==false)explore=await exploreCategories(page,captures,started+budget);
+ return {entry,replay,offsets,explore,trace:trace.slice(-40),steps,clicks,idle,height:lastHeight,ms:Date.now()-started,hit_limit:steps>=limit};
 }
 // A large menu's serialized DOM can exceed the response limit through presentation markup alone (inline SVG, styles,
 // srcset, data URIs, bundles). Drop that markup, keep content attributes and any script that carries data.
@@ -391,6 +447,9 @@ async function run({url,options,storage_state,native_proxy}){
     const req=response.request();
     if(cachedRequests.has(req))return;
     if(!/^https?:/.test(response.url())||['image','media','font'].includes(req.resourceType()))return;
+    // Paging a whole catalog re-downloads framework bundles on every navigation; keeping each copy as evidence exhausted the
+    // capture budget (Stash). Catalog documents, data and RSC responses are what the traversal needs.
+    if(options.catalog_navigation&&['script','stylesheet'].includes(req.resourceType()))return;
     const responseHeaders=await response.allHeaders();
     if((responseHeaders['content-type']||'').split(';')[0].trim().toLowerCase()==='text/event-stream'){
      diagnostics.streaming_responses_skipped.push({url:response.url(),status:response.status(),reason:'Unbounded event stream; not a finite catalog response'});return;
@@ -398,7 +457,9 @@ async function run({url,options,storage_state,native_proxy}){
     const body=await response.body();capturedBytes+=body.length;diagnostics.captured_bytes=capturedBytes;
     if(req.method()==='GET'&&response.status()===200&&(responseHeaders['content-type']||'').includes('json')){
      const keep=['accept','content-type','apollo-require-preflight','x-apollo-operation-name','apollographql-client-name','apollographql-client-version'],all=await req.allHeaders();
-     noteIfPaged(response.url(),Object.fromEntries(keep.filter(key=>all[key]).map(key=>[key,all[key]])),body.toString('utf8'));
+     const sent=Object.fromEntries(keep.filter(key=>all[key]).map(key=>[key,all[key]]));
+     noteIfPaged(response.url(),sent,body.toString('utf8'));
+     noteIfLimited(response.url(),sent,body.toString('utf8'));
     }
     if(options.catalog_navigation&&response.status()===200&&new URL(response.url()).origin===new URL(url).origin&&new URL(response.url()).pathname.startsWith('/_next/static/')&&responseHeaders['cache-control']?.includes('immutable')&&!responseHeaders['set-cookie']&&cacheBytes+body.length<32*1024*1024){
      staticCache.set(response.url(),{status:200,headers:{'content-type':responseHeaders['content-type']||'application/octet-stream'},body});cacheBytes+=body.length;
@@ -424,9 +485,10 @@ async function run({url,options,storage_state,native_proxy}){
   diagnostics.context_transitions=contextTransitions;diagnostics.location_decisions=locationDecisions;
   let locationSelected=false;
   for(let round=0;round<3;round++){
-   const locations=locationSelected?[]:await selectLocation(page,options.target_store,locationDecisions);
+   // A consent step can reload the page again; retry steps that interrogate the page rather than fail the render.
+   const locations=locationSelected?[]:await retried(()=>selectLocation(page,options.target_store,locationDecisions));
    if(locations.length)locationSelected=true;
-   const types=await selectMenuContext(page,options);
+   const types=await retried(()=>selectMenuContext(page,options));
    contextTransitions.push(...locations,...types);
    if(!locations.length&&!types.length)break;
   }

@@ -19,7 +19,7 @@ STRAINS = {'indica', 'sativa', 'hybrid'}
 ARRAY_PRICES = {'recreational': ('recPrices', 'Prices'), 'medicinal': ('medicalPrices', 'Prices')}
 ARRAY_SPECIALS = {'recreational': ('recSpecialPrices',), 'medicinal': ('medicalSpecialPrices',)}
 ARRAY_PRICE_KEYS = ('Prices', 'recPrices', 'medicalPrices')
-TOTAL_KEYS = ('totalCount', 'nb_hits', 'nbHits', 'total', 'total_count', 'totalCount', 'total_results', 'count', 'numberOfItems')
+TOTAL_KEYS = ('totalCount', 'rows', 'nb_hits', 'nbHits', 'total', 'total_count', 'totalCount', 'total_results', 'count', 'numberOfItems')
 PRICE_KEY = re.compile(r'^(?:(?:sale|discounted|special|regular|retail|unit|list)_?)?price$|^price_(?:each|[a-z_]+)$|^(?:sale|retail)Price$', re.I)
 # Weight-keyed price families: price_<w>, discounted_price_<w>, special_price_<w>.
 WEIGHTS = {'each': None, 'half_gram': '0.5', 'gram': '1', 'two_gram': '2', 'two_grams': '2', 'eighth_ounce': '3.5', 'eighth': '3.5',
@@ -285,6 +285,11 @@ def _unfiltered(url):
 
 def _single_type(url):
     flt = _filter_of(url)
+    if flt is None:
+        # REST-style listings name the category in the query string (category=flower).
+        from urllib.parse import parse_qs, urlsplit
+        values = [v for key in ('category', 'type', 'product_type') for v in parse_qs(urlsplit(url).query).get(key, [])]
+        return values[0] if len(set(values)) == 1 else None
     # A query that hydrates a chunk of ids still reports the category's own total, so productIds does not disqualify it here.
     if flt is None or _narrowing({k: v for k, v in flt.items() if k != 'productIds'}) or flt.get('strainTypes') or flt.get('subcategories'):
         return None
@@ -302,7 +307,7 @@ def extract_products(captured, page_url, license_type='recreational'):
     for url, value in captured:
         for path, array, parent in find_product_arrays(value, min_size=1, only_shapes=shapes):
             found = _products(array, page_url, license_type)
-            total = _total(parent)
+            total = _total(parent) or (_total(value) if isinstance(value, dict) else None)
             if found:
                 collections.append(dict(url=url, path=path, count=len(found), total=total, filtered=not _unfiltered(url) and 'variables=' in url, category=_single_type(url)))
             for item in found:

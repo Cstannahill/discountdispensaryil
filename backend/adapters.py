@@ -142,7 +142,7 @@ def has_menu_contract(endpoint):
 def resolve_menu(store, fetcher):
     """Bounded search/branch crawl. Platform and generic paths share evidence."""
     from .locators import discover_menu_candidates
-    from .site_discovery import inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites
+    from .site_discovery import inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms
     from .providers.generic import extract
     from .documents import read_document
     import copy
@@ -229,13 +229,18 @@ def resolve_menu(store, fetcher):
                 failures.append(dict(url=url,provider=observed['provider'],provider_store_id=None,license_type=observed['license_type'],status='unresolved',
                                      reason='Provider reference detected, but store/tenant or full-catalog contract is unresolved; continuing discovery',resolution_evidence=details))
             for endpoint in identity['endpoints']:
+                if verified and branch_slug_conflict(store,endpoint['url'],endpoint.get('embed_script_url')):
+                    failures.append(dict(url=endpoint['url'],provider=endpoint['provider'],provider_store_id=endpoint.get('provider_store_id'),license_type='recreational',status='identity_conflict',
+                                         reason='Embed on this page names a different branch locality; not the requested store',resolution_evidence=dict(embed=endpoint.get('embed_script_url'))))
+                    continue
                 if verified:
                     license_type,basis=license_context(endpoint['url'])
                     endpoint.update(license_type=license_type,license_basis=basis,identity_confidence=identity['identity_status'],
                                     resolution_evidence={k:v for k,v in identity.items() if k!='endpoints'},locator_evidence=seed.get('evidence',[]))
                     results.append(endpoint)
             _,products,_=extract(_text(response),response.url)
-            if verified and (products or re.search(r'/(?:menu|shop|products)(?:/|$)',urlparse(url).path)):
+            sibling=branch_slug_conflict(store,url) and identity['identity_status']!='matched'
+            if verified and not sibling and (products or re.search(r'/(?:menu|shop|products)(?:/|$)',urlparse(url).path)):
                 license_type,basis=license_context(url)
                 results.append(dict(url=url,provider='generic',provider_store_id=None,license_type=license_type,license_basis=basis,
                                     resolution_evidence=identity,identity_confidence=identity['identity_status'],requires_browser_context=fetcher._branch_render_cache.get(url) is response))
@@ -250,7 +255,7 @@ def resolve_menu(store, fetcher):
                 for link in list(dict.fromkeys(links))[:10]:
                     # A location selector with multiple branches does not pass
                     # its identity to another branch; an observed menu does.
-                    child_verified=verified and bool(re.search(r'/(?:menu|shop)(?:/|$)',urlparse(link).path))
+                    child_verified=verified and bool(re.search(r'/(?:menu|shop)(?:/|$)',urlparse(link).path)) and not branch_slug_conflict(store,link)
                     pending.append((link,depth+1,seed,child_verified))
             if not verified:
                 failures.append(dict(url=url,provider='generic',provider_store_id=None,license_type='recreational',status='unresolved',
@@ -263,6 +268,9 @@ def resolve_menu(store, fetcher):
     catalog_entries=[x for x in results if x['provider']=='generic' and menu_document_scope(x['url'])=='catalog_entry']
     official_urls={candidate['url'] for candidate in seeds if candidate.get('source_role')=='retailer'}
     official_failures=[failure for failure in failures if failure.get('url') in official_urls]
+    # A hub that lists every branch is not this branch's menu when a page carrying the branch's own slug was found.
+    own=[x for x in catalog_entries+[x for x in results if x['provider']=='generic'] if branch_slug_confirms(store,x['url'])]
+    if own and not platforms:catalog_entries=own
     chosen=platforms or catalog_entries or results or [dict(failure,discovery_attempts=failures) for failure in official_failures] or failures
     return list({(x['provider'],x.get('provider_store_id'),x.get('url'),x['license_type']):x for x in chosen}.values())
 

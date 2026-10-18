@@ -280,3 +280,38 @@ class DutchieEmbedLinkTests(unittest.TestCase):
         text='<script src="https://dutchie.com/api/v3/embedded-menu/627458da5d75a3008f52fc56/carousels/2b59.js?routeRoot=https%3A%2F%2Fnoxx.com"></script>'
         found=provider_links('https://noxx.com/x/',text)
         self.assertEqual(found[0]['provider_store_id'],'627458da5d75a3008f52fc56')
+
+
+class FilteredMenuScopeTests(unittest.TestCase):
+    def test_refinement_and_filter_queries_and_category_paths_are_not_full_menus(self):
+        from backend.site_discovery import menu_document_scope
+        for url in ('https://risecannabis.com/dispensaries/illinois/x/7270/recreational-menu/?refinementList%5Bbrand%5D%5B%5D=RYTHM',
+                    'https://risecannabis.com/dispensaries/illinois/x/7274/recreational-menu/?refinementList%5Broot_types%5D%5B%5D=vape',
+                    'https://nueracannabis.com/shop/?filters%5Broot_types%5D%5B%5D=edible',
+                    'https://nueracannabis.com/shop/edible', 'https://nueracannabis.com/shop/gear', 'https://nueracannabis.com/shop/deals',
+                    'https://example.com/menu/flower/', 'https://example.com/shop/pre-rolls',
+                    'https://bloomington.cookies.co/menu/?facet[brand]=x&page=2'):
+            self.assertEqual(menu_document_scope(url), 'filtered', url)
+
+    def test_whole_menu_entries_are_still_catalog_entries(self):
+        from backend.site_discovery import menu_document_scope
+        for url in ('https://nueracannabis.com/shop/', 'https://example.com/menu', 'https://example.com/menu/recreational',
+                    'https://risecannabis.com/dispensaries/illinois/x/7270/recreational-menu/', 'https://example.com/shop?page=3'):
+            self.assertNotEqual(menu_document_scope(url), 'filtered', url)
+
+
+class DutchieMenuRootTests(unittest.TestCase):
+    def roots(self, link):
+        found = provider_links('https://retailer.example/menu', f'<a href="{link}">Order</a>')
+        return [(x['provider_store_id'], x['url']) for x in found]
+
+    def test_product_kiosk_store_and_experience_urls_resolve_to_the_menu_root(self):
+        cases = {
+            'https://dutchie.com/embedded-menu/cloud9-champaign/product/ngw-sugar-2g-rainbows-at-night': ('cloud9-champaign', 'https://dutchie.com/embedded-menu/cloud9-champaign'),
+            'https://dutchie.com/kiosks/cloud9-east-peoria': ('cloud9-east-peoria', 'https://dutchie.com/embedded-menu/cloud9-east-peoria'),
+            'https://dutchie.com/stores/noxx-peoria': ('noxx-peoria', 'https://dutchie.com/embedded-menu/noxx-peoria'),
+            'https://www.dutchie.com/stores/experiences/65772a69ac53410009424572/8ff64bac-8c4f-4114-be16-26d65cc543e7': ('65772a69ac53410009424572', 'https://dutchie.com/embedded-menu/65772a69ac53410009424572'),
+            'https://dutchie.com/embedded-menu/65772a69ac53410009424572': ('65772a69ac53410009424572', 'https://dutchie.com/embedded-menu/65772a69ac53410009424572'),
+        }
+        for link, expected in cases.items():
+            self.assertEqual(self.roots(link), [expected], link)

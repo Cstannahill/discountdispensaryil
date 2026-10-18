@@ -490,3 +490,78 @@ class PagedQueryReplayTests(unittest.TestCase):
                     self.assertEqual(found['total'],12)
                 finally:fetcher.close()
         finally:server.shutdown();server.server_close()
+
+
+@unittest.skipUnless(os.environ.get('TERPSCOUT_BROWSER_TEST')=='1','Set TERPSCOUT_BROWSER_TEST=1 for installed Chrome integration')
+class MenuNavigationSafetyTests(unittest.TestCase):
+    def render(self,html,options):
+        with tempfile.TemporaryDirectory() as folder:
+            def handler(request):
+                body=html if request.url.path=='/menu/' else '<html><body><main>Strains page</main></body></html>'
+                return httpx.Response(200,text=body,headers={'content-type':'text/html'})
+            fetcher=PublicFetcher(Path(folder)/'evidence',transport=httpx.MockTransport(handler),resolver=lambda *a,**k:[(2,1,6,'',('93.184.216.34',443))])
+            fetcher.browser_options=dict({'transport':'captured_http','await_menu':True,'menu_readiness_ms':300,'scroll_menu':True},**options)
+            try:
+                result=fetcher.render('https://example.com/menu/')
+                diagnostics=json.loads((Path(folder)/'evidence/browser'/f'{result.evidence_id}.json').read_text(encoding='utf-8'))
+                return result,diagnostics
+            finally:fetcher.close()
+
+    def test_a_shop_all_link_that_leaves_the_menu_without_loading_products_is_undone(self):
+        html='<html><body><main>Menu</main><a href="/strains/high-cbd/">Shop All</a></body></html>'
+        result,diagnostics=self.render(html,{})
+        self.assertEqual(result.url,'https://example.com/menu/')
+        entry=diagnostics['scroll']['entry']
+        self.assertFalse(entry['opened'])
+        self.assertTrue(entry['reverted'])
+
+    def test_a_page_that_reloads_itself_while_the_location_and_age_steps_run_still_renders(self):
+        html='''<html><body><main>Menu</main><select aria-label="Choose location"><option>One</option></select><script>
+        if(!sessionStorage.getItem('r')){sessionStorage.setItem('r','1');setTimeout(()=>location.reload(),1300);}</script></body></html>'''
+        result,diagnostics=self.render(html,{'age_confirmed':True,'target_store':{'name':'X','city':'Y','state':'IL','address':'1 Main St'}})
+        self.assertIn('Menu',result.body.decode())
+
+
+@unittest.skipUnless(os.environ.get('TERPSCOUT_BROWSER_TEST')=='1','Set TERPSCOUT_BROWSER_TEST=1 for installed Chrome integration')
+class LimitOffsetReplayTests(unittest.TestCase):
+    def test_a_full_first_page_of_a_limit_query_is_continued_by_whichever_offset_parameter_works(self):
+        import socket
+        import threading
+        from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
+        from urllib.parse import parse_qs,urlsplit
+        from unittest.mock import patch
+        from backend.network_extract import extract_products,load_captured
+        catalogs={'flower':8,'vapes':3}
+        class Handler(BaseHTTPRequestHandler):
+            protocol_version='HTTP/1.1'
+            def log_message(self,*args):pass
+            def send(self,body,kind):
+                self.send_response(200);self.send_header('Content-Type',kind);self.send_header('Content-Length',str(len(body)));self.end_headers();self.wfile.write(body)
+            def do_GET(self):
+                parts=urlsplit(self.path);query=parse_qs(parts.query)
+                if parts.path=='/api/items':
+                    category=query['category'][0];limit=int(query['limit'][0]);offset=int(query.get('offset',['0'])[0])
+                    rows=[dict(id=f'{category}{i}',name=f'{category} {i}',brand='B',price=20+i,weight=3.5,unit='g',in_stock=True) for i in range(catalogs[category])]
+                    self.send(json.dumps(dict(rows=catalogs[category],data=rows[offset:offset+limit])).encode(),'application/json')
+                else:
+                    script='for (const c of ["flower","vapes"]) fetch("/api/items?category="+c+"&limit=3&sellable=true");'
+                    self.send(('<html><body><main>Menu</main><script>%s</script></body></html>'%script).encode(),'text/html')
+        server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
+        threading.Thread(target=server.serve_forever,daemon=True).start()
+        real_timer=threading.Timer
+        try:
+            with tempfile.TemporaryDirectory() as folder:
+                fetcher=PublicFetcher(Path(folder)/'evidence',transport=httpx.MockTransport(lambda req:(_ for _ in ()).throw(AssertionError('Native traffic must use the controlled test tunnel'))),resolver=lambda *a,**k:[(2,1,6,'',('93.184.216.34',80))])
+                fetcher.native_browser_allowed=True
+                fetcher.browser_options={'await_menu':True,'menu_readiness_ms':300,'scroll_menu':True}
+                try:
+                    with patch('backend.browser_proxy.connect_public',side_effect=lambda *a,**k:(socket.create_connection(server.server_address,timeout=3),'93.184.216.34')),patch('backend.browser_render.threading.Timer',side_effect=lambda seconds,callback:real_timer(60,callback)):
+                        result=fetcher.render('http://example.com/menu')
+                    diagnostics=json.loads((Path(folder)/'evidence/browser'/f'{result.evidence_id}.json').read_text(encoding='utf-8'))
+                    offsets=diagnostics['scroll']['offsets']
+                    self.assertEqual(offsets['learned'],{'/api/items':'offset'})
+                    found=extract_products(load_captured(Path(folder)/'evidence',result.evidence_id),'http://example.com/menu')
+                    self.assertEqual(len({i['source_id'] for i in found['items']}),11)
+                    self.assertEqual(found['total'],11)
+                finally:fetcher.close()
+        finally:server.shutdown();server.server_close()

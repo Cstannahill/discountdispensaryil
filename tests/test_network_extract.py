@@ -254,3 +254,19 @@ class IdHydrationCategoryTotalTests(unittest.TestCase):
         result = extract_products([flower, chunk], URL)
         self.assertEqual(result['total'], 54)
         self.assertEqual({c['category'] for c in result['collections']}, {'Flower', 'Topicals'})
+
+
+class RowsTotalTests(unittest.TestCase):
+    def page(self, category, start, count, rows):
+        products = [dict(id=f'{category}{start + i}', name=f'{category} {start + i}', brand='B', price=20 + i, weight=3.5, unit='g', in_stock=True) for i in range(count)]
+        return (f'https://api.example.com/p/inventory?category={category}&limit=50&offset={start}', {'rows': rows, 'data': products})
+
+    def test_a_root_level_rows_count_is_the_declared_total(self):
+        result = extract_products([self.page('flower', 0, 12, 12)], URL)
+        self.assertEqual((len(result['items']), result['total']), (12, 12))
+
+    def test_category_query_parameters_partition_the_total(self):
+        pages = [self.page('flower', 0, 10, 25), self.page('flower', 10, 10, 25), self.page('vapes', 0, 10, 15)]
+        result = extract_products(pages, URL)
+        self.assertEqual(result['total'], 40)
+        self.assertEqual({c['category'] for c in result['collections']}, {'flower', 'vapes'})
