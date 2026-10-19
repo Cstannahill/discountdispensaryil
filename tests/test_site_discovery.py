@@ -144,6 +144,18 @@ class DiscoveryFallbackTests(unittest.TestCase):
         found=[menu['provider_store_id'] for menu in menus if menu['provider']=='dutchie' and not menu.get('status')]
         self.assertEqual(found,['chain-east-peoria'],menus)
 
+    def test_dutchie_store_ids_set_by_page_scripts_become_embedded_menus(self):
+        from backend.site_discovery import dutchie_page_endpoints
+        moline = dict(name='Stashouse - Moline', city='Moline', state='IL', address='1 Main St')
+        picker = "<script src='https://dutchie.com/api/v2/embedded-menu/'></script><script>var ids={ moline: '698a691ac95a14de84898e8d', marysville: '698a697892b65ab7030c92f3' };</script>"
+        self.assertEqual([e['provider_store_id'] for e in dutchie_page_endpoints(moline, picker)], ['698a691ac95a14de84898e8d'])
+        self.assertEqual(dutchie_page_endpoints(dict(moline, city='Peoria'), picker), [])
+        headless = '<img src="https://images.dutchie.com/x.png"><script>{\\"dispensaryId\\":\\"636117cb88dfb700fd8d791d\\",\\"cName\\":\\"starbuds-burbank\\"}</script>'
+        found = dutchie_page_endpoints(dict(moline, city='Burbank'), headless)
+        self.assertEqual([(e['provider'], e['provider_store_id'], e['url']) for e in found],
+                         [('dutchie', '636117cb88dfb700fd8d791d', 'https://dutchie.com/embedded-menu/636117cb88dfb700fd8d791d')])
+        self.assertEqual(dutchie_page_endpoints(moline, headless.replace('</script>', '{\\"dispensaryId\\":\\"111111111111111111111111\\"}</script>')), [])
+
     def test_address_search_accepts_new_brand_but_requires_exact_street_city_and_cannabis_context(self):
         fetcher=searcher(('https://new-owner.example/menu','New Owner cannabis dispensary','Normal 1609 Northbrook Drive'),('https://wrong.example/','Cannabis Normal','99 Other St'),('https://dentist.example/','Dentist Normal','1609 Northbrook Dr'))
         results=search_websites(dict(name='Old Brand - Normal',city='Normal',state='IL',address='1609 Northbrook Dr'),fetcher,by_address=True)

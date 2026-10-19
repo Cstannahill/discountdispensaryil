@@ -165,6 +165,24 @@ def provider_links(url, text):
     return list({(x['provider'],x['provider_store_id']):x for x in found}.values())
 
 
+_DUTCHIE_KEYED=re.compile(r"""["']?([a-z][a-z0-9_-]*)["']?\s*:\s*['"]([0-9a-f]{24})['"]""",re.I)
+
+
+def dutchie_page_endpoints(store, text):
+    """Dutchie stores a page selects in script rather than in an embed URL: one `dispensaryId` across a headless
+    storefront's records, or a location->id map whose key names the store's city. The Dutchie reader still checks
+    the menu's own address against the registry store."""
+    if 'dutchie' not in text:return []
+    plain=text.replace('\\','')
+    ids=set(re.findall(r'"dispensaryId"\s*:\s*"([0-9a-f]{24})"',plain))
+    if not ids:
+        city=set(re.findall(r'[a-z0-9]+',(store.get('city') or '').lower()))-_STREET_NOISE
+        ids={value for key,value in _DUTCHIE_KEYED.findall(plain) if city and city<=set(re.findall(r'[a-z0-9]+',key.lower().replace('_',' ')))}
+    if len(ids)!=1:return []
+    found=ids.pop()
+    return [dict(url='https://dutchie.com/embedded-menu/'+found,provider='dutchie',provider_store_id=found)]
+
+
 def street_in_text(address,text):
     from .locators import _tokens
     street=re.split(r'\b(?:unit|suite|ste)\b|#',address or '',flags=re.I)[0]

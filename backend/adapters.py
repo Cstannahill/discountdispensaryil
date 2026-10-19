@@ -162,7 +162,7 @@ def resolve_menu(store, fetcher):
     """Bounded search/branch crawl. Platform and generic paths share evidence."""
     from .platforms import detect as detect_platforms
     from .locators import discover_menu_candidates
-    from .site_discovery import inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms
+    from .site_discovery import dutchie_page_endpoints, inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms
     from .providers.generic import extract
     from .providers.jane import hosted_store as jane_hosted_store
     from .documents import read_document
@@ -266,7 +266,9 @@ def resolve_menu(store, fetcher):
             if observed['provider']!='unsupported' and not has_menu_contract(observed):
                 failures.append(dict(url=url,provider=observed['provider'],provider_store_id=None,license_type=observed['license_type'],status='unresolved',
                                      reason='Provider reference detected, but store/tenant or full-catalog contract is unresolved; continuing discovery',resolution_evidence=details))
-            for endpoint in identity['endpoints']:
+            # Script-selected Dutchie stores (location maps, headless storefronts) join the page's embed links.
+            known={e.get('provider_store_id') for e in identity['endpoints']}
+            for endpoint in identity['endpoints']+[x for x in dutchie_page_endpoints(store,_text(response)) if x['provider_store_id'] not in known]:
                 if verified and branch_slug_conflict(store,endpoint['url'],endpoint.get('embed_script_url')):
                     failures.append(dict(url=endpoint['url'],provider=endpoint['provider'],provider_store_id=endpoint.get('provider_store_id'),license_type='recreational',status='identity_conflict',
                                          reason='Embed on this page names a different branch locality; not the requested store',resolution_evidence=dict(embed=endpoint.get('embed_script_url'))))
