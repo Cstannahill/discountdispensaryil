@@ -10,6 +10,13 @@ from backend.domain import GRAMS_PER_OUNCE, inventory_fields
 from backend.documents import read_document
 from backend.completeness import MIN_CONVERGED_ITEMS, churn_convergence, counts_reconcile, visible_total
 
+# Registry store ids an operator accepted despite a street-number difference between the registry and the menu. Each
+# reason records both addresses so the exception can be revisited when the registry is corrected.
+ACCEPTED_STREET_MISMATCHES = {
+    'a9b8267a1dc370dc2b19cd77': 'Mint Cannabis Villa Park: registry 310 E North Ave, Dutchie menu 330 E North Ave; operator accepted 2026-10-19',
+    '8ce3f490d5c2e8700b3ed175': 'Dutchess Cannabis Oak Park: registry 1132 Lake St, Dutchie menu 1142 Lake St; operator accepted 2026-10-19',
+}
+
 VERSION='structured-html-3'
 
 
@@ -119,7 +126,7 @@ def fetch(endpoint,fetcher):
                 network=[]
                 found=network_collections(fetcher,response,endpoint)
                 target=fetcher.browser_options.get('target_store')
-                if found and target and target.get('address') and found.get('identities'):
+                if found and target and target.get('address') and found.get('identities') and target.get('id') not in ACCEPTED_STREET_MISMATCHES:
                     from backend.locators import addresses_match
                     if not any(addresses_match(target['address'],identity['street']) for identity in found['identities']):
                         raise ValueError('Menu source belongs to a different street address: '+'; '.join(identity['street'] for identity in found['identities'][:3]))
