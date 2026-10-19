@@ -85,6 +85,14 @@ class JaneTests(unittest.TestCase):
         self.assertEqual(proven['branch_proof']['method'], 'retailer_page_identity')
         self.assertEqual(fetch(ENDPOINT, JaneFixture({'flower': 1}))['branch_proof']['method'], 'platform_location')
 
+    def test_operator_accepted_branch_distance_is_recorded_as_the_proof(self):
+        from unittest.mock import patch
+        # Prairie Cannabis Naperville (Jane store 6244): accepted by the operator at 0.97 mi from the registry point.
+        with patch.dict('backend.providers.jane.ACCEPTED_BRANCH_DISTANCES', {3050: 'test: operator accepted'}):
+            result = fetch(ENDPOINT, JaneFixture({'flower': 1}, mode='near_location'))
+        self.assertTrue(result['complete'], result['errors'])
+        self.assertEqual(result['branch_proof']['method'], 'operator_accepted')
+
     def test_a_store_without_registry_coordinates_is_not_proven(self):
         fixture = JaneFixture({'flower': 1})
         fixture.browser_options = {'target_store': dict(TARGET, latitude=None)}

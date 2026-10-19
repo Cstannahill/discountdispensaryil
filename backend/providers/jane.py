@@ -27,6 +27,11 @@ HYDRATE = 60
 # proved at resolution. Anything farther is another branch (sibling embeds sit 30-300 mi away).
 MAX_MILES = 0.35
 NEAR_MILES = 5.0
+# Jane store ids an operator accepted by hand when the platform point sits beyond MAX_MILES but the store is the
+# registry branch (the reason is kept with the proof). Keep this list short; it is not a general allowance.
+ACCEPTED_BRANCH_DISTANCES = {
+    6244: 'Prairie Cannabis Naperville (Warrenville, 4S120 N Route 59): platform point 0.97 mi from the registry point; operator accepted 2026-10-19',
+}
 
 
 # Rise (GTI, which also runs Verilife and Bloom Wellness menus) serves Jane stores at
@@ -117,6 +122,8 @@ def fetch(endpoint, fetcher):
                 method = 'platform_location'
             elif distance <= NEAR_MILES and endpoint.get('identity_confidence') in ('matched', 'name_locality'):
                 method = 'retailer_page_identity'
+            elif int(store_id) in ACCEPTED_BRANCH_DISTANCES:
+                method = 'operator_accepted'
             else:
                 raise ValueError(f'Menu source belongs to a different location: {distance:.2f} mi from the registry address')
             result['branch_proof'] = dict(method=method, platform_distance_miles=round(distance, 2),
