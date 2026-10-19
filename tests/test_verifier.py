@@ -13,8 +13,7 @@ SITE = 'https://bloomwellness.example/peoria/'
 PAGE = ('<html><head><script>var x="Now open daily";</script></head><body><h1>Bloom Wellness Peoria</h1>'
         '<p>Bloom Wellness Peoria, formerly Beyond/Hello, is open daily at 7620 N. IL Route 91, Peoria, IL.</p>'
         '<a href="/peoria/menu/">Shop the recreational menu</a></body></html>')
-SEARCH = ('<ol><li class="b_algo"><h2><a href="https://bloomwellness.example/peoria/">Bloom Wellness Peoria</a></h2>'
-          '<p>Formerly Beyond/Hello Peoria</p></li></ol>')
+SEARCH_RESULTS = [dict(url=SITE, title='Bloom Wellness Peoria', snippet='Bloom Wellness Peoria, formerly Beyond/Hello, is open daily')]
 
 
 class Response:
@@ -24,13 +23,15 @@ class Response:
 
 
 class Fetcher:
-    def __init__(self):
-        self.urls = []
+    def __init__(self, evidence_dir=None):
+        self.urls, self.searches, self.evidence_dir = [], [], evidence_dir
+
+    def record_search(self, url, body):
+        self.searches.append(json.loads(body))
+        return Response(url, body.decode(), number=100 + len(self.searches))
 
     def get(self, url):
         self.urls.append(url)
-        if 'bing.com' in url:
-            return Response(url, SEARCH, number=len(self.urls))
         if url == SITE:
             return Response(url, PAGE, number=len(self.urls))
         return Response(url, 'not found', 404, len(self.urls))
@@ -39,8 +40,12 @@ class Fetcher:
 class FakeLLM:
     model = 'fake/model'
 
-    def __init__(self, *replies, tokens=100, usd=0.001):
-        self.replies, self.tokens, self.usd, self.seen = list(replies), tokens, usd, []
+    def __init__(self, *replies, tokens=100, usd=0.001, search_usd=0.007):
+        self.replies, self.tokens, self.usd, self.search_usd, self.seen, self.queries = list(replies), tokens, usd, search_usd, [], []
+
+    def search(self, query):
+        self.queries.append(query)
+        return dict(results=list(SEARCH_RESULTS), tokens=1600, usd=self.search_usd)
 
     def complete(self, messages):
         self.seen.append(list(messages))
@@ -58,8 +63,8 @@ def answer(**changes):
 
 
 class VerifierTests(unittest.TestCase):
-    def run_verifier(self, llm, limits=LIMITS, **kwargs):
-        fetcher = Fetcher()
+    def run_verifier(self, llm, limits=LIMITS, fetcher=None, **kwargs):
+        fetcher = fetcher or Fetcher()
         return verifier.verify_store(dict(STORE), fetcher, llm, limits, **kwargs), fetcher
 
     def test_without_a_key_it_is_not_configured_and_makes_no_request(self):
@@ -97,6 +102,33 @@ class VerifierTests(unittest.TestCase):
         self.assertTrue(record['claims'][0]['evidence_id'])
         # Page text reaches the model labelled as untrusted data.
         self.assertIn('untrusted', llm.seen[-1][-1]['content'])
+        # The web-plugin search is its own paid request: its fee and tokens count, and its result list is evidence.
+        self.assertEqual(['Beyond Hello Peoria'], llm.queries)
+        self.assertAlmostEqual(3 * 0.001 + 0.007, record['usd'])
+        self.assertEqual(3 * 100 + 1600, record['tokens'])
+        self.assertEqual('ev-101', record['evidence'][0])
+        self.assertEqual(SITE, fetcher.searches[0]['results'][0]['url'])
+        self.assertIn(SITE, llm.seen[1][-1]['content'])
+
+    def test_a_search_result_snippet_is_not_a_read_page(self):
+        claims = [dict(field='existence', value='open', url=SITE, quote='Bloom Wellness Peoria, formerly Beyond/Hello, is open daily')]
+        llm = FakeLLM(dict(action='search', query='Beyond Hello Peoria'), answer(verdict='exists', claims=claims))
+        record, fetcher = self.run_verifier(llm)
+        self.assertEqual([], fetcher.urls)
+        self.assertEqual(['not a page read in this run'], [c['dropped'] for c in record['dropped']])
+        self.assertEqual('unknown', record['verdict'])
+
+    def test_search_fees_count_against_the_store_and_daily_caps_and_are_ledgered(self):
+        record, _ = self.run_verifier(FakeLLM(dict(action='search', query='a'), answer(), search_usd=0.05))
+        self.assertEqual(('budget_exceeded', 1), (record['status'], record['steps']))
+        llm = FakeLLM(dict(action='search', query='a'), answer())
+        record, _ = self.run_verifier(llm, dict(LIMITS, usd=5), spent_today=0.9995)
+        self.assertEqual(('budget_exceeded', []), (record['status'], llm.queries))
+        with tempfile.TemporaryDirectory() as folder:
+            record, _ = self.run_verifier(FakeLLM(dict(action='search', query='a'), answer()), fetcher=Fetcher(Path(folder)))
+            self.assertAlmostEqual(record['usd'], verifier.spend_since(folder, verifier.day_ago(), 'verifier'))
+            self.assertEqual(0.0, verifier.spend_since(folder, verifier.day_ago(), 'discovery'))
+            self.assertEqual(0.0, verifier.spend_since(folder, '9999'))
 
     def test_claims_without_a_quote_on_a_fetched_saved_page_are_dropped(self):
         claims = [dict(field='menu_url', value='https://bloomwellness.example/peoria/menu/', url=SITE, quote='Shop the recreational menu'),
@@ -126,8 +158,9 @@ class VerifierTests(unittest.TestCase):
         self.assertEqual(3, record['steps'])
 
     def test_spend_token_and_time_caps(self):
+        # Each step here is a model call plus a search (0.02 + 0.007), so the 0.05 store cap stops after two.
         record, _ = self.run_verifier(FakeLLM(usd=0.02), dict(LIMITS, usd=0.05))
-        self.assertEqual(('budget_exceeded', 3), (record['status'], record['steps']))
+        self.assertEqual(('budget_exceeded', 2), (record['status'], record['steps']))
         record, _ = self.run_verifier(FakeLLM(tokens=15000), dict(LIMITS, tokens=40000))
         self.assertEqual(('budget_exceeded', 3), (record['status'], record['steps']))
         ticks = iter(range(0, 1000, 25))
@@ -197,6 +230,23 @@ class ModelSelectionTests(unittest.TestCase):
         self.assertEqual(['response_format' in body for body in client.bodies], [True, False, False])
         self.assertEqual({'xiaomi/mimo-v2.6-flash'}, {body['model'] for body in client.bodies})
         self.assertEqual('Bearer test-key', client.headers[0]['authorization'])
+
+    def test_openrouter_web_plugin_search_reads_annotations(self):
+        class Client:
+            def post(self, url, headers, json):
+                self.body = json
+                notes = [dict(type='url_citation', url_citation=dict(url=SITE, title='Bloom', content='x' * 900)),
+                         dict(type='url_citation', url_citation=dict(url=SITE, title='duplicate')),
+                         dict(type='url_citation', url_citation=dict(url='javascript:alert(1)', title='bad'))]
+                reply = dict(choices=[dict(message=dict(content='', annotations=notes))], usage=dict(total_tokens=1650, cost=0.00723))
+                return type('Reply', (), dict(status_code=200, json=lambda self: reply))()
+        client = Client()
+        found = verifier.OpenRouter('test-key', 'some/model', client=client).search('Bloom Peoria')
+        self.assertEqual([dict(id='web', engine='exa', max_results=5)], client.body['plugins'])
+        self.assertEqual('Bloom Peoria', client.body['messages'][-1]['content'])
+        self.assertEqual([SITE], [r['url'] for r in found['results']])
+        self.assertEqual(verifier.SNIPPET_CHARS, len(found['results'][0]['snippet']))
+        self.assertEqual((1650, 0.00723), (found['tokens'], found['usd']))
 
     def test_comparison_counts_and_disagreements(self):
         one = verifier.verify_store(dict(STORE), Fetcher(), FakeLLM(dict(action='read', url=SITE), answer()), LIMITS)

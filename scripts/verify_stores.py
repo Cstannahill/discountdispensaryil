@@ -32,6 +32,12 @@ def print_comparison(summary, names):
         print('  no verified disagreements')
 
 
+def spent_since(store, since):
+    """Verifier spend (stored verdicts, or the ledger when runs were not written) plus website-discovery search spend."""
+    folder = Path('data/evidence')
+    return max(store.verifier_spend_since(since), verifier.spend_since(folder, since, 'verifier')) + verifier.spend_since(folder, since, 'discovery')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('store_ids', nargs='*')
@@ -74,7 +80,7 @@ def main():
             target = dict(rows[store_id], problem=problems.get(store_id))
             fetcher = PublicFetcher(Path('data/evidence'), max_attempts=2, timeout_seconds=15, max_run_seconds=limits['seconds'] + 30)
             try:
-                record = verifier.verify_store(target, fetcher, llm, limits, spent_today=store.verifier_spend_since(since), model=model)
+                record = verifier.verify_store(target, fetcher, llm, limits, spent_today=spent_since(store, since), model=model)
             finally:
                 fetcher.close()
             records.append(record)

@@ -10,6 +10,24 @@ def response(url, text):
     return FetchResult(url, 200, text.encode(), {}, 'source-evidence', '2026-10-17T09:00:00Z')
 
 
+class Search:
+    """OpenRouter web-plugin double: fixed (url, title, snippet) results, a per-search fee, and the queries seen."""
+    model = 'fake/search'
+    def __init__(self, *results, usd=0.0072):
+        self.results, self.usd, self.queries = list(results), usd, []
+    def search(self, query):
+        self.queries.append(query)
+        return dict(results=[dict(url=url, title=title, snippet=snippet) for url, title, snippet in self.results], tokens=1600, usd=self.usd)
+
+
+def searcher(*results, folder=None):
+    class Fetcher:
+        evidence_dir = Path(folder) if folder else None
+        def get(self, url): raise AssertionError('Web search must not fetch search-engine pages')
+    fetcher = Fetcher(); fetcher.search_llm = Search(*results)
+    return fetcher
+
+
 class DiscoveryFallbackTests(unittest.TestCase):
 
     def test_retailer_declared_menu_links_are_followed_without_fixed_route_names(self):
@@ -54,31 +72,25 @@ class DiscoveryFallbackTests(unittest.TestCase):
 
 
 
-    def test_search_adopts_only_primary_result_anchor_not_auxiliary_links(self):
-        class Fetcher:
-            def get(self,url):return response(url,'<li class="b_algo"><a href="https://tracking.example/">Preview</a><h2><a href="https://retailer.example/menu">Unique Cannabis dispensary Rutland</a></h2><a href="https://wrong-branch.example/">Other location</a><img src="https://images.example/logo.png"></li>')
-        results=search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),Fetcher())
+    def test_web_search_results_become_candidate_leads_with_search_evidence(self):
+        fetcher=searcher(('https://retailer.example/menu','Unique Cannabis dispensary Rutland',''))
+        results=search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),fetcher)
         self.assertEqual([item['url'] for item in results],['https://retailer.example/menu'])
+        self.assertIn('openrouter.ai',results[0]['evidence'][0]['url'])
+        self.assertIn('Unique Cannabis',fetcher.search_llm.queries[0])
 
     def test_search_cache_preserves_attempt_provenance_across_restart(self):
         with tempfile.TemporaryDirectory() as folder:
-            class First:
-                evidence_dir=Path(folder)
-                def get(self,url):return response(url,'<li class="b_algo"><h2><a href="https://retailer.example/">Unique Cannabis dispensary Rutland</a></h2></li>')
-            class Restarted:
-                evidence_dir=Path(folder)
-                def get(self,url):raise AssertionError('Cache should avoid network')
-            store=dict(name='Unique Cannabis',city='Rutland',state='IL');first=First();search_websites(store,first)
-            restarted=Restarted();search_websites(store,restarted)
+            first=searcher(('https://retailer.example/','Unique Cannabis dispensary Rutland',''),folder=folder)
+            store=dict(name='Unique Cannabis',city='Rutland',state='IL');search_websites(store,first)
+            restarted=searcher(folder=folder);search_websites(store,restarted)
+            self.assertEqual(restarted.search_llm.queries,[])
             self.assertEqual(restarted._last_search_attempts,first._last_search_attempts)
             self.assertTrue(restarted._last_search_attempts)
 
-    def test_search_rejects_lookalike_engine_and_social_hosts_only_by_domain_boundary(self):
-        from backend.site_discovery import decode_search_url
-        self.assertEqual(decode_search_url('https://notbing.com/ck/a?u=a1aHR0cHM6Ly9ldmlsLmV4YW1wbGUv'),'https://notbing.com/ck/a?u=a1aHR0cHM6Ly9ldmlsLmV4YW1wbGUv')
-        class Fetcher:
-            def get(self,url):return response(url,'<li class="b_algo"><h2><a href="https://notfacebook.com/menu">Unique Cannabis dispensary Rutland</a></h2></li>')
-        self.assertEqual([r['url'] for r in search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),Fetcher())],['https://notfacebook.com/menu'])
+    def test_search_rejects_social_hosts_only_by_domain_boundary(self):
+        fetcher=searcher(('https://www.facebook.com/unique','Unique Cannabis dispensary Rutland',''),('https://notfacebook.com/menu','Unique Cannabis dispensary Rutland',''))
+        self.assertEqual([r['url'] for r in search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),fetcher)],['https://notfacebook.com/menu'])
 
     def test_provider_script_hint_does_not_stop_crawling_before_a_real_catalog_contract(self):
         from backend.adapters import resolve_menu
@@ -119,9 +131,8 @@ class DiscoveryFallbackTests(unittest.TestCase):
         self.assertTrue(any(menu['provider']=='dutchie' and not menu.get('status') for menu in menus),menus)
 
     def test_address_search_accepts_new_brand_but_requires_exact_street_city_and_cannabis_context(self):
-        class Fetcher:
-            def get(self,url):return response(url,'<li class="b_algo"><a href="https://new-owner.example/menu">New Owner cannabis dispensary Normal 1609 Northbrook Drive</a></li><li class="b_algo"><a href="https://wrong.example/">Cannabis Normal 99 Other St</a></li><li class="b_algo"><a href="https://dentist.example/">Dentist Normal 1609 Northbrook Dr</a></li>')
-        results=search_websites(dict(name='Old Brand - Normal',city='Normal',state='IL',address='1609 Northbrook Dr'),Fetcher(),by_address=True)
+        fetcher=searcher(('https://new-owner.example/menu','New Owner cannabis dispensary','Normal 1609 Northbrook Drive'),('https://wrong.example/','Cannabis Normal','99 Other St'),('https://dentist.example/','Dentist Normal','1609 Northbrook Dr'))
+        results=search_websites(dict(name='Old Brand - Normal',city='Normal',state='IL',address='1609 Northbrook Dr'),fetcher,by_address=True)
         self.assertEqual([item['url'] for item in results],['https://new-owner.example/menu'])
 
     def test_failed_chain_crawl_reserves_capacity_for_address_recovery(self):
@@ -141,16 +152,31 @@ class DiscoveryFallbackTests(unittest.TestCase):
 
     def test_old_positive_search_cache_is_invalidated_by_strategy_revision(self):
         with tempfile.TemporaryDirectory() as folder:
-            class Fetcher:
-                evidence_dir=Path(folder)
-                calls=0
-                def get(self,url):
-                    self.calls+=1
-                    return response(url,'<li class="b_algo"><a href="https://brand.example/menu">Unique Cannabis dispensary Rutland</a></li>')
-            shop=dict(name='Unique Cannabis',city='Rutland',state='IL');first=Fetcher()
-            search_websites(shop,first)
-            cache=next((Path(folder)/'search-cache').glob('*.json'));saved=json.loads(cache.read_text());saved['strategy_version']=2;cache.write_text(json.dumps(saved))
-            restarted=Fetcher();self.assertTrue(search_websites(shop,restarted));self.assertGreater(restarted.calls,0)
+            result=('https://brand.example/menu','Unique Cannabis dispensary Rutland','')
+            shop=dict(name='Unique Cannabis',city='Rutland',state='IL')
+            search_websites(shop,searcher(result,folder=folder))
+            cache=next((Path(folder)/'search-cache').glob('*.json'));saved=json.loads(cache.read_text());saved['strategy_version']=4;cache.write_text(json.dumps(saved))
+            restarted=searcher(result,folder=folder);self.assertTrue(search_websites(shop,restarted));self.assertTrue(restarted.search_llm.queries)
+
+    def test_search_fee_is_ledgered_and_daily_cap_stops_further_searches(self):
+        from backend import verifier
+        with tempfile.TemporaryDirectory() as folder:
+            result=('https://brand.example/menu','Unique Cannabis dispensary Rutland','')
+            fetcher=searcher(result,folder=folder);fetcher.search_llm.usd_per_day=0.01
+            self.assertTrue(search_websites(dict(id='s1',name='Unique Cannabis',city='Rutland',state='IL'),fetcher))
+            self.assertAlmostEqual(verifier.spend_since(folder,verifier.day_ago(),'discovery'),0.0072)
+            self.assertTrue(search_websites(dict(id='s2',name='Other Cannabis',city='Rutland',state='IL'),searcher(('https://other.example/','Other Cannabis dispensary Rutland',''),folder=folder)))
+            capped=searcher(result,folder=folder);capped.search_llm.usd_per_day=0.01
+            self.assertEqual(search_websites(dict(id='s3',name='Third Cannabis',city='Rutland',state='IL'),capped),[])
+            self.assertEqual(capped.search_llm.queries,[])
+            self.assertIn('cap',capped._last_search_attempts[0]['error'])
+
+    def test_search_without_a_configured_model_reports_it_and_never_uses_test_doubles(self):
+        class Fetcher:
+            def get(self,url):raise AssertionError('No request expected')
+        fetcher=Fetcher()
+        self.assertEqual(search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),fetcher),[])
+        self.assertIn('not configured',fetcher._last_search_attempts[0]['error'])
 
     def test_promotional_groups_and_product_details_are_not_independent_full_menu_targets(self):
         from backend.adapters import resolve_menu
@@ -201,32 +227,18 @@ class DiscoveryFallbackTests(unittest.TestCase):
         result=inspect_page(dict(name='Example Dispensary',address='1 Main St',city='Rutland',state='IL'),response('https://example.com/chicago',text))
         self.assertEqual(result['identity_status'],'conflict')
     def test_compound_brand_and_generic_business_names_can_still_produce_leads(self):
-        class Fetcher:
-            def get(self,url):
-                return response(url,'<li class="b_algo"><h2><a href="https://bisalina.com/">BISALINA cannabis dispensary Joliet</a></h2></li><li class="b_algo"><h2><a href="https://thedispensary.example/fulton">The Dispensary Fulton cannabis menu</a></h2></li>')
-        self.assertTrue(search_websites(dict(name='Bisa Lina Joliet',city='Joliet',state='IL'),Fetcher()))
-        self.assertTrue(search_websites(dict(name='The Dispensary',city='Fulton',state='IL'),Fetcher()))
+        results=(('https://bisalina.com/','BISALINA cannabis dispensary Joliet',''),('https://thedispensary.example/fulton','The Dispensary Fulton cannabis menu',''))
+        self.assertTrue(search_websites(dict(name='Bisa Lina Joliet',city='Joliet',state='IL'),searcher(*results)))
+        self.assertTrue(search_websites(dict(name='The Dispensary',city='Fulton',state='IL'),searcher(*results)))
+
     def test_search_results_survive_fetcher_restart_without_repeating_requests(self):
         with tempfile.TemporaryDirectory() as folder:
-            body=Path('tests/fixtures/sites/bing-terrabis.html').read_text(encoding='utf-8')
-            class First:
-                evidence_dir=Path(folder)
-                def get(self,url):return response(url,body)
-            class Restarted:
-                evidence_dir=Path(folder)
-                def get(self,url):raise AssertionError('Persisted positive search should avoid a repeated request')
             shop=dict(name='Terrabis Plainfield',city='Plainfield',state='IL')
-            first=search_websites(shop,First())
+            first=search_websites(shop,searcher(('https://www.terrabis.co/plainfield','Terrabis Plainfield dispensary',''),folder=folder))
             self.assertTrue(first)
-            self.assertEqual(search_websites(shop,Restarted()),first)
-    def test_real_search_redirects_decode_into_websites_without_brand_connector(self):
-        body = Path('tests/fixtures/sites/bing-terrabis.html').read_text(encoding='utf-8')
-        class Fetcher:
-            def get(self, url): return response(url, body)
-        results = search_websites(dict(name='Terrabis Plainfield', city='Plainfield', state='IL'), Fetcher())
-        self.assertTrue(any('terrabis.co' in r['url'] for r in results))
-        self.assertFalse(any('bing.com/ck' in r['url'] for r in results))
-        self.assertTrue(all(r['evidence'] for r in results))
+            restarted=searcher(folder=folder)
+            self.assertEqual(search_websites(shop,restarted),first)
+            self.assertEqual(restarted.search_llm.queries,[])
 
     def test_noxx_actual_branch_address_matches_despite_url_city_abbreviation(self):
         text = Path('tests/fixtures/sites/noxx-peoria.html').read_text(encoding='utf-8')
@@ -253,14 +265,10 @@ class DiscoveryFallbackTests(unittest.TestCase):
         self.assertTrue(all('/carousels/' not in x['url'] for x in found))
 
     def test_search_results_for_unrelated_brand_are_not_adopted(self):
-        class Fetcher:
-            def get(self,url):return response(url,'<li class="b_algo"><h2><a href="https://unrelated.com/">Unrelated Chicago dentistry</a></h2></li>')
-        self.assertEqual(search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),Fetcher()),[])
+        self.assertEqual(search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),searcher(('https://unrelated.com/','Unrelated Chicago dentistry',''))),[])
 
     def test_shared_single_word_is_not_enough_for_a_multiword_brand(self):
-        class Fetcher:
-            def get(self,url):return response(url,'<li class="b_algo"><h2><a href="https://mysticboarding.com/">Mystic sporting goods</a></h2></li>')
-        self.assertEqual(search_websites(dict(name='Mystic Greenz - Lincoln',city='Lincoln',state='IL'),Fetcher()),[])
+        self.assertEqual(search_websites(dict(name='Mystic Greenz - Lincoln',city='Lincoln',state='IL'),searcher(('https://mysticboarding.com/','Mystic sporting goods',''))),[])
 
     def test_provider_api_preconnect_is_not_a_menu_endpoint(self):
         self.assertEqual(provider_links('https://example.com','<link rel="preconnect" href="https://api.dispenseapp.com">'),[])

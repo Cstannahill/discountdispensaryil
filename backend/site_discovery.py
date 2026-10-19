@@ -1,5 +1,4 @@
 """Evidence-bearing public search, branch inspection, and menu platform detection."""
-import base64
 import hashlib
 import html
 from html.parser import HTMLParser
@@ -7,7 +6,7 @@ import json
 from pathlib import Path
 import re
 import time
-from urllib.parse import parse_qs, parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
+from urllib.parse import parse_qsl, urlencode, urljoin, urlsplit, urlunsplit
 
 
 def canonical_menu_url(url):
@@ -289,32 +288,22 @@ def domain_is(host, domain):
     return host == domain or host.endswith('.'+domain)
 
 
-def search_result_target(block, url):
-    # Bing's title is the result destination; sitelinks, previews and resource
-    # URLs elsewhere in the result block are not independent website leads.
-    heading=re.search(r'<h2\b[^>]*>(.*?)</h2>',block,re.S|re.I)
-    anchors=Page(heading[1] if heading else block,url).anchors
-    return decode_search_url(anchors[0][0]) if anchors else ''
-
-
-def decode_search_url(link):
-    link=html.unescape(link)
-    parts=urlsplit(link)
-    query=parse_qs(parts.query)
-    if domain_is(parts.hostname or '', 'bing.com') and parts.path.startswith('/ck/'):
-        value=query.get('u',[''])[0]
-        if value.startswith('a1'):
-            try:
-                return base64.urlsafe_b64decode(value[2:]+'='*(-len(value[2:])%4)).decode()
-            except (ValueError,UnicodeError):
-                return ''
-        return ''
-    if domain_is(parts.hostname or '', 'duckduckgo.com') and query.get('uddg'):
-        return query['uddg'][0]
-    return link
+def search_llm(fetcher):
+    """The web-search client: an injected `fetcher.search_llm`, else the configured OpenRouter model for a real
+    network fetcher only (test doubles never reach a paid API). None means search is not configured."""
+    if hasattr(fetcher,'search_llm'):return fetcher.search_llm
+    from .network import PublicFetcher
+    if not isinstance(fetcher,PublicFetcher) or fetcher._transport_override is not None:return None
+    from .verifier import load_env,llm_from_config,budgets
+    config=load_env()
+    llm=llm_from_config(config)
+    if llm:llm.usd_per_day=budgets(config)['usd_per_day']
+    fetcher.search_llm=llm
+    return llm
 
 
 def search_websites(store, fetcher, *, by_address=False):
+    from .verifier import search,record_spend,spend_since,day_ago
     brand_name=re.split(r'\s+-\s+',store.get('name',''))[0]
     brand_name=re.sub(r'\b'+re.escape(store.get('city',''))+r'\b','',brand_name,flags=re.I).strip()
     if by_address and not store.get('address'):return []
@@ -326,7 +315,7 @@ def search_websites(store, fetcher, *, by_address=False):
     if query not in cache and cache_path and cache_path.exists():
         try:
             saved=json.loads(cache_path.read_text(encoding='utf-8'))
-            if saved.get('strategy_version')==4:
+            if saved.get('strategy_version')==5:
                 cache[query]=(saved['time'],saved['results'],saved.get('attempts',[]))
         except (OSError,ValueError,KeyError):
             pass
@@ -334,49 +323,49 @@ def search_websites(store, fetcher, *, by_address=False):
         fetcher._last_search_attempts=cache[query][2] if len(cache[query])>2 else []
         return cache[query][1]
     results,attempts=[],[]
-    engines=(('https://www.bing.com/search?',''),('https://html.duckduckgo.com/html/?','')) if by_address else (('https://www.bing.com/search?',''),('https://www.bing.com/search?',' dispensary cannabis menu '+store.get('state','IL')),('https://html.duckduckgo.com/html/?',' dispensary cannabis menu'))
-    for engine,suffix in engines:
-        url=engine+urlencode({'q':query+suffix})
-        try:
-            response=fetcher.get(url)
-            text=response.body.decode('utf-8',errors='replace')
-            attempts.append(dict(url=url,evidence_id=response.evidence_id,status=response.status_code))
-            if response.status_code != 200:
+    # One OpenRouter web-plugin (Exa) request per query; the registry state and cannabis context keep a name search on topic.
+    text=query if by_address else query+' '+store.get('state','IL')+' dispensary cannabis menu'
+    llm=search_llm(fetcher)
+    if llm is None:
+        fetcher._last_search_attempts=[dict(url=None,error='Web search not configured (set OPENROUTER_API_KEY in .env)')]
+        return []
+    cap=getattr(llm,'usd_per_day',None)
+    if cap is not None and spend_since(folder,day_ago())>=cap:
+        # Not cached: the search runs again once the 24h window has room.
+        fetcher._last_search_attempts=[dict(url=None,error='Daily LLM spend cap reached (VERIFIER_MAX_USD_PER_DAY); web search skipped')]
+        return []
+    try:
+        found,evidence=search(llm,text,fetcher)
+        record_spend(folder,'discovery',getattr(llm,'model',None),found['usd'],found['tokens'],store.get('id'))
+        attempts.append(dict(url=evidence['url'],evidence_id=evidence['evidence_id'],status=200,engine='openrouter-web-exa'))
+        for item in found['results']:
+            block_text=item['title']+' '+item['url']+' '+item['snippet'];block_words=set(words(block_text))
+            required=business_words(brand_name)
+            ordered=[w for w in words(brand_name) if w in required]
+            compact=''.join(ordered[:2])
+            compact_match=bool(compact and compact in ''.join(words(block_text)))
+            city_match=set(words(store.get('city',''))) <= block_words
+            context_match=bool(block_words & {'dispensary','dispensaries','cannabis','marijuana'})
+            if by_address:
+                if not (street_in_text(street,block_text) and city_match and context_match):continue
+            else:
+                if required and len(required & block_words)<min(2,len(required)) and not compact_match:continue
+                if not (city_match or context_match) or (not required and not (city_match and context_match)):continue
+            target=item['url']
+            host=urlsplit(target).hostname or ''
+            excluded=('openrouter.ai','bing.com','microsoft.com','facebook.com','instagram.com','youtube.com','leafly.com','yelp.com','weedmaps.com')
+            if urlsplit(target).scheme not in ('http','https') or not host or any(domain_is(host,domain) for domain in excluded):
                 continue
-            blocks=re.findall(r'<li\b[^>]*class=["\'][^"\']*b_algo[^"\']*["\'][^>]*>.*?</li>',text,re.S|re.I)
-            if not blocks and 'duckduckgo' in engine:
-                blocks=re.findall(r'<a\b[^>]*class=["\'][^"\']*result__a[^"\']*["\'][^>]*>.*?</a>',text,re.S|re.I)
-            brand=business_words(store.get('name',''))-set(words(store.get('city','')))
-            for block in blocks:
-                block_text=html.unescape(re.sub('<[^>]+>',' ',block));block_words=set(words(block_text))
-                required=business_words(brand_name)
-                ordered=[w for w in words(brand_name) if w in required]
-                compact=''.join(ordered[:2])
-                compact_match=bool(compact and compact in ''.join(words(html.unescape(re.sub('<[^>]+>',' ',block)))))
-                city_match=set(words(store.get('city',''))) <= block_words
-                context_match=bool(block_words & {'dispensary','dispensaries','cannabis','marijuana'})
-                if by_address:
-                    if not (street_in_text(street,block_text) and city_match and context_match):continue
-                else:
-                    if required and len(required & block_words)<min(2,len(required)) and not compact_match:continue
-                    if not (city_match or context_match) or (not required and not (city_match and context_match)):continue
-                target=search_result_target(block,response.url)
-                host=urlsplit(target).hostname or ''
-                excluded=('bing.com','microsoft.com','facebook.com','instagram.com','youtube.com','leafly.com','yelp.com','weedmaps.com')
-                if urlsplit(target).scheme not in ('http','https') or not host or any(domain_is(host,domain) for domain in excluded):
-                    continue
-                results.append(dict(url=target,status='candidate',reason='Primary public search result; branch identity will be inspected',evidence=[dict(query=query,url=response.url,evidence_id=response.evidence_id,fetched_at=response.fetched_at)]))
-            if any(not is_directory_url(item['url']) for item in results):
-                break
-        except Exception as exc:
-            attempts.append(dict(url=url,error=str(exc),evidence_id=getattr(exc,'evidence_id',None)))
+            results.append(dict(url=target,status='candidate',reason='Primary public search result; branch identity will be inspected',evidence=[dict(query=text,url=evidence['url'],evidence_id=evidence['evidence_id'],fetched_at=evidence['fetched_at'])]))
+    except Exception as exc:
+        attempts.append(dict(url=None,error=f'{type(exc).__name__}: {str(exc)[:200]}'))
     results=list({canonical_menu_url(x['url']):dict(x,url=canonical_menu_url(x['url'])) for x in results}.values())
     results.sort(key=lambda candidate:is_directory_url(candidate['url']))
     results=results[:8]
     cache[query]=(time.time(),results,attempts)
     if cache_path:
         cache_path.parent.mkdir(parents=True,exist_ok=True)
-        cache_path.write_text(json.dumps(dict(time=cache[query][0],results=results,attempts=attempts,strategy_version=4)),encoding='utf-8')
+        cache_path.write_text(json.dumps(dict(time=cache[query][0],results=results,attempts=attempts,strategy_version=5)),encoding='utf-8')
     fetcher._website_search_cache=cache
     fetcher._last_search_attempts=attempts
     return results

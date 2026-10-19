@@ -19,7 +19,7 @@ from backend.platforms import detect
 from backend.site_discovery import is_directory_url
 from backend.storage import Store
 
-SEARCH_HOSTS = re.compile(r'(?:^|\.)(?:bing\.com|duckduckgo\.com|google\.[a-z.]+|yahoo\.com|search\.brave\.com)$')
+SEARCH_HOSTS = re.compile(r'(?:^|\.)(?:bing\.com|duckduckgo\.com|google\.[a-z.]+|yahoo\.com|search\.brave\.com|openrouter\.ai)$')
 EVIDENCE_ID = re.compile(r'"evidence_id":\s*"([0-9a-f]{40,64})"')
 
 
