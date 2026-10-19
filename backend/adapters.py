@@ -119,6 +119,18 @@ def _detect_endpoint(url, response):
     hosted = re.search(r'iheartjane\.com/(?:embed/)?stores/(\d+)', response.url or url)
     if hosted:
         return {'url': response.url or url, 'provider': 'jane', 'provider_store_id': hosted[1], 'license_type': 'unknown', 'resolution_evidence': dict(evidence, method='Jane hosted store menu URL')}
+    if 'dmerch.iheartjane.com' in text:
+        # Retailer-hosted Jane storefronts render the store's own search records into the page. One store id across
+        # every record (agreeing with a /store/<id> path) names the Jane store; the reader proves the branch by location.
+        ids = set(re.findall(r'"store_?[iI]d"\s*:\s*(\d+)', text.replace('\\', '')))
+        path = re.search(r'/stores?/(\d+)(?:/|$)', urlparse(response.url or url).path)
+        if len(ids) == 1 and (not path or path[1] in ids):
+            places = list(set(re.findall(r'"_geoloc"\s*:\s*\{\s*"lat"\s*:\s*(-?[\d.]+)\s*,\s*"lng"\s*:\s*(-?[\d.]+)', text.replace('\\', ''))))
+            located = dict(platform_location=dict(lat=float(places[0][0]), lng=float(places[0][1]))) if len(places) == 1 else {}
+            # The records' own store_types are the platform's license context (a medical-only twin shares the branch).
+            types = set(re.findall(r'"store_types"\s*:\s*\[([^\]]*)\]', text.replace('\\', '')))
+            license_type = 'medicinal' if types == {'"medical"'} else 'recreational' if types and all('"recreational"' in t for t in types) else 'unknown'
+            return {'url': response.url or url, 'provider': 'jane', 'provider_store_id': ids.pop(), 'license_type': license_type, 'resolution_evidence': dict(evidence, method='Jane storefront records name one store', **located)}
     match = re.search(r'[\"\']storeId[\"\']\s*:\s*(\d+)', text)
     if match and 'iheartjane.com' in text:
         return {'url': url, 'provider': 'jane', 'provider_store_id': match[1], 'license_type': 'recreational' if 'adult-use' in url else 'unknown', 'resolution_evidence': dict(evidence, method='Jane partner hosted storeId; traversal unsupported')}
@@ -289,7 +301,8 @@ def resolve_menu(store, fetcher):
     own=[x for x in catalog_entries+[x for x in results if x['provider']=='generic'] if branch_slug_confirms(store,x['url'])]
     if own and not platforms:catalog_entries=own
     chosen=platforms or catalog_entries or results or [dict(failure,discovery_attempts=failures) for failure in official_failures] or failures
-    return list({(x['provider'],x.get('provider_store_id'),x.get('url'),x['license_type']):x for x in chosen}.values())
+    # A native store id is the menu; its category and landing pages are one endpoint, not several.
+    return list({(x['provider'],x.get('provider_store_id'),None if x.get('provider_store_id') and x['provider']=='jane' else x.get('url'),x['license_type']):x for x in chosen}.values())
 
 
 def fetch_menu(endpoint, fetcher):

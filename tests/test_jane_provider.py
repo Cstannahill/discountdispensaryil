@@ -125,5 +125,64 @@ class JaneTests(unittest.TestCase):
             self.assertTrue(result['errors'], mode)
 
 
+
+class WhiteLabelStorefrontTests(unittest.TestCase):
+    """Retailer-hosted Jane storefronts (NuEra, Cannabist) render the store's own dmerch records into the page."""
+    def page(self, url, ids, extra=''):
+        records = ''.join('{\\"store_id\\":%d,\\"storeId\\":%d}' % (i, i) for i in ids)
+        text = '<link rel="canonical" href="%s"><script>self.__next_f.push([1,"https://dmerch.iheartjane.com %s%s"])</script>' % (url, records, extra)
+        return FetchResult(url, 200, text.encode(), {}, 'ev', '2026-10-18T09:00:00Z')
+
+    def test_page_naming_one_jane_store_is_a_native_jane_endpoint(self):
+        from backend.adapters import _detect_endpoint
+        url = 'https://nueracannabis.com/shop/store/1517/featured'
+        endpoint = _detect_endpoint(url, self.page(url, [1517, 1517]))
+        self.assertEqual(('jane', '1517'), (endpoint['provider'], endpoint['provider_store_id']))
+
+    def test_mixed_or_contradicting_store_ids_are_not_a_contract(self):
+        from backend.adapters import _detect_endpoint
+        url = 'https://nueracannabis.com/shop/store/1517/featured'
+        self.assertNotEqual('jane', _detect_endpoint(url, self.page(url, [1517, 3057]))['provider'])
+        self.assertNotEqual('jane', _detect_endpoint(url, self.page(url, [3057]))['provider'])
+
+    def test_store_types_on_the_records_set_the_license_context(self):
+        from backend.adapters import _observed_endpoint
+        url = 'https://nueracannabis.com/shop/store/1518/featured'
+        medical = self.page(url, [1518], ' {\\"store_types\\":[\\"medical\\"]}')
+        recreational = self.page(url, [1518], ' {\\"store_types\\":[\\"medical\\",\\"recreational\\"]}')
+        self.assertEqual('medicinal', _observed_endpoint(url, medical)['license_type'])
+        self.assertEqual('recreational', _observed_endpoint(url, recreational)['license_type'])
+
+    def test_page_location_rejects_sibling_storefronts_at_resolution(self):
+        from backend.adapters import _detect_endpoint
+        from backend.site_discovery import provider_address_matches
+        store = dict(address='504 Riverside Dr', latitude=40.6809, longitude=-89.5821)
+        url = 'https://nueracannabis.com/shop/store/1517/featured'
+        here = self.page(url, [1517], ' {\\"_geoloc\\":{\\"lat\\":40.6809635,\\"lng\\":-89.5820017}}')
+        there = self.page(url, [1517], ' {\\"_geoloc\\":{\\"lat\\":40.1164,\\"lng\\":-88.2434}}')
+        self.assertTrue(provider_address_matches(store, _detect_endpoint(url, here)))
+        self.assertFalse(provider_address_matches(store, _detect_endpoint(url, there)))
+        self.assertIsNone(provider_address_matches(store, _detect_endpoint(url, self.page(url, [1517]))))
+
+    def test_one_endpoint_per_jane_store_and_siblings_are_dropped(self):
+        from unittest.mock import patch
+        from backend.adapters import resolve_menu
+        here = ' {\\"_geoloc\\":{\\"lat\\":40.6809635,\\"lng\\":-89.5820017}}'
+        there = ' {\\"_geoloc\\":{\\"lat\\":40.1164,\\"lng\\":-88.2434}}'
+        pages = {'https://chain.example/shop/store/1517/featured': ([1517], here, '<a href="/shop/store/1517/shop-all">x</a><a href="/shop/store/3057/featured">y</a>'),
+                 'https://chain.example/shop/store/1517/shop-all': ([1517], here, ''), 'https://chain.example/shop/store/3057/featured': ([3057], there, '')}
+        test = self
+        class Fetcher:
+            def get(self, url):
+                ids, extra, links = pages[url]
+                page = test.page(url, ids, extra)
+                return FetchResult(url, 200, page.body + ('<h1>Chain East Peoria</h1>504 Riverside Dr' + links).encode(), {}, 'ev', page.fetched_at)
+        store = dict(name='Chain - East Peoria', city='East Peoria', state='IL', address='504 Riverside Dr', latitude=40.6809, longitude=-89.5821,
+                     lead_urls=['https://chain.example/shop/store/1517/featured', 'https://chain.example/shop/store/1517/shop-all', 'https://chain.example/shop/store/3057/featured'])
+        with patch('backend.site_discovery.search_websites', return_value=[]), patch('backend.locators.discover_menu_candidates', return_value=[]):
+            found = [(m['provider'], m.get('provider_store_id')) for m in resolve_menu(store, Fetcher()) if not m.get('status')]
+        self.assertEqual(found, [('jane', '1517')])
+
+
 if __name__ == '__main__':
     unittest.main()

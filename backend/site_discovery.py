@@ -278,6 +278,13 @@ def provider_address_matches(store,endpoint):
     """None means absent evidence, not a contradiction. False is an actual mismatch."""
     from .locators import addresses_match
     details=endpoint.get('resolution_evidence') or {}
+    place=details.get('platform_location') if isinstance(details,dict) else None
+    if place and store.get('latitude') is not None and store.get('longitude') is not None:
+        # The platform's own store coordinates: at the registry point proves the branch, far away refutes it.
+        from .providers.jane import MAX_MILES,NEAR_MILES,_miles
+        miles=_miles(float(store['latitude']),float(store['longitude']),place['lat'],place['lng'])
+        if miles<=MAX_MILES:return True
+        if miles>NEAR_MILES:return False
     address=details.get('retailer_address') if isinstance(details,dict) else None
     if not address or not store.get('address'):
         return None
