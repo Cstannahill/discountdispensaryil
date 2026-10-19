@@ -21,9 +21,12 @@ from backend.storage import Store
 KEYS = ('id', 'name', 'address', 'city', 'state', 'latitude', 'longitude')
 
 
-def triage(store, leads, options, root, pages):
+def triage(store, leads, options, root, pages, run_spend):
     started = time.time()
     fetcher = PublicFetcher(root, max_attempts=1, timeout_seconds=12, max_run_seconds=240)
+    fetcher.sample_run = True
+    fetcher.run_spend = run_spend
+    fetcher.store_spend = dict(usd=0.0, ceiling=0.05)
     fetcher.browser_options = dict(options, await_menu=True, scroll_menu=True, sample_pages=pages,
                                    target_store={key: store.get(key) for key in KEYS})
     report = dict(store_id=store['id'], name=store['name'], city=store['city'])
@@ -45,6 +48,7 @@ def triage(store, leads, options, root, pages):
         report['error'] = f'{type(error).__name__}: {str(error)[:200]}'
     finally:
         fetcher.close()
+    report['hit_cap'] = fetcher.store_spend['usd'] >= fetcher.store_spend['ceiling']
     samples = report.get('samples') or []
     report['verdict'] = ('ERROR' if report.get('error') else 'NO_TARGET' if not report.get('targets') else
                          'WORKS' if any(s['items'] for s in samples) else 'TARGET_NO_PRODUCTS')
@@ -60,6 +64,7 @@ def main():
     parser.add_argument('--pages', type=int, default=1)
     parser.add_argument('--workers', type=int, default=4)
     parser.add_argument('--output', default='data/triage_report.json')
+    parser.add_argument('--max-usd', type=float, default=0.5, help='per-run web-search ceiling; the daily cap does not apply to triage')
     args = parser.parse_args()
     configure_worker_stack()
     root = Path('data/evidence')
@@ -76,8 +81,10 @@ def main():
                  for s in stores}
     print(f'triaging {len(stores)} stores with {args.workers} workers', flush=True)
 
+    run_spend = dict(usd=0.0, ceiling=args.max_usd)
+
     def run(row):
-        result = triage(row, leads[row['id']], options, root, args.pages)
+        result = triage(row, leads[row['id']], options, root, args.pages, run_spend)
         print(f"{result['verdict']:<18} {result['name'][:32]:<32} {result['seconds']:>6}s "
               f"{(result.get('samples') or [{}])[-1].get('provider') or ''} items={(result.get('samples') or [{}])[-1].get('items')} "
               f"{result.get('reason') or result.get('error') or ''}"[:220], flush=True)

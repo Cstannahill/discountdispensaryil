@@ -197,6 +197,30 @@ class DiscoveryFallbackTests(unittest.TestCase):
             self.assertEqual(capped.search_llm.queries,[])
             self.assertIn('cap',capped._last_search_attempts[0]['error'])
 
+    def test_sample_runs_bypass_the_daily_cap_but_a_per_run_ceiling_still_applies(self):
+        with tempfile.TemporaryDirectory() as folder:
+            result=('https://brand.example/menu','Sample Cannabis dispensary Rutland','')
+            fetcher=searcher(result,folder=folder);fetcher.search_llm.usd_per_day=0.0001
+            fetcher.sample_run=True;fetcher.run_spend=dict(usd=0.0,ceiling=0.5)
+            self.assertTrue(search_websites(dict(id='s4',name='Sample Cannabis',city='Rutland',state='IL'),fetcher))
+            self.assertEqual(len(fetcher.search_llm.queries),1)
+            self.assertAlmostEqual(fetcher.run_spend['usd'],0.0072)
+            fetcher.run_spend['ceiling']=0.005
+            again=searcher(('https://other.example/','Other Cannabis dispensary Rutland',''),folder=folder)
+            again.sample_run=True;again.run_spend=fetcher.run_spend
+            self.assertEqual(search_websites(dict(id='s5',name='Other Cannabis',city='Rutland',state='IL'),again),[])
+            self.assertIn('ceiling',again._last_search_attempts[0]['error'])
+            self.assertEqual(again.search_llm.queries,[])
+
+    def test_a_store_that_hits_its_search_cap_stops_annotated_and_does_not_fail(self):
+        result=('https://brand.example/menu','Capped Cannabis dispensary Rutland','')
+        fetcher=searcher(result);fetcher.sample_run=True;fetcher.store_spend=dict(usd=0.0,ceiling=0.005)
+        self.assertTrue(search_websites(dict(id='s6',name='Capped Cannabis',city='Rutland',state='IL'),fetcher))
+        self.assertEqual(fetcher.store_spend['usd'],0.0072)
+        self.assertEqual(search_websites(dict(id='s6',name='Capped Cannabis Two',city='Rutland',state='IL'),fetcher),[])
+        self.assertIn('hit cap',fetcher._last_search_attempts[0]['error'])
+        self.assertEqual(len(fetcher.search_llm.queries),1)
+
     def test_search_without_a_configured_model_reports_it_and_never_uses_test_doubles(self):
         class Fetcher:
             def get(self,url):raise AssertionError('No request expected')

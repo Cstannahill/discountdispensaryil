@@ -355,13 +355,25 @@ def search_websites(store, fetcher, *, by_address=False):
         fetcher._last_search_attempts=[dict(url=None,error='Web search not configured (set OPENROUTER_API_KEY in .env)')]
         return []
     cap=getattr(llm,'usd_per_day',None)
-    if cap is not None and spend_since(folder,day_ago())>=cap:
+    run=getattr(fetcher,'run_spend',None)
+    # Samples and triage runs (fetcher.sample_run) are small and bypass the daily cap; the per-run ceiling bounds them.
+    store_run=getattr(fetcher,'store_spend',None)
+    # Hitting a store's own cap stops that store only: it is annotated 'hit cap' and the run moves on.
+    if store_run is not None and store_run['usd']>=store_run['ceiling']:
+        fetcher._last_search_attempts=[dict(url=None,error='Per-store search cap reached (hit cap); web search skipped for this store')]
+        return []
+    if run is not None and run['usd']>=run['ceiling']:
+        fetcher._last_search_attempts=[dict(url=None,error='Per-run search ceiling reached (--max-usd); web search skipped')]
+        return []
+    if cap is not None and not getattr(fetcher,'sample_run',False) and spend_since(folder,day_ago())>=cap:
         # Not cached: the search runs again once the 24h window has room.
         fetcher._last_search_attempts=[dict(url=None,error='Daily LLM spend cap reached (VERIFIER_MAX_USD_PER_DAY); web search skipped')]
         return []
     try:
         found,evidence=search(llm,text,fetcher)
         record_spend(folder,'discovery',getattr(llm,'model',None),found['usd'],found['tokens'],store.get('id'))
+        if run is not None:run['usd']+=found['usd']
+        if store_run is not None:store_run['usd']+=found['usd']
         attempts.append(dict(url=evidence['url'],evidence_id=evidence['evidence_id'],status=200,engine='openrouter-web-exa'))
         for item in found['results']:
             block_text=item['title']+' '+item['url']+' '+item['snippet'];block_words=set(words(block_text))
