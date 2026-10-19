@@ -8,7 +8,7 @@ import sqlite3
 import uuid
 
 from .completeness import grade_for, valid_convergence
-from .domain import age_hours, digest, distance_miles, instant, normalize_offer, utcnow
+from .domain import age_hours, digest, distance_miles, flower_grade, instant, normalize_offer, utcnow
 
 REGISTRY_URL = "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no"
 
@@ -538,6 +538,7 @@ class Store:
             item.update(store_name=store["name"], distance_miles=store["distance_miles"],
                         freshness="fresh" if age_hours(verified_at, now) < 12 else "stale")
             item["source_url"] = item.get("source_url") or row["url"]
+            item["flower_grade"] = flower_grade(item)
             result.append(item)
         return result
 
@@ -549,10 +550,12 @@ class Store:
             raise ValueError("refresh_required")
         return {"items": items[(page-1)*page_size:page*page_size], "total": len(items), "page": page, "page_size": page_size, "data_version": version}
 
-    def query_offers(self, region_id=None, license_type=None, category=None, q="", include_stale=False, page=1, page_size=50, data_version=None, now=None, strain_type=None, action=None, include_unverified=False):
+    def query_offers(self, region_id=None, license_type=None, category=None, q="", include_stale=False, page=1, page_size=50, data_version=None, now=None, strain_type=None, action=None, include_unverified=False, flower_grade="whole"):
         version_before = str(self.setting("data_version", 0))
         # Grade B (converged, not reconciled to a source total) is labeled and excluded unless requested.
         items = [r for r in self._offer_rows(region_id, license_type, now) if r["eligible"] and r["status"] == "active" and (include_stale or r["freshness"] == "fresh") and (include_unverified or r["completeness"] == "A")]
+        if flower_grade and flower_grade != "all":
+            items = [r for r in items if r["flower_grade"] in (None, flower_grade)]
         if category and category != "all":
             items = [r for r in items if r["category"] == category]
         if q:
@@ -592,7 +595,7 @@ class Store:
     def benchmark(self, region_id=None, license_type=None, include_stale=False):
         version = str(self.setting('data_version',0))
         items = [r for r in self._offer_rows(region_id,license_type) if r['status']=='active' and r['eligible'] and
-                 r['completeness']=='A' and (include_stale or r['freshness']=='fresh')]
+                 r['completeness']=='A' and (include_stale or r['freshness']=='fresh') and r['flower_grade'] in (None,'whole')]
         groups = {}
         for offer in items:
             key = (offer['store_id'],offer['category'])

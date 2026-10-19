@@ -4,6 +4,7 @@ from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import hashlib
 import json
 import math
+import re
 
 # Cannabis retail sizes an ounce at 28 g (1/8 oz is sold as 3.5 g), not the avoirdupois 28.3495 g.
 GRAMS_PER_OUNCE = Decimal("28")
@@ -54,6 +55,25 @@ def price_text(value):
     if number is None:
         return None
     return format(number, ".2f") if number.as_tuple().exponent >= -2 else str(number)
+
+
+# Flower is ranked by grade: shake/trim and smalls/popcorn are cheaper per gram by design, and infused flower is a
+# different product, so none of them compete with whole flower for "best deal" unless asked for.
+FLOWER_GRADES = ("whole", "smalls", "shake", "infused")
+_GRADE_PATTERNS = (("infused", re.compile(r"\b(?:infused|moon ?rocks?|caviar)\b", re.I)),
+                   ("shake", re.compile(r"\b(?:shake|trim|(?:pre[ _-]?)?ground|milled)\b", re.I)),
+                   ("smalls", re.compile(r"\b(?:popcorn|smalls|mini ?buds?|budlets|littles|lil ?buds|mixed buds|small buds)\b", re.I)))
+
+
+def flower_grade(item):
+    """Grade of a flower offer from its source subcategory, else its name; None for other categories."""
+    if str(item.get("category") or "").lower() != "flower":
+        return None
+    for text in (item.get("subcategory"), item.get("name")):
+        for grade, pattern in _GRADE_PATTERNS:
+            if text and pattern.search(str(text)):
+                return grade
+    return "whole"
 
 
 def normalize_offer(item):

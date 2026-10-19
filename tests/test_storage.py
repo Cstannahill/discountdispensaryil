@@ -90,6 +90,20 @@ class StorageTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'refresh_required'):
                 self.db.menu_products(self.endpoint['id'])
 
+    def test_flower_deals_rank_whole_flower_apart_from_shake_smalls_and_infused(self):
+        self.apply([item("whole", effective_price="35.00"), item("shake", name="Gelato Shake 7g", weight_grams="7", effective_price="20.00"),
+                    item("pop", subcategory="POPCORN | SMALLS", effective_price="20.00"), item("inf", subcategory="Infused Flower", effective_price="20.00"),
+                    item("cart", category="vapes", name="Popcorn Cart", effective_price="20.00")])
+        now = "2026-10-17T08:00:00+00:00"
+        ids = lambda **kw: [r["source_id"] for r in self.db.query_offers(self.region["id"], now=now, **kw)["items"]]
+        self.assertEqual(ids(category="flower"), ["whole"])
+        self.assertEqual(ids(category="flower", flower_grade="shake"), ["shake"])
+        self.assertEqual(ids(category="flower", flower_grade="smalls"), ["pop"])
+        self.assertEqual(ids(category="flower", flower_grade="infused"), ["inf"])
+        self.assertEqual(len(ids(category="flower", flower_grade="all")), 4)
+        self.assertEqual(ids(category="vapes"), ["cart"])
+        self.assertEqual(sorted(ids()), ["cart", "whole"])
+
     def test_blank_name_is_retained_and_quarantined_without_rejecting_full_menu(self):
         result = self.apply([item("a"), item("b", name="   ")])
         self.assertEqual(result["status"], "complete")
