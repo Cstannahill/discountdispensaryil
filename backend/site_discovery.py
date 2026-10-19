@@ -309,10 +309,14 @@ def inspect_page(store, response):
     name_match=bool(registry_words and (registry_words & combined or any(len(w)>=6 and w in joined for w in registry_words)))
     city_match=locality_in(store.get('city',''),combined)
     address_in_text=street_in_text(store.get('address',''),visible)
+    # Single-location sites print the street in the body (footer, contact block) but not in the title or meta.
+    # The body street plus the town in the page's own title proves the branch unless the title names another town.
+    body_street=not address_in_text and street_in_text(store.get('address',''),re.sub(r'<[^>]+>',' ',text))
+    title_city=set(words(store.get('city',''))) <= set(words(visible))
     cannabis_context=bool(combined & {'cannabis','marijuana','dispensary','dispensaries'})
     if addresses and not matched:
         identity='conflict'
-    elif matched or (address_in_text and (name_match or (city_match and cannabis_context))):
+    elif matched or (address_in_text and (name_match or (city_match and cannabis_context))) or (body_street and title_city and cannabis_context):
         identity='matched'
     elif name_match and city_match:
         identity='name_locality'

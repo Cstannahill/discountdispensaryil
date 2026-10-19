@@ -389,3 +389,21 @@ class DutchieMenuRootTests(unittest.TestCase):
         }
         for link, expected in cases.items():
             self.assertEqual(self.roots(link), [expected], link)
+
+
+class BodyStreetIdentityTests(unittest.TestCase):
+    """A single-location site prints its street in the footer or contact block, not in the title; the title's town proves it."""
+    FULTON = dict(name='The Dispensary', address='1801 16th Ave', city='Fulton', state='IL')
+
+    def test_street_in_body_and_town_in_title_matches_the_branch(self):
+        text = ('<title>Fulton REC Store - The Dispensary</title><h1>Fulton REC Store</h1>'
+                '<footer><a href="https://maps.example/x">1801 16th Ave. Fulton, IL 61252</a></footer>')
+        self.assertEqual(inspect_page(self.FULTON, response('https://www.thedispensaryfulton.com/fulton-rec-store/menu/', text))['identity_status'], 'matched')
+
+    def test_street_with_a_title_naming_another_town_is_not_this_branch(self):
+        text = '<title>Chicago Store - The Dispensary</title><footer>1801 16th Ave. Fulton, IL 61252 cannabis dispensary</footer>'
+        self.assertNotEqual(inspect_page(self.FULTON, response('https://example.com/chicago', text))['identity_status'], 'matched')
+
+    def test_street_without_the_town_in_the_title_is_not_enough(self):
+        text = '<title>Our Locations</title><footer>1801 16th Ave. Fulton, IL 61252 cannabis dispensary</footer>'
+        self.assertNotEqual(inspect_page(self.FULTON, response('https://example.com/locations', text))['identity_status'], 'matched')
