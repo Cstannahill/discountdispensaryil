@@ -20,7 +20,8 @@ def provider_capabilities(provider):
 
 
 def _text(response):
-    return response.body.decode('utf-8-sig') if isinstance(response.body, bytes) else response.body
+    # A search hit can be a PDF or image; undecodable bytes are not a reason to abort the whole branch search.
+    return response.body.decode('utf-8-sig', errors='replace') if isinstance(response.body, bytes) else response.body
 
 
 def _next_data(text):

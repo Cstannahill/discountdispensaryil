@@ -170,5 +170,20 @@ class JaneBoostStoreListTests(unittest.TestCase):
         self.assertEqual(found, ['61', '62'])
 
 
+class BinaryDocumentTests(unittest.TestCase):
+    def test_pdf_search_hit_is_skipped_without_aborting_the_branch_search(self):
+        pdf = b'%PDF-1.4\n\xb5\xff\xfe binary stream \x80\x81'
+
+        class Fetcher:
+            browser_options = {'enabled': False}
+
+            def get(self, url, headers=None):
+                return FetchResult(url, 200, pdf, {'content-type': 'application/pdf'}, 'e-pdf', '2026-10-19T06:00:00Z')
+        store = dict(name='Ascend - Tinley Park', address='16200 Harlem Ave', city='Tinley Park', state='IL', website='https://idfpr.example/licenses.pdf')
+        found = resolve_menu(store, Fetcher())
+        self.assertFalse(any(r.get('provider') == 'sweed' for r in found))
+        self.assertFalse(any(r.get('reason') and 'utf-8' in r['reason'] for r in found))
+
+
 if __name__ == '__main__':
     unittest.main()
