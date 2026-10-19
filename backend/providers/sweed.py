@@ -59,7 +59,33 @@ def observe(url, response):
         if not candidates:
             raise ValueError('No observed full-catalog link in Sweed landing page')
         menu_url = min(candidates,key=len)
-    return {'url': menu_url, 'provider': 'sweed', 'provider_store_id': str(info['id']), 'license_type': canonical_license or 'unknown', 'resolution_evidence': {'url': response.url, 'evidence_id': response.evidence_id, 'fetched_at': response.fetched_at, 'method': 'Sweed SSR tenant config, store info, sale-type query context', 'retailer_name': info.get('name'), 'retailer_address': info.get('contacts', {}).get('address'), 'retailer_location': info.get('location'), 'sale_types': sale_types}}
+    coords = (info.get('location') or {}).get('coords') or {}
+    # The store's own map pin proves the branch where a registry street number is mistyped (as Jane's does).
+    located = {'platform_location': {'lat': float(coords['lat']), 'lng': float(coords['lng'])}} if isinstance(coords.get('lat'), (int, float)) and isinstance(coords.get('lng'), (int, float)) else {}
+    return {'url': menu_url, 'provider': 'sweed', 'provider_store_id': str(info['id']), 'license_type': canonical_license or 'unknown', 'resolution_evidence': {'url': response.url, 'evidence_id': response.evidence_id, 'fetched_at': response.fetched_at, 'method': 'Sweed SSR tenant config, store info, sale-type query context', 'retailer_name': info.get('name'), 'retailer_address': info.get('contacts', {}).get('address'), 'retailer_location': info.get('location'), 'sale_types': sale_types, 'store_home': base, **located}}
+
+
+def branch_directory(text):
+    """The tenant's own branch list (`/Store/GetStoreShortInfoList`), rendered on Sweed store home pages; None when absent."""
+    try:
+        queries = query_cache(text)
+    except (ValueError, KeyError, TypeError):
+        return None
+    return next((q['state'].get('data', {}).get('shortStoreInfoList') for q in queries if q['queryKey'][0] == '/Store/GetStoreShortInfoList'), None)
+
+
+def branch_links(store, branches):
+    """Multi-store Sweed sites open on a default branch. The requested store's page in the tenant's branch list: its exact
+    street address, else the only listed branch in its city. A lead only; that page's own store info proves the branch."""
+    from backend.locators import _tokens, addresses_match
+    listed = [b for b in branches or [] if isinstance(b, dict) and b.get('url')]
+    address = lambda b: (b.get('contacts') or {}).get('address') or ''
+    exact = [b['url'] for b in listed if addresses_match(store.get('address', ''), address(b))]
+    if exact:
+        return exact
+    city = ' '.join(_tokens(store.get('city', '')))
+    local = [b['url'] for b in listed if city and f' {city} ' in ' ' + ' '.join(_tokens(b.get('name', '') + ' ' + address(b))) + ' ']
+    return local if len(local) == 1 else []
 
 
 _MULTI_BUY = re.compile(r'\bbuy\b|\bget (?:two|three|\d)|save more|stackable|\b\d+\s+for\b', re.I)

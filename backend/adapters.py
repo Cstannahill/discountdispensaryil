@@ -158,6 +158,24 @@ def has_menu_contract(endpoint):
     return not provider_capabilities(endpoint.get('provider'))['native_full_menu'] or bool(endpoint.get('provider_store_id'))
 
 
+def _sweed_branch_links(store, response, details, fetcher):
+    """The tenant's branch list from this page, else from the default store's home page (read once per site)."""
+    from backend.providers.sweed import branch_directory, branch_links
+    from .documents import read_document
+    seen=fetcher.__dict__.setdefault('_sweed_directories',{})
+    host=urlparse(response.url).hostname
+    if host in seen:return []
+    branches=branch_directory(_text(response))
+    home=details.get('store_home') if isinstance(details,dict) else None
+    if branches is None and home:
+        try:
+            page=read_document(home,fetcher)
+            if page.status_code==200:branches=branch_directory(_text(page))
+        except Exception:branches=None
+    seen[host]=branches
+    return branch_links(store,branches)
+
+
 def resolve_menu(store, fetcher):
     """Bounded search/branch crawl. Platform and generic paths share evidence."""
     from .platforms import detect as detect_platforms
@@ -255,6 +273,10 @@ def resolve_menu(store, fetcher):
                 verified=False
                 failures.append(dict(url=url,provider=observed['provider'],provider_store_id=observed.get('provider_store_id'),license_type=observed['license_type'],
                                      status='identity_conflict',reason='Detected menu belongs to a different street address: '+str(details.get('retailer_address')),resolution_evidence=details))
+                if observed['provider']=='sweed':
+                    # A multi-store Sweed site opened on its default branch; its branch list names the requested store's page.
+                    for link in _sweed_branch_links(store,response,details,fetcher):
+                        if catalog_entry_url(link) not in visited:pending.insert(0,(link,depth,seed,False))
             if has_menu_contract(observed) and verified:
                 observed.update(identity_confidence=identity['identity_status'],locator_evidence=seed.get('evidence',[]))
                 results.append(observed)
