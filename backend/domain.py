@@ -5,6 +5,9 @@ import hashlib
 import json
 import math
 
+# Cannabis retail sizes an ounce at 28 g (1/8 oz is sold as 3.5 g), not the avoirdupois 28.3495 g.
+GRAMS_PER_OUNCE = Decimal("28")
+
 
 def utcnow():
     return datetime.now(timezone.utc).isoformat()

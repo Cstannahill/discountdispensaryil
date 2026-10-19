@@ -6,6 +6,7 @@ import gzip
 import json
 from pathlib import Path
 import re
+from backend.domain import GRAMS_PER_OUNCE
 
 MIN_ARRAY = 3
 MAX_BODY_BYTES = 20 * 1024 * 1024
@@ -247,7 +248,7 @@ def _products(array, source_url, license_type='recreational'):
         unit = str(_first(attrs, ('unit', 'weight_unit', 'weightUnit', 'units')) or 'g').lower()
         grams = None
         if weight and weight > 0:
-            grams = _text(weight * Decimal('28.349523125')) if unit in ('oz', 'ounce', 'ounces') else _text(weight) if unit in ('g', 'gram', 'grams', 'grm') else None
+            grams = _text(weight * GRAMS_PER_OUNCE) if unit in ('oz', 'ounce', 'ounces') else _text(weight) if unit in ('g', 'gram', 'grams', 'grm') else None
         items.append(_item(product, attrs, source_id, 'base', grams, f'{weight}{unit}' if grams else None, max(regular, price), price,
                            _in_stock(attrs), source_url, kind))
     return items

@@ -6,7 +6,7 @@ import re
 from urllib.parse import urljoin
 
 from backend.flight import records,resolve
-from backend.domain import inventory_fields as comparable_item
+from backend.domain import GRAMS_PER_OUNCE, inventory_fields as comparable_item
 from backend.site_discovery import objects,Page
 
 VERSION='treez-flight-3'
@@ -58,7 +58,7 @@ def normalize(source,parent,endpoint):
     mapped={'FLOWER':'flower','EXTRACT':'concentrate','CONCENTRATE':'concentrate','CARTRIDGE':'vapes','VAPE':'vapes'}.get(category,'other')
     size=str(product.get('size') or '')
     weight=re.fullmatch(r'\s*(\d+(?:\.\d+)?)\s*(g|grams?|oz|ounces?)\s*',size,re.I)
-    grams=_decimal(Decimal(weight[1])*(Decimal('28.349523125') if weight[2].lower().startswith(('oz','ounce')) else 1)) if weight else None
+    grams=_decimal(Decimal(weight[1])*(GRAMS_PER_OUNCE if weight[2].lower().startswith(('oz','ounce')) else 1)) if weight else None
     regular=_decimal(pricing.get('priceSell'));sale=_decimal(pricing.get('discountedPrice'))
     applied=pricing.get('appliedDiscountIds') or []
     discounts={str(discount.get('discountId')):discount for discount in product.get('discounts',[]) if isinstance(discount,dict)}

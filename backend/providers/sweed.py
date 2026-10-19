@@ -3,7 +3,7 @@
 Uses the retailer's ordinary paginated /menu links. No API keys, login, age
 verification state, or carousel records are used to obtain catalog products.
 """
-from backend.domain import inventory_fields
+from backend.domain import GRAMS_PER_OUNCE, inventory_fields
 from decimal import Decimal
 import html
 import hashlib
@@ -114,7 +114,7 @@ def normalize_product(product, endpoint):
         units = str(size.get('unitAbbr', '')).upper()
         units_per_package = _decimal(variant.get('unitsInPackage'))
         if amount and units_per_package and units in ('G', 'OZ'):
-            weight = _decimal(Decimal(amount) * Decimal(units_per_package) * (Decimal('28.349523125') if units == 'OZ' else 1))
+            weight = _decimal(Decimal(amount) * Decimal(units_per_package) * (GRAMS_PER_OUNCE if units == 'OZ' else 1))
         lab = (variant.get('labTests') or {}).get('thc') or {}
         values = lab.get('value') or []
         promos = variant.get('promos') or []

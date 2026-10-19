@@ -220,6 +220,15 @@ class AdapterTests(unittest.TestCase):
         edible = next(x for x in objects if x['attributes'].get('size', {}).get('units') == 'milligram')
         self.assertIsNone(adapters.normalize_blaze(edible, fixture['included'], ENDPOINT)['weight_grams'])
 
+    def test_retail_ounce_fractions_use_28_grams(self):
+        # Menus sell 1/8 oz as 3.5 g; the avoirdupois factor would price an eighth as 3.544 g.
+        fixture = json.loads((FIXTURES / 'blaze.json').read_text(encoding='utf-8'))
+        flower = copy.deepcopy(next(x for x in fixture['data'] if x['attributes'].get('size', {}).get('units') in ('grams', 'gram', 'g')))
+        for amount, grams in (('0.125', '3.5'), ('0.25', '7'), ('0.5', '14'), ('1', '28')):
+            flower['attributes']['size'] = dict(amount=amount, units='ounces', display_text='oz')
+            record = adapters.normalize_blaze(flower, fixture['included'], ENDPOINT)
+            self.assertEqual(float(grams), float(record['weight_grams']))
+
     def test_unknown_provider_is_explicitly_incomplete(self):
         result = adapters.fetch_menu({'url':'https://example.com', 'provider':'unsupported'}, BlazeFetcher())
         self.assertFalse(result['complete'])

@@ -6,7 +6,7 @@ import json
 import re
 from urllib.parse import urljoin, urlsplit
 from backend.site_discovery import Page, objects, inspect_page, license_context
-from backend.domain import inventory_fields
+from backend.domain import GRAMS_PER_OUNCE, inventory_fields
 from backend.documents import read_document
 from backend.completeness import MIN_CONVERGED_ITEMS, churn_convergence, counts_reconcile, visible_total
 
@@ -29,7 +29,7 @@ def normalize(product, endpoint):
         unit=str(weight.get('unitCode') or weight.get('unitText') or '').casefold()
         value=_decimal(weight.get('value'))
         if value and unit in ('grm','g','gram','grams','oz','ounce','ounces'):
-            grams=_decimal(Decimal(value)*(Decimal('28.349523125') if unit in ('oz','ounce','ounces') else 1))
+            grams=_decimal(Decimal(value)*(GRAMS_PER_OUNCE if unit in ('oz','ounce','ounces') else 1))
     category=str(product.get('category') or 'unknown')
     mapped={'flower':'flower','concentrate':'concentrate','concentrates':'concentrate','vape':'vapes','vapes':'vapes'}.get(category.casefold(),'other')
     result=[]
