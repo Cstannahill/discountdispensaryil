@@ -174,6 +174,11 @@ class SyncService:
                               items=outcome.get('source_count'),seconds=round(time.monotonic()-attempt_started,3),detail=detail or None)
                 accepted+=outcome['status']=='complete'
                 had_failure=had_failure or outcome['status']!='complete'
+                # The platform's own coordinates place this menu at another branch: retire it so sibling menus found on a
+                # chain page are not re-read every sync. supersede_endpoint refuses a menu that holds accepted offers.
+                if outcome['status']!='complete' and 'belongs to a different location' in (detail or '') and not endpoint.get('last_success_at'):
+                    try:self.store.supersede_endpoint(endpoint['id'],detail)
+                    except ValueError:pass
                 results.append(dict(stage='menu',store_id=store['id'],store_name=store['name'],endpoint_id=endpoint['id'],provider=endpoint['provider'],license_type=endpoint['license_type'],url=endpoint['url'],work_origin=origin,**outcome))
                 for event in results:
                     if event.get('stage')=='menu_progress' and event.get('endpoint_id')==endpoint['id']:event['status']=outcome['status']

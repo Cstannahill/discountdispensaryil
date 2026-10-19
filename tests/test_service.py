@@ -88,6 +88,23 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(len(self.db.stores_in_region()), 1)
         self.assertIn(self.db.job(job['id'])['status'], ('failed', 'partial'))
 
+    def test_menu_the_platform_places_at_another_branch_is_retired(self):
+        self.db.import_registry([observation()], 'original')
+        self.db.create_region(40.9844, -89.0388, 'ZIP 61358', 50)
+        sibling = dict(url='https://example.com/shop/store/9', provider='fixture', provider_store_id='9', license_type='recreational', resolution_evidence=['e'])
+        wrong = dict(snapshot([]), complete=False, expected_count=None, errors=[dict(code='incomplete_jane_menu', message='Menu source belongs to a different location: 42.85 mi from the registry address')])
+        service = SyncService(self.db, FixtureFetcher(), resolver=lambda s, f: [sibling], menu_fetcher=lambda e, f: wrong)
+        job = self.db.enqueue({'discover': False}); service.run(job['id'])
+        unsure = dict(wrong, errors=[dict(code='incomplete_jane_menu', message='Jane slice returned 3 of 4 products')])
+        service.menu_fetcher = lambda e, f: unsure
+        other = dict(sibling, url='https://example.com/shop/store/10', provider_store_id='10')
+        service.resolver = lambda s, f: [other]
+        job = self.db.enqueue({'discover': False, 'resolve_sources': True}); service.run(job['id']); service.close()
+        with self.db.connection() as conn:
+            status = dict(conn.execute('SELECT url,status FROM live_endpoints').fetchall())
+        self.assertEqual(status['https://example.com/shop/store/9'], 'superseded')
+        self.assertNotEqual(status['https://example.com/shop/store/10'], 'superseded')
+
     def test_live_ingestion_path_seeds_and_repeated_run_is_idempotent(self):
         self.db.import_registry([observation()], 'original')
         self.db.create_region(40.9844, -89.0388, 'ZIP 61358', 50)
