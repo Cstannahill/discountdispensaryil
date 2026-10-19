@@ -116,6 +116,15 @@ class LocatorTests(unittest.TestCase):
         self.assertEqual(['https://curaleaf.com/shop/illinois/curaleaf-il-weed-street'], urls('Curaleaf  Lincoln Park', '923 W. Weed St.', 'Chicago'))
         self.assertEqual(['https://curaleaf.com/shop/illinois/curaleaf-il-worth'], urls('Curaleaf  Worth', '11425 S Harlem Ave', 'Worth'))
 
+    def test_curaleaf_house_number_and_city_accepted_other_chains_stay_strict(self):
+        from backend.site_discovery import provider_address_matches
+        sweed=lambda address:dict(provider='sweed',resolution_evidence=dict(retailer_address=address))
+        morris='2400 Hiawatha Pioneer Trail, Morris, Illinois'
+        self.assertTrue(provider_address_matches(dict(name='Curaleaf  Morris',address='2400 W US Route 6',city='Morris',state='IL'),sweed(morris)))
+        self.assertFalse(provider_address_matches(dict(name='Curaleaf New Lenox',address='705 E Lincoln Hwy.',city='New Lenox',state='IL'),sweed('709 East Lincoln Highway, New Lenox, Illinois')))
+        self.assertFalse(provider_address_matches(dict(name='Other Dispensary',address='2400 W US Route 6',city='Morris',state='IL'),sweed(morris)))
+        self.assertFalse(provider_address_matches(dict(name='Curaleaf Morris',address='2401 W US Route 6',city='Morris',state='IL'),sweed(morris)))
+
 
 if __name__ == '__main__':
     unittest.main()

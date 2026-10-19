@@ -306,7 +306,23 @@ def provider_address_matches(store,endpoint):
     address=details.get('retailer_address') if isinstance(details,dict) else None
     if not address or not store.get('address'):
         return None
-    return addresses_match(store['address'],address)
+    if addresses_match(store['address'],address):return True
+    return True if _curaleaf_house_city_match(store,address) else False
+
+
+def _curaleaf_house_city_match(store,address):
+    """Curaleaf only: its platform sometimes names a branch's street differently (Route 6 vs Hiawatha Pioneer Trail),
+    so the same house number in the same city is accepted. Every other chain keeps the strict street rule."""
+    if not re.match(r'curaleaf\b',(store.get('name') or '').strip(),re.I):return False
+    number=re.match(r'\s*(\d+)\b',store.get('address') or '')
+    retailer=re.match(r'\s*(\d+)\b',address or '')
+    city=' '.join(_tokens_of(store.get('city','')))
+    return bool(number and retailer and number[1]==retailer[1] and city and f' {city} ' in f' {" ".join(_tokens_of(address))} ')
+
+
+def _tokens_of(value):
+    from .locators import _tokens
+    return _tokens(value)
 
 
 def domain_is(host, domain):
