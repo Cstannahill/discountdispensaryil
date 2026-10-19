@@ -47,11 +47,15 @@ def _next_worker_message(messages, process, timed_out, stop_requested=None):
                 return None
 
 
+# Tunnel byte budget for a whole-catalog run. Stash's full menu crosses 256 MB of tunnel traffic (pages, images, analytics),
+# so the budget is set to 512 MB; other renders keep 64 MB.
+CATALOG_TUNNEL_BYTES=512*1024*1024
+
 def render(url,fetcher,options=None,page_handler=None):
     options=dict(options or {},catalog_navigation=page_handler is not None)
     if options.get('transport','native')=='native' and getattr(fetcher,'native_browser_allowed',False):
         from .browser_proxy import public_browser_proxy
-        with public_browser_proxy(fetcher,max_bytes=(256 if page_handler else 64)*1024*1024,require_page_request=True) as proxy:
+        with public_browser_proxy(fetcher,max_bytes=(CATALOG_TUNNEL_BYTES if page_handler else 64*1024*1024),require_page_request=True) as proxy:
             return _render(url,fetcher,options,proxy,page_handler)
     return _render(url,fetcher,options,page_handler=page_handler)
 
