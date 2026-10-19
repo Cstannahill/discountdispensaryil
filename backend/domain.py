@@ -104,7 +104,7 @@ def normalize_offer(item):
                   category=category, source_category=item.get("source_category") or category,
                   weight_grams=str(weight.normalize()) if weight is not None else None,
                   regular_price=price_text(item.get("regular_price")), effective_price=price_text(effective),
-                  conditional=conditional, available=available, eligible=not reasons, exclusion_reasons=reasons,
+                  conditional=conditional, promo=item.get("promo"), available=available, eligible=not reasons, exclusion_reasons=reasons,
                   price_per_gram=format((effective/weight).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP), ".2f")
                   if effective is not None and weight is not None else None,
                   raw=item.get("raw", {}))

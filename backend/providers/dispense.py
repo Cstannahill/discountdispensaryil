@@ -72,7 +72,7 @@ def normalize(product,endpoint):
                            thc_pct=_decimal(labs.get('thc')) if labs.get('thcContentUnit')=='%' else None,
                            weight_grams=grams,weight_label=data.get('weightFormatted'),regular_price=_decimal(data.get('price')),
                            effective_price=_decimal(data.get('priceWithDiscounts') if data.get('priceWithDiscounts') is not None else data.get('price')),
-                           conditional=bool(conditional),available=quantity is not None and Decimal(quantity)>0 and data.get('enable') is True and not data.get('deleted'),
+                           conditional=bool(conditional),promo=('bogo' if any(str(d.get('productOfferType','')).upper()=='BOGO' for d in discounts) else None),available=quantity is not None and Decimal(quantity)>0 and data.get('enable') is True and not data.get('deleted'),
                            source_url=data.get('productUrl') or endpoint['url'],raw=dict(product=product,variant=variant)))
     return result
 

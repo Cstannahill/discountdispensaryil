@@ -62,5 +62,13 @@ class DispenseTests(unittest.TestCase):
         self.assertFalse(result['conditional']);self.assertEqual(float(result['effective_price']),30)
         product.update(weightFormatted='3.5g',discounts=[sale])
         self.assertTrue(normalize(product,ENDPOINT)[0]['conditional'])
+    def test_bogo_promotions_are_labelled_so_they_get_their_own_category(self):
+        product=json.loads((ROOT/'products.json').read_text())['data'][0]
+        product.update(discounts=[{'productOfferType':'BOGO'}])
+        result=normalize(product,ENDPOINT)[0]
+        self.assertTrue(result['conditional']);self.assertEqual(result['promo'],'bogo')
+        product.update(discounts=[{'productOfferType':'SALE','minimumSpend':50}])
+        self.assertIsNone(normalize(product,ENDPOINT)[0]['promo'])
+
 
 if __name__=='__main__':unittest.main()

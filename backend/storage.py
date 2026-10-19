@@ -560,10 +560,14 @@ class Store:
             raise ValueError("refresh_required")
         return {"items": items[(page-1)*page_size:page*page_size], "total": len(items), "page": page, "page_size": page_size, "data_version": version}
 
-    def query_offers(self, region_id=None, license_type=None, category=None, q="", include_stale=False, page=1, page_size=50, data_version=None, now=None, strain_type=None, action=None, include_unverified=False, flower_grade="whole"):
+    def query_offers(self, region_id=None, license_type=None, category=None, q="", include_stale=False, page=1, page_size=50, data_version=None, now=None, strain_type=None, action=None, include_unverified=False, flower_grade="whole", promo=None):
         version_before = str(self.setting("data_version", 0))
         # Grade B (converged, not reconciled to a source total) is labeled and excluded unless requested.
-        items = [r for r in self._offer_rows(region_id, license_type, now) if r["eligible"] and r["status"] == "active" and (include_stale or r["freshness"] == "fresh") and (include_unverified or r["completeness"] == "A")]
+        if promo == "bogo":
+            # Conditional BOGO promotions: their own list, never ranked with comparable deals.
+            items = [r for r in self._offer_rows(region_id, license_type, now) if r.get("promo") == "bogo" and r["status"] == "active" and r["freshness"] == "fresh" and r["completeness"] == "A" and r["category"] in ("flower", "concentrate", "vapes")]
+        else:
+            items = [r for r in self._offer_rows(region_id, license_type, now) if r["eligible"] and r["status"] == "active" and (include_stale or r["freshness"] == "fresh") and (include_unverified or r["completeness"] == "A")]
         if flower_grade and flower_grade != "all":
             items = [r for r in items if r["flower_grade"] in (None, flower_grade)]
         if category and category != "all":

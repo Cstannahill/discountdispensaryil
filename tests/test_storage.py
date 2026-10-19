@@ -116,6 +116,13 @@ class StorageTests(unittest.TestCase):
         self.assertEqual(ids(category="vapes"), ["cart"])
         self.assertEqual(sorted(ids()), ["cart", "whole"])
 
+    def test_bogo_offers_are_a_separate_promo_list_not_deals(self):
+        self.apply([item("whole", effective_price="35.00"), item("bogo", conditional=True, promo="bogo", effective_price="20.00")])
+        now = "2026-10-17T08:00:00+00:00"
+        ids = lambda **kw: [r["source_id"] for r in self.db.query_offers(self.region["id"], now=now, **kw)["items"]]
+        self.assertEqual(ids(), ["whole"])
+        self.assertEqual(ids(promo="bogo"), ["bogo"])
+
     def test_blank_name_is_retained_and_quarantined_without_rejecting_full_menu(self):
         result = self.apply([item("a"), item("b", name="   ")])
         self.assertEqual(result["status"], "complete")
