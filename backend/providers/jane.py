@@ -142,7 +142,10 @@ def fetch(endpoint, fetcher):
             body = dict(appMode='default', janeDeviceId=device, searchFacets=[name], storeId=store_id)
             if search_filter:
                 body['searchFilter'] = search_filter
-            counts = post('/v2/facets', body)['searchFacets'].get(name) or {}
+            facets = post('/v2/facets', body).get('searchFacets')
+            if facets is None:
+                raise ValueError('Jane store returned no facets (not active on Jane, or a different store id)')
+            counts = facets.get(name) or {}
             if any(not isinstance(v, int) or isinstance(v, bool) or v < 0 for v in counts.values()):
                 raise ValueError('Invalid Jane facet count')
             return counts

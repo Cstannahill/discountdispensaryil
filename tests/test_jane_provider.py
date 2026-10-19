@@ -210,5 +210,17 @@ class WhiteLabelStorefrontTests(unittest.TestCase):
                          [('jane', '254', 'medicinal', None)])
 
 
+class JaneEmptyStoreTests(unittest.TestCase):
+    def test_a_store_with_no_facets_is_an_explicit_failure_not_a_crash(self):
+        class Empty(JaneFixture):
+            def post(self, url, *, json, headers=None):
+                if urlsplit(url).path == '/v2/facets':
+                    return result(url, {}, 1)
+                return super().post(url, json=json, headers=headers)
+        outcome = fetch(ENDPOINT, Empty({'flower': 1}))
+        self.assertFalse(outcome['complete'])
+        self.assertIn('no facets', outcome['errors'][0]['message'])
+
+
 if __name__ == '__main__':
     unittest.main()

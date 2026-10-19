@@ -27,7 +27,7 @@ def catalog_entry_url(url):
 def is_directory_url(url):
     host=(urlsplit(url).hostname or '').lower()
     return any(host==domain or host.endswith('.'+domain) for domain in
-               ('jointcommerce.com','leafly.com','weedmaps.com','yelp.com','allbud.com','potguide.com','cannabrands.com','cannabisshop.com'))
+               ('jointcommerce.com','leafly.com','weedmaps.com','yelp.com','allbud.com','potguide.com','cannabrands.com','cannabisshop.com','lookyweed.com'))
 
 
 _CATEGORY_WORDS=r'(?:flowers?|edibles?|extracts?|concentrates?|vap(?:e|es|orizers?)|carts?|cartridges?|pre-?rolls?|tinctures?|topicals?|gear|accessories|apparel|merch|deals?|specials?|sale|cbd|new|brands?|strains?|under-\d+)'
