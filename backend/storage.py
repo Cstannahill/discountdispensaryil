@@ -4,7 +4,9 @@ from decimal import Decimal
 import json
 import math
 from pathlib import Path
+import re
 import sqlite3
+from urllib.parse import urlsplit
 import uuid
 
 from .completeness import grade_for, valid_convergence
@@ -179,15 +181,23 @@ class Store:
 
     def retire_discovery_only_endpoints(self):
         """Retain old evidence/history while excluding directory and anchor aliases."""
-        from .site_discovery import canonical_menu_url, catalog_entry_url, is_directory_url, menu_document_scope
+        from .site_discovery import branch_slug_conflict, canonical_menu_url, catalog_entry_url, is_directory_url, menu_document_scope
         changed=0
         with self.connection() as conn:
+            stores={row['id']:dict(row) for row in conn.execute('SELECT id,name,address,city,state FROM live_stores').fetchall()}
             for row in conn.execute("SELECT * FROM live_endpoints WHERE status!='superseded'").fetchall():
                 canonical=canonical_menu_url(row['url'])
                 if row['provider']=='generic':canonical=catalog_entry_url(canonical)
                 reason=None
+                path=urlsplit(row['url']).path.lower()
                 if is_directory_url(row['url']):
                     reason='Third-party directory retained as discovery evidence; not a retailer menu'
+                elif not row['last_success_at'] and re.search(r'\.(?:js|xml|json|css)$',path):
+                    reason='Script, sitemap or data asset retained as evidence; not a menu document'
+                elif not row['last_success_at'] and re.search(r'/(?:cart|checkout|account|login)/?$',path):
+                    reason='Cart or account page retained as evidence; not a menu document'
+                elif row['provider']=='generic' and not row['last_success_at'] and branch_slug_conflict(stores.get(row['store_id']) or {},row['url']):
+                    reason='URL names a different branch than the registry store'
                 elif row['provider']=='generic' and not row['last_success_at'] and menu_document_scope(row['url'])=='filtered':
                     reason='Filtered product/promotion page retained as evidence; not an independent full menu'
                 elif canonical!=row['url']:

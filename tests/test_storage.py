@@ -56,6 +56,18 @@ class StorageTests(unittest.TestCase):
         self.assertNotIn(bad['id'],[e['id'] for e in self.db.endpoints()])
         self.assertEqual(self.db.endpoint(bad['id'])['status'],'superseded')
 
+    def test_assets_carts_and_other_branch_pages_are_retired_unless_accepted(self):
+        bad=['https://dutchie.com/api/v2/embedded-menu/64888ad400476b00104ffe4d.js','https://example.com/menu/rutland/sitemap.xml',
+             'https://example.com/locations/rutland/menu/recreational/cart','https://example.com/locations/altoona/medical-menu/menu']
+        ids=[self.db.save_endpoint(self.shop['id'],dict(url=url,provider='generic',license_type='recreational'))['id'] for url in bad]
+        good=self.db.save_endpoint(self.shop['id'],dict(url='https://example.com/locations/rutland/menu/recreational/menu',provider='generic',license_type='recreational'))
+        self.db.retire_discovery_only_endpoints()
+        self.assertEqual([self.db.endpoint(i)['status'] for i in ids],['superseded']*4)
+        self.assertNotEqual(self.db.endpoint(good['id'])['status'],'superseded')
+        self.apply([item()])
+        self.db.retire_discovery_only_endpoints()
+        self.assertNotEqual(self.db.endpoint(self.endpoint['id'])['status'],'superseded')
+
     def test_legacy_anchor_identity_is_reused_after_url_canonicalization(self):
         with self.db.connection() as conn:
             conn.execute("INSERT INTO live_endpoints(id,store_id,url,provider,license_type,resolution_json,status) VALUES (?,?,?,?,?,?,?)",
