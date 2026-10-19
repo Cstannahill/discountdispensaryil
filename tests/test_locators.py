@@ -91,6 +91,14 @@ class LocatorTests(unittest.TestCase):
         root = next(url for pattern, url in CONNECTORS if re.search(pattern, 'Verilife Ottawa', re.I))
         self.assertEqual('https://risecannabis.com/dispensaries/illinois/', root)
 
+    def test_street_aliases_platforms_write_differently_still_match(self):
+        for registry, platform in (('1225 N State Route 121', '1225 IL-121'), ('5539 Miller Circle Dr', '5539 Miller Cir Dr'),
+                                   ('13352 Cicero Ave', '13352 S Cicero Ave'), ('9820 Ridgeland Ave', '9820 S Ridgeland Ave'),
+                                   ('740 IL Rte 59', '740 Route 59')):
+            self.assertTrue(addresses_match(registry, platform), (registry, platform))
+        self.assertFalse(addresses_match('13352 Cicero Ave', '13352 S Pulaski Ave'))
+        self.assertFalse(addresses_match('100 N Main St', '100 S Main St'))
+
 
 if __name__ == '__main__':
     unittest.main()

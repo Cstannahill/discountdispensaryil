@@ -42,13 +42,26 @@ def _tokens(value):
     return [substitutions.get(token, token) for token in tokens]
 
 
+_ROUTE = re.compile(r'\b(?:(?:il|us|state)\s+)?(?:(?:il|us|state)\s+)?(?:rt|rte|hwy|highway)\s+(\d+)\b|\b(?:il|us)\s+(\d+)\b')
+
+
+def _street(value):
+    """Street tokens with the spellings platforms vary on unified: IL-121 / State Route 121 / Rte 121, Circle / Cir."""
+    text = ' '.join({'circle': 'cir', 'rte': 'rt', 'highway': 'hwy'}.get(token, token) for token in _tokens(value))
+    return _ROUTE.sub(lambda match: 'rt ' + (match[1] or match[2]), text).split()
+
+
 def addresses_match(registry, retailer):
-    a, b = _tokens(registry), _tokens(retailer)
+    a, b = _street(registry), _street(retailer)
     for label in ('suite', 'ste', 'unit'):
         if label in a:
             a = a[:a.index(label)]
         if label in b:
             b = b[:b.index(label)]
+    # A directional only one side writes ("13352 S Cicero" vs "13352 Cicero") is not a conflict; two different ones are.
+    directional = lambda tokens: len(tokens) > 1 and tokens[1] in ('n', 's', 'e', 'w')
+    if directional(a) != directional(b):
+        a, b = [t for i, t in enumerate(a) if not (i == 1 and directional(a))], [t for i, t in enumerate(b) if not (i == 1 and directional(b))]
     return bool(a and b and a[0].isdigit() and a[0] == b[0] and
                 (a == b[:len(a)] or b == a[:len(b)]))
 
