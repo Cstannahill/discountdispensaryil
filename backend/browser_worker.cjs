@@ -231,7 +231,7 @@ async function replayPagination(page,captures,deadline,sample=0){
    if(replayed.has(target.href))continue;replayed.add(target.href);
    const seen=captures.length;
    const status=await retried(()=>page.evaluate(async ({url,headers})=>{
-    try{const response=await fetch(url,{headers,credentials:'include'});await response.arrayBuffer();return response.status;}catch{return 0;}
+    try{const response=await fetch(url,{headers,credentials:new URL(url).origin===location.origin?'include':'same-origin'});await response.arrayBuffer();return response.status;}catch{return 0;}
    },{url:target.href,headers:record.headers}));
    if(status===200){summary.fetched++;await waitForCapture(page,captures,seen,4000);}else summary.errors++;
   }
@@ -256,7 +256,7 @@ async function replayOffsets(page,captures,deadline,sample=0){
  const summary={queries:0,fetched:0,errors:0,learned:{}};
  const attempt=(url,headers)=>retried(()=>page.evaluate(async ({url,headers})=>{
   try{
-   const response=await fetch(url,{headers,credentials:'include'});const text=await response.text();let value=null;try{value=JSON.parse(text);}catch{}
+   const response=await fetch(url,{headers,credentials:new URL(url).origin===location.origin?'include':'same-origin'});const text=await response.text();let value=null;try{value=JSON.parse(text);}catch{}
    let first=null,length=0;const queue=[[value,0]];
    while(queue.length){const [node,depth]=queue.shift();if(Array.isArray(node)){if(node.length&&typeof node[0]==='object'){length=node.length;first=JSON.stringify(node[0]).slice(0,300);break;}continue;}
     if(node&&typeof node==='object'&&depth<4)for(const child of Object.values(node))queue.push([child,depth+1]);}
@@ -472,7 +472,8 @@ async function run({url,options,storage_state,native_proxy}){
     }
     const body=await response.body();capturedBytes+=body.length;diagnostics.captured_bytes=capturedBytes;
     if(req.method()==='GET'&&response.status()===200&&(responseHeaders['content-type']||'').includes('json')){
-     const keep=['accept','content-type','apollo-require-preflight','x-apollo-operation-name','apollographql-client-name','apollographql-client-version'],all=await req.allHeaders();
+     // Replays run inside the page and carry the request's own app headers (Cresco: the bundle's public key and the store/app ids).
+     const keep=['accept','content-type','apollo-require-preflight','x-apollo-operation-name','apollographql-client-name','apollographql-client-version','x-api-key','x-client-version','store_id','ordering_app_id'],all=await req.allHeaders();
      const sent=Object.fromEntries(keep.filter(key=>all[key]).map(key=>[key,all[key]]));
      noteIfPaged(response.url(),sent,body.toString('utf8'));
      noteIfLimited(response.url(),sent,body.toString('utf8'));
