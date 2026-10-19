@@ -421,7 +421,7 @@ async function run({url,options,storage_state,native_proxy}){
   // WebSockets are closed by default; the allow_websockets option exists for diagnostic experiments only.
   if(options.allow_websockets!==true)await context.routeWebSocket('**/*',socket=>socket.close());
   let count=0;// Paging through a whole menu (category pages, numbered pages) legitimately makes thousands of requests.
-  const requestLimit=options.catalog_navigation?5000:options.await_menu&&options.scroll_menu!==false?4000:600;
+  const requestLimit=options.catalog_navigation?8000:options.await_menu&&options.scroll_menu!==false?4000:600;
   let catalogPhase=false;diagnostics.request_limit=requestLimit;diagnostics.requests=0;diagnostics.auxiliary_requests_skipped=0;
   const staticCache=new Map(),cachedRequests=new WeakSet();let cacheBytes=0;
   await context.route('**/*',async route=>{
