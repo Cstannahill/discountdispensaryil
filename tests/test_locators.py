@@ -124,6 +124,13 @@ class LocatorTests(unittest.TestCase):
         self.assertFalse(provider_address_matches(dict(name='Curaleaf New Lenox',address='705 E Lincoln Hwy.',city='New Lenox',state='IL'),sweed('709 East Lincoln Highway, New Lenox, Illinois')))
         self.assertFalse(provider_address_matches(dict(name='Other Dispensary',address='2400 W US Route 6',city='Morris',state='IL'),sweed(morris)))
         self.assertFalse(provider_address_matches(dict(name='Curaleaf Morris',address='2401 W US Route 6',city='Morris',state='IL'),sweed(morris)))
+        # New Lenox: the platform's branch pin sits on the registry point; the street number differs.
+        pin=dict(name='Curaleaf New Lenox',address='705 E Lincoln Hwy.',city='New Lenox',state='IL',latitude=41.51329,longitude=-87.94875)
+        new_lenox=dict(provider='sweed',resolution_evidence=dict(retailer_address='709 East Lincoln Highway, New Lenox, Illinois',retailer_location=dict(coords=dict(lat=41.5130198,lng=-87.9486632))))
+        self.assertTrue(provider_address_matches(pin,new_lenox))
+        self.assertFalse(provider_address_matches(dict(pin,name='Other Dispensary'),new_lenox))
+        far=dict(new_lenox,resolution_evidence=dict(new_lenox['resolution_evidence'],retailer_location=dict(coords=dict(lat=41.7,lng=-87.9))))
+        self.assertFalse(provider_address_matches(pin,far))
 
 
 if __name__ == '__main__':

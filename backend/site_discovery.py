@@ -307,7 +307,16 @@ def provider_address_matches(store,endpoint):
     if not address or not store.get('address'):
         return None
     if addresses_match(store['address'],address):return True
-    return True if _curaleaf_house_city_match(store,address) else False
+    if _curaleaf_pin_match(store,details) or _curaleaf_house_city_match(store,address):return True
+    return False
+
+
+def _curaleaf_pin_match(store,details):
+    """Curaleaf only: the platform's own branch pin sits on the registry point when the street text differs."""
+    from .providers.jane import MAX_MILES,_miles
+    location=(details.get('retailer_location') or {}).get('coords') or {}
+    if not re.match(r'curaleaf\b',(store.get('name') or '').strip(),re.I) or location.get('lat') is None or store.get('latitude') is None:return False
+    return _miles(float(store['latitude']),float(store['longitude']),float(location['lat']),float(location['lng']))<=MAX_MILES
 
 
 def _curaleaf_house_city_match(store,address):
