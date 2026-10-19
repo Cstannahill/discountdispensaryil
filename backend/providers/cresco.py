@@ -17,7 +17,7 @@ API = 'https://api.crescolabs.com'
 CATEGORIES = ('flower', 'vapes', 'edibles', 'prerolls', 'concentrates')
 CATEGORY_MAP = {'flower': 'flower', 'vapes': 'vapes', 'concentrates': 'concentrate'}
 PAGE = 50
-HOSTS = ('www.sunnyside.shop', 'www.cloud9dispensaries.shop', 'shangri-la.sunnyside.shop')
+HOSTS = ('www.sunnyside.shop', 'www.cloud9dispensaries.shop', 'www.shangrila-springfield.shop')
 
 
 def _host(url):
@@ -52,8 +52,34 @@ def _headers(key, origin, store_id=None, app_id=None):
     return headers
 
 
+def observe(url, response, evidence):
+    """A Cresco storefront menu page: the slug names the branch; identity is proven later from the store record."""
+    if _host(response.url or url) not in HOSTS or not store_slug(response.url or url):
+        return None
+    return dict(url=url, provider='cresco', provider_store_id=None, license_type='recreational',
+                resolution_evidence=dict(evidence, method='Cresco storefront menu slug; branch proven from the storefront store record'))
+
+
+def store_details(fetcher, url):
+    """The storefront's own store record for this menu: name, address and pin, for the registry branch proof."""
+    origin = 'https://' + _host(url)
+    key = storefront_key(fetcher, origin)
+    store, _ = _store_record(fetcher, origin, key, store_slug(url), 'recreational')
+    address = ', '.join(str(x) for x in (store.get('address'), store.get('city'), store.get('state'), store.get('zip')) if x)
+    details = dict(retailer_name=store.get('name'), retailer_address=address)
+    if isinstance(store.get('lat'), (int, float)) and isinstance(store.get('lng'), (int, float)):
+        details['platform_location'] = dict(lat=float(store['lat']), lng=float(store['lng']))
+    return details
+
+
 def resolve_store(fetcher, origin, key, slug, usage):
-    """The ordering app and numeric store id for this storefront slug, from the storefront's own lookups."""
+    """The numeric store id and ordering-app id for this storefront slug."""
+    store, app_id = _store_record(fetcher, origin, key, slug, usage)
+    return store['id'], app_id
+
+
+def _store_record(fetcher, origin, key, slug, usage):
+    """The store record and ordering-app id for this storefront slug, from the storefront's own lookups."""
     host = urlsplit(origin).hostname
     query = urlencode(dict(host=host, store_slug=slug, usage_type=usage, country='US'))
     breakdown = json.loads(fetcher.get(f'{API}/p/ordering_apps/op/store-inventory-breakdown?{query}', headers=_headers(key, origin)).body)
@@ -68,7 +94,7 @@ def resolve_store(fetcher, origin, key, slug, usage):
     matches = [s for s in listing.get('data') or [] if s.get('store_slug') == slug and not s.get('deleted') and not s.get('hidden')]
     if len(matches) != 1:
         raise ValueError('Cresco store slug is missing or ambiguous in the ordering app')
-    return matches[0]['id'], app['id']
+    return matches[0], app['id']
 
 
 def _decimal(value):

@@ -95,6 +95,9 @@ def normalize_blaze(item, included, endpoint):
 def _detect_endpoint(url, response):
     text = _text(response)
     evidence = {'url': response.url, 'evidence_id': response.evidence_id, 'fetched_at': response.fetched_at}
+    from backend.providers.cresco import observe as observe_cresco
+    cresco = observe_cresco(url, response, evidence)
+    if cresco: return cresco
     props = _next_data(text)
     if 'initialSearchResponse' in text and 'selectedStore' in text:
         from backend.providers.treez import observe
@@ -251,6 +254,11 @@ def resolve_menu(store, fetcher):
                 except Exception as exc:
                     failures.append(dict(url=url,provider='generic',license_type='recreational',status='failed',reason='Branch-selection browser attempt failed: '+str(exc),resolution_evidence=dict(evidence_id=getattr(exc,'evidence_id',None))))
             details=observed.get('resolution_evidence') or {}
+            if observed['provider']=='cresco' and not details.get('retailer_address'):
+                # The storefront's own store record proves the branch; a failed lookup records the attempt as a failure.
+                from .providers.cresco import store_details
+                details=dict(details,**store_details(fetcher,observed['url']))
+                observed['resolution_evidence']=details
             address_match=provider_address_matches(store,observed)
             if address_match is True:
                 verified=True
@@ -335,9 +343,12 @@ def fetch_menu(endpoint, fetcher):
     if endpoint.get('provider') == 'jane' and endpoint.get('provider_store_id'):
         from backend.providers.jane import fetch
         return fetch(endpoint,fetcher)
-    if endpoint.get('provider') in ('generic','jane','dutchie','cresco'):
+    if endpoint.get('provider') in ('generic','jane','dutchie'):
         from backend.providers.generic import fetch
         return fetch(endpoint, fetcher)
+    if endpoint.get('provider')=='cresco':
+        from backend.providers.cresco import fetch
+        return fetch(endpoint,fetcher)
     if endpoint.get('provider')=='verano':
         from backend.providers.verano import fetch
         return fetch(endpoint,fetcher)
