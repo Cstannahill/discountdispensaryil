@@ -37,6 +37,17 @@ class ServiceTests(unittest.TestCase):
         finally:
             if not service.stop_requested.is_set():service.close()
 
+    def test_verifier_leads_reach_the_resolver_and_resolver_failures_do_not(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.record_lead(shop['id'],'https://chain.example/il/rutland/','verifier','Store verifier website',[])
+        self.db.record_lead(shop['id'],'https://wrong.example/','resolver','Candidate website found; branch still needs matching',[])
+        seen=[]
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:seen.append(s.get('lead_urls')) or [])
+        job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+        service.run(job['id']);service.close()
+        self.assertEqual(seen,[['https://chain.example/il/rutland/']])
+
     def test_targeted_retry_only_visits_requested_stores(self):
         self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')
         region=self.db.create_region(40.9844,-89.0388,'61358',50)

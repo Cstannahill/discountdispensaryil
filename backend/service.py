@@ -200,7 +200,9 @@ class SyncService:
         if not retained or not retained_ok or force_resolution:
             self._check_stop();resolution_start=time.monotonic();failures=[];targets={}
             try:
-                resolved=self.resolver(store,self.fetcher)
+                # Pages the store verifier cited are crawl seeds; the resolver still has to prove the branch on them.
+                leads=[lead['url'] for lead in self.store.leads(store['id']) if lead['source']=='verifier']
+                resolved=self.resolver(dict(store,lead_urls=leads) if leads else store,self.fetcher)
                 self._check_stop()
                 # Census input: which menu platforms this store's pages showed, including rejected (wrong-branch) pages.
                 self.store.record_platforms(store['id'],[dict(platform=name,url=found.get('url'),status=found.get('status') or 'observed',

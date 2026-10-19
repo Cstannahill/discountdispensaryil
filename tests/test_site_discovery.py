@@ -130,6 +130,20 @@ class DiscoveryFallbackTests(unittest.TestCase):
         self.assertIn(True,searches)
         self.assertTrue(any(menu['provider']=='dutchie' and not menu.get('status') for menu in menus),menus)
 
+    def test_verifier_lead_is_crawled_and_must_still_prove_the_branch(self):
+        from backend.adapters import resolve_menu
+        from unittest.mock import patch
+        shop=dict(name='Chain - East Peoria',city='East Peoria',state='IL',address='504 Riverside Dr',
+                  lead_urls=['https://chain.example/dispensaries/il/east-peoria/','https://chain.example/dispensaries/il/urbana/'])
+        class Fetcher:
+            def get(self,url):
+                if 'east-peoria' in url:return response(url,'<h1>Chain East Peoria</h1>504 Riverside Dr<script src="https://dutchie.com/api/v3/embedded-menu/chain-east-peoria.js"></script>')
+                return response(url,'<h1>Chain Urbana</h1>1 Other St<script src="https://dutchie.com/api/v3/embedded-menu/chain-urbana.js"></script>')
+        with patch('backend.site_discovery.search_websites',return_value=[]),patch('backend.locators.discover_menu_candidates',return_value=[]):
+            menus=resolve_menu(shop,Fetcher())
+        found=[menu['provider_store_id'] for menu in menus if menu['provider']=='dutchie' and not menu.get('status')]
+        self.assertEqual(found,['chain-east-peoria'],menus)
+
     def test_address_search_accepts_new_brand_but_requires_exact_street_city_and_cannabis_context(self):
         fetcher=searcher(('https://new-owner.example/menu','New Owner cannabis dispensary','Normal 1609 Northbrook Drive'),('https://wrong.example/','Cannabis Normal','99 Other St'),('https://dentist.example/','Dentist Normal','1609 Northbrook Dr'))
         results=search_websites(dict(name='Old Brand - Normal',city='Normal',state='IL',address='1609 Northbrook Dr'),fetcher,by_address=True)

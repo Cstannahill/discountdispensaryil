@@ -160,6 +160,9 @@ def resolve_menu(store, fetcher):
     initial=list(dict.fromkeys(store[k] for k in ('menu_url','website','source_url','url') if isinstance(store.get(k),str) and store[k]))
     seeds=[dict(url=url,status='candidate',evidence=[]) for url in initial] if initial else discover_menu_candidates(store,fetcher)
     pending=[(c['url'],0,c,c.get('status')=='matched') for c in seeds if c.get('url') and c['status'] in ('candidate','matched')]
+    # Verifier-cited branch pages go first: they name one location, where chain roots and search results name many.
+    pending=[(url,0,dict(url=url,status='candidate',reason='Store verifier lead',evidence=[]),False) for url in store.get('lead_urls') or []
+             if isinstance(url,str) and url.startswith(('https://','http://'))]+pending
     results=[];failures=[];visited=set();max_pages=int(store.get('max_discovery_pages',24))
     for c in seeds:
         if c['status'] not in ('candidate','matched'):
