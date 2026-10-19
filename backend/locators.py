@@ -30,6 +30,8 @@ CONNECTORS = [
     (r'^trinity\b', 'https://www.trinitydispensaries.com/'),
     (r'^curaleaf\b', 'https://curaleaf.com/'),
     (r'^revolution\b', 'https://www.revcanna.com/'),
+    # Verano's Zen Leaf pages carry the chain's Sweed store list in Flight data.
+    (r'zen\s*leaf', 'https://zenleafdispensaries.com/'),
     (r'^pekin\s*(?:local|s local)', 'https://pekindispensary.com/'),
 ]
 
@@ -47,13 +49,13 @@ _ROUTE = re.compile(r'\b(?:(?:il|us|state)\s+)?(?:(?:il|us|state)\s+)?(?:rt|rte|
 
 def _street(value):
     """Street tokens with the spellings platforms vary on unified: IL-121 / State Route 121 / Rte 121, Circle / Cir."""
-    text = ' '.join({'circle': 'cir', 'rte': 'rt', 'highway': 'hwy'}.get(token, token) for token in _tokens(value))
+    text = ' '.join({'circle': 'cir', 'rte': 'rt', 'highway': 'hwy', 'illinois': 'il'}.get(token, token) for token in _tokens(value))
     return _ROUTE.sub(lambda match: 'rt ' + (match[1] or match[2]), text).split()
 
 
 def addresses_match(registry, retailer):
     a, b = _street(registry), _street(retailer)
-    for label in ('suite', 'ste', 'unit'):
+    for label in ('suite', 'ste', 'unit', 'spc', 'space'):
         if label in a:
             a = a[:a.index(label)]
         if label in b:
@@ -101,6 +103,9 @@ def _known_menu_candidates(store, fetcher):
                            if q['queryKey'][0] == '/Store/GetStoreShortInfoList']
         except (ValueError, KeyError, TypeError):
             directories = []
+        if not directories and 'sweedStores' in text:
+            from .providers.verano import store_list
+            directories = [branches for branches in [store_list(text)] if branches]
         if directories:
             candidates = []
             city = ''.join(_tokens(store.get('city', '')))
@@ -108,7 +113,7 @@ def _known_menu_candidates(store, fetcher):
                 address = (branch.get('contacts') or {}).get('address') or ''
                 if not branch.get('url'):
                     continue
-                exact = addresses_match(store['address'], address)
+                exact = addresses_match(store['address'], address) or _pinned(store, (branch.get('location') or {}).get('coords'))
                 same_city = city and city in ''.join(_tokens(branch.get('name', '') + ' ' + address))
                 if exact or same_city:
                     candidates.append(dict(url=branch['url'], status='matched' if exact else 'identity_conflict',
@@ -151,6 +156,16 @@ def _known_menu_candidates(store, fetcher):
                      reason='Retailer requires age/terms confirmation; menu not fetched' if age_gate else 'Retailer locator did not expose a corroborated branch/menu link', evidence=[evidence])]
     except Exception as exc:
         return [dict(status='failed', url=root, reason=str(exc), evidence=[dict(url=root, evidence_id=getattr(exc, 'evidence_id', None))])]
+
+
+def _pinned(store, coords):
+    """The platform's own pin for a branch at the registry point proves it when the registry street is mistyped."""
+    from .providers.jane import MAX_MILES, _miles
+    if not isinstance(coords, dict) or store.get('latitude') is None or store.get('longitude') is None:
+        return False
+    if not all(isinstance(coords.get(key), (int, float)) for key in ('lat', 'lng')):
+        return False
+    return _miles(float(store['latitude']), float(store['longitude']), coords['lat'], coords['lng']) <= MAX_MILES
 
 
 def _embedded_store_list(text):

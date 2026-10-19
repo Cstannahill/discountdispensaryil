@@ -13,7 +13,7 @@ BLAZE_API = 'https://ecom-api.blaze.me/api/v1/products/'
 
 
 def provider_capabilities(provider):
-    native=provider in ('blaze','sweed','dispense','treez','joint','jane')
+    native=provider in ('blaze','sweed','dispense','treez','joint','jane','verano')
     structured=provider in ('generic','jane','dutchie','cresco')
     return dict(native_full_menu=native,structured_fallback=structured,
                 support='native_full_menu' if native else 'conditional_structured_fallback' if structured else 'unsupported')
@@ -107,6 +107,10 @@ def _detect_endpoint(url, response):
     if 'jointEcommerce' in text or '/wp-content/plugins/joint-ecommerce/' in text:
         from backend.providers.joint import observe as observe_joint
         endpoint = observe_joint(url, response)
+        if endpoint:return endpoint
+    if 'sweedStores' in text:
+        from backend.providers.verano import observe as observe_verano
+        endpoint=observe_verano(url,response)
         if endpoint:return endpoint
     if '"__sw_qc"' in text:
         from backend.providers.sweed import observe
@@ -334,6 +338,9 @@ def fetch_menu(endpoint, fetcher):
     if endpoint.get('provider') in ('generic','jane','dutchie','cresco'):
         from backend.providers.generic import fetch
         return fetch(endpoint, fetcher)
+    if endpoint.get('provider')=='verano':
+        from backend.providers.verano import fetch
+        return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'sweed':
         from backend.providers.sweed import fetch
         return fetch(endpoint, fetcher)
