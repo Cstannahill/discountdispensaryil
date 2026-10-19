@@ -146,6 +146,14 @@ class StorageTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
+    def test_scheduled_refresh_follows_active_region_until_its_own_region_is_set(self):
+        self.assertEqual(self.db.scheduled_region_id(), self.region["id"])
+        minonk = self.db.create_region(40.8985, -89.0349, "Minonk, IL 61760", 100)
+        self.db.set_setting("scheduled_region_id", minonk["id"])
+        gps = self.db.create_region(40.9827, -89.0504, "Browser GPS", 50)
+        self.assertEqual(self.db.setting("active_region_id"), gps["id"])
+        self.assertEqual(self.db.scheduled_region_id(), minonk["id"])
+
     def apply(self, items, **changes):
         return self.db.apply_snapshot(self.endpoint["id"], snapshot(items, **changes), now="2026-10-17T07:00:00+00:00")
 

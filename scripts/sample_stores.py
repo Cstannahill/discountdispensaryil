@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from backend.network import PublicFetcher
 from backend.adapters import fetch_menu
 from backend.runtime import configure_worker_stack, PIPELINE_VERSION
+from backend.storage import endpoint_from_row
 
 
 def saved_targets(database, store_ids):
@@ -25,11 +26,12 @@ def saved_targets(database, store_ids):
     for store_id in chosen:
         if store_id not in stores:
             raise SystemExit('Unknown registry store: ' + store_id)
-        endpoint = database.execute("SELECT * FROM live_endpoints WHERE store_id=? AND status!='superseded' "
-                                    "ORDER BY last_attempt_at DESC LIMIT 1", (store_id,)).fetchone()
-        if endpoint is None:
-            continue
-        targets.append((stores[store_id], dict(endpoint)))
+        # Sync refreshes every accepted endpoint, one per license, loaded with its resolution context. Sample that same set;
+        # a store with none accepted gets its latest live attempt so troubleshooting still has something to look at.
+        endpoints = [endpoint_from_row(row) for row in database.execute(
+            "SELECT * FROM live_endpoints WHERE store_id=? AND status!='superseded' ORDER BY last_attempt_at DESC", (store_id,)).fetchall()]
+        retained = [endpoint for endpoint in endpoints if endpoint.get('last_success_at')]
+        targets.extend((stores[store_id], endpoint) for endpoint in (retained or endpoints[:1]))
     return targets
 
 

@@ -23,6 +23,13 @@ def _verification_summary(row):
                 claims=len(row["claims"]), checked_at=row["created_at"])
 
 
+def endpoint_from_row(row):
+    """A saved endpoint as sync loads it: the row's columns over its resolution context (identity_confidence, script_urls, ...)."""
+    result = json.loads(row["resolution_json"])
+    result.update(dict(row))
+    return result
+
+
 class Store:
     def __init__(self, db_path, evidence_dir):
         self.db_path, self.evidence_dir = Path(db_path), Path(evidence_dir)
@@ -160,6 +167,10 @@ class Store:
             conn.execute("INSERT INTO live_settings VALUES ('active_region_id',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value", (json.dumps(region["id"]),))
         return region
 
+    def scheduled_region_id(self):
+        # Scheduled menu and registry runs cover their own region, so the UI's selected region can change without starving the refresh.
+        return self.setting("scheduled_region_id") or self.setting("active_region_id")
+
     def region(self, region_id=None):
         region_id = region_id or self.setting("active_region_id")
         with self.connection() as conn:
@@ -230,9 +241,7 @@ class Store:
             row = conn.execute("SELECT * FROM live_endpoints WHERE id=?", (endpoint_id,)).fetchone()
         if not row:
             raise ValueError("unknown_menu")
-        result = json.loads(row["resolution_json"])
-        result.update(dict(row))
-        return result
+        return endpoint_from_row(row)
 
     def save_endpoint(self, store_id, endpoint):
         from .site_discovery import canonical_menu_url, catalog_entry_url

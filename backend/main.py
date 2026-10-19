@@ -111,7 +111,7 @@ def create_app(*, db_path=None, evidence_dir=None, fetcher=None, enable_schedule
             if app.state.store.setting("last_schedule_slot:" + str(discover)) == slot:
                 return
             app.state.store.set_setting("last_schedule_slot:" + str(discover), slot)
-            app.state.service.submit(dict(region_id=app.state.store.setting("active_region_id"), discover=discover))
+            app.state.service.submit(dict(region_id=app.state.store.scheduled_region_id(), discover=discover))
 
     @asynccontextmanager
     async def lifespan(app):
