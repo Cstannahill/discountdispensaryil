@@ -54,5 +54,13 @@ class DispenseTests(unittest.TestCase):
         result=normalize(product,ENDPOINT)[0]
         self.assertIsNone(result['weight_grams']);self.assertTrue(result['conditional'])
 
+    def test_sale_scoped_to_the_variants_own_size_is_unconditional(self):
+        product=json.loads((ROOT/'products.json').read_text())['data'][0]
+        sale=dict(productOfferType='SALE',weights=['1g'],orderPickUpTypes=[],customerGroups=None,minimumSpend=None)
+        product.update(weightFormatted='1g',price=45,priceWithDiscounts=30,discounts=[sale])
+        result=normalize(product,ENDPOINT)[0]
+        self.assertFalse(result['conditional']);self.assertEqual(float(result['effective_price']),30)
+        product.update(weightFormatted='3.5g',discounts=[sale])
+        self.assertTrue(normalize(product,ENDPOINT)[0]['conditional'])
 
 if __name__=='__main__':unittest.main()

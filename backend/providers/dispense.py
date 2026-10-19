@@ -60,7 +60,10 @@ def normalize(product,endpoint):
         if data.get('priceType') not in (None,'REGULAR'):raise ValueError('Dispense price-tier schema requires a dedicated variant normalization contract')
         grams=_decimal(data.get('weightInGrams')) if data.get('weightUnit') in ('GRAMS','OUNCES') else None
         discounts=data.get('discounts') or []
-        conditional=any(d.get('productOfferType')!='SALE' or d.get('orderPickUpTypes') or d.get('weights') or d.get('customerGroups') or d.get('minimumSpend') for d in discounts)
+        size=re.sub(r'\s+','',str(data.get('weightFormatted') or '')).casefold()
+        # A sale scoped to this variant's own size is a plain shelf sale; any other size scope is not this item's price.
+        conditional=any(d.get('productOfferType')!='SALE' or d.get('orderPickUpTypes') or d.get('customerGroups') or d.get('minimumSpend')
+                        or (d.get('weights') and (not size or size not in {re.sub(r'\s+','',str(w)).casefold() for w in d['weights']})) for d in discounts)
         labs=data.get('labs') or {}
         quantity=_decimal(data.get('quantity'))
         result.append(dict(source_id=str(product['id']),variant_id=str(variant['id']) if product.get('variants') else 'base',
