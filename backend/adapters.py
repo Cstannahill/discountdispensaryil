@@ -180,7 +180,7 @@ def resolve_menu(store, fetcher):
     """Bounded search/branch crawl. Platform and generic paths share evidence."""
     from .platforms import detect as detect_platforms
     from .locators import discover_menu_candidates
-    from .site_discovery import dutchie_page_endpoints, inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms
+    from .site_discovery import dutchie_page_endpoints, inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms, janeboost_store_links
     from .providers.generic import extract
     from .providers.jane import hosted_store as jane_hosted_store
     from .documents import read_document
@@ -300,6 +300,9 @@ def resolve_menu(store, fetcher):
                     endpoint.update(license_type=license_type,license_basis=basis,identity_confidence=identity['identity_status'],
                                     resolution_evidence={k:v for k,v in identity.items() if k!='endpoints'},locator_evidence=seed.get('evidence',[]))
                     results.append(endpoint)
+            # A Jane white-label site's own store list names the requested town's store pages (rec first).
+            for link in reversed(janeboost_store_links(store,_text(response))):
+                if catalog_entry_url(link) not in visited:pending.insert(0,(link,depth+1,seed,False))
             _,products,_=extract(_text(response),response.url)
             sibling=branch_slug_conflict(store,url) and identity['identity_status']!='matched'
             if verified and not sibling and (products or re.search(r'/(?:menu|shop|products)(?:/|$)',urlparse(url).path)):

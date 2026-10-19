@@ -320,6 +320,22 @@ class DiscoveryFallbackTests(unittest.TestCase):
     def test_shared_single_word_is_not_enough_for_a_multiword_brand(self):
         self.assertEqual(search_websites(dict(name='Mystic Greenz - Lincoln',city='Lincoln',state='IL'),searcher(('https://mysticboarding.com/','Mystic sporting goods',''))),[])
 
+    def test_brand_written_as_two_words_matches_the_registry_spelling(self):
+        # The registry says "Starbuds"; the storefront says "Star Buds".
+        result=inspect_page(dict(name='Starbuds WM',address='101 W Ogden Ave',city='Westmont',state='IL'),
+                            response('https://starbudsillinois.us/stores/star-buds-westmont','<h1>Star Buds - Westmont</h1>'))
+        self.assertEqual(result['identity_status'],'name_locality')
+
+    def test_village_suffix_and_abbreviated_locality_match_the_short_town_name(self):
+        for city,page in (('Elk Grove Village','<title>Snap Canna | Elk Grove</title>'),('Mt Prospect','<h1>Snap Canna Mount Prospect</h1>'),
+                          ('Saint Charles','<h1>Snap Canna St. Charles</h1>')):
+            result=inspect_page(dict(name='Snap Canna - '+city,address='1 Main St',city=city,state='IL'),response('https://snapcanna.com/menu/x/',page))
+            self.assertEqual(result['identity_status'],'name_locality',city)
+        # A town that only shares a word is still a different town.
+        result=inspect_page(dict(name='Snap Canna - Elk Grove Village',address='1 Main St',city='Elk Grove Village',state='IL'),
+                            response('https://snapcanna.com/menu/x/','<h1>Snap Canna Grove City</h1>'))
+        self.assertEqual(result['identity_status'],'candidate')
+
     def test_provider_api_preconnect_is_not_a_menu_endpoint(self):
         self.assertEqual(provider_links('https://example.com','<link rel="preconnect" href="https://api.dispenseapp.com">'),[])
 
