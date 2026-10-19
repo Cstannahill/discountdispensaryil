@@ -85,6 +85,12 @@ class LocatorTests(unittest.TestCase):
         self.assertEqual(results[0]['status'], 'unresolved')
         self.assertIn('search', results[0]['reason'].lower())
 
+    def test_verilife_menus_are_located_on_the_rise_site(self):
+        from backend.locators import CONNECTORS
+        import re
+        root = next(url for pattern, url in CONNECTORS if re.search(pattern, 'Verilife Ottawa', re.I))
+        self.assertEqual('https://risecannabis.com/dispensaries/illinois/', root)
+
 
 if __name__ == '__main__':
     unittest.main()
