@@ -99,6 +99,23 @@ class LocatorTests(unittest.TestCase):
         self.assertFalse(addresses_match('13352 Cicero Ave', '13352 S Pulaski Ave'))
         self.assertFalse(addresses_match('100 N Main St', '100 S Main St'))
 
+    def test_store_sitemap_names_branch_pages_a_gated_home_page_hides(self):
+        from backend.locators import _known_menu_candidates
+        fixtures = Path('tests/fixtures/curaleaf')
+        class Fetcher:
+            def get(self, url):
+                if url.endswith('/robots.txt'):return Response((fixtures/'robots.txt').read_text(encoding='utf-8'), url)
+                if url.endswith('/dispensaries-sitemap.xml'):return Response((fixtures/'dispensaries-sitemap.xml').read_text(encoding='utf-8'), url)
+                if 'sitemap' in url:raise AssertionError('only store sitemaps are read: '+url)
+                return Response('<title>Curaleaf</title><a href="/shop">Shop</a>', 'https://curaleaf.com/')
+        def urls(name, address, city):
+            return [r['url'] for r in _known_menu_candidates(dict(name=name, address=address, city=city, state='IL'), Fetcher()) if r['status'] == 'candidate']
+        self.assertEqual(['https://curaleaf.com/shop/illinois/curaleaf-il-morris'], urls('Curaleaf  Morris', '2400 W US Route 6', 'Morris'))
+        self.assertEqual(['https://curaleaf.com/shop/illinois/curaleaf-il-melrose-park'], urls('Curaleaf  Melrose Park', '1413 West North Ave.', 'Melrose Park'))
+        # The slug names the street, not the city; Florida's Lake Worth is another state's branch.
+        self.assertEqual(['https://curaleaf.com/shop/illinois/curaleaf-il-weed-street'], urls('Curaleaf  Lincoln Park', '923 W. Weed St.', 'Chicago'))
+        self.assertEqual(['https://curaleaf.com/shop/illinois/curaleaf-il-worth'], urls('Curaleaf  Worth', '11425 S Harlem Ave', 'Worth'))
+
 
 if __name__ == '__main__':
     unittest.main()

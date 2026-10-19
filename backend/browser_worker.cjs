@@ -116,16 +116,17 @@ async function confirmAgeOnce(page,options){
   const combined=await age.evaluate(el=>/terms|privacy|agree/i.test(el.labels?.[0]?.textContent||el.getAttribute('aria-label')||''));
   if(!combined||options.terms_accepted){await age.check();changed=true;}
  }
+ // Terms come before the confirm button: gates like Curaleaf's keep "I'm over 21" disabled until both boxes are checked.
+ if(options.terms_accepted){
+  const terms=page.getByRole('checkbox',{name:/terms|privacy|agree/i});
+  for(let i=0;i<await terms.count();i++)if(await terms.nth(i).isVisible()&&!await terms.nth(i).isChecked()){await terms.nth(i).check();changed=true;}
+ }
  const yes=page.getByRole('button',{name:/^(?:yes[,! ]*|i am |i'm |i’m ).*(?:21|older)|^yes$/i});
  const decision={yes_count:await yes.count(),yes_visible:null,clicked:false,url:page.url()};
  (diagnostics.age_decisions??=[]);
  if(decision.yes_count||!diagnostics.age_decisions.length)diagnostics.age_decisions.push(decision);
  if(decision.yes_count===1)decision.yes_visible=await yes.isVisible();
- if(decision.yes_count===1&&decision.yes_visible){await yes.click();changed=true;decision.clicked=true;}
- if(options.terms_accepted){
-  const terms=page.getByRole('checkbox',{name:/terms|privacy|agree/i});
-  for(let i=0;i<await terms.count();i++)if(await terms.nth(i).isVisible()&&!await terms.nth(i).isChecked()){await terms.nth(i).check();changed=true;}
- }
+ if(decision.yes_count===1&&decision.yes_visible&&await yes.isEnabled()){await yes.click();changed=true;decision.clicked=true;}
  const enter=page.getByRole('button',{name:/^(?:enter site|enter|continue|confirm age|yes,? i am 21.*)$/i});
  if(await enter.count()===1&&await enter.isVisible()&&await enter.isEnabled()){await enter.click();changed=true;}
  if(changed){
