@@ -194,7 +194,7 @@ function noteIfPaged(url,headers,text){
  while(queue.length){
   const [node,depth]=queue.shift();
   if(!node||typeof node!=='object'||depth>5)continue;
-  if(Number.isInteger(node.totalPages)&&node.totalPages>1){pagedQueries.push({url,headers,pages:node.totalPages});return;}
+  if(Number.isInteger(node.totalPages)&&node.totalPages>1){pagedQueries.push({url,headers,pages:node.totalPages,total:Number.isInteger(node.totalCount)?node.totalCount:null});return;}
   for(const child of Object.values(node))if(child&&typeof child==='object')queue.push([child,depth+1]);
  }
 }
@@ -210,7 +210,8 @@ async function replayPagination(page,captures,deadline,sample=0){
    // Anything beyond context/presentation keys narrows the result set (staffPicks, isOnSpecial, brand, ids, categories...).
    const benign=/^(?:dispensaryId|pricingType|strainTypes|subcategories|Status|types|useCache|isDefaultSort|sortBy|sortDirection|bypassOnlineThresholds|ignoreQuantityThresholds|isKioskMenu|removeProductsBelowOptionThresholds|platformType|preOrderType)$/;
    const narrowed=Object.keys(filter).some(key=>!benign.test(key)&&filter[key]&&!(Array.isArray(filter[key])&&!filter[key].length))||['types','strainTypes','subcategories'].some(key=>Array.isArray(filter[key])&&filter[key].length);
-   return {...record,target,variables,whole:!narrowed,hasIds:'productIds' in filter};
+   // Id-list queries (carousels) cannot be paged by number; Dutchie category queries carry an empty productIds list.
+   return {...record,target,variables,whole:!narrowed,hasIds:Array.isArray(filter.productIds)?filter.productIds.length>0:'productIds' in filter&&filter.productIds!=null};
   }catch{return null;}
  }).filter(Boolean).filter(record=>!record.hasIds);
  // A whole-catalog query makes per-category replays redundant.
@@ -218,9 +219,15 @@ async function replayPagination(page,captures,deadline,sample=0){
  summary.whole=parsed.some(record=>record.whole);
  for(const record of wanted){
   summary.queries++;
-  for(let next=record.variables.page+1;next<record.pages&&(!sample||next-record.variables.page<sample)&&Date.now()<deadline&&summary.fetched<250;next++){
+  // Numbered pages under a popularity sort drift when ranks tie (Cloud9: 1456 distinct of 1458 across 4 pages of 100,
+  // the platform's page cap). A Dutchie product filter is re-read under a name sort from page 0, which pages stably.
+  const filter=record.variables.productsFilter;
+  const stable=!sample&&filter&&typeof filter==='object'&&filter.sortBy&&filter.sortBy!=='name';
+  const variables=stable?{...record.variables,productsFilter:{...filter,sortBy:'name',sortDirection:1,isDefaultSort:false}}:record.variables;
+  if(stable)summary.stable_sort=(summary.stable_sort||0)+1;
+  for(let next=stable?0:record.variables.page+1;next<record.pages&&(!sample||next-record.variables.page<sample)&&Date.now()<deadline&&summary.fetched<250;next++){
    const target=new URL(record.target.href);
-   target.searchParams.set('variables',JSON.stringify({...record.variables,page:next}));
+   target.searchParams.set('variables',JSON.stringify({...variables,page:next}));
    if(replayed.has(target.href))continue;replayed.add(target.href);
    const seen=captures.length;
    const status=await retried(()=>page.evaluate(async ({url,headers})=>{
@@ -373,7 +380,8 @@ async function scrollMenu(page,captures,options){
   if(!replay.whole&&options.explore_categories!==false){
    // Category pages page by id lists that cannot be replayed by number, so step through them with the pager as well.
    explore=await exploreCategories(page,captures,started+budget,{sample});
-   const more=await replayPagination(page,captures,started+budget,sample);
+   // Exploring categories can use the whole scroll budget; replaying their pages is a few cheap GETs, so it keeps a grace window.
+   const more=await replayPagination(page,captures,Math.max(started+budget,Date.now()+(sample?10000:60000)),sample);
    replay={queries:replay.queries+more.queries,fetched:replay.fetched+more.fetched,errors:replay.errors+more.errors,whole:more.whole,second_pass:true};
   }
  }
@@ -472,7 +480,8 @@ async function run({url,options,storage_state,native_proxy}){
     if(options.catalog_navigation&&response.status()===200&&new URL(response.url()).origin===new URL(url).origin&&new URL(response.url()).pathname.startsWith('/_next/static/')&&responseHeaders['cache-control']?.includes('immutable')&&!responseHeaders['set-cookie']&&cacheBytes+body.length<32*1024*1024){
      staticCache.set(response.url(),{status:200,headers:{'content-type':responseHeaders['content-type']||'application/octet-stream'},body});cacheBytes+=body.length;
     }
-    if(body.length>25*1024*1024||capturedBytes>(options.catalog_navigation?256:64)*1024*1024)throw new Error('Browser response capture budget exceeded');
+    // Paged menus share the catalog budget: one Dutchie page of 100 products is ~2 MB, so 64 MB ran out mid-menu (Cloud9).
+    if(body.length>25*1024*1024||capturedBytes>(options.catalog_navigation||options.await_menu&&options.scroll_menu!==false?256:64)*1024*1024)throw new Error('Browser response capture budget exceeded');
     if((await response.headerValue('content-type')||'').includes('text/x-component')){
      flightPages.push({url:response.url(),body:body.toString('utf8'),status:response.status()});
      if(flightPages.length>30)flightPages.shift();
