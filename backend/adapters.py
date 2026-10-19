@@ -164,6 +164,7 @@ def resolve_menu(store, fetcher):
     from .locators import discover_menu_candidates
     from .site_discovery import inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms
     from .providers.generic import extract
+    from .providers.jane import hosted_store as jane_hosted_store
     from .documents import read_document
     import copy
     fetcher=copy.copy(fetcher)
@@ -195,6 +196,16 @@ def resolve_menu(store, fetcher):
                 failures.append(dict(url=None,provider='generic',license_type='recreational',status='unresolved',reason='Fallback website search found no corroborated branch lead',resolution_evidence=attempts))
         if not pending:break
         url,depth,seed,inherited=pending.pop(0)
+        hosted=jane_hosted_store(store,url)
+        if hosted:
+            # The menu URL itself names the Jane store; the Jane reader proves the branch at the platform's coordinates.
+            url=urlparse(url)._replace(query='',fragment='').geturl()
+            if url in visited:continue
+            visited.add(url)
+            license_type,basis=license_context(url)
+            results.append(dict(url=url,provider='jane',provider_store_id=hosted[0],license_type=license_type,license_basis=basis,identity_confidence=hosted[1],
+                                resolution_evidence=dict(url=url,method='Rise-hosted Jane store id in the menu URL'),locator_evidence=seed.get('evidence',[]),platforms=['jane']))
+            continue
         url=catalog_entry_url(url)
         if url in visited:continue
         visited.add(url)

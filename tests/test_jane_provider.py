@@ -183,6 +183,24 @@ class WhiteLabelStorefrontTests(unittest.TestCase):
             found = [(m['provider'], m.get('provider_store_id')) for m in resolve_menu(store, Fetcher()) if not m.get('status')]
         self.assertEqual(found, [('jane', '1517')])
 
+    def test_rise_menu_urls_carry_the_jane_store_id_even_when_the_page_refuses_us(self):
+        from unittest.mock import patch
+        from backend.adapters import resolve_menu
+        class Refused:
+            def get(self, url):
+                return FetchResult(url, 403, b'Forbidden', {}, 'ev', '2026-10-18T09:00:00Z')
+        def resolve(store, *urls):
+            with patch('backend.site_discovery.search_websites', return_value=[]), patch('backend.locators.discover_menu_candidates', return_value=[]):
+                return [(m['provider'], m.get('provider_store_id'), m['license_type'], m.get('identity_confidence'))
+                        for m in resolve_menu(dict(store, lead_urls=list(urls)), Refused()) if not m.get('status')]
+        canton = dict(name='Rise - Canton', city='Canton', state='IL', address='3104 N Main St', latitude=40.5568, longitude=-90.0270)
+        self.assertEqual(resolve(canton, 'https://risecannabis.com/dispensaries/illinois/canton/1343/recreational-menu/?refinementList%5Bbrand%5D%5B%5D=RYTHM'),
+                         [('jane', '1343', 'recreational', 'name_locality')])
+        colorado = dict(name='Rise - Joliet  Colorado Ave', city='Joliet', state='IL', address='2865 Colorado Ave', latitude=41.5, longitude=-88.1)
+        # A sibling branch in the same city must prove itself at the platform's own coordinates.
+        self.assertEqual(resolve(colorado, 'https://risecannabis.com/dispensaries/illinois/joliet-rock-creek/254/medical-menu/'),
+                         [('jane', '254', 'medicinal', None)])
+
 
 if __name__ == '__main__':
     unittest.main()

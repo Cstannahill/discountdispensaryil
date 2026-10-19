@@ -29,6 +29,23 @@ MAX_MILES = 0.35
 NEAR_MILES = 5.0
 
 
+# Rise (GTI, which also runs Verilife and Bloom Wellness menus) serves Jane stores at
+# /dispensaries/<state>/<branch-slug>/<Jane store id>/...; the site refuses plain clients, so the URL is the evidence.
+RISE_MENU = re.compile(r'^https?://(?:www\.)?risecannabis\.com/dispensaries/[a-z-]+/([a-z0-9-]+)/(\d+)(?:/|$)', re.I)
+
+
+def hosted_store(store, url):
+    """(Jane store id, identity) for a Rise-hosted menu URL, else None. Identity is 'name_locality' only when the
+    branch slug names the store's city and nothing but its city, name or street (a same-city sibling is not)."""
+    match = RISE_MENU.match(url or '')
+    if not match:
+        return None
+    words = lambda text: set(re.findall(r'[a-z0-9]+', str(text or '').lower()))
+    city, slug = words(store.get('city')), words(match[1]) - {'rise', 'dispensary', 'cannabis'}
+    named = bool(city & slug) and slug <= city | words(store.get('name')) | words(store.get('address'))
+    return match[2], 'name_locality' if named else None
+
+
 def _miles(lat1, lng1, lat2, lng2):
     p = math.pi / 180
     a = math.sin((lat2 - lat1) * p / 2) ** 2 + math.cos(lat1 * p) * math.cos(lat2 * p) * math.sin((lng2 - lng1) * p / 2) ** 2
