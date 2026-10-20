@@ -15,6 +15,7 @@ from backend.completeness import MIN_CONVERGED_ITEMS, churn_convergence, counts_
 ACCEPTED_STREET_MISMATCHES = {
     'a9b8267a1dc370dc2b19cd77': 'Mint Cannabis Villa Park: registry 310 E North Ave, Dutchie menu 330 E North Ave; operator accepted 2026-10-19',
     '8ce3f490d5c2e8700b3ed175': 'Dutchess Cannabis Oak Park: registry 1132 Lake St, Dutchie menu 1142 Lake St; operator accepted 2026-10-19',
+    '9e28e567467f2723fb75e2d0': 'Midway by Ascend: registry 5648 S Archer Ave, Ascend menu 5650 S Archer Ave; operator accepted 2026-10-20',
 }
 
 VERSION='structured-html-3'

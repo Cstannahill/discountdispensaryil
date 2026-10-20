@@ -124,7 +124,7 @@ if __name__=='__main__':unittest.main()
 class AcceptedStreetMismatchTests(unittest.TestCase):
     def test_named_exceptions_record_both_addresses_so_they_can_be_revisited(self):
         from backend.providers.generic import ACCEPTED_STREET_MISMATCHES
-        self.assertEqual(set(ACCEPTED_STREET_MISMATCHES), {'a9b8267a1dc370dc2b19cd77', '8ce3f490d5c2e8700b3ed175'})
+        self.assertEqual(set(ACCEPTED_STREET_MISMATCHES), {'a9b8267a1dc370dc2b19cd77', '8ce3f490d5c2e8700b3ed175', '9e28e567467f2723fb75e2d0'})
         self.assertIn('310 E North Ave', ACCEPTED_STREET_MISMATCHES['a9b8267a1dc370dc2b19cd77'])
         self.assertIn('1132 Lake St', ACCEPTED_STREET_MISMATCHES['8ce3f490d5c2e8700b3ed175'])
 

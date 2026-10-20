@@ -307,6 +307,9 @@ class PublicFetcher:
         allowed_headers = {'x-store', 'accept', 'content-type'} if method == 'GET' else _search_post_headers(url)
         if method=='GET' and urlsplit(url).hostname=='api.dispenseapp.com':
             allowed_headers=allowed_headers | {'api-key'}
+        # Cresco storefronts send their publishable storefront key and store/app ids on every read (see backend/providers/cresco.py).
+        if method=='GET' and urlsplit(url).hostname=='api.crescolabs.com':
+            allowed_headers=allowed_headers | {'x-api-key','x-client-version','store_id','ordering_app_id','origin','referer'}
         if browser_origin and method=='GET' and urlsplit(url).hostname==urlsplit(browser_origin).hostname:
             allowed_headers=allowed_headers | {'cookie'} | _BROWSER_PAGE_HEADERS
         if any(key not in allowed_headers for key in request_headers):

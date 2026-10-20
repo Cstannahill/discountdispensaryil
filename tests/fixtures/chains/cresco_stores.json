@@ -1,0 +1,292 @@
+{
+ "type": "stores",
+ "rows": 16,
+ "data": [
+  {
+   "id": 86,
+   "name": "Sunnyside*",
+   "address": "1704 S. Neil Street Suite C",
+   "city": "Champaign",
+   "state": "IL",
+   "zip": "61820",
+   "lat": 40.0956578,
+   "lng": -88.244726,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "champaign-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 592,
+   "name": "Sunnyside*",
+   "address": "2740 W 75th St.",
+   "city": "Naperville",
+   "state": "IL",
+   "zip": "60564",
+   "lat": 41.7463878,
+   "lng": -88.2036388,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "naperville-il",
+   "brands": [
+    "cresco",
+    "high_supply",
+    "mindys",
+    "reserve"
+   ]
+  },
+  {
+   "id": 494,
+   "name": "Sunnyside*",
+   "address": "369 Lynch Drive",
+   "city": "Danville",
+   "state": "IL",
+   "zip": "61834",
+   "lat": 40.1254458,
+   "lng": -87.5482734,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "danville-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 559,
+   "name": "Sunnyside*",
+   "address": "1739 E Golf Road",
+   "city": "Schaumburg",
+   "state": "IL",
+   "zip": "60173",
+   "lat": 42.0502764,
+   "lng": -88.0416664,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "schaumburg-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 977,
+   "name": "Cloud9",
+   "address": "1823 W Wise Rd",
+   "city": "Schaumburg",
+   "state": "IL",
+   "zip": "60193",
+   "lat": 42.0032005,
+   "lng": -88.1282166,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "cloud9-schaumburg",
+   "brands": [
+    "cresco",
+    "mindys",
+    "reserve"
+   ]
+  },
+  {
+   "id": 85,
+   "name": "Sunnyside*",
+   "address": "7955 W. Grand Ave.",
+   "city": "Elmwood Park",
+   "state": "IL",
+   "zip": "60707",
+   "lat": 41.9268219,
+   "lng": -87.8256571,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "elmwood-park-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 972,
+   "name": "Cloud9",
+   "address": "2341 Plum St",
+   "city": "Edwardsville",
+   "state": "IL",
+   "zip": "62025",
+   "lat": 38.784247,
+   "lng": -89.9576969,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "cloud9-edwardsville",
+   "brands": [
+    "cresco",
+    "mindys",
+    "reserve"
+   ]
+  },
+  {
+   "id": 974,
+   "name": "Cloud9",
+   "address": "406 W Camp St",
+   "city": "East Peoria",
+   "state": "IL",
+   "zip": "61611",
+   "lat": 40.6729621,
+   "lng": -89.5809095,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "cloud9-east-peoria",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 498,
+   "name": "Sunnyside*",
+   "address": "7000 First Ranger Drive",
+   "city": "South Beloit",
+   "state": "IL",
+   "zip": "61080",
+   "lat": 42.489857,
+   "lng": -88.9990707,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "south-beloit-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 971,
+   "name": "Cloud9",
+   "address": "2420 US-30",
+   "city": "Oswego",
+   "state": "IL",
+   "zip": "60543",
+   "lat": 41.7188466,
+   "lng": -88.3163347,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "cloud9-oswego",
+   "brands": [
+    "cresco",
+    "mindys",
+    "reserve"
+   ]
+  },
+  {
+   "id": 493,
+   "name": "Sunnyside*",
+   "address": "436 N Clark St",
+   "city": "Chicago",
+   "state": "IL",
+   "zip": "60654",
+   "lat": 41.8903008,
+   "lng": -87.6335889,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "chicago-river-north-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 973,
+   "name": "Cloud9",
+   "address": "505 W Town Center Blvd",
+   "city": "Champaign",
+   "state": "IL",
+   "zip": "61822",
+   "lat": 40.141846,
+   "lng": -88.251267,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "cloud9-champaign",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 632,
+   "name": "Sunnyside*",
+   "address": "3524 North Clark Street",
+   "city": "Chicago",
+   "state": "IL",
+   "zip": "60657",
+   "lat": 41.9462919,
+   "lng": -87.6558083,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "chicago-wrigleyville-il",
+   "brands": [
+    "cresco",
+    "high_supply",
+    "mindys",
+    "reserve"
+   ]
+  },
+  {
+   "id": 67,
+   "name": "Sunnyside*",
+   "address": "2696 McFarland Road",
+   "city": "Rockford",
+   "state": "IL",
+   "zip": "61107",
+   "lat": 42.2997197,
+   "lng": -88.9790048,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "rockford-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 70,
+   "name": "Sunnyside*",
+   "address": "830 Milwaukee Avenue",
+   "city": "Buffalo Grove",
+   "state": "IL",
+   "zip": "60089",
+   "lat": 42.1670556,
+   "lng": -87.9247779,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "buffalo-grove-il",
+   "brands": [
+    "cresco",
+    "reserve",
+    "mindys"
+   ]
+  },
+  {
+   "id": 987,
+   "name": "The Sunnyside Shop",
+   "address": "1484 Waukegan Road",
+   "city": "Glenview",
+   "state": "IL",
+   "zip": "60025",
+   "lat": 41.9864007,
+   "lng": -87.7977203,
+   "hidden": false,
+   "deleted": null,
+   "store_slug": "glenview-il",
+   "brands": null
+  }
+ ]
+}

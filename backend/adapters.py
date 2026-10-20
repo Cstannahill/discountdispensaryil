@@ -188,7 +188,8 @@ def resolve_menu(store, fetcher):
         if c['status'] not in ('candidate','matched'):
             failures.append(dict(url=c.get('url'),provider='generic',provider_store_id=None,license_type='recreational',
                                  status=c['status'],reason=c.get('reason'),resolution_evidence=c.get('evidence',[])))
-    searched=False
+    # A chain list that answered for this branch is final: no open-web search may add leads for it.
+    searched=any(c.get('chain_list') for c in seeds)
     while len(visited)<max_pages and (deadline is None or time.monotonic()<deadline):
         # A configured brand root is a lead, not proof that the branch is still
         # operated by that brand. Reserve crawl capacity for independent search
@@ -203,6 +204,12 @@ def resolve_menu(store, fetcher):
                 failures.append(dict(url=None,provider='generic',license_type='recreational',status='unresolved',reason='Fallback website search found no corroborated branch lead',resolution_evidence=attempts))
         if not pending:break
         url,depth,seed,inherited=pending.pop(0)
+        if isinstance(seed.get('endpoint'),dict):
+            # A chain list named this branch's menu id; the Dutchie or Jane reader still checks the branch at extraction.
+            if url in visited:continue
+            visited.add(url)
+            results.append(dict(seed['endpoint'],locator_evidence=seed.get('evidence',[])))
+            continue
         hosted=jane_hosted_store(store,url)
         if hosted:
             # The menu URL itself names the Jane store; the Jane reader proves the branch at the platform's coordinates.
