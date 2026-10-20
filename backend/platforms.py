@@ -12,7 +12,7 @@ SIGNATURES = {
     'dutchie': r'dutchie\.com|dutchieplus',
     'joint': r'jointEcommerce|/wp-content/plugins/joint-ecommerce/',
     'sweed': r'sweedpos\.com|__sw_qc',
-    'treez': r'treez\.io|initialSearchResponse',
+    'treez': r'treez\.io|initialSearchResponse|treezStores',
     'dispense': r'dispenseapp\.com',
     'blaze': r'blaze\.me|tymber',
     'meadow': r'getmeadow\.com',

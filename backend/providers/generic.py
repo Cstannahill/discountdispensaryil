@@ -88,11 +88,13 @@ def extract(text,url):
 
 def network_collections(fetcher,response,endpoint):
     """Product collections found in JSON the rendered page itself loaded (None unless the response was a render)."""
-    from backend.network_extract import dispensary_identities, extract_products, load_captured
+    from backend.network_extract import dispensary_identities, extract_products, load_captured, uncaptured_categories
     folder=getattr(fetcher,'evidence_dir',None)
     if not folder:return None
     captured=load_captured(folder,response.evidence_id)
-    result=extract_products(captured,endpoint['url'],endpoint.get('license_type','recreational')) if captured else None
+    gaps=uncaptured_categories(folder,response.evidence_id)
+    result=extract_products(captured,endpoint['url'],endpoint.get('license_type','recreational'),category_gaps=len(gaps)) if captured else None
+    if result and gaps:result['category_gaps']=gaps
     if result:result['identities']=dispensary_identities(captured)
     return result if result and (result['items'] or result.get('identities')) else None
 

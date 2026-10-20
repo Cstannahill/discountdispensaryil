@@ -13,7 +13,7 @@ BLAZE_API = 'https://ecom-api.blaze.me/api/v1/products/'
 
 
 def provider_capabilities(provider):
-    native=provider in ('blaze','sweed','dispense','treez','joint','jane','verano')
+    native=provider in ('blaze','sweed','dispense','treez','gapcommerce','joint','jane','verano')
     structured=provider in ('generic','jane','dutchie','cresco')
     return dict(native_full_menu=native,structured_fallback=structured,
                 support='native_full_menu' if native else 'conditional_structured_fallback' if structured else 'unsupported')
@@ -92,13 +92,18 @@ def normalize_blaze(item, included, endpoint):
     }
 
 
-def _detect_endpoint(url, response):
+def _detect_endpoint(url, response, store=None):
     text = _text(response)
     evidence = {'url': response.url, 'evidence_id': response.evidence_id, 'fetched_at': response.fetched_at}
     props = _next_data(text)
     if 'initialSearchResponse' in text and 'selectedStore' in text:
         from backend.providers.treez import observe
         observed=observe(url,response)
+        if observed:return observed
+    if 'treezStores' in text:
+        # Treez Ecommerce storefront that lists its branches: the GapCommerce search reads the registry branch's record.
+        from backend.providers.gapcommerce import observe as observe_gapcommerce
+        observed=observe_gapcommerce(url,response,store)
         if observed:return observed
     if 'api.dispenseapp.com' in text:
         from backend.providers.dispense import observe
@@ -142,9 +147,9 @@ def _detect_endpoint(url, response):
     return {'url': url, 'provider': provider, 'provider_store_id': None, 'license_type': 'unknown', 'resolution_evidence': dict(evidence, method='Unresolved provider contract')}
 
 
-def _observed_endpoint(url, response):
+def _observed_endpoint(url, response, store=None):
     from .site_discovery import license_context
-    endpoint = _detect_endpoint(url, response)
+    endpoint = _detect_endpoint(url, response, store)
     license_type,basis=license_context(endpoint['url'],_text(response))
     if endpoint.get('license_type') not in ('recreational','medicinal'):
         endpoint['license_type']=license_type
@@ -234,7 +239,7 @@ def resolve_menu(store, fetcher):
             verified=(inherited or identity['identity_status'] in ('matched','name_locality') or bool(initial and not store.get('address'))) and identity['identity_status']!='conflict'
             if identity['identity_status']=='conflict':
                 failures.append(dict(url=url,provider='generic',provider_store_id=None,license_type='recreational',status='identity_conflict',reason='Branch page names a different street address/locality',resolution_evidence=identity))
-            observed=_observed_endpoint(url,response)
+            observed=_observed_endpoint(url,response,store)
             if (identity['identity_status'] in ('candidate','conflict') or provider_address_matches(store,observed) is False) and hasattr(fetcher,'render') and fetcher.browser_options.get('enabled',True) and url not in fetcher._branch_render_cache and len(fetcher._branch_render_cache)<2:
                 # A wrong default branch is a reason to select the requested
                 # location first, rather than immediately reject the retailer.
@@ -246,7 +251,7 @@ def resolve_menu(store, fetcher):
                         response=rendered
                         identity=inspect_page(store,response)
                         verified=(identity['identity_status'] in ('matched','name_locality') or inherited) and identity['identity_status']!='conflict'
-                        observed=_observed_endpoint(url,response)
+                        observed=_observed_endpoint(url,response,store)
                         page_platforms=sorted(set(page_platforms)|set(detect_platforms(_text(response))))
                 except Exception as exc:
                     failures.append(dict(url=url,provider='generic',license_type='recreational',status='failed',reason='Branch-selection browser attempt failed: '+str(exc),resolution_evidence=dict(evidence_id=getattr(exc,'evidence_id',None))))
@@ -325,6 +330,9 @@ def resolve_menu(store, fetcher):
 def fetch_menu(endpoint, fetcher):
     if endpoint.get('provider')=='treez':
         from backend.providers.treez import fetch
+        return fetch(endpoint,fetcher)
+    if endpoint.get('provider')=='gapcommerce':
+        from backend.providers.gapcommerce import fetch
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'dispense':
         from backend.providers.dispense import fetch

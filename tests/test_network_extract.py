@@ -244,6 +244,26 @@ class WholeCatalogTotalTests(unittest.TestCase):
         flower = dutchie_page(dict(self.base, types=['Flower']), 50, prefix='f')
         self.assertEqual(extract_products([whole, flower], URL)['total'], 120)
 
+    def test_a_category_whose_products_never_arrived_cannot_be_summed_into_the_total(self):
+        flower = dutchie_page(dict(self.base, types=['Flower']), 50, prefix='f')
+        edible = dutchie_page(dict(self.base, types=['Edible']), 30, prefix='e')
+        self.assertEqual(extract_products([flower, edible], URL)['total'], 80)
+        self.assertIsNone(extract_products([flower, edible], URL, category_gaps=1)['total'])
+
+
+class UncapturedCategoryTests(unittest.TestCase):
+    def test_visited_product_pages_without_a_response_are_reported_and_other_visits_are_not(self):
+        from backend.network_extract import uncaptured_categories
+        with tempfile.TemporaryDirectory() as folder:
+            (Path(folder) / 'browser').mkdir()
+            visited = [dict(link='https://m.example/embedded-menu/s/products/flower', pages=0, captured=True),
+                       dict(link='https://m.example/embedded-menu/s/products/edibles', pages=0, captured=False),
+                       dict(link='https://m.example/embedded-menu/s/collections/back', pages=0, captured=False),
+                       dict(link='https://m.example/embedded-menu/s/products/topicals', pages=0)]
+            (Path(folder) / 'browser' / 'render1.json').write_text(json.dumps(dict(scroll=dict(explore=dict(visited=visited)))), encoding='utf-8')
+            self.assertEqual(uncaptured_categories(folder, 'render1'), ['https://m.example/embedded-menu/s/products/edibles'])
+            self.assertEqual(uncaptured_categories(folder, 'missing'), [])
+
 
 class IdHydrationCategoryTotalTests(unittest.TestCase):
     base = WholeCatalogTotalTests.base

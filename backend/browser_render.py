@@ -81,7 +81,8 @@ def _render(url,fetcher,options=None,proxy=None,page_handler=None):
     def expire():
         timed_out.set()
         if process.poll() is None:process.kill()
-    deadline_seconds=900 if page_handler else 90 if options.get('sample_pages') else 320 if options.get('await_menu') and options.get('scroll_menu') else 50
+    # A storefront search replay (gap_search) pages a whole catalog from inside the page, so it gets the menu budget.
+    deadline_seconds=900 if page_handler else 90 if options.get('sample_pages') else 320 if options.get('gap_search') or (options.get('await_menu') and options.get('scroll_menu')) else 50
     timer=threading.Timer(deadline_seconds,expire);timer.start()
     evidence=[];result=None;blocked=[];worker_diagnostics={}
     decisions=[];network_json=[]
