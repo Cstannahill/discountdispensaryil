@@ -333,6 +333,22 @@ class DiscoveryFallbackTests(unittest.TestCase):
     def test_shared_single_word_is_not_enough_for_a_multiword_brand(self):
         self.assertEqual(search_websites(dict(name='Mystic Greenz - Lincoln',city='Lincoln',state='IL'),searcher(('https://mysticboarding.com/','Mystic sporting goods',''))),[])
 
+    def test_brand_written_as_two_words_matches_the_registry_spelling(self):
+        # The registry says "Starbuds"; the storefront says "Star Buds".
+        result=inspect_page(dict(name='Starbuds WM',address='101 W Ogden Ave',city='Westmont',state='IL'),
+                            response('https://starbudsillinois.us/stores/star-buds-westmont','<h1>Star Buds - Westmont</h1>'))
+        self.assertEqual(result['identity_status'],'name_locality')
+
+    def test_village_suffix_and_abbreviated_locality_match_the_short_town_name(self):
+        for city,page in (('Elk Grove Village','<title>Snap Canna | Elk Grove</title>'),('Mt Prospect','<h1>Snap Canna Mount Prospect</h1>'),
+                          ('Saint Charles','<h1>Snap Canna St. Charles</h1>')):
+            result=inspect_page(dict(name='Snap Canna - '+city,address='1 Main St',city=city,state='IL'),response('https://snapcanna.com/menu/x/',page))
+            self.assertEqual(result['identity_status'],'name_locality',city)
+        # A town that only shares a word is still a different town.
+        result=inspect_page(dict(name='Snap Canna - Elk Grove Village',address='1 Main St',city='Elk Grove Village',state='IL'),
+                            response('https://snapcanna.com/menu/x/','<h1>Snap Canna Grove City</h1>'))
+        self.assertEqual(result['identity_status'],'candidate')
+
     def test_provider_api_preconnect_is_not_a_menu_endpoint(self):
         self.assertEqual(provider_links('https://example.com','<link rel="preconnect" href="https://api.dispenseapp.com">'),[])
 
@@ -386,3 +402,21 @@ class DutchieMenuRootTests(unittest.TestCase):
         }
         for link, expected in cases.items():
             self.assertEqual(self.roots(link), [expected], link)
+
+
+class BodyStreetIdentityTests(unittest.TestCase):
+    """A single-location site prints its street in the footer or contact block, not in the title; the title's town proves it."""
+    FULTON = dict(name='The Dispensary', address='1801 16th Ave', city='Fulton', state='IL')
+
+    def test_street_in_body_and_town_in_title_matches_the_branch(self):
+        text = ('<title>Fulton REC Store - The Dispensary</title><h1>Fulton REC Store</h1>'
+                '<footer><a href="https://maps.example/x">1801 16th Ave. Fulton, IL 61252</a></footer>')
+        self.assertEqual(inspect_page(self.FULTON, response('https://www.thedispensaryfulton.com/fulton-rec-store/menu/', text))['identity_status'], 'matched')
+
+    def test_street_with_a_title_naming_another_town_is_not_this_branch(self):
+        text = '<title>Chicago Store - The Dispensary</title><footer>1801 16th Ave. Fulton, IL 61252 cannabis dispensary</footer>'
+        self.assertNotEqual(inspect_page(self.FULTON, response('https://example.com/chicago', text))['identity_status'], 'matched')
+
+    def test_street_without_the_town_in_the_title_is_not_enough(self):
+        text = '<title>Our Locations</title><footer>1801 16th Ave. Fulton, IL 61252 cannabis dispensary</footer>'
+        self.assertNotEqual(inspect_page(self.FULTON, response('https://example.com/locations', text))['identity_status'], 'matched')

@@ -124,6 +124,22 @@ def business_words(name):
     return set(words(name))-stop
 
 
+_LOCALITY_SPELLINGS={'mt':'mount','st':'saint','ft':'fort'}
+
+
+def locality_words(city):
+    """A town's name as pages write it: Mt/St/Ft spelled out, and a trailing "Village" dropped (Elk Grove Village is "Elk Grove")."""
+    found=[_LOCALITY_SPELLINGS.get(w,w) for w in words(city)]
+    return found[:-1] if len(found)>1 and found[-1]=='village' else found
+
+
+def locality_in(city, seen):
+    """Every word of the town in `seen`, or the town run together as one word (a "elkgrove" URL slug)."""
+    town=locality_words(city)
+    seen={_LOCALITY_SPELLINGS.get(w,w) for w in seen}
+    return set(town)<=seen or ''.join(town) in seen
+
+
 def license_context(url, text=''):
     # The user's explicit policy: omitted license is recreational. Never invent
     # a medical channel from a registry flag or a discount description.
@@ -183,6 +199,21 @@ def dutchie_page_endpoints(store, text):
     return [dict(url='https://dutchie.com/embedded-menu/'+found,provider='dutchie',provider_store_id=found)]
 
 
+def janeboost_store_links(store, text):
+    """Jane white-label WordPress sites (Heady "JaneBoost") list every store in `hjb_store_url_ids` as {url, title: "Town (REC)"}.
+    The stores titled with the requested town, recreational first. Leads only: the Jane reader proves the branch by location."""
+    if 'hjb_store_url_ids' not in text:return []
+    decoder=json.JSONDecoder();found=[]
+    for match in re.finditer(r'"hjb_store_url_ids"\s*:\s*(?=\{)',text):
+        try:value,_=decoder.raw_decode(text,match.end())
+        except ValueError:continue
+        found+=[x for x in value.values() if isinstance(x,dict) and isinstance(x.get('url'),str) and isinstance(x.get('title'),str)]
+    town=locality_words(store.get('city',''))
+    own=[x for x in found if town and locality_words(re.sub(r'\([^)]*\)','',x['title']))==town]
+    own.sort(key=lambda x:not re.search(r'\brec',x['title'],re.I))
+    return list(dict.fromkeys(x['url'] for x in own))
+
+
 def street_in_text(address,text):
     from .locators import _tokens
     street=re.split(r'\b(?:unit|suite|ste)\b|#',address or '',flags=re.I)[0]
@@ -234,12 +265,13 @@ def branch_slug_conflict(store, *urls):
     city=set(re.findall(r'[a-z0-9]+',(store.get('city') or '').lower()))-_STREET_NOISE
     street=set(re.findall(r'[a-z]+',(store.get('address') or '').lower()))-_STREET_NOISE
     state=(store.get('state') or 'IL').lower()
+    town=''.join(locality_words(store.get('city')))
     for url in urls:
         for slug in _slug_candidates(url or ''):
             match=_SLUG_STATE.match(slug)
             if match and match['state'] in _STATE_CODES and match['state']!=state:return True
             tokens=set(re.findall(r'[a-z0-9]+',slug))-_SLUG_NOISE-_STREET_NOISE-{state}
-            if tokens and city and not (tokens & (city|street)):return True
+            if tokens and city and not (tokens & (city|street)) and not (town and town in ''.join(re.findall(r'[a-z0-9]+',slug))):return True
     return False
 
 
@@ -272,13 +304,19 @@ def inspect_page(store, response):
     visible=' '.join(page.identity_text)
     registry_words=business_words(store.get('name',''))-set(words(store.get('city','')))
     combined=set(words(visible+' '+response.url))
-    name_match=bool(registry_words and registry_words & combined)
-    city_match=set(words(store.get('city',''))) <= combined
+    # A brand the page writes as two words ("Star Buds" for the registry's "Starbuds") still names it.
+    joined=''.join(words(visible))+' '+''.join(words(response.url))
+    name_match=bool(registry_words and (registry_words & combined or any(len(w)>=6 and w in joined for w in registry_words)))
+    city_match=locality_in(store.get('city',''),combined)
     address_in_text=street_in_text(store.get('address',''),visible)
+    # Single-location sites print the street in the body (footer, contact block) but not in the title or meta.
+    # The body street plus the town in the page's own title proves the branch unless the title names another town.
+    body_street=not address_in_text and street_in_text(store.get('address',''),re.sub(r'<[^>]+>',' ',text))
+    title_city=set(words(store.get('city',''))) <= set(words(visible))
     cannabis_context=bool(combined & {'cannabis','marijuana','dispensary','dispensaries'})
     if addresses and not matched:
         identity='conflict'
-    elif matched or (address_in_text and (name_match or (city_match and cannabis_context))):
+    elif matched or (address_in_text and (name_match or (city_match and cannabis_context))) or (body_street and title_city and cannabis_context):
         identity='matched'
     elif name_match and city_match:
         identity='name_locality'

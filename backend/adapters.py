@@ -21,7 +21,8 @@ def provider_capabilities(provider):
 
 
 def _text(response):
-    return response.body.decode('utf-8-sig') if isinstance(response.body, bytes) else response.body
+    # A search hit can be a PDF or image; undecodable bytes are not a reason to abort the whole branch search.
+    return response.body.decode('utf-8-sig', errors='replace') if isinstance(response.body, bytes) else response.body
 
 
 def _next_data(text):
@@ -168,11 +169,29 @@ def has_menu_contract(endpoint):
     return not provider_capabilities(endpoint.get('provider'))['native_full_menu'] or bool(endpoint.get('provider_store_id'))
 
 
+def _sweed_branch_links(store, response, details, fetcher):
+    """The tenant's branch list from this page, else from the default store's home page (read once per site)."""
+    from backend.providers.sweed import branch_directory, branch_links
+    from .documents import read_document
+    seen=fetcher.__dict__.setdefault('_sweed_directories',{})
+    host=urlparse(response.url).hostname
+    if host in seen:return []
+    branches=branch_directory(_text(response))
+    home=details.get('store_home') if isinstance(details,dict) else None
+    if branches is None and home:
+        try:
+            page=read_document(home,fetcher)
+            if page.status_code==200:branches=branch_directory(_text(page))
+        except Exception:branches=None
+    seen[host]=branches
+    return branch_links(store,branches)
+
+
 def resolve_menu(store, fetcher):
     """Bounded search/branch crawl. Platform and generic paths share evidence."""
     from .platforms import detect as detect_platforms
     from .locators import discover_menu_candidates
-    from .site_discovery import dutchie_page_endpoints, inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms
+    from .site_discovery import dutchie_page_endpoints, inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms, janeboost_store_links
     from .providers.generic import extract
     from .providers.jane import hosted_store as jane_hosted_store
     from .documents import read_document
@@ -274,6 +293,10 @@ def resolve_menu(store, fetcher):
                 verified=False
                 failures.append(dict(url=url,provider=observed['provider'],provider_store_id=observed.get('provider_store_id'),license_type=observed['license_type'],
                                      status='identity_conflict',reason='Detected menu belongs to a different street address: '+str(details.get('retailer_address')),resolution_evidence=details))
+                if observed['provider']=='sweed':
+                    # A multi-store Sweed site opened on its default branch; its branch list names the requested store's page.
+                    for link in _sweed_branch_links(store,response,details,fetcher):
+                        if catalog_entry_url(link) not in visited:pending.insert(0,(link,depth,seed,False))
             if has_menu_contract(observed) and verified:
                 observed.update(identity_confidence=identity['identity_status'],locator_evidence=seed.get('evidence',[]))
                 results.append(observed)
@@ -297,6 +320,9 @@ def resolve_menu(store, fetcher):
                     endpoint.update(license_type=license_type,license_basis=basis,identity_confidence=identity['identity_status'],
                                     resolution_evidence={k:v for k,v in identity.items() if k!='endpoints'},locator_evidence=seed.get('evidence',[]))
                     results.append(endpoint)
+            # A Jane white-label site's own store list names the requested town's store pages (rec first).
+            for link in reversed(janeboost_store_links(store,_text(response))):
+                if catalog_entry_url(link) not in visited:pending.insert(0,(link,depth+1,seed,False))
             _,products,_=extract(_text(response),response.url)
             sibling=branch_slug_conflict(store,url) and identity['identity_status']!='matched'
             if verified and not sibling and (products or re.search(r'/(?:menu|shop|products)(?:/|$)',urlparse(url).path)):

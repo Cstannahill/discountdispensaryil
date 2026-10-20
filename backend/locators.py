@@ -126,12 +126,18 @@ def _known_menu_candidates(store, fetcher):
             if not any(candidate['status']=='matched' for candidate in candidates) and _render_locator(root,store,fetcher):
                 return _known_menu_candidates(store,fetcher)
             return candidates or [dict(status='unresolved', url=response.url, reason='No matching branch in the live retailer directory', evidence=[evidence])]
+        from .site_discovery import janeboost_store_links
+        boost = janeboost_store_links(store, text)
+        if boost:
+            return [dict(status='candidate', url=link, reason="Store titled with this town in the retailer's Jane store list", evidence=[evidence]) for link in boost]
         branches = _embedded_store_list(text)
         if branches:
             return _directory_candidates(store, branches, response.url, evidence)
         links = list(dict.fromkeys(urljoin(response.url, html.unescape(x)) for x in
                                    re.findall(r'(?:href|src)=["\']([^"\']+)["\']', text, re.I)))
         city_words=[w for w in _tokens(store.get('city','')) if w not in ('e','w','n','s')]
+        # Locator links name Elk Grove Village "elkgrove".
+        if len(city_words)>1 and city_words[-1]=='village':city_words=city_words[:-1]
         city = ''.join(city_words)
         relevant = [link for link in links if city and city in ''.join(_tokens(urlsplit(link).netloc + urlsplit(link).path)) and
                     not re.search(r'\.(?:jpg|png|webp|css|js|svg)(?:\?|$)', link, re.I)]
