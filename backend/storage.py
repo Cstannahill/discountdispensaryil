@@ -13,6 +13,11 @@ from .completeness import grade_for, valid_convergence
 from .domain import age_hours, digest, distance_miles, flower_grade, instant, normalize_offer, utcnow
 
 REGISTRY_URL = "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no"
+# Registry map points corrected from a store's public address. The registry row keeps its own address; the point is restored
+# on every registry import. Approximate: taken from a road-level geocode, so within a few hundred meters of the storefront.
+CORRECTED_COORDINATES = {
+    '12adbbe4a9168b5be65bfee7': (40.13379, -87.552129, 'Sunnyside - Danville: registry point about 6 mi off; public address 369 Lynch Dr, Danville'),
+}
 
 
 def _verification_summary(row):
@@ -137,8 +142,18 @@ class Store:
                   source_present=1,source_evidence=excluded.source_evidence,observed_at=excluded.observed_at,raw_json=excluded.raw_json""",
                              (store_id, row["source_key"], row["name"], row["address"], row["city"], row["state"],
                               row.get("latitude"), row.get("longitude"), medical, evidence_id, now, raw))
+            self._correct_coordinates(conn)
             self._bump(conn)
         return {"imported": len(rows), "evidence_id": evidence_id}
+
+    def apply_coordinate_corrections(self):
+        with self.connection() as conn:
+            self._correct_coordinates(conn)
+
+    @staticmethod
+    def _correct_coordinates(conn):
+        for store_id, (lat, lon, _) in CORRECTED_COORDINATES.items():
+            conn.execute("UPDATE live_stores SET latitude=?, longitude=? WHERE id=?", (lat, lon, store_id))
 
     def source(self, now=None):
         with self.connection() as conn:

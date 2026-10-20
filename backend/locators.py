@@ -82,13 +82,23 @@ def _get(fetcher, url):
     return response
 
 
+def connector_for(store):
+    """The retailer locator for this store's brand: a recorded rebrand's brand first, then the registry name."""
+    names = [a['name'] for a in store.get('aliases') or [] if isinstance(a, dict) and a.get('name')]
+    names.append(store.get('name', ''))
+    for name in names:
+        root = next((url for pattern, url in CONNECTORS if re.search(pattern, re.sub(r"[’']", '', name), re.I)), None)
+        if root:
+            return root
+    return None
+
+
 def _known_menu_candidates(store, fetcher):
     from .chains import chain_candidates
     chained = chain_candidates(store, fetcher)
     if chained is not None:
         return chained
-    name = re.sub(r"[’']", '', store.get('name', ''))
-    root = next((url for pattern, url in CONNECTORS if re.search(pattern, name, re.I)), None)
+    root = connector_for(store)
     if not root:
         return [dict(status='unresolved', url=None, reason='No retailer locator connector configured for this brand', evidence=[])]
     try:
