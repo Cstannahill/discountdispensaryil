@@ -138,6 +138,11 @@ def expand_detail(response,context,request,endpoint):
 
 
 def fetch(endpoint,fetcher):
+    # A storefront that lists its branch reads the GapCommerce search API; the browser traversal below is the fallback.
+    from backend.providers.gapcommerce import probe,fetch as fetch_search
+    try:probed=probe(endpoint,fetcher)
+    except Exception:probed=None
+    if probed and probed[2] is not None:return fetch_search(endpoint,fetcher,probed)
     result=dict(provider='treez',adapter_version=VERSION,items=[],complete=False,expected_count=None,pages=[],errors=[],evidence=[],authoritative_zero=False,
                 limits=dict(max_pages=int(endpoint.get('max_pages',1000)),verification_passes=3,max_page_rechecks=2,max_seconds=900),
                 count_semantics='Exact uncollapsed search hit total counts variants; grouped product cardinality is approximate and cannot prove completeness')

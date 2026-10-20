@@ -50,83 +50,93 @@ class ServiceTests(unittest.TestCase):
         service.run(job['id']);service.close()
         self.assertEqual(seen,[['https://chain.example/il/rutland/']])
 
-    def test_sample_run_reads_capped_pages_per_endpoint_and_writes_no_menu_state(self):
-        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
-        seen=[]
-        def read_menu(endpoint,fetcher):
-            seen.append(endpoint.get('max_pages'))
-            return dict(items=[dict(source_id='a',name='Flower')],complete=False,expected_count=None,errors=[],source_count=None,pages=[dict(page=1,items=1),dict(page=2,items=0)])
-        resolved=[dict(url='https://example.com/menu',provider='jane',provider_store_id='1',license_type='recreational',status='matched',resolution_evidence=[])]
-        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:list(resolved),menu_fetcher=read_menu)
-        try:
-            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
-            service.run(job['id']);result=self.db.job(job['id'])
-        finally:
-            if not service.stop_requested.is_set():service.close()
-        self.assertEqual(seen,[2])
-        samples=[event for event in result['results'] if event.get('stage')=='menu_sample']
-        self.assertEqual(len(samples),1)
-        self.assertEqual(samples[0]['items'],1);self.assertEqual(samples[0]['pages'],2)
-        self.assertEqual([event['status'] for event in result['results'] if event.get('stage')=='store_summary'],['sampled'])
-        with self.db.connection() as conn:
-            self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_snapshots').fetchone()[0],0)
-            self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_offers').fetchone()[0],0)
-            self.assertEqual(conn.execute("SELECT COUNT(*) FROM live_endpoints WHERE last_success_at IS NOT NULL").fetchone()[0],0)
+    def test_sample_run_reads_capped_pages_per_endpoint_and_writes_no_menu_state(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        seen=[]
+        def read_menu(endpoint,fetcher):
+            seen.append(endpoint.get('max_pages'))
+            return dict(items=[dict(source_id='a',name='Flower')],complete=False,expected_count=None,errors=[],source_count=None,pages=[dict(page=1,items=1),dict(page=2,items=0)])
+        resolved=[dict(url='https://example.com/menu',provider='jane',provider_store_id='1',license_type='recreational',status='matched',resolution_evidence=[])]
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:list(resolved),menu_fetcher=read_menu)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual(seen,[2])
+        samples=[event for event in result['results'] if event.get('stage')=='menu_sample']
+        self.assertEqual(len(samples),1)
+        self.assertEqual(samples[0]['items'],1);self.assertEqual(samples[0]['pages'],2)
+        self.assertEqual([event['status'] for event in result['results'] if event.get('stage')=='store_summary'],['sampled'])
+        with self.db.connection() as conn:
+            self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_snapshots').fetchone()[0],0)
+            self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_offers').fetchone()[0],0)
+            self.assertEqual(conn.execute("SELECT COUNT(*) FROM live_endpoints WHERE last_success_at IS NOT NULL").fetchone()[0],0)
+
+    def test_sample_run_reads_a_saved_endpoint_before_discovery_and_budgets_discovery(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.save_endpoint(shop['id'],dict(url='https://example.com/menu',provider='jane',provider_store_id='1',license_type='recreational',resolution_evidence=[]))
+        budgets=[]
+        def resolver(store,fetcher):budgets.append(store.get('discovery_seconds'));return []
+        def read_menu(endpoint,fetcher):return dict(items=[dict(source_id='a',name='Flower')],complete=False,expected_count=None,errors=[],source_count=None,pages=[dict(page=1,items=1)])
+        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=read_menu)
+        try:
+            sample=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(sample['id']);sampled=self.db.job(sample['id'])
+            self.assertEqual(budgets,[])
+            self.assertTrue(any(event.get('stage')=='menu_sample' and event.get('items')==1 for event in sampled['results']))
+            with self.db.connection() as conn:conn.execute("UPDATE live_endpoints SET status='superseded'")
+            full=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(full['id'])
+            self.assertEqual(budgets,[None])
+            sample_again=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(sample_again['id'])
+            self.assertEqual(budgets,[None,120])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+
+    def test_sample_run_overlaps_different_chains(self):
+        self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')
+        region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        barrier=threading.Barrier(2,timeout=5);passed=[]
+        def resolver(store,fetcher):barrier.wait();passed.append(store['id']);return []
+        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=lambda endpoint,fetcher:None)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual(len(passed),2)
+        self.assertEqual(len([event for event in result['results'] if event.get('stage')=='store_summary']),2)
+
+    def test_sample_run_keeps_one_chain_to_one_store_at_a_time(self):
+        self.db.import_registry([observation('a'),observation('b')],'source')
+        region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        active=[];peak=[0];gate=threading.Lock()
+        def resolver(store,fetcher):
+            with gate:active.append(store['id']);peak[0]=max(peak[0],len(active))
+            time.sleep(0.2)
+            with gate:active.remove(store['id'])
+            return []
+        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=lambda endpoint,fetcher:None)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual(peak[0],1)
+        self.assertEqual(len([event for event in result['results'] if event.get('stage')=='store_summary']),2)
 
-    def test_sample_run_reads_a_saved_endpoint_before_discovery_and_budgets_discovery(self):
-        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
-        shop=self.db.stores_in_region(region['id'])[0]
-        self.db.save_endpoint(shop['id'],dict(url='https://example.com/menu',provider='jane',provider_store_id='1',license_type='recreational',resolution_evidence=[]))
-        budgets=[]
-        def resolver(store,fetcher):budgets.append(store.get('discovery_seconds'));return []
-        def read_menu(endpoint,fetcher):return dict(items=[dict(source_id='a',name='Flower')],complete=False,expected_count=None,errors=[],source_count=None,pages=[dict(page=1,items=1)])
-        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=read_menu)
-        try:
-            sample=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
-            service.run(sample['id']);sampled=self.db.job(sample['id'])
-            self.assertEqual(budgets,[])
-            self.assertTrue(any(event.get('stage')=='menu_sample' and event.get('items')==1 for event in sampled['results']))
-            with self.db.connection() as conn:conn.execute("UPDATE live_endpoints SET status='superseded'")
-            full=self.db.enqueue(dict(region_id=region['id'],discover=False))
-            service.run(full['id'])
-            self.assertEqual(budgets,[None])
-            sample_again=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
-            service.run(sample_again['id'])
-            self.assertEqual(budgets,[None,120])
-        finally:
-            if not service.stop_requested.is_set():service.close()
-
-    def test_sample_run_overlaps_different_chains(self):
-        self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')
-        region=self.db.create_region(40.9844,-89.0388,'61358',50)
-        barrier=threading.Barrier(2,timeout=5);passed=[]
-        def resolver(store,fetcher):barrier.wait();passed.append(store['id']);return []
-        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=lambda endpoint,fetcher:None)
-        try:
-            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
-            service.run(job['id']);result=self.db.job(job['id'])
-        finally:
-            if not service.stop_requested.is_set():service.close()
-        self.assertEqual(len(passed),2)
-        self.assertEqual(len([event for event in result['results'] if event.get('stage')=='store_summary']),2)
-
-    def test_sample_run_keeps_one_chain_to_one_store_at_a_time(self):
-        self.db.import_registry([observation('a'),observation('b')],'source')
-        region=self.db.create_region(40.9844,-89.0388,'61358',50)
-        active=[];peak=[0];gate=threading.Lock()
-        def resolver(store,fetcher):
-            with gate:active.append(store['id']);peak[0]=max(peak[0],len(active))
-            time.sleep(0.2)
-            with gate:active.remove(store['id'])
-            return []
-        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=lambda endpoint,fetcher:None)
-        try:
-            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
-            service.run(job['id']);result=self.db.job(job['id'])
-        finally:
-            if not service.stop_requested.is_set():service.close()
-        self.assertEqual(peak[0],1)
-        self.assertEqual(len([event for event in result['results'] if event.get('stage')=='store_summary']),2)
+    def test_operator_seeds_reach_the_resolver_as_crawl_seeds(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.record_lead(shop['id'],'https://menu.example/','operator','Operator seed',[])
+        seen=[]
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:seen.append(s.get('lead_urls')) or [])
+        job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+        service.run(job['id']);service.close()
+        self.assertEqual(seen,[['https://menu.example/']])
 
     def test_targeted_retry_only_visits_requested_stores(self):
         self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')

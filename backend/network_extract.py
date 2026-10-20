@@ -298,9 +298,10 @@ def _single_type(url):
     return types[0] if isinstance(types, list) and len(types) == 1 else None
 
 
-def extract_products(captured, page_url, license_type='recreational'):
+def extract_products(captured, page_url, license_type='recreational', category_gaps=0):
     """captured: [(url, parsed_json)]. Returns union of items (deduped by identity), the largest declared
-    total, and a per-collection summary. Empty items means no product collection was recognised."""
+    total, and a per-collection summary. Empty items means no product collection was recognised. category_gaps counts
+    category pages the render visited whose products never arrived; their totals cannot be summed into a menu total."""
     items, seen, collections = [], set(), []
     # A menu's last page can hold one or two products. Once a path has proved to be a product collection
     # elsewhere in the same capture set, small arrays at that same path count too.
@@ -323,14 +324,27 @@ def extract_products(captured, page_url, license_type='recreational'):
     whole = [c for c in declared if 'variables=' in c['url'] and not c['filtered']]
     largest = max(whole or declared, key=lambda c: (c['count'], c['total']), default=None)
     total = largest['total'] if largest else None
+    if category_gaps and not whole:
+        # Without a whole-menu query the largest declaring collection is at most one category: no total is stated.
+        total = None
     # Single-category queries partition the menu: their totals add up to a catalog total even when no whole-menu query ran.
     per_type = {}
     for c in declared:
         if c['category']:
             per_type[c['category']] = max(per_type.get(c['category'], 0), c['total'])
-    if per_type and (total is None or sum(per_type.values()) > total):
+    if per_type and not category_gaps and (total is None or sum(per_type.values()) > total):
         total = sum(per_type.values())
     return dict(items=items, total=total, collections=collections)
+
+
+def uncaptured_categories(evidence_dir, render_evidence_id):
+    """Category product pages the render visited but whose product response never arrived (captured is False)."""
+    try:
+        diagnostics = json.loads((Path(evidence_dir) / 'browser' / f'{render_evidence_id}.json').read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return []
+    visited = (((diagnostics.get('scroll') or {}).get('explore') or {}).get('visited')) or []
+    return [v.get('link') for v in visited if isinstance(v, dict) and v.get('captured') is False and '/products/' in str(v.get('link'))]
 
 
 def dispensary_identities(captured):

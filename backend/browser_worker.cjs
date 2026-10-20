@@ -187,6 +187,8 @@ async function clickMore(page){
 }
 // Observed read-only JSON queries (GET) whose response says there are more pages of the same query.
 const pagedQueries=[],replayed=new Set();
+// The storefront's own product-search POSTs (GapCommerce). Kept so the page's request can be replayed from the page.
+const gapTemplates=[];
 function noteIfPaged(url,headers,text){
  if(pagedQueries.length>200||text.length>4e6)return;
  let value;try{value=JSON.parse(text);}catch{return;}
@@ -221,8 +223,9 @@ async function replayPagination(page,captures,deadline,sample=0){
   summary.queries++;
   // Numbered pages under a popularity sort drift when ranks tie (Cloud9: 1456 distinct of 1458 across 4 pages of 100,
   // the platform's page cap). A Dutchie product filter is re-read under a name sort from page 0, which pages stably.
+  // Category queries name no sortBy at all (the storefront's default is popularity), so an absent sort is not a name sort.
   const filter=record.variables.productsFilter;
-  const stable=!sample&&filter&&typeof filter==='object'&&filter.sortBy&&filter.sortBy!=='name';
+  const stable=!sample&&filter&&typeof filter==='object'&&filter.sortBy!=='name';
   const variables=stable?{...record.variables,productsFilter:{...filter,sortBy:'name',sortDirection:1,isDefaultSort:false}}:record.variables;
   if(stable)summary.stable_sort=(summary.stable_sort||0)+1;
   for(let next=stable?0:record.variables.page+1;next<record.pages&&(!sample||next-record.variables.page<sample)&&Date.now()<deadline&&summary.fetched<250;next++){
@@ -284,6 +287,41 @@ async function replayOffsets(page,captures,deadline,sample=0){
  }
  return summary;
 }
+// Replays the storefront's own product search from inside the page for one branch: the page's request with its collapse
+// removed, 100 variants per request, sorted by id in both directions so two traversals can reconcile to the hit total.
+// Every response is captured like any other page response, so the extractor reads it back from evidence.
+async function replayGapSearch(page,captures,entity,deadline){
+ const summary={templates:0,fetched:0,errors:0,sorts:[]};
+ // The catalog query is the one whose filters are only the storefront's base filters; category and promotion queries narrow it.
+ const baseClause=/^(?:customMinPrice|isAboveThreshold|isHideFromMenu)$/;
+ const isCatalogQuery=value=>{try{const body=JSON.parse(value.body);const must=body.query&&body.query.bool&&body.query.bool.must;return Array.isArray(must)&&must.every(clause=>JSON.stringify(clause).split('"').some(word=>baseClause.test(word)))&&!value.body.includes('"_source":false');}catch{return false;}};
+ const template=[...gapTemplates].reverse().find(value=>value.entity===entity&&value.body.includes('"collapse"')&&isCatalogQuery(value));
+ if(!template)return summary;
+ let base;try{base=JSON.parse(template.body);}catch{return summary;}
+ delete base.collapse;delete base.aggs;delete base.aggregations;summary.templates=1;
+ for(const direction of ['asc','desc']){
+  const sort=[{_id:direction}];let total=null;
+  for(let from=0;from<10000&&Date.now()<deadline;from+=100){
+   const body={...base,from,size:100,sort};
+   const seen=captures.length;
+   const result=await retried(()=>page.evaluate(async ({url,headers,body})=>{
+    try{
+     const response=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});
+     const value=await response.json().catch(()=>null);
+     return {status:response.status,total:value&&value.hits&&value.hits.total?value.hits.total.value:null,hits:value&&value.hits?value.hits.hits.length:0};
+    }catch(error){return {status:0,total:null,hits:0,error:String(error&&error.message||error).slice(0,200)};}
+   },{url:template.url,headers:template.headers,body}));
+   if(result.status!==200||!Number.isInteger(result.total)){summary.errors++;summary.error=result.error||('status '+result.status);break;}
+   summary.fetched++;
+   await waitForCapture(page,captures,seen,8000);
+   if(total===null)total=result.total;
+   if(result.total!==total){summary.errors++;break;}
+   if(from+100>=total||!result.hits)break;
+  }
+  summary.sorts.push(direction);
+ }
+ return summary;
+}
 // Numbered-page pagination ("Next"), as used by storefronts that load one category page at a time.
 async function clickNext(page){
  return page.evaluate(()=>{
@@ -303,6 +341,11 @@ async function waitForCapture(page,captures,seen,timeout){
  await page.waitForTimeout(150);
  return captures.length>seen;
 }
+// A response body is read after its headers arrive, so navigating first can strand it ("navigated away from"): the
+// category's products then never reach the extractor and its total silently drops out. Let pending reads finish first.
+async function settleCaptures(captures,timeout=8000){
+ await Promise.race([Promise.allSettled(captures),new Promise(resolve=>setTimeout(resolve,timeout))]);
+}
 // Visit each category page the storefront links to and page through it. Union and totals are reconciled by the extractor.
 async function exploreCategories(page,captures,deadline,{visitOnly=false,sample=0}={}){
  const links=await retried(()=>page.evaluate(()=>{
@@ -318,12 +361,26 @@ async function exploreCategories(page,captures,deadline,{visitOnly=false,sample=
  const summary={categories:links.length,pages:0,visited:[]};
  for(const link of links.slice(0,sample?10:30)){
   if(Date.now()>deadline){summary.out_of_time=true;break;}
-  const seen=captures.length;
-  const navigation=await page.goto(link,{waitUntil:'domcontentloaded',timeout:30000}).then(()=>null,error=>error.message.slice(0,120));
-  if(navigation||page.url().startsWith('chrome-error:')){(summary.navigation_errors??=[]).push({link:link.slice(-60),error:navigation||'error page'});if(page.url().startsWith('chrome-error:')){summary.stopped='Browser error page; remaining categories skipped';break;}continue;}
-  await waitForCapture(page,captures,seen,4000);
-  // Pagination controls render after the first page of products does.
-  await page.waitForTimeout(2500);
+  await settleCaptures(captures);
+  let seen=captures.length,captured=false,stopped=false;
+  // A category that never loads or whose products never arrive is retried once. If it still yields nothing it is recorded
+  // as uncaptured: its total must not drop out of the reconciled category sum silently.
+  for(let attempt=0;attempt<2&&!captured;attempt++){
+   const navigation=await page.goto(link,{waitUntil:'domcontentloaded',timeout:30000}).then(()=>null,error=>error.message.slice(0,120));
+   if(navigation||page.url().startsWith('chrome-error:')){
+    (summary.navigation_errors??=[]).push({link:link.slice(-60),error:navigation||'error page'});
+    if(page.url().startsWith('chrome-error:')){summary.stopped='Browser error page; remaining categories skipped';stopped=true;break;}
+    seen=captures.length;continue;
+   }
+   await waitForCapture(page,captures,seen,8000);
+   // Pagination controls render after the first page of products does.
+   await page.waitForTimeout(2500);
+   await settleCaptures(captures);
+   if(captures.length>seen)captured=true;
+   else seen=captures.length;
+  }
+  if(stopped)break;
+  if(!captured){summary.visited.push({link:link.slice(-60),pages:0,captured:false});continue;}
   let pages=0,stale=0;
   for(let n=0;n<(sample?sample-1:80)&&Date.now()<deadline&&!visitOnly;n++){
    const before=captures.length;
@@ -335,7 +392,7 @@ async function exploreCategories(page,captures,deadline,{visitOnly=false,sample=
    if(await waitForCapture(page,captures,before,15000)){stale=0;pages++;summary.pages++;}
    else if(++stale>=2)break;
   }
-  summary.visited.push({link:link.slice(-60),pages});
+  summary.visited.push({link:link.slice(-60),pages,captured});
  }
  return summary;
 }
@@ -421,7 +478,7 @@ async function run({url,options,storage_state,native_proxy}){
   // WebSockets are closed by default; the allow_websockets option exists for diagnostic experiments only.
   if(options.allow_websockets!==true)await context.routeWebSocket('**/*',socket=>socket.close());
   let count=0;// Paging through a whole menu (category pages, numbered pages) legitimately makes thousands of requests.
-  const requestLimit=options.catalog_navigation?5000:options.await_menu&&options.scroll_menu!==false?4000:600;
+  const requestLimit=options.catalog_navigation?8000:options.await_menu&&options.scroll_menu!==false?4000:600;
   let catalogPhase=false;diagnostics.request_limit=requestLimit;diagnostics.requests=0;diagnostics.auxiliary_requests_skipped=0;
   const staticCache=new Map(),cachedRequests=new WeakSet();let cacheBytes=0;
   await context.route('**/*',async route=>{
@@ -471,6 +528,11 @@ async function run({url,options,storage_state,native_proxy}){
      diagnostics.streaming_responses_skipped.push({url:response.url(),status:response.status(),reason:'Unbounded event stream; not a finite catalog response'});return;
     }
     const body=await response.body();capturedBytes+=body.length;diagnostics.captured_bytes=capturedBytes;
+    if(req.method()==='POST'&&response.status()===200&&/^search-[a-z0-9]+\.gapcommerceapi\.com$/.test(new URL(response.url()).hostname)&&new URL(response.url()).pathname==='/product/search'&&gapTemplates.length<50){
+     const all=await req.allHeaders();
+     // Only headers a page script may set are kept; the browser drops the rest of a replay's headers anyway.
+     gapTemplates.push({url:response.url(),headers:Object.fromEntries(['content-type','accept','entity-id','org-id','x-api-key'].filter(key=>all[key]).map(key=>[key,all[key]])),body:req.postData()||'',entity:all['entity-id']||''});
+    }
     if(req.method()==='GET'&&response.status()===200&&(responseHeaders['content-type']||'').includes('json')){
      // Replays run inside the page and carry the request's own app headers (Cresco: the bundle's public key and the store/app ids).
      const keep=['accept','content-type','apollo-require-preflight','x-apollo-operation-name','apollographql-client-name','apollographql-client-version','x-api-key','x-client-version','store_id','ordering_app_id'],all=await req.allHeaders();
@@ -545,6 +607,13 @@ async function run({url,options,storage_state,native_proxy}){
   }
   // Ordinary user-visible navigation/scrolling can trigger lazy product cards.
   for(let i=0;i<3;i++){await page.mouse.wheel(0,1200);await page.waitForTimeout(250);}
+  if(options.gap_search){
+   // The page's own search for the selected branch sets the request template; wait for it, then replay the catalog.
+   const templateDeadline=Date.now()+30000;
+   while(!gapTemplates.some(value=>value.entity===options.gap_entity)&&Date.now()<templateDeadline)await page.waitForTimeout(250);
+   // Reported with the scroll summary: the render result carries that field to the evidence record.
+   diagnostics.scroll=await replayGapSearch(page,captures,options.gap_entity,Date.now()+150000);
+  }
   if(native_proxy)await page.waitForLoadState('networkidle',{timeout:5000}).catch(()=>{});
   await progress('menu_readiness');
   const menuReadiness=options.await_menu&&!options.catalog_navigation?await waitForMenu(page,options):null;

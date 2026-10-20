@@ -16,7 +16,7 @@ from .storage import REGISTRY_URL
 from .runtime import PIPELINE_VERSION, PipelineInterrupted
 
 
-NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'joint', 'jane', 'verano')
+NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'gapcommerce', 'joint', 'jane', 'verano')
 # Sample runs stop a store's discovery crawl after this many seconds; full runs never budget discovery.
 SAMPLE_DISCOVERY_SECONDS = 120
 # Sample runs process this many stores at once; full runs stay sequential.
@@ -228,8 +228,8 @@ class SyncService:
         if not retained or not retained_ok or force_resolution:
             self._check_stop();resolution_start=time.monotonic();failures=[];targets={}
             try:
-                # Pages the store verifier cited are crawl seeds; the resolver still has to prove the branch on them.
-                leads=[lead['url'] for lead in self.store.leads(store['id']) if lead['source']=='verifier']
+                # Pages the store verifier cited or an operator seeded are crawl seeds; the resolver still has to prove the branch on them.
+                leads=[lead['url'] for lead in self.store.leads(store['id']) if lead['source'] in ('verifier','operator')]
                 resolver_store=dict(store,lead_urls=leads) if leads else store
                 if sample:resolver_store=dict(resolver_store,discovery_seconds=SAMPLE_DISCOVERY_SECONDS)
                 resolved=self.resolver(resolver_store,self.fetcher)

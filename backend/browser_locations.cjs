@@ -1,6 +1,15 @@
 /* Read visible location choices, select one uniquely matching the requested
  * branch, then leave tenant/address verification to the ingestion pipeline. */
 const normalize=value=>String(value||'').toLowerCase().replace(/\b(street|avenue|road|drive|boulevard|north|south|east|west)\b/g,word=>({street:'st',avenue:'ave',road:'rd',drive:'dr',boulevard:'blvd',north:'n',south:'s',east:'e',west:'w'}[word])).replace(/[^a-z0-9]+/g,' ').trim();
+// A directional only one side writes ("12720 Western Ave" vs "12720 S Western Ave") is not a conflict; two different ones are.
+function sameStreet(a,b){
+ const directions=new Set(['n','s','e','w']);
+ const x=a.split(' '),y=b.split(' ');
+ const dx=x.find(t=>directions.has(t)),dy=y.find(t=>directions.has(t));
+ if(dx&&dy&&dx!==dy)return false;
+ const bare=tokens=>tokens.filter(word=>!directions.has(word)).join(' ');
+ return bare(x)===bare(y);
+}
 function matchChoice(choices,target){
  const city=normalize(target.city),street=normalize(String(target.address||'').split(/\b(?:unit|suite|ste)\b|#/i)[0]);
  if(!city&&!street)return null;
@@ -8,7 +17,9 @@ function matchChoice(choices,target){
  const ranked=choices.map(choice=>{
   const generic=/^(?:select|choose|shop|shop now|view menu|order now|select location)$/i.test(choice.text.trim());
   const ownCity=contains(choice.text,city);
-  const ownAddress=contains(choice.text,street),contextAddress=(generic||ownCity)&&contains(choice.context,street);
+  const addressesIn=value=>normalize(value).match(/\b\d{1,6} (?:[a-z0-9]+ ){1,6}(?:st|ave|rd|dr|blvd|ln|pkwy|hwy|ct)\b/g)||[];
+  const ownAddress=contains(choice.text,street)||addressesIn(choice.text).some(found=>sameStreet(found,street));
+  const contextAddress=(generic||ownCity)&&(contains(choice.context,street)||addressesIn(choice.context).some(found=>sameStreet(found,street)));
   const addresses=normalize(choice.text+((generic||ownCity)?' '+choice.context:'')).match(/\b\d{1,6} (?:[a-z0-9]+ ){1,6}(?:st|ave|rd|dr|blvd|ln|pkwy|hwy|ct)\b/g)||[];
   if(street&&addresses.length&&!ownAddress&&!contextAddress)return {choice,score:0};
   const score=ownAddress||contextAddress?3:ownCity?2:generic&&contains(choice.context,city)?1:0;
