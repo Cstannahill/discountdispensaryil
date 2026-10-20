@@ -46,13 +46,33 @@ class VisibleText(HTMLParser):
             self.chunks.append(data)
 
 
+# A store the verifier checked this recently is not searched again: rebrands and closures move slowly.
+VERIFY_HOURS = 24 * 7
+
+
+def llm_verifier(database):
+    """The store verifier for full syncs: web-search research with its daily spend cap. None when no LLM key is configured."""
+    from . import verifier
+    config = verifier.load_env()
+    llm = verifier.llm_from_config(config)
+    if llm is None:
+        return None
+    limits = verifier.budgets(config)
+    def check(store, fetcher):
+        since = verifier.day_ago()
+        folder = fetcher.evidence_dir
+        spent = max(database.verifier_spend_since(since), verifier.spend_since(folder, since, 'verifier')) + verifier.spend_since(folder, since, 'discovery')
+        return verifier.verify_store(store, fetcher, llm, limits, spent_today=spent)
+    return check
+
+
 class SyncService:
-    def __init__(self, store, fetcher, *, resolver=resolve_menu, menu_fetcher=fetch_menu):
+    def __init__(self, store, fetcher, *, resolver=resolve_menu, menu_fetcher=fetch_menu, verifier=None):
         from .runtime import configure_worker_stack
         configure_worker_stack()
         self.store, self._base_fetcher = store, fetcher
         self._contexts=threading.local()
-        self.resolver, self.menu_fetcher = resolver, menu_fetcher
+        self.resolver, self.menu_fetcher, self.verify = resolver, menu_fetcher, verifier
         self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="terpscout-sync")
         self.target_executor=ThreadPoolExecutor(max_workers=1,thread_name_prefix='terpscout-target')
         self.state_lock=threading.Lock()
@@ -158,6 +178,21 @@ class SyncService:
             try:self.store.record_identity(store['id'],'rebrand',name,page.get('url') or endpoint['url'],page.get('evidence_id'),'resolver')
             except Exception:pass
 
+    def _verify_store(self,store,results):
+        """Ask the store verifier for a store no run has accepted: a new name or a closure is recorded with its source, and
+        its cited pages become leads. Returns the store with its current names and status. Full syncs only."""
+        if self.verify is None or self.store.verified_within(store['id'],VERIFY_HOURS):return store
+        try:
+            record=self.verify(store,self.fetcher)
+        except PipelineInterrupted:raise
+        except Exception as exc:
+            results.append(dict(stage='verification',store_id=store['id'],store_name=store['name'],status='failed',error=str(exc)))
+            return store
+        if record is None:return store
+        self.store.record_verification(record)
+        results.append(dict(stage='verification',store_id=store['id'],store_name=store['name'],status=record.get('status'),verdict=record.get('verdict'),detail=record.get('detail')))
+        return dict(store,**self.store.identity(store['id']))
+
     def _process_store_unlocked(self,store,results,force_resolution=False):
         started=time.monotonic();attempted=set();accepted=0;had_failure=False;stages=[]
         if store.get('operating_status')=='closed':
@@ -248,6 +283,12 @@ class SyncService:
         if saved:stages.append(dict(stage='saved_refresh',targets=len(saved),complete=saved_ok))
 
         if not retained or not retained_ok or force_resolution:
+            if not retained and not sample:
+                store=self._verify_store(store,results)
+                if store.get('operating_status')=='closed':
+                    results.append(dict(stage='store_summary',store_id=store['id'],store_name=store['name'],pipeline_version=PIPELINE_VERSION,status='closed',
+                                        menu_targets_attempted=0,accepted_snapshots=0,seconds=round(time.monotonic()-started,3),stages=[]))
+                    return False
             self._check_stop();resolution_start=time.monotonic();failures=[];targets={}
             try:
                 # Pages the store verifier cited or an operator seeded are crawl seeds; the resolver still has to prove the branch on them.

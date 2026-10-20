@@ -203,6 +203,67 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual('https://example.com/locations/rutland/',store['aliases'][0]['source_url'])
         self.assertEqual('Test Shop',store['name'])
 
+    def test_a_store_without_an_accepted_menu_is_checked_for_its_new_name_before_it_is_resolved(self):
+        from test_store_identity import verdict
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        claim=dict(field='name',value='Bloom Wellness Normal',url='https://risecannabis.com/x/',quote='Bloom Wellness Normal',evidence_id='ev-2')
+        checked=[];seen=[]
+        def check(store,fetcher):
+            checked.append(store['id'])
+            return verdict(store['id'],'renamed',[claim],dict(verdict='renamed',name='Bloom Wellness Normal',website='https://risecannabis.com/x/'))
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:seen.append(s.get('aliases')) or [],menu_fetcher=None,verifier=check)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual([shop['id']],checked)
+        self.assertEqual(['Bloom Wellness Normal'],[a['name'] for a in seen[0]])
+        self.assertEqual('rebranded',self.db.stores_in_region(region['id'])[0]['identity_status'])
+
+    def test_a_store_checked_closed_is_not_resolved(self):
+        from test_store_identity import verdict
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        claim=dict(field='existence',value='closed',url='https://x.example/',quote='permanently closed',evidence_id='ev-1')
+        seen=[]
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:seen.append(s['id']) or [],menu_fetcher=None,
+                            verifier=lambda store,fetcher:verdict(store['id'],'closed',[claim],dict(verdict='closed')))
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual([],seen)
+        self.assertEqual(['closed'],[e['status'] for e in result['results'] if e.get('stage')=='store_summary'])
+
+    def test_a_recent_check_is_not_repeated_and_sample_runs_never_check(self):
+        from test_store_identity import verdict
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.record_verification(verdict(shop['id'],'exists',[],dict(verdict='exists')))
+        checked=[]
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:[],menu_fetcher=None,verifier=lambda store,fetcher:checked.append(store['id']))
+        try:
+            full=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(full['id'])
+            sample=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(sample['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual([],checked)
+
+    def test_a_failing_verifier_does_not_fail_the_sync(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        def broken(store,fetcher):raise RuntimeError('search unavailable')
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:[],menu_fetcher=None,verifier=broken)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertTrue(any(e.get('stage')=='verification' and e.get('status')=='failed' for e in result['results']))
+
     def test_first_sync_discovers_entire_region_without_custom_seeds(self):
         service = SyncService(self.db, FixtureFetcher(), resolver=lambda store, fetcher: [], menu_fetcher=None)
         job = self.db.enqueue({'discover': True})

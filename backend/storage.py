@@ -358,6 +358,19 @@ class Store:
             elif kind in ('open', 'closed'):
                 conn.execute("UPDATE live_stores SET operating_status=? WHERE id=?", (kind, store_id))
 
+    def identity(self, store_id):
+        """The store's current status and recorded new names, as sync reads them."""
+        with self.connection() as conn:
+            status = conn.execute("SELECT operating_status FROM live_stores WHERE id=?", (store_id,)).fetchone()
+            names = conn.execute("SELECT name,kind,source_url,evidence_id,observed_at FROM live_store_identity WHERE store_id=? AND kind='rebrand' ORDER BY id", (store_id,)).fetchall()
+        return dict(operating_status=status[0] if status else 'unverified', aliases=[dict(row) for row in names])
+
+    def verified_within(self, store_id, hours, now=None):
+        """True when the store verifier has checked this store within the window (any verdict)."""
+        with self.connection() as conn:
+            row = conn.execute("SELECT MAX(created_at) FROM live_store_verifications WHERE store_id=?", (store_id,)).fetchone()
+        return bool(row[0]) and age_hours(row[0], now or utcnow()) < hours
+
     def _apply_verdict(self, conn, record, now):
         """A verdict counts only with the claim that supports it (check_answer kept it): closed or open from existence, a rebrand from the new name."""
         if record.get('status') != 'verified':

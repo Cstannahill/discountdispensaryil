@@ -17,7 +17,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
 from .network import PublicFetcher
-from .service import SyncService
+from .service import SyncService, llm_verifier
 from .storage import Store
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -125,7 +125,7 @@ def create_app(*, db_path=None, evidence_dir=None, fetcher=None, enable_schedule
             app.state.store = Store(db_path, evidence_dir)
             app.state.store.retire_discovery_only_endpoints()
             app.state.fetcher = fetcher or PublicFetcher(evidence_dir)
-            app.state.service = SyncService(app.state.store, app.state.fetcher)
+            app.state.service = SyncService(app.state.store, app.state.fetcher, verifier=None if fetcher else llm_verifier(app.state.store))
             app.state.store.recover_jobs()
             frequency = app.state.store.setting("frequency_per_day", 4)
             if enable_scheduler:
