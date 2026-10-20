@@ -39,7 +39,7 @@ CONNECTORS = [
 def _tokens(value):
     value = html.unescape(value or '').casefold()
     substitutions = {'north':'n','south':'s','west':'w','east':'e','street':'st','avenue':'ave',
-                     'road':'rd','drive':'dr','parkway':'pkwy','boulevard':'blvd','route':'rt'}
+                     'road':'rd','drive':'dr','parkway':'pkwy','boulevard':'blvd','route':'rt','lane':'ln'}
     tokens = re.findall(r'[a-z0-9]+', value)
     return [substitutions.get(token, token) for token in tokens]
 
@@ -83,6 +83,10 @@ def _get(fetcher, url):
 
 
 def _known_menu_candidates(store, fetcher):
+    from .chains import chain_candidates
+    chained = chain_candidates(store, fetcher)
+    if chained is not None:
+        return chained
     name = re.sub(r"[’']", '', store.get('name', ''))
     root = next((url for pattern, url in CONNECTORS if re.search(pattern, name, re.I)), None)
     if not root:
@@ -234,6 +238,8 @@ def discover_menu_candidates(store, fetcher):
     from .site_discovery import search_websites
     known=_known_menu_candidates(store,fetcher)
     known=[dict(candidate,source_role='retailer') if candidate.get('url') else candidate for candidate in known]
+    # A published chain list answers for its branch (matched, absent or blocked); open-web search would only add other branches.
+    if any(x.get('chain_list') for x in known):return known
     options=getattr(fetcher,'browser_options',{})
     if options.get('age_confirmed') and hasattr(fetcher,'render'):
         for candidate in known:

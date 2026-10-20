@@ -1,0 +1,749 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -87.7016405,
+     41.9243407
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 4588,
+    "permalink": "https://letsascend.com/locations/illinois/chicago-logan-square/",
+    "title": "Chicago (Logan Square) Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2024/06/Ascend-Logan-Outside-1024x768.webp",
+    "debug_thumb_id": 7239,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/chicago-logan-square-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Chicago - Logan Square",
+    "address_1": "2367 N Milwaukee Ave",
+    "city": "Chicago",
+    "state": "IL",
+    "zip_code": "60647",
+    "phone": "708-722-1488",
+    "email": "logansquare@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Chicago+(Logan+Square)+Marijuana+Dispensary",
+    "google_place_id": "ChIJT1Hy42LND4gRpVEXOnZBhVk",
+    "directions": "Driving: Take interstate 90/94 to Fullerton or California exit.\r\n\r\nTrain: Take CTA Blue Line to California stop. Walk 1 block north on Milwaukee.\r\n\r\nBus: Take Milwaukee or Fullerton bus to the Milwaukee/Fullerton stop.",
+    "menu_link": "/menu/ch-logan-sq-menu-rec",
+    "dutchie_cname": "chicago-logan-square-illinois",
+    "delivery": "",
+    "mon_open": "08:00",
+    "mon_close": "21:00",
+    "tue_open": "08:00",
+    "tue_close": "21:00",
+    "wed_open": "08:00",
+    "wed_close": "21:00",
+    "thu_open": "08:00",
+    "thu_close": "21:00",
+    "fri_open": "08:00",
+    "fri_close": "22:00",
+    "sat_open": "08:00",
+    "sat_close": "22:00",
+    "sun_open": "08:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=41.9243407&dropoff%5Blongitude%5D=-87.7016405&dropoff%5Bnickname%5D=Chicago%20(Logan%20Square)%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=2367%20N%20Milwaukee%20Ave,%20Chicago,%20IL%2060647",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=41.9243407&destination%5Blongitude%5D=-87.7016405",
+    "market": "ch-outlet"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -87.75206,
+     41.7975
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 4835,
+    "permalink": "https://letsascend.com/locations/illinois/chicago-midway/",
+    "title": "Chicago (Midway) Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2022/01/IMG_6568-1024x768-1-e1774286730926.webp",
+    "debug_thumb_id": 11451,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/chicago-midway-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Chicago - Midway",
+    "address_1": "5650 S Archer Ave",
+    "city": "Chicago",
+    "state": "IL",
+    "zip_code": "60638",
+    "phone": "872-267-7038",
+    "email": "midway@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Chicago+(Midway)+Marijuana+Dispensary",
+    "google_place_id": "ChIJwVhp0loxDogRYQVUYjLVA1k",
+    "directions": "South Side of Chicago: Three blocks north of Midway Airport, at the intersection of Archer and Laramie.",
+    "menu_link": "/menu/ch-midway-menu-rec",
+    "dutchie_cname": "chicago-midway-illinois",
+    "delivery": "",
+    "mon_open": "07:00",
+    "mon_close": "21:00",
+    "tue_open": "07:00",
+    "tue_close": "21:00",
+    "wed_open": "07:00",
+    "wed_close": "21:00",
+    "thu_open": "07:00",
+    "thu_close": "22:00",
+    "fri_open": "07:00",
+    "fri_close": "22:00",
+    "sat_open": "07:00",
+    "sat_close": "22:00",
+    "sun_open": "07:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=41.7975&dropoff%5Blongitude%5D=-87.75206&dropoff%5Bnickname%5D=Chicago%20(Midway)%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=5650%20S%20Archer%20Ave,%20Chicago,%20IL%2060638",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=41.7975&destination%5Blongitude%5D=-87.75206",
+    "market": "ch"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -87.637134,
+     41.89251
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use Only",
+    "id": 4585,
+    "permalink": "https://letsascend.com/locations/illinois/chicago-river-north/",
+    "title": "Chicago (River North) Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2021/07/River-North-3-1-1024x575-1.webp",
+    "debug_thumb_id": 4868,
+    "retail_brand_terms": [
+     "Ascend Outlet"
+    ],
+    "retail_brand_slugs": [
+     "ascend-outlet"
+    ],
+    "shop_url": "https://letsascend.com/stores/river-north-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Chicago - River North",
+    "address_1": "216 W Ohio St",
+    "city": "Chicago",
+    "state": "IL",
+    "zip_code": "60654",
+    "phone": "708-722-1009",
+    "email": "rivernorth@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Chicago+(River+North)+Marijuana+Dispensary",
+    "google_place_id": "ChIJv3CO9LQtDogRw8sBNz__RQc",
+    "directions": "Take interstate 90/94 to 50B\u2014Ohio St. exit.",
+    "menu_link": "/menu/ch-river-north-menu",
+    "dutchie_cname": "river-north-illinois",
+    "delivery": "",
+    "mon_open": "08:00",
+    "mon_close": "21:00",
+    "tue_open": "08:00",
+    "tue_close": "21:00",
+    "wed_open": "08:00",
+    "wed_close": "21:00",
+    "thu_open": "08:00",
+    "thu_close": "22:00",
+    "fri_open": "08:00",
+    "fri_close": "22:00",
+    "sat_open": "08:00",
+    "sat_close": "22:00",
+    "sun_open": "08:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=41.89251&dropoff%5Blongitude%5D=-87.637134&dropoff%5Bnickname%5D=Chicago%20(River%20North)%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=216%20W%20Ohio%20St,%20Chicago,%20IL%2060654",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=41.89251&destination%5Blongitude%5D=-87.637134",
+    "market": "ch-outlet"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -87.7823267,
+     41.7143599
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 4375,
+    "permalink": "https://letsascend.com/locations/illinois/chicago-ridge/",
+    "title": "Chicago Ridge Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2021/02/Screen-Shot-2021-07-09-at-10.51.13-AM-1024x576.webp",
+    "debug_thumb_id": 4664,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/chicago-ridge-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Chicago Ridge",
+    "address_1": "9820 S. Ridgeland Ave",
+    "city": "Chicago Ridge",
+    "state": "IL",
+    "zip_code": "60415",
+    "phone": "872-250-3890",
+    "email": "chicagoridge@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Chicago+Ridge+Marijuana+Dispensary",
+    "google_place_id": "ChIJDSQm6mw5DogRjY6aXt1M0kY",
+    "directions": "Head east on Route 12/Route 20 toward the Chicago Ridge Mall.",
+    "menu_link": "/menu/ch-chicago-ridge-menu",
+    "dutchie_cname": "chicago-ridge-illinois",
+    "delivery": "",
+    "mon_open": "09:00",
+    "mon_close": "21:00",
+    "tue_open": "09:00",
+    "tue_close": "21:00",
+    "wed_open": "09:00",
+    "wed_close": "21:00",
+    "thu_open": "09:00",
+    "thu_close": "21:00",
+    "fri_open": "09:00",
+    "fri_close": "21:00",
+    "sat_open": "09:00",
+    "sat_close": "21:00",
+    "sun_open": "09:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=41.7143599&dropoff%5Blongitude%5D=-87.7823267&dropoff%5Bnickname%5D=Chicago%20Ridge%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=9820%20S.%20Ridgeland%20Ave,%20Chicago%20Ridge,%20IL%2060415",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=41.7143599&destination%5Blongitude%5D=-87.7823267",
+    "market": "ch"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -90.0165055,
+     38.678117
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 84,
+    "permalink": "https://letsascend.com/locations/illinois/collinsville/",
+    "title": "Collinsville Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2020/08/Collinsville-Pic-copy-e1774286881994.webp",
+    "debug_thumb_id": 4945,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/collinsville-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Collinsville",
+    "address_1": "1014 Eastport Plaza Dr",
+    "city": "Collinsville",
+    "state": "IL",
+    "zip_code": "62234",
+    "phone": "312-535-3905",
+    "email": "collinsville@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Collinsville+Marijuana+Dispensary",
+    "google_place_id": "ChIJsw_Y5bFV34cR5VSfkeo43uM",
+    "directions": "I-55 off Exit 10 (left side of the exit) in the old State Farms building, next to the Illinois State Police.",
+    "menu_link": "/menu/il-collinsville-menu-rec",
+    "dutchie_cname": "collinsville-illinois",
+    "delivery": "",
+    "mon_open": "07:00",
+    "mon_close": "21:00",
+    "tue_open": "07:00",
+    "tue_close": "21:00",
+    "wed_open": "07:00",
+    "wed_close": "21:00",
+    "thu_open": "07:00",
+    "thu_close": "22:00",
+    "fri_open": "07:00",
+    "fri_close": "22:00",
+    "sat_open": "07:00",
+    "sat_close": "22:00",
+    "sun_open": "07:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=38.678117&dropoff%5Blongitude%5D=-90.0165055&dropoff%5Bnickname%5D=Collinsville%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=1014%20Eastport%20Plaza%20Dr,%20Collinsville,%20IL%2062234",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=38.678117&destination%5Blongitude%5D=-90.0165055",
+    "market": "soil"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.9903659,
+     38.59804
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use Only",
+    "id": 106,
+    "permalink": "https://letsascend.com/locations/illinois/fairview-heights/",
+    "title": "Fairview Heights Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2020/08/FairviewStorefront.webp",
+    "debug_thumb_id": 4943,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/fairview-heights-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Fairview Heights",
+    "address_1": "114 Commerce Ln",
+    "city": "Fairview Heights",
+    "state": "IL",
+    "zip_code": "62208",
+    "phone": "217-492-8030",
+    "email": "fairviewheights@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Fairview+Heights+Marijuana+Dispensary",
+    "google_place_id": "ChIJF5Rf8sABdogRnfm2iGZycps",
+    "directions": "I-64 off Exit 12 in the old Babies 'R' Us building situated between Goodwill and Planet Fitness",
+    "menu_link": "/menu/il-fairview-heights-menu",
+    "dutchie_cname": "fairview-heights-illinois",
+    "delivery": "",
+    "mon_open": "08:00",
+    "mon_close": "21:30",
+    "tue_open": "08:00",
+    "tue_close": "21:30",
+    "wed_open": "08:00",
+    "wed_close": "21:30",
+    "thu_open": "08:00",
+    "thu_close": "22:00",
+    "fri_open": "08:00",
+    "fri_close": "22:00",
+    "sat_open": "08:00",
+    "sat_close": "22:00",
+    "sun_open": "08:00",
+    "sun_close": "21:30",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=38.59804&dropoff%5Blongitude%5D=-89.9903659&dropoff%5Bnickname%5D=Fairview%20Heights%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=114%20Commerce%20Ln,%20Fairview%20Heights,%20IL%2062208",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=38.59804&destination%5Blongitude%5D=-89.9903659",
+    "market": "soil"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -87.90491,
+     41.90667
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 5998,
+    "permalink": "https://letsascend.com/locations/illinois/northlake/",
+    "title": "Northlake Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2023/11/AscendNorthlake-132-e1774286967911-1024x577.avif",
+    "debug_thumb_id": 6621,
+    "retail_brand_terms": [
+     "Ascend Outlet"
+    ],
+    "retail_brand_slugs": [
+     "ascend-outlet"
+    ],
+    "shop_url": "https://letsascend.com/stores/northlake-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": true,
+    "store_name": "Northlake",
+    "address_1": "39 W North Avenue",
+    "city": "Northlake",
+    "state": "IL",
+    "zip_code": "60164",
+    "phone": "708-786-4317",
+    "email": "northlake@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Northlake+Marijuana+Dispensary",
+    "google_place_id": "ChIJd31et_i1D4gRHXxfKyDUT2k",
+    "directions": "",
+    "menu_link": "/menu/illinois/northlake",
+    "dutchie_cname": "northlake-illinois",
+    "delivery": "",
+    "mon_open": "09:00",
+    "mon_close": "21:00",
+    "tue_open": "09:00",
+    "tue_close": "21:00",
+    "wed_open": "09:00",
+    "wed_close": "21:00",
+    "thu_open": "09:00",
+    "thu_close": "21:00",
+    "fri_open": "09:00",
+    "fri_close": "22:00",
+    "sat_open": "09:00",
+    "sat_close": "22:00",
+    "sun_open": "09:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=41.90667&dropoff%5Blongitude%5D=-87.90491&dropoff%5Bnickname%5D=Northlake%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=39%20W%20North%20Avenue,%20Northlake,%20IL%2060164",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=41.90667&destination%5Blongitude%5D=-87.90491",
+    "market": "ch-outlet"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.6489753,
+     39.8004092
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 82,
+    "permalink": "https://letsascend.com/locations/illinois/springfield-adams-street/",
+    "title": "Springfield (Adams Street) Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2021/07/admin-ajax-e1774286358139.webp",
+    "debug_thumb_id": 4866,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/springfield-adams-street-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Springfield - Downtown",
+    "address_1": "628 E. Adams St",
+    "city": "Springfield",
+    "state": "IL",
+    "zip_code": "62701",
+    "phone": "217-679-3283",
+    "email": "springfield@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Springfield+(Adams+Street)+Marijuana+Dispensary",
+    "google_place_id": "ChIJSf13e8E5dYgR_k9lzXfV3lw",
+    "directions": "Downtown Springfield, 1 mile from the capital and across the street from the Wyndham Hotel.",
+    "menu_link": "/menu/il-springfield-adams-menu-rec",
+    "dutchie_cname": "springfield-adams-street-illinois",
+    "delivery": "",
+    "mon_open": "07:00",
+    "mon_close": "20:00",
+    "tue_open": "07:00",
+    "tue_close": "20:00",
+    "wed_open": "07:00",
+    "wed_close": "20:00",
+    "thu_open": "07:00",
+    "thu_close": "20:00",
+    "fri_open": "07:00",
+    "fri_close": "20:00",
+    "sat_open": "07:00",
+    "sat_close": "19:00",
+    "sun_open": "07:00",
+    "sun_close": "19:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=39.8004092&dropoff%5Blongitude%5D=-89.6489753&dropoff%5Bnickname%5D=Springfield%20(Adams%20Street)%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=628%20E.%20Adams%20St,%20Springfield,%20IL%2062701",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=39.8004092&destination%5Blongitude%5D=-89.6489753",
+    "market": "soil"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -89.605062602,
+     39.7681484865
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 104,
+    "permalink": "https://letsascend.com/locations/illinois/springfield-horizon-drive/",
+    "title": "Springfield (Horizon Dr) Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2020/08/ascendHD-e1774287003845-1024x577.webp",
+    "debug_thumb_id": 3774,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/springfield-horizon-drive-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Springfield - Horizon Dr",
+    "address_1": "3201 Horizon Dr",
+    "city": "Springfield",
+    "state": "IL",
+    "zip_code": "62703",
+    "phone": "217-492-8182",
+    "email": "horizondrive@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Springfield+(Horizon+Dr)+Marijuana+Dispensary",
+    "google_place_id": "ChIJNfECwf07dYgR0nD7DqYbvj4",
+    "directions": "On I-55, take exit 94. Turn right onto Stevenson Drive. Turn right again onto Dirksen Parkway (by Steak n Shake), at the intersection of Dirksen Parkway and Horizon Drive. Then turn right, and we are located between Hooters and Blue Margarita.",
+    "menu_link": "/menu/il-springfield-horizon-menu",
+    "dutchie_cname": "springfield-horizon-drive-illinois",
+    "delivery": "",
+    "mon_open": "07:00",
+    "mon_close": "21:00",
+    "tue_open": "07:00",
+    "tue_close": "21:00",
+    "wed_open": "07:00",
+    "wed_close": "21:00",
+    "thu_open": "07:00",
+    "thu_close": "21:00",
+    "fri_open": "07:00",
+    "fri_close": "21:00",
+    "sat_open": "07:00",
+    "sat_close": "21:00",
+    "sun_open": "07:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=39.7681484865&dropoff%5Blongitude%5D=-89.605062602&dropoff%5Bnickname%5D=Springfield%20(Horizon%20Dr)%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=3201%20Horizon%20Dr,%20Springfield,%20IL%2062703",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=39.7681484865&destination%5Blongitude%5D=-89.605062602",
+    "market": "soil"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -87.790869,
+     41.5400526
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 5695,
+    "permalink": "https://letsascend.com/locations/illinois/chicago-tinley-park/",
+    "title": "Chicago (Tinley Park) Marijuana Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2023/04/rsz_1cfcascend_tinley_park_exterior-1-e1774287062371.webp",
+    "debug_thumb_id": 6628,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/chicago-tinley-park-illinois",
+    "category_slugs": [
+     "adult-use",
+     "il",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "IL",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Chicago - Tinley Park",
+    "address_1": "16200 S Harlem Ave",
+    "city": "Tinley Park",
+    "state": "IL",
+    "zip_code": "60477",
+    "phone": "312-535-5720",
+    "email": "tinleypark@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Chicago+(Tinley+Park)+Marijuana+Dispensary",
+    "google_place_id": "ChIJqbWTt7U_DogR3O2jZgF8Qkk",
+    "directions": "167th St and S Harlem Ave, near Sam's Club",
+    "menu_link": "/menu/illinois/chicago-tinley-park",
+    "dutchie_cname": "chicago-tinley-park-illinois",
+    "delivery": "",
+    "mon_open": "09:00",
+    "mon_close": "21:00",
+    "tue_open": "09:00",
+    "tue_close": "21:00",
+    "wed_open": "09:00",
+    "wed_close": "21:00",
+    "thu_open": "09:00",
+    "thu_close": "21:00",
+    "fri_open": "09:00",
+    "fri_close": "21:00",
+    "sat_open": "09:00",
+    "sat_close": "21:00",
+    "sun_open": "09:00",
+    "sun_close": "21:00",
+    "timezone": "America/Chicago",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=41.5400526&dropoff%5Blongitude%5D=-87.790869&dropoff%5Bnickname%5D=Chicago%20(Tinley%20Park)%20Marijuana%20Dispensary&dropoff%5Bformatted_address%5D=16200%20S%20Harlem%20Ave,%20Tinley%20Park,%20IL%2060477",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=41.5400526&destination%5Blongitude%5D=-87.790869",
+    "market": "ch-outlet"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.165588,
+     39.506289
+    ]
+   },
+   "properties": {
+    "availability_label": "Adult-Use & Medical",
+    "id": 5712,
+    "permalink": "https://letsascend.com/locations/maryland/aberdeen/",
+    "title": "Aberdeen Dispensary",
+    "featured_image": "https://letsascend.com/wp-content/uploads/2023/05/1-DSC00210-1-1024x683.webp",
+    "debug_thumb_id": 7604,
+    "retail_brand_terms": [
+     "Ascend"
+    ],
+    "retail_brand_slugs": [
+     "ascend"
+    ],
+    "shop_url": "https://letsascend.com/stores/aberdeen-maryland",
+    "category_slugs": [
+     "adult-use",
+     "md",
+     "medical"
+    ],
+    "category_names": [
+     "Adult-Use",
+     "MD",
+     "Medical"
+    ],
+    "retail_brand": "",
+    "is_outlet": false,
+    "store_name": "Aberdeen",
+    "address_1": "226 S. Philadelphia",
+    "city": "Aberdeen",
+    "state": "MD",
+    "zip_code": "21001",
+    "phone": "410-306-6099",
+    "email": "aberdeen@letsascend.com",
+    "maplink": "https://www.google.com/maps/dir/?api=1&destination=Aberdeen+Dispensary",
+    "google_place_id": "ChIJEZlfbsnBx4kRs3B37Gg0kmY",
+    "directions": "",
+    "menu_link": "/menu/maryland/aberdeen-rec",
+    "dutchie_cname": "aberdeen-maryland",
+    "delivery": "",
+    "mon_open": "08:00",
+    "mon_close": "21:00",
+    "tue_open": "08:00",
+    "tue_close": "21:00",
+    "wed_open": "08:00",
+    "wed_close": "21:00",
+    "thu_open": "08:00",
+    "thu_close": "22:00",
+    "fri_open": "08:00",
+    "fri_close": "22:00",
+    "sat_open": "08:00",
+    "sat_close": "22:00",
+    "sun_open": "08:00",
+    "sun_close": "21:00",
+    "timezone": "America/New_York",
+    "uber_ride_url": "https://m.uber.com/ul/?action=setPickup&dropoff%5Blatitude%5D=39.506289&dropoff%5Blongitude%5D=-76.165588&dropoff%5Bnickname%5D=Aberdeen%20Dispensary&dropoff%5Bformatted_address%5D=226%20S.%20Philadelphia,%20Aberdeen,%20MD%2021001",
+    "lyft_ride_url": "https://ride.lyft.com/?destination%5Blatitude%5D=39.506289&destination%5Blongitude%5D=-76.165588",
+    "market": "md"
+   }
+  }
+ ]
+}
