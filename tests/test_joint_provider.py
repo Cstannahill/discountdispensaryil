@@ -86,6 +86,13 @@ class JointTests(unittest.TestCase):
             v['option'] = '100 mg'
         self.assertTrue(all(i['weight_grams'] is None for i in normalize(dose, COOKIES, 'RECREATIONAL')))
 
+    def test_a_capped_read_keeps_the_products_it_already_read(self):
+        result = fetch(dict(COOKIES, max_pages=2), JointFixture(count=300))
+        self.assertFalse(result['complete'])
+        self.assertEqual(result['errors'][0]['code'], 'incomplete_joint_menu')
+        self.assertEqual(len(result['pages']), 2)
+        self.assertGreater(len(result['items']), 0)
+
     def test_full_menu_reconciles_to_its_exact_total_over_two_traversals(self):
         fixture = JointFixture(count=250)
         result = fetch(COOKIES, fixture)

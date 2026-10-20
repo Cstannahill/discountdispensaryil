@@ -141,6 +141,8 @@ def fetch(endpoint, fetcher):
                         items.append(item)
                 result['pages'].append(dict(traversal=traversal + 1, offset=offset, products=len(hits), advertised_total=total,
                                             evidence_id=response.evidence_id))
+                # Keep what the first traversal has read so far: a capped or failed read is incomplete, but its products are real.
+                if traversal == 0:result['items'] = items
                 offset += len(hits)
                 if offset >= total:
                     break
