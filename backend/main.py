@@ -55,6 +55,10 @@ class ScheduleInput(InputModel):
     frequency_per_day: Literal[2, 3, 4]
 
 
+class SchedulerInput(InputModel):
+    enabled: bool
+
+
 class BrowserInput(InputModel):
     enabled: bool = True
     age_confirmed: bool = False
@@ -131,7 +135,8 @@ def create_app(*, db_path=None, evidence_dir=None, fetcher=None, enable_schedule
             if enable_scheduler:
                 scheduler.add_job(enqueue_scheduled, trigger(frequency), id="menu-sync", replace_existing=True, max_instances=1, coalesce=True, misfire_grace_time=3600)
                 scheduler.add_job(enqueue_scheduled, CronTrigger(hour=3, minute=0, timezone="America/Chicago"), kwargs={"discover": True}, id="registry-refresh", max_instances=1, coalesce=True)
-                scheduler.start()
+                # A paused scheduler keeps its jobs registered but starts none until it is resumed.
+                scheduler.start(paused=not app.state.store.setting("scheduler_enabled", True))
             yield
         finally:
             if scheduler.running:
@@ -279,13 +284,25 @@ def create_app(*, db_path=None, evidence_dir=None, fetcher=None, enable_schedule
     def schedule_state():
         frequency = app.state.store.setting("frequency_per_day", 4)
         job = scheduler.get_job("menu-sync") if scheduler.running else None
-        return dict(frequency_per_day=frequency, timezone="America/Chicago", slots=POLL_SCHEDULES[frequency],
+        return dict(frequency_per_day=frequency, enabled=app.state.store.setting("scheduler_enabled", True), timezone="America/Chicago", slots=POLL_SCHEDULES[frequency],
                     next_run_at=job.next_run_time.astimezone(timezone.utc).isoformat() if job and job.next_run_time else None,
                     scheduler_running=scheduler.running)
 
     @app.get("/api/v1/settings/schedule")
     def get_schedule():
         return schedule_state()
+
+    @app.patch("/api/v1/settings/scheduler")
+    def update_scheduler(body: SchedulerInput):
+        app.state.store.set_setting("scheduler_enabled", body.enabled)
+        if scheduler.running:
+            scheduler.resume() if body.enabled else scheduler.pause()
+        return schedule_state()
+
+    @app.post("/api/v1/sync/runs/{job_id}/cancel")
+    def cancel_run(job_id: str):
+        app.state.store.cancel_job(job_id)
+        return app.state.store.job(job_id)
 
     @app.patch("/api/v1/settings/schedule")
     def update_schedule(body: ScheduleInput):

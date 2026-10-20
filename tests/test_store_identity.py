@@ -53,6 +53,16 @@ class VerdictIdentityTests(unittest.TestCase):
         self.assertEqual([], store['aliases'])
         self.assertEqual('registry_candidate', store['identity_status'])
 
+    def test_backfill_applies_stored_verdicts_that_predate_identity_events(self):
+        claim = dict(field='existence', value='permanently closed', url='https://x.example/', quote='This dispensary is permanently closed', evidence_id='ev-1')
+        self.db.record_verification(verdict(self.shop['id'], 'closed', [claim], dict(verdict='closed', confidence=0.9)))
+        with self.db.connection() as conn:
+            conn.execute("DELETE FROM live_store_identity")
+            conn.execute("UPDATE live_stores SET operating_status='unverified'")
+        self.assertEqual('unverified', self.db.stores_in_region(self.region['id'])[0]['operating_status'])
+        self.assertEqual({'verdicts': 1}, self.db.backfill_identity())
+        self.assertEqual('closed', self.db.stores_in_region(self.region['id'])[0]['operating_status'])
+
     def test_rebrand_recorded_from_a_matched_branch_page_is_listed_with_its_source(self):
         self.db.record_identity(self.shop['id'], 'rebrand', 'The Joint Dispensary - Rutland', 'https://example.com/locations/rutland/', 'ev-3')
         store = self.db.stores_in_region(self.region['id'])[0]

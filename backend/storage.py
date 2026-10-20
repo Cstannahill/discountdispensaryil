@@ -389,6 +389,16 @@ class Store:
                 conn.execute("UPDATE live_stores SET identity_status='rebranded' WHERE id=?", (record['store_id'],))
                 return
 
+    def backfill_identity(self):
+        """Apply every stored verified verdict, oldest first, to store identity. For verdicts recorded before identity events existed."""
+        with self.connection() as conn:
+            rows = [dict(row) for row in conn.execute("SELECT * FROM live_store_verifications WHERE status='verified' ORDER BY id").fetchall()]
+            for row in rows:
+                record = dict(store_id=row['store_id'], status=row['status'], verdict=row['verdict'],
+                              result=json.loads(row['result_json']), claims=json.loads(row['claims_json']))
+                self._apply_verdict(conn, record, row['created_at'])
+        return dict(verdicts=len(rows))
+
     def record_verification(self, record, now=None):
         """A store verifier verdict. A cited menu or website URL becomes a lead for the resolver, never an endpoint."""
         now = now or utcnow()
@@ -842,6 +852,13 @@ class Store:
             ids = [r[0] for r in conn.execute("SELECT id FROM live_jobs ORDER BY created_at DESC,id DESC LIMIT ? OFFSET ?",
                                              (page_size,(page-1)*page_size)).fetchall()]
         return dict(items=[self.job(identity) for identity in ids], total=total, page=page, page_size=page_size)
+
+    def cancel_job(self, job_id, now=None):
+        """Cancel a job no worker has started. A running job is not touched; the server stops it on restart."""
+        with self.connection() as conn:
+            cur = conn.execute("UPDATE live_jobs SET status='cancelled',finished_at=?,error='Cancelled before it started' WHERE id=? AND status='queued'",
+                               (now or utcnow(), job_id))
+            return cur.rowcount == 1
 
     def recover_jobs(self):
         with self.connection() as conn:
