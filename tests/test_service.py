@@ -67,6 +67,7 @@ class ServiceTests(unittest.TestCase):
         samples=[event for event in result['results'] if event.get('stage')=='menu_sample']
         self.assertEqual(len(samples),1)
         self.assertEqual(samples[0]['items'],1);self.assertEqual(samples[0]['pages'],2)
+        self.assertEqual([event['status'] for event in result['results'] if event.get('stage')=='store_summary'],['sampled'])
         with self.db.connection() as conn:
             self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_snapshots').fetchone()[0],0)
             self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_offers').fetchone()[0],0)

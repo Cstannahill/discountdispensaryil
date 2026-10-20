@@ -281,7 +281,7 @@ class SyncService:
             for endpoint in targets.values():import_target(endpoint,'source_discovery')
         self._check_stop()
         results.append(dict(stage='store_summary',store_id=store['id'],store_name=store['name'],pipeline_version=PIPELINE_VERSION,
-                            status='partial' if had_failure else 'complete',menu_targets_attempted=len(attempted),accepted_snapshots=accepted,
+                            status='sampled' if sample else 'partial' if had_failure else 'complete',menu_targets_attempted=len(attempted),accepted_snapshots=accepted,
                             seconds=round(time.monotonic()-started,3),stages=stages))
         return had_failure
 
