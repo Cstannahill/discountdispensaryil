@@ -103,6 +103,12 @@ class AdapterTests(unittest.TestCase):
         results=adapters.resolve_menu(dict(name='Noxx - East Peoria',address='300 S Main St',city='East Peoria',state='IL',menu_url='https://noxx.com/location/noxx-peoria/'),Fetcher())
         self.assertTrue(any(r['provider']=='dutchie' for r in results))
         json.dumps(results)
+    def test_a_spent_discovery_budget_starts_no_crawl_and_says_so(self):
+        class Fetcher:
+            def get(self,url):raise AssertionError('a spent discovery budget must not fetch')
+        results=adapters.resolve_menu(dict(name='Budget Cannabis',city='Rutland',state='IL',menu_url='https://budget.example/menu/',discovery_seconds=0),Fetcher())
+        self.assertEqual(results[0]['status'],'unresolved')
+        self.assertIn('budget',results[0]['reason'])
     def test_omitted_platform_license_defaults_to_recreational(self):
         response=Response('https://example.com/menu','<h1>Public menu</h1>')
         endpoint=adapters._observed_endpoint(response.url,response)

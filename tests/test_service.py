@@ -70,6 +70,29 @@ class ServiceTests(unittest.TestCase):
             self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_offers').fetchone()[0],0)
             self.assertEqual(conn.execute("SELECT COUNT(*) FROM live_endpoints WHERE last_success_at IS NOT NULL").fetchone()[0],0)
 
+    def test_sample_run_reads_a_saved_endpoint_before_discovery_and_budgets_discovery(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.save_endpoint(shop['id'],dict(url='https://example.com/menu',provider='jane',provider_store_id='1',license_type='recreational',resolution_evidence=[]))
+        budgets=[]
+        def resolver(store,fetcher):budgets.append(store.get('discovery_seconds'));return []
+        def read_menu(endpoint,fetcher):return dict(items=[dict(source_id='a',name='Flower')],complete=False,expected_count=None,errors=[],source_count=None,pages=[dict(page=1,items=1)])
+        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=read_menu)
+        try:
+            sample=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(sample['id']);sampled=self.db.job(sample['id'])
+            self.assertEqual(budgets,[])
+            self.assertTrue(any(event.get('stage')=='menu_sample' and event.get('items')==1 for event in sampled['results']))
+            with self.db.connection() as conn:conn.execute("UPDATE live_endpoints SET status='superseded'")
+            full=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(full['id'])
+            self.assertEqual(budgets,[None])
+            sample_again=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(sample_again['id'])
+            self.assertEqual(budgets,[None,120])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+
     def test_targeted_retry_only_visits_requested_stores(self):
         self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')
         region=self.db.create_region(40.9844,-89.0388,'61358',50)

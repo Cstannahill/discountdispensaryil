@@ -16,6 +16,8 @@ from .runtime import PIPELINE_VERSION, PipelineInterrupted
 
 
 NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'joint', 'jane', 'verano')
+# Sample runs stop a store's discovery crawl after this many seconds; full runs never budget discovery.
+SAMPLE_DISCOVERY_SECONDS = 120
 
 
 def _tier(provider):
@@ -145,6 +147,10 @@ class SyncService:
     def _process_store_unlocked(self,store,results,force_resolution=False):
         started=time.monotonic();attempted=set();accepted=0;had_failure=False;stages=[]
         retained=[self.store.endpoint(endpoint['id']) for endpoint in store['endpoints'] if endpoint.get('last_success_at')]
+        sample=getattr(self._contexts,'sample_pages',None)
+        if sample and not retained:
+            # A sample reads any saved endpoint that is a menu contract before it pays for discovery; discovery runs only if none reads.
+            retained=[endpoint for endpoint in (self.store.endpoint(found['id']) for found in store['endpoints'] if found.get('status')!='superseded') if has_menu_contract(endpoint)]
 
         def import_target(endpoint,origin):
             nonlocal accepted,had_failure
@@ -221,7 +227,9 @@ class SyncService:
             try:
                 # Pages the store verifier cited are crawl seeds; the resolver still has to prove the branch on them.
                 leads=[lead['url'] for lead in self.store.leads(store['id']) if lead['source']=='verifier']
-                resolved=self.resolver(dict(store,lead_urls=leads) if leads else store,self.fetcher)
+                resolver_store=dict(store,lead_urls=leads) if leads else store
+                if sample:resolver_store=dict(resolver_store,discovery_seconds=SAMPLE_DISCOVERY_SECONDS)
+                resolved=self.resolver(resolver_store,self.fetcher)
                 self._check_stop()
                 # Census input: which menu platforms this store's pages showed, including rejected (wrong-branch) pages.
                 self.store.record_platforms(store['id'],[dict(platform=name,url=found.get('url'),status=found.get('status') or 'observed',

@@ -6,6 +6,7 @@ from decimal import Decimal, InvalidOperation
 import hashlib
 import json
 import re
+import time
 from urllib.parse import urlencode, urljoin, urlparse
 
 ADAPTER_VERSION = 'blaze-jsonapi-2'
@@ -181,12 +182,14 @@ def resolve_menu(store, fetcher):
     pending=[(url,0,dict(url=url,status='candidate',reason='Store verifier lead',evidence=[]),False) for url in store.get('lead_urls') or []
              if isinstance(url,str) and url.startswith(('https://','http://'))]+pending
     results=[];failures=[];visited=set();max_pages=int(store.get('max_discovery_pages',24))
+    # A sample run caps discovery time per store; the crawl stops between candidates once the budget is spent.
+    deadline=None if store.get('discovery_seconds') is None else time.monotonic()+float(store['discovery_seconds'])
     for c in seeds:
         if c['status'] not in ('candidate','matched'):
             failures.append(dict(url=c.get('url'),provider='generic',provider_store_id=None,license_type='recreational',
                                  status=c['status'],reason=c.get('reason'),resolution_evidence=c.get('evidence',[])))
     searched=False
-    while len(visited)<max_pages:
+    while len(visited)<max_pages and (deadline is None or time.monotonic()<deadline):
         # A configured brand root is a lead, not proof that the branch is still
         # operated by that brand. Reserve crawl capacity for independent search
         # when the old chain never yields a matching menu (including rebrands).
@@ -312,6 +315,9 @@ def resolve_menu(store, fetcher):
     # Prefer actual platform menus over sibling generic landing/carousel pages.
     platforms=[x for x in results if x['provider']!='generic']
     catalog_entries=[x for x in results if x['provider']=='generic' and menu_document_scope(x['url'])=='catalog_entry']
+    if deadline is not None and time.monotonic()>=deadline and pending and not results:
+        failures.append(dict(url=None,provider='generic',license_type='recreational',status='unresolved',
+                             reason='Sample discovery budget reached before a menu was confirmed; crawl stopped',resolution_evidence=[]))
     official_urls={candidate['url'] for candidate in seeds if candidate.get('source_role')=='retailer'}
     official_failures=[failure for failure in failures if failure.get('url') in official_urls]
     # A hub that lists every branch is not this branch's menu when a page carrying the branch's own slug was found.
