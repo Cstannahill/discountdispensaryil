@@ -117,6 +117,10 @@ class ApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 409)
         self.assertEqual(response.json()['detail']['code'], 'refresh_required')
 
+    def test_sync_run_accepts_a_bounded_sample_page_count(self):
+        self.assertEqual(self.client.post('/api/v1/sync/runs', json={'discover': False, 'sample_pages': 2}).status_code, 202)
+        self.assertEqual(self.client.post('/api/v1/sync/runs', json={'discover': False, 'sample_pages': 9}).status_code, 422)
+
     def test_schedule_is_validated_and_persisted(self):
         response = self.client.patch('/api/v1/settings/schedule', json={'frequency_per_day': 3})
         self.assertEqual(response.status_code, 200)

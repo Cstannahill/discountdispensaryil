@@ -162,8 +162,19 @@ class SyncService:
                 if job_id:self.store.update_job(job_id,'running',results)
             self.fetcher.progress_callback=progress
             attempt_started=time.monotonic()
+            sample_pages=getattr(self._contexts,'sample_pages',None)
             try:
                 if endpoint['provider']=='unsupported':raise ValueError('Unsupported menu provider')
+                if sample_pages:
+                    # Sample: read the first pages of every category, record what came back, and write nothing about the menu.
+                    incoming=self.menu_fetcher(dict(endpoint,max_pages=sample_pages),self.fetcher)
+                    self._check_stop()
+                    for event in results:
+                        if event.get('stage')=='menu_progress' and event.get('endpoint_id')==endpoint['id']:event['status']='sampled'
+                    results.append(dict(stage='menu_sample',store_id=store['id'],store_name=store['name'],endpoint_id=endpoint['id'],provider=endpoint['provider'],license_type=endpoint['license_type'],url=endpoint['url'],work_origin=origin,
+                                        items=len(incoming.get('items') or []),pages=len(incoming.get('pages') or []),complete=incoming.get('complete'),
+                                        declared_total=incoming.get('expected_count') or incoming.get('source_count'),errors=[e.get('code') for e in incoming.get('errors') or []][:3]))
+                    return bool(incoming.get('items'))
                 incoming=self.menu_fetcher(endpoint,self.fetcher)
                 self._check_stop()
                 outcome=self.store.apply_snapshot(endpoint['id'],incoming)
@@ -187,6 +198,9 @@ class SyncService:
             except Exception as exc:
                 self._check_stop()
                 status='unsupported' if 'unsupported' in str(exc).lower() else 'failed'
+                if sample_pages:
+                    results.append(dict(stage='menu_sample',store_id=store['id'],store_name=store['name'],endpoint_id=endpoint['id'],provider=endpoint['provider'],license_type=endpoint['license_type'],url=endpoint['url'],work_origin=origin,status=status,error=str(exc)))
+                    return False
                 self._attempt(store,stage='menu',tier=_tier(endpoint['provider']),endpoint_id=endpoint['id'],provider=endpoint['provider'],
                               license_type=endpoint['license_type'],status=status,code=classify(str(exc)),items=0,
                               seconds=round(time.monotonic()-attempt_started,3),detail=str(exc),evidence_id=getattr(exc,'evidence_id',None))
@@ -280,6 +294,9 @@ class SyncService:
             results, had_failure = [], False
             payload = self.prepare_payload(job["payload"])
             self.fetcher.browser_options=self.store.setting('browser_options',dict(enabled=True,age_confirmed=False,terms_accepted=False))
+            # A sample run reads the first pages of each category (per endpoint) and writes no menu state; see import_target.
+            self._contexts.sample_pages=payload.get('sample_pages')
+            if self._contexts.sample_pages:self.fetcher.browser_options=dict(self.fetcher.browser_options,sample_pages=self._contexts.sample_pages,await_menu=True,scroll_menu=True)
             try:
                 self._check_stop()
                 region = None if payload.get('scope_mode')=='bootstrap' else self.store.region(payload.get("region_id"))

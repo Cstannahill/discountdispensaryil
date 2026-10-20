@@ -47,6 +47,8 @@ class RunInput(InputModel):
     discover: bool = True
     resolve_sources: bool = False
     store_ids: list[str] | None = Field(default=None,min_length=1,max_length=300)
+    # Sample run: read this many pages per category on every endpoint and write no menu state (see service.import_target).
+    sample_pages: int | None = Field(default=None,ge=1,le=5)
 
 
 class ScheduleInput(InputModel):

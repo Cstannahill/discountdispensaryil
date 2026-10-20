@@ -48,6 +48,28 @@ class ServiceTests(unittest.TestCase):
         service.run(job['id']);service.close()
         self.assertEqual(seen,[['https://chain.example/il/rutland/']])
 
+    def test_sample_run_reads_capped_pages_per_endpoint_and_writes_no_menu_state(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        seen=[]
+        def read_menu(endpoint,fetcher):
+            seen.append(endpoint.get('max_pages'))
+            return dict(items=[dict(source_id='a',name='Flower')],complete=False,expected_count=None,errors=[],source_count=None,pages=[dict(page=1,items=1),dict(page=2,items=0)])
+        resolved=[dict(url='https://example.com/menu',provider='jane',provider_store_id='1',license_type='recreational',status='matched',resolution_evidence=[])]
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:list(resolved),menu_fetcher=read_menu)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual(seen,[2])
+        samples=[event for event in result['results'] if event.get('stage')=='menu_sample']
+        self.assertEqual(len(samples),1)
+        self.assertEqual(samples[0]['items'],1);self.assertEqual(samples[0]['pages'],2)
+        with self.db.connection() as conn:
+            self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_snapshots').fetchone()[0],0)
+            self.assertEqual(conn.execute('SELECT COUNT(*) FROM live_offers').fetchone()[0],0)
+            self.assertEqual(conn.execute("SELECT COUNT(*) FROM live_endpoints WHERE last_success_at IS NOT NULL").fetchone()[0],0)
+
     def test_targeted_retry_only_visits_requested_stores(self):
         self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')
         region=self.db.create_region(40.9844,-89.0388,'61358',50)
