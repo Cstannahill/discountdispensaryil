@@ -365,13 +365,14 @@ def search_websites(store, fetcher, *, by_address=False):
     if run is not None and run['usd']>=run['ceiling']:
         fetcher._last_search_attempts=[dict(url=None,error='Per-run search ceiling reached (--max-usd); web search skipped')]
         return []
-    if cap is not None and not getattr(fetcher,'sample_run',False) and spend_since(folder,day_ago())>=cap:
+    if cap is not None and not getattr(fetcher,'sample_run',False) and spend_since(folder,day_ago(),exclude=('sample',))>=cap:
         # Not cached: the search runs again once the 24h window has room.
         fetcher._last_search_attempts=[dict(url=None,error='Daily LLM spend cap reached (VERIFIER_MAX_USD_PER_DAY); web search skipped')]
         return []
     try:
         found,evidence=search(llm,text,fetcher)
-        record_spend(folder,'discovery',getattr(llm,'model',None),found['usd'],found['tokens'],store.get('id'))
+        # Sample and triage searches stay on the ledger for audit, under their own purpose, and never count toward the daily cap.
+        record_spend(folder,'sample' if getattr(fetcher,'sample_run',False) else 'discovery',getattr(llm,'model',None),found['usd'],found['tokens'],store.get('id'))
         if run is not None:run['usd']+=found['usd']
         if store_run is not None:store_run['usd']+=found['usd']
         attempts.append(dict(url=evidence['url'],evidence_id=evidence['evidence_id'],status=200,engine='openrouter-web-exa'))

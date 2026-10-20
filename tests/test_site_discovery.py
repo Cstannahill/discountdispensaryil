@@ -212,6 +212,19 @@ class DiscoveryFallbackTests(unittest.TestCase):
             self.assertIn('ceiling',again._last_search_attempts[0]['error'])
             self.assertEqual(again.search_llm.queries,[])
 
+    def test_sample_spend_is_ledgered_but_does_not_use_up_the_daily_cap_for_production(self):
+        from backend import verifier
+        with tempfile.TemporaryDirectory() as folder:
+            sample=searcher(('https://brand.example/menu','Sample Cannabis dispensary Rutland',''),folder=folder)
+            sample.search_llm.usd_per_day=0.005;sample.sample_run=True
+            self.assertTrue(search_websites(dict(id='s9',name='Sample Cannabis',city='Rutland',state='IL'),sample))
+            self.assertAlmostEqual(verifier.spend_since(folder,verifier.day_ago(),'sample'),0.0072)
+            self.assertEqual(verifier.spend_since(folder,verifier.day_ago(),'discovery'),0.0)
+            production=searcher(('https://other.example/menu','Other Cannabis dispensary Rutland',''),folder=folder)
+            production.search_llm.usd_per_day=0.005
+            self.assertTrue(search_websites(dict(id='s10',name='Other Cannabis',city='Rutland',state='IL'),production))
+            self.assertEqual(len(production.search_llm.queries),1)
+
     def test_a_store_that_hits_its_search_cap_stops_annotated_and_does_not_fail(self):
         result=('https://brand.example/menu','Capped Cannabis dispensary Rutland','')
         fetcher=searcher(result);fetcher.sample_run=True;fetcher.store_spend=dict(usd=0.0,ceiling=0.005)

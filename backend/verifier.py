@@ -168,8 +168,8 @@ def record_spend(folder, purpose, model, usd, tokens, store_id=None):
             stream.write(line + '\n')
 
 
-def spend_since(folder, since, purpose=None):
-    """Ledger USD at or after `since` (ISO UTC), optionally for one purpose."""
+def spend_since(folder, since, purpose=None, exclude=()):
+    """Ledger USD at or after `since` (ISO UTC), optionally for one purpose; purposes in `exclude` are left out."""
     try:
         lines = (Path(folder) / SPEND_FILE).read_text(encoding='utf-8').splitlines() if folder else []
     except OSError:
@@ -180,7 +180,7 @@ def spend_since(folder, since, purpose=None):
             row = json.loads(line)
         except ValueError:
             continue
-        if row.get('at', '') >= since and purpose in (None, row.get('purpose')):
+        if row.get('at', '') >= since and purpose in (None, row.get('purpose')) and row.get('purpose') not in exclude:
             total += float(row.get('usd') or 0)
     return round(total, 6)
 
