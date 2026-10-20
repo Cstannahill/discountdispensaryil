@@ -6,7 +6,7 @@ from unittest import mock
 
 from backend import site_discovery
 from backend.adapters import resolve_menu
-from backend.chains import ASCEND_LIST, IVY_LIST, NUERA_LIST, chain_candidates
+from backend.chains import ASCEND_LIST, CRESCO_LIST, IVY_LIST, NUERA_LIST, chain_candidates
 from backend.locators import discover_menu_candidates
 from backend.network import FetchError
 
@@ -35,11 +35,17 @@ class Fetcher:
                        IVY_LIST: fixture('ivy_locations.html'),
                        NUERA_LIST: fixture('nuera_dispensaries.html'),
                        'verilife.com/locations': fixture('verilife_locations.html'),
-                       'verilife.com/il/locations/galena': FetchError('Public endpoint returned HTTP 403', 'evidence-403')}
+                       'verilife.com/il/locations/galena': FetchError('Public endpoint returned HTTP 403', 'evidence-403'),
+                       # Order matters: the bundle path also starts with the storefront origin.
+                       'www.sunnyside.shop/static/js/main': fixture('sunnyside_bundle.js'),
+                       'https://www.sunnyside.shop/': fixture('sunnyside_home.html'),
+                       CRESCO_LIST: fixture('cresco_stores.json')}
         self.fetched = []
+        self.headers = {}
 
     def get(self, url, headers=None):
         self.fetched.append(url)
+        self.headers[url] = headers
         for prefix, value in self.routes.items():
             if prefix in url:
                 if isinstance(value, Exception):
@@ -63,6 +69,31 @@ class ChainListTests(unittest.TestCase):
         endpoint = found[0]['endpoint']
         self.assertEqual(('dutchie', MIDWAY_ID, f'https://dutchie.com/embedded-menu/{MIDWAY_ID}'),
                          (endpoint['provider'], endpoint['provider_store_id'], endpoint['url']))
+
+    def test_operator_corrected_registry_street_matches_the_list_branch(self):
+        # Midway's registry row says 5648 S Archer; the chain's list and branch page say 5650 (operator accepted 2026-10-20).
+        found = chain_candidates(dict(store('Midway by Ascend', '5648 S Archer Ave', 'Chicago'), id='9e28e567467f2723fb75e2d0'), Fetcher())
+        self.assertEqual(['matched'], [c['status'] for c in found])
+        self.assertEqual(MIDWAY_ID, found[0]['endpoint']['provider_store_id'])
+
+    def test_sunnyside_branches_match_by_street_to_their_storefront_menu(self):
+        def menu(name, address, city):
+            found = chain_candidates(store(name, address, city), Fetcher())
+            return [(c['status'], c['url']) for c in found]
+        self.assertEqual([('matched', 'https://www.sunnyside.shop/menu/champaign-il')], menu('Sunnyside - Champaign', '1704 S Neil St Ste C', 'Champaign'))
+        self.assertEqual([('matched', 'https://www.sunnyside.shop/menu/chicago-wrigleyville-il')], menu('Sunnyside - Wrigleyville', '3524 N. Clark St.', 'Chicago'))
+        self.assertEqual([('matched', 'https://www.sunnyside.shop/menu/chicago-river-north-il')], menu('Sunnyside - Chi-River North', '436 N. Clark St.', 'Chicago'))
+
+    def test_sunnyside_list_request_carries_the_storefront_key_and_origin(self):
+        fetcher = Fetcher()
+        chain_candidates(store('Sunnyside - Danville', '369 Lynch Dr.', 'Danville'), fetcher)
+        headers = fetcher.headers[CRESCO_LIST]
+        self.assertEqual('PLACEHOLDER_STOREFRONT_KEY_0000000000000000', headers['x-api-key'])
+        self.assertEqual('https://www.sunnyside.shop', headers['origin'])
+
+    def test_sunnyside_branch_missing_from_the_list_is_an_answer(self):
+        found = chain_candidates(store('Sunnyside - Test', '1 Main St', 'Rutland'), Fetcher())
+        self.assertTrue(found[0]['store_list'])
 
     def test_near_miss_street_is_reported_without_a_menu_lead_or_a_page_read(self):
         fetcher = Fetcher()

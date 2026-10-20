@@ -17,8 +17,15 @@ ASCEND_LIST = 'https://letsascend.com/wp-json/ascend-store-mapper/v1/locations'
 IVY_LIST = 'https://ivyhalldispensary.com/locations/'
 NUERA_LIST = 'https://nueracannabis.com/dispensaries/'
 VERILIFE_LIST = 'https://www.verilife.com/locations'
+CRESCO_LIST = 'https://api.crescolabs.com/p/stores'
+SUNNYSIDE_ORIGIN = 'https://www.sunnyside.shop'
 # Brand words a registry name carries that a NuEra city title does not.
 NAME_NOISE = {'nuera', 'nu', 'era', 'cannabis', 'dispensary', 'by', 'the', 'il', 'illinois'}
+# Registry streets an operator corrected to the chain's own list (accepted 2026-10-20). The registry row keeps its address
+# until the registry is corrected; the Dutchie street exception for the same store is in providers/generic.py.
+CORRECTED_STREETS = {
+    '9e28e567467f2723fb75e2d0': ('5650 S Archer Ave', 'Midway by Ascend: registry 5648 S Archer Ave; the Ascend list and its branch page say 5650'),
+}
 
 
 def _words(text):
@@ -76,7 +83,7 @@ def _nuera_entries(text):
 
 
 def _shop_url_menu(branch, evidence, fetcher):
-    return [_cand('matched', branch['url'], 'Ivy Hall location list: branch street matches the registry; its menu page is read next', evidence)]
+    return [_cand('matched', branch['url'], 'Chain location list: branch street matches the registry; its menu page is read next', evidence)]
 
 
 def _ascend_menu(branch, evidence, fetcher):
@@ -143,23 +150,51 @@ def _by_street(store, label, branches, evidence, fetcher, menu):
 
 
 # (name pattern, label, list URL, parser, matcher, branch menu). A name matcher receives the rows and the store.
+def _sunnyside_branches(text):
+    branches = []
+    for row in json.loads(text).get('data') or []:
+        if row.get('hidden') or row.get('deleted') or not re.search(r'sunny\s*side', row.get('name') or '', re.I):
+            continue
+        branches.append(dict(name=row.get('name') or '', street=row.get('address') or '', state=row.get('state') or '',
+                             url=f"{SUNNYSIDE_ORIGIN}/menu/{row['store_slug']}" if row.get('store_slug') else None))
+    return branches
+
+
+def _sunnyside_list(fetcher, list_url):
+    """Cresco's store list needs the storefront's publishable key, which the storefront's own script carries. It is
+    read from that script on each run, the way the storefront reads it, and never stored."""
+    home = _get(fetcher, SUNNYSIDE_ORIGIN + '/')
+    bundle = re.search(r'src="(/static/js/main\.[a-z0-9]+\.js)"', home.body.decode('utf-8', errors='replace'))
+    if not bundle:
+        raise ValueError('Sunnyside storefront bundle not found')
+    script = _get(fetcher, SUNNYSIDE_ORIGIN + bundle[1]).body.decode('utf-8', errors='replace')
+    key = re.search(r'API_KEY[:=]\s*"([^"]+)"', script)
+    if not key:
+        raise ValueError('Sunnyside storefront key not found in its script')
+    headers = {'x-api-key': key[1], 'x-client-version': '1', 'origin': SUNNYSIDE_ORIGIN, 'referer': SUNNYSIDE_ORIGIN + '/', 'accept': 'application/json'}
+    return fetcher.get(list_url, headers=headers)
+
+
 CHAINS = [
-    (r'\bascend\b', 'Ascend', ASCEND_LIST, _ascend_branches, 'street', _ascend_menu),
-    (r'ivy\s*hall', 'Ivy Hall', IVY_LIST, _ivy_branches, 'street', _shop_url_menu),
-    (r'nu\s*era', 'NuEra', NUERA_LIST, _nuera_entries, 'city', None),
-    (r'\bverilife\b', 'Verilife', VERILIFE_LIST, _verilife_branches, 'street', _verilife_menu),
+    (r'\bascend\b', 'Ascend', ASCEND_LIST, _ascend_branches, 'street', _ascend_menu, None),
+    (r'ivy\s*hall', 'Ivy Hall', IVY_LIST, _ivy_branches, 'street', _shop_url_menu, None),
+    (r'nu\s*era', 'NuEra', NUERA_LIST, _nuera_entries, 'city', None, None),
+    (r'\bverilife\b', 'Verilife', VERILIFE_LIST, _verilife_branches, 'street', _verilife_menu, None),
+    (r'sunny\s*side', 'Sunnyside', CRESCO_LIST, _sunnyside_branches, 'street', _shop_url_menu, _sunnyside_list),
 ]
 
 
 def chain_candidates(store, fetcher):
     """Discovery candidates from the store's chain location list, or None when no published list covers the store."""
     name = store.get('name') or ''
-    for pattern, label, list_url, parse, matcher, menu in CHAINS:
+    for pattern, label, list_url, parse, matcher, menu, load in CHAINS:
         if not re.search(pattern, name, re.I):
             continue
+        if store.get('id') in CORRECTED_STREETS:
+            store = dict(store, address=CORRECTED_STREETS[store['id']][0])
         try:
             # Locator pages share the five-minute locator cache, so a sync reads each list once per store run.
-            response = _get(fetcher, list_url)
+            response = load(fetcher, list_url) if load else _get(fetcher, list_url)
             evidence = _evidence(response)
             rows = parse(response.body.decode('utf-8', errors='replace'))
         except Exception as exc:
