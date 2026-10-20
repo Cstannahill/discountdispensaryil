@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /admin/*
+
+Host: https://curaleaf.com
+
+# Sitemaps
+Sitemap: https://curaleaf.com/sitemap.xml
+Sitemap: https://curaleaf.com/articles-sitemap.xml
+Sitemap: https://curaleaf.com/pages-sitemap.xml
+Sitemap: https://curaleaf.com/dispensaries-sitemap.xml
+Sitemap: https://curaleaf.com/es-us/articles-sitemap.xml
+Sitemap: https://curaleaf.com/es-us/pages-sitemap.xml

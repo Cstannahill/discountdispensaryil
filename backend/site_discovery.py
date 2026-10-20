@@ -344,7 +344,32 @@ def provider_address_matches(store,endpoint):
     address=details.get('retailer_address') if isinstance(details,dict) else None
     if not address or not store.get('address'):
         return None
-    return addresses_match(store['address'],address)
+    if addresses_match(store['address'],address):return True
+    if _curaleaf_pin_match(store,details) or _curaleaf_house_city_match(store,address):return True
+    return False
+
+
+def _curaleaf_pin_match(store,details):
+    """Curaleaf only: the platform's own branch pin sits on the registry point when the street text differs."""
+    from .providers.jane import MAX_MILES,_miles
+    location=(details.get('retailer_location') or {}).get('coords') or {}
+    if not re.match(r'curaleaf\b',(store.get('name') or '').strip(),re.I) or location.get('lat') is None or store.get('latitude') is None:return False
+    return _miles(float(store['latitude']),float(store['longitude']),float(location['lat']),float(location['lng']))<=MAX_MILES
+
+
+def _curaleaf_house_city_match(store,address):
+    """Curaleaf only: its platform sometimes names a branch's street differently (Route 6 vs Hiawatha Pioneer Trail),
+    so the same house number in the same city is accepted. Every other chain keeps the strict street rule."""
+    if not re.match(r'curaleaf\b',(store.get('name') or '').strip(),re.I):return False
+    number=re.match(r'\s*(\d+)\b',store.get('address') or '')
+    retailer=re.match(r'\s*(\d+)\b',address or '')
+    city=' '.join(_tokens_of(store.get('city','')))
+    return bool(number and retailer and number[1]==retailer[1] and city and f' {city} ' in f' {" ".join(_tokens_of(address))} ')
+
+
+def _tokens_of(value):
+    from .locators import _tokens
+    return _tokens(value)
 
 
 def domain_is(host, domain):
