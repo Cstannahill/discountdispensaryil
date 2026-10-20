@@ -148,39 +148,44 @@ def fetch(endpoint, fetcher):
         if endpoint.get('provider_store_id') and str(store_id) != str(endpoint['provider_store_id']):
             raise ValueError('Cresco store identity changed')
         headers = _headers(key, origin, store_id, app_id)
-        reference = 0
-        seen = {}
-        for category in CATEGORIES:
-            offset, first_total = 0, None
-            while True:
-                response = fetcher.get(_inventory_url(category, 'recreational', offset), headers=headers)
-                result['evidence'].append(response.evidence_id)
-                if response.status_code != 200:
-                    raise ValueError(f'Cresco inventory HTTP {response.status_code} for {category} at offset {offset}')
-                body = json.loads(response.body)
-                rows = body.get('data') or []
-                total = body.get('total_rows')
-                if first_total is None:
-                    first_total = total
-                result['pages'].append(dict(category=category, offset=offset, count=len(rows), total_rows=total, evidence_id=response.evidence_id))
-                for row in rows:
-                    item = normalize(row, endpoint, category)
-                    key_ = (item['source_id'], item['variant_id'])
-                    if key_ not in seen:
-                        seen[key_] = item
-                if len(rows) < PAGE or offset > 10000:
-                    break
-                offset += PAGE
-            reference += first_total or 0
+        passes = []
+        for traversal in range(2):
+            reference = 0
+            seen = {}
+            for category in CATEGORIES:
+                offset, first_total = 0, None
+                while True:
+                    response = fetcher.get(_inventory_url(category, 'recreational', offset), headers=headers)
+                    result['evidence'].append(response.evidence_id)
+                    if response.status_code != 200:
+                        raise ValueError(f'Cresco inventory HTTP {response.status_code} for {category} at offset {offset}')
+                    body = json.loads(response.body)
+                    rows = body.get('data') or []
+                    total = body.get('total_rows')
+                    if first_total is None:
+                        first_total = total
+                    result['pages'].append(dict(category=category, offset=offset, count=len(rows), total_rows=total, evidence_id=response.evidence_id))
+                    for row in rows:
+                        item = normalize(row, endpoint, category)
+                        key_ = (item['source_id'], item['variant_id'])
+                        if key_ not in seen:
+                            seen[key_] = item
+                    if len(rows) < PAGE or offset > 10000:
+                        break
+                    offset += PAGE
+                reference += first_total or 0
+            passes.append((seen, reference))
+        (seen, reference), (again, _) = passes
         result['items'] = list(seen.values())
         result['expected_count'] = reference
         result['source_product_count'] = len({i['source_id'] for i in result['items']})
-        if len(result['items']) != reference:
-            result['errors'].append(dict(code='incomplete_cresco_menu',
-                                         message=f"read {len(result['items'])} unique items; first-page totals sum to {reference}; later page totals disagree"))
+        if set(seen) != set(again):
+            result['errors'].append(dict(code='incomplete_cresco_menu', message=f'two reads disagree: {len(seen)} and {len(again)} unique items'))
+        elif len(seen) != reference:
+            result['errors'].append(dict(code='incomplete_cresco_menu', message=f'read {len(seen)} unique items; first-page totals sum to {reference}'))
         else:
-            result['complete'] = False
-            result['errors'].append(dict(code='incomplete_cresco_menu', message='later-page totals disagree with first-page totals; graded partial until reconciled'))
+            # Two stable reads agree and the items match the first-page totals; a later page may report another total.
+            result['complete'] = True
     except Exception as exc:
         result['errors'].append(dict(code='incomplete_cresco_menu', message=str(exc), evidence_id=getattr(exc, 'evidence_id', None)))
     return result

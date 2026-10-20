@@ -65,15 +65,42 @@ class CrescoTests(unittest.TestCase):
         self.assertTrue(provider_address_matches(registry, endpoint))
         self.assertFalse(provider_address_matches(dict(address='9 Other Rd', latitude=41.9, longitude=-87.6), endpoint))
 
-    def test_fetch_reads_every_category_and_stays_partial(self):
+    def test_fetch_reads_every_category_and_is_complete_when_two_reads_agree(self):
         site = Storefront(flower=2, other=1)
         result = fetch_menu(dict(url=MENU, provider='cresco', provider_store_id=None, license_type='recreational'), site)
-        self.assertFalse(result['complete'])
+        self.assertTrue(result['complete'])
         # Two flower items plus one item in each of the four other categories.
         self.assertEqual(len(result['items']), 6)
         self.assertTrue(all(i['effective_price'] is not None for i in result['items']))
         self.assertEqual({i['category'] for i in result['items']}, {'flower', 'vapes', 'other', 'concentrate'})
         self.assertTrue(all(i['source_url'] == MENU for i in result['items']))
+        self.assertEqual([], result['errors'])
+
+    def test_a_later_page_total_that_drifts_does_not_block_a_stable_menu(self):
+        import json
+        class Drifting(Storefront):
+            def get(self, url, headers=None):
+                found = super().get(url, headers)
+                query = parse_qs(urlsplit(url).query)
+                if 'fifo-inventory' in url and query.get('category') == ['flower'] and query.get('offset') == ['50']:
+                    body = json.loads(found.body)
+                    return response(url, dict(body, total_rows=body['total_rows'] + 3))
+                return found
+        result = fetch_menu(dict(url=MENU, provider='cresco', provider_store_id=None, license_type='recreational'), Drifting(flower=60, other=0))
+        self.assertTrue(result['complete'])
+        self.assertEqual(len(result['items']), 60)
+
+    def test_reads_that_disagree_stay_partial(self):
+        class Changing(Storefront):
+            reads = 0
+            def get(self, url, headers=None):
+                query = parse_qs(urlsplit(url).query)
+                if 'fifo-inventory' in url and query.get('category') == ['flower'] and query.get('offset', ['0']) == ['0']:
+                    Changing.reads += 1
+                    self.flower = 2 if Changing.reads == 1 else 3
+                return super().get(url, headers)
+        result = fetch_menu(dict(url=MENU, provider='cresco', provider_store_id=None, license_type='recreational'), Changing(flower=2, other=0))
+        self.assertFalse(result['complete'])
         self.assertTrue(result['errors'])
 
     def test_requests_carry_the_key_store_app_and_storefront_origin(self):
