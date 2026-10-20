@@ -147,13 +147,31 @@ class SyncService:
             self.store.record_attempt(store_id=store['id'],pipeline_version=PIPELINE_VERSION,job_id=getattr(self._contexts,'job_id',None),**fields)
         except Exception:pass
 
+    def _record_rebrand(self,store,endpoint):
+        """A verified branch page that names a different business at the registry street records that name and its page."""
+        from .site_discovery import rebrand_name
+        details=endpoint.get('resolution_evidence')
+        name=rebrand_name(store,details) if isinstance(details,dict) else None
+        if name:
+            # Telemetry-like bookkeeping: a failed write must never fail the menu import.
+            page=details.get('evidence') or {}
+            try:self.store.record_identity(store['id'],'rebrand',name,page.get('url') or endpoint['url'],page.get('evidence_id'),'resolver')
+            except Exception:pass
+
     def _process_store_unlocked(self,store,results,force_resolution=False):
         started=time.monotonic();attempted=set();accepted=0;had_failure=False;stages=[]
+        if store.get('operating_status')=='closed':
+            # Verified closed by evidence: nothing is resolved or read, and it is recorded rather than counted as a failure.
+            results.append(dict(stage='store_summary',store_id=store['id'],store_name=store['name'],pipeline_version=PIPELINE_VERSION,status='closed',
+                                menu_targets_attempted=0,accepted_snapshots=0,seconds=round(time.monotonic()-started,3),stages=[]))
+            return False
         retained=[self.store.endpoint(endpoint['id']) for endpoint in store['endpoints'] if endpoint.get('last_success_at')]
+        # Saved menus no run has accepted yet (pending, partial, converged) are read on every run, as accepted ones are.
+        saved=[endpoint for endpoint in (self.store.endpoint(found['id']) for found in store['endpoints'] if not found.get('last_success_at')) if has_menu_contract(endpoint)]
         sample=getattr(self._contexts,'sample_pages',None)
         if sample and not retained:
             # A sample reads any saved endpoint that is a menu contract before it pays for discovery; discovery runs only if none reads.
-            retained=[endpoint for endpoint in (self.store.endpoint(found['id']) for found in store['endpoints'] if found.get('status')!='superseded') if has_menu_contract(endpoint)]
+            retained,saved=saved,[]
 
         def import_target(endpoint,origin):
             nonlocal accepted,had_failure
@@ -224,6 +242,10 @@ class SyncService:
         for endpoint in retained:
             retained_ok=import_target(endpoint,'retained_endpoint') and retained_ok
         if retained:stages.append(dict(stage='retained_refresh',targets=len(retained),complete=retained_ok))
+        saved_ok=True
+        for endpoint in saved:
+            saved_ok=import_target(endpoint,'saved_endpoint') and saved_ok
+        if saved:stages.append(dict(stage='saved_refresh',targets=len(saved),complete=saved_ok))
 
         if not retained or not retained_ok or force_resolution:
             self._check_stop();resolution_start=time.monotonic();failures=[];targets={}
@@ -252,10 +274,11 @@ class SyncService:
                         self.store.record_lead(store['id'],endpoint['url'],'resolver',reason,[endpoint.get('resolution_evidence')])
                         failures.append(dict(status='unresolved',error=reason,url=endpoint['url'],evidence=endpoint.get('resolution_evidence')))
                         continue
-                    saved=self.store.save_endpoint(store['id'],endpoint)
+                    self._record_rebrand(store,endpoint)
+                    saved_endpoint=self.store.save_endpoint(store['id'],endpoint)
                     # A retired endpoint (wrong branch, duplicate) stays retired when discovery finds it again.
-                    if saved.get('status')=='superseded':continue
-                    targets[saved['id']]=saved
+                    if saved_endpoint.get('status')=='superseded':continue
+                    targets[saved_endpoint['id']]=saved_endpoint
                 if not targets and not failures:
                     failures.append(dict(status='unresolved',error='No corroborated public menu endpoint was found'))
                     results.append(dict(stage='resolution',store_id=store['id'],store_name=store['name'],**failures[-1]))

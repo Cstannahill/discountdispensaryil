@@ -51,6 +51,7 @@ class Store:
             conn.executescript((Path(__file__).parent / "migrations/003_attempts_leads.sql").read_text())
             conn.executescript((Path(__file__).parent / "migrations/004_store_platforms.sql").read_text())
             conn.executescript((Path(__file__).parent / "migrations/005_store_verifications.sql").read_text())
+            conn.executescript((Path(__file__).parent / "migrations/006_store_identity.sql").read_text())
             # SQLite has no ADD COLUMN IF NOT EXISTS; the converged-grade timestamp is separate from last_success_at
             # so that grade B never counts as an accepted (grade A) menu.
             if 'last_converged_at' not in {row[1] for row in conn.execute("PRAGMA table_info(live_endpoints)")}:
@@ -283,6 +284,9 @@ class Store:
             rows = conn.execute("SELECT * FROM live_stores").fetchall()
             product_counts = dict(conn.execute("SELECT e.store_id,COUNT(*) FROM live_offers o JOIN live_endpoints e ON e.id=o.endpoint_id WHERE o.status='active' AND e.status!='superseded'" + (" AND e.license_type=?" if license_type else "") + " GROUP BY e.store_id", (license_type,) if license_type else ()).fetchall())
             resolutions = {r["store_id"]: dict(r) for r in conn.execute("SELECT * FROM live_resolutions ORDER BY id").fetchall()}
+            aliases = {}
+            for r in conn.execute("SELECT store_id,name,kind,source_url,evidence_id,observed_at FROM live_store_identity WHERE kind='rebrand' ORDER BY id").fetchall():
+                aliases.setdefault(r["store_id"], []).append(dict(r))
         endpoints = self.endpoints()
         result = []
         for row in rows:
@@ -299,7 +303,7 @@ class Store:
             store["serves_medical"] = None if store["serves_medical"] is None else bool(store["serves_medical"])
             store.update(distance_miles=round(distance, 3), endpoints=menus,
                          menu_status=menus[0]["status"] if menus else resolutions.get(store["id"], {}).get("status", "unresolved"),
-                         resolution=resolutions.get(store["id"]), product_count=product_counts.get(store["id"], 0))
+                         resolution=resolutions.get(store["id"]), product_count=product_counts.get(store["id"], 0), aliases=aliases.get(store["id"], []))
             store.pop("raw_json", None)
             result.append(store)
         return sorted(result, key=lambda s: (s["distance_miles"], s["id"]))
@@ -342,6 +346,36 @@ class Store:
                              "ON CONFLICT(store_id,platform,url) DO UPDATE SET status=excluded.status,source=excluded.source,evidence_id=excluded.evidence_id,observed_at=excluded.observed_at",
                              (store_id, row['platform'], row.get('url') or '', row.get('status') or 'observed', source, row.get('evidence_id'), now))
 
+    def record_identity(self, store_id, kind, name, source_url, evidence_id=None, source='resolver', quote=None, now=None):
+        """What evidence says a registry store now is: a rebrand (new name at the same street), or a status (open, closed).
+        The registry row keeps its own name and address; the events sit beside it with their source."""
+        now = now or utcnow()
+        with self.connection() as conn:
+            conn.execute("INSERT OR IGNORE INTO live_store_identity(store_id,kind,name,source_url,quote,evidence_id,source,observed_at) VALUES (?,?,?,?,?,?,?,?)",
+                         (store_id, kind, name, source_url, quote, evidence_id, source, now))
+            if kind == 'rebrand':
+                conn.execute("UPDATE live_stores SET identity_status='rebranded' WHERE id=?", (store_id,))
+            elif kind in ('open', 'closed'):
+                conn.execute("UPDATE live_stores SET operating_status=? WHERE id=?", (kind, store_id))
+
+    def _apply_verdict(self, conn, record, now):
+        """A verdict counts only with the claim that supports it (check_answer kept it): closed or open from existence, a rebrand from the new name."""
+        if record.get('status') != 'verified':
+            return
+        result = record.get('result') or {}
+        for claim in record.get('claims') or []:
+            if claim.get('field') == 'existence' and record.get('verdict') in ('closed', 'exists'):
+                conn.execute("INSERT OR IGNORE INTO live_store_identity(store_id,kind,name,source_url,quote,evidence_id,source,observed_at) VALUES (?,?,?,?,?,?,?,?)",
+                             (record['store_id'], 'closed' if record['verdict'] == 'closed' else 'open', '', claim.get('url'), claim.get('quote'), claim.get('evidence_id'), 'verifier', now))
+                conn.execute("UPDATE live_stores SET operating_status=? WHERE id=?", ('closed' if record['verdict'] == 'closed' else 'open', record['store_id']))
+                return
+        for claim in record.get('claims') or []:
+            if claim.get('field') == 'name' and record.get('verdict') == 'renamed' and result.get('name'):
+                conn.execute("INSERT OR IGNORE INTO live_store_identity(store_id,kind,name,source_url,quote,evidence_id,source,observed_at) VALUES (?,?,?,?,?,?,?,?)",
+                             (record['store_id'], 'rebrand', result['name'], claim.get('url'), claim.get('quote'), claim.get('evidence_id'), 'verifier', now))
+                conn.execute("UPDATE live_stores SET identity_status='rebranded' WHERE id=?", (record['store_id'],))
+                return
+
     def record_verification(self, record, now=None):
         """A store verifier verdict. A cited menu or website URL becomes a lead for the resolver, never an endpoint."""
         now = now or utcnow()
@@ -351,6 +385,7 @@ class Store:
                           json.dumps(record.get('claims') or []), json.dumps(record.get('dropped') or []), json.dumps(record.get('transcript') or []),
                           json.dumps(record.get('evidence') or []), record.get('model'), record.get('steps', 0), record.get('tokens', 0),
                           record.get('usd', 0), record.get('seconds'), record.get('detail'), now))
+            self._apply_verdict(conn, record, now)
         result = record.get('result') or {}
         for field in ('menu_url', 'website'):
             claims = [c for c in record.get('claims') or [] if c['field'] == field]
@@ -405,7 +440,10 @@ class Store:
             pool = current or attempts
             failing = [a for a in pool if a["status"] not in ("complete", "converged")]
             last = (failing or pool or [None])[-1]
-            if accepted:
+            if store["operating_status"] == "closed":
+                # Verified closed by evidence: not a failure, and nothing to resolve.
+                stage, code = "closed", None
+            elif accepted:
                 stage, code = "accepted", None
             elif converged:
                 stage, code = "converged", None

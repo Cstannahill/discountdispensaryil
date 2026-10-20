@@ -285,7 +285,7 @@ def inspect_page(store, response):
     from .locators import addresses_match
     text=response.body.decode('utf-8',errors='replace')
     page=Page(text,response.url)
-    addresses=[];unscoped=[]
+    addresses=[];unscoped=[];owners={}
     for item in objects(page.structured):
         address=item.get('address')
         # Scope structured identity to this page, not a different default
@@ -296,13 +296,18 @@ def inspect_page(store, response):
             if declared.hostname!=current.hostname or declared.path.rstrip('/')!=current.path.rstrip('/'):
                 continue
         if isinstance(address,dict) and address.get('streetAddress'):
-            (addresses if target else unscoped).append(address)
+            (addresses if target else unscoped).append(address);owners[id(address)]=item
     if not addresses and len({a.get('streetAddress') for a in unscoped})==1:
         addresses=unscoped
     matched=[a for a in addresses if addresses_match(store.get('address',''),a.get('streetAddress','')) and
              (not a.get('addressRegion') or same_state(a['addressRegion'],store.get('state','IL')))]
+    # The business the page's own data names at the registry street: a rebrand shows here under its new name.
+    matched_name=next((item['name'].strip() for item in (owners[id(a)] for a in matched if id(a) in owners)
+                       if isinstance(item.get('name'),str) and item['name'].strip()),None)
     visible=' '.join(page.identity_text)
-    registry_words=business_words(store.get('name',''))-set(words(store.get('city','')))
+    # Recorded new names (rebrands) are business names of this same store, so they prove identity the way the registry name does.
+    names=[store.get('name','')]+[a['name'] if isinstance(a,dict) else a for a in store.get('aliases') or [] if a]
+    registry_words=set().union(*(business_words(name) for name in names))-set(words(store.get('city','')))
     combined=set(words(visible+' '+response.url))
     # A brand the page writes as two words ("Star Buds" for the registry's "Starbuds") still names it.
     joined=''.join(words(visible))+' '+''.join(words(response.url))
@@ -316,18 +321,26 @@ def inspect_page(store, response):
     cannabis_context=bool(combined & {'cannabis','marijuana','dispensary','dispensaries'})
     if addresses and not matched:
         identity='conflict'
-    elif matched or (address_in_text and (name_match or (city_match and cannabis_context))) or (body_street and title_city and cannabis_context):
+    # The registry street on this page proves the branch when the page also places it in the registry town or names the business.
+    elif matched or (address_in_text and (name_match or city_match)) or (body_street and title_city and cannabis_context):
         identity='matched'
     elif name_match and city_match:
         identity='name_locality'
     else:
         identity='candidate'
-    return dict(identity_status=identity,addresses=addresses,matched_addresses=matched,
+    return dict(identity_status=identity,addresses=addresses,matched_addresses=matched,matched_name=matched_name,
                 endpoints=provider_links(response.url,text),links=list(dict.fromkeys(page.links)),
                 navigation_links=[dict(url=canonical_menu_url(link),label=label) for link,label in page.anchors
                                   if re.search(r'\b(?:menu|shop|order(?: online)?|locations?|dispensaries)\b',label,re.I)],
                 evidence=dict(url=response.url,evidence_id=response.evidence_id,fetched_at=response.fetched_at),
                 name_match=name_match,city_match=city_match)
+
+
+def rebrand_name(store, identity):
+    """The business name a verified branch page gives at the registry street, when it shares no word with the registry name."""
+    name=identity.get('matched_name') if isinstance(identity,dict) else None
+    if not name or identity.get('identity_status')!='matched' or business_words(store.get('name',''))&set(words(name)):return None
+    return name[:200]
 
 
 def provider_address_matches(store,endpoint):

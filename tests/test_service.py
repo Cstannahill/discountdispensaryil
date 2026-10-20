@@ -154,6 +154,55 @@ class ServiceTests(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
+    def test_full_sync_reads_saved_endpoints_that_are_not_yet_accepted(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.save_endpoint(shop['id'],dict(url='https://dutchie.com/embedded-menu/6605a335768130acf14233c0',provider='dutchie',provider_store_id='6605a335768130acf14233c0',license_type='recreational',resolution_evidence=[]))
+        read=[]
+        def read_menu(endpoint,fetcher):
+            read.append(endpoint['url']);raise ValueError('fixture menu unavailable')
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:[],menu_fetcher=read_menu)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual(['https://dutchie.com/embedded-menu/6605a335768130acf14233c0'],read)
+
+    def test_a_store_verified_closed_is_recorded_as_closed_without_resolution_or_failure(self):
+        from test_store_identity import verdict
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        claim=dict(field='existence',value='closed',url='https://x.example/',quote='permanently closed',evidence_id='ev-1')
+        self.db.record_verification(verdict(shop['id'],'closed',[claim],dict(verdict='closed')))
+        seen=[]
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:seen.append(s['id']) or [],menu_fetcher=None)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual([],seen)
+        self.assertEqual('succeeded',result['status'])
+        self.assertEqual(['closed'],[e['status'] for e in result['results'] if e.get('stage')=='store_summary'])
+
+    def test_a_branch_matched_under_a_new_name_records_the_rebrand(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        evidence=dict(identity_status='matched',matched_name='The Joint Dispensary - Rutland',evidence=dict(url='https://example.com/locations/rutland/',evidence_id='ev-9'))
+        resolved=[dict(url='https://example.com/locations/rutland/menu/',provider='generic',provider_store_id=None,license_type='recreational',resolution_evidence=evidence,identity_confidence='matched')]
+        def read_menu(endpoint,fetcher):raise ValueError('fixture menu unavailable')
+        service=SyncService(self.db,FixtureFetcher(),resolver=lambda s,f:list(resolved),menu_fetcher=read_menu)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False))
+            service.run(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        store=self.db.stores_in_region(region['id'])[0]
+        self.assertEqual(['The Joint Dispensary - Rutland'],[a['name'] for a in store['aliases']])
+        self.assertEqual('https://example.com/locations/rutland/',store['aliases'][0]['source_url'])
+        self.assertEqual('Test Shop',store['name'])
+
     def test_first_sync_discovers_entire_region_without_custom_seeds(self):
         service = SyncService(self.db, FixtureFetcher(), resolver=lambda store, fetcher: [], menu_fetcher=None)
         job = self.db.enqueue({'discover': True})
