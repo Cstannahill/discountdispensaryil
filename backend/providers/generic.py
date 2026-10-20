@@ -100,6 +100,13 @@ def network_collections(fetcher,response,endpoint):
     return result if result and (result['items'] or result.get('identities')) else None
 
 
+def same_store_redirect(endpoint,response):
+    """A Dutchie embed whose page redirects to the retailer's own storefront is the same menu when that page carries the same store id."""
+    store_id=endpoint.get('provider_store_id')
+    if endpoint.get('provider')!='dutchie' or not store_id:return False
+    return store_id.lower() in (response.url+' '+response.body.decode('utf-8',errors='replace')).lower()
+
+
 def fetch(endpoint,fetcher):
     fetcher=copy.copy(fetcher)
     fetcher.browser_options=dict(getattr(fetcher,'browser_options',{}),license_type=endpoint.get('license_type','recreational'),await_menu=True)
@@ -144,7 +151,7 @@ def fetch(endpoint,fetcher):
                     if counter:shown.add(counter)
                 expected_host=(urlsplit(endpoint['url']).hostname or '').removeprefix('www.')
                 actual_host=(urlsplit(response.url).hostname or '').removeprefix('www.')
-                if actual_host!=expected_host:raise ValueError('Generic menu redirected to a different source hostname; rediscovery required')
+                if actual_host!=expected_host and not same_store_redirect(endpoint,response):raise ValueError('Generic menu redirected to a different source hostname; rediscovery required')
                 actual_license,license_basis=license_context(response.url)
                 if license_basis=='explicit' and actual_license!=endpoint.get('license_type','recreational'):
                     raise ValueError('Generic menu changed explicit license context')
