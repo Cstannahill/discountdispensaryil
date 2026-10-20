@@ -11,6 +11,7 @@ from .adapters import fetch_menu, resolve_menu, has_menu_contract
 from .discovery import parse_registry, resolve_location, REGISTRY_SOURCE_PAGE
 from .domain import age_hours, utcnow
 from .failures import FailureCode, classify
+from .platforms import brand_key
 from .storage import REGISTRY_URL
 from .runtime import PIPELINE_VERSION, PipelineInterrupted
 
@@ -18,6 +19,8 @@ from .runtime import PIPELINE_VERSION, PipelineInterrupted
 NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'joint', 'jane', 'verano')
 # Sample runs stop a store's discovery crawl after this many seconds; full runs never budget discovery.
 SAMPLE_DISCOVERY_SECONDS = 120
+# Sample runs process this many stores at once; full runs stay sequential.
+SAMPLE_WORKERS = 4
 
 
 def _tier(provider):
@@ -293,6 +296,41 @@ class SyncService:
             del self._contexts.fetcher
             del self._contexts.job_id
 
+    def _process_store_for_job(self,job_id,store,results,payload,lock):
+        started=time.monotonic()
+        try:
+            failed=self._process_store(store,results,payload.get('resolve_sources',False))
+        except PipelineInterrupted:raise
+        except Exception as exc:
+            self._check_stop();failed=True
+            attempts=[r for r in results if r.get('store_id')==store['id'] and r.get('stage')=='menu']
+            results.append(dict(stage='store_summary',store_id=store['id'],store_name=store['name'],pipeline_version=PIPELINE_VERSION,
+                                status='failed',menu_targets_attempted=len(attempts),accepted_snapshots=sum(r.get('status')=='complete' for r in attempts),
+                                seconds=round(time.monotonic()-started,3),stages=[],error=str(exc),evidence_id=getattr(exc,'evidence_id',None)))
+        with lock:
+            summary=next(r for r in reversed(results) if r.get('stage')=='store_summary' and r.get('store_id')==store['id'])
+            self.store.record_store_work(job_id,summary)
+            self.store.update_job(job_id,"running",results)
+        return failed
+
+    def _run_sample_stores(self,job_id,stores,results,payload):
+        # Sample runs process several stores at once. Each worker gets its own fetcher client and job context, as the job thread
+        # has, and stores of one chain never overlap, because chains share hosts and rate limits.
+        job_fetcher=self.fetcher;lock=threading.Lock();chain_locks={}
+        def work(store):
+            fork=getattr(job_fetcher,'fork',None)
+            self._contexts.fetcher=fork() if callable(fork) else copy.copy(job_fetcher)
+            self._contexts.job_id=job_id;self._contexts.sample_pages=payload.get('sample_pages')
+            try:
+                self._check_stop()
+                with self._lock_for(chain_locks,brand_key(store['name'],store.get('city'))):
+                    return self._process_store_for_job(job_id,store,results,payload,lock)
+            finally:
+                if callable(fork):self._contexts.fetcher.close()
+                del self._contexts.fetcher,self._contexts.job_id
+        with ThreadPoolExecutor(max_workers=SAMPLE_WORKERS,thread_name_prefix='terpscout-sample') as pool:
+            return any(list(pool.map(work,stores)))
+
     def _run(self,job_id):
         with self._lock_for(self.job_locks,job_id):
             job = self.store.job(job_id)
@@ -326,20 +364,12 @@ class SyncService:
                 if not stores:
                     had_failure = True
                     results.append(dict(stage="coverage", status="unresolved", error="No registry candidates have been resolved in this region"))
-                for store in stores:
-                    self._check_stop()
-                    started=time.monotonic()
-                    try:
-                        had_failure=self._process_store(store,results,payload.get('resolve_sources',False)) or had_failure
-                    except PipelineInterrupted:raise
-                    except Exception as exc:
-                        self._check_stop();had_failure=True
-                        attempts=[r for r in results if r.get('store_id')==store['id'] and r.get('stage')=='menu']
-                        results.append(dict(stage='store_summary',store_id=store['id'],store_name=store['name'],pipeline_version=PIPELINE_VERSION,
-                                            status='failed',menu_targets_attempted=len(attempts),accepted_snapshots=sum(r.get('status')=='complete' for r in attempts),
-                                            seconds=round(time.monotonic()-started,3),stages=[],error=str(exc),evidence_id=getattr(exc,'evidence_id',None)))
-                    self.store.record_store_work(job_id,results[-1])
-                    self.store.update_job(job_id, "running", results)
+                if payload.get('sample_pages'):
+                    had_failure=self._run_sample_stores(job_id,stores,results,payload) or had_failure
+                else:
+                    for store in stores:
+                        self._check_stop()
+                        had_failure=self._process_store_for_job(job_id,store,results,payload,threading.Lock()) or had_failure
                 self.store.update_job(job_id, "partial" if had_failure else "succeeded", results)
             except PipelineInterrupted as exc:
                 self.store.update_job(job_id,'interrupted',results,str(exc))

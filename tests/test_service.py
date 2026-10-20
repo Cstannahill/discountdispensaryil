@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 import tempfile
+import threading
+import time
 import unittest
 
 from backend.service import SyncService
@@ -92,6 +94,38 @@ class ServiceTests(unittest.TestCase):
             self.assertEqual(budgets,[None,120])
         finally:
             if not service.stop_requested.is_set():service.close()
+
+    def test_sample_run_overlaps_different_chains(self):
+        self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')
+        region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        barrier=threading.Barrier(2,timeout=5);passed=[]
+        def resolver(store,fetcher):barrier.wait();passed.append(store['id']);return []
+        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=lambda endpoint,fetcher:None)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual(len(passed),2)
+        self.assertEqual(len([event for event in result['results'] if event.get('stage')=='store_summary']),2)
+
+    def test_sample_run_keeps_one_chain_to_one_store_at_a_time(self):
+        self.db.import_registry([observation('a'),observation('b')],'source')
+        region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        active=[];peak=[0];gate=threading.Lock()
+        def resolver(store,fetcher):
+            with gate:active.append(store['id']);peak[0]=max(peak[0],len(active))
+            time.sleep(0.2)
+            with gate:active.remove(store['id'])
+            return []
+        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=lambda endpoint,fetcher:None)
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False,sample_pages=2))
+            service.run(job['id']);result=self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+        self.assertEqual(peak[0],1)
+        self.assertEqual(len([event for event in result['results'] if event.get('stage')=='store_summary']),2)
 
     def test_targeted_retry_only_visits_requested_stores(self):
         self.db.import_registry([observation('a'),observation('b',name='Other Store')],'source')
