@@ -2,7 +2,7 @@
 import unittest
 
 from backend.network import FetchResult
-from backend.providers.generic import same_store_redirect
+from backend.providers.generic import same_store_host, same_store_redirect
 
 
 def page(url, text):
@@ -24,6 +24,20 @@ class SameStoreRedirectTests(unittest.TestCase):
     def test_only_dutchie_embeds_qualify(self):
         response = page('https://letsascend.com/menu/', '684991b85f1314468afebce7')
         self.assertFalse(same_store_redirect(dict(DUTCHIE, provider='generic'), response))
+
+
+class SameStoreHostTests(unittest.TestCase):
+    def test_later_pages_on_a_proven_storefront_host_are_the_same_menu(self):
+        hosts = set()
+        first = page('https://letsascend.com/menu/?page=1', '<script>dispensaryId="684991b85f1314468afebce7"</script>')
+        second = page('https://letsascend.com/menu/?page=2', '<div>a later page need not repeat the store id</div>')
+        self.assertTrue(same_store_host(DUTCHIE, first, hosts))
+        self.assertTrue(same_store_host(DUTCHIE, second, hosts))
+
+    def test_a_later_page_on_an_unproven_host_is_not_accepted(self):
+        hosts = set()
+        other = page('https://other.example/menu/?page=2', '<div>no store id here</div>')
+        self.assertFalse(same_store_host(DUTCHIE, other, hosts))
 
 
 if __name__ == '__main__':

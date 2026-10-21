@@ -107,6 +107,16 @@ def same_store_redirect(endpoint,response):
     return store_id.lower() in (response.url+' '+response.body.decode('utf-8',errors='replace')).lower()
 
 
+def same_store_host(endpoint,response,hosts):
+    """A redirected page is this store's menu when its host was proven by a page that carried the store id. Later pages on that host stay the same menu."""
+    host=(urlsplit(response.url).hostname or '').removeprefix('www.')
+    if host in hosts:return True
+    if same_store_redirect(endpoint,response):
+        hosts.add(host)
+        return True
+    return False
+
+
 def fetch(endpoint,fetcher):
     fetcher=copy.copy(fetcher)
     fetcher.browser_options=dict(getattr(fetcher,'browser_options',{}),license_type=endpoint.get('license_type','recreational'),await_menu=True)
@@ -114,7 +124,7 @@ def fetch(endpoint,fetcher):
                 expected_count=None,pages=[],errors=[],evidence=[],authoritative_zero=False,
                 limits=dict(max_pages=int(endpoint.get('max_pages',1000)),verification_passes=2),
                 count_semantics='Advertised ItemList total counts parent products; accepted expected_count counts expanded variants')
-    passes=[];pass_items=[];modes=[];shown_totals=[]
+    passes=[];pass_items=[];modes=[];shown_totals=[];same_store_hosts=set()
     try:
         for traversal in range(2):
             url=endpoint['url'];visited=set();seen=set();parents=set();items=[];expected=None;shown=set()
@@ -151,7 +161,7 @@ def fetch(endpoint,fetcher):
                     if counter:shown.add(counter)
                 expected_host=(urlsplit(endpoint['url']).hostname or '').removeprefix('www.')
                 actual_host=(urlsplit(response.url).hostname or '').removeprefix('www.')
-                if actual_host!=expected_host and not same_store_redirect(endpoint,response):raise ValueError('Generic menu redirected to a different source hostname; rediscovery required')
+                if actual_host!=expected_host and not same_store_host(endpoint,response,same_store_hosts):raise ValueError('Generic menu redirected to a different source hostname; rediscovery required')
                 actual_license,license_basis=license_context(response.url)
                 if license_basis=='explicit' and actual_license!=endpoint.get('license_type','recreational'):
                     raise ValueError('Generic menu changed explicit license context')
