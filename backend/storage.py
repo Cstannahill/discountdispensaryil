@@ -272,7 +272,8 @@ class Store:
             if by_url:identity=by_url['id']
             tenant = conn.execute("SELECT id FROM live_endpoints WHERE store_id=? AND provider=? AND provider_store_id=? AND license_type=?",
                                   (store_id,endpoint.get('provider'),endpoint.get('provider_store_id'),license_type)).fetchone() if endpoint.get('provider_store_id') else None
-            if tenant:
+            # The tenant's row follows a changed URL only when no other endpoint already sits at the new one.
+            if tenant and not by_url:
                 identity = tenant['id']
                 conn.execute("UPDATE live_endpoints SET url=? WHERE id=?", (endpoint['url'],identity))
             existing = conn.execute("SELECT provider,provider_store_id FROM live_endpoints WHERE id=?", (identity,)).fetchone()
