@@ -1,8 +1,9 @@
 """A Dutchie embed that redirects to the retailer's own storefront is the same menu only when that page carries the same store id."""
 import unittest
 
+from backend.failures import FailureCode, classify
 from backend.network import FetchResult
-from backend.providers.generic import same_store_host, same_store_redirect
+from backend.providers.generic import browser_error_page, same_store_host, same_store_redirect
 
 
 def page(url, text):
@@ -38,6 +39,17 @@ class SameStoreHostTests(unittest.TestCase):
         hosts = set()
         other = page('https://other.example/menu/?page=2', '<div>no store id here</div>')
         self.assertFalse(same_store_host(DUTCHIE, other, hosts))
+
+
+class BrowserErrorPageTests(unittest.TestCase):
+    def test_chromes_error_page_is_not_the_menu_and_reports_a_refusal(self):
+        response = page('chrome-error://chromewebdata/', '')
+        self.assertTrue(browser_error_page(response))
+        message = 'Browser navigation refused: the source refused this browser session (HTTP 403 on this menu) and Chrome showed an error page instead of the menu'
+        self.assertEqual(FailureCode.HTTP_REJECTED, classify(message))
+
+    def test_a_real_storefront_page_is_not_an_error_page(self):
+        self.assertFalse(browser_error_page(page('https://dutchie.com/embedded-menu/684991b85f1314468afebce7', '')))
 
 
 if __name__ == '__main__':

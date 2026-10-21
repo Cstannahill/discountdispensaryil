@@ -107,6 +107,11 @@ def same_store_redirect(endpoint,response):
     return store_id.lower() in (response.url+' '+response.body.decode('utf-8',errors='replace')).lower()
 
 
+def browser_error_page(response):
+    """Chrome shows its own error page when the source refuses or drops a navigation; that page is not the menu."""
+    return response.url.startswith('chrome-error:')
+
+
 def same_store_host(endpoint,response,hosts):
     """A redirected page is this store's menu when its host was proven by a page that carried the store id. Later pages on that host stay the same menu."""
     host=(urlsplit(response.url).hostname or '').removeprefix('www.')
@@ -159,6 +164,7 @@ def fetch(endpoint,fetcher):
                 if products or network:
                     counter=visible_total(text)
                     if counter:shown.add(counter)
+                if browser_error_page(response):raise ValueError('Browser navigation refused: the source refused this browser session (HTTP 403 on this menu) and Chrome showed an error page instead of the menu')
                 expected_host=(urlsplit(endpoint['url']).hostname or '').removeprefix('www.')
                 actual_host=(urlsplit(response.url).hostname or '').removeprefix('www.')
                 if actual_host!=expected_host and not same_store_host(endpoint,response,same_store_hosts):raise ValueError('Generic menu redirected to a different source hostname; rediscovery required')
