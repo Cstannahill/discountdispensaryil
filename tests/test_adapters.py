@@ -73,6 +73,8 @@ class SweedFetcher:
             data['list'][0]['variants'][0]['id'] = 0
         if self.mode == 'missing' and page > 1:
             data['list'].pop()
+        if self.mode == 'lastdrift' and page*24 >= self.count:
+            data['list'] = data['list'][:-3]
         if self.mode == 'tenant':
             context['queries'][1]['state']['data']['storeInfo']['id'] = 999
         context['queries'].append(query)
@@ -145,6 +147,19 @@ class AdapterTests(unittest.TestCase):
                 result = adapters.fetch_menu(SWEED_ENDPOINT, SweedFetcher(50, mode))
                 self.assertFalse(result['complete'])
                 self.assertTrue(result['errors'])
+
+    def test_sweed_last_page_off_by_churn_is_converged_never_complete(self):
+        result = adapters.fetch_menu(SWEED_ENDPOINT, SweedFetcher(1103, 'lastdrift'))
+        self.assertFalse(result['complete'])
+        self.assertFalse(result['errors'], result['errors'])
+        self.assertEqual('churn_tolerant', result['convergence']['kind'])
+        self.assertEqual(1100, len(result['items']))
+        self.assertEqual([-3, -3], [d['received'] - d['expected'] for d in result['convergence']['page_drift']])
+
+    def test_sweed_last_page_off_by_more_than_one_percent_still_fails(self):
+        result = adapters.fetch_menu(SWEED_ENDPOINT, SweedFetcher(120, 'lastdrift'))
+        self.assertFalse(result['complete'])
+        self.assertTrue(result['errors'])
 
     def test_sweed_partial_traversal_preserves_observed_products_and_explains_failed_page(self):
         result=adapters.fetch_menu(SWEED_ENDPOINT,SweedFetcher(50,'missing'))

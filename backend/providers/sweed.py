@@ -156,7 +156,7 @@ def normalize_product(product, endpoint):
 
 def fetch(endpoint, fetcher):
     result = {'items':[], 'complete':False, 'expected_count':None, 'pages':[], 'errors':[], 'evidence':[], 'authoritative_zero':False, 'provider':'sweed', 'adapter_version':VERSION, 'source_product_count':None, 'limits':{'max_pages':int(endpoint.get('max_pages',1000)), 'verification_passes':2, 'concurrency':1}}
-    passes, pass_items, convergence = [], [], None
+    passes, pass_items, convergence, drift = [], [], None, []
     try:
         if endpoint.get('license_type') not in ('medicinal','recreational'):
             raise ValueError('unverified Sweed license context')
@@ -195,7 +195,14 @@ def fetch(endpoint, fetcher):
                     raise ValueError(f'Sweed advertised total changed at page {page}: started with {expected}, received {total}; independent full traversal required')
                 expected_page=min(page_size,max(0,total-(page-1)*page_size))
                 if len(products)!=expected_page:
-                    raise ValueError(f'Sweed missing products at page {page}: expected {expected_page}, received {len(products)}; advertised total {total}')
+                    # Live inventory moves while the pages are read, so the last page can hold a few more or fewer products than
+                    # the advertised total implies. Within 1% of the total that is churn, not a missed page; it can only ever
+                    # reach grade B (two agreeing passes), never a reconciled A. Any other page must be exactly full.
+                    if page*page_size>=total and abs(len(products)-expected_page)<=total//100:
+                        drift.append(dict(pass_index=pass_index+1,page=page,expected=expected_page,received=len(products),advertised_total=total))
+                        result['pages'][-1]['drift']=len(products)-expected_page
+                    else:
+                        raise ValueError(f'Sweed missing products at page {page}: expected {expected_page}, received {len(products)}; advertised total {total}')
                 for product in products:
                     source_id = str(product['id'])
                     source_ids.add(source_id)
@@ -210,7 +217,7 @@ def fetch(endpoint, fetcher):
                     result['items']=items.copy()
                     result['source_product_count']=len(source_ids)
                     result['expected_count']=len(items)
-                if record_count == expected:
+                if record_count == expected or page*page_size >= total:
                     break
             else:
                 raise ValueError('Sweed configured page limit reached')
@@ -219,12 +226,13 @@ def fetch(endpoint, fetcher):
             if pass_index == 0:
                 result['items'],result['source_product_count'],result['expected_count'] = items,len(source_ids),len(items)
                 result['advertised_record_count'] = expected
-            elif passes[0] != passes[1]:
+            elif passes[0] != passes[1] or drift:
                 # Both passes reconciled to their own advertised totals; only live inventory differs (grade B).
                 from backend.completeness import churn_convergence
                 convergence = churn_convergence(pass_items[0],pass_items[1],kind='churn_tolerant',source_total=passes[1][0])
                 if not convergence:
                     raise ValueError('Sweed menu changed across independent complete traversals')
+                if drift:convergence['page_drift']=drift
         if convergence:
             result.update(complete=False,convergence=convergence)
             return result
