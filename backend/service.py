@@ -315,6 +315,12 @@ class SyncService:
                         self.store.record_lead(store['id'],endpoint['url'],'resolver',reason,[endpoint.get('resolution_evidence')])
                         failures.append(dict(status='unresolved',error=reason,url=endpoint['url'],evidence=endpoint.get('resolution_evidence')))
                         continue
+                    if self.store.platform_store_owner(endpoint.get('provider'),endpoint.get('provider_store_id'),store['id']):
+                        # The platform's store is already another registry store's menu: a sibling branch found on a chain page, not this branch.
+                        failure=dict(status='identity_conflict',error='Platform store is already bound to a different registry store; not this branch',url=endpoint['url'],evidence=endpoint.get('resolution_evidence'))
+                        failures.append(failure)
+                        results.append(dict(stage='resolution',store_id=store['id'],store_name=store['name'],**failure))
+                        continue
                     self._record_rebrand(store,endpoint)
                     saved_endpoint=self.store.save_endpoint(store['id'],endpoint)
                     # A retired endpoint (wrong branch, duplicate) stays retired when discovery finds it again.

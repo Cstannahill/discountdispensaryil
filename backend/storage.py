@@ -300,6 +300,18 @@ class Store:
             conn.execute("UPDATE live_endpoints SET status='superseded',last_error=? WHERE id=?", (str(reason), endpoint_id))
             self._bump(conn)
 
+    # Platform store ids that name exactly one store. Sweed, Treez and similar ids can be shared by a chain's branches.
+    SINGLE_STORE_PROVIDERS = ('blaze', 'dutchie', 'jane', 'cresco')
+
+    def platform_store_owner(self, provider, provider_store_id, store_id):
+        """The other registry store this platform store is already bound to, or None. Only single-store provider ids count."""
+        if provider not in self.SINGLE_STORE_PROVIDERS or not provider_store_id:
+            return None
+        with self.connection() as conn:
+            row = conn.execute("SELECT store_id FROM live_endpoints WHERE provider=? AND provider_store_id=? AND store_id!=? AND status!='superseded' LIMIT 1",
+                               (provider, provider_store_id, store_id)).fetchone()
+        return row['store_id'] if row else None
+
     def supersede_endpoint(self, endpoint_id, reason):
         """Retire a menu endpoint without deleting it (history and evidence stay). An endpoint that holds active
         accepted offers is refused: hiding accepted inventory needs a deliberate decision, not a cleanup call."""
