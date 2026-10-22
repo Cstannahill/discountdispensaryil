@@ -70,5 +70,16 @@ class VerdictIdentityTests(unittest.TestCase):
         self.assertEqual('rebranded', store['identity_status'])
 
 
+    def test_offers_show_the_rebranded_name_while_the_registry_name_is_kept(self):
+        from test_storage import item, snapshot
+        endpoint = self.db.save_endpoint(self.shop['id'], dict(url='https://example.com/menu', provider='fixture', provider_store_id='t', license_type='recreational', resolution_evidence=['e']))
+        self.db.apply_snapshot(endpoint['id'], snapshot([item('a')]), now='2026-10-17T07:00:00+00:00')
+        shown = lambda: self.db.query_offers(self.region['id'], now='2026-10-17T07:30:00+00:00')['items'][0]['store_name']
+        self.assertEqual('Test Shop', shown())
+        self.db.record_identity(self.shop['id'], 'rebrand', 'Bloom Wellness - Rutland', 'https://example.com/locations/rutland/', 'ev-3')
+        self.assertEqual('Bloom Wellness - Rutland', shown())
+        self.assertEqual('Test Shop', self.db.stores_in_region(self.region['id'])[0]['name'])
+
+
 if __name__ == '__main__':
     unittest.main()

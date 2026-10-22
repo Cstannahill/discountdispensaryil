@@ -69,7 +69,7 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
   const text = `
 WITH r AS (SELECT latitude, longitude, radius_miles FROM live_regions WHERE id=${region}),
 st AS MATERIALIZED (
-  SELECT s.id, s.name, s.latitude AS lat, s.longitude AS lon,
+  SELECT s.id, coalesce((SELECT i.name FROM live_store_identity i WHERE i.store_id=s.id AND i.kind='rebrand' ORDER BY i.id DESC LIMIT 1), s.name) AS name, s.latitude AS lat, s.longitude AS lon,
          3958.8*2*asin(sqrt(least(1,greatest(0, power(sin(radians(s.latitude-r.latitude)/2),2)
            +cos(radians(r.latitude))*cos(radians(s.latitude))*power(sin(radians(s.longitude-r.longitude)/2),2))))) AS distance_miles
   FROM live_stores s CROSS JOIN r WHERE s.latitude IS NOT NULL AND s.longitude IS NOT NULL),

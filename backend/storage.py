@@ -709,7 +709,8 @@ class Store:
             item.setdefault("completeness", "A")
             item.update({k: row[k] for k in ("id", "endpoint_id", "store_id", "license_type", "status", "last_diff_action", "last_seen_at", "snapshot_id")})
             verified_at = row["last_converged_at"] if item["completeness"] == "B" else row["last_success_at"]
-            item.update(store_name=store["name"], distance_miles=store["distance_miles"],
+            # A store that rebranded shows its current name; the registry row keeps the old one.
+            item.update(store_name=store["aliases"][-1]["name"] if store.get("aliases") else store["name"], distance_miles=store["distance_miles"],
                         freshness="fresh" if age_hours(verified_at, now) < 12 else "stale")
             item["source_url"] = item.get("source_url") or row["url"]
             item["flower_grade"] = flower_grade(item)
