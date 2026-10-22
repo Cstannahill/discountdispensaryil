@@ -11,6 +11,7 @@ import uuid
 
 from .completeness import grade_for, valid_convergence
 from .product_links import with_product_url
+from .matching import flag_outliers, group_offers
 from .domain import age_hours, digest, distance_miles, flower_grade, instant, normalize_offer, utcnow
 
 REGISTRY_URL = "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no"
@@ -712,7 +713,7 @@ class Store:
             item.update({k: row[k] for k in ("id", "endpoint_id", "store_id", "license_type", "status", "last_diff_action", "last_seen_at", "snapshot_id")})
             verified_at = row["last_converged_at"] if item["completeness"] == "B" else row["last_success_at"]
             # A store that rebranded shows its current name; the registry row keeps the old one.
-            item.update(store_name=store["aliases"][-1]["name"] if store.get("aliases") else store["name"], distance_miles=store["distance_miles"],
+            item.update(store_name=store["aliases"][-1]["name"] if store.get("aliases") else store["name"], distance_miles=store["distance_miles"], verified_at=verified_at,
                         freshness="fresh" if age_hours(verified_at, now) < 12 else "stale")
             item["flower_grade"] = flower_grade(item)
             result.append(item)
@@ -733,7 +734,7 @@ class Store:
             # Conditional BOGO promotions: their own list, never ranked with comparable deals.
             items = [r for r in self._offer_rows(region_id, license_type, now) if r.get("promo") == "bogo" and r["status"] == "active" and r["freshness"] == "fresh" and r["completeness"] == "A" and r["category"] in ("flower", "concentrate", "vapes")]
         else:
-            items = [r for r in self._offer_rows(region_id, license_type, now) if r["eligible"] and r["status"] == "active" and (include_stale or r["freshness"] == "fresh") and (include_unverified or r["completeness"] == "A")]
+            items = self._comparable_offers(region_id, license_type, include_stale, include_unverified, now)
         if flower_grade and flower_grade != "all":
             items = [r for r in items if r["flower_grade"] in (None, flower_grade)]
         if category and category != "all":
@@ -745,6 +746,26 @@ class Store:
             items = [r for r in items if abs(Decimal(r["weight_grams"])-Decimal(size)) <= Decimal(size)*Decimal("0.03")]
         items.sort(key=lambda r: (Decimal(r["effective_price"])/Decimal(r["weight_grams"]), r["distance_miles"], r["id"]))
         result = self._paginate(items, page, page_size, data_version)
+        if result["data_version"] != version_before:
+            raise ValueError("refresh_required")
+        return result
+
+    def _comparable_offers(self, region_id, license_type, include_stale, include_unverified, now=None):
+        """Offers fit to rank: eligible, active, fresh, grade A. Prices far under other stores' for the same product are held back unless unverified data is requested."""
+        items = [r for r in self._offer_rows(region_id, license_type, now) if r["eligible"] and r["status"] == "active" and (include_stale or r["freshness"] == "fresh") and (include_unverified or r["completeness"] == "A")]
+        return items if include_unverified else [r for r in flag_outliers(items) if not r["price_outlier"]]
+
+    def query_matched(self, region_id=None, license_type=None, category=None, q="", include_stale=False, page=1, page_size=50, data_version=None, now=None, include_unverified=False, flower_grade="whole", min_stores=2):
+        """The same product (brand, name, package) across stores: each group's cheapest offer first, with every store's cheapest offer beneath it."""
+        version_before = str(self.setting("data_version", 0))
+        items = self._comparable_offers(region_id, license_type, include_stale, include_unverified, now)
+        if flower_grade and flower_grade != "all":
+            items = [r for r in items if r["flower_grade"] in (None, flower_grade)]
+        if category and category != "all":
+            items = [r for r in items if r["category"] == category]
+        if q:
+            items = [r for r in items if q.casefold() in " ".join(str(r.get(k) or "") for k in ("name", "brand", "subcategory")).casefold()]
+        result = self._paginate(group_offers(items, min_stores), page, page_size, data_version)
         if result["data_version"] != version_before:
             raise ValueError("refresh_required")
         return result
@@ -890,7 +911,18 @@ class Store:
             territory = {"supported_jurisdictions": ["IL"], "status": "boundary_not_verified", "message": "Jurisdiction boundary coverage not verified."}
         territory.setdefault("status", territory.get("boundary_status", "not_evaluated"))
         territory.setdefault("message", " ".join(territory.get("limitations", [])))
-        return dict(region=region, source=source, counts=counts, territory=territory, limitations=limitations, endpoints=endpoints)
+        return dict(region=region, source=source, counts=counts, territory=territory, limitations=limitations, endpoints=endpoints,
+                    stale_stores=self._stale_stores(offers, now))
+
+    @staticmethod
+    def _stale_stores(offers, now):
+        """Stores with active eligible offers that rank nowhere because their menu is older than the freshness window."""
+        stale = {}
+        for r in offers:
+            if r["status"] != "active" or not r["eligible"] or r["freshness"] != "stale": continue
+            entry = stale.setdefault(r["store_id"], dict(store_id=r["store_id"], store_name=r["store_name"], distance_miles=r["distance_miles"], hidden_offers=0, last_verified_at=r["verified_at"], age_hours=round(age_hours(r["verified_at"], now), 1) if r["verified_at"] else None))
+            entry["hidden_offers"] += 1
+        return sorted(stale.values(), key=lambda e: (e["distance_miles"], e["store_id"]))
 
     def diffs(self, region_id=None, action=None, page=1, page_size=50):
         store_ids = {s["id"] for s in self.stores_in_region(region_id)}

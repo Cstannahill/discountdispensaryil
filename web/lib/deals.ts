@@ -45,7 +45,7 @@ export async function dataVersion(): Promise<string> {
   return String(r[0] ? JSON.parse(r[0].value) : 0);
 }
 
-// Mirrors StoreDB.query_offers: eligible, active, fresh (12h), grade A unless include_unverified, whole flower unless asked,
+// Mirrors StoreDB.query_offers: eligible, active, fresh (12h), grade A and not a price outlier unless include_unverified, whole flower unless asked,
 // ranked by effective price per gram then distance. Filtering, ranking and paging all happen in Postgres.
 export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
   const page = Math.max(1, q.page ?? 1);
@@ -64,7 +64,8 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
   } else {
     where.push(`(j->>'eligible')='true'`, `NULLIF(j->>'weight_grams','')::numeric > 0`, `NULLIF(j->>'effective_price','') IS NOT NULL`);
     if (!q.include_stale) where.push('fresh');
-    if (!q.include_unverified) where.push(`completeness='A'`);
+    // price_outlier is stamped by the mirror (backend/matching.py): far under the same product at other stores.
+    if (!q.include_unverified) where.push(`completeness='A'`, `(j->>'price_outlier') IS DISTINCT FROM 'true'`);
   }
   if (q.category && q.category !== 'all') where.push(`(j->>'category')=${arg(q.category)}`);
   if (q.strain_type && q.strain_type.toLowerCase() !== 'all') where.push(`lower(coalesce(j->>'strain_type',''))=${arg(q.strain_type.toLowerCase())}`);
