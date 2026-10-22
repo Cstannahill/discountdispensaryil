@@ -39,6 +39,12 @@ class MirrorAsyncTests(unittest.TestCase):
         self.assertEqual(row, ("a", '{"name":"n"}'))
         self.assertEqual(neon_mirror.slim("live_stores", ("a", "b"), cols), ("a", "b"))
 
+    def test_slim_bakes_the_product_link_before_dropping_raw(self):
+        cols = ["id", "endpoint_id", "payload_json"]
+        payload = '{"source_id":"p1","source_url":"https://dutchie.com/embedded-menu/ab12","raw":{}}'
+        row = neon_mirror.slim("live_offers", ("a", "e1", payload), cols, {"e1": ("dutchie", "https://dutchie.com/embedded-menu/ab12", "recreational")})
+        self.assertEqual(row[2], '{"source_id":"p1","source_url":"https://dutchie.com/embedded-menu/ab12/product/p1"}')
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -18,6 +18,7 @@ import os
 from pathlib import Path
 import sqlite3
 import threading
+from .product_links import with_product_url
 
 # Read side of the app: stores, menus and offers. History (live_diffs) and audit/work tables stay local: they dwarf the
 # rest and the deals views never read them. Offers are slimmed: active only, and the "raw" source blob dropped from the
@@ -67,12 +68,16 @@ def init(sconn, pg, tables):
         pg.execute(ddl(sconn, t))
 
 
-def slim(table, row, cols):
+def slim(table, row, cols, endpoints=None):
     if table != "live_offers":
         return tuple(row)
     out = list(row)
     i = cols.index("payload_json")
     payload = json.loads(out[i])
+    # The raw blob is dropped, so the product deep link is built from it here.
+    endpoint = (endpoints or {}).get(out[cols.index("endpoint_id")] if "endpoint_id" in cols else None)
+    if endpoint:
+        payload["source_url"] = with_product_url(payload, *endpoint)
     payload.pop("raw", None)
     out[i] = json.dumps(payload, separators=(",", ":"))
     return tuple(out)
@@ -86,9 +91,10 @@ def sync(sconn, pg, tables):
         quoted = ",".join(f'"{n}"' for n in cols)
         pg.execute(f'TRUNCATE "{t}"')
         n = 0
+        endpoints = {r[0]: r[1:] for r in sconn.execute("SELECT id,provider,url,license_type FROM live_endpoints")} if t == "live_offers" else None
         with pg.cursor() as cur, cur.copy(f'COPY "{t}" ({quoted}) FROM STDIN') as copy:
             for row in sconn.execute(f'SELECT {quoted} FROM "{t}" {OFFER_FILTER.get(t, "")}'):
-                copy.write_row(slim(t, row, cols))
+                copy.write_row(slim(t, row, cols, endpoints))
                 n += 1
         counts[t] = n
     return counts
