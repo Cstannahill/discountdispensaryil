@@ -210,7 +210,7 @@ def resolve_menu(store, fetcher):
     pending=[(url,0,dict(url=url,status='candidate',reason='Store verifier lead',evidence=[]),False) for url in store.get('lead_urls') or []
              if isinstance(url,str) and url.startswith(('https://','http://'))]+pending
     results=[];failures=[];visited=set();max_pages=int(store.get('max_discovery_pages',24))
-    # A Leafly listing is a menu only when the store has no other one: it waits here while pages are crawled.
+    # A Leafly listing is a recreational menu only when the store has no other recreational platform menu: it waits here while pages are crawled.
     leafly_menus=[];leafly_queued=set()
     # A sample run caps discovery time per store; the crawl stops between candidates once the budget is spent.
     deadline=None if store.get('discovery_seconds') is None else time.monotonic()+float(store['discovery_seconds'])
@@ -255,7 +255,7 @@ def resolve_menu(store, fetcher):
         url=catalog_entry_url(url)
         if url in visited:continue
         visited.add(url)
-        if leafly_provider.slug_from(url) and any(x['provider']!='generic' for x in results):continue
+        if leafly_provider.slug_from(url) and any(x['provider']!='generic' and x['license_type']=='recreational' for x in results):continue
         if menu_document_scope(url)=='filtered':continue
         # Everything this page yields (endpoints, embeds, failures) carries the platforms seen on it, for the census.
         marks,page_platforms=(len(results),len(failures)),[]
@@ -388,7 +388,8 @@ def resolve_menu(store, fetcher):
     # A hub that lists every branch is not this branch's menu when a page carrying the branch's own slug was found.
     own=[x for x in catalog_entries+[x for x in results if x['provider']=='generic'] if branch_slug_confirms(store,x['url'])]
     if own and not platforms:catalog_entries=own
-    chosen=platforms or leafly_menus or catalog_entries or results or [dict(failure,discovery_attempts=failures) for failure in official_failures] or failures
+    if any(x['license_type']=='recreational' for x in platforms):leafly_menus=[]
+    chosen=platforms+leafly_menus or catalog_entries or results or [dict(failure,discovery_attempts=failures) for failure in official_failures] or failures
     # A native store id is the menu; its category and landing pages are one endpoint, not several.
     return list({(x['provider'],x.get('provider_store_id'),None if x.get('provider_store_id') and x['provider']=='jane' else x.get('url'),x['license_type']):x for x in chosen}.values())
 

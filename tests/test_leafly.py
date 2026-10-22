@@ -241,3 +241,11 @@ class WiringTests(unittest.TestCase):
                 if not service.stop_requested.is_set():
                     service.close()
             self.assertEqual(['leafly'], [e['provider'] for e in db.endpoints()])
+
+
+class ResolveLicenseTests(ResolveTests):
+    def test_a_medical_only_platform_menu_does_not_block_the_recreational_leafly_menu(self):
+        jane = 'https://www.iheartjane.com/stores/5846/nature-s-treatment-of-illinois-milan-med/menu/featured'
+        found, _ = self.resolve(STORE, [jane, f'https://www.leafly.com/dispensary-info/{SLUG}'], {SLUG: MILAN})
+        self.assertEqual({('jane', 'medicinal'), ('leafly', 'recreational')},
+                         {(x['provider'], x['license_type']) for x in found if x['provider'] in ('jane', 'leafly') and not x.get('status')})
