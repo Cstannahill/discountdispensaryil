@@ -10,6 +10,7 @@ Tables are replaced whole inside one transaction, so a reader sees the old or th
 The Postgres URL is NEON_DATABASE_URL (env or .env). Never printed.
 """
 import argparse
+import json
 import os
 from pathlib import Path
 import sqlite3
@@ -17,9 +18,12 @@ import sys
 
 import psycopg
 
-# Read side of the app: stores, menus, offers and their history. Heavy audit/work tables stay local.
+# Read side of the app: stores, menus and offers. History (live_diffs) and audit/work tables stay local: they dwarf the
+# rest and the deals views never read them. Offers are slimmed: active only, and the "raw" source blob dropped from the
+# payload (about 85% of its size; the API removes it before serving anyway).
 DEFAULT_TABLES = ("live_settings", "live_sources", "live_stores", "live_regions", "live_endpoints", "live_snapshots",
-                  "live_offers", "live_diffs", "live_store_platforms", "live_store_identity", "live_store_verifications")
+                  "live_offers", "live_store_platforms", "live_store_identity", "live_store_verifications")
+OFFER_FILTER = {"live_offers": "WHERE status='active'"}
 TYPES = {"INTEGER": "BIGINT", "REAL": "DOUBLE PRECISION", "TEXT": "TEXT"}
 
 
@@ -62,6 +66,17 @@ def init(sconn, pg, tables):
         pg.execute(ddl(sconn, t))
 
 
+def slim(table, row, cols):
+    if table != "live_offers":
+        return tuple(row)
+    out = list(row)
+    i = cols.index("payload_json")
+    payload = json.loads(out[i])
+    payload.pop("raw", None)
+    out[i] = json.dumps(payload, separators=(",", ":"))
+    return tuple(out)
+
+
 def sync(sconn, pg, tables):
     init(sconn, pg, tables)
     counts = {}
@@ -71,8 +86,8 @@ def sync(sconn, pg, tables):
         pg.execute(f'TRUNCATE "{t}"')
         n = 0
         with pg.cursor() as cur, cur.copy(f'COPY "{t}" ({quoted}) FROM STDIN') as copy:
-            for row in sconn.execute(f"SELECT {quoted} FROM \"{t}\""):
-                copy.write_row(tuple(row))
+            for row in sconn.execute(f'SELECT {quoted} FROM "{t}" {OFFER_FILTER.get(t, "")}'):
+                copy.write_row(slim(t, row, cols))
                 n += 1
         counts[t] = n
     return counts
