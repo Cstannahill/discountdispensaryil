@@ -30,6 +30,11 @@ def store_slug(url):
     return match[1] if match else None
 
 
+def storefront_page(url):
+    """A single-store storefront's own product page (/products/flower): the host names the store, so the URL carries no slug."""
+    return bool(re.match(r'/(?:products|shop)(?:/|$)', urlsplit(url).path))
+
+
 def storefront_key(fetcher, origin):
     """The storefront's publishable API key, read from its own script bundle."""
     home = fetcher.get(origin + '/')
@@ -54,7 +59,7 @@ def _headers(key, origin, store_id=None, app_id=None):
 
 def observe(url, response, evidence):
     """A Cresco storefront menu page: the slug names the branch; identity is proven later from the store record."""
-    if _host(response.url or url) not in HOSTS or not store_slug(response.url or url):
+    if _host(response.url or url) not in HOSTS or not (store_slug(response.url or url) or storefront_page(response.url or url)):
         return None
     return dict(url=url, provider='cresco', provider_store_id=None, license_type='recreational',
                 resolution_evidence=dict(evidence, method='Cresco storefront menu slug; branch proven from the storefront store record'))
@@ -81,7 +86,7 @@ def resolve_store(fetcher, origin, key, slug, usage):
 def _store_record(fetcher, origin, key, slug, usage):
     """The store record and ordering-app id for this storefront slug, from the storefront's own lookups."""
     host = urlsplit(origin).hostname
-    query = urlencode(dict(host=host, store_slug=slug, usage_type=usage, country='US'))
+    query = urlencode(dict(host=host, usage_type=usage, country='US', **(dict(store_slug=slug) if slug else {})))
     breakdown = json.loads(fetcher.get(f'{API}/p/ordering_apps/op/store-inventory-breakdown?{query}', headers=_headers(key, origin)).body)
     apps = breakdown.get('data') or []
     if len(apps) != 1:
@@ -91,7 +96,8 @@ def _store_record(fetcher, origin, key, slug, usage):
     if not ids:
         raise ValueError('Cresco ordering app lists no stores')
     listing = json.loads(fetcher.get(f'{API}/p/stores?ids={",".join(str(i) for i in ids)}', headers=_headers(key, origin)).body)
-    matches = [s for s in listing.get('data') or [] if s.get('store_slug') == slug and not s.get('deleted') and not s.get('hidden')]
+    # Without a slug (a single-store host) the ordering app must list exactly one visible store.
+    matches = [s for s in listing.get('data') or [] if (not slug or s.get('store_slug') == slug) and not s.get('deleted') and not s.get('hidden')]
     if len(matches) != 1:
         raise ValueError('Cresco store slug is missing or ambiguous in the ordering app')
     return matches[0], app['id']
@@ -139,7 +145,7 @@ def fetch(endpoint, fetcher):
     try:
         origin = 'https://' + _host(endpoint['url'])
         slug = store_slug(endpoint['url'])
-        if not slug:
+        if not slug and not storefront_page(endpoint['url']):
             raise ValueError('Cresco menu URL has no store slug')
         if endpoint.get('license_type') != 'recreational':
             raise ValueError('Cresco reader is recreational only in this version')

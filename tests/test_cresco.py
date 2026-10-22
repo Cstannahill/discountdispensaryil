@@ -54,6 +54,34 @@ class CrescoTests(unittest.TestCase):
         endpoint = _detect_endpoint(MENU, response(MENU, '<html></html>'))
         self.assertEqual((endpoint['provider'], endpoint['provider_store_id'], endpoint['license_type']), ('cresco', None, 'recreational'))
 
+    def test_a_single_store_products_page_is_a_cresco_endpoint_and_reads_its_store_by_host(self):
+        shop = 'https://www.shangrila-springfield.shop/products/flower'
+        endpoint = _detect_endpoint(shop, response(shop, '<html></html>'))
+        self.assertEqual((endpoint['provider'], endpoint['license_type']), ('cresco', 'recreational'))
+
+        class OneStore(Storefront):
+            def get(self, url, headers=None):
+                # The one-store host answers the same lookups; the ordering-app call carries no store slug.
+                if 'store-inventory-breakdown' in url:
+                    assert 'store_slug' not in parse_qs(urlsplit(url).query)
+                return super().get(url.replace('www.shangrila-springfield.shop', 'www.sunnyside.shop'), headers)
+        result = fetch_menu(dict(url=shop, provider='cresco', provider_store_id=None, license_type='recreational'), OneStore(flower=2, other=1))
+        self.assertTrue(result['complete'])
+        self.assertEqual(len(result['items']), 6)
+
+    def test_a_products_page_on_a_multi_store_host_fails_closed(self):
+        class TwoStores(Storefront):
+            def get(self, url, headers=None):
+                found = super().get(url, headers)
+                if '/p/stores' in url:
+                    body = json.loads(found.body)
+                    return response(url, dict(body, data=body['data'] + [dict(STORE, id=87, store_slug='other-il')]))
+                return found
+        shop = 'https://www.sunnyside.shop/products/flower'
+        result = fetch_menu(dict(url=shop, provider='cresco', provider_store_id=None, license_type='recreational'), TwoStores())
+        self.assertFalse(result['complete'])
+        self.assertTrue(result['errors'])
+
     def test_other_hosts_are_not_cresco(self):
         other = 'https://example.com/menu/champaign-il/store/champaign-il'
         self.assertNotEqual(_detect_endpoint(other, response(other, '<html></html>'))['provider'], 'cresco')
