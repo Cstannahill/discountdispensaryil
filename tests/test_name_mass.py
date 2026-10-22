@@ -34,6 +34,12 @@ class NameMassTests(unittest.TestCase):
         self.assertTrue(offer('Blue Dream Cartridge ( H ) | .5g', '0.5', '17.55')['eligible'])
         self.assertTrue(offer('Gummies 10pk | 100mg THC', '3.5')['eligible'])
 
+    def test_a_package_under_a_tenth_of_a_gram_in_a_priced_category_is_a_label_error(self):
+        for name in ('AIRO PURPLE PINA COLADA LIVE ROSIN POD', 'Relief RSO', 'KANHA OG BLACKBERRY CARTRIDGE'):
+            self.assertIn('implausible_package_mass', offer(name, '0.05', '40')['exclusion_reasons'], name)
+        for grams in ('0.1', '0.3', '0.5', '1', '3.5'):
+            self.assertNotIn('implausible_package_mass', offer('Cart', grams)['exclusion_reasons'], grams)
+
     def test_unbracketed_doses_are_not_package_mass(self):
         self.assertTrue(offer('Gummies 100mg THC', '3.5')['eligible'])
 
