@@ -23,6 +23,22 @@ SAMPLE_DISCOVERY_SECONDS = 120
 SAMPLE_WORKERS = 4
 
 
+def discovery_source(endpoint, leads):
+    """How this endpoint's website was found: a saved web-search query, an operator or verifier lead, a chain list, a hosted-store id, or a plain crawl."""
+    from urllib.parse import urlsplit
+    host=lambda url:(urlsplit(url or '').hostname or '').removeprefix('www.')
+    evidence=[x for x in endpoint.get('locator_evidence') or [] if isinstance(x,dict)]
+    if any('query' in x for x in evidence):return 'llm_web_search'
+    same=lambda lead:(lead.get('url') or '').rstrip('/')==endpoint['url'].rstrip('/') or host(lead.get('url'))==host(endpoint['url'])
+    if any(lead.get('source')=='operator' and same(lead) for lead in leads):return 'operator'
+    if any(lead.get('source')=='verifier' and same(lead) for lead in leads):return 'llm_verifier_lead'
+    if evidence:return 'chain_locator'
+    details=endpoint.get('resolution_evidence')
+    method=(details.get('method') if isinstance(details,dict) else '') or ''
+    if any(word in method for word in ('Rise-hosted','Jane hosted','Jane partner','Jane storefront')):return 'provider_id'
+    return 'crawl'
+
+
 def _tier(provider):
     return 'native' if provider in NATIVE_PROVIDERS else 'structured'
 
@@ -322,6 +338,7 @@ class SyncService:
                         results.append(dict(stage='resolution',store_id=store['id'],store_name=store['name'],**failure))
                         continue
                     self._record_rebrand(store,endpoint)
+                    endpoint['discovery_source']=discovery_source(endpoint,self.store.leads(store['id']))
                     saved_endpoint=self.store.save_endpoint(store['id'],endpoint)
                     # A retired endpoint (wrong branch, duplicate) stays retired when discovery finds it again.
                     if saved_endpoint.get('status')=='superseded':continue
