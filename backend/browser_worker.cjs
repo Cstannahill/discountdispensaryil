@@ -378,6 +378,7 @@ async function replayDutchieWholeMenu(page,captures,deadline,sample=0){
  }
  if(!template)return summary;
  summary.queries=1;
+ let rows=0,total=0;
  const filter=template.variables.productsFilter;
  for(let number=0;number<(sample||80)&&Date.now()<deadline;number++){
   const target=new URL(template.url);
@@ -388,15 +389,18 @@ async function replayDutchieWholeMenu(page,captures,deadline,sample=0){
    try{
     const response=await fetch(url,{headers,credentials:new URL(url).origin===location.origin?'include':'same-origin'});
     const value=await response.json().catch(()=>null);
-    const rows=value&&value.data&&value.data.filteredProducts&&value.data.filteredProducts.products;
-    return {status:response.status,rows:Array.isArray(rows)?rows.length:null};
-   }catch{return {status:0,rows:null};}
+    const filtered=value&&value.data&&value.data.filteredProducts;
+    const rows=filtered&&filtered.products,total=filtered&&filtered.queryInfo&&filtered.queryInfo.totalCount;
+    return {status:response.status,rows:Array.isArray(rows)?rows.length:null,total:Number.isInteger(total)?total:null};
+   }catch{return {status:0,rows:null,total:null};}
   },{url:target.href,headers:template.headers}));
   if(result.status!==200||result.rows===null){summary.errors++;break;}
   summary.fetched++;
   await waitForCapture(page,captures,seen,8000);
-  // A short page is not the end (hidden rows are dropped after paging); the first empty page is.
-  if(!result.rows){summary.complete=true;break;}
+  // A short page is not the end (rows can be dropped after paging); the first empty page, or having read the declared total, is.
+  rows+=result.rows;
+  if(result.total!==null)total=Math.max(total,result.total);
+  if(!result.rows||(total&&rows>=total)){summary.complete=true;break;}
   summary.pages++;
  }
  return summary;
@@ -487,9 +491,13 @@ async function scrollMenu(page,captures,options){
  }
  let replay=null,explore=null,offsets=null;
  if(clicks===0&&options.replay_pagination!==false){
-  replay=await replayPagination(page,captures,started+budget,sample);
+  // Dutchie: the whole menu is one query once a product query has shown its hash. A storefront that already loaded one is read
+  // by it directly, since its own whole query keeps the threshold filter that drops rows after paging.
+  const early=options.whole_menu_query!==false&&dutchieTemplates.length?await replayDutchieWholeMenu(page,captures,started+budget,sample):null;
+  if(early&&early.queries&&!early.errors&&(early.complete||sample))replay={queries:early.queries,fetched:early.fetched,errors:0,whole:true,synthesized:true,whole_menu:early};
+  else replay=await replayPagination(page,captures,started+budget,sample);
   // Without a whole-menu query the categories must each be seen once so their own paged queries can be replayed.
-  // Dutchie: the whole menu is one query once a product page has shown its hash. Only if that read is clean is the crawl skipped.
+  // Without one yet, a single product page teaches it. Only if that read is clean is the crawl skipped.
   if(!replay.whole&&options.whole_menu_query!==false){
    const whole=await replayDutchieWholeMenu(page,captures,started+budget,sample);
    if(whole.queries){

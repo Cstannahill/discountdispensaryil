@@ -101,7 +101,11 @@ class DutchieServer:
                     self.send(json.dumps(dict(data=dict(filteredProducts=dict(products=products, queryInfo=dict(totalCount=total, totalPages=(total + 99) // 100))))).encode(), 'application/json')
                     return
                 outer.navigations.append(parts.path)
-                if parts.path.startswith('/products/'):
+                if parts.path == '/direct':
+                    # This storefront's own home view already loads a whole-menu query, with the default threshold filter on.
+                    variables = json.dumps(dict(productsFilter=dict(dispensaryId='d', types=[], strainTypes=[], subcategories=[], Status='Active', sortBy='popularSortIdx', sortDirection=1, isDefaultSort=True, removeProductsBelowOptionThresholds=True), page=0, perPage=100))
+                    self.send(('<html><body><main>Menu</main><a href="/products/flower">Flower</a><script>fetch("/graphql?operationName=FilteredProducts&variables="+encodeURIComponent(%s),{headers:{"apollographql-client-name":"Marketplace (production)"}})</script></body></html>' % json.dumps(variables)).encode(), 'text/html')
+                elif parts.path.startswith('/products/'):
                     variables = json.dumps(dict(productsFilter=dict(dispensaryId='d', types=['Flower'], strainTypes=[], subcategories=[], Status='Active', sortBy='popular', sortDirection=1, isDefaultSort=True, removeProductsBelowOptionThresholds=True), page=0, perPage=100))
                     self.send(('<html><body><main>Flower</main><script>fetch("/graphql?operationName=FilteredProducts&variables="+encodeURIComponent(%s),{headers:{"apollographql-client-name":"Marketplace (production)"}})</script></body></html>' % json.dumps(variables)).encode(), 'text/html')
                 else:
@@ -139,11 +143,41 @@ class WholeMenuReplayTests(unittest.TestCase):
                     # Only the first category page was needed to learn the query; no other category was opened.
                     self.assertEqual([p for p in site.navigations if p.startswith('/products/')], ['/products/flower'])
                     whole = [q for q in site.pages if not q['types']]
-                    self.assertEqual([q['page'] for q in whole], [0, 1, 2, 3])
+                    self.assertEqual([q['page'] for q in whole], [0, 1, 2])
                     self.assertTrue(all(q['sort'] == 'name' and q['remove'] is False for q in whole))
                     found = extract_products(load_captured(Path(folder) / 'evidence', result.evidence_id), 'http://example.com/menu')
                     self.assertEqual(found['total'], 250)
                     self.assertEqual(len({i['source_id'] for i in found['items']}), 250)
+                finally:
+                    fetcher.close()
+        finally:
+            site.close()
+
+
+@unittest.skipUnless(os.environ.get('TERPSCOUT_BROWSER_TEST') == '1', 'Set TERPSCOUT_BROWSER_TEST=1 for installed Chrome integration')
+class OwnWholeMenuQueryTests(unittest.TestCase):
+    def test_a_storefront_whole_menu_query_is_reread_with_below_threshold_rows_so_it_reconciles(self):
+        import socket
+        import threading
+        from unittest.mock import patch
+        from backend.network_extract import extract_products, load_captured
+        site = DutchieServer()
+        real_timer = threading.Timer
+        try:
+            with tempfile.TemporaryDirectory() as folder:
+                fetcher = PublicFetcher(Path(folder) / 'evidence', transport=httpx.MockTransport(lambda req: (_ for _ in ()).throw(AssertionError('Native traffic must use the controlled test tunnel'))), resolver=lambda *a, **k: [(2, 1, 6, '', ('93.184.216.34', 80))])
+                fetcher.native_browser_allowed = True
+                fetcher.browser_options = {'await_menu': True, 'menu_readiness_ms': 300, 'scroll_menu': True}
+                try:
+                    with patch('backend.browser_proxy.connect_public', side_effect=lambda *a, **k: (socket.create_connection(site.server.server_address, timeout=3), '93.184.216.34')), patch('backend.browser_render.threading.Timer', side_effect=lambda seconds, callback: real_timer(60, callback)):
+                        result = fetcher.render('http://example.com/direct')
+                    diagnostics = json.loads((Path(folder) / 'evidence/browser' / f'{result.evidence_id}.json').read_text(encoding='utf-8'))
+                    self.assertTrue(diagnostics['scroll']['replay']['whole'])
+                    self.assertEqual([p for p in site.navigations if p.startswith('/products/')], [])
+                    self.assertEqual([q['page'] for q in site.pages if q['remove'] is False], [0, 1, 2])
+                    found = extract_products(load_captured(Path(folder) / 'evidence', result.evidence_id), 'http://example.com/direct')
+                    self.assertEqual(len({i['source_id'] for i in found['items']}), 250)
+                    self.assertEqual(found['total'], 250)
                 finally:
                     fetcher.close()
         finally:
