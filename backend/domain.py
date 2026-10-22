@@ -78,11 +78,11 @@ def flower_grade(item):
 
 # A mass written in the product name as [300mg], [4g] or (2.5 g) is the package the retailer says it sells; a priced option
 # label that disagrees with every such mass (Jane "half gram" on a [4g] extract) would make a wrong $/g, so it is excluded.
-_NAME_MASS = re.compile(r"[\[(]\s*(\d*\.?\d+)\s*(mg|g|grams?)\s*[\])]", re.I)
+_NAME_MASS = re.compile(r"[\[(]\s*(\d*\.?\d+)\s*(mg|g|grams?)\s*[\])]|\|\s*(\d*\.?\d+)\s*(mg|g|grams?)\s*(?:\||$)", re.I)
 
 
 def name_masses(name):
-    return {Decimal(n) / (1000 if u.lower() == "mg" else 1) for n, u in _NAME_MASS.findall(str(name or ""))}
+    return {Decimal(n or n2) / (1000 if (u or u2).lower() == "mg" else 1) for n, u, n2, u2 in _NAME_MASS.findall(str(name or ""))}
 
 
 def normalize_offer(item):

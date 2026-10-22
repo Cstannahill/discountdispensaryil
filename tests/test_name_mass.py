@@ -29,6 +29,11 @@ class NameMassTests(unittest.TestCase):
             self.assertTrue(result['eligible'], name)
             self.assertNotIn('conflicting_package_mass', result['exclusion_reasons'])
 
+    def test_a_pipe_delimited_trailing_mass_is_the_stated_package(self):
+        self.assertIn('conflicting_package_mass', offer('Blue Dream Cartridge ( H ) | .5g', '0.05', '17.55')['exclusion_reasons'])
+        self.assertTrue(offer('Blue Dream Cartridge ( H ) | .5g', '0.5', '17.55')['eligible'])
+        self.assertTrue(offer('Gummies 10pk | 100mg THC', '3.5')['eligible'])
+
     def test_unbracketed_doses_are_not_package_mass(self):
         self.assertTrue(offer('Gummies 100mg THC', '3.5')['eligible'])
 
