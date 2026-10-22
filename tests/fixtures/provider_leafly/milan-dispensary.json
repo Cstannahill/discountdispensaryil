@@ -1,0 +1,18 @@
+{
+ "id": 174378,
+ "name": "Nature's Treatment of Illinois - Milan (Medical & Recreational)",
+ "slug": "nature-s-treatment-of-illinois",
+ "address1": "973 Tech Drive",
+ "city": "Milan",
+ "state": "IL",
+ "zip": "61264",
+ "locations": [
+  {
+   "lat": 41.4422671,
+   "lon": -90.5426505
+  }
+ ],
+ "menuTaxPricing": "tax_inclusive_pricing",
+ "offersMedicalCards": false,
+ "hasMenuItems": true
+}

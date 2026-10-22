@@ -14,7 +14,7 @@ BLAZE_API = 'https://ecom-api.blaze.me/api/v1/products/'
 
 
 def provider_capabilities(provider):
-    native=provider in ('blaze','sweed','dispense','treez','gapcommerce','joint','jane','verano')
+    native=provider in ('blaze','sweed','dispense','treez','gapcommerce','joint','jane','verano','leafly')
     structured=provider in ('generic','jane','dutchie','cresco')
     return dict(native_full_menu=native,structured_fallback=structured,
                 support='native_full_menu' if native else 'conditional_structured_fallback' if structured else 'unsupported')
@@ -196,6 +196,7 @@ def resolve_menu(store, fetcher):
     from .locators import discover_menu_candidates
     from .site_discovery import dutchie_page_endpoints, inspect_page, license_context, provider_address_matches, catalog_entry_url, is_directory_url, retailer_links_from_directory, menu_document_scope, search_websites, branch_slug_conflict, branch_slug_confirms, janeboost_store_links
     from .providers.generic import extract
+    from .providers import leafly as leafly_provider
     from .providers.jane import hosted_store as jane_hosted_store
     from .documents import read_document
     import copy
@@ -209,6 +210,8 @@ def resolve_menu(store, fetcher):
     pending=[(url,0,dict(url=url,status='candidate',reason='Store verifier lead',evidence=[]),False) for url in store.get('lead_urls') or []
              if isinstance(url,str) and url.startswith(('https://','http://'))]+pending
     results=[];failures=[];visited=set();max_pages=int(store.get('max_discovery_pages',24))
+    # A Leafly listing is a menu only when the store has no other one: it waits here while pages are crawled.
+    leafly_menus=[];leafly_queued=set()
     # A sample run caps discovery time per store; the crawl stops between candidates once the budget is spent.
     deadline=None if store.get('discovery_seconds') is None else time.monotonic()+float(store['discovery_seconds'])
     for c in seeds:
@@ -252,12 +255,23 @@ def resolve_menu(store, fetcher):
         url=catalog_entry_url(url)
         if url in visited:continue
         visited.add(url)
+        if leafly_provider.slug_from(url) and any(x['provider']!='generic' for x in results):continue
         if menu_document_scope(url)=='filtered':continue
         # Everything this page yields (endpoints, embeds, failures) carries the platforms seen on it, for the census.
         marks,page_platforms=(len(results),len(failures)),[]
         try:
             response=fetcher._branch_render_cache.get(url) or read_document(url,fetcher)
             if response.status_code!=200:raise ValueError(f'HTTP {response.status_code}')
+            if leafly_provider.slug_from(response.url):
+                # The listing's own street address and map pin prove the branch; a mismatch is not this store's menu.
+                listing=leafly_provider.observe(response.url,response)
+                if listing:
+                    match=provider_address_matches(store,listing)
+                    if match:leafly_menus.append(dict(listing,identity_confidence='matched',locator_evidence=seed.get('evidence',[]),platforms=['leafly']))
+                    elif match is False:
+                        failures.append(dict(url=listing['url'],provider='leafly',provider_store_id=listing['provider_store_id'],license_type='recreational',status='identity_conflict',
+                                             reason='Leafly listing belongs to a different street address: '+str(listing['resolution_evidence'].get('retailer_address')),resolution_evidence=listing['resolution_evidence']))
+                    continue
             if is_directory_url(response.url):
                 # Listings help discover a retailer website; they are not a
                 # substitute for its authoritative menu, even with an address.
@@ -267,6 +281,9 @@ def resolve_menu(store, fetcher):
                                      reason='Third-party directory is a discovery lead, not a retailer menu',resolution_evidence=dict(url=response.url,evidence_id=response.evidence_id)))
                 continue
             page_platforms=detect_platforms(_text(response))
+            for link in leafly_provider.listing_links(_text(response))[:6]:
+                if link not in leafly_queued and link not in visited:
+                    leafly_queued.add(link);pending.append((link,depth+1,dict(seed,reason='Leafly listing linked from the retailer site'),False))
             identity=inspect_page(store,response)
             # Explicit supplied URLs are useful for diagnostic probes. Registry
             # discovery accepts address OR business+locality evidence.
@@ -371,7 +388,7 @@ def resolve_menu(store, fetcher):
     # A hub that lists every branch is not this branch's menu when a page carrying the branch's own slug was found.
     own=[x for x in catalog_entries+[x for x in results if x['provider']=='generic'] if branch_slug_confirms(store,x['url'])]
     if own and not platforms:catalog_entries=own
-    chosen=platforms or catalog_entries or results or [dict(failure,discovery_attempts=failures) for failure in official_failures] or failures
+    chosen=platforms or leafly_menus or catalog_entries or results or [dict(failure,discovery_attempts=failures) for failure in official_failures] or failures
     # A native store id is the menu; its category and landing pages are one endpoint, not several.
     return list({(x['provider'],x.get('provider_store_id'),None if x.get('provider_store_id') and x['provider']=='jane' else x.get('url'),x['license_type']):x for x in chosen}.values())
 
@@ -388,6 +405,9 @@ def fetch_menu(endpoint, fetcher):
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'joint':
         from backend.providers.joint import fetch
+        return fetch(endpoint,fetcher)
+    if endpoint.get('provider') == 'leafly':
+        from backend.providers.leafly import fetch
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'jane' and endpoint.get('provider_store_id'):
         from backend.providers.jane import fetch

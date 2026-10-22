@@ -217,7 +217,7 @@ class Store:
                 if row['provider']=='generic':canonical=catalog_entry_url(canonical)
                 reason=None
                 path=urlsplit(row['url']).path.lower()
-                if is_directory_url(row['url']):
+                if is_directory_url(row['url']) and row['provider']!='leafly':
                     reason='Third-party directory retained as discovery evidence; not a retailer menu'
                 elif not row['last_success_at'] and re.search(r'\.(?:js|xml|json|css)$',path):
                     reason='Script, sitemap or data asset retained as evidence; not a menu document'
@@ -301,7 +301,7 @@ class Store:
             self._bump(conn)
 
     # Platform store ids that name exactly one store. Sweed, Treez and similar ids can be shared by a chain's branches.
-    SINGLE_STORE_PROVIDERS = ('blaze', 'dutchie', 'jane', 'cresco')
+    SINGLE_STORE_PROVIDERS = ('blaze', 'dutchie', 'jane', 'cresco', 'leafly')
 
     def platform_store_owner(self, provider, provider_store_id, store_id):
         """The other registry store this platform store is already bound to, or None. Only single-store provider ids count."""

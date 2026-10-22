@@ -16,7 +16,7 @@ from .storage import REGISTRY_URL
 from .runtime import PIPELINE_VERSION, PipelineInterrupted
 
 
-NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'gapcommerce', 'joint', 'jane', 'verano')
+NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'gapcommerce', 'joint', 'jane', 'verano', 'leafly')
 # Sample runs stop a store's discovery crawl after this many seconds; full runs never budget discovery.
 SAMPLE_DISCOVERY_SECONDS = 120
 # Sample runs process this many stores at once; full runs stay sequential.
@@ -346,8 +346,8 @@ class SyncService:
                         if failure['url']:self.store.record_lead(store['id'],failure['url'],'resolver',failure['error'],[failure['evidence']])
                         continue
                     # Directory listings and filtered/promotion pages are website leads, not menu endpoints.
-                    if is_directory_url(endpoint['url']) or (endpoint.get('provider')=='generic' and menu_document_scope(endpoint['url'])=='filtered'):
-                        reason='Third-party directory is a discovery lead, not a retailer menu' if is_directory_url(endpoint['url']) else 'Filtered product/promotion page is not an independent full menu'
+                    if (is_directory_url(endpoint['url']) and endpoint.get('provider')!='leafly') or (endpoint.get('provider')=='generic' and menu_document_scope(endpoint['url'])=='filtered'):
+                        reason='Third-party directory is a discovery lead, not a retailer menu' if is_directory_url(endpoint['url']) and endpoint.get('provider')!='leafly' else 'Filtered product/promotion page is not an independent full menu'
                         self.store.record_lead(store['id'],endpoint['url'],'resolver',reason,[endpoint.get('resolution_evidence')])
                         failures.append(dict(status='unresolved',error=reason,url=endpoint['url'],evidence=endpoint.get('resolution_evidence')))
                         continue
