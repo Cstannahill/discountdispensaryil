@@ -7,6 +7,7 @@ import copy
 import threading
 import time
 
+from . import neon_mirror
 from .adapters import fetch_menu, resolve_menu, has_menu_contract
 from .discovery import parse_registry, resolve_location, REGISTRY_SOURCE_PAGE
 from .domain import age_hours, utcnow
@@ -478,6 +479,7 @@ class SyncService:
                         self._check_stop()
                         had_failure=self._process_store_for_job(job_id,store,results,payload,threading.Lock()) or had_failure
                 self.store.update_job(job_id, "partial" if had_failure else "succeeded", results)
+                if not payload.get('sample_pages'):neon_mirror.mirror_async(self.store.db_path)
             except PipelineInterrupted as exc:
                 self.store.update_job(job_id,'interrupted',results,str(exc))
             except Exception as exc:
