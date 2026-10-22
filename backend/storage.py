@@ -240,6 +240,52 @@ class Store:
             if changed:self._bump(conn)
         return changed
 
+    @staticmethod
+    def _menu_signature(conn, endpoint_id):
+        """The endpoint's active offers as a sorted list of what a shopper sees: name, brand, size, regular and effective price."""
+        rows = conn.execute("SELECT payload_json FROM live_offers WHERE endpoint_id=? AND status='active'", (endpoint_id,)).fetchall()
+        items = []
+        for row in rows:
+            p = json.loads(row[0])
+            items.append((p.get('name'), p.get('brand'), str(p.get('weight_grams')), str(p.get('regular_price')), str(p.get('effective_price'))))
+        return sorted(items)
+
+    def identical_duplicate_endpoints(self):
+        """(keep_id, duplicate_id) pairs: accepted endpoints of one store and license whose active offers match exactly.
+        The kept menu is the more recently refreshed one. Menus that differ at all are never reported."""
+        pairs = []
+        with self.connection() as conn:
+            rows = conn.execute("SELECT id,store_id,license_type,last_success_at FROM live_endpoints WHERE status!='superseded' AND last_success_at IS NOT NULL ORDER BY store_id,license_type,last_success_at DESC,id").fetchall()
+            groups = {}
+            for row in rows:
+                groups.setdefault((row['store_id'], row['license_type']), []).append(row)
+            for group in groups.values():
+                signatures = {row['id']: self._menu_signature(conn, row['id']) for row in group}
+                keep = None
+                for row in group:
+                    if not signatures[row['id']]:
+                        continue
+                    if keep is None:
+                        keep = row
+                    elif signatures[row['id']] == signatures[keep['id']]:
+                        pairs.append((keep['id'], row['id']))
+        return pairs
+
+    def retire_duplicate_endpoint(self, duplicate_id, keep_id, reason):
+        """Retire an accepted menu that is proven identical to another endpoint of the same store and license. History stays; its offers stop counting."""
+        with self.connection() as conn:
+            rows = {r['id']: r for r in conn.execute("SELECT id,store_id,license_type,status FROM live_endpoints WHERE id IN (?,?)", (duplicate_id, keep_id)).fetchall()}
+            if len(rows) != 2 or duplicate_id == keep_id:
+                raise ValueError("unknown_menu")
+            a, b = rows[duplicate_id], rows[keep_id]
+            if (a['store_id'], a['license_type']) != (b['store_id'], b['license_type']) or 'superseded' in (a['status'], b['status']):
+                raise ValueError("not_identical")
+            kept = self._menu_signature(conn, keep_id)
+            if not kept or kept != self._menu_signature(conn, duplicate_id):
+                raise ValueError("not_identical")
+            conn.execute("UPDATE live_endpoints SET status='superseded',last_error=? WHERE id=?", (str(reason), duplicate_id))
+            self._bump(conn)
+
     def supersede_endpoint(self, endpoint_id, reason):
         """Retire a menu endpoint without deleting it (history and evidence stay). An endpoint that holds active
         accepted offers is refused: hiding accepted inventory needs a deliberate decision, not a cleanup call."""
