@@ -190,6 +190,24 @@ async function clickMore(page){
 const pagedQueries=[],replayed=new Set();
 // The storefront's own product-search POSTs (GapCommerce). Kept so the page's request can be replayed from the page.
 const gapTemplates=[];
+// Context/presentation keys of a Dutchie product filter; anything else narrows the result set (staffPicks, brand, ids...).
+const benignFilterKeys=/^(?:dispensaryId|pricingType|strainTypes|subcategories|Status|types|useCache|isDefaultSort|sortBy|sortDirection|bypassOnlineThresholds|ignoreQuantityThresholds|isKioskMenu|removeProductsBelowOptionThresholds|platformType|preOrderType)$/;
+// Dutchie FilteredProducts requests the page itself made (any category, however few products). They carry the persisted-query
+// hash and the app headers, which a whole-menu read needs and which only a product page reveals.
+const dutchieTemplates=[];
+function noteDutchieTemplate(url,headers){
+ if(dutchieTemplates.length>=20)return;
+ try{
+  const target=new URL(url);
+  if(target.searchParams.get('operationName')!=='FilteredProducts')return;
+  const variables=JSON.parse(target.searchParams.get('variables')||'null');
+  const filter=variables&&variables.productsFilter;
+  if(!filter||typeof filter.dispensaryId!=='string'||!Number.isInteger(variables.page))return;
+  if(Array.isArray(filter.productIds)&&filter.productIds.length)return;
+  if(Object.keys(filter).some(key=>!benignFilterKeys.test(key)&&filter[key]&&!(Array.isArray(filter[key])&&!filter[key].length)))return;
+  dutchieTemplates.push({url,headers,variables});
+ }catch{}
+}
 function noteIfPaged(url,headers,text){
  if(pagedQueries.length>200||text.length>4e6)return;
  let value;try{value=JSON.parse(text);}catch{return;}
@@ -211,8 +229,7 @@ async function replayPagination(page,captures,deadline,sample=0){
    if(!variables||!Number.isInteger(variables.page))return null;
    const filter=variables.productsFilter||{};
    // Anything beyond context/presentation keys narrows the result set (staffPicks, isOnSpecial, brand, ids, categories...).
-   const benign=/^(?:dispensaryId|pricingType|strainTypes|subcategories|Status|types|useCache|isDefaultSort|sortBy|sortDirection|bypassOnlineThresholds|ignoreQuantityThresholds|isKioskMenu|removeProductsBelowOptionThresholds|platformType|preOrderType)$/;
-   const narrowed=Object.keys(filter).some(key=>!benign.test(key)&&filter[key]&&!(Array.isArray(filter[key])&&!filter[key].length))||['types','strainTypes','subcategories'].some(key=>Array.isArray(filter[key])&&filter[key].length);
+   const narrowed=Object.keys(filter).some(key=>!benignFilterKeys.test(key)&&filter[key]&&!(Array.isArray(filter[key])&&!filter[key].length))||['types','strainTypes','subcategories'].some(key=>Array.isArray(filter[key])&&filter[key].length);
    // Id-list queries (carousels) cannot be paged by number; Dutchie category queries carry an empty productIds list.
    return {...record,target,variables,whole:!narrowed,hasIds:Array.isArray(filter.productIds)?filter.productIds.length>0:'productIds' in filter&&filter.productIds!=null};
   }catch{return null;}
@@ -348,7 +365,43 @@ async function settleCaptures(captures,timeout=8000){
  await Promise.race([Promise.allSettled(captures),new Promise(resolve=>setTimeout(resolve,timeout))]);
 }
 // Visit each category page the storefront links to and page through it. Union and totals are reconciled by the extractor.
-async function exploreCategories(page,captures,deadline,{visitOnly=false,sample=0}={}){
+// A Dutchie menu is one query once its category, sort and threshold filters are lifted. The product page the storefront
+// already opened supplies the persisted-query hash and headers; the whole menu is then read 100 at a time from the page,
+// by name (a stable order), with below-threshold rows included so the rows reconcile to queryInfo.totalCount.
+async function replayDutchieWholeMenu(page,captures,deadline,sample=0){
+ const summary={queries:0,fetched:0,errors:0,pages:0};
+ let template=dutchieTemplates[dutchieTemplates.length-1];
+ if(!template){
+  // One product page is enough to learn the query; the other categories are not opened.
+  summary.learned=await exploreCategories(page,captures,deadline,{visitOnly:true,sample,only:/\/products\/[^/?#]+\/?$/i,limit:1});
+  template=dutchieTemplates[dutchieTemplates.length-1];
+ }
+ if(!template)return summary;
+ summary.queries=1;
+ const filter=template.variables.productsFilter;
+ for(let number=0;number<(sample||80)&&Date.now()<deadline;number++){
+  const target=new URL(template.url);
+  target.searchParams.set('variables',JSON.stringify({...template.variables,page:number,perPage:template.variables.perPage||100,
+   productsFilter:{...filter,types:[],strainTypes:[],subcategories:[],sortBy:'name',sortDirection:1,isDefaultSort:false,removeProductsBelowOptionThresholds:false}}));
+  const seen=captures.length;
+  const result=await retried(()=>page.evaluate(async ({url,headers})=>{
+   try{
+    const response=await fetch(url,{headers,credentials:new URL(url).origin===location.origin?'include':'same-origin'});
+    const value=await response.json().catch(()=>null);
+    const rows=value&&value.data&&value.data.filteredProducts&&value.data.filteredProducts.products;
+    return {status:response.status,rows:Array.isArray(rows)?rows.length:null};
+   }catch{return {status:0,rows:null};}
+  },{url:target.href,headers:template.headers}));
+  if(result.status!==200||result.rows===null){summary.errors++;break;}
+  summary.fetched++;
+  await waitForCapture(page,captures,seen,8000);
+  // A short page is not the end (hidden rows are dropped after paging); the first empty page is.
+  if(!result.rows){summary.complete=true;break;}
+  summary.pages++;
+ }
+ return summary;
+}
+async function exploreCategories(page,captures,deadline,{visitOnly=false,sample=0,only=null,limit=0}={}){
  const links=await retried(()=>page.evaluate(()=>{
   const roots=[document];for(let i=0;i<roots.length;i++)for(const node of roots[i].querySelectorAll('*'))if(node.shadowRoot)roots.push(node.shadowRoot);
   const found=[];
@@ -360,7 +413,8 @@ async function exploreCategories(page,captures,deadline,{visitOnly=false,sample=
   return [...new Set(found)];
  }));
  const summary={categories:links.length,pages:0,visited:[]};
- for(const link of links.slice(0,sample?10:30)){
+ const wanted=only?links.filter(link=>only.test(new URL(link).pathname)):links;
+ for(const link of wanted.slice(0,limit||(sample?10:30))){
   if(Date.now()>deadline){summary.out_of_time=true;break;}
   await settleCaptures(captures);
   let seen=captures.length,captured=false,stopped=false;
@@ -435,6 +489,13 @@ async function scrollMenu(page,captures,options){
  if(clicks===0&&options.replay_pagination!==false){
   replay=await replayPagination(page,captures,started+budget,sample);
   // Without a whole-menu query the categories must each be seen once so their own paged queries can be replayed.
+  // Dutchie: the whole menu is one query once a product page has shown its hash. Only if that read is clean is the crawl skipped.
+  if(!replay.whole&&options.whole_menu_query!==false){
+   const whole=await replayDutchieWholeMenu(page,captures,started+budget,sample);
+   if(whole.queries){
+    replay={queries:replay.queries+whole.queries,fetched:replay.fetched+whole.fetched,errors:replay.errors+whole.errors,whole:!whole.errors&&(whole.complete||!!sample),synthesized:true,whole_menu:whole};
+   }
+  }
   if(!replay.whole&&options.explore_categories!==false){
    // Category pages page by id lists that cannot be replayed by number, so step through them with the pager as well.
    explore=await exploreCategories(page,captures,started+budget,{sample});
@@ -539,6 +600,7 @@ async function run({url,options,storage_state,native_proxy}){
      const keep=['accept','content-type','apollo-require-preflight','x-apollo-operation-name','apollographql-client-name','apollographql-client-version','x-api-key','x-client-version','store_id','ordering_app_id'],all=await req.allHeaders();
      const sent=Object.fromEntries(keep.filter(key=>all[key]).map(key=>[key,all[key]]));
      noteIfPaged(response.url(),sent,body.toString('utf8'));
+     noteDutchieTemplate(response.url(),sent);
      noteIfLimited(response.url(),sent,body.toString('utf8'));
     }
     if(options.catalog_navigation&&response.status()===200&&new URL(response.url()).origin===new URL(url).origin&&new URL(response.url()).pathname.startsWith('/_next/static/')&&responseHeaders['cache-control']?.includes('immutable')&&!responseHeaders['set-cookie']&&cacheBytes+body.length<32*1024*1024){

@@ -72,7 +72,7 @@ _RULES = [
     (r'empty_or_large_drop|large_drop', FailureCode.SUSPICIOUS_DROP),
     (r'changed across|changed between|did not reconcile across|menu changed', FailureCode.UNSTABLE),
     (r'missing products|inconsistent (?:advertised )?total|does not reconcile|expected_count_mismatch|missing page products', FailureCode.COUNT_MISMATCH),
-    (r'exceeds (?:the )?response size limit|response size limit exceeded', FailureCode.RESPONSE_TOO_LARGE),
+    (r'exceeds (?:the )?response size limit|response size limit exceeded|byte budget exceeded', FailureCode.RESPONSE_TOO_LARGE),
     (r'page limit|ambiguous next-page|pagination repeated|pagination changed', FailureCode.PAGINATION_UNKNOWN),
     (r'unsupported (?:menu )?provider|unsupported_provider', FailureCode.PROVIDER_UNSUPPORTED),
     (r'unknown schema|unrecognized (?:schema|response)', FailureCode.SCHEMA_UNKNOWN),

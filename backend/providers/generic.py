@@ -3,6 +3,7 @@ from decimal import Decimal
 import copy
 import hashlib
 import json
+from pathlib import Path
 import re
 from urllib.parse import urljoin, urlsplit
 from backend.site_discovery import Page, objects, inspect_page, license_context
@@ -112,6 +113,16 @@ def browser_error_page(response):
     return response.url.startswith('chrome-error:')
 
 
+def tunnel_budget_exhausted(fetcher,response):
+    """The render's own tunnel refused connections for lack of byte budget. Chrome then shows its error page, which is our limit, not the source refusing."""
+    folder=getattr(fetcher,'evidence_dir',None)
+    if not folder:return False
+    path=Path(folder)/'browser'/f'{response.evidence_id}.json'
+    try:blocks=json.loads(path.read_text(encoding='utf-8')).get('tunnel_blocks') or []
+    except (OSError,ValueError,AttributeError):return False
+    return any('byte budget exceeded' in str(block.get('error','')) for block in blocks if isinstance(block,dict))
+
+
 def same_store_host(endpoint,response,hosts):
     """A redirected page is this store's menu when its host was proven by a page that carried the store id. Later pages on that host stay the same menu."""
     host=(urlsplit(response.url).hostname or '').removeprefix('www.')
@@ -164,7 +175,9 @@ def fetch(endpoint,fetcher):
                 if products or network:
                     counter=visible_total(text)
                     if counter:shown.add(counter)
-                if browser_error_page(response):raise ValueError('Browser navigation refused: the source refused this browser session (HTTP 403 on this menu) and Chrome showed an error page instead of the menu')
+                if browser_error_page(response):
+                    if tunnel_budget_exhausted(fetcher,response):raise ValueError('Browser tunnel byte budget exceeded: the render used up its transfer budget and Chrome showed an error page instead of the menu')
+                    raise ValueError('Browser navigation refused: the source refused this browser session (HTTP 403 on this menu) and Chrome showed an error page instead of the menu')
                 expected_host=(urlsplit(endpoint['url']).hostname or '').removeprefix('www.')
                 actual_host=(urlsplit(response.url).hostname or '').removeprefix('www.')
                 if actual_host!=expected_host and not same_store_host(endpoint,response,same_store_hosts):raise ValueError('Generic menu redirected to a different source hostname; rediscovery required')
