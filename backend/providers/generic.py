@@ -7,7 +7,7 @@ from pathlib import Path
 import re
 from urllib.parse import urljoin, urlsplit
 from backend.site_discovery import Page, objects, inspect_page, license_context
-from backend.domain import GRAMS_PER_OUNCE, inventory_fields
+from backend.domain import GRAMS_PER_OUNCE, category_of, inventory_fields
 from backend.documents import read_document
 from backend.completeness import MIN_CONVERGED_ITEMS, churn_convergence, counts_reconcile, visible_total
 
@@ -40,7 +40,7 @@ def normalize(product, endpoint):
         if value and unit in ('grm','g','gram','grams','oz','ounce','ounces'):
             grams=_decimal(Decimal(value)*(GRAMS_PER_OUNCE if unit in ('oz','ounce','ounces') else 1))
     category=str(product.get('category') or 'unknown')
-    mapped={'flower':'flower','concentrate':'concentrate','concentrates':'concentrate','vape':'vapes','vapes':'vapes'}.get(category.casefold(),'other')
+    mapped=category_of(category) or 'other'
     result=[]
     for offer in offers:
         variant=offer.get('sku') or offer.get('@id') or offer.get('url') or ('base' if len(offers)==1 else None)

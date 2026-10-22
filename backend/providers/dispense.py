@@ -1,5 +1,5 @@
 """Observed Dispense public storefront SDK: GET venue/products, skip/limit/count."""
-from backend.domain import inventory_fields
+from backend.domain import category_of, inventory_fields
 from decimal import Decimal
 import hashlib
 import json
@@ -51,7 +51,7 @@ def normalize(product,endpoint):
     if not product.get('id'):raise ValueError('Dispense product identity missing')
     if str(product.get('venue'))!=str(endpoint['provider_store_id']):raise ValueError('Dispense product belongs to another venue')
     category=product.get('productCategoryName') or 'unknown'
-    mapped={'flower':'flower','concentrates':'concentrate','concentrate':'concentrate','vapes':'vapes','vape':'vapes'}.get(category.casefold(),'other')
+    mapped=category_of(category) or 'other'
     variants=product.get('variants') or [product]
     result=[]
     for variant in variants:
