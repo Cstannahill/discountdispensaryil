@@ -17,7 +17,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from backend.network import PublicFetcher
 from backend.storage import Store
-from backend import verifier
+from backend import verifier, websearch
 
 
 def print_comparison(summary, names):
@@ -76,6 +76,7 @@ def main():
     records = []
     for model in chosen_models:
         llm = verifier.llm_from_config(config, model)
+        if llm: llm = websearch.configure_search(config, llm)
         for store_id in chosen:
             target = dict(rows[store_id], problem=problems.get(store_id))
             fetcher = PublicFetcher(Path('data/evidence'), max_attempts=2, timeout_seconds=15, max_run_seconds=limits['seconds'] + 30)

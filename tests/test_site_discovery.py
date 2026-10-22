@@ -79,6 +79,16 @@ class DiscoveryFallbackTests(unittest.TestCase):
         self.assertIn('openrouter.ai',results[0]['evidence'][0]['url'])
         self.assertIn('Unique Cannabis',fetcher.search_llm.queries[0])
 
+    def test_a_free_mcp_answer_is_recorded_with_its_engine_and_costs_nothing(self):
+        with tempfile.TemporaryDirectory() as folder:
+            fetcher=searcher(('https://retailer.example/menu','Unique Cannabis dispensary Rutland',''),folder=folder)
+            plain=fetcher.search_llm.search
+            fetcher.search_llm.search=lambda query:dict(plain(query),usd=0.0,tokens=0,engine='websearch-mcp',seconds=0.4,fallback_from=None)
+            results=search_websites(dict(name='Unique Cannabis',city='Rutland',state='IL'),fetcher)
+            self.assertEqual(['https://retailer.example/menu'],[item['url'] for item in results])
+            self.assertEqual(('websearch-mcp',0.4),(fetcher._last_search_attempts[0]['engine'],fetcher._last_search_attempts[0]['seconds']))
+            self.assertFalse((Path(folder)/'llm-spend.jsonl').exists())
+
     def test_search_cache_preserves_attempt_provenance_across_restart(self):
         with tempfile.TemporaryDirectory() as folder:
             first=searcher(('https://retailer.example/','Unique Cannabis dispensary Rutland',''),folder=folder)
