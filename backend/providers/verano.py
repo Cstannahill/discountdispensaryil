@@ -10,7 +10,7 @@ import json
 import re
 from urllib.parse import urlsplit
 
-from backend.domain import GRAMS_PER_OUNCE, inventory_fields
+from backend.domain import GRAMS_PER_OUNCE, category_of, inventory_fields
 from backend.flight import records,resolve
 from backend.site_discovery import objects
 
@@ -66,7 +66,7 @@ def normalize(product,endpoint):
     if product.get('id') is None or not product.get('name') or not isinstance(product.get('variants'),list) or not product['variants']:
         raise ValueError('Verano product identity/name/variants missing')
     category=(product.get('category') or {}).get('name') or 'Unknown'
-    mapped={'flower':'flower','concentrates':'concentrates','concentrate':'concentrates','vape':'vapes','vapes':'vapes'}.get(category.lower(),'other')
+    mapped=category_of(category) or 'other'
     items=[]
     for variant in product['variants']:
         if variant.get('id') is None:raise ValueError('Verano variant identity missing')

@@ -2,6 +2,7 @@
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 import hashlib
+import html
 import json
 import math
 import re
@@ -60,7 +61,7 @@ def price_text(value):
 # Flower is ranked by grade: shake/trim and smalls/popcorn are cheaper per gram by design, and infused flower is a
 # different product, so none of them compete with whole flower for "best deal" unless asked for.
 FLOWER_GRADES = ("whole", "smalls", "shake", "infused")
-_GRADE_PATTERNS = (("infused", re.compile(r"\b(?:infused|moon ?rocks?|caviar)\b", re.I)),
+_GRADE_PATTERNS = (("infused", re.compile(r"\b(?:infused|moon ?rocks?|caviar|kaviar)\b", re.I)),
                    ("shake", re.compile(r"\b(?:shake|trim|(?:pre[ _-]?)?ground|milled)\b", re.I)),
                    ("smalls", re.compile(r"\b(?:popcorn|smalls|mini ?buds?|budlets|littles|lil ?buds|mixed buds|small buds)\b", re.I)))
 
@@ -76,13 +77,26 @@ def flower_grade(item):
     return "whole"
 
 
+# One category map for every provider: menus label the same product class many ways ("Vapes &amp; Carts", "Cartridge", "Extract").
+CATEGORIES = {"flower": "flower", "concentrate": "concentrate", "concentrates": "concentrate", "extract": "concentrate", "extracts": "concentrate",
+              "vape": "vapes", "vapes": "vapes", "vaporizer": "vapes", "vaporizers": "vapes", "cartridge": "vapes", "cartridges": "vapes",
+              "vape cartridge": "vapes", "vape cartridges": "vapes", "disposable": "vapes", "disposables": "vapes", "vapes & carts": "vapes", "carts": "vapes"}
+# Forms sold under a concentrate label that do not compete per gram with concentrates: infused pre-rolls/multipacks, capsules, syringes.
+_NOT_CONCENTRATE = re.compile(r"\b(?:kaviar|pre[ _-]?rolls?|cones?|\d+ ?pk|\d+ ?pack|multi-?packs?|show dogs|dogwalkers|capsules?|syringes?)\b", re.I)
+
+
+def category_of(label):
+    return CATEGORIES.get(html.unescape(str(label or "")).strip().lower().replace("_", " "))
+
+
 def normalize_offer(item):
     if not str(item.get("source_id") or "").strip():
         raise ValueError("missing_product_identity")
     weight = decimal_value(item.get("weight_grams"), positive=True)
     effective = decimal_value(item.get("effective_price"))
     category = str(item.get("category") or "unknown").lower()
-    category = {"concentrates": "concentrate", "extracts": "concentrate", "vape": "vapes"}.get(category, category)
+    category = category_of(category) or (category_of(item.get("source_category")) if category in ("other", "unknown") else None) or category
+    if category == "concentrate" and any(_NOT_CONCENTRATE.search(str(item.get(k) or "")) for k in ("name", "subcategory")): category = "other"
     conditional = item.get("conditional") is not False
     available = item.get("available") is True
     reasons = []

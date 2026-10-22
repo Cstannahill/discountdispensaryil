@@ -1,6 +1,6 @@
 """Observed public storefront adapters. Unsupported sources never return success."""
 from __future__ import annotations
-from backend.domain import GRAMS_PER_OUNCE, inventory_fields
+from backend.domain import GRAMS_PER_OUNCE, category_of, inventory_fields
 
 from decimal import Decimal, InvalidOperation
 import hashlib
@@ -77,7 +77,7 @@ def normalize_blaze(item, included, endpoint):
     elif amount and units in ('ounces', 'ounce', 'oz'):
         weight = _decimal(Decimal(amount) * GRAMS_PER_OUNCE)
     category = _related(item, 'category', included).get('name') or 'Unknown'
-    mapped = {'flower': 'flower', 'concentrates': 'concentrates', 'concentrate': 'concentrates', 'vape': 'vapes', 'vapes': 'vapes'}.get(category.lower(), 'other')
+    mapped = category_of(category) or 'other'
     regular = _money(single.get('price'))
     effective = _money(single.get('discount_price')) or regular
     thc = a.get('thc') or {}
