@@ -30,6 +30,11 @@ class DuplicateEndpointTests(unittest.TestCase):
         pairs = self.db.identical_duplicate_endpoints()
         self.assertEqual([(second['id'], first['id'])], pairs)
 
+    def test_offers_with_a_missing_brand_still_compare(self):
+        first = self.accepted('https://example.com/menu/', [item('a', name='Flower A', brand=None)], '2026-10-17T08:00:00+00:00')
+        second = self.accepted('https://example.com/shop/', [item('a', name='Flower A', brand=None)], '2026-10-17T09:00:00+00:00')
+        self.assertEqual([(second['id'], first['id'])], self.db.identical_duplicate_endpoints())
+
     def test_endpoints_with_different_offers_are_not_duplicates(self):
         self.accepted('https://example.com/menu/', [item('a', name='Flower A'), item('b', name='Flower B')], '2026-10-17T08:00:00+00:00')
         self.accepted('https://example.com/shop/', [item('a', name='Flower A'), item('c', name='Flower C')], '2026-10-17T09:00:00+00:00')
