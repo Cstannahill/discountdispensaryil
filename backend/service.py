@@ -210,7 +210,7 @@ class SyncService:
         return dict(store,**self.store.identity(store['id']))
 
     def _process_store_unlocked(self,store,results,force_resolution=False):
-        started=time.monotonic();attempted=set();accepted=0;had_failure=False;stages=[]
+        started=time.monotonic();attempted=set();accepted=0;had_failure=False;stages=[];read_ok=set()
         if store.get('operating_status')=='closed':
             # Verified closed by evidence: nothing is resolved or read, and it is recorded rather than counted as a failure.
             results.append(dict(stage='store_summary',store_id=store['id'],store_name=store['name'],pipeline_version=PIPELINE_VERSION,status='closed',
@@ -262,6 +262,8 @@ class SyncService:
                               code=None if outcome['status'] in ('complete','converged') else classify(detail),
                               items=outcome.get('source_count'),seconds=round(time.monotonic()-attempt_started,3),detail=detail or None)
                 accepted+=outcome['status']=='complete'
+                # A menu that still loaded and held items: the store is alive at this endpoint, accepted or not.
+                if outcome.get('source_count'):read_ok.add(endpoint['id'])
                 had_failure=had_failure or outcome['status']!='complete'
                 # The platform's own coordinates place this menu at another branch: retire it so sibling menus found on a
                 # chain page are not re-read every sync. supersede_endpoint refuses a menu that holds accepted offers.
@@ -299,7 +301,10 @@ class SyncService:
         if saved:stages.append(dict(stage='saved_refresh',targets=len(saved),complete=saved_ok))
 
         if not retained or not retained_ok or force_resolution:
-            if not retained and not sample:
+            # The weekly LLM check is for a store the programmatic pull cannot vouch for: no saved menu both loaded and
+            # proved its branch. A saved endpoint that still reads items and proved its branch needs no search.
+            vouched=any(endpoint['id'] in read_ok and endpoint.get('identity_confidence') in ('matched','name_locality') for endpoint in saved)
+            if not retained and not sample and not vouched:
                 store=self._verify_store(store,results)
                 if store.get('operating_status')=='closed':
                     results.append(dict(stage='store_summary',store_id=store['id'],store_name=store['name'],pipeline_version=PIPELINE_VERSION,status='closed',
