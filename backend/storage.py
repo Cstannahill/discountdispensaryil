@@ -247,7 +247,7 @@ class Store:
         items = []
         for row in rows:
             p = json.loads(row[0])
-            items.append((p.get('name'), p.get('brand'), str(p.get('weight_grams')), str(p.get('regular_price')), str(p.get('effective_price'))))
+            items.append(tuple(str(p.get(k)) for k in ('name', 'brand', 'weight_grams', 'regular_price', 'effective_price')))
         return sorted(items)
 
     def identical_duplicate_endpoints(self):
@@ -284,6 +284,20 @@ class Store:
             if not kept or kept != self._menu_signature(conn, duplicate_id):
                 raise ValueError("not_identical")
             conn.execute("UPDATE live_endpoints SET status='superseded',last_error=? WHERE id=?", (str(reason), duplicate_id))
+            self._bump(conn)
+
+    def retire_misbound_endpoint(self, endpoint_id, reason):
+        """Retire an accepted menu bound to the wrong registry store. Proof required: the same platform store (provider and
+        provider store id) is also bound to a different registry store. History stays; the offers stop counting."""
+        with self.connection() as conn:
+            row = conn.execute("SELECT store_id,provider,provider_store_id,status FROM live_endpoints WHERE id=?", (endpoint_id,)).fetchone()
+            if not row:
+                raise ValueError("unknown_menu")
+            if row['status'] == 'superseded' or not row['provider_store_id'] or not conn.execute(
+                    "SELECT 1 FROM live_endpoints WHERE provider=? AND provider_store_id=? AND store_id!=? AND status!='superseded' LIMIT 1",
+                    (row['provider'], row['provider_store_id'], row['store_id'])).fetchone():
+                raise ValueError("not_misbound")
+            conn.execute("UPDATE live_endpoints SET status='superseded',last_error=? WHERE id=?", (str(reason), endpoint_id))
             self._bump(conn)
 
     def supersede_endpoint(self, endpoint_id, reason):
