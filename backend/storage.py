@@ -302,6 +302,20 @@ class Store:
             conn.execute("UPDATE live_endpoints SET status='superseded',last_error=? WHERE id=?", (str(reason), endpoint_id))
             self._bump(conn)
 
+    def retire_wrong_branch_endpoint(self, endpoint_id, reason, proof_url):
+        """Retire a menu that a page the operator checked names as a different branch than its registry store (another town or
+        state). The reason and the page that proves it are kept on the row; history stays, the offers stop counting."""
+        if not str(reason or '').strip() or not str(proof_url or '').startswith(('https://', 'http://')):
+            raise ValueError("proof_required")
+        with self.connection() as conn:
+            row = conn.execute("SELECT status FROM live_endpoints WHERE id=?", (endpoint_id,)).fetchone()
+            if not row:
+                raise ValueError("unknown_menu")
+            if row['status'] == 'superseded':
+                raise ValueError("already_superseded")
+            conn.execute("UPDATE live_endpoints SET status='superseded',last_error=? WHERE id=?", (f"Wrong branch: {reason} ({proof_url})", endpoint_id))
+            self._bump(conn)
+
     # Platform store ids that name exactly one store. Sweed, Treez and similar ids can be shared by a chain's branches.
     SINGLE_STORE_PROVIDERS = ('blaze', 'dutchie', 'jane', 'cresco', 'leafly')
 
