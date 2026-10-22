@@ -66,6 +66,12 @@ class VisibleText(HTMLParser):
 VERIFY_HOURS = 24 * 7
 
 
+def verify_interval_hours(last):
+    """A verdict the verifier backed with evidence stands for months; an unknown or failed answer is retried weekly."""
+    if last and last.get('status')=='verified' and last.get('verdict') in ('exists','renamed','moved'):return 24*90
+    return VERIFY_HOURS
+
+
 def llm_verifier(database):
     """The store verifier for full syncs: web-search research with its daily spend cap. None when no LLM key is configured."""
     from . import verifier
@@ -197,7 +203,8 @@ class SyncService:
     def _verify_store(self,store,results):
         """Ask the store verifier for a store no run has accepted: a new name or a closure is recorded with its source, and
         its cited pages become leads. Returns the store with its current names and status. Full syncs only."""
-        if self.verify is None or self.store.verified_within(store['id'],VERIFY_HOURS):return store
+        last=self.store.last_verification(store['id'])
+        if self.verify is None or (last and age_hours(last['created_at'],utcnow())<verify_interval_hours(last)):return store
         try:
             record=self.verify(store,self.fetcher)
         except PipelineInterrupted:raise

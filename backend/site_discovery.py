@@ -403,6 +403,13 @@ def search_llm(fetcher):
     return llm
 
 
+def search_cache_seconds(results, attempts):
+    """How long a paid search answer is kept: a found site a month, an honest empty answer a week. A failed search (an
+    error attempt) is retried in minutes, so a transient failure is never remembered as 'nothing found'."""
+    if any(a.get('error') for a in attempts or []):return 300
+    return 30*86400 if results else 7*86400
+
+
 def search_websites(store, fetcher, *, by_address=False):
     from .verifier import search,record_spend,spend_since,day_ago
     brand_name=re.split(r'\s+-\s+',store.get('name',''))[0]
@@ -420,7 +427,7 @@ def search_websites(store, fetcher, *, by_address=False):
                 cache[query]=(saved['time'],saved['results'],saved.get('attempts',[]))
         except (OSError,ValueError,KeyError):
             pass
-    if query in cache and time.time()-cache[query][0] < (86400 if cache[query][1] else 300):
+    if query in cache and time.time()-cache[query][0] < search_cache_seconds(cache[query][1],cache[query][2] if len(cache[query])>2 else []):
         fetcher._last_search_attempts=cache[query][2] if len(cache[query])>2 else []
         return cache[query][1]
     results,attempts=[],[]
