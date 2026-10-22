@@ -144,6 +144,26 @@ class GradedStorageTests(unittest.TestCase):
         self.assertEqual(by_store['Test Shop']['stage'], 'extraction_failed')
         self.assertEqual(by_store['Test Shop']['code'], 'TOTAL_UNVERIFIABLE')
         self.assertEqual(by_store['Second Shop']['stage'], 'not_attempted')
+class SizeBucketTests(GradedStorageTests):
+    def sized(self):
+        rows = [('a', '1', '12'), ('b', '3.5', '35'), ('c', '3.54', '30'), ('d', '7', '35'), ('e', '14', '56'), ('f', '28', '84'), ('g', '28.35', '90')]
+        self.apply(snapshot([item(i, weight_grams=w, weight_label=w + 'g', regular_price=p, effective_price=p) for i, w, p in rows] + many(30, prefix='fill')))
+
+    def names(self, **kw):
+        return [o['source_id'] for o in self.db.query_offers(self.region['id'], now=LATER, page_size=200, **kw)['items'] if not o['source_id'].startswith('fill')]
+
+    def test_size_bucket_keeps_only_that_package_and_ranks_within_it(self):
+        self.sized()
+        self.assertEqual(self.names(size='3.5'), ['c', 'b'])
+        self.assertEqual(self.names(size='28'), ['f', 'g'])
+        self.assertEqual(self.names(size='1'), ['a'])
+
+    def test_size_omitted_or_any_is_unchanged_flat_ranking(self):
+        self.sized()
+        flat = self.names()
+        self.assertEqual(flat, self.names(size='any'))
+        self.assertEqual(len(flat), 7)
+        self.assertEqual(flat[0], 'f')
 
 
 if __name__ == '__main__':

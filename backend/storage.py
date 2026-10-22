@@ -724,7 +724,7 @@ class Store:
             raise ValueError("refresh_required")
         return {"items": items[(page-1)*page_size:page*page_size], "total": len(items), "page": page, "page_size": page_size, "data_version": version}
 
-    def query_offers(self, region_id=None, license_type=None, category=None, q="", include_stale=False, page=1, page_size=50, data_version=None, now=None, strain_type=None, action=None, include_unverified=False, flower_grade="whole", promo=None):
+    def query_offers(self, region_id=None, license_type=None, category=None, q="", include_stale=False, page=1, page_size=50, data_version=None, now=None, strain_type=None, action=None, include_unverified=False, flower_grade="whole", promo=None, size=None):
         version_before = str(self.setting("data_version", 0))
         # Grade B (converged, not reconciled to a source total) is labeled and excluded unless requested.
         if promo == "bogo":
@@ -739,6 +739,8 @@ class Store:
         if q:
             items = [r for r in items if q.casefold() in " ".join(str(r.get(k) or "") for k in ("name", "brand", "store_name", "subcategory")).casefold()]
         items = self._filter_changes(items, strain_type, action)
+        if size and size != "any":
+            items = [r for r in items if abs(Decimal(r["weight_grams"])-Decimal(size)) <= Decimal(size)*Decimal("0.03")]
         items.sort(key=lambda r: (Decimal(r["effective_price"])/Decimal(r["weight_grams"]), r["distance_miles"], r["id"]))
         result = self._paginate(items, page, page_size, data_version)
         if result["data_version"] != version_before:
