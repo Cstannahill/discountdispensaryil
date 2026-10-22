@@ -396,8 +396,9 @@ def search_llm(fetcher):
     from .network import PublicFetcher
     if not isinstance(fetcher,PublicFetcher) or fetcher._transport_override is not None:return None
     from .verifier import load_env,llm_from_config,budgets
+    from .websearch import configure_search
     config=load_env()
-    llm=llm_from_config(config)
+    llm=configure_search(config,llm_from_config(config))
     if llm:llm.usd_per_day=budgets(config)['usd_per_day']
     fetcher.search_llm=llm
     return llm
@@ -431,11 +432,11 @@ def search_websites(store, fetcher, *, by_address=False):
         fetcher._last_search_attempts=cache[query][2] if len(cache[query])>2 else []
         return cache[query][1]
     results,attempts=[],[]
-    # One OpenRouter web-plugin (Exa) request per query; the registry state and cannabis context keep a name search on topic.
+    # One search per query (the local WebSearch MCP first, OpenRouter's web plugin (Exa) as the fallback, see websearch.py); the registry state and cannabis context keep a name search on topic.
     text=query if by_address else query+' '+store.get('state','IL')+' dispensary cannabis menu'
     llm=search_llm(fetcher)
     if llm is None:
-        fetcher._last_search_attempts=[dict(url=None,error='Web search not configured (set OPENROUTER_API_KEY in .env)')]
+        fetcher._last_search_attempts=[dict(url=None,error='Web search not configured (run the WebSearch MCP or set OPENROUTER_API_KEY in .env)')]
         return []
     cap=getattr(llm,'usd_per_day',None)
     run=getattr(fetcher,'run_spend',None)
@@ -458,7 +459,7 @@ def search_websites(store, fetcher, *, by_address=False):
         record_spend(folder,'sample' if getattr(fetcher,'sample_run',False) else 'discovery',getattr(llm,'model',None),found['usd'],found['tokens'],store.get('id'))
         if run is not None:run['usd']+=found['usd']
         if store_run is not None:store_run['usd']+=found['usd']
-        attempts.append(dict(url=evidence['url'],evidence_id=evidence['evidence_id'],status=200,engine='openrouter-web-exa'))
+        attempts.append(dict(url=evidence['url'],evidence_id=evidence['evidence_id'],status=200,engine=evidence['engine'],seconds=evidence['seconds'],fallback_from=evidence['fallback_from']))
         for item in found['results']:
             block_text=item['title']+' '+item['url']+' '+item['snippet'];block_words=set(words(block_text))
             required=business_words(brand_name)

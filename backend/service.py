@@ -74,11 +74,12 @@ def verify_interval_hours(last):
 
 def llm_verifier(database):
     """The store verifier for full syncs: web-search research with its daily spend cap. None when no LLM key is configured."""
-    from . import verifier
+    from . import verifier, websearch
     config = verifier.load_env()
     llm = verifier.llm_from_config(config)
     if llm is None:
         return None
+    llm = websearch.configure_search(config, llm)
     limits = verifier.budgets(config)
     def check(store, fetcher):
         since = verifier.day_ago()

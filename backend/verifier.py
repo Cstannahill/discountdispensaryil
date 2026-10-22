@@ -35,7 +35,9 @@ MIN_QUOTE = 12
 PAGE_CHARS = 6000
 DEFAULTS = dict(TERPSCOUT_LLM_PROVIDER='openrouter', TERPSCOUT_LLM_MODEL='deepseek/deepseek-v4.1-flash',
                 VERIFIER_MAX_STEPS='8', VERIFIER_MAX_SECONDS='60', VERIFIER_MAX_TOKENS='40000',
-                VERIFIER_MAX_USD_PER_STORE='0.05', VERIFIER_MAX_USD_PER_DAY='1.00')
+                VERIFIER_MAX_USD_PER_STORE='0.05', VERIFIER_MAX_USD_PER_DAY='1.00',
+                TERPSCOUT_SEARCH_PROVIDER='mcp,openrouter', TERPSCOUT_WEBSEARCH_MCP_URL='http://localhost:9565/mcp',
+                TERPSCOUT_WEBSEARCH_MCP_TIMEOUT='20')
 # OpenRouter web plugin: Exa search, 5 results. The Exa request fee is part of the call's usage.cost.
 WEB_PLUGIN = dict(id='web', engine='exa', max_results=5)
 SEARCH_SYSTEM = 'List each web search result as a markdown link, one per line. No other text.'
@@ -104,7 +106,7 @@ class OpenRouter:
             if isinstance(cite.get('url'), str) and urlsplit(cite['url']).scheme in ('http', 'https'):
                 results.setdefault(cite['url'], dict(url=cite['url'], title=str(cite.get('title') or '')[:160],
                                                      snippet=str(cite.get('content') or '')[:SNIPPET_CHARS]))
-        return dict(results=list(results.values()), tokens=int(usage.get('total_tokens') or 0), usd=float(usage.get('cost') or 0))
+        return dict(results=list(results.values()), tokens=int(usage.get('total_tokens') or 0), usd=float(usage.get('cost') or 0), engine='openrouter-web-exa')
 
     def _post(self, body):
         return self._client.post(self.url, headers={'authorization': 'Bearer ' + self._key, 'x-title': 'TerpScout store verifier'}, json=body)
@@ -142,10 +144,12 @@ def search(llm, query, fetcher=None):
     """Web-plugin results for one query: (found, evidence). `found` has results, tokens and usd. The result list (never
     the request or its headers) is saved as evidence when the fetcher can record it."""
     found = llm.search(query)
-    label = SEARCH_URL + '?' + urlencode(dict(plugin='web', engine=WEB_PLUGIN['engine'], q=query))
-    evidence = dict(url=label, evidence_id=None, fetched_at=None)
+    engine = found.get('engine') or 'openrouter-web-exa'
+    label = SEARCH_URL + '?' + urlencode(dict(plugin='web', engine=WEB_PLUGIN['engine'], q=query)) if engine == 'openrouter-web-exa' else f'websearch-mcp://web_search?' + urlencode(dict(q=query))
+    evidence = dict(url=label, evidence_id=None, fetched_at=None, engine=engine, fallback_from=found.get('fallback_from'), seconds=found.get('seconds'))
     if hasattr(fetcher, 'record_search'):
-        body = json.dumps(dict(query=query, model=getattr(llm, 'model', None), plugin=WEB_PLUGIN, results=found['results']))
+        body = json.dumps(dict(query=query, engine=engine, model=getattr(llm, 'model', None) if engine == 'openrouter-web-exa' else None,
+                               plugin=WEB_PLUGIN if engine == 'openrouter-web-exa' else None, results=found['results']))
         saved = fetcher.record_search(label, body.encode('utf-8'))
         evidence.update(url=saved.url, evidence_id=saved.evidence_id, fetched_at=saved.fetched_at)
     return found, evidence
