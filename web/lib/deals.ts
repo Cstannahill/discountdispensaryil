@@ -12,8 +12,9 @@ export interface Offer {
   price_per_gram: string | null; conditional?: boolean; promo?: string | null; completeness: string; freshness: string;
   flower_grade: string | null; distance_miles: number; last_seen_at: string; last_diff_action: string; source_url?: string | null;
 }
+export interface Origin { latitude: number; longitude: number; radius_miles: number }
 export interface DealQuery {
-  region_id?: string; license_type?: string; category?: string; q?: string; include_stale?: boolean; include_unverified?: boolean;
+  region_id?: string; origin?: Origin; license_type?: string; category?: string; q?: string; include_stale?: boolean; include_unverified?: boolean;
   flower_grade?: string; strain_type?: string; promo?: string; page?: number; page_size?: number;
 }
 export interface Page<T> { items: T[]; total: number; page: number; page_size: number; data_version: string }
@@ -50,7 +51,10 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
   const size = Math.min(200, Math.max(1, q.page_size ?? 20));
   const p: unknown[] = [];
   const arg = (v: unknown) => (p.push(v), `$${p.length}`);
-  const region = arg(q.region_id ?? '');
+  const o = q.origin;
+  const rsel = o
+    ? `SELECT ${arg(o.latitude)}::float8 AS latitude, ${arg(o.longitude)}::float8 AS longitude, ${arg(o.radius_miles)}::float8 AS radius_miles`
+    : `SELECT latitude, longitude, radius_miles FROM live_regions WHERE id=${arg(q.region_id ?? '')}`;
   const where: string[] = ['true'];
   if (q.license_type) where.push(`license_type=${arg(q.license_type)}`);
   if (q.promo === 'bogo') {
@@ -67,7 +71,7 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
   const grade = q.flower_grade ?? 'whole';
   if (grade !== 'all') where.push(`(fgrade IS NULL OR fgrade=${arg(grade)})`);
   const text = `
-WITH r AS (SELECT latitude, longitude, radius_miles FROM live_regions WHERE id=${region}),
+WITH r AS (${rsel}),
 st AS MATERIALIZED (
   SELECT s.id, coalesce((SELECT i.name FROM live_store_identity i WHERE i.store_id=s.id AND i.kind='rebrand' ORDER BY i.id DESC LIMIT 1), s.name) AS name, s.latitude AS lat, s.longitude AS lon,
          3958.8*2*asin(sqrt(least(1,greatest(0, power(sin(radians(s.latitude-r.latitude)/2),2)

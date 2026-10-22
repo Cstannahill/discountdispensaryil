@@ -1,3 +1,5 @@
+import LocationControl from './location';
+import { parseOrigin } from '@/lib/origin';
 import { CATEGORIES, GRADES, LICENSES, queryDeals, regions, type Offer } from '@/lib/deals';
 
 export const dynamic = 'force-dynamic';
@@ -37,6 +39,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const sp = await searchParams;
   const reg = await regions();
   const regionId = one(sp.region) || reg.active_region_id || reg.items[0]?.id || '';
+  const origin = parseOrigin((k) => one(sp[k]) || null);
   const license = LICENSES.includes(one(sp.license) as never) ? one(sp.license) : 'recreational';
   const grade = GRADES.includes(one(sp.grade) as never) ? one(sp.grade) : 'whole';
   const q = one(sp.q).slice(0, 300);
@@ -46,17 +49,17 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const cats = CATEGORIES;
   const pages = Object.fromEntries(cats.map((c) => [c, Math.max(1, Number(one(sp[`p_${c}`])) || 1)]));
   const results = await Promise.all(cats.map((category) => queryDeals({
-    region_id: regionId, license_type: license, category, q, include_stale: stale, include_unverified: unverified,
+    region_id: regionId, origin: origin ?? undefined, license_type: license, category, q, include_stale: stale, include_unverified: unverified,
     flower_grade: grade, promo: bogo ? 'bogo' : undefined, page: pages[category], page_size: PAGE_SIZE,
   })));
-  const base = { region: regionId, license, grade, q, stale: stale ? '1' : '', unverified: unverified ? '1' : '', promo: bogo ? 'bogo' : '' };
+  const base = { ...(origin ? { lat: String(origin.latitude), lon: String(origin.longitude), radius: String(origin.radius_miles), place: origin.label } : { region: regionId }), license, grade, q, stale: stale ? '1' : '', unverified: unverified ? '1' : '', promo: bogo ? 'bogo' : '' };
   const link = (category: string, page: number) => {
     const u = new URLSearchParams();
     Object.entries({ ...base, ...Object.fromEntries(cats.map((c) => [`p_${c}`, c === category ? String(page) : String(pages[c])])) })
       .forEach(([k, v]) => { if (v) u.set(k, v); });
     return `/?${u.toString()}`;
   };
-  const region = reg.items.find((r) => r.id === regionId);
+  const region = origin ? { radius_miles: origin.radius_miles, label: origin.label } : reg.items.find((r) => r.id === regionId);
 
   return (
     <main className="max-w-7xl mx-auto px-3 py-6 space-y-5">
@@ -68,9 +71,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         </div>
       </header>
 
+      <LocationControl active={!!origin} />
+
       <form method="get" className="glass-card rounded-2xl p-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-6 items-end">
         <label className="field lg:col-span-2">Area
-          <select name="region" defaultValue={regionId}>
+          {origin && <><input type="hidden" name="lat" value={origin.latitude} /><input type="hidden" name="lon" value={origin.longitude} /><input type="hidden" name="radius" value={origin.radius_miles} /><input type="hidden" name="place" value={origin.label} /></>}
+          <select name="region" defaultValue={regionId} disabled={!!origin}>
             {reg.items.map((r) => <option key={r.id} value={r.id}>{r.label} · {r.radius_miles} mi{r.precision === 'gps' ? ' (GPS)' : ''}</option>)}
           </select>
         </label>
