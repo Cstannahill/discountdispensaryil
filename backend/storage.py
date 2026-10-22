@@ -10,6 +10,7 @@ from urllib.parse import urlsplit
 import uuid
 
 from .completeness import grade_for, valid_convergence
+from .product_links import with_product_url
 from .domain import age_hours, digest, distance_miles, flower_grade, instant, normalize_offer, utcnow
 
 REGISTRY_URL = "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no"
@@ -705,6 +706,7 @@ class Store:
                 continue
             item = json.loads(row["payload_json"])
             store = stores[row["store_id"]]
+            item["source_url"] = with_product_url(item, row["provider"], row["url"], row["license_type"])
             item.pop("raw", None)
             item.setdefault("completeness", "A")
             item.update({k: row[k] for k in ("id", "endpoint_id", "store_id", "license_type", "status", "last_diff_action", "last_seen_at", "snapshot_id")})
@@ -712,7 +714,6 @@ class Store:
             # A store that rebranded shows its current name; the registry row keeps the old one.
             item.update(store_name=store["aliases"][-1]["name"] if store.get("aliases") else store["name"], distance_miles=store["distance_miles"],
                         freshness="fresh" if age_hours(verified_at, now) < 12 else "stale")
-            item["source_url"] = item.get("source_url") or row["url"]
             item["flower_grade"] = flower_grade(item)
             result.append(item)
         return result

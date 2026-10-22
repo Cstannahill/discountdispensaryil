@@ -30,7 +30,7 @@ function OfferCard({ o }: { o: Offer }) {
       </div>
       <p className="text-[11px] text-slate-300">{o.store_name} · {o.distance_miles.toFixed(1)} mi · {o.license_type}</p>
       <p className="text-[10px] text-slate-500">Observed {when(o.last_seen_at)}{o.conditional ? ' · Conditional promotion' : ''}</p>
-      {href && <a className="text-[11px] text-emerald-400 underline" href={href} target="_blank" rel="noopener noreferrer">Open menu ↗</a>}
+      {href && <a className="text-[11px] text-emerald-400 underline" href={href} target="_blank" rel="noopener noreferrer">View on dispensary menu ↗</a>}
     </article>
   );
 }

@@ -1,4 +1,5 @@
 import { rows } from './db';
+import { withProductUrl } from './product-links';
 
 export const CATEGORIES = ['concentrate', 'flower', 'vapes'] as const;
 export const GRADES = ['whole', 'smalls', 'shake', 'infused', 'all'] as const;
@@ -79,7 +80,7 @@ st AS MATERIALIZED (
   FROM live_stores s CROSS JOIN r WHERE s.latitude IS NOT NULL AND s.longitude IS NOT NULL),
 b AS MATERIALIZED (
   SELECT o.id, o.endpoint_id, o.status, o.last_diff_action, o.last_seen_at, o.snapshot_id, o.payload_json::jsonb AS j,
-         e.store_id, e.license_type, e.status AS ep_status, e.url AS endpoint_url, e.last_success_at, e.last_converged_at,
+         e.store_id, e.license_type, e.status AS ep_status, e.url AS endpoint_url, e.provider, e.last_success_at, e.last_converged_at,
          st.name AS store_name, st.distance_miles
   FROM live_offers o JOIN live_endpoints e ON e.id=o.endpoint_id JOIN st ON st.id=e.store_id
   WHERE o.status='active' AND e.status<>'superseded' AND st.distance_miles <= (SELECT radius_miles FROM r)),
@@ -90,21 +91,21 @@ c AS MATERIALIZED (
 d AS (
   SELECT c.*, coalesce(extract(epoch FROM now()-(CASE WHEN completeness='B' THEN last_converged_at ELSE last_success_at END)::timestamptz)/3600, 1e9) < 12 AS fresh
   FROM c)
-SELECT id, endpoint_id, last_diff_action, last_seen_at, snapshot_id, j, store_id, license_type, store_name, endpoint_url,
+SELECT id, endpoint_id, last_diff_action, last_seen_at, snapshot_id, j, store_id, license_type, store_name, endpoint_url, provider,
        completeness, fgrade, distance_miles, fresh, count(*) OVER() AS total
 FROM d WHERE ${where.join(' AND ')}
 ORDER BY (j->>'effective_price')::numeric/(j->>'weight_grams')::numeric, round(distance_miles::numeric,3), id
 LIMIT ${arg(size)} OFFSET ${arg((page - 1) * size)}`;
   const [data, version] = await Promise.all([rows<Record<string, any>>(text, p), dataVersion()]);
   const items: Offer[] = data.map((r) => {
-    const { raw: _raw, ...j } = r.j;
+    const { raw: _raw, ...j } = r.j; // raw feeds withProductUrl below
     return {
       ...j,
       id: r.id, endpoint_id: r.endpoint_id, store_id: r.store_id, license_type: r.license_type, status: 'active',
       last_diff_action: r.last_diff_action, last_seen_at: r.last_seen_at, snapshot_id: r.snapshot_id,
       store_name: r.store_name, distance_miles: Math.round(Number(r.distance_miles) * 1000) / 1000,
       completeness: r.completeness, freshness: r.fresh ? 'fresh' : 'stale', flower_grade: r.fgrade,
-      source_url: j.source_url || r.endpoint_url,
+      source_url: withProductUrl(r.j, r.provider, r.endpoint_url, r.license_type),
     };
   });
   return { items, total: data[0] ? Number(data[0].total) : 0, page, page_size: size, data_version: version };
