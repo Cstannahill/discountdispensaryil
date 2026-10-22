@@ -404,6 +404,10 @@ def search_llm(fetcher):
     return llm
 
 
+# Bump when the search engine or its result filter changes: answers saved by an older strategy (an empty one most of all) are not reused.
+SEARCH_STRATEGY = 6
+
+
 def search_cache_seconds(results, attempts):
     """How long a paid search answer is kept: a found site a month, an honest empty answer a week. A failed search (an
     error attempt) is retried in minutes, so a transient failure is never remembered as 'nothing found'."""
@@ -424,7 +428,7 @@ def search_websites(store, fetcher, *, by_address=False):
     if query not in cache and cache_path and cache_path.exists():
         try:
             saved=json.loads(cache_path.read_text(encoding='utf-8'))
-            if saved.get('strategy_version')==5:
+            if saved.get('strategy_version')==SEARCH_STRATEGY:
                 cache[query]=(saved['time'],saved['results'],saved.get('attempts',[]))
         except (OSError,ValueError,KeyError):
             pass
@@ -487,7 +491,7 @@ def search_websites(store, fetcher, *, by_address=False):
     cache[query]=(time.time(),results,attempts)
     if cache_path:
         cache_path.parent.mkdir(parents=True,exist_ok=True)
-        cache_path.write_text(json.dumps(dict(time=cache[query][0],results=results,attempts=attempts,strategy_version=5)),encoding='utf-8')
+        cache_path.write_text(json.dumps(dict(time=cache[query][0],results=results,attempts=attempts,strategy_version=SEARCH_STRATEGY)),encoding='utf-8')
     fetcher._website_search_cache=cache
     fetcher._last_search_attempts=attempts
     return results

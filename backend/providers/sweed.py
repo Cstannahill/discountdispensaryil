@@ -203,7 +203,9 @@ def fetch(endpoint, fetcher):
                     # Live inventory moves while the pages are read, so the last page can hold a few more or fewer products than
                     # the advertised total implies. Within 1% of the total that is churn, not a missed page; it can only ever
                     # reach grade B (two agreeing passes), never a reconciled A. Any other page must be exactly full.
-                    if page*page_size>=total and abs(len(products)-expected_page)<=total//100:
+                    # A short page that ends the list counts as the last page when the products read so far are within 1% of the total.
+                    short_end = len(products)<expected_page and abs(total-(record_count+len(products)))<=total//100
+                    if (page*page_size>=total and abs(len(products)-expected_page)<=total//100) or short_end:
                         drift.append(dict(pass_index=pass_index+1,page=page,expected=expected_page,received=len(products),advertised_total=total))
                         result['pages'][-1]['drift']=len(products)-expected_page
                     else:
@@ -222,7 +224,7 @@ def fetch(endpoint, fetcher):
                     result['items']=items.copy()
                     result['source_product_count']=len(source_ids)
                     result['expected_count']=len(items)
-                if record_count == expected or page*page_size >= total:
+                if record_count == expected or page*page_size >= total or (drift and drift[-1]['page']==page and drift[-1]['pass_index']==pass_index+1 and len(products)<expected_page):
                     break
             else:
                 raise ValueError('Sweed configured page limit reached')

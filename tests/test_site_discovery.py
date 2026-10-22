@@ -194,6 +194,15 @@ class DiscoveryFallbackTests(unittest.TestCase):
             cache=next((Path(folder)/'search-cache').glob('*.json'));saved=json.loads(cache.read_text());saved['strategy_version']=4;cache.write_text(json.dumps(saved))
             restarted=searcher(result,folder=folder);self.assertTrue(search_websites(shop,restarted));self.assertTrue(restarted.search_llm.queries)
 
+    def test_an_empty_answer_saved_by_the_previous_search_strategy_is_searched_again(self):
+        from backend.site_discovery import SEARCH_STRATEGY
+        with tempfile.TemporaryDirectory() as folder:
+            shop=dict(name='Unique Cannabis',city='Rutland',state='IL')
+            search_websites(shop,searcher(folder=folder))
+            cache=next((Path(folder)/'search-cache').glob('*.json'));saved=json.loads(cache.read_text());saved['strategy_version']=SEARCH_STRATEGY-1;cache.write_text(json.dumps(saved))
+            result=('https://brand.example/menu','Unique Cannabis dispensary Rutland','')
+            restarted=searcher(result,folder=folder);self.assertTrue(search_websites(shop,restarted));self.assertTrue(restarted.search_llm.queries)
+
     def test_search_fee_is_ledgered_and_daily_cap_stops_further_searches(self):
         from backend import verifier
         with tempfile.TemporaryDirectory() as folder:
