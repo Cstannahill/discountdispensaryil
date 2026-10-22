@@ -3,7 +3,7 @@
 Uses the retailer's ordinary paginated /menu links. No API keys, login, age
 verification state, or carousel records are used to obtain catalog products.
 """
-from backend.domain import GRAMS_PER_OUNCE, inventory_fields
+from backend.domain import GRAMS_PER_OUNCE, category_of, inventory_fields
 from decimal import Decimal
 import html
 import hashlib
@@ -124,7 +124,7 @@ def normalize_product(product, endpoint):
     if product.get('id') is None or not product.get('name') or not isinstance(product.get('variants'), list) or not product['variants']:
         raise ValueError('Sweed product identity/name/variants missing')
     category = (product.get('category') or {}).get('name') or 'Unknown'
-    mapped = {'flower':'flower', 'concentrates':'concentrates', 'concentrate':'concentrates', 'vape':'vapes', 'vapes':'vapes'}.get(category.lower(), 'other')
+    mapped = category_of(category) or 'other'
     items = []
     for variant in product['variants']:
         if variant.get('id') is None:
