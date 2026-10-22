@@ -67,13 +67,28 @@ def init(sconn, pg, tables):
         pg.execute(ddl(sconn, t))
 
 
-def slim(table, row, cols):
+def outlier_ids(sconn):
+    """Offer ids priced far under the same product at other stores (backend.matching), judged across every mirrored store."""
+    from .domain import flower_grade
+    from .matching import flag_outliers
+    offers = []
+    for oid, store, payload in sconn.execute("SELECT o.id,e.store_id,o.payload_json FROM live_offers o JOIN live_endpoints e ON e.id=o.endpoint_id WHERE o.status='active' AND e.status!='superseded'"):
+        item = json.loads(payload)
+        if item.get("eligible") and item.get("completeness", "A") == "A":
+            offers.append(dict(id=oid, store_id=store, name=item.get("name"), brand=item.get("brand"), category=item.get("category"), subcategory=item.get("subcategory"),
+                               weight_grams=item.get("weight_grams"), effective_price=item.get("effective_price"), flower_grade=flower_grade(item)))
+    return {o["id"] for o in flag_outliers(offers) if o["price_outlier"]}
+
+
+def slim(table, row, cols, outliers=()):
     if table != "live_offers":
         return tuple(row)
     out = list(row)
     i = cols.index("payload_json")
     payload = json.loads(out[i])
     payload.pop("raw", None)
+    if out[cols.index("id")] in outliers:
+        payload["price_outlier"] = True
     out[i] = json.dumps(payload, separators=(",", ":"))
     return tuple(out)
 
@@ -86,9 +101,10 @@ def sync(sconn, pg, tables):
         quoted = ",".join(f'"{n}"' for n in cols)
         pg.execute(f'TRUNCATE "{t}"')
         n = 0
+        outliers = outlier_ids(sconn) if t == "live_offers" else ()
         with pg.cursor() as cur, cur.copy(f'COPY "{t}" ({quoted}) FROM STDIN') as copy:
             for row in sconn.execute(f'SELECT {quoted} FROM "{t}" {OFFER_FILTER.get(t, "")}'):
-                copy.write_row(slim(t, row, cols))
+                copy.write_row(slim(t, row, cols, outliers))
                 n += 1
         counts[t] = n
     return counts

@@ -39,6 +39,23 @@ class MirrorAsyncTests(unittest.TestCase):
         self.assertEqual(row, ("a", '{"name":"n"}'))
         self.assertEqual(neon_mirror.slim("live_stores", ("a", "b"), cols), ("a", "b"))
 
+    def test_slim_stamps_price_outliers_so_the_web_app_can_hold_them_back(self):
+        cols = ["id", "payload_json"]
+        row = neon_mirror.slim("live_offers", ("a", '{"name":"n"}'), cols, outliers={"a"})
+        self.assertEqual(row, ("a", '{"name":"n","price_outlier":true}'))
+        self.assertEqual(neon_mirror.slim("live_offers", ("b", '{"name":"n"}'), cols, outliers={"a"}), ("b", '{"name":"n"}'))
+
+    def test_outlier_ids_use_the_same_cross_store_rule_as_the_api(self):
+        import sqlite3, json
+        conn = sqlite3.connect(":memory:")
+        conn.executescript("create table live_endpoints(id,store_id,status);create table live_offers(id,endpoint_id,status,payload_json)")
+        def put(oid, store, price):
+            conn.execute("insert into live_endpoints values(?,?,?)", (store, store, "complete"))
+            conn.execute("insert into live_offers values(?,?,?,?)", (oid, store, "active", json.dumps(dict(
+                name="Velvet Ropes", brand="Superflux", category="flower", eligible=True, completeness="A", weight_grams="3.5", effective_price=str(price)))))
+        put("cheap", "s1", 7.2); put("mid", "s2", 55); put("high", "s3", 50)
+        self.assertEqual(neon_mirror.outlier_ids(conn), {"cheap"})
+
 
 if __name__ == "__main__":
     unittest.main()

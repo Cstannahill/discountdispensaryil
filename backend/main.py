@@ -224,6 +224,13 @@ def create_app(*, db_path=None, evidence_dir=None, fetcher=None, enable_schedule
               include_unverified: bool = False, flower_grade: Literal["whole", "smalls", "shake", "infused", "all"] = "whole", promo: Literal["bogo"] | None = None):
         return app.state.store.query_offers(region_id, license_type, category, q, include_stale, page, page_size, data_version, strain_type=strain_type, action=action, include_unverified=include_unverified, flower_grade=flower_grade, promo=promo)
 
+    @app.get("/api/v1/deals/matched")
+    def deals_matched(region_id: str | None = None, license_type: License | None = None, category: str | None = None,
+                      q: str = Query("", max_length=300), include_stale: bool = False, page: int = Query(1, ge=1),
+                      page_size: int = Query(20, ge=1, le=200), data_version: str | None = None, include_unverified: bool = False,
+                      flower_grade: Literal["whole", "smalls", "shake", "infused", "all"] = "whole", min_stores: int = Query(2, ge=1, le=20)):
+        return app.state.store.query_matched(region_id, license_type, category, q, include_stale, page, page_size, data_version, include_unverified=include_unverified, flower_grade=flower_grade, min_stores=min_stores)
+
     @app.get("/api/v1/catalog")
     def catalog(region_id: str | None = None, license_type: License | None = None, category: str | None = None,
                 q: str = Query("", max_length=300), include_stale: bool = True, include_removed: bool = False,
