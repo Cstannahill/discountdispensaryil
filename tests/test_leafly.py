@@ -13,7 +13,7 @@ FIXTURES = Path(__file__).parent / 'fixtures' / 'provider_leafly'
 ITEMS = json.loads((FIXTURES / 'items.json').read_text(encoding='utf-8'))
 MILAN = json.loads((FIXTURES / 'milan-dispensary.json').read_text(encoding='utf-8'))
 SLUG = 'nature-s-treatment-of-illinois'
-ENDPOINT = dict(url=f'https://www.leafly.com/dispensary-info/{SLUG}/menu', provider='leafly', provider_store_id='174378', license_type='recreational')
+ENDPOINT = dict(url=f'https://www.leafly.com/dispensary-info/{SLUG}/menu', provider='leafly', provider_store_id='174378', license_type='recreational', page_delay_seconds=0)
 STORE = dict(id='s1', name='Natures Treatment of Illinois - Milan', address='973 Tech Dr', city='Milan', state='IL', latitude=41.4423, longitude=-90.5427)
 
 

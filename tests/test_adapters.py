@@ -73,6 +73,10 @@ class SweedFetcher:
             data['list'][0]['variants'][0]['id'] = 0
         if self.mode == 'missing' and page > 1:
             data['list'].pop()
+        if self.mode == 'bigchurn' and page >= 3:
+            data['total'] = self.count + 5
+        if self.mode == 'totalchurn' and page >= 40:
+            data['total'] = self.count + 1
         if self.mode == 'lastdrift' and page*24 >= self.count:
             data['list'] = data['list'][:-3]
         if self.mode == 'tenant':
@@ -155,6 +159,18 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual('churn_tolerant', result['convergence']['kind'])
         self.assertEqual(1100, len(result['items']))
         self.assertEqual([-3, -3], [d['received'] - d['expected'] for d in result['convergence']['page_drift']])
+
+    def test_sweed_total_moving_by_churn_mid_read_is_converged_never_complete(self):
+        result = adapters.fetch_menu(SWEED_ENDPOINT, SweedFetcher(1103, 'totalchurn'))
+        self.assertFalse(result['complete'])
+        self.assertFalse(result['errors'], result['errors'])
+        self.assertEqual('churn_tolerant', result['convergence']['kind'])
+        self.assertEqual('total_changed', result['convergence']['page_drift'][0]['kind'])
+
+    def test_sweed_total_moving_by_more_than_one_percent_still_fails(self):
+        result = adapters.fetch_menu(SWEED_ENDPOINT, SweedFetcher(120, 'bigchurn'))
+        self.assertFalse(result['complete'])
+        self.assertTrue(result['errors'])
 
     def test_sweed_last_page_off_by_more_than_one_percent_still_fails(self):
         result = adapters.fetch_menu(SWEED_ENDPOINT, SweedFetcher(120, 'lastdrift'))

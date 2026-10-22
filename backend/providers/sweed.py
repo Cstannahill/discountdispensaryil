@@ -192,7 +192,12 @@ def fetch(endpoint, fetcher):
                     expected = total
                 result['pages'].append({'pass':pass_index+1,'page':page,'page_size':page_size,'count':len(products),'advertised_total':total,'evidence_id':response.evidence_id})
                 if total != expected:
-                    raise ValueError(f'Sweed advertised total changed at page {page}: started with {expected}, received {total}; independent full traversal required')
+                    # Stock sells out or arrives while the pages are read. A total that moves by at most 1% is churn: the read
+                    # continues against the new total and can only reach grade B. Any bigger move is a different catalog.
+                    if abs(total-expected) > expected//100:
+                        raise ValueError(f'Sweed advertised total changed at page {page}: started with {expected}, received {total}; independent full traversal required')
+                    drift.append(dict(pass_index=pass_index+1,page=page,kind='total_changed',started=expected,received=total))
+                    expected = total
                 expected_page=min(page_size,max(0,total-(page-1)*page_size))
                 if len(products)!=expected_page:
                     # Live inventory moves while the pages are read, so the last page can hold a few more or fewer products than

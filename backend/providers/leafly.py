@@ -8,6 +8,7 @@ from decimal import Decimal
 import hashlib
 import json
 import re
+import time
 from urllib.parse import urlsplit
 
 from backend.domain import GRAMS_PER_OUNCE, inventory_fields
@@ -16,6 +17,8 @@ VERSION = 'leafly-menu-1'
 BASE = 'https://www.leafly.com/dispensary-info/'
 CATEGORIES = {'flower': 'flower', 'concentrate': 'concentrates', 'cartridge': 'vapes'}
 TAX_EXCLUSIVE = 'tax_exclusive_pricing'
+# Leafly answers HTTP 429 to a fast reader (about 35 pages in); pages are read at a steady pace instead.
+PAGE_DELAY_SECONDS = 1.5
 _LISTING = re.compile(r'https?://(?:www\.)?leafly\.com/dispensary-info/([^/?#"\'<>\s\\]+)', re.I)
 
 
@@ -138,6 +141,8 @@ def fetch(endpoint, fetcher):
             while True:
                 if page > max_pages:
                     raise ValueError('Leafly menu page limit reached')
+                if page > 1 or traversal:
+                    time.sleep(float(endpoint.get('page_delay_seconds', PAGE_DELAY_SECONDS)))
                 response = fetcher.get(f'{base}?page={page}')
                 result['evidence'].append(response.evidence_id)
                 if response.status_code != 200:
