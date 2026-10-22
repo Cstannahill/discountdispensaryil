@@ -1,0 +1,43 @@
+{
+ "data": {
+  "products": [
+   {
+    "id": 9001,
+    "name": "Happy Hour [300mg]",
+    "brand": {
+     "name": "B"
+    },
+    "kind": "vape",
+    "price_half_gram": 25.0,
+    "available_weights": [
+     "half gram"
+    ]
+   },
+   {
+    "id": 9002,
+    "name": "Velvet Ropes [4g]",
+    "brand": {
+     "name": "B"
+    },
+    "kind": "extract",
+    "price_half_gram": 120.0,
+    "available_weights": [
+     "half gram"
+    ]
+   },
+   {
+    "id": 9003,
+    "name": "Plain Cart",
+    "brand": {
+     "name": "B"
+    },
+    "kind": "vape",
+    "price_half_gram": 25.0,
+    "available_weights": [
+     "half gram"
+    ]
+   }
+  ],
+  "total": 3
+ }
+}

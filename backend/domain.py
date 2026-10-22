@@ -76,6 +76,17 @@ def flower_grade(item):
     return "whole"
 
 
+# No flower, concentrate or vape is sold under 0.1 g; Dutchie lists mg doses and mistyped 0.5 g packs as ".05g", so such a
+# mass is a source label error and the offer is excluded rather than priced at hundreds of dollars per gram.
+# A mass written in the product name as [300mg], [4g] or (2.5 g) is the package the retailer says it sells; a priced option
+# label that disagrees with every such mass (Jane "half gram" on a [4g] extract) would make a wrong $/g, so it is excluded.
+_NAME_MASS = re.compile(r"[\[(]\s*(\d*\.?\d+)\s*(mg|g|grams?)\s*[\])]|\|\s*(\d*\.?\d+)\s*(mg|g|grams?)\s*(?:\||$)", re.I)
+
+
+def name_masses(name):
+    return {Decimal(n or n2) / (1000 if (u or u2).lower() == "mg" else 1) for n, u, n2, u2 in _NAME_MASS.findall(str(name or ""))}
+
+
 def normalize_offer(item):
     if not str(item.get("source_id") or "").strip():
         raise ValueError("missing_product_identity")
@@ -92,6 +103,10 @@ def normalize_offer(item):
         reasons.append("unsupported_category")
     if weight is None:
         reasons.append("unknown_or_invalid_package_mass")
+    if weight is not None and (named := name_masses(item.get("name"))) and all(abs(weight - m) > m / 100 for m in named):
+        reasons.append("conflicting_package_mass")
+    if weight is not None and weight < Decimal("0.1") and category in ("flower", "concentrate", "vapes"):
+        reasons.append("implausible_package_mass")
     if effective is None:
         reasons.append("unknown_or_invalid_price")
     if conditional:
