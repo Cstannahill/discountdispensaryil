@@ -320,8 +320,15 @@ class SyncService:
             self._check_stop();resolution_start=time.monotonic();failures=[];targets={}
             try:
                 # Pages the store verifier cited or an operator seeded are crawl seeds; the resolver still has to prove the branch on them.
-                leads=[lead['url'] for lead in self.store.leads(store['id']) if lead['source'] in ('verifier','operator')]
+                # Sites a paid search found before are saved as 'search' leads and crawled first, so the search is not paid for twice.
+                leads=[lead['url'] for lead in self.store.leads(store['id']) if lead['source'] in ('verifier','operator','search')]
                 resolver_store=dict(store,lead_urls=leads) if leads else store
+                known={lead['url'] for lead in self.store.leads(store['id'])}
+                def save_search_leads(found,store_id=store['id']):
+                    for lead in found:
+                        if lead.get('url') and lead['url'] not in known:
+                            known.add(lead['url']);self.store.record_lead(store_id,lead['url'],'search','Found by website search',lead.get('evidence') or [])
+                resolver_store=dict(resolver_store,search_sink=save_search_leads,no_search=vouched)
                 if sample:resolver_store=dict(resolver_store,discovery_seconds=SAMPLE_DISCOVERY_SECONDS)
                 resolved=self.resolver(resolver_store,self.fetcher)
                 self._check_stop()

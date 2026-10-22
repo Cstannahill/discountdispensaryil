@@ -216,7 +216,8 @@ def resolve_menu(store, fetcher):
             failures.append(dict(url=c.get('url'),provider='generic',provider_store_id=None,license_type='recreational',
                                  status=c['status'],reason=c.get('reason'),resolution_evidence=c.get('evidence',[])))
     # A chain list that answered for this branch is final: no open-web search may add leads for it.
-    searched=any(c.get('chain_list') for c in seeds)
+    # A saved menu that already proves this branch needs no paid search either (store['no_search']).
+    searched=any(c.get('chain_list') for c in seeds) or bool(store.get('no_search'))
     while len(visited)<max_pages and (deadline is None or time.monotonic()<deadline):
         # A configured brand root is a lead, not proof that the branch is still
         # operated by that brand. Reserve crawl capacity for independent search
@@ -225,6 +226,7 @@ def resolve_menu(store, fetcher):
             searched=True
             leads=search_websites(store,fetcher)+search_websites(store,fetcher,by_address=True)
             seeds.extend(leads)
+            if leads and callable(store.get('search_sink')):store['search_sink'](leads)
             pending=[(lead['url'],0,lead,False) for lead in leads if lead.get('url') and catalog_entry_url(lead['url']) not in visited]+pending
             attempts=getattr(fetcher,'_last_search_attempts',[])
             if not leads and attempts:
