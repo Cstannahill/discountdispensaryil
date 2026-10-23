@@ -71,15 +71,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         </div>
       </header>
 
-      <LocationControl active={!!origin} radius={origin?.radius_miles ?? 50} />
+      <LocationControl active={!!origin} radius={origin?.radius_miles ?? 50} place={region?.label ?? ''} />
 
       <form method="get" className="glass-card rounded-2xl p-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-6 items-end">
-        <label className="field lg:col-span-2">Area
-          {origin && <><input type="hidden" name="lat" value={origin.latitude} /><input type="hidden" name="lon" value={origin.longitude} /><input type="hidden" name="radius" value={origin.radius_miles} /><input type="hidden" name="place" value={origin.label} /></>}
-          <select name="region" defaultValue={regionId} disabled={!!origin}>
-            {reg.items.map((r) => <option key={r.id} value={r.id}>{r.label} · {r.radius_miles} mi{r.precision === 'gps' ? ' (GPS)' : ''}</option>)}
-          </select>
-        </label>
+        {origin
+          ? <><input type="hidden" name="lat" value={origin.latitude} /><input type="hidden" name="lon" value={origin.longitude} /><input type="hidden" name="radius" value={origin.radius_miles} /><input type="hidden" name="place" value={origin.label} /></>
+          : <input type="hidden" name="region" value={regionId} />}
         <label className="field">License
           <select name="license" defaultValue={license}>{LICENSES.map((l) => <option key={l} value={l}>{l}</option>)}</select>
         </label>

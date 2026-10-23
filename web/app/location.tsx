@@ -7,7 +7,7 @@ const RKEY = 'terpscout.radius';
 type Pick = { lat: number; lon: number; place: string };
 
 // Lets a visitor use their device location or a ZIP/city instead of the server's saved region; the choice lives in the URL and localStorage.
-export default function LocationControl({ active, radius }: { active: boolean; radius: number }) {
+export default function LocationControl({ active, radius, place }: { active: boolean; radius: number; place: string }) {
   const router = useRouter();
   const sp = useSearchParams();
   const [msg, setMsg] = useState('');
@@ -61,21 +61,30 @@ export default function LocationControl({ active, radius }: { active: boolean; r
   const clear = () => { try { localStorage.removeItem(KEY); } catch {} router.push('/'); };
 
   return (
-    <div className="glass-card rounded-2xl p-4 space-y-2">
-      <form onSubmit={lookup} className="flex flex-wrap gap-2 items-end">
-        <button type="button" className="btn" onClick={gps} disabled={busy}>{busy ? 'Locating…' : 'Use my location'}</button>
-        <input className="min-w-0 flex-1" aria-label="ZIP or City, ST" placeholder="ZIP or City, ST (e.g. 61602)" value={text} onChange={(e) => setText(e.target.value)} />
-        <button className="btn-primary" disabled={busy || !text.trim()}>Set</button>
-        {active && (
-          <label className="flex items-center gap-1.5 text-xs text-slate-300">Range
-            <select value={radius} onChange={(e) => setRadius(e.target.value)} aria-label="Search range in miles">
-              {[...new Set([5, 10, 25, 50, 100, 200, radius])].sort((a, b) => a - b).map((m) => <option key={m} value={m}>{m} mi</option>)}
+    <section className="glass-card rounded-2xl p-4 space-y-3" aria-label="Search location">
+      <div>
+        <h2 className="font-bold text-sm">Where are you searching from?</h2>
+        <p className="text-xs text-slate-400">{place ? <>Showing deals near <strong className="text-emerald-400">{place}</strong>{active ? ` within ${radius} miles` : ''}</> : 'Pick a location to see nearby deals.'}</p>
+      </div>
+      <button type="button" className="btn-primary w-full py-3 text-sm" onClick={gps} disabled={busy}>{busy ? 'Locating…' : '📍 Use my current location'}</button>
+      <form onSubmit={lookup} className="space-y-1">
+        <label htmlFor="loc-text" className="text-[11px] text-slate-400">Or enter a ZIP code or city</label>
+        <div className="flex gap-2">
+          <input id="loc-text" className="min-w-0 flex-1 !py-3 !text-sm" placeholder="e.g. 61602 or Peoria, IL" value={text} onChange={(e) => setText(e.target.value)} />
+          <button className="btn-primary px-5" disabled={busy || !text.trim()}>Set</button>
+        </div>
+      </form>
+      {active && (
+        <div className="flex items-end gap-2">
+          <label className="flex-1 space-y-1 text-[11px] text-slate-400">Range
+            <select className="w-full !py-3 !text-sm" value={radius} onChange={(e) => setRadius(e.target.value)} aria-label="Search range in miles">
+              {[...new Set([5, 10, 25, 50, 100, 200, radius])].sort((a, b) => a - b).map((m) => <option key={m} value={m}>Within {m} miles</option>)}
             </select>
           </label>
-        )}
-        {active && <button type="button" className="btn" onClick={clear}>Reset</button>}
-      </form>
+          <button type="button" className="btn py-3" onClick={clear}>Reset</button>
+        </div>
+      )}
       {msg && <p role="alert" className="text-xs text-amber-200">{msg}</p>}
-    </div>
+    </section>
   );
 }
