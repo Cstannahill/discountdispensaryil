@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 const KEY = 'terpscout.origin';
+const RKEY = 'terpscout.radius';
 type Pick = { lat: number; lon: number; place: string };
 
 // Lets a visitor use their device location or a ZIP/city instead of the server's saved region; the choice lives in the URL and localStorage.
-export default function LocationControl({ active }: { active: boolean }) {
+export default function LocationControl({ active, radius }: { active: boolean; radius: number }) {
   const router = useRouter();
   const sp = useSearchParams();
   const [msg, setMsg] = useState('');
@@ -17,6 +18,7 @@ export default function LocationControl({ active }: { active: boolean }) {
     try { localStorage.setItem(KEY, JSON.stringify(o)); } catch {}
     const u = new URLSearchParams(sp.toString());
     u.set('lat', o.lat.toFixed(5)); u.set('lon', o.lon.toFixed(5)); u.set('place', o.place); u.delete('region');
+    try { const r = localStorage.getItem(RKEY); if (r && !u.get('radius')) u.set('radius', r); } catch {}
     ['p_concentrate', 'p_flower', 'p_vapes'].forEach((k) => u.delete(k));
     router.push(`/?${u.toString()}`);
   };
@@ -49,6 +51,13 @@ export default function LocationControl({ active }: { active: boolean }) {
     } catch { setMsg('Lookup failed; try again'); }
     setBusy(false);
   };
+  const setRadius = (v: string) => {
+    const u = new URLSearchParams(sp.toString());
+    u.set('radius', v);
+    try { localStorage.setItem(RKEY, v); } catch {}
+    ['p_concentrate', 'p_flower', 'p_vapes'].forEach((k) => u.delete(k));
+    router.push(`/?${u.toString()}`);
+  };
   const clear = () => { try { localStorage.removeItem(KEY); } catch {} router.push('/'); };
 
   return (
@@ -57,6 +66,13 @@ export default function LocationControl({ active }: { active: boolean }) {
         <button type="button" className="btn" onClick={gps} disabled={busy}>{busy ? 'Locating…' : 'Use my location'}</button>
         <input className="min-w-0 flex-1" aria-label="ZIP or City, ST" placeholder="ZIP or City, ST (e.g. 61602)" value={text} onChange={(e) => setText(e.target.value)} />
         <button className="btn-primary" disabled={busy || !text.trim()}>Set</button>
+        {active && (
+          <label className="flex items-center gap-1.5 text-xs text-slate-300">Range
+            <select value={radius} onChange={(e) => setRadius(e.target.value)} aria-label="Search range in miles">
+              {[...new Set([5, 10, 25, 50, 100, 200, radius])].sort((a, b) => a - b).map((m) => <option key={m} value={m}>{m} mi</option>)}
+            </select>
+          </label>
+        )}
         {active && <button type="button" className="btn" onClick={clear}>Reset</button>}
       </form>
       {msg && <p role="alert" className="text-xs text-amber-200">{msg}</p>}

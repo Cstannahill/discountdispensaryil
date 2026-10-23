@@ -71,7 +71,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         </div>
       </header>
 
-      <LocationControl active={!!origin} />
+      <LocationControl active={!!origin} radius={origin?.radius_miles ?? 50} />
 
       <form method="get" className="glass-card rounded-2xl p-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-6 items-end">
         <label className="field lg:col-span-2">Area
