@@ -36,3 +36,8 @@
 .custom-scroll::-webkit-scrollbar-track {background:#0d1318;}
 .custom-scroll::-webkit-scrollbar-thumb {background:#263847;border-radius:3px;}
 .custom-scroll::-webkit-scrollbar-thumb:hover {background:#10b981;}
+@media (max-width: 1023px) {
+  .cat-grid[data-active="concentrate"] > section:not([data-cat="concentrate"]),
+  .cat-grid[data-active="flower"] > section:not([data-cat="flower"]),
+  .cat-grid[data-active="vapes"] > section:not([data-cat="vapes"]) {display:none;}
+}

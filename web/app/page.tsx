@@ -1,4 +1,5 @@
 import LocationControl from './location';
+import CategoryGrid from './categories';
 import { parseOrigin } from '@/lib/origin';
 import { CATEGORIES, GRADES, LICENSES, queryDeals, regions, type Offer } from '@/lib/deals';
 
@@ -96,13 +97,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
       {region && <p className="text-xs text-slate-400">Showing deals within {region.radius_miles} miles of {region.label}. Prices are pre-tax; menus older than 12 hours are hidden unless included.</p>}
 
-      <div className="grid gap-4 lg:grid-cols-3">
+      <CategoryGrid chips={cats.map((c, i) => ({ id: c, label: c, total: results[i].total, color: ACCENT[c] }))}>
         {cats.map((category, i) => {
           const r = results[i];
           const last = Math.max(1, Math.ceil(r.total / PAGE_SIZE));
           const page = pages[category];
           return (
-            <section key={category} className="glass-card rounded-2xl overflow-hidden" style={{ borderColor: `${ACCENT[category]}45` }}>
+            <section key={category} data-cat={category} className="glass-card rounded-2xl overflow-hidden" style={{ borderColor: `${ACCENT[category]}45` }}>
               <div className="category-art relative h-28" style={{ backgroundImage: `linear-gradient(to top,#020617,rgba(2,6,23,.3)),url('/${category}.jpg')` }}>
                 <div className="absolute bottom-3 left-4">
                   <span className="badge uppercase tracking-widest" style={{ color: ACCENT[category] }}>Category 0{i + 1}</span>
@@ -127,7 +128,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
             </section>
           );
         })}
-      </div>
+      </CategoryGrid>
     </main>
   );
 }
