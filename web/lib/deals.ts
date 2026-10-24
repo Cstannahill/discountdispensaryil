@@ -12,11 +12,14 @@ export interface Offer {
   weight_grams: string | null; weight_label?: string | null; regular_price: string | null; effective_price: string | null;
   price_per_gram: string | null; conditional?: boolean; promo?: string | null; completeness: string; freshness: string;
   flower_grade: string | null; distance_miles: number; last_seen_at: string; last_diff_action: string; source_url?: string | null;
+  variants?: Variant[];
 }
+// One strain inside a collapsed group of same-product offers.
+export interface Variant { id: string; name: string; strain_type: string | null; thc_pct: string | null; source_url: string | null }
 export interface Origin { latitude: number; longitude: number; radius_miles: number }
 export interface DealQuery {
   region_id?: string; origin?: Origin; license_type?: string; category?: string; q?: string; include_stale?: boolean; include_unverified?: boolean;
-  flower_grade?: string; strain_type?: string; promo?: string; page?: number; page_size?: number;
+  flower_grade?: string; strain_type?: string; promo?: string; group?: boolean; page?: number; page_size?: number;
 }
 export interface Page<T> { items: T[]; total: number; page: number; page_size: number; data_version: string }
 
@@ -28,6 +31,17 @@ const GRADE_RE = {
 };
 const gradeOf = (col: string) =>
   `CASE WHEN ${col} ~* '${GRADE_RE.infused}' THEN 'infused' WHEN ${col} ~* '${GRADE_RE.shake}' THEN 'shake' WHEN ${col} ~* '${GRADE_RE.smalls}' THEN 'smalls' END`;
+
+// Smallest group that collapses: below this, equal price and size at one brand is more likely coincidence than one product line.
+export const MIN_GROUP = 3;
+// Product-line words that stay in the group key, so "Live Resin Cart" and "Distillate Cart" at one price never merge.
+const LINE_RE = String.raw`\y(?:live resin|live rosin|rosin|resin|distillate|diamonds?|badder|batter|budder|crumble|shatter|wax|kief|cartridge|cart|pod|disposable|pre-?rolls?|infused|solventless)\y`;
+
+/** Indica / Sativa / Hybrid bucket for a source strain label; dominant-leaning labels follow their lean. */
+export function strainBucket(v?: string | null): 'Indica' | 'Sativa' | 'Hybrid' | 'Unspecified' {
+  const t = (v ?? '').toLowerCase();
+  return t.includes('indica') ? 'Indica' : t.includes('sativa') ? 'Sativa' : t.includes('hybrid') ? 'Hybrid' : 'Unspecified';
+}
 
 export async function regions(): Promise<{ items: Region[]; active_region_id: string | null }> {
   const [items, active] = await Promise.all([
@@ -91,14 +105,22 @@ c AS MATERIALIZED (
   FROM b),
 d AS (
   SELECT c.*, coalesce(extract(epoch FROM now()-(CASE WHEN completeness='B' THEN last_converged_at ELSE last_success_at END)::timestamptz)/3600, 1e9) < 12 AS fresh
-  FROM c)
-SELECT id, endpoint_id, last_diff_action, last_seen_at, snapshot_id, j, store_id, license_type, store_name, endpoint_url, provider,
-       completeness, fgrade, distance_miles, fresh, count(*) OVER() AS total
-FROM d WHERE ${where.join(' AND ')}
-ORDER BY (j->>'effective_price')::numeric/(j->>'weight_grams')::numeric, round(distance_miles::numeric,3), id
-LIMIT ${arg(size)} OFFSET ${arg((page - 1) * size)}`;
+  FROM c),
+e AS (
+  SELECT d.*, concat_ws('|', store_id, license_type, j->>'category', lower(trim(coalesce(j->>'brand',''))), j->>'weight_grams', j->>'effective_price', coalesce(fgrade,''),
+           lower(coalesce(j->>'subcategory','')), coalesce(j->>'promo',''), coalesce(j->>'conditional',''),
+           coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(coalesce(j->>'name','')), '${LINE_RE}', 'g') m), '')) AS gkey
+  FROM d WHERE ${where.join(' AND ')}),
+f AS (SELECT e.*, ${q.group ? `CASE WHEN count(*) OVER (PARTITION BY gkey) >= ${MIN_GROUP} THEN gkey ELSE id END` : 'id'} AS gk FROM e),
+reps AS (SELECT DISTINCT ON (gk) gk, j, distance_miles, id FROM f ORDER BY gk, id),
+pg AS (
+  SELECT gk, row_number() OVER (ORDER BY (j->>'effective_price')::numeric/(j->>'weight_grams')::numeric, round(distance_miles::numeric,3), id) AS ord, count(*) OVER() AS total
+  FROM reps ORDER BY ord LIMIT ${arg(size)} OFFSET ${arg((page - 1) * size)})
+SELECT f.id, endpoint_id, last_diff_action, last_seen_at, snapshot_id, j, store_id, license_type, store_name, endpoint_url, provider,
+       completeness, fgrade, distance_miles, fresh, gk, total
+FROM f JOIN pg USING (gk) ORDER BY ord, f.id`;
   const [data, version] = await Promise.all([rows<Record<string, any>>(text, p), dataVersion()]);
-  const items: Offer[] = data.map((r) => {
+  const offers = data.map((r) => {
     const { raw: _raw, ...j } = r.j; // raw feeds withProductUrl below
     return {
       ...j,
@@ -107,7 +129,19 @@ LIMIT ${arg(size)} OFFSET ${arg((page - 1) * size)}`;
       store_name: r.store_name, distance_miles: Math.round(Number(r.distance_miles) * 1000) / 1000,
       completeness: r.completeness, freshness: r.fresh ? 'fresh' : 'stale', flower_grade: r.fgrade,
       source_url: withProductUrl(r.j, r.provider, r.endpoint_url, r.license_type),
+      gk: r.gk,
     };
   });
+  // Members of one group arrive together (ordered by the group's rank); the first row stands for the group.
+  const items: Offer[] = [];
+  const seen = new Map<string, Offer>();
+  for (const { gk, ...o } of offers) {
+    const lead = seen.get(gk);
+    if (!lead) { seen.set(gk, o); items.push(o); }
+    const members: Variant[] = (lead ?? o).variants ??= [];
+    const key = (o.name ?? '').trim().toLowerCase();
+    if (!members.some((v) => (v.name ?? '').trim().toLowerCase() === key)) members.push({ id: o.id, name: (o.name ?? '').trim(), strain_type: o.strain_type ?? null, thc_pct: o.thc_pct ?? null, source_url: o.source_url ?? null });
+  }
+  for (const o of items) if ((o.variants?.length ?? 0) < 2) delete o.variants; // a lone strain is an ordinary card
   return { items, total: data[0] ? Number(data[0].total) : 0, page, page_size: size, data_version: version };
 }

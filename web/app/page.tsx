@@ -1,7 +1,7 @@
 import LocationControl from './location';
 import CategoryGrid from './categories';
 import { parseOrigin } from '@/lib/origin';
-import { CATEGORIES, GRADES, LICENSES, queryDeals, regions, type Offer } from '@/lib/deals';
+import { CATEGORIES, GRADES, LICENSES, queryDeals, regions, strainBucket, type Offer } from '@/lib/deals';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,13 +14,42 @@ const money = (v: string | null | undefined) => (v == null || v === '' ? '—' :
 const when = (v: string) => new Date(v).toLocaleString('en-US', { timeZone: 'America/Chicago', dateStyle: 'short', timeStyle: 'short' });
 const safeUrl = (v?: string | null) => { try { const u = new URL(v ?? ''); return ['https:', 'http:'].includes(u.protocol) ? u.href : undefined; } catch { return undefined; } };
 
+const BUCKETS = ['Indica', 'Sativa', 'Hybrid', 'Unspecified'] as const;
+
+// Same store, brand, size and price, differing only by strain: one card, strains listed by type with a link each.
+function StrainList({ o }: { o: Offer }) {
+  const vs = o.variants ?? [];
+  return (
+    <details className="text-[11px]">
+      <summary className="cursor-pointer text-emerald-400">{vs.length} strains — show list</summary>
+      <div className="mt-2 space-y-2">
+        {BUCKETS.map((b) => {
+          const list = vs.filter((v) => strainBucket(v.strain_type) === b).sort((x, y) => x.name.localeCompare(y.name));
+          return list.length > 0 && (
+            <div key={b}>
+              <p className="text-[10px] uppercase tracking-wider text-slate-500">{b} · {list.length}</p>
+              <ul className="space-y-0.5">
+                {list.map((v) => {
+                  const u = safeUrl(v.source_url);
+                  return <li key={v.id}>{u ? <a className="text-slate-200 underline decoration-slate-600 hover:text-emerald-400" href={u} target="_blank" rel="noopener noreferrer">{v.name} ↗</a> : <span className="text-slate-300">{v.name}</span>}{v.thc_pct ? <span className="text-slate-500"> · THC {v.thc_pct}%</span> : null}</li>;
+                })}
+              </ul>
+            </div>
+          );
+        })}
+      </div>
+    </details>
+  );
+}
+
 function OfferCard({ o }: { o: Offer }) {
   const href = safeUrl(o.source_url);
+  const grouped = (o.variants?.length ?? 0) > 1;
   return (
     <article className="rounded-xl border border-slate-700/60 bg-slate-900/90 p-3 space-y-2">
       <div>
-        <h3 className="text-xs font-bold text-white">{o.name}</h3>
-        <p className="text-[11px] text-slate-400">{o.brand || 'Brand not supplied'} · {o.strain_type || 'Strain not supplied'}{o.flower_grade && o.flower_grade !== 'whole' ? ` · ${o.flower_grade}` : ''}</p>
+        <h3 className="text-xs font-bold text-white">{grouped ? `${o.brand || 'Brand not supplied'} · ${o.variants!.length} strains` : o.name}</h3>
+        <p className="text-[11px] text-slate-400">{grouped ? `${o.weight_label || (o.weight_grams ? `${o.weight_grams}g` : 'mass unknown')} · same price` : `${o.brand || 'Brand not supplied'} · ${o.strain_type || 'Strain not supplied'}`}{o.flower_grade && o.flower_grade !== 'whole' ? ` · ${o.flower_grade}` : ''}</p>
       </div>
       <div className="flex justify-between items-end">
         <div>
@@ -31,7 +60,7 @@ function OfferCard({ o }: { o: Offer }) {
       </div>
       <p className="text-[11px] text-slate-300">{o.store_name} · {o.distance_miles.toFixed(1)} mi · {o.license_type}</p>
       <p className="text-[10px] text-slate-500">Observed {when(o.last_seen_at)}{o.conditional ? ' · Conditional promotion' : ''}</p>
-      {href && <a className="text-[11px] text-emerald-400 underline" href={href} target="_blank" rel="noopener noreferrer">View on dispensary menu ↗</a>}
+      {grouped ? <StrainList o={o} /> : href && <a className="text-[11px] text-emerald-400 underline" href={href} target="_blank" rel="noopener noreferrer">View on dispensary menu ↗</a>}
     </article>
   );
 }
@@ -51,7 +80,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const pages = Object.fromEntries(cats.map((c) => [c, Math.max(1, Number(one(sp[`p_${c}`])) || 1)]));
   const results = await Promise.all(cats.map((category) => queryDeals({
     region_id: regionId, origin: origin ?? undefined, license_type: license, category, q, include_stale: stale, include_unverified: unverified,
-    flower_grade: grade, promo: bogo ? 'bogo' : undefined, page: pages[category], page_size: PAGE_SIZE,
+    flower_grade: grade, promo: bogo ? 'bogo' : undefined, group: true, page: pages[category], page_size: PAGE_SIZE,
   })));
   const base = { ...(origin ? { lat: String(origin.latitude), lon: String(origin.longitude), radius: String(origin.radius_miles), place: origin.label } : { region: regionId }), license, grade, q, stale: stale ? '1' : '', unverified: unverified ? '1' : '', promo: bogo ? 'bogo' : '' };
   const link = (category: string, page: number) => {
@@ -111,7 +140,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
                 </div>
               </div>
               <div className="px-4 py-2 bg-slate-900 border-b border-slate-800 text-[11px] text-slate-400">
-                Lowest observed comparable <strong style={{ color: ACCENT[category] }}>price / gram</strong> · {r.total} offers
+                Lowest observed comparable <strong style={{ color: ACCENT[category] }}>price / gram</strong> · {r.total} {r.total === 1 ? 'listing' : 'listings'}
               </div>
               <div className="p-3 space-y-3">
                 {r.items.length === 0

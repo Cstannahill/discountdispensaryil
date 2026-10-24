@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   const page = await queryDeals({
     region_id: u.get('region_id') ?? '', origin: origin ?? undefined, license_type: u.get('license_type') || undefined, category: u.get('category') || undefined,
     q: (u.get('q') || '').slice(0, 300), include_stale: flag('include_stale'), include_unverified: flag('include_unverified'),
-    flower_grade: u.get('flower_grade') || 'whole', strain_type: u.get('strain_type') || undefined, promo: u.get('promo') || undefined,
+    flower_grade: u.get('flower_grade') || 'whole', strain_type: u.get('strain_type') || undefined, promo: u.get('promo') || undefined, group: flag('group'),
     page: num('page', 1), page_size: Math.min(200, num('page_size', 50)),
   });
   return NextResponse.json(page);
