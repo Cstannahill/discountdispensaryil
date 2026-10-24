@@ -109,7 +109,7 @@ d AS (
 e AS (
   SELECT d.*, concat_ws('|', store_id, license_type, j->>'category', lower(trim(coalesce(j->>'brand',''))), j->>'weight_grams', j->>'effective_price', coalesce(fgrade,''),
            lower(coalesce(j->>'subcategory','')), coalesce(j->>'promo',''), coalesce(j->>'conditional',''),
-           coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(coalesce(j->>'name','')), '${LINE_RE}', 'g') m), '')) AS gkey
+           coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(split_part(coalesce(j->>'name',''), ' - ', 1)), '${LINE_RE}', 'g') m), '')) AS gkey
   FROM d WHERE ${where.join(' AND ')}),
 f AS (SELECT e.*, ${q.group ? `CASE WHEN count(*) OVER (PARTITION BY gkey) >= ${MIN_GROUP} THEN gkey ELSE id END` : 'id'} AS gk FROM e),
 reps AS (SELECT DISTINCT ON (gk) gk, j, distance_miles, id FROM f ORDER BY gk, id),
@@ -140,7 +140,7 @@ FROM f JOIN pg USING (gk) ORDER BY ord, f.id`;
     if (!lead) { seen.set(gk, o); items.push(o); }
     const members: Variant[] = (lead ?? o).variants ??= [];
     const key = (o.name ?? '').trim().toLowerCase();
-    if (!members.some((v) => (v.name ?? '').trim().toLowerCase() === key)) members.push({ id: o.id, name: (o.name ?? '').trim(), strain_type: o.strain_type ?? null, thc_pct: o.thc_pct ?? null, source_url: o.source_url ?? null });
+    if (!members.some((v) => (v.name ?? '').trim().toLowerCase() === key)) members.push({ id: o.id, name: (o.name ?? '').trim().replace(/^.+? - (?=.)/, ''), strain_type: o.strain_type ?? null, thc_pct: o.thc_pct ?? null, source_url: o.source_url ?? null });
   }
   for (const o of items) if ((o.variants?.length ?? 0) < 2) delete o.variants; // a lone strain is an ordinary card
   return { items, total: data[0] ? Number(data[0].total) : 0, page, page_size: size, data_version: version };
