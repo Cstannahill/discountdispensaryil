@@ -21,6 +21,10 @@ CRESCO_LIST = 'https://api.crescolabs.com/p/stores'
 SUNNYSIDE_ORIGIN = 'https://www.sunnyside.shop'
 # Brand words a registry name carries that a NuEra city title does not.
 NAME_NOISE = {'nuera', 'nu', 'era', 'cannabis', 'dispensary', 'by', 'the', 'il', 'illinois'}
+# Jane store ids of Verilife's Illinois branches, from the Rise menu URL each branch page links
+# (risecannabis.com/dispensaries/illinois/verilife-<slug>/<id>/recreational-menu/). Rise refuses plain clients, so the id is read
+# from the public listing and the Jane reader proves the branch by the platform's own coordinates.
+VERILIFE_RISE_IDS = {'rosemont': '7309', 'schaumburg': '7310', 'arlington-heights': '7312', 'north-aurora': '7314', 'romeoville': '7318', 'ottawa': '7320'}
 # Registry streets an operator corrected to the chain's own list (accepted 2026-10-20). The registry row keeps its address
 # until the registry is corrected; the Dutchie street exception for the same store is in providers/generic.py.
 CORRECTED_STREETS = {
@@ -112,7 +116,16 @@ def _verilife_menu(branch, evidence, fetcher):
         page = fetcher.get(branch['url'])
     except FetchError as exc:
         if re.search(r'HTTP (?:403|503)\b', str(exc)):
-            # The branch is confirmed on verilife.com; its menu is on Rise, which refuses this client. Not worked around.
+            # The branch is confirmed on verilife.com; its menu is on Rise, which refuses this client. Not worked around:
+            # the Jane store id Rise publishes for the branch is read through Jane's own storefront instead.
+            slug = (branch['url'] or '').rstrip('/').rsplit('/', 1)[-1]
+            jane_id = VERILIFE_RISE_IDS.get(slug)
+            if jane_id:
+                menu = f'https://risecannabis.com/dispensaries/illinois/verilife-{slug}/{jane_id}/recreational-menu/'
+                endpoint = dict(url=menu, provider='jane', provider_store_id=jane_id, license_type='recreational', license_basis='chain_list',
+                                identity_confidence='matched', platforms=['jane'],
+                                resolution_evidence=dict(url=branch['url'], method='Verilife location list street, Rise-hosted Jane store id', retailer_address=branch['street']))
+                return [_cand('matched', menu, f'Verilife location list: branch street matches; Rise lists Jane store {jane_id} for it', dict(url=branch['url'], evidence_id=exc.evidence_id), endpoint=endpoint)]
             return [_cand('blocked', branch['url'], 'Verilife list confirms this branch; its menu redirects to risecannabis.com, which refused this client (HTTP 403)', dict(url=branch['url'], evidence_id=exc.evidence_id))]
         return [_cand('failed', branch['url'], f'Verilife branch page unavailable: {exc}', dict(url=branch['url'], evidence_id=exc.evidence_id))]
     return [_cand('unresolved', branch['url'], 'Verilife branch page loads, but names no Jane store id or menu link', _evidence(page))]
