@@ -360,22 +360,9 @@ def create_app(*, db_path=None, evidence_dir=None, fetcher=None, enable_schedule
         banner = '<aside style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#78350f;color:white;padding:12px;text-align:center">LEGACY VISUAL REFERENCE — simulated stores, products and sync events. Not live data.</aside>'
         return HTMLResponse(text.replace("</body>", banner + "</body>"))
 
-    build = BASE_DIR / "frontend/dist"
-    if (build / "assets").exists():
-        app.mount("/assets", StaticFiles(directory=build / "assets"), name="assets")
-    if (build / "artwork").exists():
-        app.mount("/artwork", StaticFiles(directory=build / "artwork"), name="artwork")
-
-    @app.get("/{path:path}", include_in_schema=False)
-    def frontend(path: str):
-        if path.startswith("api/"):
-            return JSONResponse(status_code=404, content={"detail": {"code": "unknown_api", "message": "Unknown API route"}})
-        candidate = (build / path).resolve()
-        if candidate.is_relative_to(build.resolve()) and candidate.is_file():
-            return FileResponse(candidate)
-        if (build / "index.html").exists():
-            return FileResponse(build / "index.html")
-        return JSONResponse(status_code=503, content={"detail": {"code": "frontend_not_built", "message": "Run npm ci and npm run build in frontend/, then restart the API."}})
+    @app.get("/api/{path:path}", include_in_schema=False)
+    def unknown_api(path: str):
+        return JSONResponse(status_code=404, content={"detail": {"code": "unknown_api", "message": "Unknown API route"}})
 
     return app
 

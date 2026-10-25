@@ -1,6 +1,6 @@
 /* Ordinary Chrome rendering through validated captured HTTP or a public-only
  * native tunnel. Shopping preferences are distinct from age confirmation. */
-const { chromium } = require('../frontend/node_modules/playwright');
+const { chromium } = require('../web/node_modules/playwright');
 const readline = require('node:readline');
 const {selectLocation}=require('./browser_locations.cjs');
 const input = readline.createInterface({input:process.stdin});

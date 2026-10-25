@@ -1,6 +1,6 @@
 # TerpScout
 
-React/TypeScript/Vite frontend with FastAPI, SQLite and APScheduler ingestion. The original dark styling and artwork are preserved. The default application uses persisted observations with no sample-menu fallback.
+Next.js/React/TypeScript frontend (`web/`) with FastAPI, SQLite and APScheduler ingestion. The default application uses persisted observations with no sample-menu fallback.
 
 ## Run locally (PowerShell)
 
@@ -9,16 +9,16 @@ Use Python 3.13+ and Node 22.12+ or 24+.
 ```powershell
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install -r requirements.txt
-Set-Location frontend
+Set-Location web
 npm ci
 npm run build
 Set-Location ..
 .venv/Scripts/python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
-Open [TerpScout](http://127.0.0.1:8000/) or [API documentation](http://127.0.0.1:8000/docs). Use one worker; a process lease prevents concurrent ingestion workers sharing this database. Scheduled jobs run while the process is running. Port 8000 avoids the Razer Synapse service commonly occupying port 8080.
+Open [API documentation](http://127.0.0.1:8000/docs). Use one worker; a process lease prevents concurrent ingestion workers sharing this database. Scheduled jobs run while the process is running. Port 8000 avoids the Razer Synapse service commonly occupying port 8080.
 
-For frontend development, run `npm run dev` in `frontend/` while the API runs on port 8000. Vite proxies `/api` to the backend. Rebuild for the production URL after editing. Keep the service bound to localhost: this local application has no multi-user authentication.
+For web development, run `npm run dev` in `web/` (port 3000). Keep the backend service bound to localhost: this local application has no multi-user authentication.
 
 ## Discovery and full-menu ingestion
 
@@ -45,14 +45,15 @@ Schedules: 2/day (08:00, 20:00), 3/day (07:00, 15:00, 23:00), or 4/day (00:00, 0
 
 ```powershell
 .venv/Scripts/python.exe -m unittest discover -s tests
-Set-Location frontend
+Set-Location web
+npm run typecheck
 npm test
 npm run build
 Set-Location ..
 .venv/Scripts/python.exe scripts/live_acceptance.py --zip 61358 --radius 50 --output data/live-acceptance-final.json
 ```
 
-The last command performs real public requests through the running API and persists measured results. Fixture tests do not establish current access to every provider. Browser review artifacts are under `frontend/output/playwright/`.
+The last command performs real public requests through the running API and persists measured results. Fixture tests do not establish current access to every provider.
 
 ## Expanded discovery and scraper fallback (2026-10-17)
 

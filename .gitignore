@@ -6,7 +6,8 @@
 
 # Dependencies and build output
 node_modules/
-frontend/dist/
+web/.next/
+.superpowers/
 __pycache__/
 *.pyc
 
@@ -19,8 +20,6 @@ terpscout.db.before-live.sqlite3
 
 # Generated output: probe results, retained evidence, browser sessions, test logs, UI session captures
 data/
-frontend/.playwright-cli/
-frontend/output/
 
 # Point-in-time status report for work in progress
 PROJECT_STATUS_REPORT.md

@@ -1,15 +1,15 @@
 # CLAUDE.md
 
-TerpScout: finds the best cannabis deals ($/g) near a location by ingesting full dispensary menus. FastAPI + SQLite + APScheduler backend, React/TS/Vite frontend, Node/Playwright (installed Chrome) browser fallback. Illinois registry is the only candidate source today. See `PROJECT_STATUS_REPORT.md` for current measured coverage (22 of 190 regional stores have an accepted menu) and `docs/` for history; do not trust older counts in other docs.
+TerpScout: finds the best cannabis deals ($/g) near a location by ingesting full dispensary menus. FastAPI + SQLite + APScheduler backend, Next.js/React/TS frontend (`web/`), Node/Playwright (installed Chrome) browser fallback. Illinois registry is the only candidate source today. See `PROJECT_STATUS_REPORT.md` for current measured coverage (22 of 190 regional stores have an accepted menu) and `docs/` for history; do not trust older counts in other docs.
 
 ## Commands (Windows, PowerShell; always use the project venv)
 
 ```powershell
 .venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8000   # single worker only
-cd frontend; npm run dev          # :5173, proxies /api to :8000
+cd web; npm run dev               # :3000, Next.js web app
 .venv\Scripts\python.exe -m unittest discover -s tests -v
 $env:TERPSCOUT_BROWSER_TEST='1'; .venv\Scripts\python.exe -m unittest discover -s tests -p test_browser_render.py -v   # opt-in real Chrome
-cd frontend; npm test; npm run build
+cd web; npm run typecheck; npm test; npm run build
 .venv\Scripts\python.exe scripts/probe_browser_cohort.py --target <store_id> <url> --output data/x.json   # acquisition probe, never accepts catalogs
 .venv\Scripts\python.exe scripts/sample_stores.py <store_id ...> --pages 1     # fast troubleshooting sample, writes nothing
 .venv\Scripts\python.exe scripts/platform_census.py --region <region_id> [--write]   # platform census from evidence (live_store_platforms)

@@ -1,5 +1,6 @@
 // usage: node survey.cjs outdir '[["key","url"],...]' [--click]
-const {chromium}=require('S:/Code/Other/terpscout_fullstack/frontend/node_modules/playwright');
+const path=require('node:path');
+const {chromium}=require(path.resolve(__dirname,'../../../../../web/node_modules/playwright'));
 const fs=require('fs');
 const outdir=process.argv[2]; const targets=JSON.parse(process.argv[3]);
 const UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36';
