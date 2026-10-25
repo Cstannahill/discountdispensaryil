@@ -164,7 +164,7 @@ def _traverse(endpoint, target, license_type, result):
         info = (((_json(first, 'products').get('data') or {}).get('filteredProducts') or {}).get('queryInfo')) or {}
         count, pages = info.get('totalCount'), info.get('totalPages')
         if any(not isinstance(v, int) or isinstance(v, bool) or v < 0 for v in (count, pages)) or pages != math.ceil(count / PAGE):
-            raise ValueError('Dutchie queryInfo is not an exact total (inconsistent total)')
+            raise ValueError(f'Dutchie queryInfo is not an exact total (inconsistent total: totalCount={count!r}, totalPages={pages!r})')
         if pages > MAX_PAGES:
             raise ValueError('Dutchie menu exceeds the page limit')
         if total is None:
