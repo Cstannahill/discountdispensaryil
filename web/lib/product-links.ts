@@ -1,6 +1,9 @@
 // Mirror of backend/product_links.py: deep links to one product on a dispensary's own menu.
 // Only patterns confirmed against live menus are built; anything else keeps the store menu link.
 const SWEED_SKIP_HOSTS = ['curaleaf.com'];
+// Rise (Jane-backed) menus: <store>/<id>/<usage>-menu/product/<product id>/<slug>; the slug is cosmetic, the id routes.
+const RISE_MENU = /^(https?:\/\/(?:www\.)?risecannabis\.com\/dispensaries\/[^/]+\/[^/]+\/\d+\/(?:recreational|medical)-menu)(?:\/product\/.*)?$/;
+const slug = (name: unknown) => String(name ?? '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'item';
 
 const clean = (url?: string | null) => {
   try {
@@ -15,7 +18,10 @@ export function productUrl(provider: string, url: string, licenseType: string, i
   const raw = item.raw ?? {};
   const sourceId = String(item.source_id ?? '');
   const host = new URL(base).host.toLowerCase().replace(/^www\./, '');
-  if (provider === 'dutchie') {
+  const rise = RISE_MENU.exec(base);
+  if (rise) {
+    if (sourceId) return `${rise[1]}/product/${encodeURIComponent(sourceId)}/${slug(item.name)}/`;
+  } else if (provider === 'dutchie') {
     if (host === 'dutchie.com' && /\/embedded-menu\/[0-9a-f]+$/.test(base) && sourceId) return `${base}/product/${encodeURIComponent(sourceId)}`;
   } else if (provider === 'joint') {
     if (sourceId) return `${base}/?product_page=${encodeURIComponent(sourceId)}`;

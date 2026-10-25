@@ -6,6 +6,12 @@ import re
 from urllib.parse import urlsplit, quote
 
 SWEED_SKIP_HOSTS = ('curaleaf.com',)
+# Rise (Jane-backed) menus: <store>/<id>/<usage>-menu/product/<product id>/<slug>; the slug is cosmetic, the id routes.
+RISE_MENU = re.compile(r'^(https?://(?:www\.)?risecannabis\.com/dispensaries/[^/]+/[^/]+/\d+/(?:recreational|medical)-menu)(?:/product/.*)?$')
+
+
+def _slug(name):
+    return re.sub(r'[^a-z0-9]+', '-', str(name or '').lower()).strip('-') or 'item'
 
 
 def _clean(url):
@@ -22,7 +28,10 @@ def product_url(provider, url, license_type, item):
     raw = item.get('raw') or {}
     source_id = str(item.get('source_id') or '')
     host = urlsplit(base).netloc.lower().removeprefix('www.')
-    if provider == 'dutchie':
+    if (rise := RISE_MENU.match(base)):
+        if source_id:
+            return f"{rise.group(1)}/product/{quote(source_id)}/{_slug(item.get('name'))}/"
+    elif provider == 'dutchie':
         if host == 'dutchie.com' and re.search(r'/embedded-menu/[0-9a-f]+$', base) and source_id:
             return f"{base}/product/{quote(source_id)}"
     elif provider == 'joint':
