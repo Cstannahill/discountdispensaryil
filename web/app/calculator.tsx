@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { TAX_PRESETS, calculateOtd, inferTaxRate } from '@/lib/calculator';
+import { DEFAULT_LOCAL_PCT, LOCAL_PRESETS, RATES_VERIFIED, TAX_PRESETS, calculateOtd, inferTaxRate } from '@/lib/calculator';
 
 export interface CalcSeed {
   name?: string;
@@ -35,6 +35,7 @@ export default function CalculatorModal() {
   const [weight, setWeight] = useState('3.5');
   const [discount, setDiscount] = useState('0');
   const [tax, setTax] = useState('22');
+  const [local, setLocal] = useState(DEFAULT_LOCAL_PCT);
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -43,6 +44,7 @@ export default function CalculatorModal() {
       if (detail) {
         if (detail.price != null && detail.price !== '') setPrice(String(detail.price));
         if (detail.weight_grams != null && detail.weight_grams !== '') setWeight(String(detail.weight_grams));
+        setLocal(DEFAULT_LOCAL_PCT);
         setTax(String(inferTaxRate(detail)));
       }
       setOpen(true);
@@ -65,6 +67,7 @@ export default function CalculatorModal() {
     setWeight('3.5');
     setDiscount('0');
     setTax('22');
+    setLocal(DEFAULT_LOCAL_PCT);
     setSeed(null);
   };
 
@@ -212,7 +215,10 @@ export default function CalculatorModal() {
                   <button
                     key={preset.id}
                     type="button"
-                    onClick={() => setTax(String(preset.rate))}
+                    onClick={() => {
+                      setLocal(DEFAULT_LOCAL_PCT);
+                      setTax(String(preset.rate));
+                    }}
                     className={`text-left rounded-xl p-2 border transition-all ${
                       active
                         ? 'bg-emerald-500/20 border-emerald-400/60 text-emerald-200'
@@ -225,6 +231,25 @@ export default function CalculatorModal() {
                 );
               })}
             </div>
+            {Number(tax) > 1 && (
+              <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                <span className="text-[11px] font-semibold text-slate-400 mr-1">Local area:</span>
+                {LOCAL_PRESETS.map((lp) => (
+                  <button
+                    key={lp.id}
+                    type="button"
+                    onClick={() => {
+                      const next = Math.round((Number(tax) - local + lp.pct) * 100) / 100;
+                      setLocal(lp.pct);
+                      setTax(String(next));
+                    }}
+                    className={`pill !px-2.5 !py-1 !text-[11px] ${local === lp.pct ? 'pill-active' : ''}`}
+                  >
+                    {lp.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -256,24 +281,24 @@ export default function CalculatorModal() {
         <div className="pt-3 border-t border-slate-800/80 text-[11px] text-slate-400 space-y-1.5">
           <div className="flex items-center justify-between">
             <span className="font-semibold text-slate-300">Illinois Cannabis Tax Rates</span>
-            <span className="text-[10px] text-slate-500 font-mono">410 ILCS 705/65-10</span>
+            <span className="text-[10px] text-slate-500 font-mono">35 ILCS 130 · checked {RATES_VERIFIED}</span>
           </div>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[10px] text-slate-400">
             <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
               • <strong className="text-slate-200">Medical:</strong> 1% state retail tax (excise exempt)
             </li>
             <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
-              • <strong className="text-slate-200">Rec Flower (≤35% THC):</strong> 10% excise + sales tax ≈ 22%
+              • <strong className="text-slate-200">Rec Flower (≤35% THC):</strong> 10% excise + 6.25% state + local ≈ 22%
             </li>
             <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
-              • <strong className="text-slate-200">Rec Infused Products:</strong> 20% excise + sales tax ≈ 32%
+              • <strong className="text-slate-200">Rec Edibles / Infused (not smoked):</strong> 20% excise + 6.25% state + local ≈ 32%
             </li>
             <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
-              • <strong className="text-slate-200">Rec Concentrates / &gt;35% THC:</strong> 25% excise + sales tax ≈ 37%
+              • <strong className="text-slate-200">Rec Concentrates / &gt;35% THC:</strong> 25% excise + 6.25% state + local ≈ 37%
             </li>
           </ul>
           <p className="text-[10px] text-slate-500 leading-tight">
-            *Combined rates reflect state excise + 6.25% state sales + standard local sales taxes (~10–12%). Municipal cannabis retailer add-ons may vary ±2% by town.
+            *Estimate = excise (on the discounted price) + 6.25% state sales tax + a local add-on (home-rule sales tax plus municipal cannabis tax up to 3% and county up to 3.75%). The local part varies by store location; pick the closest area above or edit the rate. Vape oil and concentrates are taxed on THC: 25% above 35%. Edibles and other infused products not meant to be smoked are 20%.
           </p>
         </div>
       </section>

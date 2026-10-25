@@ -23,3 +23,4 @@ data/
 
 # Point-in-time status report for work in progress
 PROJECT_STATUS_REPORT.md
+.worktrees/
