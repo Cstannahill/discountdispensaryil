@@ -152,7 +152,7 @@ export default function FilterStrip({
         >
           <span>⚙ Filters</span>
           {extraFilterCount > 0 && (
-            <span className="rounded-full bg-emerald-400 text-slate-950 px-1.5 py-0.2 text-[10px] font-extrabold font-mono">
+            <span className="rounded-full bg-emerald-400 text-slate-950 px-1.5 py-0.5 text-[10px] font-extrabold font-mono">
               {extraFilterCount}
             </span>
           )}
@@ -162,60 +162,63 @@ export default function FilterStrip({
           <button
             type="button"
             onClick={resetAll}
-            className="btn shrink-0 !py-2 text-slate-400 hover:text-white hidden sm:inline-flex"
+            className="btn shrink-0 !py-2 text-slate-400 hover:text-white inline-flex text-xs"
+            aria-label="Reset all filters"
           >
-            Reset
+            ✕ Reset
           </button>
         )}
       </div>
 
-      {/* Row 2: Strain Type & Package Size Horizontal Pill Rails */}
-      <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+      {/* Row 2: Unified Single-Rail Strain Type & Package Size Horizontal Track */}
+      <div
+        className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5"
+        role="group"
+        aria-label="Filter by strain type and package size"
+      >
         {/* Strain Type Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" role="group" aria-label="Filter by strain type">
-          <button
-            type="button"
-            aria-pressed={!strain}
-            onClick={() => updateParams({ strain: null })}
-            className={`pill !py-1 !px-2.5 !text-[11px] ${!strain ? 'pill-active' : ''}`}
-          >
-            All Strains
-          </button>
-          {STRAINS.map((s) => {
-            const active = strain.toLowerCase() === s.toLowerCase();
-            return (
-              <button
-                key={s}
-                type="button"
-                aria-pressed={active}
-                onClick={() => updateParams({ strain: active ? null : s })}
-                className={`pill !py-1 !px-2.5 !text-[11px] ${active ? STRAIN_STYLES[s] + ' font-bold' : ''}`}
-              >
-                {s}
-              </button>
-            );
-          })}
-        </div>
+        <button
+          type="button"
+          aria-pressed={!strain}
+          onClick={() => updateParams({ strain: null })}
+          className={`pill !py-1 !px-2.5 !text-[11px] shrink-0 ${!strain ? 'pill-active' : ''}`}
+        >
+          All Strains
+        </button>
+        {STRAINS.map((s) => {
+          const active = strain.toLowerCase() === s.toLowerCase();
+          return (
+            <button
+              key={s}
+              type="button"
+              aria-pressed={active}
+              onClick={() => updateParams({ strain: active ? null : s })}
+              className={`pill !py-1 !px-2.5 !text-[11px] shrink-0 ${active ? STRAIN_STYLES[s] + ' font-bold' : ''}`}
+            >
+              {s}
+            </button>
+          );
+        })}
 
-        <span className="hidden sm:inline text-slate-700" aria-hidden="true">|</span>
+        <span className="text-slate-700 px-1 select-none shrink-0" aria-hidden="true">
+          |
+        </span>
 
         {/* Package Size Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5" role="group" aria-label="Filter by package size">
-          {SIZE_OPTIONS.map((opt) => {
-            const active = (size || 'any') === opt.value;
-            return (
-              <button
-                key={opt.value}
-                type="button"
-                aria-pressed={active}
-                onClick={() => updateParams({ size: opt.value === 'any' ? null : opt.value })}
-                className={`pill !py-1 !px-2.5 !text-[11px] font-mono ${active ? 'pill-active' : ''}`}
-              >
-                {opt.label}
-              </button>
-            );
-          })}
-        </div>
+        {SIZE_OPTIONS.map((opt) => {
+          const active = (size || 'any') === opt.value;
+          return (
+            <button
+              key={opt.value}
+              type="button"
+              aria-pressed={active}
+              onClick={() => updateParams({ size: opt.value === 'any' ? null : opt.value })}
+              className={`pill !py-1 !px-2.5 !text-[11px] font-mono shrink-0 ${active ? 'pill-active' : ''}`}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Expandable Advanced Filters Drawer */}
