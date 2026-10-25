@@ -190,9 +190,10 @@ class DirectoryResolverTests(unittest.TestCase):
 
     def test_directory_website_for_another_branch_proves_nothing_and_search_remains_the_fallback(self):
         page = '<h1>Example Cannabis</h1><script type="application/ld+json">' + json.dumps({'@type': 'Store', 'address': {'streetAddress': '99 Other St', 'addressRegion': 'IL'}}) + '</script><script src="https://dutchie.com/api/v2/embedded-menu/abc123.js"></script>'
-        menus, calls = self.resolve(page)
+        with mock.patch('backend.site_discovery.search_websites', return_value=[]) as searched:
+            menus, calls = self.resolve(page)
         self.assertFalse(any(m['provider'] == 'dutchie' and not m.get('status') for m in menus))
-        self.assertTrue(any('bing.com' in url for url in calls))
+        self.assertTrue(searched.called)
 
 
 class DirectoryServiceTests(unittest.TestCase):
