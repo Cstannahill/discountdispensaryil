@@ -12,7 +12,10 @@
     background-attachment: fixed;
     color: #f1f5f9;
     margin: 0;
+    /* Safety net: never allow a sideways page scroll. clip (unlike hidden) keeps sticky working. */
+    overflow-x: clip;
   }
+  html { overflow-x: clip; }
   button, a, input, select, summary { -webkit-tap-highlight-color: transparent; }
   button:disabled { cursor: not-allowed; opacity: .45; }
   input:not([type=checkbox]), select {
@@ -95,3 +98,5 @@
     display: none;
   }
 }
+
+.cat-grid > section { min-width: 0; }

@@ -197,7 +197,7 @@ export default function LocationControl({
       {/* Row 1: Unified Single-Line Command Bar */}
       <div className="flex items-center justify-between gap-1.5 sm:gap-2 min-w-0">
         {/* Brand Identity */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink-0">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink">
           <div className="brand-icon !w-7 !h-7 !rounded-lg sm:!w-9 sm:!h-9 sm:!rounded-xl" aria-hidden="true">
             <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.3" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18c-3.5 3-6 6.5-6 10.5A6 6 0 0012 19.5a6 6 0 006-6C18 9.5 15.5 6 12 3z" />
@@ -216,16 +216,16 @@ export default function LocationControl({
         </div>
 
         {/* Interactive Controls: Location Pill + Rec/Med Switch + OTD Calc */}
-        <div className="flex items-center gap-1 sm:gap-1.5 ml-auto shrink-0">
+        <div className="flex items-center gap-1 sm:gap-1.5 ml-auto min-w-0">
           <button
             type="button"
             aria-expanded={open}
             aria-label="Change search location and distance radius"
             onClick={() => setOpen((v) => !v)}
-            className={`pill !py-1 sm:!py-1.5 !px-2 sm:!px-2.5 max-w-[125px] sm:max-w-xs shrink-0 ${open ? 'pill-active' : ''}`}
+            className={`pill !py-1 sm:!py-1.5 !px-2 sm:!px-2.5 max-w-[125px] sm:max-w-xs min-w-0 !shrink ${open ? 'pill-active' : ''}`}
           >
             <span aria-hidden="true">📍</span>
-            <span className="truncate font-semibold text-white text-xs max-w-[55px] sm:max-w-none">
+            <span className="truncate min-w-0 font-semibold text-white text-xs max-w-[55px] sm:max-w-none">
               {place ? place.replace(/, USA$/, '') : 'Set location'}
             </span>
             <span className="font-mono text-[10px] sm:text-[11px] text-emerald-300 shrink-0">· {radius}mi</span>
