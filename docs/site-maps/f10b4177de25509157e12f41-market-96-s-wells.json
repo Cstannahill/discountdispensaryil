@@ -1,0 +1,83 @@
+{
+  "store_id": "f10b4177de25509157e12f41",
+  "name": "Market 96 - S Wells Street",
+  "slug": "market-96-s-wells",
+  "registry": {
+    "address": "529 S Wells St Ste 100",
+    "city": "Chicago",
+    "state": "IL",
+    "distance_miles": 99.165
+  },
+  "site": "https://www.market-96.com/shop",
+  "platform": "treez / GapCommerce product/search (17 productGroups per page)",
+  "menu_url_verified": "https://www.market-96.com/shop",
+  "access": "21+ button (I'M AT LEAST 21 YEARS OLD)",
+  "branch_selection": "registry S Wells; site location chooser",
+  "product_loading": "POST GapCommerce product/search",
+  "paging": "from/size",
+  "product_count_observed": "survey header '1086 results'; reader 20 (incomplete_treez_menu)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://www.market-96.com/shop",
+    "title": "Shop Page",
+    "platforms": [
+      "treez"
+    ],
+    "age_gate_seen": true,
+    "age_click": "I'M AT LEAST 21 YEARS OLD",
+    "count_text": "1086 results",
+    "price_tags": 51,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "matched",
+      "message": "Resolved 1 canonical menu target(s)"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "treez",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_treez_menu\", \"message\": \"Browser response capture budget exceeded\", \"evidence_id\": \"8c1a63909145169b28fe1c079f86df4c6fa0685df1d0298610a3845e2c786162\"}"
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "treez",
+      "items": 20,
+      "errors": [
+        "incomplete_treez_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "treez",
+          "provider_store_id": "8a1808cd-038f-4c7a-962c-a67afe85f14a",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "treez",
+          "items": 20,
+          "expected": null,
+          "complete": false,
+          "errors": [
+            "incomplete_treez_menu"
+          ],
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Treez reader reads browser responses and runs out of budget at 20 products (stored partial: 'Browser response capture budget exceeded'). The product/search API that carries the catalog is not used.",
+  "fix_idea": "GapCommerce reader (shared with Be. Oak Forest and Jane & Bud's).",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

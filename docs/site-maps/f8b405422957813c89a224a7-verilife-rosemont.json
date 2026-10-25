@@ -1,0 +1,81 @@
+{
+  "store_id": "f8b405422957813c89a224a7",
+  "name": "Verilife  Rosemont",
+  "slug": "verilife-rosemont",
+  "registry": {
+    "address": "5540 Park Pl",
+    "city": "Rosemont",
+    "state": "IL",
+    "distance_miles": 97.003
+  },
+  "site": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+  "platform": "jane rec store 7309 (hosted on Rise)",
+  "menu_url_verified": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+  "access": "none",
+  "branch_selection": "store 7309 in Rise URL",
+  "product_loading": "Jane storefront",
+  "paging": "Jane facet slices (reconciled)",
+  "product_count_observed": "reader 1089 complete (full)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+    "title": "Verilife Rosemont Recreational Menu | Cannabis Dispensary",
+    "platforms": [
+      "rise"
+    ],
+    "age_gate_seen": false,
+    "age_click": null,
+    "count_text": "1021 results",
+    "price_tags": 128,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Retailer locator did not expose a corroborated branch/menu link"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "converged",
+        "last_success_at": null,
+        "last_error": null
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "generic",
+      "items": 1,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "jane",
+          "provider_store_id": "7309",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "jane",
+          "items": 1089,
+          "expected": 1089,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Stored accepted row is the generic Rise page (B, converged, 1035 offers, 2026-10-18 19:10, stale). The Jane store 7309 on the same page reads complete (A). The resolver stored the generic path instead of the Jane store.",
+  "fix_idea": "Prefer a hosted Jane store id over the generic page; re-accept as Jane.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

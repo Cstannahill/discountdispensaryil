@@ -1,0 +1,301 @@
+{
+ "key": "699f21e5",
+ "url": "https://www.sevenpoint.org/menu/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 301,
+   "t": "document",
+   "ct": "text/html; charset=iso-8859-1",
+   "u": "https://www.sevenpoint.org/menu/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://www.sevenpoint.org/stores/seven-point-danville",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/x-javascript",
+   "u": "https://cookie-cdn.cookiepro.com/consent/018ee899-009d-7042-8da0-e4a6de81eb7e/018ee899-009d-7042-8da0-e4a6de81eb7e.json",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location",
+   "size": 69,
+   "sample": "{\"country\":\"US\",\"state\":\"IL\",\"stateName\":\"Illinois\",\"continent\":\"NA\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "size": 212,
+   "sample": "[{\"key\":\"73539f8c-4c57-4fc7-8bb8-9ba2a5c4c391\",\"kind\":\"click\",\"selector\":\"test-experiment-button\",\"urls\":[{\"kind\":\"substring\",\"substring\":\"/embedded-menu/oregrown\"},{\"kind\":\"substring\",\"substring\":\"/oregrown\"}]}]"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/x-javascript",
+   "u": "https://cookie-cdn.cookiepro.com/consent/018ee899-009d-7042-8da0-e4a6de81eb7e/018ee89e-2b86-7d97-91c7-8bbe3d24036e/en.json",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiNzNmZWFhMzUtYThjZC00YjQzLWIzMjgtYWUwYTg4YTM1ZTFjIiwidHlwZSI6Imd1ZXN0Q3VzdG9tZXIiLCJjYW5hcnkiOmZhbHNlfSwiYXBwbGljYXRpb24iOnsia2V",
+   "size": 330015,
+   "sample": "{\"growth.ecomm.app.transaction-success-modal.rollout\":{\"version\":35081,\"flagVersion\":9,\"value\":true,\"variation\":0,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\":0,\"reason\":{\"kind\":\"FALLTHROUGH\"}},\"pos.register.product-search-brand-column.rollout\":{\"version\":35081,\"flagVersion\":9,\"val"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://www.sevenpoint.org/api-2/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%22668557c0d26dfd9149f906cf%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22ONLINE_MENU%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22vers",
+   "size": 34266,
+   "sample": "{\"data\":{\"getSpecialMenuCards\":{\"menuCards\":[{\"_id\":\"22941\",\"applicableCategories\":[{\"category\":\"Concentrate\",\"subcategories\":[\"live-rosin\"],\"__typename\":\"SpecialApplicableCategory\"},{\"category\":\"Flower\",\"subcategories\":[\"small-buds\"],\"__typename\":\"SpecialApplicableCategory\"},{\"category\":\"Pre-Rolls\""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-EMBTNLF23R&gtm=45je6af0v9181446128za208zb9234103901zd9234103901xf1&_p=1792441412033&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1666162503.1792441415&frm=0&ngs=1&pscdl=noapi&rcb=11&sr=1366x900&uaa=x86&uab=64&uafvl=Goog",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/30df7/6dc6a/config.json",
+   "size": 9579,
+   "sample": "{\"templates\":{\"productCardTemplate\":\"{\\\"compiler\\\":[8,\\\">= 4.3.0\\\"],\\\"main\\\":function(container,depth0,helpers,partials,data) {\\n    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = c"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/css",
+   "u": "https://cookie-cdn.cookiepro.com/scripttemplates/202403.2.0/assets/otCommonStyles.css",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://www.sevenpoint.org/api-2/graphql",
+   "size": 81,
+   "sample": "{\"data\":{\"logAnalyticsPayload\":{\"success\":true,\"__typename\":\"GenericResponse\"}}}\n",
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"668557c0d26dfd9149f906cf\",\"dispensary_name\":\"Seven Point - Danville\",\"dispensary_state\":\"IL\",\"dutchie_pay_enabled\":true,\"event\":\"page_view\",\"user_enrolled_dutchie_pay\":false,\"page_url\""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/vnd.api+json",
+   "u": "https://www.sevenpoint.org/telemetry",
+   "size": 153,
+   "sample": "{\"data\":{\"id\":\"67b6e8d8-e272-44bb-a761-01d402f376d6\",\"type\":\"generic_response\",\"attributes\":{\"success\":true,\"message\":null}},\"jsonapi\":{\"version\":\"1.0\"}}",
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"668557c0d26dfd9149f906cf\",\"menu_variant\":\"store-front\",\"page\":\"https://www.sevenpoint.org/stores/seven-point-danville\"}}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://www.sevenpoint.org/stores/seven-point-danville\",\"page\":\"Seven Point - Danville Cannabis Menu | Danville, IL\",\"eid\":\"15f1140b-3d4c-4cbd-8f16-81488921b14c\",\"tv\":\"js-3.6.0\",\"tna\":\"digital\",\"ai"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cookie-cdn.cookiepro.com/scripttemplates/202403.2.0/assets/otFlat.json",
+   "size": 13614,
+   "sample": "\n            {\n                \"name\": \"otFlat\",\n                \"html\": \"PGRpdiBpZD0ib25ldHJ1c3QtYmFubmVyLXNkayIgY2xhc3M9Im90RmxhdCI+PGRpdiByb2xlPSJhbGVydGRpYWxvZyIgYXJpYS1kZXNjcmliZWRieT0ib25ldHJ1c3QtcG9saWN5LXRleHQiPjxkaXYgY2xhc3M9Im90LXNkay1jb250YWluZXIiPjxkaXYgY2xhc3M9Im90LXNkay1yb3ciPjxkaXYgaW"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cookie-cdn.cookiepro.com/scripttemplates/202403.2.0/assets/v2/otPcCenter.json",
+   "size": 63375,
+   "sample": "\n        {\n            \"name\": \"otPcCenter\",\n            \"html\": \"PGRpdiBpZD0ib25ldHJ1c3QtcGMtc2RrIiBjbGFzcz0ib3RQY0NlbnRlciBvdC1oaWRlIG90LWZhZGUtaW4iPjxkaXYgcm9sZT0iYWxlcnRkaWFsb2ciIGFyaWEtbW9kYWw9InRydWUiIGFyaWEtZGVzY3JpYmVkYnk9Im90LXBjLWRlc2MiPjwhLS0gQ2xvc2UgQnV0dG9uIC0tPjxkaXYgY2xhc3M9Im90LXBjLW"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-api.ethyca.com/location",
+   "size": 78,
+   "sample": "{\"country\":\"US\",\"ip\":\"209.113.172.235:64870\",\"location\":\"US-IL\",\"region\":\"IL\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/ccm/collect?rcb=13&frm=0&apvc=1&auid=1568513076.1792441416&dt=Seven%20Point%20-%20Danville%20Cannabis%20Menu%20%7C%20Danville%2C%20IL&tid=AW-16671730221&en=page_view&dl=https%3A%2F%2Fwww.sevenpoint.org%2Fstores%2Fseven-point-danville&scr",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/16671730221/?random=1792441415927&cv=11&fst=1792441415927&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6af0v9214870013za20ozb9193155291zd9193155291xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://ad.doubleclick.net/ccm/s/collect?auid=1568513076.1792441416&gtm=45be6af0v9214870013za20ozb9193155291zd9193155291xecxf1&fmt=8",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://cookie-cdn.cookiepro.com/logos/static/ot_guard_logo.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/graphql-response+json",
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "size": 137,
+   "sample": "{\"data\":{\"initializeSession\":{\"secure_id\":\"z3KWEgNsMNo8dMbrpZj8kiiVmnLX\",\"project_id\":\"10019589\",\"sampling\":{\"spans\":null,\"logs\":null}}}}",
+   "post": "{\"query\":\"mutation initializeSession($session_secure_id: String!, $session_key: String, $organization_verbose_id: String!, $enable_strict_privacy: Boolean!, $privacy_setting: String!, $enable_recording_network_contents: Boolean!, $clientVersion: String!, $firstloadVersion: String!, $clientConfig: St"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://yerbalist.sevenpoint.org/data?v=2&event=gtm.dom",
+   "size": 0,
+   "sample": null,
+   "post": "{\"event\":\"OneTrustGroupsUpdated\",\"gtm\":{\"uniqueEventId\":25,\"configContainerId\":\"G-EMBTNLF23R\",\"configParameters\":{\"undefined\":\"Pay by bank instantly\",\"debug_mode\":false,\"cookie_flags\":\"SameSite=None;Secure\"},\"priorityQueue\":[5],\"eventMetadata\":{\"source_canonical_id\":\"193155291\",\"no_target_group\":tru"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=true&include_meta=true",
+   "size": 51,
+   "sample": "{\"items\":[],\"total\":0,\"page\":1,\"size\":50,\"pages\":0}"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://www.sevenpoint.org/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792441410917,\"pageloadId\":\"a7433c77-4b24-4e9d-b92f-1863eb9f978a\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://www.sevenpoint.org/stores/seven-point-danville\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv\":\"130\",\"ov\":\"10\"},\"memory\":{\""
+  },
+  {
+   "m": "POST",
+   "s": 202,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.launchdarkly.com/events/diagnostic/5ee2761738b5d10a6705cadf",
+   "size": 0,
+   "sample": "",
+   "post": "{\"kind\":\"diagnostic-combined\",\"id\":{\"diagnosticId\":\"f5040560-cbfa-11f1-9d21-f1ea8c9ed779\",\"sdkKeySuffix\":\"05cadf\"},\"creationDate\":1792441416399,\"dataSinceDate\":1792441413815,\"droppedEvents\":0,\"eventsInLastBatch\":0,\"streamInits\":[{\"timestamp\":1792441414576,\"failed\":false,\"durationMillis\":981}],\"sdk\":"
+  }
+ ],
+ "iframes": [
+  "about:blank"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [Yes, I'm 21]",
+  "clicked button:has-text(\"Accept\") [Accept Cookies]"
+ ],
+ "status": 200,
+ "finalUrl": "https://www.sevenpoint.org/stores/seven-point-danville",
+ "title": "Seven Point - Danville Cannabis Menu | Danville, IL",
+ "htmlBytes": 545004,
+ "sigs": [
+  "dutchie",
+  "leaflogix",
+  "cresco",
+  "springbig",
+  "nextjs"
+ ],
+ "links": [
+  "https://www.sevenpoint.org/menu/",
+  "https://www.sevenpoint.org/stores/seven-point-danville#main-content",
+  "https://www.sevenpoint.org/stores/seven-point-danville",
+  "https://www.sevenpoint.org/stores/seven-point-danville/brands",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials",
+  "https://www.sevenpoint.org/stores/seven-point-danville/info",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/13100?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/6632?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/10686?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/15170?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/36782?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/5416?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/40241?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/10430?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/17963?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/17056?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/12791?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/35083?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/35985?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/40318?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/15169?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/sale/33520?sortby=popular",
+  "https://www.sevenpoint.org/stores/seven-point-danville/specials/offer/35998?sortby=popular",
+  "https://www.sevenpoint.org/menu/?dtche%5Bpath%5D=specials",
+  "https://www.sevenpoint.org/stores/seven-point-danville/products/flower"
+ ],
+ "textSample": "DANVILLE, ILLINOIS Online Shop for In Store Pick Up Now Accepting Tap to Pay We accept Visa, Mastercard, and Tap to Pay contactless payments. 45% Off for New Customers *Applied at register during pickup. Cannabis products only. No discount/deal stacking! Skip Navigation Home Shop Brands Specials Search Dispensary Info OPEN Pickup MENU Recreational Login 0 items in your shopping cart Login for recommendations & re‑ordering of your favorites 🔥 Daily Deals • Fresh Drops • Fast Pickups Categories Flower Vaporizers Pre-Rolls Edibles Concentrates Tinctures Topicals Accessories Apparel Vinyl Records Next Rewards and personalization in one seamless experience. Enjoy personalized recommendations, fa",
+ "productHints": [
+  "0\nitems"
+ ],
+ "priceCount": 70
+}

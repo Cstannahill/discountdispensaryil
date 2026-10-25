@@ -1,0 +1,40 @@
+{
+ "store_id": "92e7efdb4325212575939ad0",
+ "name": "Shangri La Dispensary",
+ "slug": "shangri-la-springfield",
+ "registry": {
+  "address": "3128 S Dirksen Pkwy",
+  "city": "Springfield",
+  "state": "IL",
+  "latitude": 39.76078,
+  "longitude": -89.60621
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open (3128 S Dirksen Pkwy); site has a \"transition message\" page, so ownership/branding may be changing",
+ "website": "https://www.shangrila-springfield.shop",
+ "menu_url": "https://www.shangrila-springfield.shop/products/flower (one route per category)",
+ "platform": "cresco-sunnyside (white-label storefront, whitelabel_tag shangri-la)",
+ "how_menu_reached": "Own domain runs the Sunnyside/Cresco storefront app; menu under /products/<category>; /menu is a 404",
+ "branch_selection": "api.crescolabs.com store_id=970, resolved from host=www.shangrila-springfield.shop via ordering_apps/op/store-inventory-breakdown",
+ "age_gate": "none seen",
+ "data_loading": {
+  "mechanism": "REST; a publishable storefront key is required (not recorded here)",
+  "endpoints": [
+   "GET api.crescolabs.com/p/inventory/op/fifo-inventory?category=flower&inventory_type=retail&usage_type=recreational&limit=50&...",
+   "GET api.crescolabs.com/p/stores?ids=970"
+  ]
+ },
+ "paging": "limit=50 per category call",
+ "approx_product_count": null,
+ "blockers": [
+  "storefront key required"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved NO_LEAD (2026-10-18)",
+  "sample": "no saved endpoint, nothing to sample"
+ },
+ "why_it_fails": "resolution/website discovery: fallback search returned NO_LEAD. Stored evidence shows html.duckduckgo.com answers HTTP 202 with a bot challenge and www.bing.com/search answers 200 with unrelated Microsoft pages for the quoted-address query, so no candidate website is ever found even though the brand site exists. Cresco detection (adapters.py:141) is hard-coded to the host cloud9dispensaries.shop, so a Cresco white-label on any other domain is classed 'unsupported'.",
+ "fix_idea": "Replace the fallback search with a working source (e.g. the OpenRouter web plugin the verifier already uses, or a brand-level locator) and treat a results page where nothing names the store as a search failure, not 'no lead'. Detect Cresco by api.crescolabs.com calls / whitelabel_tag instead of one hostname, and add a Cresco provider (key mechanism: docs/JANE_SOURCE_RESEARCH.md ~line 156).",
+ "root_cause_tag": "search-engine-dead; cresco-whitelabel-no-provider",
+ "confidence": "medium"
+}

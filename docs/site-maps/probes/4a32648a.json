@@ -1,0 +1,78 @@
+{
+ "key": "4a32648a",
+ "url": "https://curaleaf.com/shop/illinois/curaleaf-il-worth",
+ "finalUrl": "https://curaleaf.com/age-gate?returnurl=%2Fshop%2Fillinois%2Fcuraleaf-il-worth",
+ "title": "Age Gate",
+ "notes": [
+  "after goto: https://curaleaf.com/age-gate?returnurl=%2Fshop%2Fillinois%2Fcuraleaf-il-worth",
+  "checkboxes 10",
+  "cb0 locator.check: Clicking the checkbox did not change its stat",
+  "cb1 locator.check: Clicking the checkbox did not change its stat",
+  "cb6 locator.check: Element is not visible\nCall log:\n\u001b[2m  - wait",
+  "cb7 locator.check: Element is not visible\nCall log:\n\u001b[2m  - wait",
+  "cb8 locator.check: Element is not visible\nCall log:\n\u001b[2m  - wait",
+  "cb9 locator.check: Element is not visible\nCall log:\n\u001b[2m  - wait",
+  "over21 locator.click: Timeout 2500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('b"
+ ],
+ "textSample": "Enable accessibility Hey, Welcome to Curaleaf SELECT YOUR STATE Illinois Arizona Connecticut Florida Illinois Maine Maryland Massachusetts Nevada New Jersey New York North Dakota Ohio Pennsylvania Utah You must be 21 or older to view this site, or a qualified medical patient in Illinois. I am 21 years of age or older I agree to the Terms of Use and acknowledge that I've read and understood the Privacy Policy I'm over 21 Exit EN Privacy Policy (opens in a new tab) Terms of Use (opens in a new tab) Notice of Privacy Practices (opens in a new tab) Cookie Policy (opens in a new tab) Accessibility Statement (opens in a new tab) For use only by adults 21 years of age and older; 18+ for medical states. Keep out of reach of children. Do not operate a vehicle or machinery while under the influence of this drug. Laws governing the legality, availability, and use of marijuana vary by state. AMS 174",
+ "prices": 0,
+ "hints": [],
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://curaleaf.com/api/users/me",
+   "size": 33
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://curaleaf.com/privacy-policy?_rsc=aGTQR0_eS7JJk1kN",
+   "size": 0
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://curaleaf.com/terms-of-service?_rsc=aGTQR0_eS7JJk1kN",
+   "size": 0
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://curaleaf.com/cookie-policy?_rsc=aGTQR0_eS7JJk1kN",
+   "size": 0
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://curaleaf.com/web-accessibility-statement?_rsc=aGTQR0_eS7JJk1kN",
+   "size": 0
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://curaleaf.com/notice-of-privacy-practices?_rsc=aGTQR0_eS7JJk1kN",
+   "size": 0
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://r.surfside.io/5b224/bef15/config.json",
+   "size": 18532
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://curaleaf.com/age-gate?returnurl=%2Fshop%2Fillinois%2Fcuraleaf-il-worth\",\"page\":\"Age Gate\",\"eid\":\"5f5f102b-e546-4ebe-b30b-5d378460d784\",\"tv\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "u": "https://curaleaf.com/metrics/g/collect?v=2&tid=G-GQFXFXVMFQ&gtm=45je6ag1v873438586z89188598344za20gzb9188598344zd9188598344xf1&_p=1792445041657&gcs=G111&gcd=13t3t3t3t5l1&npa=0&dma=0&gdid=dYWJhMj&ecid=1441664280&_eu=EAAAAGA&_fplc=0&cid=99677",
+   "size": 0
+  }
+ ],
+ "links": []
+}

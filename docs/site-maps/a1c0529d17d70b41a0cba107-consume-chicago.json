@@ -1,0 +1,80 @@
+{
+ "name": "Consume Chicago",
+ "registry": {
+  "address": "6428 N Milwaukee Ave",
+  "city": "Chicago",
+  "state": "IL",
+  "latitude": 41.994659,
+  "longitude": -87.813988,
+  "distance_miles": 98.7
+ },
+ "operating_status": "open (iheartjane.com/stores/1469 \"Consume Chicago (REC)\" and /1468 \"(MED)\", pickup 10am-8pm, 4.9 stars; retailer page shows 6428 N. Milwaukee Ave. Chicago, IL 60631)",
+ "website": "https://consumecannabis.com/dispensaries/illinois-chicago/",
+ "menu_url": "REC https://consumecannabis.com/dispensaries/illinois-chicago/recreational-menu/ ; MED https://consumecannabis.com/dispensaries/illinois-chicago/medical-menu/",
+ "platform": "jane",
+ "how_menu_reached": "Same Consume pattern: Jane Boost frameless embed rendered into the retailer page (jane_frameless_embed_runtime_config), one page per license channel; also available as Jane SPA iheartjane.com/stores/1469 (rec) and /1468 (med).",
+ "branch_selection": "runtimeConfig \"storeId\":1469 (rec page) and \"storeId\":1468 (med page); address 6428 N. Milwaukee Ave. appears on the page so inspect_page gives identity_status \"matched\" (address), unlike siblings which only get name_locality.",
+ "age_gate": "runtimeConfig showAgeGate=true (Jane-managed); not needed for the API read",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search API)",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets?jdm_api_key=<public SDK key scraped from iheartjane.com/stores/<id> page>&jdm_source=monolith&jdm_version=2.25.0 body {appMode,janeDeviceId,searchFacets:[\"kind\"],storeId:<id>}",
+   "POST https://dmerch.iheartjane.com/v2/multi (placements[0].search_filter=kind:\"<kind>\", page_size 60, search_attributes [\"*\"], store_id) - returns nb_hits + products",
+   "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids batch of 60) - hydrates attributes beyond the first page"
+  ],
+  "notes": "Live 2026-10-19: store 1469 rec = 847 products (edible 182, extract 94, flower 116, gear 50, merch 44, pre-roll 154, tincture 7, topical 6, vape 194); store 1468 med = 848 products. Records: store_types recreational / medical, _geoloc 41.9979,-87.7888."
+ },
+ "paging": "No page walking: the kind facet counts sum to the store total; each kind (<=1000 hits window) is one /v2/multi slice that must return exactly its facet count (larger kinds are split by brand facet); two independent full traversals must agree. Verified live 2026-10-19: facets and multi return 200 with a plain client.",
+ "approx_product_count": 847,
+ "license_channels": "rec + med as separate Jane stores (1469 rec 847 products, 1468 med 848 products) - both already saved and COMPLETE; registry serves_medical=1 agrees",
+ "blockers": [
+  "none (dmerch HTTP 200)"
+ ],
+ "evidence": [
+  "curl consumecannabis.com/dispensaries/illinois-chicago/recreational-menu/ and /medical-menu/ -> 200; storeId 1469 / 1468; address 6428 N. Milwaukee Ave. on page",
+  "dmerch live: 1469 nb_hits 847 (recreational), 1468 nb_hits 848 (medical), same _geoloc 41.9979,-87.7888 = 1.31 mi from the registry point",
+  "Real-Chrome probe of iheartjane.com/stores/1469 and /1468: Consume Chicago (REC) / (MED), 6428 N. Milwaukee Ave, Chicago"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched \"Resolved 4 canonical menu target(s)\" (2026-10-19T03:03Z, 10-18T12:37Z); 2026-10-17 unresolved \"No retailer locator connector configured for this brand\".",
+  "saved_endpoints": "4 jane endpoints: 1468 medicinal COMPLETE (last_success 2026-10-19T03:02Z, 873 items) | 1469 recreational COMPLETE (03:02Z, 872 items) | 5683 recreational PARTIAL (Antioch, 37.20 mi away) | 1688 recreational PARTIAL (Marion, 300.31 mi away). Both leaked ones: incomplete_jane_menu \"Menu source belongs to a different location\".",
+  "recent_attempts": "12 attempts since 2026-10-18T12:37Z. 10-18T12:39-12:41Z structured tier: 1468/1469 complete A (876/875 items), two leaked structured attempts BRANCH_MISMATCH. Native tier 10-18T18:48Z and 10-19T03:02Z: 1468 and 1469 complete/A each time (871/869 then 873/872 items). Leaked 5683/1688 partial/D every run. No failure on the correct endpoints.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "jane",
+    "license": "recreational",
+    "url": "https://consumecannabis.com/dispensaries/illinois-antioch/recreational-menu/",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_jane_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 0.5
+   },
+   "fixed_wrapper": [
+    {
+     "endpoint": "jane 1469 rec",
+     "items": 901,
+     "declared": 901,
+     "complete": true
+    },
+    {
+     "endpoint": "jane 1468 med",
+     "items": 900,
+     "declared": 900,
+     "complete": true
+    }
+   ],
+   "caveat": "sample_stores.py result is NOT reliable for Jane: it passes the raw endpoint row without resolution_json, so branch proof fails for platform points 0.35-5 mi from the registry point; see fixed result."
+  }
+ },
+ "why_it_fails": "Both license channels of the correct branch are complete/grade A on every run - the menu is NOT failing. Not \"fresh\": last_success 2026-10-19T03:02Z = 17.3 h at 20:22Z. FRESHNESS: storage.py (~L420) counts a store fresh only if an accepted endpoint succeeded <12 h ago. Newest attempt of any kind in the whole DB is 2026-10-19T05:24Z; investigated 2026-10-19T20:22Z. Scheduler (main.py create_app: APScheduler menu-sync 4/day at 00/06/12/18 America/Chicago, only while uvicorn runs) enqueues only live_settings.active_region_id = ad41b2e9 (\"Browser GPS\", 50 mi around 40.98,-89.05); the last scheduled job ran 05:00Z (00:00 CDT) and the 06:00/12:00 CDT slots never ran (server not up). Chicago is ~95 mi from the scheduled region centre (98.7 from the study centre) and only ever refreshed by manual region-8f7772ca/targeted jobs (7c60df34). Second issue: 2 sibling-branch endpoints (Antioch 5683, Marion 1688) attached via the chain nav (same defect as Oakbrook Terrace: adapters.py resolve_menu L262 has no branch_slug_conflict guard, and site_discovery._slug_candidates cannot parse \"/dispensaries/illinois-<city>/\"). They are rejected by jane.py (distance guard) so they do not pollute offers, but waste attempts every sync until superseded (commit 459b386 handles it from the next fetch). The correct branch only passes jane.py because the endpoint carries identity_confidence \"matched\" (address on page) - the Jane point is 1.31 mi from the registry point (> MAX_MILES 0.35). The sampler false negative (0 items) is that missing merged identity_confidence, not a broken menu.",
+ "fix_idea": "Same shared fixes as Consume Oakbrook Terrace: _slug_candidates support for /dispensaries/<state>-<city>/, branch_slug_conflict guard at adapters.py L262, a Consume CONNECTORS entry, and scheduler coverage of all regions with retained endpoints (or refreshing by endpoint age). No per-store change needed.",
+ "root_cause_tag": "jane-ok-stale-outside-scheduled-region-and-sibling-endpoint-leak",
+ "confidence": "high",
+ "store_id": "a1c0529d17d70b41a0cba107",
+ "slug": "consume-chicago",
+ "investigated_at": "2026-10-19"
+}

@@ -1,0 +1,344 @@
+{
+ "key": "32_mission_calumet",
+ "url": "https://missiondispensaries.com/stores/mission-calumet-city",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://extensions.the-grow-agency.dutchie.partners/mf-manifest.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 271363,
+   "arr": {
+    "n": 100,
+    "path": "$.exposes",
+    "keys": [
+     "id",
+     "name",
+     "assets",
+     "path"
+    ]
+   }
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 212
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Afalse%7",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 33662,
+   "arr": {
+    "n": 96,
+    "path": "$.data.menuFiltersV2.brands",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "imageUrl",
+     "__typename"
+    ]
+   }
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=PriceRangeFilterSettings&variables=%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22vers",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 457
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 12241
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetMenuSections&variables=%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 6639,
+   "arr": {
+    "n": 16,
+    "path": "$.data.getMenuSections",
+    "keys": [
+     "id",
+     "brandId",
+     "category",
+     "image",
+     "headingOverride",
+     "label",
+     "legacyLabel",
+     "linkLabel",
+     "position",
+     "subcategory",
+     "sectionType",
+     "products"
+    ]
+   }
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%2C%22customCategory%22%3Atrue%2C%22enabled%22%3Atr",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 316
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetAddressBasedDispensaryData&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%7D%7D&extensions=%7B%22persi",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 4906
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiMzcxNTI0MzQtZjhjNy00OWQ4LTkwMGYtYjYzNmYxMzM1MGYzIiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 330260
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22brandIds%22%3A%5B%2287ae91e1-2643-44cb-",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 134988,
+   "arr": {
+    "n": 17,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81,
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"5fcd7ccbb4ee6300fd1b0963\",\"dispensary_name\":"
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GeolocateConsumer&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2224fe610f1b4d4a8a09f95da",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 224
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetPersonalizedProductsV2&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%2C%22limit%22%3A3%2C%22filters%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 25573,
+   "arr": {
+    "n": 3,
+    "path": "$.data.getPersonalizedProductsV2.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetDutchiePosLoyaltyConfig&variables=%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22ve",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 800
+  },
+  {
+   "u": "https://missiondispensaries.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"5fcd7ccbb4ee6300fd1b0963\",\"menu_variant\":\"store-front\",\"page\":\"https://missiondispensaries.com/stores/mission-c"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 137,
+   "post": "{\"query\":\"mutation initializeSession($session_secure_id: String!, $session_key: String, $organization_verbose_id: String!, $enable_strict_privacy: Boolean!, $pr"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation addSessionProperties($session_secure_id: String!, $properties_object: Any) {\\n  addSessionProperties(\\n    session_secure_id: $session_secure"
+  },
+  {
+   "u": "https://cdn-api.ethyca.com/location",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 78
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/app-ids/TWlzc2lvbkRpc3BlbnNhcmllcw==.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%225fcd7ccbb4ee6300fd1b0963%22%2C%22customCategory%22%3Afalse%2C%22enabled%22%3At",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 41
+  },
+  {
+   "u": "https://r.surfside.io/7ed89/91ef1/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 31575
+  },
+  {
+   "u": "https://r.surfside.io/7ed89/91ef1/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 31575
+  }
+ ],
+ "frames": [
+  "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1s1330+Torrence+Ave,+Calumet+City,+Illinois+60409",
+  "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1s1330+Torrence+Ave,+Calumet+City,+Illinois+60409"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://missiondispensaries.com/stores/mission-calumet-city",
+ "title": "Mission (Calumet City) Cannabis Menu | Calumet City, IL",
+ "htmlLen": 351371,
+ "prices": 16,
+ "textHead": "Skip Navigation Shop Our Bestsellers Now! SHOP LEARN REWARDS GET THE APP GET HELP Clear search Submit search 9:00 AM - 9:00 PM Mission (Calumet City) ❯ Close locations panel Choose Your Location IL",
+ "iframes": [
+  "https://www.google.com/maps?q=1330%20Torrence%20Ave%2C%20Calumet%20City%2C%20Illinois%2060409&output=embed",
+  "https://www.google.com/maps?q=1330%20Torrence%20Ave%2C%20Calumet%20City%2C%20Illinois%2060409&output=embed"
+ ],
+ "nextdata": true,
+ "links": [
+  "https://dutchie.com/pay/signup?cname=mission-calumet-city?variant=embedded-menu"
+ ],
+ "count_text": "0\nitems",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "assets2.dutchie.com",
+   54
+  ],
+  [
+   "maps.googleapis.com",
+   24
+  ],
+  [
+   "images.dutchie.com",
+   23
+  ],
+  [
+   "missiondispensaries.com",
+   20
+  ],
+  [
+   "www.google.com",
+   16
+  ],
+  [
+   "extensions.the-grow-agency.dutchie.partners",
+   9
+  ],
+  [
+   "pub.observability.app.launchdarkly.com",
+   8
+  ],
+  [
+   "www.googletagmanager.com",
+   7
+  ],
+  [
+   "fonts.gstatic.com",
+   7
+  ],
+  [
+   "tags.cnna.io",
+   6
+  ],
+  [
+   "",
+   5
+  ],
+  [
+   "fonts.googleapis.com",
+   4
+  ],
+  [
+   "cdn.surfside.io",
+   4
+  ],
+  [
+   "r.surfside.io",
+   3
+  ]
+ ]
+}

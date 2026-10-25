@@ -1,0 +1,30 @@
+{
+ "store_id": "50321f95376ba9a2338374bb",
+ "name": "Cookies - Chicago",
+ "address": "215 N Clinton St",
+ "city": "Chicago",
+ "registry_distance_miles": 99.4,
+ "status": "fetch_failed",
+ "registry_flag": null,
+ "website": "cookieschicago.co, Chicago (215 N Clinton St)",
+ "menu_platform": "WordPress storefront (Dutchie signature; unconfirmed)",
+ "how_menu_is_reached": "/shop/ with category filters. /locations/cookies-chicago-clinton/ is the branch page.",
+ "branch_selection": "Branch page exists at /locations/cookies-chicago-clinton/.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "failed",
+   "message": "Public fetch failed: ConnectError"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Resolution failed with TRANSPORT_ERROR (ConnectError) on the chain directory lead cookies.co/stores/. The brand domain cookieschicago.co loads in the probe.",
+ "fix_idea": "Map the chain directory domain to the brand domain, or resolve from the registry address. Then identify the /shop/ menu platform.",
+ "unverified": [
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

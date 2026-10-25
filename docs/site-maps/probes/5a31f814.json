@@ -1,0 +1,175 @@
+{
+ "key": "5a31f814",
+ "url": "https://www.verilife.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.verilife.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://www.verilife.com/static/version1788931030/frontend/Pharmacann/verilife/en_US/js-translation.json",
+   "size": 1305,
+   "sample": "{\"Add to Cart\":\"Add to Bag\",\"Are you sure you would like to remove this item from the shopping cart?\":\"Are you sure you would like to remove this item from the shopping bag?\",\"Cart Subtotal\":\"Subtotal\",\"Item in Cart\":\"Item in Bag\",\"Items in Cart\":\"Items in Bag\",\"Minimum length of this field must be "
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/ccm/collect?rcb=19&frm=0&apvc=1&ae=g&auid=599917804.1792441393&dt=Recreational%20and%20Medical%20Marijuana%20Dispensaries%20%7C%20Verilife&en=page_view&dl=https%3A%2F%2Fwww.verilife.com%2F&scrsrc=www.googletagmanager.com&rnd=162289124.17",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://ad.doubleclick.net/ccm/s/collect?auid=599917804.1792441393&gtm=45He6ag1h2v79572185za200zd79572185xeaxf1&fmt=8",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-R7G9F6PYMR&gtm=45je6ag1h2v873127042z879572185za20gzb79572185zd79572185xf1&_p=1792441392482&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAAAGA&cid=545487259.1792441393&frm=0&ir=1&pscdl=noapi&rcb=14&sr=1366x900&uaa=x",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/d8e7b/d8d27/config.json",
+   "size": 2,
+   "sample": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://www.verilife.com/pharmacann_agegate/ajax/html?_=1792441392555",
+   "size": 109591,
+   "sample": "{\"shouldShow\":true,\"html\":\"\\n<form class=\\\"agb__checkbox__form\\\">\\n    <div class=\\\"mage-error\\\" style=\\\"display:none;\\\" id=\\\"store-error\\\">This is a required field.<\\/div>\\n    <input type=\\\"hidden\\\" id=\\\"selectedStoreId\\\" name=\\\"selectedStoreId\\\" value=\\\"1\\\" \\/>\\n    <input type=\\\"hidden\\\" id=\\\"la"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://www.verilife.com/\",\"page\":\"Recreational and Medical Marijuana Dispensaries | Verilife\",\"eid\":\"696ab247-eefc-4f62-80a3-f3ef5f2b67a9\",\"tv\":\"js-3.6.0\",\"tna\":\"digital\",\"aid\":\"waimea:iheartjane\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LcEVhklAAAAAKpN5Wpx3VvvnbKyn_JUtI7uA2vw&co=aHR0cHM6Ly93d3cudmVyaWxpZmUuY29tOjQ0Mw..&hl=en&v=4EDjxXf4knsx6UBM1L2V6cv8&theme=light&size=invisible&badge=inline&anchor-ms=20000&execute-ms=30000&cb=rgsaj4eiagq4",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://c.ba.contentsquare.net/pageview?ex=&dt=62&pvt=n&la=en-US&uc=0&url=https%3A%2F%2Fwww.verilife.com%2F&dr=&dw=1366&dh=900&ww=1366&wh=900&sw=1366&sh=900&uu=b59583cf-d1bc-ab6d-885b-74d0853f6571&sn=1&hd=1792441393&v=15.266.3&pid=356904&pn=1&ct=0",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://15087145.fls.doubleclick.net/activityi;src=15087145;type=ctalz0;cat=ctal_00;rcb=16;ord=3310876029123;npa=0;auiddc=599917804.1792441393;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://15087145.fls.doubleclick.net/activityi;dc_pre=CI7A0cT0xpcDFUWnfwYdpKMkcA;src=15087145;type=ctalz0;cat=ctal_00;rcb=16;ord=3310876029123;npa=0;auiddc=599917804.1792441393;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 302,
+   "t": "fetch",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://ad.doubleclick.net/activity;src=15087145;type=ctalz0;cat=ctal_00;rcb=16;ord=3310876029123;npa=0;auiddc=599917804.1792441393;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=W",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "fetch",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://ad.doubleclick.net/activity;dc_pre=CLyT0sT0xpcDFWKGjggdo1sURA;src=15087145;type=ctalz0;cat=ctal_00;rcb=16;ord=3310876029123;npa=0;auiddc=599917804.1792441393;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253A",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/gif",
+   "u": "https://www.google.com/gmp/conversion/_dc_unique_id=11661721299118229343;_dc_ptd=ChAI8P_W1gYQoouCl9Wi2q9cEh8AfgJjQsAezXr1xEEgVt0DQBI8cz_8bQpZqRf4P3KT;_dc_time=1792441394;dc_pre=CLyT0sT0xpcDFWKGjggdo1sURA;src=15087145;type=ctalz0;cat=ctal_00;rcb=16;ord=33108760",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [
+  "about:blank",
+  "https://www.google.com/recaptcha/api2/anchor?ar=1&k=6LcEVhklAAAAAKpN5Wpx3VvvnbKyn_JUtI7uA2vw&co=aHR0cHM6Ly93d3cudmVyaWxpZmUuY29tOjQ0Mw..&hl=en&v=4EDjxXf4knsx6UBM1L2V6cv8&theme=light&size=invisible&badge=inline&anchor-ms=20000&execute-ms=30000&cb=rgsaj4eiagq4",
+  "https://15087145.fls.doubleclick.net/activityi;dc_pre=CI7A0cT0xpcDFUWnfwYdpKMkcA;src=15087145;type=ctalz0;cat=ctal_00;rcb=16;ord=3310876029123;npa=0;auiddc=599917804.1792441393;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;user_data_mode=a;_tu=KFA;gtm=45fe6ag1h2v9200647931z879572185za20gzb79572185zd79572185xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938466~115938468~118897920~118897930~120213116~120385423~120469145~120469153~121246026~121246034~123322203;epver=2;gap.dlst=0;gap.dlsc=0;em=tv.1~em.6DNyzVQaSAUHFhSuzhVaha3TGoe2rHlWitDwIvscnrw;emd=tvd.1~i1.fem.ma.r19.n19.lP.s!b64!I1Rlcm1zb2ZTZXJ2aWNlQ3VzdG9tcG9wdXA-LmFnZWdhdGUtY3VzdG9tZVBvcHVwY28;dc_random=1792441393_2byxBFYTZgRNKnOpbImUMby9v2YokeUOgg;_dc_test=1;~oref=https%3A%2F%2Fwww.verilife.com%2F?",
+  "about:blank",
+  "about:blank"
+ ],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://www.verilife.com/",
+ "title": "Recreational and Medical Marijuana Dispensaries | Verilife",
+ "htmlBytes": 259976,
+ "sigs": [
+  "jane",
+  "joint"
+ ],
+ "links": [
+  "https://www.verilife.com/ny/menu/albany-recreational",
+  "https://www.verilife.com/locations",
+  "https://www.verilife.com/ny/locations/albany",
+  "https://www.google.com/maps?saddr=My+Location&daddr=Verilife%20Dispensary,%202%20Wade%20Rd%20Latham%20New%20York%2012110",
+  "https://www.instagram.com/verilifestores",
+  "https://www.facebook.com/Verilifestores",
+  "https://www.twitter.com/verilifestores"
+ ],
+ "textSample": "Select a state to continue. Are you at least 21 years old or a qualified patient? Yes No and leave this site. By entering this site, you accept our use of cookies and agree to our Privacy Policy & Terms of Service Skip to Content",
+ "productHints": [],
+ "priceCount": 0
+}

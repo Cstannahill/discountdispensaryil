@@ -1,0 +1,31 @@
+{
+ "store_id": "57a13646ef2c936f673f0e9e",
+ "name": "Windy City Cannabis Homewood",
+ "address": "1137 W. 175th St",
+ "city": "Homewood",
+ "registry_distance_miles": 84.6,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "windycitycannabis.com (multi-town site), Homewood",
+ "menu_platform": "Jane signature on site (unconfirmed)",
+ "how_menu_is_reached": "Per-town pages under /locations/<town>/. Carpentersville was found; /shop/recreational returns 404.",
+ "branch_selection": "Homewood location page not located.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Cookie banner (accepted in probe).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search could not find the site (NO_LEAD). The site uses per-town pages and the Homewood page was not found.",
+ "fix_idea": "Name + city search, then the Homewood location page; identify the Jane store id from it.",
+ "unverified": [
+  "Homewood page",
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

@@ -1,0 +1,66 @@
+{
+ "store_id": "8947130edc8848b35dac0d91",
+ "name": "Bloom Wellness - Normal",
+ "slug": "bloom-wellness-normal",
+ "registry": {
+  "address": "1730 Bradford Ln Ste 185",
+  "city": "Normal",
+  "state": "IL",
+  "latitude": 40.53331,
+  "longitude": -88.99263,
+  "distance_miles": 25.3
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-bradford/",
+ "menu_url": "rec: https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-bradford/7270/recreational-menu/  |  med: https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-bradford/7450/medical-menu/",
+ "platform": "jane",
+ "how_menu_reached": "Bloom Wellness (Green Thumb) menus are hosted on the Rise site: custom Next.js SPA route per branch/menu type, Rise UI over Jane's Merch SDK (dmerch.iheartjane.com). The IL listing page (browser-rendered) links every branch; the landing page links the numeric menu routes.",
+ "branch_selection": "Jane store id is the numeric path segment: 7270 (recreational) and 7450 (medical). Rise chain API: Bloom Wellness Normal Bradford, 1730 Bradford Ln Suite 185, coordinates 40.53333,-88.99258; Jane _geoloc 40.53315,-88.99258 (0.01 mi from registry pin) for both stores.",
+ "age_gate": "click-through on risecannabis.com (probe auto-click works)",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search)",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets (kind) with storeId 7270 / 7450",
+   "POST https://dmerch.iheartjane.com/v2/multi and /v2/smartpage as in backend/providers/jane.py",
+   "GET https://risecannabis.com/api/opensearch/dispensaries/nearest?lat=&lon=&limit=25&state=Illinois (chain directory, browser context only)"
+  ],
+  "notes": "SDK key is public and read from iheartjane.com/stores/<id>; dmerch accepted a plain honest-UA client."
+ },
+ "paging": "declared total via kind facet sum (reconciles); slices under 1000-hit window; hydrate 60 per call. The rendered Rise page is infinite-scroll with a ?refinementList[...] facet URL scheme (the generic path crawled those as filtered pages and marked them superseded).",
+ "approx_product_count": 991,
+ "license_channels": "rec+med separate Jane stores: 7270 recreational 991 (edible 234, extract 72, flower 193, gear 68, merch 9, pre-roll 178, tincture 3, topical 5, vape 229); 7450 medical 991 (same breakdown)",
+ "blockers": [
+  "risecannabis.com: Cloudflare managed challenge for plain HTTP clients (403); installed Chrome passes (the existing browser path already renders this menu)"
+ ],
+ "evidence": [
+  "Rise nearest API lists two Normal branches: bloom-wellness-normal-bradford (1730 Bradford Ln Suite 185; 7270/7450) and bloom-wellness-normal-northbrook ('formerly Revolution', 1609 Northbrook Dr Suite 3; 7274/7449)",
+  "registry also has a separate store Revolution Dispensary - Normal (id 7f48ac07b32cfe68397a4334, 1609 Northbrook Dr) which is the Northbrook branch",
+  "Jane facets: 7270 total 991, 7450 total 991, 7274 total 1136, 7449 total 1136; 7274 _geoloc is 0.38 mi from this store's registry pin",
+  "backend.providers.jane.hosted_store maps the bradford 7270 URL to ('7270','name_locality') and the northbrook 7274 URL to ('7274', None)"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched: Resolved 4 canonical menu target(s) (2026-10-19T05:07)",
+  "saved_endpoints": "6 live endpoints, all provider generic, platform tag jane: bradford 7270 recreational-menu (with and without trailing slash) status converged (grade B, 997 items); bradford 7450 medical-menu partial (1000 items); northbrook 7274 recreational-menu x3 partial (1012 items) = WRONG-BRANCH sibling attached to this store; plus ~7 superseded ?refinementList filtered pages",
+  "recent_attempts": "mix of converged grade B (997 items) and partial TOTAL_UNVERIFIABLE grade C (1012 items, the northbrook sibling); last attempt 2026-10-19T05:12; fingerprints 5f5ba837b5 .. 3af5418b55 (HEAD is 5609f30e9d)",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "generic",
+    "license": "recreational",
+    "url": "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-bradford/7270/recreational-menu",
+    "items": 3,
+    "declared_total": null,
+    "errors": [
+     "incomplete_generic_menu"
+    ],
+    "verdict": "SAMPLE_PRODUCTS",
+    "seconds": 9.4
+   }
+  }
+ },
+ "why_it_fails": "It mostly works but at lower quality and with a leak. (1) The saved bradford endpoint is read by the generic structured/DOM path (rendered Rise page, 997 variants, no advertised total) so it reaches only grade B and is hidden from /deals unless include_unverified. At HEAD, adapters.resolve_menu runs jane_hosted_store on any popped URL, which would store provider jane with provider_store_id 7270 and a reconciled facet total (grade A); the DB still shows generic, cause not established (rows were written under older fingerprint 3af5418b55; I did not read storage upsert code). (2) Wrong-branch leakage: the Rise listing/branch pages cross-link the same-city sibling 'Bloom Wellness Normal Northbrook' (the former Revolution Dispensary - Normal, a different registry store) and locators/site_discovery accepted its 7274 menu URLs as candidates for this store (same city name). The generic path cannot prove the branch so these sit as partial endpoints; the native Jane reader would reject them (0.38 mi > MAX_MILES 0.35 and hosted_store identity None).",
+ "fix_idea": "Run this store through the native Jane path: resolve from Rise's directory (menuDetails ids 7270/7450) and let jane.py prove the branch by pin. Drop or supersede the 3 northbrook endpoints on this store and attach 7274/7449 to Revolution Dispensary - Normal (7f48ac07b32cfe68397a4334) instead. Add a guard so a same-city sibling slug (different street) is an identity_conflict, not a candidate (compare the Rise API address street, not just city). Also skip ?refinementList facet URLs at crawl time (menu_document_scope already marks them filtered).",
+ "root_cause_tag": "rise-hosted-jane-served-by-generic-grade-b",
+ "confidence": "medium"
+}

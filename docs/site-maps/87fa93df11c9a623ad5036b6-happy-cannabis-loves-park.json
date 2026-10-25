@@ -1,0 +1,39 @@
+{
+ "store_id": "87fa93df11c9a623ad5036b6",
+ "name": "The Happy Cannabis Company  Loves Park",
+ "slug": "happy-cannabis-loves-park",
+ "registry": {
+  "address": "4120 N Bell School Rd",
+  "city": "Loves Park",
+  "state": "IL",
+  "latitude": 42.32592,
+  "longitude": -89.022881
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://thehappycannaco.com",
+ "menu_url": "https://thehappycannaco.com/shop/featured",
+ "platform": "jane (script embed on retailer domain)",
+ "how_menu_reached": "Retailer /shop pages load the Jane headless embed (api.iheartjane.com/v2/headless/embed.js); no iframe",
+ "branch_selection": "Client-side store picker modal (Rockford rec, Rockford med, Loves Park rec). Default is Rockford rec: #jane-store-id data-store-id=1410. Selecting Loves Park gives data-store-id=3769. URL does not change.",
+ "age_gate": "Yes/No modal",
+ "data_loading": {
+  "mechanism": "Jane dmerch search (backend/providers/jane.py handles it once provider_store_id is known)",
+  "endpoints": [
+   "dmerch.iheartjane.com/v2/multi|facets|smartpage with store_id"
+  ]
+ },
+ "paging": "jane provider reads facet slices",
+ "approx_product_count": null,
+ "blockers": [
+  "thehappycannaco.com returns HTTP 403 to headless Playwright Chrome; loads in an ordinary browser. Recorded as a block, not evaded (CLAUDE.md)."
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved NO_LEAD (2026-10-18)",
+  "sample": "no saved endpoint, nothing to sample"
+ },
+ "why_it_fails": "resolution/website discovery: fallback search returned NO_LEAD. Stored evidence shows html.duckduckgo.com answers HTTP 202 with a bot challenge and www.bing.com/search answers 200 with unrelated Microsoft pages for the quoted-address query, so no candidate website is ever found even though the brand site exists. Even with the site, static HTML has no numeric Jane store id (loader-script embed); the id only appears in rendered DOM after the right store is picked, and the default is the wrong branch (Rockford). Headless access is also 403.",
+ "fix_idea": "Replace the fallback search with a working source (e.g. the OpenRouter web plugin the verifier already uses, or a brand-level locator) and treat a results page where nothing names the store as a search failure, not 'no lead'. Jane resolver: read #jane-store-id / dmerch store_id from the rendered page and drive the store picker to the registry branch. Loves Park rec = 3769.",
+ "root_cause_tag": "search-engine-dead; jane-script-embed-hidden-store-id; headless-403",
+ "confidence": "medium"
+}

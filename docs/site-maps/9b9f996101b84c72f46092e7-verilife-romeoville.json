@@ -1,0 +1,49 @@
+{
+  "store_id": "9b9f996101b84c72f46092e7",
+  "name": "Verilife Romeoville",
+  "slug": "verilife-romeoville",
+  "registry": {"address": "412 N Weber Rd", "city": "Romeoville", "state": "IL", "latitude": 41.63947, "longitude": -88.12626, "distance_miles": 69.6},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://www.verilife.com/locations (Verilife's own Amasty store locator, server-rendered, lists Verilife Romeoville / 412 N Weber Rd / Romeoville, Illinois, 60446); branch page https://www.verilife.com/il/locations/romeoville",
+  "menu_url": "rec: https://risecannabis.com/dispensaries/illinois/verilife-romeoville/7318/recreational-menu/  |  med: https://risecannabis.com/dispensaries/illinois/verilife-romeoville/7317/medical-menu/",
+  "platform": "jane",
+  "how_menu_reached": "verilife.com shop buttons are relative links il/menu/romeoville-recreational and il/menu/romeoville-medical; verilife.com answers each with a 301 to the Rise (Green Thumb) site, which hosts the Verilife menus. verilife.com/il/locations/romeoville 301s to https://risecannabis.com/dispensaries/illinois/verilife-romeoville/. The Rise page is a custom Next.js storefront using Jane's Merch SDK (dmerch.iheartjane.com) natively, no iframe.",
+  "branch_selection": "Jane store id is the numeric path segment of the Rise menu URL: 7318 (recreational) and 7317 (medical). Rise's chain API menuDetails[] lists both ids per branch slug (/dispensaries/illinois/verilife-romeoville/). Jane records carry _geoloc 41.63933,-88.12639 (0.01 mi from registry pin) for 7318 and 41.63954,-88.12288 (0.17 mi) for 7317.",
+  "age_gate": "click-through on risecannabis.com (Age Gate Viewed/Age Consented events; probe auto-click works); verilife.com static pages need none",
+  "data_loading": {
+    "mechanism": "REST (Jane dmerch search), same contract backend/providers/jane.py already reads",
+    "endpoints": [
+      "GET https://www.iheartjane.com/stores/7318 (page embeds dmSdkApiKey, public SDK key)",
+      "POST https://dmerch.iheartjane.com/v2/facets (searchFacets=[kind], storeId=7318)",
+      "POST https://dmerch.iheartjane.com/v2/multi (placement menu_inline_table, search_filter kind:\"<kind>\", store_id=7318)",
+      "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids hydrate 60 at a time)",
+      "GET https://risecannabis.com/api/opensearch/dispensaries/nearest?lat=&lon=&limit<=25&state=Illinois (chain directory with addresses + menuDetails; Cloudflare-challenged for plain clients, works from the browser page context)"
+    ],
+    "notes": "dmerch answered a plain honest-UA client (200) for facets/multi when given the SDK key read from iheartjane.com/stores/<id>; only the Rise website/API is behind Cloudflare."
+  },
+  "paging": "kind facet counts sum to the store total (declared total, reconciles exactly); slices each under the 1000-hit window; hydrate 60 per smartpage call; no infinite scroll needed",
+  "approx_product_count": 1126,
+  "license_channels": "rec+med separate Jane stores (7318 rec, 7317 med), both 1126 products at probe time (edible 291, extract 104, flower 197, gear 102, pre-roll 146, tincture 6, topical 9, vape 271); store_types recreational / medical respectively",
+  "blockers": [
+    "risecannabis.com: Cloudflare managed challenge for plain HTTP clients (403, cf-mitigated: challenge) on both HTML and /api; installed Chrome renders normally. verilife.com itself is plain-fetchable (200) but its menu links 301 into the challenged Rise host."
+  ],
+  "evidence": [
+    "curl verilife.com/locations -> 200, 328 KB, contains amlocator block for Verilife Romeoville with exact registry street",
+    "curl -I verilife.com/il/menu/romeoville-recreational -> 301 Location: risecannabis.com/dispensaries/illinois/verilife-romeoville/7318/recreational-menu/",
+    "curl -I verilife.com/il/menu/romeoville-medical -> 301 .../7317/medical-menu/",
+    "Rise nearest API (browser context) lists Verilife Romeoville with address {street_one: N Weber Rd, street_two: 412} and menuDetails 7318/7317",
+    "Jane facets for 7318 and 7317 both total 1126",
+    "verilife.com home inline map lists R0007 il/menu/romeoville-recreational and S0007 il/menu/romeoville-medical"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: Retailer locator did not expose a corroborated branch/menu link (2026-10-19T02:31, code LEAD_UNVERIFIED); earlier same on 10-18",
+    "saved_endpoints": "none; only live_leads row https://www.verilife.com/ (source resolver); live_store_platforms shows jane (evidence_backfill) for verilife.com",
+    "recent_attempts": "2 resolution attempts, both LEAD_UNVERIFIED, fingerprints 5f5ba837b5 and 3af5418b55 (HEAD is 5609f30e9d)",
+    "sample": null
+  },
+  "why_it_fails": "Stage = website discovery / menu resolution. locators.py CONNECTORS maps ^verilife\\b to https://risecannabis.com/dispensaries/illinois/ (line ~24). Plain GET of that host is a Cloudflare 403, so _known_menu_candidates returns status failed (Locator HTTP 403) or relies on the browser render of a JS listing; the pipeline then falls through to search_websites (Bing/DDG fallback, dead per coordinator) and only gets the verilife.com home as a lead. Even when a Rise branch landing page is reached, its JSON-LD streetAddress is 'N Weber Rd 412' (street_one + street_two swapped), so site_discovery.inspect_page reports identity conflict, and RISE_MENU/hosted_store (jane.py) only matches URLs that already contain the numeric Jane id, which the landing page URL does not. The Jane reader itself would pass: platform pin is 0.01 mi from the registry point.",
+  "fix_idea": "Chain-level, helps all Rise/Verilife/Bloom/Cannabist-style GTI stores (about 29 IL branches in the Rise directory): (1) add a Rise directory reader: via the browser, call /api/opensearch/dispensaries/nearest (limit 25, paged by lat/lon over IL) and read address (street_two is the house number), coordinates and menuDetails slugs; feed the numeric menu URLs straight into the existing Rise-hosted Jane path (hosted_store). (2) For Verilife specifically, point the ^verilife connector at https://www.verilife.com/locations (plain-fetchable, exact street text), follow its il/menu/<slug>-recreational|medical links but capture the 301 Location header instead of fetching the Cloudflare-challenged target, and pass that URL to hosted_store. (3) Normalize the swapped JSON-LD streetAddress in inspect_page (move a trailing house number to the front) so branch landing pages stop reading as identity conflicts.",
+  "root_cause_tag": "rise-chain-locator-cloudflare-and-swapped-address",
+  "confidence": "high"
+}

@@ -1,0 +1,77 @@
+{
+ "store_id": "7f52fc617a086bcb0b0f39f1",
+ "name": "ZenLeaf - Aurora",
+ "slug": "zenleaf-aurora",
+ "registry": {
+  "address": "740 IL Rte 59",
+  "city": "Aurora",
+  "state": "IL",
+  "latitude": 41.745041,
+  "longitude": -88.241249,
+  "distance_miles": 71.5
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://zenleafdispensaries.com/locations/aurora",
+ "menu_url": "rec: https://zenleafdispensaries.com/locations/aurora/menu/recreational/menu  |  med: https://zenleafdispensaries.com/locations/aurora/menu/medical/menu",
+ "platform": "sweed",
+ "how_menu_reached": "Verano's Zen Leaf Next.js app renders a Sweed-powered menu as a SPA route on the brand domain (no iframe). Unlike standard Sweed storefronts there is NO SSR query cache (no __sw_qc): the browser downloads the whole-branch catalog from data.zenleafdispensaries.com and filters it client side by category route (flower-5453, vapes-5456, edibles-5454, pre-rolls-5457, drinks-6389, concentrates-5460, topicals-5459).",
+ "branch_selection": "URL slug aurora -> GET data.zenleafdispensaries.com/menu-config/aurora returns sweedId 539 (hasMedicalMenu true, hasRecreationalMenu true, menuType dual). The branch page's Flight data holds sweedStores (77 chain stores, 10 in IL, ids 535-545); Aurora is id 539, '740 Illinois Route 59, Aurora, Illinois', pin 41.7657,-88.2063. Registry pin is about 2.3 mi from that pin, so identity rests on the street match (addresses_match('740 IL Rte 59','740 Illinois Route 59') is True at HEAD).",
+ "age_gate": "global-age-gate.min.js is loaded; headless run needed no click and showed the menu directly",
+ "data_loading": {
+  "mechanism": "REST JSON (one whole-branch document), fetched by the browser and by plain curl (200)",
+  "endpoints": [
+   "GET https://data.zenleafdispensaries.com/menu-config/aurora -> {slug, sweedId:539, hasMedicalMenu, hasRecreationalMenu, defaultMenuPath, recreationalMenuPath, medicalMenuPath}",
+   "GET https://data.zenleafdispensaries.com/catalog/539/recreational (636,865 bytes) ; /catalog/539/medical is byte-identical to /recreational",
+   "GET https://zenleafdispensaries.com/data/locations.json ; POST https://zenleafdispensaries.com/api/sweed/get-store-alert {storeSlug, menuType}"
+  ],
+  "notes": "Catalog JSON = {products[], filters, sorting, popularSearches}; product {id, name, category, subcategory, brand, strain, variants[{id, name, sku, unitSize{value,unitAbbr}, unitsInPackage, price, promoPrice, orderingAvailability}]}. No advertised total. Promo prices carry no terms (backend/providers/verano.py keeps shelf price only)."
+ },
+ "paging": "none: one document with all products; no declared total, so completeness is two agreeing reads (grade B converged) via verano.fetch",
+ "approx_product_count": 773,
+ "license_channels": "recreational and medical menus both exist (dual); BUT /catalog/539/medical returns the identical bytes as /recreational, so the medical menu cannot be told apart from the recreational one with this feed (variants 831 in both). Categories (products): Flower 224, Vapes 221, Edibles 137, Pre-Rolls 113, Drinks 40, Concentrates 34, Topicals 4 = 773 products / 831 variants.",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "curl zenleafdispensaries.com/locations/aurora -> 200 (783 KB); root page also carries sweedStores (77 stores)",
+  "Chrome probe of /locations/aurora/menu/recreational/menu: XHRs to data.zenleafdispensaries.com/menu-config/aurora and /catalog/539/recreational, 56 prices rendered",
+  "backend.providers.verano.observe on the saved page returns provider verano, provider_store_id 539, license recreational, platform pin evidence",
+  "cmp of catalog/539/recreational vs /medical: identical"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched: Resolved 9 canonical menu target(s) (2026-10-18T13:56); earlier run matched 11 targets",
+  "saved_endpoints": "~20 endpoints on this one store: provider sweed https://zenleafdispensaries.com/locations/aurora (partial, 'Sweed SSR query cache missing') and ~19 provider generic partial: the correct aurora recreational routes (/menu/recreational/menu, /cart, per-category routes flower-5453 ...) PLUS leaked wrong-branch URLs from other Zen Leaf stores: abington, altoona, hampton, malvern, norfolk, suffolk, westover, york (PA/VA/MA/MD etc., medical-only sites) and the IL sibling st-charles",
+  "recent_attempts": "all menu attempts generic structured RENDER_BLANK grade C ('No structured products extracted'), 217-241 items from the shell; last 2026-10-18T14:01 under fingerprint 5738315809 (HEAD 5609f30e9d is after commit 6d14ca8 'Read Zen Leaf menus from the site's whole-branch catalog'). No attempt has run with the verano provider yet.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "generic",
+    "license": "recreational",
+    "url": "https://zenleafdispensaries.com/locations/aurora/menu/recreational/menu/pre-rolls-5457",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_generic_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 18.2
+   },
+   "fixed_wrapper": [
+    {
+     "endpoint": "sweed https://zenleafdispensaries.com/locations/aurora",
+     "items": 0,
+     "complete": false,
+     "errors": [
+      "incomplete_menu: Sweed SSR query cache missing"
+     ]
+    }
+   ],
+   "caveat": "sample_stores picks the most recently attempted saved endpoint, which may be another branch or a category URL; fixed_wrapper names the endpoint actually sampled."
+  }
+ },
+ "why_it_fails": "Historical failure (stored results): backend/providers/sweed.py needs the SSR __sw_qc cache that Zen Leaf does not ship, and generic extraction saw only the shell (RENDER_BLANK), so nothing could reach grade A/B. The wrong-state endpoints came from the pre-connector discovery: there was no Zen Leaf locator (10-17: 'No retailer locator connector configured'), so Bing search seeds plus a crawl of the zenleafdispensaries.com navigation queued every /locations/<x>/ menu link; endpoints with identity 'candidate' (name_match false, city_match false, no address) were kept, giving this store menus from abington, altoona, hampton, malvern, norfolk, suffolk, westover, york and st-charles. Current HEAD (commit 6d14ca8) adds providers/verano.py plus a zen\\s*leaf connector that reads the sweedStores list, so this store should now resolve to one verano endpoint (id 539) and fetch 773 products over two reads; the stale rows remain in live_endpoints until superseded.",
+ "fix_idea": "Already implemented at HEAD (verano provider + locator); rerun this store (targeted POST /api/v1/sync/runs with store_ids) to confirm. Follow-ups: (1) supersede the ~19 stale generic and 1 sweed rows, especially the other-state abington/altoona/hampton/malvern/norfolk/suffolk/westover/york URLs and the st-charles URLs attached to this store, and add a guard that a retained endpoint whose branch slug/city differs from the registry store is dropped on re-resolution; (2) decide how to treat license_type medicinal for Zen Leaf: /catalog/<id>/medical is byte-identical to /recreational, so verano.fetch would emit the same variants twice under two licenses; either mark the medical menu as not separately evidenced or skip it. (3) Same provider covers all 10 IL Zen Leaf stores (Evanston 535, Pilsen 536, St. Charles 537, Highland Park 538, Aurora 539, Lombard 540, Naperville 541, West Loop 542, Prospect Heights 543, Rogers Park 545).",
+ "root_cause_tag": "verano-zenleaf-catalog-provider-needs-rerun",
+ "confidence": "high"
+}

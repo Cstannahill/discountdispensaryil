@@ -1,0 +1,236 @@
+{
+ "key": "07_hatch",
+ "url": "https://gohatch.com/shop/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 284
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79ab-a2e3-0a7a23d37be6\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79ac-a084-17be5ab05e03\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79ad-b525-475d42814c18\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79ae-bf6c-e475accd748f\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79af-85e7-e64e0fa63850\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79b0-ae39-786d606042b1\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79b1-a939-306fddd1bbb6\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79b2-8423-0fcd82cdb476\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"NUDOa25VPqkwRguxYIh8M\",\"engagements\":[{\"adToken\":\"01a155d2-311a-79b3-8c7c-628feb0a312f\",\"kevelToken\":\"01a155d2-311a-7f93-b5c3-799b6313fce5\",\"myHi"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/6384e85523613d11ad9588c5",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1231
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6IlRFTVBPUkFSWV9VU0VSX0lEIiwia2luZCI6InVzZXIifQ",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 14821
+  },
+  {
+   "u": "https://www.iheartjane.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v3/sdkconfig/web/FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 431,
+   "post": "{\"query_params\":{\"unique_id\":null}}"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v2/websdksettings?app_id=FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 2564
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://events.launchdarkly.com/events/bulk/6384e85523613d11ad9588c5",
+   "m": "POST",
+   "s": 202,
+   "ct": "application/json",
+   "len": 0,
+   "post": "[{\"kind\":\"identify\",\"context\":{\"kind\":\"user\",\"key\":\"TEMPORARY_USER_ID\",\"anonymous\":true},\"creationDate\":1792441202940},{\"startDate\":1792441203011,\"endDate\":1792"
+  },
+  {
+   "u": "https://api.iheartjane.com/v2/embed/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 0,
+   "post": "h=gohatch.com&s=googletagmanager.com%2Ciframe%3Agoogletagmanager.com%2Ctags.srv.stackadapt.com&k=gohatch.com%3Agoogletagmanager.com%2Ciframe%3Agoogletagmanager."
+  },
+  {
+   "u": "https://api-js.mixpanel.com/track/?verbose=1&ip=1&_=1792441206770",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 25,
+   "post": "data=%5B%7B%22event%22%3A%22Searched%20Menu%20Products%22%2C%22properties%22%3A%7B%22%24os%22%3A%22Windows%22%2C%22%24browser%22%3A%22Chrome%22%2C%22%24current_"
+  }
+ ],
+ "frames": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-MBM26PD8",
+  "https://www.iheartjane.com/headless/drawer?jdid=NUDOa25VPqkwRguxYIh8M&appmode=bloom"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://gohatch.com/shop/featured",
+ "title": "Shop featured cannabis products | Hatch - Addison (REC) Dispensary Addison, IL",
+ "htmlLen": 2896795,
+ "prices": 121,
+ "textHead": "My store Hatch - Addison (REC) Rec pickup Search Get more with a free account! Fast, secure checkout Personalized recommendations View order history anytime Sign up or sign in Shop featured ca",
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-MBM26PD8",
+  "https://www.iheartjane.com/headless/drawer?jdid=NUDOa25VPqkwRguxYIh8M&appmode=bloom"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": "9 products",
+ "platforms": [
+  "jane"
+ ],
+ "hosts": [
+  [
+   "bloom-assets.iheartjane.com",
+   163
+  ],
+  [
+   "www.iheartjane.com",
+   25
+  ],
+  [
+   "product-assets.iheartjane.com",
+   22
+  ],
+  [
+   "browser-intake-datadoghq.com",
+   19
+  ],
+  [
+   "uploads.iheartjane.com",
+   11
+  ],
+  [
+   "dmerch.iheartjane.com",
+   10
+  ],
+  [
+   "www.googletagmanager.com",
+   6
+  ],
+  [
+   "fonts.googleapis.com",
+   4
+  ],
+  [
+   "gohatch.com",
+   3
+  ],
+  [
+   "janetech-core-prod-product-assets.s3.amazonaws.com",
+   3
+  ],
+  [
+   "iheartjane.com",
+   3
+  ],
+  [
+   "fonts.gstatic.com",
+   2
+  ],
+  [
+   "api.iheartjane.com",
+   2
+  ],
+  [
+   "app.launchdarkly.com",
+   2
+  ]
+ ]
+}

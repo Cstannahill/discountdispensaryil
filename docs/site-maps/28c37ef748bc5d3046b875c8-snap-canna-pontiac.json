@@ -1,0 +1,30 @@
+{
+ "store_id": "28c37ef748bc5d3046b875c8",
+ "name": "Snap Canna - Pontiac",
+ "address": "1910 W Reynolds St Unit A",
+ "city": "Pontiac",
+ "distance_miles": 19.365,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Blaze tenant b4b51085-...; accepted 638 offers. Sample returned 0 items with \"configured page limit reached\" (sample cap).",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "NO_PRODUCTS",
+   "items": 0,
+   "declared": null,
+   "errors": [
+    "incomplete_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "blaze",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-19T05:00:10.224090+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

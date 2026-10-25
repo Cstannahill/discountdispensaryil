@@ -1,0 +1,67 @@
+{
+ "key": "46ca00aa",
+ "url": "https://supergoodstore.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://supergoodstore.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://supergoodstore.com/",
+   "size": 0,
+   "sample": null,
+   "post": "age-confirm=true"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  }
+ ],
+ "iframes": [],
+ "notes": [
+  "clicked [class*=\"age\"] button [Your Nearest Store\nDetroit, MI]",
+  "clicked button:has-text(\"Yes\") [Yes]"
+ ],
+ "status": 200,
+ "finalUrl": "https://supergoodstore.com/",
+ "title": "Supergood Recreational, and Medical Marijuana Dispensary.",
+ "htmlBytes": 39188,
+ "sigs": [
+  "wordpress"
+ ],
+ "links": [
+  "https://supergoodstore.com/",
+  "https://supergoodstore.com/store/supergood-detroit/",
+  "https://supergoodstore.com/store/grandhaven/",
+  "https://supergoodstore.com/store/pentwater/",
+  "https://supergoodstore.com/store/new-buffalo-exit-1/",
+  "https://supergoodstore.com/store/new-buffalo/",
+  "https://supergoodstore.com/store/supergood-des-plaines/",
+  "https://supergoodstore.com/store/ravenna/",
+  "mailto:hello@supergoodstore.com",
+  "https://supergoodstore.com/?filter=MI",
+  "https://supergoodstore.com/?filter=OH",
+  "https://supergoodstore.com/?filter=IL",
+  "https://supergoodstore.com/about-us/",
+  "https://supergoodstore.com/privacy-policy",
+  "https://supergoodstore.com/privacy-policy/",
+  "https://supergoodstore.com/terms-and-conditions/"
+ ],
+ "textSample": "Your Nearest Store Detroit, MI Shop Supergood Cannabis Store. Supergood Hello hello@supergoodstore.com (313) 591.0420 Hours (EST) Sun - Sat 10am - 10pm Pickup / Curbside Call in advance, or order from the parking lot. Shop Supergood Jobs View our career postings on LinkedIn View Careers Michigan Supergood Detroit 10 8 Mile Rd Detroit, MI 48203 p (313) 591.0420 Hours Sun - Sat 10am - 10pm Shop Get Directions Supergood Grand Haven 1830 172nd Ave Grand Haven, MI 49417 p (616) 414.4141 Hours Sun - Sat 9am - 9pm Shop Get Directions Supergood Pentwater 4431 Monroe Rd Pentwater, MI 49449 p (231) 241.4390 Hours Sun - Wed 10am - 7pm; Thurs - Sat 10am - 9pm Shop Get Directions New Buffalo (Exit 1) 189",
+ "productHints": [],
+ "priceCount": 0
+}

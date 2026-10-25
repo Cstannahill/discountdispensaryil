@@ -1,0 +1,28 @@
+{
+ "store_id": "29984290a3b8ee0c0349abdd",
+ "name": "The Dispensary Champaign",
+ "address": "1826 Glenn Park Dr",
+ "city": "Champaign",
+ "distance_miles": 66.855,
+ "accepted_menu": false,
+ "platform": "Unknown: Jane storefront at thedispensaryfulton.com is a different business",
+ "menu_url": "not found",
+ "how_reached": "Leafly website field thedispensarychampaign.com redirects to thedispensaryfulton.com (Fulton and East Dubuque locations only)",
+ "branch_selection": "No Champaign branch found on the Fulton site",
+ "products_load": "n/a",
+ "paging": "n/a",
+ "count_hint": "n/a",
+ "blockers": "Registry record may be stale or misattributed",
+ "why_it_fails": "No public Champaign menu found. Jointcommerce and cannabisshop listings exist but were not probed.",
+ "fix_idea": "Operator check that the registry record is still an operating store. If yes, probe the jointcommerce listing next.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Public endpoint returned HTTP 404",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

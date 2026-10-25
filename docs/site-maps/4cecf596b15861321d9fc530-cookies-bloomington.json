@@ -1,0 +1,49 @@
+{
+ "store_id": "4cecf596b15861321d9fc530",
+ "name": "Cookies - Bloomington",
+ "address": "1006 Jc Pkwy",
+ "city": "Bloomington",
+ "registry_distance_miles": 28.4,
+ "status": "works",
+ "registry_flag": null,
+ "website": "bloomington.cookies.co",
+ "menu_platform": "JointCommerce (joint-ecommerce WordPress plugin)",
+ "how_menu_is_reached": "/menu/ and /stores/bloomington/. The probe reached a search page showing 481 results.",
+ "branch_selection": "Business id 5449 in the stores/closest call; registry 1006 Jc Pkwy.",
+ "product_loading": "POST /wp-json/joint-ecommerce/v1/products/ecommerce-production/_search (Elasticsearch aggs body).",
+ "product_count": "481 results on site; baseline 483-484 items.",
+ "blockers": "Age \"Yes\" button (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "joint",
+   "license": "recreational",
+   "status": "complete",
+   "code": null,
+   "grade": "A",
+   "items": 483,
+   "at": "2026-10-19T05:16:57.289710+00:00"
+  },
+  "sample_mode": {
+   "verdict": "NO_PRODUCTS",
+   "provider": "joint",
+   "items": 0,
+   "declared": null,
+   "errors": [
+    "incomplete_joint_menu"
+   ],
+   "url": "https://bloomington.cookies.co/stores/bloomington/"
+  }
+ },
+ "why_it_fails": "Not failing: JointCommerce route complete, grade A, 483-484 across repeated attempts. The sampler returned 0 items (incomplete_joint_menu), which points to a different endpoint or query in the sampler. Check sample_mode.url.",
+ "fix_idea": "None for the pipeline. Fix the sampler endpoint choice (most recent attempt is not always the good one).",
+ "unverified": [
+  "which endpoint the sampler used"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

@@ -1,0 +1,49 @@
+{
+ "store_id": "78862cb48b30452603cb3e50",
+ "name": "Cloud9 - Champaign",
+ "address": "505 W Town Center Blvd.",
+ "city": "Champaign",
+ "registry_distance_miles": 66.5,
+ "status": "partial",
+ "registry_flag": null,
+ "website": "dutchie.com embed cloud9-champaign (Cloud9, Champaign)",
+ "menu_platform": "Dutchie (embedded)",
+ "how_menu_is_reached": "dutchie.com/embedded-menu/cloud9-champaign with menuType rec.",
+ "branch_selection": "Embed id cloud9-champaign; registry 505 W Town Center Blvd.",
+ "product_loading": "Dutchie embedded (structured path).",
+ "product_count": "Baseline COUNT_MISMATCH: 461 and 135 items on recent attempts. Sampler 524 items (generic path).",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "structured",
+   "provider": "dutchie",
+   "license": "recreational",
+   "status": "partial",
+   "code": "COUNT_MISMATCH",
+   "grade": "C",
+   "items": 461,
+   "at": "2026-10-18T13:46:51.790973+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "dutchie",
+   "items": 524,
+   "declared": null,
+   "errors": [
+    "incomplete_generic_menu"
+   ],
+   "url": "https://dutchie.com/embedded-menu/cloud9-champaign"
+  }
+ },
+ "why_it_fails": "Structured Dutchie reconciliation fails (COUNT_MISMATCH). Attempts vary widely (135 to 461), so the total is not stable. The sampler used the generic path, which does not reconcile either.",
+ "fix_idea": "Read the Dutchie product count for the cName and compare with extracted items. Check for category or filter state that changes the total (see DUTCHIE_DIAGNOSIS).",
+ "unverified": [
+  "Dutchie count field"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

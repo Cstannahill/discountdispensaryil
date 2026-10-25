@@ -1,0 +1,101 @@
+{
+ "key": "12b_be_oakforest",
+ "url": "https://bestoresil.com/oakforest/about-us",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://r.surfside.io/a3f3b/40855/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 2
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://rum-collector-2.pingdom.net/img/beacon.gif?id=61c366319034fb0011000521&sAW=1366&sAH=900&bIW=1366&bIH=900&pD=24&dPR=1&or=landscape-primary&nT=0&rC=0&nS=0&cS=58&cE=82&dLE=57&dLS=1&fS=0&hS=64&rE=",
+   "m": "GET",
+   "s": 200,
+   "ct": ""
+  }
+ ],
+ "frames": [],
+ "status": 404,
+ "age_gate_text": null,
+ "final_url": "https://bestoresil.com/oakforest/about-us",
+ "title": "Page not found - Be Stores",
+ "htmlLen": 104333,
+ "prices": 0,
+ "textHead": "Skip to content Open toolbar Accessibility Tools Increase Text Decrease Text Grayscale High Contrast Negative Contrast Light Background Links Underline Readable Font Reset Home Events Locations Blu",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://menu.bestoresil.com/?store=be-blue-island",
+  "https://menu.bestoresil.com/?store=be-oak-forest",
+  "https://menu.bestoresil.com/signup"
+ ],
+ "count_text": null,
+ "platforms": [],
+ "hosts": [
+  [
+   "bestoresil.com",
+   77
+  ],
+  [
+   "www.googletagmanager.com",
+   6
+  ],
+  [
+   "www.google-analytics.com",
+   4
+  ],
+  [
+   "t.clarity.ms",
+   4
+  ],
+  [
+   "fonts.googleapis.com",
+   3
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "edge.surfside.io",
+   2
+  ],
+  [
+   "col.surfside.io",
+   2
+  ],
+  [
+   "rum-static.pingdom.net",
+   1
+  ],
+  [
+   "fonts.gstatic.com",
+   1
+  ],
+  [
+   "match.adsrvr.org",
+   1
+  ],
+  [
+   "r.surfside.io",
+   1
+  ],
+  [
+   "www.clarity.ms",
+   1
+  ],
+  [
+   "scripts.clarity.ms",
+   1
+  ]
+ ]
+}

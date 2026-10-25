@@ -1,0 +1,30 @@
+{
+ "store_id": "73a93789057ca11fac98c472",
+ "name": "Lakeshore Cannabis Club",
+ "address": "1335 Lakeside Dr Unit 4",
+ "city": "Romeoville",
+ "registry_distance_miles": 73.1,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "lakeshorecannabisclub.com, Romeoville (1335 Lakeside Dr Unit 4)",
+ "menu_platform": "Shop subdomain with /menu/<category> routes (platform unconfirmed)",
+ "how_menu_is_reached": "Home nav links to shop.lakeshorecannabisclub.com/menu/featured (also flower, pre-roll, vape, edible, extract).",
+ "branch_selection": "Single location; the registry address matches the Google listing.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Cookie prompt (accepted).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search never produced the site (NO_LEAD). The site's own nav links to the shop subdomain, which the resolver did not follow.",
+ "fix_idea": "Name + city search, then follow the site's Shop link to the subdomain menu and identify its platform.",
+ "unverified": [
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

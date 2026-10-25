@@ -1,0 +1,50 @@
+{
+ "store_id": "45baced7d6c42dac9ed77cb5",
+ "name": "Ivy Hall - Montgomery",
+ "address": "1970 Caterpillar Dr",
+ "city": "Montgomery",
+ "registry_distance_miles": 66.3,
+ "status": "partial",
+ "registry_flag": null,
+ "website": "ivyhalldispensary.com, Montgomery",
+ "menu_platform": "Sweed storefront (ecom theme c--ivyhall)",
+ "how_menu_is_reached": "/locations/montgomery/menu/recreational/menu/discounts on a Sweed web-ui proxy; the store is chosen by the site path.",
+ "branch_selection": "Selected by /locations/montgomery. The same domain also has a Bucktown identity_conflict endpoint.",
+ "product_loading": "POST web-ui-production.sweedpos.com/_api/proxy/Products/GetProductList {filters, page, pageSize 24, sortingMethodId, saleType Recreational}; categories from GetProductCategoryList.",
+ "product_count": "Baseline 341 items (SUSPICIOUS_DROP). Sampler reports declared=24, which equals the page size.",
+ "blockers": "Age \"Confirm\" button (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 2 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "sweed",
+   "license": "recreational",
+   "status": "suspicious",
+   "code": "SUSPICIOUS_DROP",
+   "grade": "C",
+   "items": 341,
+   "at": "2026-10-18T09:09:16.850781+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "sweed",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ],
+   "url": "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts"
+  }
+ },
+ "why_it_fails": "Baseline is SUSPICIOUS_DROP at 341 items. The sampler reads page size as the declared total, so its result is not usable. Not established whether the drop is real or the /discounts path is a subset.",
+ "fix_idea": "Take the total from the GetProductList response and compare. If /discounts is a subset, read the base recreational menu path instead.",
+ "unverified": [
+  "GetProductList total field name",
+  "whether /discounts is a subset"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

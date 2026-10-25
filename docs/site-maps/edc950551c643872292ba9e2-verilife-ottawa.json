@@ -1,0 +1,65 @@
+{
+  "store_id": "edc950551c643872292ba9e2",
+  "name": "Verilife Ottawa",
+  "slug": "verilife-ottawa",
+  "registry": {
+    "address": "4100 Columbus St",
+    "city": "Ottawa",
+    "state": "IL",
+    "distance_miles": 32.692
+  },
+  "site": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/",
+  "platform": "jane rec store 7320, hosted on Rise",
+  "menu_url_verified": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/",
+  "access": "age gate (YES)",
+  "branch_selection": "store id in Rise URL",
+  "product_loading": "Jane storefront",
+  "paging": "Jane facet slices (reconciled)",
+  "product_count_observed": "reader 1083 complete (one-page sample)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/?currentSort=thc-potency-desc",
+    "title": "Verilife Ottawa Recreational Menu | Cannabis Dispensary",
+    "platforms": [
+      "jane",
+      "rise"
+    ],
+    "age_gate_seen": true,
+    "age_click": "YES",
+    "count_text": "1055 results",
+    "price_tags": 92,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Retailer locator did not expose a corroborated branch/menu link"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded1.json",
+      "targets": [
+        {
+          "provider": "jane",
+          "provider_store_id": "7320",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "jane",
+          "items": 1083,
+          "expected": 1083,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Discovery only. Stored unresolved: 'Retailer locator did not expose a corroborated branch/menu link', even though the Rise Illinois connector exists. The Rise menu page carries the Jane store id, which the reader proves.",
+  "fix_idea": "Map the Rise Illinois store index to store pages; seed the site URL.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

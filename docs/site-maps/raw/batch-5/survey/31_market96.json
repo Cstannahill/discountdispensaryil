@@ -1,0 +1,249 @@
+{
+ "key": "31_market96",
+ "url": "https://www.market-96.com/shop",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://tags.srv.stackadapt.com/sa.jpeg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/jpeg"
+  },
+  {
+   "u": "https://tags.srv.stackadapt.com/saq_pxl?uid=Shb4IqJX3OYxLGylBKzOlA&is_js=true&landing_url=https%3A%2F%2Fwww.market-96.com%2Fage-gate%3FreturnUrl%3D%252Fshop&t=Age%20Gate&tip=VSFCl9BxL5FGaEAaMb2i7rKBTP",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://www.market-96.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://cdn.acsbapp.com/config/market-96.com/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 916
+  },
+  {
+   "u": "https://www.market-96.com/shop?_rsc=5xsnk",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/https://www.instagram.com/market96_dispensary?_rsc=1pqhz",
+   "m": "GET",
+   "s": 308,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://www.market-96.com/wishlist?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/rewards?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/about-us?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/https:/www.instagram.com/market96_dispensary?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 233871,
+   "arr": {
+    "n": 17,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":10,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0.2,\"lte\":500000}}}}},{\"bool\":{\"should\":[{\"match\":{\"isAboveThre"
+  },
+  {
+   "u": "https://www.market-96.com/product/artet-aperitif-750ml-100mg-beverage-100-milligrams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/kaleidadope-greeting-card-in-this-economy-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/zzz-s-ceramic-ashtray-night-swim-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/good-news-disposable-brunch-orange-5g-cartridge-0-5-grams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/good-tide-hash-infused-gummy-passion-fruit-1-1-1-thc-cbd-cbn-100mg-10pk-edible-100-milligrams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/breez-tincture-berry-daytime-100mg-tincture-100-milligrams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/breeze-disposable-live-resin-blue-dream-1g-cartridge-1-grams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/elements-tips-pre-rolled-pink-21pk-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/stoner-village-popcorn-mint-chocolate-runtz-14g-flower-14-grams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.market-96.com/product/in-house-kief-hybrid-1g-extract-1-grams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://tags.srv.stackadapt.com/js_tracking?url=https%3A%2F%2Fwww.market-96.com%2Fshop&uid=Shb4IqJX3OYxLGylBKzOlA&v=1&host=https%3A%2F%2Fwww.market-96.com&l_src=&l_src_d=&u_src=&u_src_d=&shop=false",
+   "m": "GET",
+   "s": 204,
+   "ct": ""
+  },
+  {
+   "u": "https://www.market-96.com/product/wonder-mints-relax-blueberry-2-1-cbd-thc-100mg-40pk-edible-100-milligrams?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  }
+ ],
+ "frames": [
+  "about:srcdoc",
+  "https://market-96.prismic.io/prismic-toolbar/5e015029/iframe.html"
+ ],
+ "status": 200,
+ "age_gate_text": "Press Alt+1 for screen-reader mode, Alt+0 to cancel Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window Please confirm you are at least 21 years of age. You must be 21 or older to visit this website. Your age will be verified at checkout. By proceeding, you agree to our Te",
+ "age_click": "I'M AT LEAST 21 YEARS OLD",
+ "final_url": "https://www.market-96.com/shop",
+ "title": "Shop Page",
+ "htmlLen": 283240,
+ "prices": 51,
+ "textHead": "Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window How do you want to shop? Select a pickup location Use Current Location Market 96 Oswego - Oswego, IL 1144 Douglas Rd ADULT",
+ "iframes": [
+  "https://market-96.prismic.io/prismic-toolbar/5e015029/iframe.html"
+ ],
+ "nextdata": false,
+ "links": [
+  "https://www.treez.io/meet-treez-ecommerce"
+ ],
+ "count_text": "1086 results",
+ "platforms": [
+  "treez"
+ ],
+ "hosts": [
+  [
+   "www.market-96.com",
+   107
+  ],
+  [
+   "images.prismic.io",
+   14
+  ],
+  [
+   "www.google-analytics.com",
+   8
+  ],
+  [
+   "www.googletagmanager.com",
+   7
+  ],
+  [
+   "tags.srv.stackadapt.com",
+   5
+  ],
+  [
+   "fonts.gstatic.com",
+   4
+  ],
+  [
+   "analytics.google.com",
+   3
+  ],
+  [
+   "maps.googleapis.com",
+   2
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "fonts.googleapis.com",
+   1
+  ],
+  [
+   "static.cloudflareinsights.com",
+   1
+  ],
+  [
+   "acsbapp.com",
+   1
+  ],
+  [
+   "col.surfside.io",
+   1
+  ],
+  [
+   "stats.g.doubleclick.net",
+   1
+  ]
+ ]
+}

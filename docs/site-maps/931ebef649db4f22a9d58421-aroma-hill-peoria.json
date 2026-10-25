@@ -1,0 +1,49 @@
+{
+  "name": "Aroma Hill - Peoria",
+  "registry": {
+    "address": "1210 W Glen Ave",
+    "city": "Peoria",
+    "state": "IL",
+    "latitude": 40.74705,
+    "longitude": -89.61131,
+    "distance_miles": 31.9
+  },
+  "operating_status": "open (Sweed storefront live, 644 products, hours 9am-9pm; platform address 1204 West Glen Avenue, Peoria 61614)",
+  "website": "https://aromahillcannabis.com/ (brand) / https://shop.aromahillcannabis.com/peoria",
+  "menu_url": "https://shop.aromahillcannabis.com/peoria/menu (single menu; /peoria/recreational/menu and /peoria/medical/menu both serve the same /peoria/menu page)",
+  "platform": "sweed",
+  "how_menu_reached": "Same shop.aromahillcannabis.com Sweed multi-tenant storefront as Kankakee; branch path prefix /peoria. Branch directory entry: id 263 \"Aroma Hill Peoria\", contacts.address \"1204 West Glen Avenue, Peoria, Illinois\".",
+  "branch_selection": "Sweed store id 263 (GetStoreInfoV2.storeInfo.id, routeName peoria). Only one saleType: saleTypes [\"Recreational\"] (no medical channel on the platform, although the registry says serves_medical=1).",
+  "age_gate": "Sweed ageGateMode \"confirm\"; SSR reads do not need it",
+  "data_loading": {
+    "mechanism": "SSR JSON (window.__sw_qc), paginated /menu",
+    "endpoints": [
+      "GET https://shop.aromahillcannabis.com/peoria/menu?page=N (Products/GetProductList, pageSize 24)"
+    ],
+    "notes": "GetProductList SSR total 644 (27 pages of 24). storeInfo.location.coords 40.746708,-89.6110628 = 0.027 mi from the registry point 40.74705,-89.61131."
+  },
+  "paging": "Numbered pages of 24; SSR payload declares the whole-menu total (644) for reconciliation (same sweed-ssr-3 adapter as Kankakee).",
+  "approx_product_count": 644,
+  "license_channels": "recreational-only on the platform (saleTypes [\"Recreational\"]); registry serves_medical=1 not reflected by any medical menu",
+  "blockers": [
+    "none (no challenge; the pipeline refuses it purely on an address string comparison)"
+  ],
+  "evidence": [
+    "curl shop.aromahillcannabis.com/ GetStoreShortInfoList: Peoria id 263, \"1204 West Glen Avenue, Peoria, Illinois\", location null in the list",
+    "curl /peoria/menu: GetStoreInfoV2 id 263, location.coords 40.746708,-89.6110628, saleTypes [\"Recreational\"], GetProductList total 644",
+    "Registry \"1210 W Glen Ave\" vs platform \"1204 West Glen Avenue\": same street, same city/zip area, numbers differ by 6; coordinates 0.027 mi apart -> same branch, a registry/platform street-number discrepancy, not a relocation and not a different branch"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "identity_conflict \"Retailer branch address conflicts with registry\" on every run (15 rows, 2026-10-17T08:06Z -> 10-19T05:16Z).",
+    "saved_endpoints": "none (saved_endpoints empty). Leads in live_leads: resolver shop.aromahillcannabis.com/peoria (identity conflict) plus verifier leads /peoria/, /peoria/menu and aromahillcannabis.com.",
+    "recent_attempts": "4 resolution attempts (10-18T08:33Z, 17:20Z, 23:13Z, 10-19T05:16Z), all status identity_conflict, code BRANCH_MISMATCH, grade D, items 0, detail \"Retailer branch address conflicts with registry\". No menu attempt ever.",
+    "sample": null
+  },
+  "why_it_fails": "Pure identity gate on an address-format/number mismatch. locators._known_menu_candidates reads the Sweed directory (GetStoreShortInfoList); for each branch `exact = addresses_match(registry, directory address) or _pinned(store, branch.location.coords)`. addresses_match(\"1210 W Glen Ave\", \"1204 West Glen Avenue, Peoria, Illinois\") fails on the street number, and `_pinned` cannot rescue it because the short-info list has location=null (the coordinates only exist on the branch page's own GetStoreInfoV2). A same-city non-exact branch is returned as status \"identity_conflict\" with a URL, which resolve_menu records as a failure and never fetches. The verifier leads (/peoria, /peoria/menu) do not help: the page-level check provider_address_matches(site_discovery L295) uses `platform_location` (Jane) or the `retailer_address` string; Sweed observe() stores `retailer_location` (not `platform_location`), so the string comparison fails again -> \"Detected menu belongs to a different street address\". The recent commit b077228 (Dutchie street number off by one digit pair) does not cover 1204 vs 1210 and is Dutchie-only.",
+  "fix_idea": "Shared Sweed/directory fix: (1) in _known_menu_candidates, for a same-city branch whose street name matches but number differs, return status \"candidate\" (not identity_conflict) so the branch page is fetched; (2) in provider_address_matches treat Sweed `retailer_location.coords` exactly like Jane `platform_location` (<=0.35 mi -> True, >5 mi -> False); this proves Peoria (0.027 mi) and keeps real conflicts out. Would also unblock other Aroma Hill/Sweed chains whose directory address differs in format (e.g. Fox Lake a6e621f4.., id 262 \"1298 U.S. 12\"). Then Peoria resolves to sweed 263 at /peoria/menu (recreational) with ~644 products.",
+  "root_cause_tag": "sweed-directory-address-number-mismatch-no-coordinate-pin",
+  "confidence": "high",
+  "store_id": "931ebef649db4f22a9d58421",
+  "slug": "aroma-hill-peoria",
+  "investigated_at": "2026-10-19"
+}

@@ -1,0 +1,63 @@
+{
+ "name": "High Haven Dispensary",
+ "registry": {
+  "address": "106 Mall Dr",
+  "city": "Normal",
+  "state": "IL",
+  "latitude": 40.50939,
+  "longitude": -88.95499,
+  "distance_miles": 27.2
+ },
+ "operating_status": "open (iheartjane.com/stores/6285 \"High Haven - The Puff Palace\", 106 Mall Drive, Normal, pickup 9am-9pm, 4.9 stars, 794 products)",
+ "website": "https://highhavencannabis.com/ (brand locations page; Normal branch = \"The Puff Palace\")",
+ "menu_url": "https://highhavencannabis.com/high-haven-normal-il-the-puff-palace/normal-menu/",
+ "platform": "jane",
+ "how_menu_reached": "Brand site (WordPress) page /high-haven-normal-il-the-puff-palace/normal-menu/ renders the Jane Boost frameless embed in-page (runtimeConfig storeId 6285, embedConfigId 3452); not an iframe. Same store as the Jane SPA iheartjane.com/stores/6285.",
+ "branch_selection": "Jane storeId 6285 in runtimeConfig; brand home links one menu page per branch (Darien 6286, Elgin 6284, Normal 6285). locators.CONNECTORS has a \"high haven\" entry (https://highhavencannabis.com/).",
+ "age_gate": "runtimeConfig showAgeGate=false",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search API)",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets?jdm_api_key=<public SDK key scraped from iheartjane.com/stores/<id> page>&jdm_source=monolith&jdm_version=2.25.0 body {appMode,janeDeviceId,searchFacets:[\"kind\"],storeId:<id>}",
+   "POST https://dmerch.iheartjane.com/v2/multi (placements[0].search_filter=kind:\"<kind>\", page_size 60, search_attributes [\"*\"], store_id) - returns nb_hits + products",
+   "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids batch of 60) - hydrates attributes beyond the first page"
+  ],
+  "notes": "Live 2026-10-19: edible 181, extract 49, flower 161, gear 35, merch 2, pre-roll 165, tincture 5, topical 3, vape 193 = 794 products (last snapshot 834 variants). Records: store_id 6285, store_types [\"recreational\"], _geoloc 40.50916,-88.95499 = 0.02 mi from the registry point (platform_location proof)."
+ },
+ "paging": "No page walking: the kind facet counts sum to the store total; each kind (<=1000 hits window) is one /v2/multi slice that must return exactly its facet count (larger kinds are split by brand facet); two independent full traversals must agree. Verified live 2026-10-19: facets and multi return 200 with a plain client.",
+ "approx_product_count": 794,
+ "license_channels": "recreational-only (Jane store_types recreational; brand FAQ says it does not sell to medical patients at this location). Registry serves_medical=1 disagrees - treat the registry flag as stale; do not create a medical menu.",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "curl highhavencannabis.com/high-haven-normal-il-the-puff-palace/normal-menu/ -> 200, title \"Normal Menu - High Haven Cannabis\", storeId 6285",
+  "dmerch live nb_hits 794, store_types recreational, geoloc 0.02 mi from registry",
+  "Real-Chrome probe iheartjane.com/stores/6285: \"High Haven - The Puff Palace\", Rec, 106 Mall Drive, Normal"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched \"Resolved 1 canonical menu target(s)\" on every run since 2026-10-17T13:12Z (latest 10-19T02:22Z).",
+  "saved_endpoints": "1 jane endpoint: 6285 recreational COMPLETE (last_success 2026-10-19T05:13Z, 834 items, grade A, identity name_locality).",
+  "recent_attempts": "8 attempts since 10-18T08:15Z: structured tier complete/A (853, 850 items) then native tier complete/A (847, 837, 834, 834). Zero failures.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "jane",
+    "license": "recreational",
+    "url": "https://highhavencannabis.com/high-haven-normal-il-the-puff-palace/normal-menu/",
+    "items": 828,
+    "declared_total": 828,
+    "errors": [],
+    "verdict": "SAMPLE_PRODUCTS",
+    "seconds": 4.5
+   }
+  }
+ },
+ "why_it_fails": "Not failing - complete/A on every run. Only stale: last_success 2026-10-19T05:13Z = 15.1 h at 20:22Z; store is in the scheduled region (27 mi) and was refreshed by scheduled jobs 4c60697c/29c4c77f/bb8983e6, then the 06:00 and 12:00 CDT slots never ran. FRESHNESS: storage.py (~L420) counts a store fresh only if an accepted endpoint succeeded <12 h ago. Newest attempt of any kind in the whole DB is 2026-10-19T05:24Z; investigated 2026-10-19T20:22Z. Scheduler (main.py create_app: APScheduler menu-sync 4/day at 00/06/12/18 America/Chicago, only while uvicorn runs) enqueues only live_settings.active_region_id = ad41b2e9 (\"Browser GPS\", 50 mi around 40.98,-89.05); the last scheduled job ran 05:00Z (00:00 CDT) and the 06:00/12:00 CDT slots never ran (server not up). ",
+ "fix_idea": "No parsing change. Operational: keep the server (and thus the 4/day scheduler) running, and consider a \"refresh retained accepted endpoints first\" fast job for slots that would otherwise run a 190-store rediscovery.",
+ "root_cause_tag": "jane-ok-stale-no-scheduled-run",
+ "confidence": "high",
+ "store_id": "90ea38bfd9fdfbc85a4b720c",
+ "slug": "high-haven-dispensary",
+ "investigated_at": "2026-10-19"
+}

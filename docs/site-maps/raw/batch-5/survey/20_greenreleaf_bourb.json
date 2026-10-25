@@ -1,0 +1,207 @@
+{
+ "key": "20_greenreleaf_bourb",
+ "url": "https://greenreleafdispensary.com/bourbonnais/category/all",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://cdn.acsbapp.com/config/greenreleafdispensary.com/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 748
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/createGuest",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1635,
+   "post": "{\"data\":\"KgyWpIEc+3O/6FJSdlxWog==\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/createGuest",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1635,
+   "post": "{\"data\":\"KgyWpIEc+3O/6FJSdlxWog==\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/store-list/onlineStoreList",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 28323,
+   "post": "{\"data\":\"pd9aeSQx8zz+E9Sm6+q2ApZ3J50wamCjCptL+z6ssyKkC5sq6WDIsjHRoEWQkG7r\"}"
+  },
+  {
+   "u": "https://r.surfside.io/7a0hm/718di/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 56
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/store-list/onlineStoreList",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 28323,
+   "post": "{\"data\":\"pd9aeSQx8zz+E9Sm6+q2ApZ3J50wamCjCptL+z6ssyKkC5sq6WDIsjHRoEWQkG7r\"}"
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/update",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1655,
+   "post": "{\"data\":\"Vwj8BKl2lOIY2dRhjw01MIWlcAoMQXCBYNmY9UJLmeY8+jHauVatVLratsPuLIRJUH3BMM1xhsUzKmzc55So7J54pQP/KGCRkZEmMXDVPWQ=\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/content/meta",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 843,
+   "post": "{\"data\":\"QcDq5hZcsudA8rbIhOLvzxn6ru41My3Nh9ZSIHLtSBLhgQ63qDv4/vPcweG6H/mcsTeAGRkTDrNHhE4hTGAjAVOoBmE6BvKttqPnj5ssSRlmXaeGLGGZAwrdB9g43xEgt5eem3Dy1L1wwEe/B3/Tsw="
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/poll-survey/get-poll-list?storeId=6662e8d1b81cc3439c556c93&userId=6ad67bbe6db52c0dced4b92a",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 55
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/product",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 8675,
+   "post": "{\"data\":\"RFU9iR/Q8i1MqfOeOCANNvVkdDo648UzMhnaTHwkO0JkKghNZH0aGdTqrEzUfNDXFp6DP2ExaLLGjCu/pM+l0eoEmS/631xER9ad7h314IiaikHJcCvPq7MFPLPwThqrqAhMEcoireC8H6zjfRG9pob"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/cart/cart-count",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 75,
+   "post": "{\"data\":\"ByYeBpEDop4R3LwWLCADXr/i2MA6uqMYpbvY3DQB+N9lCBRfARmWhqWL+pK7T/91qar4ftJoztdPvYZZiI5tkRqM68jIo979bK0x6rgr+/4=\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/cart/cart-list",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 119,
+   "post": "{\"data\":\"ByYeBpEDop4R3LwWLCADXr/i2MA6uqMYpbvY3DQB+N9lCBRfARmWhqWL+pK7T/91qar4ftJoztdPvYZZiI5tkS6gsRcxPOCkYwnMXXE8TlpetZlOnOUe0K3739NJE+yp6psipropBwKn5iu2kdmuFA="
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/cart/cart-count",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 75,
+   "post": "{\"data\":\"ByYeBpEDop4R3LwWLCADXr/i2MA6uqMYpbvY3DQB+N9lCBRfARmWhqWL+pK7T/91qar4ftJoztdPvYZZiI5tkRqM68jIo979bK0x6rgr+/4=\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/product",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 38371,
+   "post": "{\"data\":\"RFU9iR/Q8i1MqfOeOCANNs0gQa7LMUWI0cWoz5PIUO5bLXtYWv2Z+plR+OOeWbbhHkEHAV6rwseP40+4hOfnerjB1ir3TiauPmKsJP5PlCDyogEtABiXzVVCBCjyqTeyppiOdMqXs1actH6u6W7WLSI"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/content/meta",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 631,
+   "post": "{\"data\":\"s4Aov9YPpHRzVeXpqOs17QldVGeWFK1CfWdCxdVrnjH09oNHrP0tYwrLmSXoa88RzpZRM0eTP5DDuNuOYLpvTE9NxWbpG74yhl+9jCQ+9RZedbCtdxfhfyWV4PPr2+Hj\"}"
+  }
+ ],
+ "frames": [
+  "about:srcdoc",
+  "https://accounts.google.com/gsi/button?theme=outline&size=large&shape=pill&text=icon&is_fedcm_supported=true&client_id=1062951155010-5kmeq68ekdhrl5rgb866lne2i34m0ido.apps.googleusercontent.com&iframe_id=gsi_283726_881504&cas=wFwj7wx4OZr1o5SHuoqdw6%2F8gtmHaWJEhOfPUEfGpVI"
+ ],
+ "status": 200,
+ "age_gate_text": "Press Alt+1 for screen-reader mode, Alt+0 to cancel Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window Green Releaf Bourbonnais SHOP CATEGORIES BRANDS SPECIALS SORT BY WEIGHTS STRAIN TYPES SUB-CATEGORIES PRICE RANGE BRANDS All In Bourbonnais Browse All Category in Bourbonn",
+ "age_click": "Yes",
+ "final_url": "https://greenreleafdispensary.com/login?returnUrl=%2Fbourbonnais%2Fcategory%2Fall",
+ "title": "Login to Green ReLeaf | Green ReLeaf",
+ "htmlLen": 46199,
+ "prices": 0,
+ "textHead": "Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window Log in for the best experience and enjoy a mobile-friendly shopping Your favorite cannabis dispensary +1 I agree to rece",
+ "iframes": [
+  "https://accounts.google.com/gsi/button?theme=outline&size=large&shape=pill&text=icon&is_fedcm_supported=true&client_id=1062951155010-5kmeq68ekdhrl5rgb866lne2i34m0ido.apps.googleusercontent.com&iframe_id=gsi_283726_881504&cas=wFwj7wx4OZr1o5SHuoqdw6%2F8gtmHaWJEhOfPUEfGpVI"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [],
+ "hosts": [
+  [
+   "greenreleafdispensary.com",
+   30
+  ],
+  [
+   "grd-product-images.s3.amazonaws.com",
+   21
+  ],
+  [
+   "prod-api.greenreleafdispensary.com",
+   13
+  ],
+  [
+   "maps.googleapis.com",
+   8
+  ],
+  [
+   "fonts.gstatic.com",
+   6
+  ],
+  [
+   "accounts.google.com",
+   3
+  ],
+  [
+   "www.googletagmanager.com",
+   3
+  ],
+  [
+   "analytics.google.com",
+   3
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "www.google.com",
+   1
+  ],
+  [
+   "fonts.googleapis.com",
+   1
+  ],
+  [
+   "acsbapp.com",
+   1
+  ],
+  [
+   "www.gstatic.com",
+   1
+  ],
+  [
+   "cdn.acsbapp.com",
+   1
+  ]
+ ]
+}

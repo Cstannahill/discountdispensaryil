@@ -1,0 +1,30 @@
+{
+ "store_id": "647fa571fa873e35190fd1cf",
+ "name": "Key Cannabis Dispensary - Mt. Zion",
+ "address": "1225 N State Route 121",
+ "city": "Mt Zion",
+ "registry_distance_miles": 77.0,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "keycannabis.com/shop/mt-zion-il, Mt. Zion (1225 IL-121)",
+ "menu_platform": "Dutchie (iframe embed key-illinois-mt-zion)",
+ "how_menu_is_reached": "/shop/mt-zion-il/ embeds dutchie.com/embedded-menu/key-illinois-mt-zion.",
+ "branch_selection": "Embed is the Mt. Zion store; site address matches registry.",
+ "product_loading": "Dutchie embedded (structured path).",
+ "product_count": "n/a",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search could not find the site (NO_LEAD). The menu is a direct Dutchie embed on the branch page, which the native Dutchie path supports.",
+ "fix_idea": "Name + city search finds keycannabis.com/shop/mt-zion-il; the Dutchie route applies. Total reconciliation decides acceptance.",
+ "unverified": [
+  "Dutchie total"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

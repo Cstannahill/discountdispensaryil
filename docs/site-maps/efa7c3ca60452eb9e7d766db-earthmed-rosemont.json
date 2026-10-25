@@ -1,0 +1,95 @@
+{
+  "store_id": "efa7c3ca60452eb9e7d766db",
+  "name": "Earthmed Rosemont",
+  "slug": "earthmed-rosemont",
+  "registry": {
+    "address": "10441 E. Touhy Ave.",
+    "city": "Rosemont",
+    "state": "IL",
+    "distance_miles": 97.003
+  },
+  "site": "https://earthmed.com/location/rosemont (menu wrapper https://menu.earthmed.com/rosemont-rec/menu)",
+  "platform": "jane (store 2740, rec)",
+  "menu_url_verified": "https://www.iheartjane.com/stores/2740/earthmed-rosemont-rec/menu",
+  "access": "age gate on the wrapper (no click needed in run)",
+  "branch_selection": "store 2740 in Jane embed",
+  "product_loading": "Jane storefront facets and specials",
+  "paging": "Jane facet slices (reconciled)",
+  "product_count_observed": "reader 1162 complete (one-page sample)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://menu.earthmed.com/rosemont-rec/menu",
+    "title": "Shop featured cannabis products | EarthMed - Rosemont (REC) Dispensary Rosemont, IL",
+    "platforms": [
+      "jane"
+    ],
+    "age_gate_seen": true,
+    "age_click": null,
+    "count_text": null,
+    "price_tags": 0,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "matched",
+      "message": "Resolved 1 canonical menu target(s)"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "jane",
+        "license": "recreational",
+        "status": "complete",
+        "last_success_at": "2026-10-19T02:59:15.632037+00:00",
+        "last_error": null
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Structured product total does not reconcile with traversed catalog\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}; missing_traversal_evidence"
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "jane",
+      "items": 1162,
+      "errors": [],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "generic",
+          "provider_store_id": null,
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "generic",
+          "items": 92,
+          "expected": null,
+          "complete": false,
+          "errors": [
+            "incomplete_generic_menu"
+          ],
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Works: stored jane 2740 accepted 1159 offers (2026-10-19 02:59, older than 12 h). Regression: seeding the menu.earthmed.com wrapper gives a generic 92-item partial, so the resolver does not recognize that wrapper as Jane store 2740.",
+  "fix_idea": "Recognize the menu.earthmed.com wrapper in jane_hosted_store; refresh the accepted row.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

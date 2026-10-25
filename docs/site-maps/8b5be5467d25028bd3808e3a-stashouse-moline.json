@@ -1,0 +1,66 @@
+{
+ "store_id": "8b5be5467d25028bd3808e3a",
+ "name": "Stashouse - Moline",
+ "slug": "stashouse-moline",
+ "registry": {
+  "address": "4301 44th Ave",
+  "city": "Moline",
+  "state": "IL",
+  "latitude": 41.47332,
+  "longitude": -90.47403,
+  "distance_miles": 84.7
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://stashouse.com/menu/moline/ (WordPress marketing page for the Moline branch; hub https://stashouse.com/menu/ chooses Moline or Maryville)",
+ "menu_url": "https://stashouse.com/stores/revolution-dispensary-moline (live shop; category routes /stores/revolution-dispensary-moline/products/{flower,pre-rolls,vaporizers,edibles,concentrates,topicals}/). Dutchie-hosted equivalent: https://dutchie.com/embedded-menu/698a691ac95a14de84898e8d. Recreational.",
+ "platform": "dutchie",
+ "how_menu_reached": "Link-out inside the same domain: the WordPress page /menu/moline/ has 'Open Moline Menu' / 'Shop Live' buttons that point to stashouse.com/stores/revolution-dispensary-moline, a Dutchie 'Ecommerce Pro' white-label storefront (Next.js, same-origin GraphQL). The slug and chainId say 'revolution-dispensary' - the Moline store was Revolution Dispensary and is branded Stashouse now (the page title is 'Stashouse - Moline', JSON-LD name 'StasHouse - Moline'). The saved endpoint https://stashouse.com/menu/ is the WordPress chooser page, which has no products ('Choose Moline or Maryville'; 0 prices).",
+ "branch_selection": "URL slug revolution-dispensary-moline; SSR \"dispensaryId\":\"698a691ac95a14de84898e8d\",\"chainId\":\"revolution-dispensary\". JSON-LD address 4301 44th Ave, Moline IL 61265 == registry; phone (309) 506-1751; hours Mon-Sat 9-9:30, Sun 10-7. Maryville (Maryville, IL) is a separate branch/dispensaryId.",
+ "age_gate": "click-through (WordPress age-gate plugin: GET /wp-json/age-gate/v3/check; then Dutchie overlay)",
+ "data_loading": {
+  "mechanism": "GraphQL over GET with Apollo persisted queries, same-origin /api-3/graphql on stashouse.com",
+  "endpoints": [
+   "GET https://stashouse.com/api-3/graphql?operationName=FilteredProducts&variables={includeEnterpriseSpecials:false,productsFilter:{dispensaryId:'698a691ac95a14de84898e8d',pricingType:'rec',Status:'Active',types:[],isOnSpecial:true (on the 'ALL PRODUCTS/deals' landing view only),sortBy:'popular',removeProductsBelowOptionThresholds:true,platformType:'ONLINE_MENU',...},page:N,perPage:25}&extensions={persistedQuery:{version:1,sha256Hash:'cfbda410fd502c77b467a174a666b809bec1e61c70ee7f75de1aff7440b59bf4'}}",
+   "GET .../api-3/graphql?operationName=MenuFiltersV2 | GetMenuSections | GetCollectionsNavigation | GetAddressBasedDispensaryData"
+  ],
+  "notes": "The landing view the page issues is a FILTERED query (isOnSpecial=true, totalCount 623, 25 pages): it is a specials listing, not the menu. The whole menu is the same query without isOnSpecial/types/collectionId: totalCount 1341. A pipeline that takes the observed query's totalCount as the menu total would see 623. Product shape: Name, Options ['1g'], recPrices, recSpecialPrices (sale), medicalPrices, weight (mg), type."
+ },
+ "paging": "page 0-based + perPage (cap 100). Whole menu: totalCount 1341, 14 pages at perPage 100 (13x100 + 41), 54 pages at perPage 25; all six sort/threshold variants gave 1341 unique = 1341 declared. Category totals sum exactly: Flower 405, Vaporizers 388, Edible 239, Concentrate 198, Pre-Rolls 73, Accessories 28, Topicals 7, Tincture 3 = 1341. About 623 products are on special.",
+ "approx_product_count": 1341,
+ "license_channels": "recreational (pricingType rec); medical prices via parallel medicalPrices arrays; registry serves_medical=0",
+ "blockers": [
+  "none seen in Chrome",
+  "raw HTTP to dutchie.com graphql = Cloudflare challenge (403), not evaded"
+ ],
+ "evidence": [
+  "stashouse.com/menu/ title 'Stashouse Menu | Choose Moline or Maryville' with 0 dollar signs; /menu/moline/ lists category guides and links to /stores/revolution-dispensary-moline",
+  "stashouse.com/stores/revolution-dispensary-moline title 'Stashouse - Moline | Cannabis Dispensary Moline, IL'; JSON-LD address matches registry",
+  "live_attempts: generic RENDER_BLANK 'No structured products extracted ... missing_traversal_evidence' at https://stashouse.com/menu/",
+  "repo-style page marker: the chooser page references dutchie.com/api/v2/embedded-menu/ (platform tag 'dutchie' came from that string)"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched: 'Resolved 1 canonical menu target(s)' -> generic endpoint https://stashouse.com/menu/ (WRONG target: the branch chooser)",
+  "saved_endpoints": "generic / https://stashouse.com/menu/ / recreational / status partial; live_store_platforms: dutchie (observed) on that URL",
+  "recent_attempts": "resolution matched (grade C, 25s); menu attempt tier structured provider generic: partial, code RENDER_BLANK, grade D, 0 items, 19s: 'No structured products extracted; JavaScript or an additional schema extractor may be required; missing_traversal_evidence'",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "generic",
+    "license": "recreational",
+    "url": "https://stashouse.com/menu/",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_generic_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 27.9
+   }
+  }
+ },
+ "why_it_fails": "Wrong endpoint, not a failed extraction. Resolution adopted the first '/menu/'-shaped link on the retailer site (locators._known_menu_candidates marks links matching r'/menu/' as 'matched'), which is the brand chooser stashouse.com/menu/ - a static WordPress page. The page contains only guide copy for both Moline and Maryville and no products, so the generic structured/DOM path returns RENDER_BLANK. The real shop is one hop further (stashouse.com/stores/revolution-dispensary-moline), whose SSR HTML has a single dispensaryId that site_discovery.dutchie_page_endpoints() would convert to dutchie.com/embedded-menu/698a691ac95a14de84898e8d. No CONNECTORS entry exists ('^stash\\b' does not match 'Stashouse').",
+ "fix_idea": "(1) Resolver: when a candidate menu page has zero products but links to a /stores/<slug> storefront whose JSON-LD street matches the registry, follow it; never accept a hub/chooser page as a menu endpoint (it lists several branches' addresses). (2) Run dutchie_page_endpoints on the followed page and store the endpoint as dutchie + dispensaryId (embedded-menu URL) rather than the retailer URL. (3) Dutchie whole-menu replay must drop landing-view filters (isOnSpecial, collectionId) and use the unscoped query; do not trust the first observed query's totalCount (623 vs real 1341). (4) Optionally supersede the saved generic endpoint using Store.supersede_endpoint.",
+ "root_cause_tag": "dutchie-whitelabel-chooser-page-adopted",
+ "confidence": "high"
+}

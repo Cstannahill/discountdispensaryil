@@ -1,0 +1,33 @@
+{
+ "store_id": "12adbbe4a9168b5be65bfee7",
+ "name": "Sunnyside - Danville",
+ "address": "369 Lynch Dr.",
+ "city": "Danville",
+ "distance_miles": 85.763,
+ "accepted_menu": false,
+ "platform": "Cresco (Sunnyside own site)",
+ "menu_url": "https://www.sunnyside.shop/store/danville-il",
+ "how_reached": "sunnyside.shop store page; Cresco store id 494",
+ "branch_selection": "Cookies and store slug",
+ "products_load": "api.crescolabs.com fifo-inventory per category",
+ "paging": "per category",
+ "count_hint": "not captured",
+ "blockers": "none seen",
+ "why_it_fails": "No endpoint saved; fallback search leads point at the chain root and a Rockford slug. No Cresco connector, so branch identity is unproven. Generic path gives 113 items (triage) without reconciling.",
+ "fix_idea": "Cresco reader and chain store list (store 494).",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "generic",
+     113
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

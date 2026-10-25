@@ -1,0 +1,326 @@
+{
+ "key": "30_earthmed",
+ "url": "https://menu.earthmed.com/rosemont-rec/menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/6384e85523613d11ad9588c5",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1231
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6IlRFTVBPUkFSWV9VU0VSX0lEIiwia2luZCI6InVzZXIifQ",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 14821
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://menu.earthmed.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v3/sdkconfig/web/FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 431,
+   "post": "{\"query_params\":{\"unique_id\":null}}"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v2/websdksettings?app_id=FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 2564
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/2740?",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 11512
+  },
+  {
+   "u": "https://tjs.iheartjane.com/capture?token=e00ed203eaa54757b49f55b9215deb2c&v=3.10.4",
+   "m": "POST",
+   "s": 202,
+   "ct": ""
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/whoami",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 30
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6Imd1ZXN0OjQyNTc1MiIsImtpbmQiOiJ1c2VyIiwiamRpZCI6IkowVzZ2dm1RaVp3eDJvMFpNUVlJIiwiYXBwTW9kZSI6ImZ",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 14823
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/2740",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 11512
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/gold_configs",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 4573
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/2740/seo",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 22
+  },
+  {
+   "u": "https://api.iheartjane.com/v2/brand_specials?store_id%5B%5D=2740&app_mode=framelessEmbed",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 77451,
+   "arr": {
+    "n": 31,
+    "path": "$.brand_specials",
+    "keys": [
+     "active",
+     "aeropay_location_id",
+     "created_at",
+     "description",
+     "discount_dollar_amount",
+     "discount_label",
+     "discount_percent",
+     "discount_target_price",
+     "discount_type",
+     "enabled",
+     "end_time",
+     "excluded_app_modes"
+    ]
+   }
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/facets?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 17544,
+   "post": "{\"appMode\":\"framelessEmbed\",\"janeDeviceId\":\"J0W6vvmQiZwx2o0ZMQYI\",\"searchFacets\":[\"activities\",\"aggregate_rating\",\"applicable_bulk_special_ids\",\"applicable_bund"
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/2740/banner_message_settings",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 6911
+  },
+  {
+   "u": "https://api.iheartjane.com/v3/stores/2740/specials?page=1&per_page=1000&app_mode=default&include_hidden=true",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 31295,
+   "arr": {
+    "n": 5,
+    "path": "$.specials",
+    "keys": [
+     "id",
+     "title",
+     "special_type",
+     "hidden_from_page",
+     "hidden_from_row",
+     "custom_badge",
+     "description",
+     "terms",
+     "reservation_modes",
+     "discount_type",
+     "discount_amount",
+     "discount_percent"
+    ]
+   }
+  },
+  {
+   "u": "https://api.iheartjane.com/v3/stores/2740/specials?page=1&per_page=16&app_mode=default",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 31295,
+   "arr": {
+    "n": 5,
+    "path": "$.specials",
+    "keys": [
+     "id",
+     "title",
+     "special_type",
+     "hidden_from_page",
+     "hidden_from_row",
+     "custom_badge",
+     "description",
+     "terms",
+     "reservation_modes",
+     "discount_type",
+     "discount_amount",
+     "discount_percent"
+    ]
+   }
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/multi?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 106067,
+   "post": "{\"app_mode\":\"framelessEmbed\",\"distinct_id\":\"$device:813361d2-a434-4ace-bf34-920c136087dd\",\"jane_device_id\":\"J0W6vvmQiZwx2o0ZMQYI\",\"search_attributes\":[\"*\"],\"sto"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/facets?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 225,
+   "post": "{\"appMode\":\"framelessEmbed\",\"janeDeviceId\":\"J0W6vvmQiZwx2o0ZMQYI\",\"searchFacets\":[\"applicable_bulk_special_ids\",\"applicable_bundle_special_ids.discount\",\"applic"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/facets?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 17544,
+   "post": "{\"appMode\":\"framelessEmbed\",\"janeDeviceId\":\"J0W6vvmQiZwx2o0ZMQYI\",\"searchFacets\":[\"activities\",\"aggregate_rating\",\"applicable_bulk_special_ids\",\"applicable_bund"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/facets?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 17544,
+   "post": "{\"appMode\":\"framelessEmbed\",\"janeDeviceId\":\"J0W6vvmQiZwx2o0ZMQYI\",\"searchFacets\":[\"activities\",\"aggregate_rating\",\"applicable_bulk_special_ids\",\"applicable_bund"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 284
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/smart?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 63,
+   "post": "{\"app_mode\":\"framelessEmbed\",\"distinct_id\":\"$device:813361d2-a434-4ace-bf34-920c136087dd\",\"jane_device_id\":\"J0W6vvmQiZwx2o0ZMQYI\",\"search_attributes\":[\"*\"],\"dis"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "MENUS LEARN ABOUT 🎃 The Great Pumpking Has Arrived! Online Ordering & Walk Ins Welcome | Rewards Recreational Marijuana Menu: Rosemont, IL Dispensary Shop from hundreds of recreational marijuana products at EarthMed in Rosemont. Our Illinois dispensary offers all of the latest edibles, flower, ",
+ "age_click": null,
+ "final_url": "https://menu.earthmed.com/rosemont-rec/menu",
+ "title": "Shop featured cannabis products | EarthMed - Rosemont (REC) Dispensary Rosemont, IL",
+ "htmlLen": 58277,
+ "prices": 0,
+ "textHead": "MENUS LEARN ABOUT 🎃 The Great Pumpking Has Arrived! Online Ordering & Walk Ins Welcome | Rewards Recreational Marijuana Menu: Rosemont, IL Dispensary Shop from hundreds of recreational marijuana ",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://menu.earthmed.com/rosemont-rec#",
+  "https://menu.earthmed.com/addison-med",
+  "https://menu.earthmed.com/addison-rec",
+  "https://menu.earthmed.com/rosemont-rec",
+  "https://menu.earthmed.com/mchenry-rec",
+  "https://menu.earthmed.com/rosemont-rec#",
+  "https://menu.earthmed.com/rosemont-rec#",
+  "https://menu.earthmed.com/addison-med",
+  "https://menu.earthmed.com/addison-rec",
+  "https://menu.earthmed.com/rosemont-rec",
+  "https://menu.earthmed.com/mchenry-rec",
+  "https://menu.earthmed.com/addison-med"
+ ],
+ "count_text": null,
+ "platforms": [
+  "jane"
+ ],
+ "hosts": [
+  [
+   "boost-assets.iheartjane.com",
+   79
+  ],
+  [
+   "product-assets.iheartjane.com",
+   54
+  ],
+  [
+   "dmerch.iheartjane.com",
+   25
+  ],
+  [
+   "earthmed.com",
+   11
+  ],
+  [
+   "api.iheartjane.com",
+   9
+  ],
+  [
+   "www.googletagmanager.com",
+   8
+  ],
+  [
+   "fonts.gstatic.com",
+   5
+  ],
+  [
+   "iheartjane.com",
+   5
+  ],
+  [
+   "tags.srv.stackadapt.com",
+   3
+  ],
+  [
+   "www.google-analytics.com",
+   3
+  ],
+  [
+   "app.launchdarkly.com",
+   3
+  ],
+  [
+   "www.google.com",
+   3
+  ],
+  [
+   "menu.earthmed.com",
+   2
+  ],
+  [
+   "fonts.googleapis.com",
+   2
+  ]
+ ]
+}

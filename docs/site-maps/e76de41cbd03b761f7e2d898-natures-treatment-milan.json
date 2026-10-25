@@ -1,0 +1,58 @@
+{
+  "store_id": "e76de41cbd03b761f7e2d898",
+  "name": "Natures Treatment of Illinois - Milan",
+  "slug": "natures-treatment-milan",
+  "registry": {
+    "address": "973 Tech Dr",
+    "city": "Milan",
+    "state": "IL",
+    "distance_miles": 87.733
+  },
+  "site": "https://www.ntillinois.com/shop/ (age gate); Leafly listing https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "platform": "Leafly listing (id 174378); old menu host menu-milan.ntillinois.com does not resolve",
+  "menu_url_verified": "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "access": "age gate on ntillinois.com",
+  "branch_selection": "Milan listing",
+  "product_loading": "Leafly listing page; consumer-api.leafly.com promotions",
+  "paging": "not read",
+  "product_count_observed": "Leafly page header 1085 products",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://www.ntillinois.com/",
+    "title": "Welcome To Nature’s Treatment Of Illinois",
+    "platforms": [
+      "leafly"
+    ],
+    "age_gate_seen": true,
+    "age_click": null,
+    "count_text": null,
+    "price_tags": 0,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Fallback website search found no corroborated branch lead"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded1.json",
+      "targets": [],
+      "failures": [
+        {
+          "status": "failed",
+          "reason": "Public destination DNS lookup failed"
+        },
+        {
+          "status": "unresolved",
+          "reason": "Fallback website search found no corroborated branch lead"
+        }
+      ],
+      "samples": []
+    }
+  },
+  "why_it_fails": "Stored lead host no longer resolves (failed: Public destination DNS lookup failed). The Leafly listing is a directory in the pipeline, so its 1085-product menu is never read.",
+  "fix_idea": "Decide whether Leafly listings are a menu source; update the registry website to ntillinois.com/shop.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

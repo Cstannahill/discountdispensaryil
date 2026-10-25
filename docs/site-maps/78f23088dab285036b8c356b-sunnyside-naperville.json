@@ -1,0 +1,30 @@
+{
+ "store_id": "78f23088dab285036b8c356b",
+ "name": "Sunnyside  Naperville",
+ "address": "2740 W 75th St",
+ "city": "Naperville",
+ "registry_distance_miles": 70.7,
+ "status": "lead_unverified",
+ "registry_flag": null,
+ "website": "sunnyside.shop/store/naperville-il, Naperville (2740 W 75th St)",
+ "menu_platform": "Cresco storefront (cresco signature; store page loaded)",
+ "how_menu_is_reached": "/store/naperville-il on sunnyside.shop (store page with prices, 40 network calls).",
+ "branch_selection": "Slug naperville-il matches registry 2740 W 75th St.",
+ "product_loading": "Cresco storefront product API not mapped in this pass.",
+ "product_count": "n/a",
+ "blockers": "Cookie and age prompts (probe clicked Yes).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Resolver leads were localdispensaryguide.com directory pages (Delaware, Colorado, Arkansas, Arizona), not the chain store page. Cresco is not a native provider, so the generic path rarely completes.",
+ "fix_idea": "Cresco/Sunnyside connector: derive the store page from the city slug and read its menu API. Reject directory pages as leads and prefer the chain page.",
+ "unverified": [
+  "Cresco product API"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

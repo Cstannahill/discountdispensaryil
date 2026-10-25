@@ -1,0 +1,163 @@
+{
+ "key": "78862cb4",
+ "url": "https://dutchie.com/embedded-menu/cloud9-champaign",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://dutchie.com/embedded-menu/cloud9-champaign",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "size": 212,
+   "sample": "[{\"key\":\"73539f8c-4c57-4fc7-8bb8-9ba2a5c4c391\",\"kind\":\"click\",\"selector\":\"test-experiment-button\",\"urls\":[{\"kind\":\"substring\",\"substring\":\"/embedded-menu/oregrown\"},{\"kind\":\"substring\",\"substring\":\"/oregrown\"}]}]"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/graphql?operationName=ConsumerDispensaries&variables=%7B%22dispensaryFilter%22%3A%7B%22cNameOrID%22%3A%22cloud9-champaign%22%7D%2C%22collectionChannel%22%3A%22WEB%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Ha",
+   "size": 49439,
+   "sample": "{\"data\":{\"filteredDispensaries\":[{\"id\":\"65f4aabcce34460009f6e426\",\"customDomainSettings\":{\"domain\":null,\"__typename\":\"Dispensaries_profile_customDomain_settings\"},\"plusSettings\":null,\"distance\":null,\"name\":\"Cloud9 - Champaign\",\"cName\":\"cloud9-champaign\",\"timezone\":\"America/Chicago\",\"phone\":\"(217) 86"
+  },
+  {
+   "m": "POST",
+   "s": 202,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.launchdarkly.com/events/diagnostic/5ee2761738b5d10a6705cadf",
+   "size": 0,
+   "sample": "",
+   "post": "{\"kind\":\"diagnostic-combined\",\"id\":{\"diagnosticId\":\"02b481d0-cbfb-11f1-be70-8da34b99890d\",\"sdkKeySuffix\":\"05cadf\"},\"creationDate\":1792441436791,\"dataSinceDate\":1792441436781,\"droppedEvents\":0,\"eventsInLastBatch\":0,\"streamInits\":[],\"sdk\":{\"name\":\"js-client-sdk\",\"version\":\"3.9.0\",\"wrapperName\":\"react-"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiNTY5ZTQ3NDAtZGI1MS00ZTg2LTg0NjctNThmMmZmZDJjNWU2IiwidHlwZSI6Imd1ZXN0Q3VzdG9tZXIiLCJjYW5hcnkiOmZhbHNlfSwiYXBwbGljYXRpb24iOnsia2V",
+   "size": 329830,
+   "sample": "{\"voice.enterprise-admin.location-groups.rollout\":{\"version\":35081,\"flagVersion\":16,\"value\":true,\"variation\":0,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\":0,\"reason\":{\"kind\":\"FALLTHROUGH\"}},\"pos.iam.strip-sensitive-data-from-saml-req-logs.rollout\":{\"version\":35081,\"flagVersion\":3,"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-api.ethyca.com/location",
+   "size": 78,
+   "sample": "{\"country\":\"US\",\"ip\":\"209.113.172.235:53686\",\"location\":\"US-IL\",\"region\":\"IL\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/api-2/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%2265f4aabcce34460009f6e426%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256H",
+   "size": 70617,
+   "sample": "{\"data\":{\"menuFiltersV2\":{\"brands\":[{\"id\":\"daafb1e1-8425-4f4a-8da0-d70b7d4f0364\",\"name\":\"Smoke Sho\",\"description\":\"\",\"imageUrl\":null,\"__typename\":\"Brand\"},{\"id\":\"fdce78e0-838b-469b-83e7-9f1bf46a4845\",\"name\":\"Flintts Mints\",\"description\":\"\",\"imageUrl\":null,\"__typename\":\"Brand\"},{\"id\":\"56b6b7ce-6ced-4"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/api-2/graphql",
+   "size": 81,
+   "sample": "{\"data\":{\"logAnalyticsPayload\":{\"success\":true,\"__typename\":\"GenericResponse\"}}}\n",
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"65f4aabcce34460009f6e426\",\"dispensary_name\":\"Cloud9 - Champaign\",\"dispensary_state\":\"IL\",\"dutchie_pay_enabled\":false,\"event\":\"page_view\",\"user_enrolled_dutchie_pay\":false,\"page_url\":\"h"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/graphql-response+json",
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "size": 137,
+   "sample": "{\"data\":{\"initializeSession\":{\"secure_id\":\"eoge3qCTX6nGlFHAK6Ju4JgwkrIH\",\"project_id\":\"10019589\",\"sampling\":{\"spans\":null,\"logs\":null}}}}",
+   "post": "{\"query\":\"mutation initializeSession($session_secure_id: String!, $session_key: String, $organization_verbose_id: String!, $enable_strict_privacy: Boolean!, $privacy_setting: String!, $enable_recording_network_contents: Boolean!, $clientVersion: String!, $firstloadVersion: String!, $clientConfig: St"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/vnd.api+json",
+   "u": "https://dutchie.com/telemetry",
+   "size": 153,
+   "sample": "{\"data\":{\"id\":\"cc02fc3e-2b7a-45cb-aa3b-c1efa07ef452\",\"type\":\"generic_response\",\"attributes\":{\"success\":true,\"message\":null}},\"jsonapi\":{\"version\":\"1.0\"}}",
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"65f4aabcce34460009f6e426\",\"menu_variant\":\"embedded\",\"page\":\"https://dutchie.com/embedded-menu/cloud9-champaign\",\"pageType\":\"home\"}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=true&include_meta=true",
+   "size": 51,
+   "sample": "{\"items\":[],\"total\":0,\"page\":1,\"size\":50,\"pages\":0}"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZNEV4RY2MG&gtm=45je6af0v9178804317z8858544012za20gzb858544012zd858544012xf1&_p=1792441437376&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=2091797499.1792441439&frm=0&ngs=1&pscdl=noapi&rcb=9&sr=1366x900&uaa=x86&uab=64&ua",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  }
+ ],
+ "iframes": [],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://dutchie.com/embedded-menu/cloud9-champaign",
+ "title": "Cloud9 - Champaign Cannabis Menu | Champaign, IL",
+ "htmlBytes": 375817,
+ "sigs": [
+  "dutchie",
+  "joint",
+  "springbig",
+  "nextjs"
+ ],
+ "links": [
+  "https://dutchie.com/embedded-menu/cloud9-champaign#main-content",
+  "https://dutchie.com/embedded-menu/cloud9-champaign",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/brands",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/info",
+  "https://www.cloud9dispensaries.shop/",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/flower",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/pre-rolls",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/vaporizers",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/edibles",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/concentrates",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/tinctures",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/topicals",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/products/accessories",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/collection/62f2210c-9b29-409d-b900-811e86613130",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/grow-sciences-joint-1g-bcc-x-jealousy",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/wana-gummies-100mg-yuzu-1-2-cbd-10pc",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/bubby-s-baked-birthday-cake-bites-50mg-5pc",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/betty-s-eddies-fruit-chew-100mg-raspberry-creme-2-4-1-thc-cbd-cbn-10pc",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/kalm-fusion-chewable-tablet-100mg-blue-mint-20pc",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/joos-cart-1000mg-limoncello",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/joos-cart-500mg-sunset-sherbert",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/collection/7bed6980-7ce4-4310-975a-8efb7aa397d8",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/daze-off-renewable-resource-1-8",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/simply-herb-lemon-voltage-1-8",
+  "https://dutchie.com/embedded-menu/cloud9-champaign/product/nature-s-heritage-banana-punch-1-8"
+ ],
+ "textSample": "Skip Navigation Home Shop Brands Search Dispensary Info COMING SOON Online ordering MENU Recreational Login 0 items in your shopping cart Login for recommendations & re‑ordering of your favorites Due to a recent system transition, some THC percentages and pictures may be displayed incorrectly on our website. If THC content is an important factor in your purchase decision, please call the dispensary directly to verify accurate information. We apologize for the inconvenience and appreciate your patience and cooperation as we work to resolve this issue. Categories Flower Pre-Rolls Vaporizers Edibles Concentrates Tinctures Topicals Accessories Next Log in for the best experience Enjoy personaliz",
+ "productHints": [
+  "0\nitems"
+ ],
+ "priceCount": 62
+}

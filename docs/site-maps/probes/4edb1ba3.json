@@ -1,0 +1,149 @@
+{
+ "key": "4edb1ba3",
+ "url": "https://strictlycannabis.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://strictlycannabis.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://strictlycannabis.com/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792442010671,\"pageloadId\":\"c94cd661-406e-4a08-a5fb-2ed04da0f401\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://strictlycannabis.com/\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv\":\"130\",\"ov\":\"10\"},\"memory\":{\"totalJSHeapSize\":13526452"
+  },
+  {
+   "m": "GET",
+   "s": 301,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://maps.google.com/maps?q=Strictly%20Cannabis%20Dispensary%2C%2013352%20S%20Cicero%20Ave%2C%20Crestwood%2C%20IL%2060445&t=m&z=16&output=embed&iwloc=near",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.google.com/maps/embed?origin=mfe&pb=!1m4!2m1!1sStrictly+Cannabis+Dispensary,+13352+S+Cicero+Ave,+Crestwood,+IL+60445!5e0!6i16",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+   "size": 27,
+   "sample": "[2088179155,[\"1792980000\"]]",
+   "post": "[\"https://www.google.com\"]"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+   "size": 40724,
+   "sample": "[\"Map data ©2026\",[[\"obliques\",[[41.660601243020885,-87.7587890625],[41.664705030092065,-87.71484375]]],[\"obliques\",[[41.656497194411436,-87.7587890625],[41.660601243020885,-87.71484375]]],[\"obliques\",[[41.652392884268124,-87.7587890625],[41.656497194411436,-87.71484375]]],[\"obliques\",[[41.64828831",
+   "post": "[[[41.63536342216032,-87.75840306566973],[41.663198148623266,-87.71889571198038]],16,null,\"en-US\",0,\"m@799000000\",0,0,null,null,289,1,\"https://www.google.com/maps/embed\",1,null,null,\"16AE9120-8573-4234-A3D8-B67611A52412\"]"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+   "size": 1417,
+   "sample": "[\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNzAyNDk5OGFiYWY3YTRlZTdhODExZTJmM2Q3OTkzMzkzMjIzMDEiLCJ0eXAiOiJKV1QifQ.ewoJImV4cCIgOiAxNzkyNDQ1NjI2LAoJImZpZWxkX21hc2siIDogImRpc3BsYXlOYW1lLGZvcm1hdHRlZEFkZHJlc3Msc2hvcnRGb3JtYXR0ZWRBZGRyZXNzLGlzUHVyZVNlcnZpY2VBcmVhQnVzaW5lc3MsdXNlclJhdGluZ0NvdW50LHJhdGluZyx1c2VyUmF",
+   "post": "[9,\"89864\",\"https://www.google.com\",null,1]"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://www.google.com/maps/vt?pb=!1m4!1m3!1i16!2i16794!3i24412!1m4!1m3!1i16!2i16794!3i24413!1m4!1m3!1i16!2i16795!3i24412!1m4!1m3!1i16!2i16795!3i24413!1m4!1m3!1i16!2i16794!3i24414!1m4!1m3!1i16!2i16795!3i24414!1m4!1m3!1i16!2i16796!3i24412!1m4!1m3!1i16!2i16796!3",
+   "size": 9393,
+   "sample": "[{\"id\":\"twtuuuuwvutwwuvt\",\"zrange\":[16,16],\"layer\":\"spotlit\"},{\"id\":\"twtuuuuwvutwwuvt\",\"base\":[550308096,799937024],\"zrange\":[16,16],\"layer\":\"m@799566048\",\"features\":[{\"id\":\"0x880e3c781e647e03:0xfca00b54c13a0cbb\",\"a\":[0,0,550308096,799937024,550308096,799937024,550308096,799937024],\"bb\":[-14,-29,13,"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://places.googleapis.com/$rpc/google.maps.places.v1.Places/GetPlace",
+   "size": 1460,
+   "sample": "[null,null,null,null,[\"store\",\"point_of_interest\",\"establishment\"],null,null,null,\"13352 S Cicero Ave, Crestwood, IL 60445, USA\",null,null,null,null,4.8,\"https://maps.google.com/?cid=9546461656063766186&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF\",null,null,null,null,null,null,",
+   "post": "[\"places/ChIJuyEW84Y9DogRqm6R_0vYe4Q\",\"en-US\"]"
+  }
+ ],
+ "iframes": [
+  "https://www.google.com/maps/embed?origin=mfe&pb=!1m4!2m1!1sStrictly+Cannabis+Dispensary,+13352+S+Cicero+Ave,+Crestwood,+IL+60445!5e0!6i16",
+  "about:blank",
+  "about:blank"
+ ],
+ "notes": [
+  "clicked [class*=\"age\"] button []",
+  "clicked [class*=\"age\"] button []"
+ ],
+ "status": 200,
+ "finalUrl": "https://strictlycannabis.com/",
+ "title": "Strictly Dispensary – Dispensary in Crestwood, IL",
+ "htmlBytes": 437108,
+ "sigs": [
+  "blaze",
+  "joint",
+  "wordpress"
+ ],
+ "links": [
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=flower",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=edibles",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=pre-rolls",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=concentrates",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=tinctures",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=topicals",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=vaporizers",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bsortby%5D=relevance&dtche%5Bcategory%5D=accessories",
+  "https://strictlycannabis.com/shop/",
+  "https://strictlycannabis.com/shop-cannabis-flower/",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-sativa-only",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-indica-only",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-high-thc",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-under-10-with-tax",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-mix-match-20-shelf",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fblaze-flower-mix-match-3-5g-25-7g-45-14g-80-28g-145",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-25-eighths",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-mix-match-sol-canna-3-5g-30-7g-55-14g-99-28g-180",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-mix-match-flora-3-5g-35-7g-60-14g-110-28g-199",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-mix-match-khalifa-3-5g-40-7g-70-14g-125-28g-225",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-mix-match-45-shelf",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-50-shelf-mix-bundle",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fflower-mix-match-55-shelf",
+  "https://strictlycannabis.com/shop-cannabis-joints/",
+  "https://strictlycannabis.com/stores/strictly-cannabis/?dtche%5Bpath%5D=collections%2Fjoints-infused-joint-collection"
+ ],
+ "textSample": "Skip to content Flower Edibles Pre-Rolls Concentrates Tinctures Topicals Vapes Accessories SHOP COLLECTIONS DEALS REWARD CHALLENGES LOYALTY VISIT US SHOP NOW Strictly Cannabis Crestwood, IL Recreational Cannabis Outlet Welcome to the Strictly Dispensary, where exceptional cannabis, customer service, and low prices come together to make sure you have the best experience. Our menu offers one of the finest collections of flower, edibles, vapes, concentrates, pre-rolls, and more. ORDER AHEAD SHOP DEALS Shop by Category Edibles Concentrates Tinctures Topicals Accessories Flower Pre-Rolls Vapes Edibles Concentrates Tinctures Topicals Accessories Flower Pre-Rolls Vapes Edibles Concentrates PLAN YOU",
+ "productHints": [],
+ "priceCount": 0
+}

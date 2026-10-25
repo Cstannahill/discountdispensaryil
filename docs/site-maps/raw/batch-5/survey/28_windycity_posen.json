@@ -1,0 +1,227 @@
+{
+ "key": "28_windycity_posen",
+ "url": "https://www.windycitycannabis.com/shop/posen/recreational/menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/index.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 185236
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/cart.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/shop.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/chevron-down.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/chevron-left.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/chevron-right.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/sort.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/filter.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/info.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/minus.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/cart-add.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/16/more.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/chevron-up.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441329263&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 869,
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkNC0yNjZlLTdhN2UtOTk2MS01NDdmZjMyNmRmOWUiLCJncm9"
+  },
+  {
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441329274&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 361,
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQ0LTI2N2EtNzM0Ni04ZDU1LWU1NTdiOGUyMWYyYSIsImdyb3VwcyI6e319"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--windycitycannabis/b2-67d82859c364d8e4b96fc203209bee8457b52f287aa01dab7b89c6789d59192c/icons/24/search.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml",
+   "len": 307
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/CartV2/GetSettingsPreferences",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/storefront/v1/pages/home",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2278
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/Store/GetCompliance?saleType=Recreational",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 54
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/Store/GetStoreInfoV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1062,
+   "post": "{}"
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/Cart/GetV2",
+   "m": "GET",
+   "s": 204,
+   "ct": "",
+   "len": 0
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/Store/GetAvailableFulfillmentTypesV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 231,
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/Referral/GetV2",
+   "m": "POST",
+   "s": 204,
+   "ct": "",
+   "len": 0,
+   "post": "{}"
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/Loyalty/GetLoyaltyNotices",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 215,
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "u": "https://web-ui-prime.sweedpos.com/_api/proxy/Loyalty/GetStoreLoyaltySettingsV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 3384,
+   "post": "{\"saleType\":\"Recreational\"}"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "Skip to main content or Skip to footer Windy City Rewards App The NEW version of our app is HERE! Update your app or download today! Home Menu Discounts About Us Sign up or log in to see exclusive deals Log In Sign Up Pickup at Windy City Cannabis Posen saleType Adult Use Home / Menu All Products Fi",
+ "age_click": "Confirm",
+ "final_url": "https://www.windycitycannabis.com/shop/posen/recreational/menu",
+ "title": "Windy City Cannabis Posen Recreational Cannabis Menu | Posen, IL",
+ "htmlLen": 475416,
+ "prices": 46,
+ "textHead": "Skip to main content or Skip to footer Windy City Rewards App The NEW version of our app is HERE! Update your app or download today! Home Menu Discounts About Us Sign up or log in to see exclusive dea",
+ "iframes": [],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "sweed"
+ ],
+ "hosts": [
+  [
+   "static-prime.sweedpos.com",
+   196
+  ],
+  [
+   "media-prime.sweedpos.com",
+   29
+  ],
+  [
+   "web-ui-prime.sweedpos.com",
+   19
+  ],
+  [
+   "www.windycitycannabis.com",
+   1
+  ],
+  [
+   "posthog.sweedpos.com",
+   1
+  ],
+  [
+   "events.dwh.sweedkube.com",
+   1
+  ],
+  [
+   "accounts.google.com",
+   1
+  ],
+  [
+   "appleid.cdn-apple.com",
+   1
+  ]
+ ]
+}

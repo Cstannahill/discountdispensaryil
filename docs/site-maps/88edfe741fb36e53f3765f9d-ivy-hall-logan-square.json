@@ -1,0 +1,39 @@
+{
+ "store_id": "88edfe741fb36e53f3765f9d",
+ "name": "Ivy Hall - Logan Square",
+ "slug": "ivy-hall-logan-square",
+ "registry": {
+  "address": "3115 W Armitage Ave",
+  "city": "Chicago",
+  "state": "IL",
+  "latitude": 41.91732,
+  "longitude": -87.7061
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://ivyhalldispensary.com/locations/",
+ "menu_url": "https://ivyhalldispensary.com/locations/logan-square/menu/",
+ "platform": "sweed",
+ "how_menu_reached": "Brand /locations page embeds var locations_data = [...] listing every branch (id, street, lat/lng, shop_url). Logan Square = 3115 W Armitage Ave, shop_url /locations/logan-square/menu/",
+ "branch_selection": "path /locations/<slug>/menu/<recreational|medical>; Bucktown (1720 N Damen) is a different Chicago branch",
+ "age_gate": "click-through",
+ "data_loading": {
+  "mechanism": "Sweed proxy API",
+  "endpoints": [
+   "POST web-ui-production.sweedpos.com/_api/proxy/Products/GetProductList"
+  ]
+ },
+ "paging": "24 per page, total in response",
+ "approx_product_count": null,
+ "blockers": [
+  "none"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved LEAD_UNVERIFIED: crawl landed on /menu/ and the bucktown page, whose address (1720 N Damen) conflicts with the registry",
+  "sample": "no saved endpoint, nothing to sample"
+ },
+ "why_it_fails": "Website discovery picked the generic /menu or the Bucktown branch instead of the Logan Square shop_url that the brand locations_data lists with an exact address match.",
+ "fix_idea": "Brand locator for ivyhalldispensary.com that reads locations_data (street + shop_url) resolves all 10 Ivy Hall branches deterministically.",
+ "root_cause_tag": "chain-locator-missing",
+ "confidence": "high"
+}

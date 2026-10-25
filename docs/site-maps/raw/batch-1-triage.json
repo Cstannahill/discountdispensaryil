@@ -1,0 +1,612 @@
+{
+ "pipeline_version": "regional-pipeline-2.5609f30e9d",
+ "region": "8f7772ca082601b630476779",
+ "pages": 1,
+ "note": "Triage only; nothing was accepted or stored.",
+ "results": [
+  {
+   "store_id": "0dfbfc6731ecf38bc86970c9",
+   "name": "Nuera East Peoria",
+   "city": "East Peoria",
+   "targets": [
+    {
+     "provider": "jane",
+     "url": "https://nueracannabis.com/shop/store/1517/featured",
+     "store_id": "1517",
+     "license": "recreational"
+    },
+    {
+     "provider": "jane",
+     "url": "https://nueracannabis.com/shop/store/1518/featured",
+     "store_id": "1518",
+     "license": "medicinal"
+    }
+   ],
+   "platforms": [
+    "jane"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "jane",
+     "url": "https://nueracannabis.com/shop/store/1517/featured",
+     "items": 1563,
+     "errors": []
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 89.4
+  },
+  {
+   "store_id": "01113fe5a740d21eda0f758b",
+   "name": "Curaleaf  Morris",
+   "city": "Morris",
+   "targets": [],
+   "platforms": [],
+   "reason": "Retailer locator did not expose a corroborated branch/menu link",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 85.3
+  },
+  {
+   "store_id": "0158155256df6c17e7828e6a",
+   "name": "Rise - Joliet  Colorado Ave",
+   "city": "Joliet",
+   "targets": [
+    {
+     "provider": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/joliet-colorado/1340/recreational-menu",
+     "store_id": "1340",
+     "license": "recreational"
+    },
+    {
+     "provider": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/joliet-rock-creek/1344/recreational-menu/",
+     "store_id": "1344",
+     "license": "recreational"
+    },
+    {
+     "provider": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/joliet-rock-creek/254/medical-menu/",
+     "store_id": "254",
+     "license": "medicinal"
+    }
+   ],
+   "platforms": [
+    "jane"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/joliet-colorado/1340/recreational-menu",
+     "items": 2138,
+     "errors": []
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 105.9
+  },
+  {
+   "store_id": "29984290a3b8ee0c0349abdd",
+   "name": "The Dispensary Champaign",
+   "city": "Champaign",
+   "targets": [],
+   "platforms": [],
+   "reason": "Public endpoint returned HTTP 404",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 131.4
+  },
+  {
+   "store_id": "07905c02767558fcaac4ee82",
+   "name": "Market 96 - Owego",
+   "city": "Oswego",
+   "targets": [
+    {
+     "provider": "dispense",
+     "url": "https://www.market-96.com/shop/oswego",
+     "store_id": "c99ba47929d9e32a",
+     "license": "recreational"
+    },
+    {
+     "provider": "treez",
+     "url": "https://www.market-96.com/shop",
+     "store_id": "d01e7451-5a14-461f-a731-37536487cd50",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    "dispense",
+    "treez"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "dispense",
+     "url": "https://www.market-96.com/shop/oswego",
+     "items": 0,
+     "errors": []
+    },
+    {
+     "provider": "treez",
+     "url": "https://www.market-96.com/shop",
+     "items": 20,
+     "errors": [
+      "Treez traversal page limit reached"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 45.7
+  },
+  {
+   "store_id": "10a51004a5cfae2f4ddb9e73",
+   "name": "Sunnyside - Champaign",
+   "city": "Champaign",
+   "targets": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/champaign-il/",
+     "store_id": null,
+     "license": "recreational"
+    },
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/champaign-il/store/champaign-il",
+     "store_id": null,
+     "license": "recreational"
+    }
+   ],
+   "platforms": [],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/champaign-il/",
+     "items": 117,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 100.3
+  },
+  {
+   "store_id": "1bbb7a6daaac0789f05915d5",
+   "name": "NuEra - Dekalb",
+   "city": "DeKalb",
+   "targets": [
+    {
+     "provider": "jane",
+     "url": "https://nueracannabis.com/shop/store/5932/flower",
+     "store_id": "5932",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    "jane"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "jane",
+     "url": "https://nueracannabis.com/shop/store/5932/flower",
+     "items": 976,
+     "errors": []
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 57.1
+  },
+  {
+   "store_id": "0c8e3a7ea3240ce935494281",
+   "name": "Maribis of Springfield",
+   "city": "Springfield",
+   "targets": [],
+   "platforms": [],
+   "reason": "Public fetch failed: ConnectError",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 45.6
+  },
+  {
+   "store_id": "0f23fc8f61ad91daf8d969a5",
+   "name": "Ascend by Homecoming",
+   "city": "Tinley Park",
+   "targets": [],
+   "platforms": [],
+   "reason": "'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 110.4
+  },
+  {
+   "store_id": "2e3a171976b9c6306ad05d30",
+   "name": "Maribis of Springfield 2",
+   "city": "Springfield",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/68a6373c2003cb653e9b0193",
+     "store_id": "68a6373c2003cb653e9b0193",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/68a6373c2003cb653e9b0193",
+     "items": 469,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 271.3
+  },
+  {
+   "store_id": "12adbbe4a9168b5be65bfee7",
+   "name": "Sunnyside - Danville",
+   "city": "Danville",
+   "targets": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/danville-il/store/danville-il",
+     "store_id": null,
+     "license": "recreational"
+    }
+   ],
+   "platforms": [],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/danville-il/store/danville-il",
+     "items": 113,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 102.4
+  },
+  {
+   "store_id": "0ac3dcca0d75cfa7c3564a91",
+   "name": "nuEra Chicago Southland",
+   "city": "Harvey",
+   "targets": [
+    {
+     "provider": "jane",
+     "url": "https://nueracannabis.com/shop/store/7415/featured",
+     "store_id": "7415",
+     "license": "medicinal"
+    }
+   ],
+   "platforms": [
+    "jane"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "jane",
+     "url": "https://nueracannabis.com/shop/store/7415/featured",
+     "items": 615,
+     "errors": []
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 136.8
+  },
+  {
+   "store_id": "12a98fb3b18174f2a88c459c",
+   "name": "Starbuds-Burbank",
+   "city": "Burbank",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/636117cb88dfb700fd8d791d",
+     "store_id": "636117cb88dfb700fd8d791d",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/636117cb88dfb700fd8d791d",
+     "items": 606,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 367.8
+  },
+  {
+   "store_id": "30bc01e23ac51b5af8ed2ff1",
+   "name": "Bloc Dispensary Berwyn",
+   "city": "Berwyn",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/681e129d87236bb9b89d8329",
+     "store_id": "681e129d87236bb9b89d8329",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/681e129d87236bb9b89d8329",
+     "items": 395,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 350.5
+  },
+  {
+   "store_id": "27ff8a26c92a3601d86dbb52",
+   "name": "Viola CHI",
+   "city": "Broadview",
+   "targets": [],
+   "platforms": [],
+   "reason": "Public endpoint returned HTTP 404",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 30.0
+  },
+  {
+   "store_id": "2def8b9fff15aca6cc8dfce9",
+   "name": "Dutchess Cannabis N. Riverside",
+   "city": "North Riverside",
+   "targets": [],
+   "platforms": [],
+   "reason": "Candidate website found; branch name/locality or street address still needs matching",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 77.7
+  },
+  {
+   "store_id": "178da00c4b0e351125963f0e",
+   "name": "Mint Cannabis - Forest Park",
+   "city": "Forest Park",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/69000131574e85c3974fa6fe",
+     "store_id": "69000131574e85c3974fa6fe",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/69000131574e85c3974fa6fe",
+     "items": 490,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 206.0
+  },
+  {
+   "store_id": "391e2b9b1c568de147c753eb",
+   "name": "Maribis Of Chicago",
+   "city": "Chicago",
+   "targets": [],
+   "platforms": [
+    "dutchie"
+   ],
+   "reason": "Third-party directory is a discovery lead, not a retailer menu",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 60.7
+  },
+  {
+   "store_id": "05ffbaf6f39d782bbe93410d",
+   "name": "Sunnyside - Schaumburg",
+   "city": "Schaumburg",
+   "targets": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/schaumburg-il",
+     "store_id": null,
+     "license": "recreational"
+    },
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/schaumburg-il/store/schaumburg-il",
+     "store_id": null,
+     "license": "recreational"
+    }
+   ],
+   "platforms": [],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/schaumburg-il",
+     "items": 115,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 54.1
+  },
+  {
+   "store_id": "11e754c0a1d92f8ef92f3dec",
+   "name": "Sunnyside - Rockford",
+   "city": "Rockford",
+   "targets": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/rockford-il/store/rockford-il",
+     "store_id": null,
+     "license": "recreational"
+    },
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/rockford-il/store/rockford-il/1000",
+     "store_id": null,
+     "license": "recreational"
+    }
+   ],
+   "platforms": [],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "generic",
+     "url": "https://www.sunnyside.shop/menu/rockford-il/store/rockford-il",
+     "items": 118,
+     "errors": [
+      "Structured product total does not reconcile with traversed catalog"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 67.0
+  },
+  {
+   "store_id": "08303c6ff59011208f2e473c",
+   "name": "Snap Canna - Elk Grove Vilage",
+   "city": "Elk Grove Village",
+   "targets": [],
+   "platforms": [
+    "blaze"
+   ],
+   "reason": "Candidate website found; branch name/locality or street address still needs matching",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 112.8
+  },
+  {
+   "store_id": "17cb43f4374931b4e8dd633e",
+   "name": "Revolution Dispensary - Mt. Prospect",
+   "city": "Mt Prospect",
+   "targets": [
+    {
+     "provider": "sweed",
+     "url": "https://shop.revcanna.com/mount-prospect/recreational/menu",
+     "store_id": "185",
+     "license": "recreational"
+    },
+    {
+     "provider": "sweed",
+     "url": "https://shop.revcanna.com/mount-prospect/medical/menu",
+     "store_id": "185",
+     "license": "medicinal"
+    }
+   ],
+   "platforms": [
+    "sweed"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "sweed",
+     "url": "https://shop.revcanna.com/mount-prospect/recreational/menu",
+     "items": 30,
+     "errors": [
+      "Sweed configured page limit reached"
+     ]
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 95.4
+  },
+  {
+   "store_id": "1e1f5401e15343527ab8c0a4",
+   "name": "Zen Leaf - West Loop",
+   "city": "Chicago",
+   "targets": [
+    {
+     "provider": "verano",
+     "url": "https://zenleafdispensaries.com/locations/chicago-west-loop/menu",
+     "store_id": "542",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    "sweed"
+   ],
+   "reason": null,
+   "samples": [
+    {
+     "provider": "verano",
+     "url": "https://zenleafdispensaries.com/locations/chicago-west-loop/menu",
+     "items": 1122,
+     "errors": []
+    }
+   ],
+   "hit_cap": false,
+   "verdict": "WORKS",
+   "seconds": 5.3
+  },
+  {
+   "store_id": "157bdfd9c5dd8a2f01bcc6e6",
+   "name": "Village Bucktown",
+   "city": "Chicago",
+   "targets": [],
+   "platforms": [
+    "dutchie",
+    "weedmaps"
+   ],
+   "reason": "Candidate website found; branch name/locality or street address still needs matching",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 73.3
+  },
+  {
+   "store_id": "0e35b320132b483802ae90b7",
+   "name": "Ascend Moca  River North",
+   "city": "Chicago",
+   "targets": [],
+   "platforms": [],
+   "reason": "'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte",
+   "hit_cap": false,
+   "verdict": "NO_TARGET",
+   "seconds": 77.2
+  }
+ ]
+}

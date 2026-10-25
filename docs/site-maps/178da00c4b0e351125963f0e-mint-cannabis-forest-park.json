@@ -1,0 +1,33 @@
+{
+ "store_id": "178da00c4b0e351125963f0e",
+ "name": "Mint Cannabis - Forest Park",
+ "address": "7207 Roosevelt Rd",
+ "city": "Forest Park",
+ "distance_miles": 92.359,
+ "accepted_menu": false,
+ "platform": "Dutchie embedded in brand site (mintdeals.com)",
+ "menu_url": "https://mintdeals.com/forest-park-il/menu/",
+ "how_reached": "mintdeals.com page embeds dutchie.com/embedded-menu/mint-forest-park",
+ "branch_selection": "Page address 7207 Roosevelt Rd, Forest Park, IL 60130 (on page)",
+ "products_load": "Dutchie FilteredProducts (dispensaryId 69000131574e85c3974fa6fe)",
+ "paging": "Dutchie pages",
+ "count_hint": "not captured",
+ "blockers": "A Google reCAPTCHA iframe is present on the page; the product feed loaded without interaction (not solved or evaded)",
+ "why_it_fails": "Stored state: no endpoint; leads are aggregators (mintdeals and directory pages). Triage reads 490 items through Dutchie once the brand page is the lead.",
+ "fix_idea": "Treat the brand page embed as a lead; the platform-declared address on the Dutchie page can prove branch identity.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "dutchie",
+     490
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

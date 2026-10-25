@@ -1,0 +1,58 @@
+{
+ "store_id": "0158155256df6c17e7828e6a",
+ "name": "Rise - Joliet  Colorado Ave",
+ "address": "2903 Colorado Ave.",
+ "city": "Joliet",
+ "distance_miles": 62.996,
+ "accepted_menu": false,
+ "platform": "Jane (Rise site embeds Jane)",
+ "menu_url": "https://risecannabis.com/dispensaries/illinois/joliet-colorado/1340/recreational-menu/",
+ "how_reached": "Rise page; the menu URL carries the Jane store id 1340",
+ "branch_selection": "Jane store 1340 = 2903 Colorado Ave, Joliet, adult use only (api.iheartjane.com/v1/stores/1340)",
+ "products_load": "Jane search index behind the Rise page",
+ "paging": "Jane index paging",
+ "count_hint": "page shows 2050 results",
+ "blockers": "Age confirm (clicked in probe); Rise image CDN returns 403 (images only)",
+ "why_it_fails": "Stored endpoints are the Rise Rock Creek pages (Jane 1344 and medical 254, 1627 Rock Creek Blvd, a different branch) read through the generic path, TOTAL_UNVERIFIABLE. The Colorado Ave store 1340 is never saved as an endpoint.",
+ "fix_idea": "Save the Jane store id from the menu URL (1340) as the endpoint and supersede the Rock Creek rows for this store. Current triage reads 2138 items through Jane for 1340.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 3,
+   "sample": [
+    [
+     "jane",
+     2138
+    ]
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "generic",
+    "license": "medicinal",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "medicinal",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

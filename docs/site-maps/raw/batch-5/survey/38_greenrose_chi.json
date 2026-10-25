@@ -1,0 +1,241 @@
+{
+ "key": "38_greenrose_chi",
+ "url": "https://shop.greenroseil.com/menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/index.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 208878
+  },
+  {
+   "u": "https://media.sweedpos.com/store/production/greenroseil/safari-pinned-tab.svg",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/cart.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/shop.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/chevron-down.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/discount-label.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/thumb-up.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/chevron-left.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/filter.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/chevron-right.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/minus.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/cart-add.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/16/more.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441385463&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 869,
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkNS0wMWY2LTcyMjQtYjFmMi05YTI4ZTI5MTkwY2QiLCJncm9"
+  },
+  {
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441385476&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 361,
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQ1LTAyMDQtNzkzMS1iNTc0LWZjZDUzZjUyYjllZSIsImdyb3VwcyI6e319"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/search.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml",
+   "len": 307
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Store/GetStoreInfoV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1884,
+   "post": "{}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/storefront/v1/pages/home",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1914
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/CartV2/GetSettingsPreferences",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Store/GetAvailableFulfillmentTypesV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 219,
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Referral/GetV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 865,
+   "post": "{}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Loyalty/GetLoyaltyNotices",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 14,
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Loyalty/GetStoreLoyaltySettingsV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 9602,
+   "post": "{}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Banners/GetBanners",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 754,
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/QuickLinks/GetHomePageQuickLinks",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1576,
+   "post": "{}"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://shop.greenroseil.com/river-north",
+ "title": "Green Rose River North Dispensary | Chicago, IL",
+ "htmlLen": 554670,
+ "prices": 73,
+ "textHead": "Skip to main content or Skip to footer Home Menu Discounts About Us Refer Friends - Get $25 Off Sign up or log in to see exclusive deals Log In Sign Up Pickup at Green Rose River North Featured Deals",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://shop.greenroseil.com/river-north#maincontent",
+  "https://shop.greenroseil.com/river-north#footer",
+  "https://shop.greenroseil.com/river-north",
+  "https://shop.greenroseil.com/river-north",
+  "https://shop.greenroseil.com/river-north/menu",
+  "https://shop.greenroseil.com/river-north/menu/discounts?promo=deals",
+  "https://shop.greenroseil.com/river-north/about-us",
+  "https://shop.greenroseil.com/river-north/menu/discounts/the-essence-j-swift-lifts-1g-pre-roll-deals-75163",
+  "https://shop.greenroseil.com/river-north/menu",
+  "https://shop.greenroseil.com/river-north/menu/edibles-628",
+  "https://shop.greenroseil.com/river-north/menu/pre-rolls-624",
+  "https://shop.greenroseil.com/river-north/menu/flower-623"
+ ],
+ "count_text": null,
+ "platforms": [
+  "sweed"
+ ],
+ "hosts": [
+  [
+   "static-production.sweedpos.com",
+   215
+  ],
+  [
+   "media.sweedpos.com",
+   36
+  ],
+  [
+   "shop.greenroseil.com",
+   19
+  ],
+  [
+   "static.sweedpos.com",
+   10
+  ],
+  [
+   "sweedpos.s3.amazonaws.com",
+   1
+  ],
+  [
+   "posthog.sweedpos.com",
+   1
+  ],
+  [
+   "events.dwh.sweedkube.com",
+   1
+  ],
+  [
+   "web-ui-production.sweedpos.com",
+   1
+  ]
+ ]
+}

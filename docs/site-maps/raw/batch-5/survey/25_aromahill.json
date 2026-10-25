@@ -1,0 +1,265 @@
+{
+ "key": "25_aromahill",
+ "url": "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/index.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 695855
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/cart.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/shop.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/chevron-down.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/chevron-left.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/chevron-right.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/filter.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/sort.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/info.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/minus.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/cart-add.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/16/more.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/chevron-up.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441317852&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 869,
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkMy1mOWQ5LTdjMmMtOTgxMS05OWFmZjg0NjNjNDIiLCJncm9"
+  },
+  {
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441317886&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 361,
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQzLWY5ZjgtN2JiMC04ZDAwLWFiMmU1NDg3NTFkNiIsImdyb3VwcyI6e319"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--aromahill/b2-6ac08ebf925c4d035e78545cbb66f63e7c27f8605fed861b71d8d80feaefa1aa/icons/24/search.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml",
+   "len": 307
+  },
+  {
+   "u": "https://shop.aromahillcannabis.com/_api/Store/GetStoreInfoV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1943,
+   "post": "{}"
+  },
+  {
+   "u": "https://shop.aromahillcannabis.com/_api/Store/GetCompliance?saleType=Recreational",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 54
+  },
+  {
+   "u": "https://shop.aromahillcannabis.com/_api/storefront/v1/pages/home",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2180
+  },
+  {
+   "u": "https://shop.aromahillcannabis.com/_api/CartV2/GetSettingsPreferences",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44
+  },
+  {
+   "u": "https://r.surfside.io/m8c5g/cf209/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 8211
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://shop.aromahillcannabis.com/_api/Cart/GetV2",
+   "m": "GET",
+   "s": 204,
+   "ct": "",
+   "len": 0
+  },
+  {
+   "u": "https://shop.aromahillcannabis.com/_api/Store/GetAvailableFulfillmentTypesV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 227,
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "u": "https://shop.aromahillcannabis.com/_api/Referral/GetV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 639,
+   "post": "{}"
+  }
+ ],
+ "frames": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-592CT952"
+ ],
+ "status": 200,
+ "age_gate_text": "Skip to main content or Skip to footer Home Rewards Menu Discounts About Us Sign up or log in to see exclusive deals Log In Sign Up Pickup at ... Home / Menu All Products Filters Flower Pre-roll Vape Concentrate Edible Tincture Topical Apparel Accessories Deals Popular Strain prevalence CBD CBN Hybr",
+ "age_click": "Confirm",
+ "final_url": "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+ "title": "Aroma Hill Belvidere Recreational Cannabis Menu | Belvidere, IL",
+ "htmlLen": 741610,
+ "prices": 48,
+ "textHead": "Skip to main content or Skip to footer Home Rewards Menu Discounts About Us Refer Friends - Get 20% Off Sign up or log in to see exclusive deals Log In Sign Up Pickup at Aroma Hill Belvidere saleType ",
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-592CT952"
+ ],
+ "nextdata": false,
+ "links": [
+  "https://shop.aromahillcannabis.com/belvidere/recreational/menu#maincontent",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/menu#footer",
+  "https://shop.aromahillcannabis.com/belvidere/recreational",
+  "https://shop.aromahillcannabis.com/belvidere/recreational",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/rewards",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/menu/discounts?promo=deals",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/about-us",
+  "https://shop.aromahillcannabis.com/belvidere/recreational",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/menu/pre-roll-2800/single-sativa-dominant-arbor-joint-miami-yeyo-pre-roll-1g-526429?originId=catalog&originName=catalog&upsellRunId=undefined&idx=0&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=195",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/menu/edible-2277/gummy-sativa-jellies-ruby-red-grapefruit-gummies-100mg-2pk-295715?originId=catalog&originName=catalog&upsellRunId=undefined&idx=1&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=195",
+  "https://shop.aromahillcannabis.com/belvidere/recreational/menu/pre-roll-2800/multi-pack-sativa-sweet-sweet-pre-roll-25g-5pk-515084?originId=catalog&originName=catalog&upsellRunId=undefined&idx=2&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=195"
+ ],
+ "count_text": null,
+ "platforms": [
+  "sweed"
+ ],
+ "hosts": [
+  [
+   "static-production.sweedpos.com",
+   194
+  ],
+  [
+   "media.sweedpos.com",
+   22
+  ],
+  [
+   "shop.aromahillcannabis.com",
+   18
+  ],
+  [
+   "",
+   9
+  ],
+  [
+   "r.surfside.io",
+   6
+  ],
+  [
+   "tags.cnna.io",
+   6
+  ],
+  [
+   "static.sweedpos.com",
+   3
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "www.googletagmanager.com",
+   2
+  ],
+  [
+   "col.surfside.io",
+   2
+  ],
+  [
+   "test-custom-tags.cnna.io",
+   2
+  ],
+  [
+   "g.surfside.io",
+   2
+  ],
+  [
+   "rtb.surfside.io",
+   2
+  ],
+  [
+   "collector-azsx401.dmp.cnna.io",
+   2
+  ]
+ ]
+}

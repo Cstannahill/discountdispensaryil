@@ -1,0 +1,39 @@
+{
+ "store_id": "97d9bbbe153043d107a26e68",
+ "name": "Tree Haus Morris",
+ "slug": "tree-haus-morris",
+ "registry": {
+  "address": "50 Gore Rd",
+  "city": "Morris",
+  "state": "IL",
+  "latitude": 41.39228,
+  "longitude": -88.42345
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://shop.treehausil.com/morris",
+ "menu_url": "https://shop.treehausil.com/morris/menu",
+ "platform": "sweed (first-party shop.<brand> domain)",
+ "how_menu_reached": "brand shop subdomain",
+ "branch_selection": "path slug /morris",
+ "age_gate": "click-through",
+ "data_loading": {
+  "mechanism": "REST POST same-origin _api",
+  "endpoints": [
+   "POST https://shop.treehausil.com/_api/Products/GetProductList {page,pageSize:24}"
+  ]
+ },
+ "paging": "24 per page",
+ "approx_product_count": 1027,
+ "blockers": [
+  "none"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched; native grade A complete, 1027-1039 items (latest 2026-10-19T05:23Z)",
+  "sample": "sample_stores --pages 1: 24 items, declared 24, incomplete_menu (page cap only); verdict SAMPLE_PRODUCTS"
+ },
+ "why_it_fails": "Pipeline works (sample page 1 returns 24 of 24 declared, capped by --pages 1). Only issue is freshness: last accepted success was older than the 12h window.",
+ "fix_idea": "Refresh cadence/scheduler, not extraction.",
+ "root_cause_tag": "works-but-stale",
+ "confidence": "high"
+}

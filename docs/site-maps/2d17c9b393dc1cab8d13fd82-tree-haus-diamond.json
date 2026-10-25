@@ -1,0 +1,30 @@
+{
+ "store_id": "2d17c9b393dc1cab8d13fd82",
+ "name": "Tree Haus - Diamond",
+ "address": "2910 E. Division St",
+ "city": "Diamond",
+ "distance_miles": 49.407,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Sweed 406 rec; accepted 1015 offers.",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "sweed",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-19T05:24:25.798384+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

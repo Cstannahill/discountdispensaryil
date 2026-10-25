@@ -1,0 +1,31 @@
+{
+ "store_id": "4edb1ba37513951e3f6b7b90",
+ "name": "Hi Five Crestwood",
+ "address": "13352 Cicero Ave",
+ "city": "Crestwood",
+ "registry_distance_miles": 85.0,
+ "status": "no_lead",
+ "registry_flag": "rebrand",
+ "website": "strictlycannabis.com, Crestwood (13352 S Cicero Ave; formerly Hi5)",
+ "menu_platform": "First-party storefront with /stores/strictly-cannabis/?dtche params (Blaze/Joint signatures unconfirmed)",
+ "how_menu_is_reached": "Home links to /stores/strictly-cannabis/ and /shop/. The menu route was not reached in the probe.",
+ "branch_selection": "Google lists Strictly Cannabis (formerly Hi5) at 13352 S Cicero Ave. The registry name is the old brand.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Age gate (not confirmed in probe).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search could not match the old brand name (NO_LEAD, search_fallback_dead). Yelp and Dutchie still list HI5 as closed (stale listings).",
+ "fix_idea": "Add a brand alias (Hi Five to Strictly Cannabis) and search by address. Refresh the registry name, then map the /stores/strictly-cannabis/ route.",
+ "unverified": [
+  "menu route",
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

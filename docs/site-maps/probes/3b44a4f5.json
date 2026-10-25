@@ -1,0 +1,488 @@
+{
+ "key": "3b44a4f5",
+ "url": "https://www.trinitydispensaries.com/shop",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 307,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://www.trinitydispensaries.com/shop",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://www.trinitydispensaries.com/age-gate?returnUrl=%2Fshop",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://www.trinitydispensaries.com/age-gate?returnUrl=%2Fshop\",\"page\":\"Age Gate\",\"eid\":\"21c4887b-002c-425f-b790-2d41855b5a44\",\"tv\":\"js-3.6.0\",\"tna\":\"gapcommerce\",\"aid\":\"gapcommerce\",\"p\":\"web\",\"coo"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-RMZ85NHW2F&gtm=45je6af0v9262580008za20ozb9202126937zd9202126937xf1&_p=1792441289092&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=929679599.1792441290&frm=0&ngs=1&pscdl=noapi&rcb=5&sr=1366x900&uaa=x86&uab=64&uafvl=Google",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/wishlist?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/budrista-club?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/deals?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "size": 175504,
+   "sample": "{\"took\":6,\"timed_out\":false,\"_shards\":{\"total\":1,\"successful\":1,\"failed\":0,\"failures\":null,\"skipped\":0},\"hits\":{\"total\":{\"value\":1511,\"relation\":\"eq\"},\"max_score\":1.0732266,\"hits\":[{\"_index\":\"product_7a8f8e19-746b-4d3e-9b86-7afdd0b86c21\",\"_id\":\"5508de8e-494a-4b96-bd0d-8f2856b48d45\",\"_routing\":\"\",\"_s",
+   "post": "{\"from\":0,\"size\":10,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0.01,\"lte\":500000}}}}},{\"bool\":{\"should\":[{\"match\":{\"isAboveThreshold\":true}}]}},{\"bool\":{\"should\":[{\"match\":{\"isHideFromMenu\":false}}]}},{\"bool\":{\"should\":[{\"match\":{\"customCustomerType\":\"BOTH\"}},{\"matc"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/essentials-formula-420-cleaner-merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/essentials-pop-cones-unbleached-1-1-4-6pk-watermelon-sugar-merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/betty-s-eddies-lemon-agave-high-dose-w-melatonin-25mg-2pk-fruit-chews-betty-s-eddies-edible-50-milligrams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/paul-bunyan-black-cherry-sherbet-lcg-x-sdr-mixed-buds-paul-bunyan-14-g-flower-14-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/essentials-pulsar-ceramic-510-threaded-unfilled-single-cartridge-1ml-one-size-merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/mozey-orange-cookies-0-5g-vape-mozey-cartridge-0-5-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/the-funnies-gummies-purely-peachy-5mg-10pk-gummies-the-funnies-gummies-edible-50-milligrams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/bubby-s-baked-snickerdoodle-20mg-5pk-baked-bites-bubby-s-baked-edible-100-milligrams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/joos-northern-lights-0-5g-vape-joos-cartridge-0-5-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/essentials-hamsa-leaf-incense-burner-merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/joos-vlad-the-inhaler-1g-live-resin-vape-joos-cartridge-1-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/tales-travels-pinyatti-tales-travels-3-5-g-flower-3-5-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/daze-off-blue-radberry-taste-buds-10mg-10pk-gummies-daze-off-edible-100-milligrams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/essentials-pop-cones-ultra-thin-1-1-4-6pk-banana-cream-merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/midweek-friday-bloodiest-orange-1g-aio-midweek-friday-cartridge-1-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://trinity-cannabis.prismic.io/prismic-toolbar/5e015029/iframe.html",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/birchmount-50-gift-card-non-inv-1?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/essentials-juicy-jay-s-rolling-papers-1-1-4-strawberry-merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/roam-winter-sunset-14g-popcorn-roam-flower-14-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/essentials-smoke-temple-cross-blunts-1-1-4-hemp-1pk-one-size-merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/product/triple-crown-super-boof-popcorn-triple-crown-7-g-flower-7-grams?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/cartridge?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/preroll?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/flower?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/edible?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/extract?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/cbd?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/beverage?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/pill?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/topical?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/tincture?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/collection/merch?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/about-us?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/store-locator?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/brands?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/contact-us?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/privacy-policy?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.trinitydispensaries.com/terms-and-conditions?_rsc=1pqhz",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [
+  "https://trinity-cannabis.prismic.io/prismic-toolbar/5e015029/iframe.html"
+ ],
+ "notes": [
+  "clicked [data-testid*=\"age\"] button [I'M AT LEAST 21 YEARS OLD]"
+ ],
+ "status": 200,
+ "finalUrl": "https://www.trinitydispensaries.com/shop",
+ "title": "Shop Page",
+ "htmlBytes": 328001,
+ "sigs": [
+  "treez",
+  "weedmaps",
+  "nextjs"
+ ],
+ "links": [
+  "https://www.trinitydispensaries.com/shop",
+  "https://www.trinitydispensaries.com/product/essentials-pulsar-ceramic-510-threaded-unfilled-single-cartridge-1ml-one-size-merch",
+  "https://www.trinitydispensaries.com/product/essentials-formula-420-cleaner-merch",
+  "https://www.trinitydispensaries.com/product/essentials-pop-cones-unbleached-1-1-4-6pk-watermelon-sugar-merch",
+  "https://www.trinitydispensaries.com/product/paul-bunyan-black-cherry-sherbet-lcg-x-sdr-mixed-buds-paul-bunyan-14-g-flower-14-grams",
+  "https://www.trinitydispensaries.com/product/betty-s-eddies-lemon-agave-high-dose-w-melatonin-25mg-2pk-fruit-chews-betty-s-eddies-edible-50-milligrams",
+  "https://www.trinitydispensaries.com/product/mozey-orange-cookies-0-5g-vape-mozey-cartridge-0-5-grams",
+  "https://www.trinitydispensaries.com/product/bubby-s-baked-snickerdoodle-20mg-5pk-baked-bites-bubby-s-baked-edible-100-milligrams",
+  "https://www.trinitydispensaries.com/product/the-funnies-gummies-purely-peachy-5mg-10pk-gummies-the-funnies-gummies-edible-50-milligrams",
+  "https://www.trinitydispensaries.com/product/joos-northern-lights-0-5g-vape-joos-cartridge-0-5-grams",
+  "https://www.trinitydispensaries.com/product/essentials-hamsa-leaf-incense-burner-merch",
+  "https://www.trinitydispensaries.com/product/daze-off-blue-radberry-taste-buds-10mg-10pk-gummies-daze-off-edible-100-milligrams",
+  "https://www.trinitydispensaries.com/product/midweek-friday-bloodiest-orange-1g-aio-midweek-friday-cartridge-1-grams",
+  "https://www.trinitydispensaries.com/product/joos-vlad-the-inhaler-1g-live-resin-vape-joos-cartridge-1-grams",
+  "https://www.trinitydispensaries.com/product/tales-travels-pinyatti-tales-travels-3-5-g-flower-3-5-grams",
+  "https://www.trinitydispensaries.com/product/essentials-pop-cones-ultra-thin-1-1-4-6pk-banana-cream-merch",
+  "https://www.trinitydispensaries.com/product/essentials-smoke-temple-cross-blunts-1-1-4-hemp-1pk-one-size-merch",
+  "https://www.trinitydispensaries.com/product/essentials-juicy-jay-s-rolling-papers-1-1-4-strawberry-merch",
+  "https://www.trinitydispensaries.com/product/roam-winter-sunset-14g-popcorn-roam-flower-14-grams",
+  "https://www.trinitydispensaries.com/product/triple-crown-super-boof-popcorn-triple-crown-7-g-flower-7-grams",
+  "https://www.trinitydispensaries.com/product/birchmount-50-gift-card-non-inv-1",
+  "https://www.trinitydispensaries.com/shop?page=1",
+  "https://www.trinitydispensaries.com/shop?page=2",
+  "https://www.trinitydispensaries.com/shop?page=3",
+  "https://www.trinitydispensaries.com/shop?page=4"
+ ],
+ "textSample": "WE’RE IMPROVING OUR ORDERING EXPERIENCE! How do you want to shop? Select a pickup location Use Current Location Trinity Glen - Peoria, IL 2301 W Glen Ave ADULT OPEN until 10:00 PM CT Trinity University - Peoria, IL 3125 N University St ADULT MEDICAL OPEN until 9:00 PM CT Curbside pickup available SHOP PICKUP VIEW ALL LOCATIONS Home Shop Categories Deals JOIN REWARDS Promo Carousel - 2 promotions available Home Browse All Products Showing 1-20 of 1435 results FILTER Categories Type SubType Brands Sort By $1.8 OFF ESSENTIALS VAPORIZER Pulsar Ceramic 510-Threaded Unfilled Single Cartridge-1mL $4.20 $6 $3.3 OFF ESSENTIALS ACCESSORY Formula 420 Cleaner $7.70 $11 $1.5 OFF ESSENTIALS ROLLING PAPERS",
+ "productHints": [
+  "1435 results"
+ ],
+ "priceCount": 60
+}

@@ -1,0 +1,233 @@
+{
+ "key": "02_terrace",
+ "url": "https://terracecannabis.com/shop/store/5529/shop-all",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 284
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"rUlKHVACgFtgvLmmmkEms\",\"engagements\":[{\"adToken\":\"01a155d1-55c9-78a3-9511-076c32132484\",\"kevelToken\":\"01a155d1-55c9-727c-9397-8420da4d95ec\",\"myHi"
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://terracecannabis.com/shop/api/footer.data?_routes=routes%2Fapi.footer",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-script; charset=utf-8",
+   "len": 152
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6IlRFTVBPUkFSWV9VU0VSX0lEIiwia2luZCI6InVzZXIifQ",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 14821
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/6384e85523613d11ad9588c5",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1231
+  },
+  {
+   "u": "https://www.iheartjane.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v3/sdkconfig/web/FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 431,
+   "post": "{\"query_params\":{\"unique_id\":null}}"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v2/websdksettings?app_id=FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 2564
+  },
+  {
+   "u": "https://terracecannabis.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 404,
+   "ct": "text/html; charset=UTF-8"
+  },
+  {
+   "u": "https://events.launchdarkly.com/events/bulk/6384e85523613d11ad9588c5",
+   "m": "POST",
+   "s": 202,
+   "ct": "application/json",
+   "len": 0,
+   "post": "[{\"kind\":\"identify\",\"context\":{\"kind\":\"user\",\"key\":\"TEMPORARY_USER_ID\",\"anonymous\":true},\"creationDate\":1792441147501},{\"startDate\":1792441147562,\"endDate\":1792"
+  },
+  {
+   "u": "https://api.iheartjane.com/v2/embed/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 0,
+   "post": "h=terracecannabis.com&s=googletagmanager.com%2Ciframe%3Agoogletagmanager.com%2Cstatic.cloudflareinsights.com%2Ctags.srv.stackadapt.com&k=terracecannabis.com%3Ag"
+  },
+  {
+   "u": "https://api-js.mixpanel.com/track/?verbose=1&ip=1&_=1792441151023",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 25,
+   "post": "data=%5B%7B%22event%22%3A%22Searched%20Menu%20Products%22%2C%22properties%22%3A%7B%22%24os%22%3A%22Windows%22%2C%22%24browser%22%3A%22Chrome%22%2C%22%24current_"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"rUlKHVACgFtgvLmmmkEms\",\"engagements\":[{\"adToken\":\"01a155d1-55f7-7bf2-a3c1-b1321e9b66ad\",\"myHighD\":\"54a93fab-cbfa-11f1-8e21-0a58a9feac02\",\"product"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"rUlKHVACgFtgvLmmmkEms\",\"engagements\":[{\"adToken\":\"01a155d1-55f7-7bf1-b479-300a79e26d5c\",\"myHighD\":\"54a9420d-cbfa-11f1-8e21-0a58a9feac02\",\"product"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"rUlKHVACgFtgvLmmmkEms\",\"engagements\":[{\"adToken\":\"01a155d1-55f7-7bf3-973a-468d3e1f7305\",\"myHighD\":\"54a93249-cbfa-11f1-8e21-0a58a9feac02\",\"product"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"rUlKHVACgFtgvLmmmkEms\",\"engagements\":[{\"adToken\":\"01a155d1-55f7-7bf5-b33c-1b4eb874d685\",\"myHighD\":\"54a94513-cbfa-11f1-8e21-0a58a9feac02\",\"product"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"rUlKHVACgFtgvLmmmkEms\",\"engagements\":[{\"adToken\":\"01a155d1-55f7-7bf4-aea2-791def3ffb00\",\"kevelToken\":\"01a155d1-55f7-7e98-b532-7f2114df75ed\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/smartpage?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 373704,
+   "post": "{\"app_mode\":\"bloom\",\"jane_device_id\":\"rUlKHVACgFtgvLmmmkEms\",\"object_ids\":[\"36476452\",\"23053676\",\"35251940\",\"30540560\",\"23054192\",\"30822148\",\"33845009\",\"3299538"
+  }
+ ],
+ "frames": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-TXPVHLJD",
+  "https://www.iheartjane.com/headless/drawer?jdid=rUlKHVACgFtgvLmmmkEms&appmode=bloom"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://terracecannabis.com/shop/store/5529/shop-all?currentPage=2",
+ "title": "Shop all products | Terrace Cannabis Dispensary - Moline Dispensary Moline, IL",
+ "htmlLen": 3842410,
+ "prices": 163,
+ "textHead": "My store Terrace Cannabis Dispensary - Moline Rec pickup Search Get more with a free account! Fast, secure checkout Personalized recommendations View order history anytime Sign up or sign in ",
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-TXPVHLJD",
+  "https://www.iheartjane.com/headless/drawer?jdid=rUlKHVACgFtgvLmmmkEms&appmode=bloom"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": "763 products",
+ "platforms": [
+  "jane"
+ ],
+ "hosts": [
+  [
+   "bloom-assets.iheartjane.com",
+   160
+  ],
+  [
+   "product-assets.iheartjane.com",
+   25
+  ],
+  [
+   "www.iheartjane.com",
+   25
+  ],
+  [
+   "browser-intake-datadoghq.com",
+   20
+  ],
+  [
+   "dmerch.iheartjane.com",
+   8
+  ],
+  [
+   "terracecannabis.com",
+   5
+  ],
+  [
+   "uploads.iheartjane.com",
+   5
+  ],
+  [
+   "www.googletagmanager.com",
+   5
+  ],
+  [
+   "fonts.googleapis.com",
+   4
+  ],
+  [
+   "iheartjane.com",
+   3
+  ],
+  [
+   "static.cloudflareinsights.com",
+   2
+  ],
+  [
+   "fonts.gstatic.com",
+   2
+  ],
+  [
+   "api.iheartjane.com",
+   2
+  ],
+  [
+   "app.launchdarkly.com",
+   2
+  ]
+ ]
+}

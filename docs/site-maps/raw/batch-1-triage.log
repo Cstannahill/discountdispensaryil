@@ -1,0 +1,27 @@
+triaging 25 stores with 3 workers
+NO_TARGET          Curaleaf  Morris                   85.3s  items=None Retailer locator did not expose a corroborated branch/menu link
+WORKS              Nuera East Peoria                  89.4s jane items=1563 
+WORKS              Rise - Joliet  Colorado Ave       105.9s jane items=2138 
+WORKS              Market 96 - Owego                  45.7s treez items=20 
+WORKS              NuEra - Dekalb                     57.1s jane items=976 
+WORKS              Sunnyside - Champaign             100.3s generic items=117 
+NO_TARGET          The Dispensary Champaign          131.4s  items=None Public endpoint returned HTTP 404
+NO_TARGET          Maribis of Springfield             45.6s  items=None Public fetch failed: ConnectError
+NO_TARGET          Ascend by Homecoming              110.4s  items=None 'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte
+WORKS              Sunnyside - Danville              102.4s generic items=113 
+WORKS              nuEra Chicago Southland           136.8s jane items=615 
+WORKS              Maribis of Springfield 2          271.3s dutchie items=469 
+NO_TARGET          Viola CHI                          30.0s  items=None Public endpoint returned HTTP 404
+NO_TARGET          Dutchess Cannabis N. Riverside     77.7s  items=None Candidate website found; branch name/locality or street address still needs matching
+WORKS              Starbuds-Burbank                  367.8s dutchie items=606 
+NO_TARGET          Maribis Of Chicago                 60.7s  items=None Third-party directory is a discovery lead, not a retailer menu
+WORKS              Mint Cannabis - Forest Park       206.0s dutchie items=490 
+WORKS              Bloc Dispensary Berwyn            350.5s dutchie items=395 
+WORKS              Sunnyside - Schaumburg             54.1s generic items=115 
+WORKS              Sunnyside - Rockford               67.0s generic items=118 
+WORKS              Zen Leaf - West Loop                5.3s verano items=1122 
+NO_TARGET          Snap Canna - Elk Grove Vilage     112.8s  items=None Candidate website found; branch name/locality or street address still needs matching
+WORKS              Revolution Dispensary - Mt. Pros   95.4s sweed items=30 
+NO_TARGET          Village Bucktown                   73.3s  items=None Candidate website found; branch name/locality or street address still needs matching
+NO_TARGET          Ascend Moca  River North           77.2s  items=None 'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte
+{'WORKS': 15, 'NO_TARGET': 10}

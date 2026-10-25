@@ -1,0 +1,253 @@
+{
+ "key": "10_greenrose_harwood",
+ "url": "https://shop.greenroseil.com/harwoodheights/menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://media.sweedpos.com/store/production/greenroseil/safari-pinned-tab.svg",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/index.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 208878
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/shop.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/cart.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/chevron-down.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/chevron-left.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/chevron-right.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/sort.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/info.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/filter.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/minus.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/cart-add.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/16/more.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/chevron-up.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441217612&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 361,
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQyLTcyNGMtNzM4YS05M2IxLTc0ODkzZTBhNDY2YyIsImdyb3VwcyI6e319"
+  },
+  {
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441217610&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 869,
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkMi03MjQ5LTdmYTEtODdjZS1mNmQ2MDJlMGUyZTQiLCJncm9"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/base/b2-6fac048e97a06567b7367a3b391dc7648136d9cf2c708adce9b6d879cc80790b/icons/24/search.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml",
+   "len": 307
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Store/GetStoreInfoV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1833,
+   "post": "{}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/storefront/v1/pages/home",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1914
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/CartV2/GetSettingsPreferences",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Store/GetCompliance",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 54
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Store/GetAvailableFulfillmentTypesV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 219,
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Loyalty/GetLoyaltyNotices",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 14,
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Loyalty/GetStoreLoyaltySettingsV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 5448,
+   "post": "{}"
+  },
+  {
+   "u": "https://shop.greenroseil.com/_api/Products/GetProductList",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 85705,
+   "arr": {
+    "n": 24,
+    "path": "$.list",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "category",
+     "subcategory",
+     "images",
+     "brand",
+     "strain",
+     "tags",
+     "effects",
+     "qualityLine",
+     "productType"
+    ]
+   },
+   "post": "{\"filters\":{},\"page\":1,\"pageSize\":24,\"sortingMethodId\":7,\"searchTerm\":\"\",\"platformOs\":\"web\",\"productExposureContextId\":1,\"sourcePage\":1}"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "Skip to main content or Skip to footer Home Menu Discounts About Us Refer Friends - Get $25 Off Sign up or log in to see exclusive deals Log In Sign Up Pickup at Green Rose Harwood Heights Home / Menu All Products Filters Edibles Pre-Rolls Flower Vapes Accessories Concentrates Topicals Merch Deals P",
+ "age_click": "Confirm",
+ "final_url": "https://shop.greenroseil.com/harwoodheights/menu/",
+ "title": "Green Rose Harwood Heights Cannabis Menu | Harwood Heights, IL",
+ "htmlLen": 436711,
+ "prices": 27,
+ "textHead": "Skip to main content or Skip to footer Home Menu Discounts About Us Refer Friends - Get $25 Off Sign up or log in to see exclusive deals Log In Sign Up Pickup at Green Rose Harwood Heights Home / Menu",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://shop.greenroseil.com/harwoodheights/menu/#maincontent",
+  "https://shop.greenroseil.com/harwoodheights/menu/#footer",
+  "https://shop.greenroseil.com/harwoodheights",
+  "https://shop.greenroseil.com/harwoodheights",
+  "https://shop.greenroseil.com/harwoodheights/menu",
+  "https://shop.greenroseil.com/harwoodheights/menu/discounts?promo=deals",
+  "https://shop.greenroseil.com/harwoodheights/about-us",
+  "https://shop.greenroseil.com/harwoodheights",
+  "https://shop.greenroseil.com/harwoodheights/menu/pre-rolls-624/single-indica-dominant-georgia-pie-x-gastro-pop-js-1g-609528?originId=catalog&originName=catalog&upsellRunId=undefined&idx=0&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=366",
+  "https://shop.greenroseil.com/harwoodheights/menu/pre-rolls-624/single-sativa-fresh-powder-js-1g-152872?originId=catalog&originName=catalog&upsellRunId=undefined&idx=1&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=366",
+  "https://shop.greenroseil.com/harwoodheights/menu/edibles-628/sativa-sour-apple-gummies-10pk-10mg-71140?originId=catalog&originName=catalog&upsellRunId=undefined&idx=2&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=366",
+  "https://shop.greenroseil.com/harwoodheights/menu/accessories-631/green-rose-white-lighter-each-304230?originId=catalog&originName=catalog&upsellRunId=undefined&idx=3&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=366"
+ ],
+ "count_text": null,
+ "platforms": [
+  "sweed"
+ ],
+ "hosts": [
+  [
+   "static-production.sweedpos.com",
+   194
+  ],
+  [
+   "media.sweedpos.com",
+   23
+  ],
+  [
+   "shop.greenroseil.com",
+   18
+  ],
+  [
+   "static.sweedpos.com",
+   3
+  ],
+  [
+   "posthog.sweedpos.com",
+   1
+  ],
+  [
+   "events.dwh.sweedkube.com",
+   1
+  ],
+  [
+   "web-ui-production.sweedpos.com",
+   1
+  ]
+ ]
+}

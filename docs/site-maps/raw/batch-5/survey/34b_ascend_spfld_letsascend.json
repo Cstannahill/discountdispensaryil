@@ -1,0 +1,328 @@
+{
+ "key": "34b_ascend_spfld_letsascend",
+ "url": "https://letsascend.com/stores/springfield-horizon-drive-illinois",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://extensions.the-grow-agency.dutchie.partners/mf-manifest.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 271363,
+   "arr": {
+    "n": 100,
+    "path": "$.exposes",
+    "keys": [
+     "id",
+     "name",
+     "assets",
+     "path"
+    ]
+   }
+  },
+  {
+   "u": "https://letsascend.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 212
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=PriceRangeFilterSettings&variables=%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 457
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22ONLINE_ME",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 37874
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Afalse%7D&extensi",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 61288,
+   "arr": {
+    "n": 123,
+    "path": "$.data.menuFiltersV2.brands",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "imageUrl",
+     "__typename"
+    ]
+   }
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GetMenuSections&variables=%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sh",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 26069,
+   "arr": {
+    "n": 26,
+    "path": "$.data.getMenuSections",
+    "keys": [
+     "id",
+     "brandId",
+     "category",
+     "image",
+     "headingOverride",
+     "label",
+     "legacyLabel",
+     "linkLabel",
+     "position",
+     "subcategory",
+     "sectionType",
+     "products"
+    ]
+   }
+  },
+  {
+   "u": "https://events.launchdarkly.com/events/diagnostic/5ee2761738b5d10a6705cadf",
+   "m": "POST",
+   "s": 202,
+   "ct": "application/json",
+   "len": 0,
+   "post": "{\"kind\":\"diagnostic-combined\",\"id\":{\"diagnosticId\":\"04617910-cbfc-11f1-a0db-e141ecace4ba\",\"sdkKeySuffix\":\"05cadf\"},\"creationDate\":1792441869099,\"dataSinceDate\":"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiN2U5ODRlYWEtOGZlMi00M2E3LWExYWUtNGZiYTEwZjdhODc5IiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 331122
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GetAddressBasedDispensaryData&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%7D%7D&extensions=%7B%22persistedQuery",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 4761
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%2C%22customCategory%22%3Atrue%2C%22enabled%22%3Atrue%2C%22a",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 655
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GetDutchiePosLoyaltyConfig&variables=%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1460
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GeolocateConsumer&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2224fe610f1b4d4a8a09f95dafb837ab39",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 224
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%226ac4150bf8dc5c002385a9b4%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 116747,
+   "arr": {
+    "n": 9,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81,
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"672a669586978539af252a4a\",\"dispensary_name\":"
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GetPersonalizedProductsV2&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%2C%22limit%22%3A3%2C%22filters%22%3A%7B%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 27620
+  },
+  {
+   "u": "https://letsascend.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"672a669586978539af252a4a\",\"menu_variant\":\"store-front\",\"page\":\"https://letsascend.com/stores/springfield-horizo"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 137,
+   "post": "{\"query\":\"mutation initializeSession($session_secure_id: String!, $session_key: String, $organization_verbose_id: String!, $enable_strict_privacy: Boolean!, $pr"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation addSessionProperties($session_secure_id: String!, $properties_object: Any) {\\n  addSessionProperties(\\n    session_secure_id: $session_secure"
+  },
+  {
+   "u": "https://cdn-api.ethyca.com/location",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 78
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation PushSessionEvents($session_secure_id: String!, $payload_id: Int64ID!, $data: String!) {\\n  pushSessionEvents(\\n    session_secure_id: $sessio"
+  },
+  {
+   "u": "https://letsascend.com/api-4/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%22672a669586978539af252a4a%22%2C%22customCategory%22%3Afalse%2C%22enabled%22%3Atrue%2C%22",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 5959
+  }
+ ],
+ "frames": [
+  "https://12740414.fls.doubleclick.net/activityi;dc_pre=CNjkjLj2xpcDFaKCNgcdxVgnuA;src=12740414;type=retar0;cat=ascen0;rcb=18;ord=679997178802;npa=0;auiddc=262118689.1792441873;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;_tu=KFA;gtm=45fe6af0v9185245019z8893943164za20gzb893943164zd893943164xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120420416~120469145~120469153~121246026~121246034;epver=2;ref=https%3A%2F%2Fletsascend.com%2Fstores%2Fspringfield-horizon-drive-illinois;dc_random=1792441904_8Fi_1ZndSdwKygJeU1NYIjFApZlGNqiygA;_dc_test=1;~oref=https%3A%2F%2Fletsascend.com%2Fstores%2Fspringfield-horizon-drive-illinois?"
+ ],
+ "status": 200,
+ "age_gate_text": "Skip Navigation YOU'RE CURRENTLY SHOPPING: ASCEND DISPENSARY - SPRINGFIELD (HORIZON DRIVE) LOCATIONS EDUCATION▾ ABOUT▾ SELECT A STORE X USE MY CURRENT LOCATION +ILLINOIS +MARYLAND +MASSACHUSETTS +MICHIGAN +NEW JERSEY +OHIO +PENNSYLVANIA Home Shop Brands Specials Search Dispensary Info OPEN Pick",
+ "age_click": "YES",
+ "final_url": "https://letsascend.com/stores/springfield-horizon-drive-illinois",
+ "title": "Ascend Dispensary - Springfield (Horizon Drive) Cannabis Menu | Springfield, IL",
+ "htmlLen": 354458,
+ "prices": 22,
+ "textHead": "Skip Navigation return to dispensary home page Back home | Browse Locations Home Shop Brands Specials Search Dispensary Info OPEN Pickup MENU Recreational Login 0 items in your shopping cart Categ",
+ "iframes": [
+  "https://12740414.fls.doubleclick.net/activityi;src=12740414;type=retar0;cat=ascen0;rcb=18;ord=679997178802;npa=0;auiddc=262118689.1792441873;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;_tu=KFA;gtm=45fe6af0v9185245019z8893943164za20gzb893943164zd893943164xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938466~115938469~118897920~118897930~120213116~120385422~120420416~120469145~120469153~121246026~121246034;epver=2;ref=https%3A%2F%2Fletsascend.com%2Fstores%2Fspringfield-horizon-drive-illinois;dc_random=1792441904_8Fi_1ZndSdwKygJeU1NYIjFApZlGNqiygA;_dc_test=1;~oref=https%3A%2F%2Fletsascend.com%2Fstores%2Fspringfield-horizon-drive-illinois?",
+  "about:blank"
+ ],
+ "nextdata": true,
+ "links": [
+  "https://dutchie.com/privacy"
+ ],
+ "count_text": "0\nitems",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "assets2.dutchie.com",
+   91
+  ],
+  [
+   "dutchie-prod-pos-discount-menu-image-ec8d7ed.s3.amazonaws.com",
+   54
+  ],
+  [
+   "images.dutchie.com",
+   42
+  ],
+  [
+   "letsascend.com",
+   38
+  ],
+  [
+   "www.googletagmanager.com",
+   21
+  ],
+  [
+   "www.google.com",
+   19
+  ],
+  [
+   "extensions.the-grow-agency.dutchie.partners",
+   13
+  ],
+  [
+   "pub.observability.app.launchdarkly.com",
+   12
+  ],
+  [
+   "googleads.g.doubleclick.net",
+   6
+  ],
+  [
+   "fonts.gstatic.com",
+   5
+  ],
+  [
+   "",
+   4
+  ],
+  [
+   "app.launchdarkly.com",
+   4
+  ],
+  [
+   "clientstream.launchdarkly.com",
+   4
+  ],
+  [
+   "analytics.google.com",
+   4
+  ]
+ ]
+}

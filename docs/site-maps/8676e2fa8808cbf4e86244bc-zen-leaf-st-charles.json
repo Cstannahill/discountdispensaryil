@@ -1,0 +1,43 @@
+{
+  "store_id": "8676e2fa8808cbf4e86244bc",
+  "name": "Zen Leaf St. Charles",
+  "slug": "zen-leaf-st-charles",
+  "registry": {"address": "3691 E. Main St.", "city": "Saint Charles", "state": "IL", "latitude": 41.921181, "longitude": -88.305168, "distance_miles": 80.1},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://zenleafdispensaries.com/locations/st-charles",
+  "menu_url": "rec: https://zenleafdispensaries.com/locations/st-charles/menu/recreational/menu  |  med: https://zenleafdispensaries.com/locations/st-charles/menu/medical/menu",
+  "platform": "sweed",
+  "how_menu_reached": "Same as every Zen Leaf store: Verano's Next.js app on the brand domain renders a Sweed-powered menu as a SPA route; no iframe and no SSR query cache. The browser downloads one whole-branch catalog from data.zenleafdispensaries.com and filters it by category route.",
+  "branch_selection": "URL slug st-charles -> GET data.zenleafdispensaries.com/menu-config/st-charles returns sweedId 537 (dual menu: Medical + Recreational). Flight data sweedStores entry: id 537 'Zen Leaf St. Charles', '3691 East Main Street, St. Charles, Illinois', pin 41.9208,-88.2715 (the registry pin 41.9212,-88.3052 is about 1.7 mi away, so identity rests on the street match; addresses_match('3691 E. Main St.','3691 East Main Street') is True at HEAD).",
+  "age_gate": "global-age-gate.min.js is loaded; the same site showed the menu without a click in the headless run (checked on the Aurora route)",
+  "data_loading": {
+    "mechanism": "REST JSON (one whole-branch document), plain curl returns 200",
+    "endpoints": [
+      "GET https://data.zenleafdispensaries.com/menu-config/st-charles -> {sweedId:537, hasMedicalMenu:true, hasRecreationalMenu:true, menuType:dual}",
+      "GET https://data.zenleafdispensaries.com/catalog/537/recreational (950,919 bytes) ; /catalog/537/medical is byte-identical",
+      "GET https://zenleafdispensaries.com/ or any /locations/<slug> page: Flight data sweedStores lists all 77 chain stores (root page also carries it)"
+    ],
+    "notes": "Catalog JSON {products[], filters, sorting, popularSearches}; variants carry unitSize, unitsInPackage, price, promoPrice, orderingAvailability. No advertised total."
+  },
+  "paging": "none: one document; no declared total, so grade B (two agreeing reads) via backend/providers/verano.py",
+  "approx_product_count": 1178,
+  "license_channels": "rec and med menus both exist but /catalog/537/medical == /catalog/537/recreational byte for byte. 1178 products / 1347 variants: Flower 305, Vapes 285, Edibles 180, Pre-Rolls 161, Accessories 95, Concentrates 84, Drinks 51, Apparel 7, Tinctures 7, Topicals 3.",
+  "blockers": ["none"],
+  "evidence": [
+    "curl zenleafdispensaries.com/locations/st-charles -> 200 (798 KB); /locations/st-charles/menu/recreational -> 200 (1.25 MB)",
+    "menu-config/st-charles -> sweedId 537; catalog/537/recreational -> 200, 1178 products",
+    "backend.providers.verano.observe on the saved branch page returns provider verano, provider_store_id 537, license recreational",
+    "root page https://zenleafdispensaries.com/ (200, 844 KB) also yields a 77-store sweedStores list via verano.store_list, so the new zen\\s*leaf connector in locators.py can match this store by address"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: Fallback website search found no corroborated branch lead (2026-10-18T09:55, NO_LEAD); before that: No retailer locator connector configured for this brand (2026-10-17)",
+    "saved_endpoints": "none for this store (its st-charles URLs were attached to the Aurora store instead, as generic partial rows)",
+    "recent_attempts": "1 resolution attempt, NO_LEAD grade D, fingerprint 5f5ba837b5 (HEAD 5609f30e9d includes commit 6d14ca8, which added the zen leaf connector and verano provider); not re-run since",
+    "sample": null
+  },
+  "why_it_fails": "Historical (stored) failure: there was no brand locator for Zen Leaf, so resolution depended on the Bing/DDG fallback website search, which is dead (coordinator: DDG 202 challenge, Bing returns unrelated pages) -> NO_LEAD although the branch page exists. At HEAD the connector r'zen\\s*leaf' -> https://zenleafdispensaries.com/ reads the sweedStores Flight list, matches this store by street address ('3691 East Main Street'), then providers/verano.py fetches menu-config + catalog/537 twice; the stored state simply predates that commit. Registry city 'Saint Charles' versus 'St. Charles' is harmless because the match is on street.",
+  "fix_idea": "Rerun this store at HEAD (targeted sync) and confirm a verano endpoint with provider_store_id 537 reaches grade B (about 1347 variants). No new code needed beyond decisions already noted for Aurora: do not emit a second identical 'medicinal' endpoint (the medical catalog URL returns the same bytes), and supersede any St. Charles URLs wrongly stored on the Aurora store. A chain-level connector for the Verano brand (this one) already unlocks all 10 IL Zen Leaf stores.",
+  "root_cause_tag": "verano-zenleaf-catalog-provider-needs-rerun",
+  "confidence": "high"
+}

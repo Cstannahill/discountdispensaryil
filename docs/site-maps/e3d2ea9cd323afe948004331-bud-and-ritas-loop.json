@@ -1,0 +1,64 @@
+{
+  "store_id": "e3d2ea9cd323afe948004331",
+  "name": "Bud & Rita's - The Loop",
+  "slug": "bud-and-ritas-loop",
+  "registry": {
+    "address": "105 W Madison St",
+    "city": "Chicago",
+    "state": "IL",
+    "distance_miles": 99.557
+  },
+  "site": "https://budandritas.com/stores/the-loop-dispensary-chicago/",
+  "platform": "joint-ecommerce businessId 6374 (rec); a Dutchie kiosk page also exists",
+  "menu_url_verified": "https://budandritas.com/stores/the-loop-dispensary-chicago/",
+  "access": "none seen",
+  "branch_selection": "store page",
+  "product_loading": "POST joint-ecommerce _search",
+  "paging": "Joint exact-total traversal",
+  "product_count_observed": "reader 1096 complete (seeded)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://budandritas.com/stores/the-loop-dispensary-chicago/",
+    "title": "Bud & Rita's – The Loop Cannabis Dispensary Dispensary - Bud & Rita's",
+    "platforms": [
+      "dutchie"
+    ],
+    "age_gate_seen": false,
+    "age_click": null,
+    "count_text": "1045 results",
+    "price_tags": 44,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Fallback website search found no corroborated branch lead"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "joint",
+          "provider_store_id": "6374",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "joint",
+          "items": 1096,
+          "expected": 1096,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Discovery only: stored unresolved, search dead; seeded run complete.",
+  "fix_idea": "Seed the site; same Bud & Rita's connector as Avondale.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

@@ -1,0 +1,28 @@
+{
+ "store_id": "391e2b9b1c568de147c753eb",
+ "name": "Maribis Of Chicago",
+ "address": "4570 S Archer Ave",
+ "city": "Chicago",
+ "distance_miles": 93.157,
+ "accepted_menu": false,
+ "platform": "Dutchie white-label (maribisllc.com)",
+ "menu_url": "https://maribisllc.com/stores/maribis-chicago",
+ "how_reached": "Store page loads (HTTP 200); location page 4570 S Archer Ave",
+ "branch_selection": "Address 4570 S Archer Ave, Chicago (page HTML); dispensaryId 68a6396c4af8e6c93416f47b",
+ "products_load": "Dutchie FilteredProducts",
+ "paging": "Dutchie pages",
+ "count_hint": "not captured",
+ "blockers": "maribisllc.com/locations/archer-il-... returns 403 to plain HTTP (not evaded)",
+ "why_it_fails": "Triage: a third-party directory is the lead (Discovery lead, not a retailer menu). The brand store page was never the lead.",
+ "fix_idea": "Brand connector (shared with Denver and Lindbergh).",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Third-party directory is a discovery lead, not a retailer menu",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

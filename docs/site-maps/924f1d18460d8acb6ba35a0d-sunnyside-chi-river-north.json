@@ -1,0 +1,67 @@
+{
+ "store_id": "924f1d18460d8acb6ba35a0d",
+ "name": "Sunnyside - Chi-River North",
+ "slug": "sunnyside-chi-river-north",
+ "registry": {
+  "address": "436 N. Clark St.",
+  "city": "Chicago",
+  "state": "IL",
+  "latitude": 41.89032,
+  "longitude": -87.63142,
+  "distance_miles": 99.9
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://www.sunnyside.shop/store/chicago-river-north-il",
+ "menu_url": "https://www.sunnyside.shop/products/flower (and /products/vapes, /edibles, /prerolls, /concentrates, /tinctures, /topicals, /accessories) after the River North store is selected; recreational ('Shop Adult Use') and medical ('Shop Medical') are separate usage_type contexts",
+ "platform": "cresco-sunnyside",
+ "how_menu_reached": "sunnyside.shop is a Create React App SPA (server HTML is a 1.9 KB empty #root shell). All data comes from Cresco Labs' own commerce API at api.crescolabs.com. The store is chosen client side: /locations lists stores with 'Shop Adult Use' / 'Shop Medical' buttons; clicking one sets the _store cookie. Without a selection the site picks the nearest store by IP/browser geolocation (in my headless run that was Champaign, id 86, not River North), and /store/chicago-river-north-il alone did not switch the store.",
+ "branch_selection": "Cresco store id 493 (store_slug chicago-river-north-il, ecomm_display_name 'Chicago, IL - River North', 436 N Clark St, lat/lng 41.8903,-87.6336 = registry pin). Sent as the request header store_id: 493 (value confirmed 493 after selecting River North). Other IL Sunnyside ids from the same directory: Rockford 67, Buffalo Grove 70, Elmwood Park 85, Champaign 86, River North 493, Danville 494, South Beloit 498, Schaumburg 559, Naperville 592, Wrigleyville/Lakeview 632.",
+ "age_gate": "none blocking in headless run (rewards/medical banners only)",
+ "data_loading": {
+  "mechanism": "REST JSON (Cresco inventory API), client-side from the SPA; requests need a storefront key and ordering-app id header (a storefront key is required; not recorded here)",
+  "endpoints": [
+   "GET https://api.crescolabs.com/p/inventory/op/fifo-inventory?category=<flower|vapes|edibles|prerolls|tinctures|topicals|accessories|concentrates>&inventory_type=retail&require_sellable_quantity=true&include_specials=true&sellable=true&order_by=brand&limit=50&usage_type=recreational&hob_first=true&include_filters=true&include_facets=true  (headers: ordering_app_id, x-api-key, store_id, x-client-version)",
+   "GET https://api.crescolabs.com/p/ordering_apps/<ordering-app id>/store-inventory-breakdown?host=www.sunnyside.shop&store_slug=<slug>&usage_type=recreational&lat=&lng=&country=US",
+   "GET https://api.crescolabs.com/p/stores?ids=<comma list> (chain directory: id, name, address, city, state, zip, lat, lng, store_slug, is_rec_menu, is_med_menu, post_tax_pricing; 76 stores of which 10 are IL Sunnyside)",
+   "GET https://api.crescolabs.com/p/specials/op/store-discount?store_ids=493&usage_type=recreational (promotions)"
+  ],
+  "notes": "Response shape: rows[] (== data[]), facets/filters, total_rows (declared per-category total), total_count 0. Each row has id, name, brand, bt_weight, potency fields, remaining_qty_rec/remaining_qty_med, sku{...}; the price field name was not captured (sunny_row.json not saved; unknown). store row has post_tax_pricing flag (false for River North => shown prices are pre-tax)."
+ },
+ "paging": "limit=50 per request; each category response declares total_rows. The paging parameter was NOT established: after 12 wheel scrolls on /products/flower the SPA issued a single request (limit=50), and my offset/page override test did not complete (usage limit). Treat paging as unknown; next step is to test &offset=50 / &page=2 / larger limit with the store_id header.",
+ "approx_product_count": 1363,
+ "license_channels": "rec and med are separate usage_type contexts on the same store (store directory flags is_rec_menu/is_med_menu); only usage_type=recreational was measured. Category totals (recreational, store 493): flower 314, vapes 266, edibles 198, prerolls 175, tinctures 3, topicals 5, accessories 276, concentrates 126 = 1363 rows (accessories are non-cannabis).",
+ "blockers": [
+  "none (no challenge); API calls need the SPA-issued storefront key/ordering-app id and the store_id header, so a plain unauthenticated GET will not work"
+ ],
+ "evidence": [
+  "browser probe of sunnyside.shop: XHRs to api.crescolabs.com (/p/stores, /p/inventory/op/fifo-inventory, /p/ordering_apps/...)",
+  "after clicking Shop Adult Use for the 436 N Clark St block: header says 'You're Shopping Adult Use at Chicago, IL - River North', cookie _store set, fifo-inventory request header store_id=493",
+  "per-category total_rows for store 493 captured from fifo-inventory responses (sums to 1363)",
+  "/p/stores directory row for 493: 436 N Clark St, Chicago, IL 60654, lat 41.8903008, lng -87.6335889, store_slug chicago-river-north-il"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched: Resolved 1 canonical menu target(s) (2026-10-18T13:18); before that unresolved: No retailer locator connector configured for this brand (2026-10-17)",
+  "saved_endpoints": "1 endpoint: provider generic, status partial, url https://www.sunnyside.shop/ (site root)",
+  "recent_attempts": "1 menu attempt: generic structured, TOTAL_UNVERIFIABLE grade C, 109 items (2026-10-18T13:20), fingerprint 5f5ba837b5 (HEAD is 5609f30e9d)",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "generic",
+    "license": "recreational",
+    "url": "https://www.sunnyside.shop/",
+    "items": 56,
+    "declared_total": null,
+    "errors": [
+     "incomplete_generic_menu"
+    ],
+    "verdict": "SAMPLE_PRODUCTS",
+    "seconds": 73.4
+   }
+  }
+ },
+ "why_it_fails": "Stage = menu resolution + fetch_menu. There is no native Cresco/Sunnyside provider: adapters._detect_endpoint only tags 'cresco' for cloud9dispensaries.shop URLs, so sunnyside.shop falls to the generic structured/DOM path. The saved endpoint is the site root, whose branch is whatever the SPA picks by IP geolocation (Champaign in my run), not River North, so the 109 items it extracted are at best a first-screen slice and may belong to another store; with no advertised total the completeness gate can only give grade C. The real contract (store_id header + per-category total_rows) is never used. No chain locator exists for ^sunnyside either, so the branch was never proven (identity only from the registry).",
+ "fix_idea": "Add a native cresco provider (shared by all Sunnyside IL stores: Rockford, Buffalo Grove, Elmwood Park, Champaign, River North, Danville, South Beloit, Schaumburg, Naperville, Wrigleyville; plus other Cresco-hosted storefronts). Resolve the branch from the chain directory /p/stores (match address or pin to the registry; River North = id 493), then fetch fifo-inventory per category with store_id and usage_type, reconciling the rows collected against each response's declared total_rows over two traversals (grade A). Capture the storefront key and ordering-app id through the browser session (never persist or log them; they stay in browser-sessions/.env territory). Resolve the paging parameter first (offset/page not yet tested) and the price field name from a recorded fixture under tests/fixtures/.",
+ "root_cause_tag": "cresco-storefront-api-no-native-provider",
+ "confidence": "medium"
+}

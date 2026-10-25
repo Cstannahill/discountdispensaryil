@@ -1,0 +1,183 @@
+{
+ "key": "7f48ac07b",
+ "url": "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://risecannabis.com/cdn-cgi/challenge-platform/h/b/jsd/oneshot/d2d3316b729e/0.2149687575251502:1792440026:_qjrJjJkHAbmqAMO7sJTQhZchfr4054dmt2f2nQCWtM/a4d28fdcff527073",
+   "size": 0,
+   "sample": null,
+   "post": "WtUMEgB9Xqt4DwT+lIA7zS66$yAatYLoaXxAHCdIn85o3ocH89uVxRM03Bu-h-Q6gSn9ilurlQAS-qSNCozgAoMgXeeKraJo3TOJqMjKGB2g7dKr0zyEJxFP6oGslRP30NntfCWC3m5-6yaqQcsjvsEhDEfpmEoBdNPZFF-ovMypzoTyBpjKGWCNn-3nUOvjJI48motMySnprBGyTYWu0iu2HoggyWEBxY2UAcGj3pT0wFdsr22K+kjaQ1wLIsCq9NOiGimBPPMMaJM$B81AYOUBlSdu2rjS5Yvo0UhGRtTd"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://cdn-bong.risecannabis.com/v1/projects/k8mTZHLeu3yuz69FNFjuVQbtweZcdf1A/settings",
+   "size": 9649,
+   "sample": "{\"_lastModified\":\"2026-10-19T14:07:10.231Z\",\"integrations\":{\"Mixpanel (Actions)\":{\"versionSettings\":{\"componentTypes\":[]}},\"Repeater\":{\"versionSettings\":{\"componentTypes\":[\"server\"]},\"type\":\"server\"},\"Actions Google Analytic 4\":{\"versionSettings\":{\"componentTypes\":[]}},\"Segment.io\":{\"apiKey\":\"k8mTZH"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://risecannabis.com/?_rsc=1veq7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://cmp.osano.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://risecannabis.com/rise-rewards/?_rsc=1veq7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?_rsc=1veq7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://risecannabis.com/dispensaries/illinois/deals/?_rsc=1veq7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/",
+   "size": 0,
+   "sample": null,
+   "post": "[]"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://consent.api.osano.com/record",
+   "size": 0,
+   "sample": null,
+   "post": "{\"consentingDomain\":\"risecannabis.com\",\"extUsrData\":\"\",\"osnoCustomerId\":\"6riX1EcQmw\",\"osnoConfigId\":\"445103c0-341b-47ae-a4d5-3005b8d4ed7b\",\"userConsentId\":\"dc4294c7-1809-40ef-9750-eeed36d01905\",\"consented\":\"ESSENTIAL, MARKETING, PERSONALIZATION, ANALYTICS\"}"
+  },
+  {
+   "m": "GET",
+   "s": 308,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://risecannabis.com/api/opensearch/dispensaries/nearest?lat=40.53146971166336&lon=-88.99939511474128&limit=3&state=Illinois",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://risecannabis.com/api/opensearch/dispensaries/nearest/?lat=40.53146971166336&lon=-88.99939511474128&limit=3&state=Illinois",
+   "size": 5251,
+   "sample": "{\"origin\":{\"lat\":40.53146971166336,\"lon\":-88.99939511474128},\"results\":[{\"id\":\"4ZF1YcqYxbRJq3QLyDDWoG\",\"name\":\"Bloom Wellness Normal Northbrook (formerly Revolution)\",\"slug\":\"/dispensaries/illinois/bloom-wellness-normal-northbrook/\",\"domain\":[\"Main\"],\"tags\":[\"Third Party RISE Rewards Store\"],\"phone_"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://api-bong.risecannabis.com/v1/b",
+   "size": 21,
+   "sample": "{\n  \"success\": true\n}",
+   "post": "{\"writeKey\":\"k8mTZHLeu3yuz69FNFjuVQbtweZcdf1A\",\"batch\":[{\"timestamp\":\"2026-10-19T20:34:10.966Z\",\"integrations\":{\"Segment.io\":true,\"Repeater\":false},\"event\":\"Age Gate Viewed\",\"type\":\"track\",\"properties\":{\"state_name\":\"illinois\",\"dispensary_id\":\"7274\"},\"context\":{\"screen\":{\"width\":1366,\"height\":900},\""
+  }
+ ],
+ "iframes": [
+  "about:blank",
+  "about:blank"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [YES]",
+  "clicked [class*=\"age\"] button []"
+ ],
+ "status": 200,
+ "finalUrl": "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/",
+ "title": "Bloom Wellness Normal Northbrook Dispensary | Recreational Cannabis in Bloomington-Normal, IL",
+ "htmlBytes": 1372154,
+ "sigs": [
+  "jane",
+  "nextjs",
+  "cloudflare"
+ ],
+ "links": [
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=flower",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=pre-roll",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=vape",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=edible",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=edible%3ADrinks",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=extract",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=tincture",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=topical",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=edible%3ACapsules",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[category][]=cbd",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=gear",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[root_types][]=merch",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[brand][]=RYTHM",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[brand][]=Dogwalkers",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[brand][]=Beboe",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[brand][]=%26Shine",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[brand][]=Dr.%20Solomon%27s",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[brand][]=incredibles",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[brand][]=Good%20Green",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[feelings][]=Sleepy",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[feelings][]=Pain%20free",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[feelings][]=Blissful",
+  "https://risecannabis.com/dispensaries/illinois/bloom-wellness-normal-northbrook/7274/recreational-menu/?refinementList[activities][]=Get%20intimate"
+ ],
+ "textSample": "This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. To learn more, view the following link: Privacy PolicyTerms of Service Manage Preferences Locally Grown Goods — Shop latest deals Pick Up At Bloom Wellness Normal Northbrook (formerly Revolution) My Account SHOP EXPLORE REWARDS RESOURCES DISPENSARIES Search the site Deals Flower Vape Edibles Pre-Roll Concentrate Gear Drinks Tinctures Topicals Capsules CBD Merch Deals Flower Vape Edibles Pre-Roll Concentrate Gear Drinks Tinctures Topicals Capsules CBD Merch Dispensaries Illinois Bloom Wellness Normal Northbrook (formerly Revolution) 1 ",
+ "productHints": [],
+ "priceCount": 1
+}

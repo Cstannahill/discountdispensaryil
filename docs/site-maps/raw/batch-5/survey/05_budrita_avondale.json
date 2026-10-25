@@ -1,0 +1,181 @@
+{
+ "key": "05_budrita_avondale",
+ "url": "https://budandritas.com/menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://test-custom-tags.cnna.io/domains/YnVkYW5kcml0YXMuY29t.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/app-ids/ZDNlZGMzZGMtMjk1MS00NWUxLTg5YjItYzQ2OGEyMjRhYWEz.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://budandritas.com/wp-admin/admin-ajax.php?action=render_element",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 41752,
+   "post": "{\"post_id\":33254,\"element_id\":\"7003376\",\"page_id\":755}"
+  },
+  {
+   "u": "https://budandritas.com/wp-admin/admin-ajax.php?action=joint_ecommerce_nonce",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 46
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 110782,
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},"
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 443,
+   "post": "{\"query\":{\"bool\":{\"filter\":[{\"bool\":{\"should\":[{\"term\":{\"businessId\":\"6359\"}}]}},{\"bool\":{\"should\":[{\"term\":{\"menuType\":\"RECREATIONAL\"}}]}},{\"bool\":{\"must_not\":"
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-api/v1/geolocation",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 103
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/stores/closest?businessIds[]=6359&businessIds[]=6366&businessIds[]=6374&businessIds[]=6407&businessIds[]=6411&businessIds[]=6451&sort=distance&latitu",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 45239,
+   "arr": {
+    "n": 11,
+    "path": "$.businesses[].taxSettings",
+    "keys": [
+     "id",
+     "createdAt",
+     "updatedAt",
+     "businessId",
+     "menuType",
+     "taxType",
+     "applicableCategories",
+     "label",
+     "rate",
+     "addTaxToMenu",
+     "thcThresholdPercent",
+     "thcThresholdOperator"
+    ]
+   }
+  },
+  {
+   "u": "https://budandritas.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://budandritas.com/wp-json/age-gate/v3/check?age_gate%5Bage%5D=HFwF0WxzrtxTHKNqmsTzFA%3D%3D&age_gate%5Blang%5D=en&age_gate%5Bconfirm%5D=1",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 170
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 101533,
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},"
+  }
+ ],
+ "frames": [
+  "https://ad.ipredictive.com/d/track/event?upid=115766&cache_buster=1792441183&url=https%3A%2F%2Fbudandritas.com%2Fmenu%2F&val=undefined&tn=undefined&p1=&p2=gtm.js&itms=undefined_undefined_undefined_undefined_undefined&ps=0"
+ ],
+ "status": 200,
+ "age_gate_text": "Welcome! Yes, I am at least twenty-one (21) years of age or am otherwise a qualified patient. By clicking \"Yes\" and entering the website, I agree to be bound by the Terms of Service and Privacy Policy Yes No Skip to main content Coming soon to Sycamore, IL! Search SHOP ALL CATEGORIES LOCATIONS SPE",
+ "age_click": "Yes",
+ "final_url": "https://budandritas.com/menu/?sort=thc-high-to-low",
+ "title": "Cannabis Dispensary Menu - Bud & Rita's Dispensary IL",
+ "htmlLen": 647457,
+ "prices": 72,
+ "textHead": "Skip to main content Coming soon to Sycamore, IL! Search SHOP ALL CATEGORIES LOCATIONS SPECIALS BUDRISTA CLUB MORE Login / Register Shop All Specials Flower Pre-Rolls Vaporizers Edibles Concentrates",
+ "iframes": [
+  "https://ad.ipredictive.com/d/track/event?upid=115766&cache_buster=1792441183&url=https%3A%2F%2Fbudandritas.com%2Fmenu%2F&val=undefined&tn=undefined&p1=&p2=gtm.js&itms=undefined_undefined_undefined_undefined_undefined&ps=0"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": "950 results",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "budandritas.com",
+   207
+  ],
+  [
+   "joint-product-photos.s3.amazonaws.com",
+   19
+  ],
+  [
+   "maps.googleapis.com",
+   8
+  ],
+  [
+   "www.googletagmanager.com",
+   6
+  ],
+  [
+   "tags.cnna.io",
+   6
+  ],
+  [
+   "jointstorage.blob.core.windows.net",
+   6
+  ],
+  [
+   "analytics.google.com",
+   5
+  ],
+  [
+   "collector-azsx401.dmp.cnna.io",
+   3
+  ],
+  [
+   "test-custom-tags.cnna.io",
+   2
+  ],
+  [
+   "www.google.com",
+   2
+  ],
+  [
+   "stats.g.doubleclick.net",
+   2
+  ],
+  [
+   "static.cloudflareinsights.com",
+   1
+  ],
+  [
+   "analytics.wpmucdn.com",
+   1
+  ],
+  [
+   "analytics1.wpmudev.com",
+   1
+  ]
+ ]
+}

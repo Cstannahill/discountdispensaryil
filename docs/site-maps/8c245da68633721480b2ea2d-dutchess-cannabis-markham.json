@@ -1,0 +1,42 @@
+{
+  "store_id": "8c245da68633721480b2ea2d",
+  "name": "Dutchess Cannabis - Markham",
+  "slug": "dutchess-cannabis-markham",
+  "registry": {"address": "3063 W 159th St.", "city": "Markham", "state": "IL", "latitude": 41.59998, "longitude": -87.69299, "distance_miles": 84.9},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://dutchesscanna.com/stores/markham-illinois",
+  "menu_url": "https://dutchesscanna.com/stores/markham-illinois (Dutchie-hosted equivalent: https://dutchie.com/embedded-menu/6852f6d104a7407146d06d5c). Recreational menu.",
+  "platform": "dutchie",
+  "how_menu_reached": "Same Dutchie white-label storefront as the other Dutchess branches: dutchesscanna.com reverse-proxies /stores/markham-illinois to a Dutchie Next.js app. Menu is rendered first-party on the retailer host (no iframe, no plugin script). JSON-LD Store address '3063 W 159th St, Markham IL 60428' equals the registry address.",
+  "branch_selection": "URL slug markham-illinois; SSR HTML contains \"dispensaryId\":\"6852f6d104a7407146d06d5c\",\"chainId\":\"dutchess\"; all GraphQL variables carry that dispensaryId. getChainDispensaries lists id 6852f6d104a7407146d06d5c, name 'Dutchess IL - Markham', status open, phone (872) 871-5760, 3063 West 159th Street.",
+  "age_gate": "click-through (Dutchie 21+ overlay; auto-click works)",
+  "data_loading": {
+    "mechanism": "GraphQL over GET with Apollo persisted queries, same-origin /api-0/graphql on dutchesscanna.com",
+    "endpoints": [
+      "GET https://dutchesscanna.com/api-0/graphql?operationName=FilteredProducts&variables={includeEnterpriseSpecials:false,productsFilter:{dispensaryId:'6852f6d104a7407146d06d5c',pricingType:'rec',Status:'Active',types:[],sortBy:'popular',isDefaultSort:true,sortDirection:1,removeProductsBelowOptionThresholds:true,platformType:'ONLINE_MENU',...},page:N,perPage:100}&extensions={persistedQuery:{version:1,sha256Hash:'cfbda410fd502c77b467a174a666b809bec1e61c70ee7f75de1aff7440b59bf4'}}",
+      "GET .../api-0/graphql?operationName=MenuFiltersV2 | GetMenuSections | GetCollection | getChainDispensaries | GetAddressBasedDispensaryData"
+    ],
+    "notes": "Home view only fetches collection-scoped FilteredProducts (collectionId set); whole menu requires the unscoped query. With the default sort ('popular', ties) pages overlap: union misses products. With sortBy name|price|createdAt and isDefaultSort=false pages are stable and the union equals totalCount exactly (tested: all three sorts and removeProductsBelowOptionThresholds=false gave 514/514). Same-origin raw GET needs a Referer header (404 without); dutchie.com raw API is behind a Cloudflare challenge (not evaded)."
+  },
+  "paging": "page (0-based) + perPage (max 100). queryInfo.totalCount=514, totalPages=6 at perPage 100. Default popular sort: pages returned [100,99,99,99,100,14] and only 511 unique ids (3 short of declared total 514, duplicates across page boundaries). Deterministic sort: 514 unique = total. Category totals: Flower 175, Pre-Rolls 98, Edible 90, Vaporizers 65, Concentrate 25, Accessories 59 (sum 512 vs 514; the 2-item gap is the flower count wobble 174/175 plus unsorted/other types).",
+  "approx_product_count": 514,
+  "license_channels": "recreational (pricingType rec); medical prices via parallel arrays. Registry serves_medical=0.",
+  "blockers": ["none in Chrome", "raw HTTP to dutchie.com graphql = Cloudflare challenge (403), not evaded"],
+  "evidence": [
+    "dutchesscanna.com/stores/markham-illinois title 'Dutchess IL - Markham Cannabis Menu | Markham, IL', OPEN badge, 35 prices visible",
+    "store HTML: single dispensaryId 6852f6d104a7407146d06d5c; repo dutchie_page_endpoints() -> https://dutchie.com/embedded-menu/6852f6d104a7407146d06d5c",
+    "Paging experiment (in-page fetch of the page's own persisted query): popular sort 511 unique/514, name/price/createdAt 514/514",
+    "Resolver evidence for this store lists conflict results for oak-park, batavia, lynwood, morton-grove, plano, north-riverside pages and dutchie.com lynwood page, but never markham-illinois"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: 'Candidate website found; branch name/locality or street address still needs matching' (first url tried dutchesscanna.com/stores/oak-park-illinois, identity conflict 1142 Lake St)",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution attempt (job c2112fa0, 2026-10-18): unresolved, code LEAD_UNVERIFIED, grade D, 144.5s; 8 live_leads (sibling Dutchess branch pages + dutchie.com hubs); live_store_platforms tags dutchie from dutchesscanna.com pages",
+    "sample": null
+  },
+  "why_it_fails": "Branch-page selection, not extraction. The name search ('Dutchess Cannabis' + city) returned sibling-branch pages of the same chain (oak-park, batavia, lynwood, morton-grove, plano, north-riverside) and dutchie.com hubs. inspect_page() correctly marks each 'conflict' because the JSON-LD addresses differ from the registry's Markham address. The Markham page itself (/stores/markham-illinois, address identical to the registry) was never among the (max 8) search results, and there is no CONNECTORS entry for 'dutchess' (resolution #176: 'No retailer locator connector configured') that could walk the chain hub to the right branch slug. A later fetch would still be only borderline complete: default-sort replay loses ~3 of 514 products, so the declared total would not reconcile.",
+  "fix_idea": "(1) Chain connector ('dutchess' -> https://dutchesscanna.com/) or a Dutchie white-label locator using getChainDispensaries/branch slugs and matching by address+coordinates (shared with Lynwood, Oak Park, Maribis, Stashouse). Also have search results that are sibling branches of the same host trigger a hub walk instead of giving up (branch_slug_conflict already identifies them). (2) Dutchie replay: set isDefaultSort=false with sortBy=name (or price/createdAt) and removeProductsBelowOptionThresholds=false before paging, so unique ids == queryInfo.totalCount and the grade-A reconciliation can pass. Needs a regression fixture under tests/fixtures/.",
+  "root_cause_tag": "dutchie-whitelabel-chain-no-connector",
+  "confidence": "high"
+}

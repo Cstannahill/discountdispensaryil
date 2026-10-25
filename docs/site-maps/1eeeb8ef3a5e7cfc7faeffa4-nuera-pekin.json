@@ -1,0 +1,36 @@
+{
+ "store_id": "1eeeb8ef3a5e7cfc7faeffa4",
+ "name": "NuEra Pekin",
+ "address": "3249 Court St.",
+ "city": "Pekin",
+ "distance_miles": 38.727,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Jane 3050 rec; full menu 1524 items, complete. The sample_stores run gave 0 items: sampler bug (no identity_confidence merge).",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "NO_PRODUCTS",
+   "items": 0,
+   "declared": null,
+   "errors": [
+    "incomplete_jane_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "jane",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-19T05:22:31.497725+00:00"
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

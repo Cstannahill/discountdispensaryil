@@ -1,0 +1,76 @@
+{
+ "name": "Consume - Oakbrook Terrace",
+ "registry": {
+  "address": "1S130 Summit Ave.",
+  "city": "Oakbrook Terrace",
+  "state": "IL",
+  "latitude": 41.87746,
+  "longitude": -87.977249,
+  "distance_miles": 87.1
+ },
+ "operating_status": "open (iheartjane.com/stores/2453 titled \"Consume Oakbrook Terrace (REC)\", pickup 10am-8pm, 4.8 stars, 801 live products; retailer page shows 1S130 Summit Ave. Oakbrook Terrace IL 60181)",
+ "website": "https://consumecannabis.com/dispensaries/illinois-oakbrook-terrace/",
+ "menu_url": "https://consumecannabis.com/dispensaries/illinois-oakbrook-terrace/recreational-menu/ (recreational only; /illinois-oakbrook-terrace/medical-menu returns 404)",
+ "platform": "jane",
+ "how_menu_reached": "Retailer page embeds the Jane Boost \"frameless\" app directly in the page (no iframe): <script id=jane_frameless_embed_runtime_config> sets window.___JANE___.runtimeConfig {isFramelessEmbedMode:true, embedConfigId:3972, storeId:2453, partnerHostedPath:\"dispensaries/illinois-oakbrook-terrace/recreational-menu\"}. Same store is the Jane SPA https://www.iheartjane.com/stores/2453. Extraction is identical either way (providers/jane.py calls the dmerch API by store id, host of the human-facing page is irrelevant).",
+ "branch_selection": "Jane storeId 2453 in the page runtimeConfig (JSON key \"storeId\":2453) plus URL slug illinois-oakbrook-terrace. Every Consume page carries a site-wide nav that links ALL branch menus (antioch, carbondale, chicago, marion, oakbrook-terrace, st-charles for IL; plus AZ/OH).",
+ "age_gate": "runtimeConfig showAgeGate=true (Jane-managed in-page gate); not needed for the API read",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search API, public SDK key embedded in the iheartjane page as dmSdkApiKey)",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets?jdm_api_key=<public SDK key scraped from iheartjane.com/stores/<id> page>&jdm_source=monolith&jdm_version=2.25.0 body {appMode,janeDeviceId,searchFacets:[\"kind\"],storeId:<id>}",
+   "POST https://dmerch.iheartjane.com/v2/multi (placements[0].search_filter=kind:\"<kind>\", page_size 60, search_attributes [\"*\"], store_id) - returns nb_hits + products",
+   "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids batch of 60) - hydrates attributes beyond the first page"
+  ],
+  "notes": "Live facet counts 2026-10-19: flower 141, vape 237, edible 167, pre-roll 108, extract 101, gear 24, merch 11, tincture 8, topical 4 = 801. Records carry store_id 2453, store_types [\"recreational\"], _geoloc 41.8581,-87.9734."
+ },
+ "paging": "No page walking: the kind facet counts sum to the store total; each kind (<=1000 hits window) is one /v2/multi slice that must return exactly its facet count (larger kinds are split by brand facet); two independent full traversals must agree. Verified live 2026-10-19: facets and multi return 200 with a plain client.",
+ "approx_product_count": 801,
+ "license_channels": "recreational-only (store_types [\"recreational\"]; no medical menu page; registry serves_medical=0)",
+ "blockers": [
+  "none for dmerch (HTTP 200). api.iheartjane.com/api/v1/stores/<id> returns 403 but is not used."
+ ],
+ "evidence": [
+  "curl consumecannabis.com/dispensaries/illinois-oakbrook-terrace/recreational-menu/ -> 200, title \"Oakbrook Terrace Recreational Menu - Consume Cannabis\", runtimeConfig storeId 2453",
+  "dmerch facets/multi live 2026-10-19: nb_hits 801, store_id 2453, store_types recreational",
+  "Jane SPA (real Chrome probe) iheartjane.com/stores/2453: \"Consume Oakbrook Terrace (REC)\", 1S130 Summit Ave, Oakbrooke Terrace, pickup 10-8",
+  "Jane _geoloc is 1.35 mi from the registry point (registry coordinates 41.87746,-87.977249 are off; Jane/retailer point is right) -> accepted only via NEAR_MILES + identity_confidence name_locality",
+  "Consume IL siblings visible in the nav: Antioch (rec 5683), Carbondale, Chicago (rec 1469 / med 1468), Marion (med 1687 / rec 1688), St. Charles"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched \"Resolved 4 canonical menu target(s)\" (latest 2026-10-19T02:42Z; the same on 10-18T18:45Z and 10-18T10:33Z). 2026-10-17: unresolved \"No retailer locator connector configured for this brand\" (locators.CONNECTORS has no Consume entry, so discovery is Bing-search + page crawl).",
+  "saved_endpoints": "4 jane endpoints: 2453 recreational COMPLETE (own branch; last_success 2026-10-19T02:42Z, grade A, 863 items; 869 on 10-18) | 5683 recreational PARTIAL (Antioch) | 1687 medicinal PARTIAL (Marion) | 1688 recreational PARTIAL (Marion); the last three carry last_error incomplete_jane_menu \"Menu source belongs to a different location: 42.85 / 290.66 / 290.66 mi from the registry address\".",
+  "recent_attempts": "15 attempts since 2026-10-18T10:33Z. Old structured-tier jane attempts (10-18T10:33-10:36Z, older pipeline versions): \"locator.count: Frame was detached\" then BRANCH_MISMATCH \"Generic menu changed branch address\". Native jane tier since 10-18T18:45Z, every run: own 2453 = complete/A (869 then 863 items); each leaked sibling = partial/D UNKNOWN \"different location ... missing_traversal_evidence\". No recurring failure on the correct endpoint.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "jane",
+    "license": "medicinal",
+    "url": "https://consumecannabis.com/dispensaries/illinois-marion/medical-menu",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_jane_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 0.6
+   },
+   "fixed_wrapper": [
+    {
+     "endpoint": "jane 2453 rec",
+     "items": 858,
+     "declared": 858,
+     "complete": true
+    }
+   ],
+   "caveat": "sample_stores.py result is NOT reliable for Jane: it passes the raw endpoint row without resolution_json, so branch proof fails for platform points 0.35-5 mi from the registry point; see fixed result."
+  }
+ },
+ "why_it_fails": "Extraction of the correct branch is fine (complete, grade A, every run). Two reasons the store is not \"accepted and fresh\": (1) STALE. last_success 2026-10-19T02:42Z = 17.7 h old at 20:22Z (>12 h). FRESHNESS: storage.py (~L420) counts a store fresh only if an accepted endpoint succeeded <12 h ago. Newest attempt of any kind in the whole DB is 2026-10-19T05:24Z; investigated 2026-10-19T20:22Z. Scheduler (main.py create_app: APScheduler menu-sync 4/day at 00/06/12/18 America/Chicago, only while uvicorn runs) enqueues only live_settings.active_region_id = ad41b2e9 (\"Browser GPS\", 50 mi around 40.98,-89.05); the last scheduled job ran 05:00Z (00:00 CDT) and the 06:00/12:00 CDT slots never ran (server not up). This store is ~84 mi from the scheduled region centre (87 mi from the Minonk study centre), so the scheduler never refreshes it; its only attempts come from manual region-8f7772ca / targeted jobs (7c60df34 at 02:18Z). (2) WRONG-BRANCH ENDPOINTS ATTACHED. resolve_menu \"Resolved 4 targets\" = 1 correct + 3 sibling branches. Chain-nav links to /dispensaries/illinois-antioch|marion/... are crawled; adapters.py resolve_menu L262 `if has_menu_contract(observed) and verified` accepts native-provider endpoints with no branch_slug_conflict guard (the generic path at ~L286 has one); and site_discovery._slug_candidates (L218) only recognizes slugs after /locations|location|stores|store/ or ending in \"-<2-letter state>\", so \"/dispensaries/illinois-antioch/\" is invisible: I ran branch_slug_conflict(oakbrook_store, antioch_url) = False. inspect_page rates every Consume page identity \"name_locality\" (brand + the city listed in the nav), so siblings inherit verification. providers/jane.py then rejects them at fetch (distance guard), so no wrong offers are created, but the endpoints sit as partial and the real Antioch/Marion/Carbondale/St Charles stores (24520a60.., 064a9a7e.., d91bd5b8.., a83b7e25..) get no endpoints. Commit 459b386 (2026-10-18 22:31 CDT, service.py L176-182) now supersedes such wrong-location endpoints on the next fetch; the DB rows (last_attempt 02:42Z) predate it. NOTE for the lead: scripts/sample_stores.py returns 0 here because it passes the raw endpoint row without merged resolution_json (identity_confidence), so jane.py rejects the 1.35 mi offset; with the merged endpoint it returns complete (858).",
+ "fix_idea": "Shared: (a) extend site_discovery._slug_candidates to read \"/dispensaries/<slug>/\", \"<statename>-<city>\" and \"<statename>-dispensaries/<city>\" shapes (strip a leading full state name; treat another state name as a state conflict) so branch_slug_conflict sees chain-nav siblings; (b) apply branch_slug_conflict (unless identity is address-\"matched\") at adapters.py L262 for native-provider endpoints, as already done for generic; (c) add `(r\"^consume\\b\", \"https://consumecannabis.com/dispensaries/\")` to locators.CONNECTORS so discovery reads the branch address from the chain page instead of Bing; (d) operations: make the scheduled sync cover every region that holds retained accepted endpoints (or refresh by endpoint age), not just active_region_id; and keep uvicorn up for the 06:00/12:00/18:00 CDT slots.",
+ "root_cause_tag": "jane-ok-stale-outside-scheduled-region-and-sibling-endpoint-leak",
+ "confidence": "high",
+ "store_id": "80acdf899e64c8f96cd52ea9",
+ "slug": "consume-oakbrook-terrace",
+ "investigated_at": "2026-10-19"
+}

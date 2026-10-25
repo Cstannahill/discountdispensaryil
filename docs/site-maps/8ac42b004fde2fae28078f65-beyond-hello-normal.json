@@ -1,0 +1,80 @@
+{
+ "name": "Beyond/Hello  Normal",
+ "registry": {
+  "address": "501 W Northtown Rd",
+  "city": "Normal",
+  "state": "IL",
+  "latitude": 40.51675,
+  "longitude": -88.98333,
+  "distance_miles": 26.5
+ },
+ "operating_status": "open (iheartjane.com/stores/1634 \"BEYOND / HELLO - Normal (REC)\" and /1633 \"(MED)\", pickup 8am-9pm, 501 West Northtown Road, Normal)",
+ "website": "https://beyond-hello.com/illinois-dispensaries/normal/",
+ "menu_url": "REC https://beyond-hello.com/illinois-dispensaries/normal/adult-use-menu/ ; MED https://beyond-hello.com/illinois-dispensaries/normal/medical-menu/",
+ "platform": "jane",
+ "how_menu_reached": "Retailer page renders the Jane Boost frameless embed in-page (runtimeConfig storeId 1634 / 1633, partnerHostedPath illinois-dispensaries/normal/adult-use-menu | medical-menu, embedConfigId 4171 for rec); bhData lists direct_menu_rec = iheartjane.com/embed/stores/1634/menu and direct_menu = .../1633/menu.",
+ "branch_selection": "Jane storeId in runtimeConfig; retailer locator row \"Normal, IL\": 501 Northtown Road, Normal, IL 61761, lat/lng 40.5466216,-88.9767248, has_medical True, has_recreational True. Registry address \"501 W Northtown Rd\" matches via locators.addresses_match (directional tolerance).",
+ "age_gate": "runtimeConfig showAgeGate=false",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search API)",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets?jdm_api_key=<public SDK key scraped from iheartjane.com/stores/<id> page>&jdm_source=monolith&jdm_version=2.25.0 body {appMode,janeDeviceId,searchFacets:[\"kind\"],storeId:<id>}",
+   "POST https://dmerch.iheartjane.com/v2/multi (placements[0].search_filter=kind:\"<kind>\", page_size 60, search_attributes [\"*\"], store_id) - returns nb_hits + products",
+   "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids batch of 60) - hydrates attributes beyond the first page"
+  ],
+  "notes": "Live 2026-10-19: store 1634 rec = 905 products (edible 199, extract 106, flower 263, gear 11, pre-roll 136, topical 2, vape 188); store 1633 med = 911 products. Both _geoloc 40.5464,-89.0314 (3.25 mi from the registry point; retailer's own locator coords are 2.09 mi away - both registry and platform points are approximate)."
+ },
+ "paging": "No page walking: the kind facet counts sum to the store total; each kind (<=1000 hits window) is one /v2/multi slice that must return exactly its facet count (larger kinds are split by brand facet); two independent full traversals must agree. Verified live 2026-10-19: facets and multi return 200 with a plain client.",
+ "approx_product_count": 905,
+ "license_channels": "rec + med as separate Jane stores (1634 rec, 1633 med); both saved and COMPLETE",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "bhData Normal row: medical_menu /illinois-dispensaries/normal/medical-menu/, rec_menu .../adult-use-menu/, direct_menu 1633, direct_menu_rec 1634",
+  "Real-Chrome probe: iheartjane.com/stores/1634 \"BEYOND / HELLO - Normal (REC)\" 501 West Northtown Road; /1633 \"(MED)\"",
+  "dmerch live: 1634 nb_hits 905 recreational, 1633 nb_hits 911 medical"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched \"Resolved 2 canonical menu target(s)\" (2026-10-19T02:21Z, 10-18T08:10Z, 10-17T17:02Z); 10-17T13:11Z resolved only 1 target.",
+  "saved_endpoints": "2 jane endpoints, both COMPLETE: 1634 recreational (last_success 2026-10-19T05:12Z, 1025 items) and 1633 medicinal (05:12Z, 1031 items); identity_confidence name_locality; no wrong-branch endpoints.",
+  "recent_attempts": "15 attempts since 10-18T08:13Z: structured tier complete/A (1034-1048 items) then native tier complete/A on every run 10-18T18:42Z, 23:08Z, 10-19T02:21Z, 05:12Z (rec 1022-1031, med 1028-1037). Zero failures for this store.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "jane",
+    "license": "medicinal",
+    "url": "https://beyond-hello.com/illinois-dispensaries/normal/medical-menu/",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_jane_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 0.5
+   },
+   "fixed_wrapper": [
+    {
+     "endpoint": "jane 1634 rec",
+     "items": 1008,
+     "declared": 1008,
+     "complete": true
+    },
+    {
+     "endpoint": "jane 1633 med",
+     "items": 1014,
+     "declared": 1014,
+     "complete": true
+    }
+   ],
+   "caveat": "sample_stores.py result is NOT reliable for Jane: it passes the raw endpoint row without resolution_json, so branch proof fails for platform points 0.35-5 mi from the registry point; see fixed result."
+  }
+ },
+ "why_it_fails": "Not failing - complete/A on every run, both channels, no wrong-branch endpoints. Only \"not fresh\": last_success 2026-10-19T05:12Z = 15.2 h at 20:22Z. The store IS in the scheduled region (26.5 mi) and was refreshed by scheduled jobs 4c60697c / 29c4c77f / bb8983e6; it is stale because no scheduled slot ran after 00:00 CDT (06:00 and 12:00 CDT slots missing; uvicorn not running). FRESHNESS: storage.py (~L420) counts a store fresh only if an accepted endpoint succeeded <12 h ago. Newest attempt of any kind in the whole DB is 2026-10-19T05:24Z; investigated 2026-10-19T20:22Z. Scheduler (main.py create_app: APScheduler menu-sync 4/day at 00/06/12/18 America/Chicago, only while uvicorn runs) enqueues only live_settings.active_region_id = ad41b2e9 (\"Browser GPS\", 50 mi around 40.98,-89.05); the last scheduled job ran 05:00Z (00:00 CDT) and the 06:00/12:00 CDT slots never ran (server not up). Fragility to know: the Jane point is 3.25 mi from the registry point, so jane.py accepts it only through NEAR_MILES (5 mi) AND identity_confidence in (matched, name_locality) - exactly what scripts/sample_stores.py loses by passing the raw endpoint row (hence its false 0-item result).",
+ "fix_idea": "No store-specific change. (1) keep the scheduler running / run the missed slots; (2) make the sampler merge resolution_json; (3) optionally widen Jane proof with the retailer locator coordinates the resolver already read (bhData lat/lng 2.09 mi) rather than relying on the 3.25 mi Jane point.",
+ "root_cause_tag": "jane-ok-stale-no-scheduled-run",
+ "confidence": "high",
+ "store_id": "8ac42b004fde2fae28078f65",
+ "slug": "beyond-hello-normal",
+ "investigated_at": "2026-10-19"
+}

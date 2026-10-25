@@ -1,0 +1,30 @@
+{
+ "store_id": "60b7cc6004fdd896805aa6b9",
+ "name": "Verilife  Schaumburg",
+ "address": "150 N Barrington Rd",
+ "city": "Schaumburg",
+ "registry_distance_miles": 91.8,
+ "status": "lead_unverified",
+ "registry_flag": null,
+ "website": "verilife.com (chain site), Schaumburg (150 N Barrington Rd)",
+ "menu_platform": "Jane signature on site (unconfirmed)",
+ "how_menu_is_reached": "Same chain homepage as Arlington Heights; no IL store URL in the links.",
+ "branch_selection": "Not located. Chain homepage is the only lead.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Invisible reCAPTCHA on the homepage (unverified effect).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Only lead is the chain homepage (LEAD_UNVERIFIED). Branch identity cannot pass.",
+ "fix_idea": "Same Verilife chain connector as 5a31f814.",
+ "unverified": [
+  "IL store list location"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

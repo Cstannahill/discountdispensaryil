@@ -1,0 +1,40 @@
+{
+ "store_id": "30bc01e23ac51b5af8ed2ff1",
+ "name": "Bloc Dispensary Berwyn",
+ "address": "7122 Ogden Ave",
+ "city": "Berwyn",
+ "distance_miles": 90.563,
+ "accepted_menu": false,
+ "platform": "Dutchie (Bloc own site, Dutchie white-label)",
+ "menu_url": "https://store-berwyn.blocdispensary.com/stores/bloc-dispensary-berwyn",
+ "how_reached": "store-berwyn.blocdispensary.com; Dutchie GraphQL at /api-3/graphql",
+ "branch_selection": "Store slug bloc-dispensary-berwyn; dispensaryId 681e129d87236bb9b89d8329",
+ "products_load": "Dutchie FilteredProducts; paged with apollo-require-preflight header",
+ "paging": "5 pages of 100; totalCount 477 (verified in browser)",
+ "count_hint": "477 (queryInfo.totalCount)",
+ "blockers": "Paged calls return HTTP 400 CSRF unless content-type or apollo-require-preflight header is sent",
+ "why_it_fails": "Stored state: COUNT_MISMATCH, 292 products captured against a declared total of 477, so the store is partial and refused. Triage captured 395 with the sample cap. The paging replay probably does not reach all pages (hypothesis).",
+ "fix_idea": "Native Dutchie reader that sends the Apollo headers and pages to totalPages, reconciling against totalCount (477 here).",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "dutchie",
+     395
+    ]
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "dutchie",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

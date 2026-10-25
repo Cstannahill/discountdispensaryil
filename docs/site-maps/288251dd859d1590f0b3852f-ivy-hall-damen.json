@@ -1,0 +1,30 @@
+{
+ "store_id": "288251dd859d1590f0b3852f",
+ "name": "Ivy Hall - Damen",
+ "address": "1720 N Damen Ave.",
+ "city": "Chicago",
+ "distance_miles": 99.321,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Sweed 104 rec; accepted 1134 offers.",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "sweed",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-18T12:54:00.045753+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

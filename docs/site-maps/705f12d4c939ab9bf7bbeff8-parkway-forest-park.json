@@ -1,0 +1,30 @@
+{
+ "store_id": "705f12d4c939ab9bf7bbeff8",
+ "name": "Parkway Forest Park",
+ "address": "7432 Madison St.",
+ "city": "Forest Park",
+ "registry_distance_miles": 92.9,
+ "status": "no_lead",
+ "registry_flag": "closed",
+ "website": "parkwaydispensary.com (site menus are Tilton, IL)",
+ "menu_platform": "Sweed storefront (Tilton branch only)",
+ "how_menu_is_reached": "Shop links go to shop.parkwaydispensary.com/tilton/menu/...",
+ "branch_selection": "No Forest Park store on the site. Google lists 7432 Madison St as permanently closed.",
+ "product_loading": "n/a",
+ "product_count": "n/a",
+ "blockers": "None.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Registry row appears closed. The fallback search cannot prove a branch that is not open (NO_LEAD).",
+ "fix_idea": "Mark the registry row closed or drop it from the region rather than spend resolver attempts. Shared fix: registry refresh should read closed-status signals.",
+ "unverified": [
+  "closure date"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

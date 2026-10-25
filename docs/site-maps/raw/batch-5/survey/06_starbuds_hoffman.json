@@ -1,0 +1,213 @@
+{
+ "key": "06_starbuds_hoffman",
+ "url": "https://shop.starbuds.us/stores/hoffman-estates-dispensary/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://r.surfside.io/38f45/8d721/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 43606
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/domains/c2hvcC5zdGFyYnVkcy51cw==.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/domains/c2hvcC5zdGFyYnVkcy51cw==.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/app-ids/c3RhcmJ1ZHM=.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/app-ids/c3RhcmJ1ZHM=.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://shop.starbuds.us/wp-admin/admin-ajax.php?action=joint_ecommerce_nonce",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 46
+  },
+  {
+   "u": "https://api.moodiday.com/api/clients-partners",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1756,
+   "post": "{\"uuid\":\"nuUnLNGI2\",\"path\":\"/stores/hoffman-estates-dispensary/\"}"
+  },
+  {
+   "u": "https://shop.starbuds.us/wp-json/joint-api/v1/surfside-settings",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 175
+  },
+  {
+   "u": "https://shop.starbuds.us/wp-admin/admin-ajax.php?action=render_element",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 59330,
+   "post": "{\"post_id\":9492,\"element_id\":\"37539b3\"}"
+  },
+  {
+   "u": "https://shop.starbuds.us/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 171747,
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},"
+  },
+  {
+   "u": "https://shop.starbuds.us/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 391,
+   "post": "{\"query\":{\"bool\":{\"filter\":[{\"bool\":{\"should\":[{\"term\":{\"businessId\":\"5867\"}}]}},{\"bool\":{\"should\":[{\"term\":{\"menuType\":\"RECREATIONAL\"}}]}},{\"bool\":{\"must_not\":"
+  },
+  {
+   "u": "https://g.surfside.io/enrich",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 203
+  },
+  {
+   "u": "https://api.moodiday.com/api/retailer-products-matches",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 4495,
+   "post": "{\"retailer-products-list\":[\"b0b2361d-9b23-4cf3-b06c-3254f61adfa9\",\"919c5252-2dfa-44d9-9c2e-8cf63c6ca805\",\"c38ea3f9-28de-43a0-b3f4-0c760fd9ec47\",\"a41b64f8-0e1b-4"
+  },
+  {
+   "u": "https://api.moodiday.com/api/video-overlays",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 140,
+   "post": "{\"product-ids-list\":[2112,4480,4809,5046,4808,5686,4813,5652,4801,4885,4189,4806],\"client_uuid\":\"nuUnLNGI2\",\"state\":\"Illinois\",\"sku_mode\":true}"
+  },
+  {
+   "u": "https://api.moodiday.com/api/ratings-products",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2835,
+   "post": "{\"product-ids-list\":[2112,4480,4809,5046,4808,5686,4813,5652,4801,4885,4189,4806],\"client\":\"nuUnLNGI2\",\"sku_mode\":true}"
+  }
+ ],
+ "frames": [
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2962.7140239375494!2d-88.0791053!3d42.0493123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880faf4598600e99%3A0x64ac7ce0de8897f0!2s5%20Golf%20Rd%2C%20Hoffman%20Estates%2C%20IL%2060169!5e0!3m2!1sen!2sus!4v1729781104173!5m2!1sen!2sus"
+ ],
+ "status": 200,
+ "age_gate_text": "WELCOME Verify you are over 21 years of age? MONTH DAY YEAR REMEMBER ME Submit Star Buds IL: Hoffman Estates OPEN • Closes at 11:00PM | Pickup Opens store selection Login/Sign-Up Shop All Categories Deals Locations Resources Higher Rewards Merch SHOP ALL OFFERS BEST SELLERS FLOWER PRE-ROLLS VAPO",
+ "age_click": null,
+ "final_url": "https://shop.starbuds.us/stores/hoffman-estates-dispensary/",
+ "title": "Age Verification - Star Buds Cannabis Dispensaries",
+ "htmlLen": 839723,
+ "prices": 12,
+ "textHead": "WELCOME Verify you are over 21 years of age? MONTH DAY YEAR REMEMBER ME Submit Star Buds IL: Hoffman Estates OPEN • Closes at 11:00PM | Pickup Opens store selection Login/Sign-Up Shop All Categori",
+ "iframes": [
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2962.7140239375494!2d-88.0791053!3d42.0493123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880faf4598600e99%3A0x64ac7ce0de8897f0!2s5%20Golf%20Rd%2C%20Hoffman%20Estates%2C%20IL%2060169!5e0!3m2!1sen!2sus!4v1729781104173!5m2!1sen!2sus",
+  "about:blank"
+ ],
+ "nextdata": false,
+ "links": [
+  "https://shop.starbuds.us/loyalty-sign-in/",
+  "https://shop.starbuds.us/loyalty-sign-up/",
+  "https://shop.starbuds.us/",
+  "https://shop.starbuds.us/menu/",
+  "https://shop.starbuds.us/menu/",
+  "https://shop.starbuds.us/categories/flower/",
+  "https://shop.starbuds.us/categories/pre-rolls/",
+  "https://shop.starbuds.us/categories/vaporizers/",
+  "https://shop.starbuds.us/categories/edibles/",
+  "https://shop.starbuds.us/categories/concentrates/",
+  "https://shop.starbuds.us/categories/topicals/",
+  "https://shop.starbuds.us/categories/tinctures/"
+ ],
+ "count_text": "20 results",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "shop.starbuds.us",
+   171
+  ],
+  [
+   "maps.googleapis.com",
+   17
+  ],
+  [
+   "tags.cnna.io",
+   8
+  ],
+  [
+   "cdn.surfside.io",
+   6
+  ],
+  [
+   "test-custom-tags.cnna.io",
+   4
+  ],
+  [
+   "analytics.google.com",
+   4
+  ],
+  [
+   "api.moodiday.com",
+   4
+  ],
+  [
+   "www.googletagmanager.com",
+   3
+  ],
+  [
+   "use.typekit.net",
+   3
+  ],
+  [
+   "www.google-analytics.com",
+   3
+  ],
+  [
+   "fonts.googleapis.com",
+   3
+  ],
+  [
+   "cdnjs.cloudflare.com",
+   3
+  ],
+  [
+   "p.typekit.net",
+   2
+  ],
+  [
+   "www.google.com",
+   2
+  ]
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "store_id": "699f21e5416e6e23755a6915",
+ "name": "Seven Point - Danville",
+ "address": "380 Eastgate Dr.",
+ "city": "Danville",
+ "registry_distance_miles": 95.1,
+ "status": "partial",
+ "registry_flag": null,
+ "website": "sevenpoint.org, Danville (380 Eastgate Dr)",
+ "menu_platform": "First-party GraphQL storefront (sevenpoint.org/api-2/graphql)",
+ "how_menu_is_reached": "/menu/ 301s to /stores/seven-point-danville. The store page calls api-2/graphql GetSpecialMenuCards with dispensaryId 668557c0d26dfd9149f906cf, menuType REC.",
+ "branch_selection": "dispensaryId is on the store page; registry Danville matches.",
+ "product_loading": "First-party GraphQL. The product list operation was not captured in this pass.",
+ "product_count": "Baseline generic partial COUNT_MISMATCH at 973 items. Sampler 482 items.",
+ "blockers": "Cookie banner (accepted); age gate (Yes, I'm 21).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "structured",
+   "provider": "generic",
+   "license": "recreational",
+   "status": "partial",
+   "code": "COUNT_MISMATCH",
+   "grade": "C",
+   "items": 973,
+   "at": "2026-10-18T12:25:59.630037+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "generic",
+   "items": 482,
+   "declared": null,
+   "errors": [
+    "incomplete_generic_menu"
+   ],
+   "url": "https://www.sevenpoint.org/menu/"
+  }
+ },
+ "why_it_fails": "Resolver treats it as generic, not as a known platform, so there is no declared total and the attempt fails COUNT_MISMATCH.",
+ "fix_idea": "Recognize the sevenpoint.org api-2/graphql storefront by its dispensaryId, capture the product list operation and its total, then page it (as with the Dutchie replay in DUTCHIE_DIAGNOSIS).",
+ "unverified": [
+  "product list operation name",
+  "total field"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

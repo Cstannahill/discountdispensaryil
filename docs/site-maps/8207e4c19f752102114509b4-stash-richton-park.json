@@ -1,0 +1,67 @@
+{
+ "store_id": "8207e4c19f752102114509b4",
+ "name": "Stash - Richton Park",
+ "slug": "stash-richton-park",
+ "registry": {
+  "address": "22214 Governors Hwy",
+  "city": "Richton Park",
+  "state": "IL",
+  "latitude": 41.4856,
+  "longitude": -87.71493,
+  "distance_miles": 79.7
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://www.stashdispensaries.com/",
+ "menu_url": "https://www.stashdispensaries.com/shop (after choosing 'Stash - Richton Park' in the pickup-location picker; stores Peru, Orland Hills and Richton Park are listed, all ADULT, 'OPEN until 10:00 PM CT')",
+ "platform": "treez",
+ "how_menu_reached": "Treez 'Ecommerce' Next.js app (App Router / RSC, gapcommerce) served first-party at www.stashdispensaries.com. /shop 307s to /age-gate?returnUrl=%2Fshop (click '21+'); a modal 'How do you want to shop? Select a pickup location' sets cookies treez_selectedStoreId, treez_fulfillmentType, treez_terms_accepted, treez_store_terms. Product list is rendered from client-side search calls to the Treez GAP commerce search host. Prismic CMS iframe is only a toolbar.",
+ "branch_selection": "treez_selectedStoreId cookie + request header entity-id = store UUID. Richton Park = 03aba1e0-7fda-41de-b686-8deee9b43ded (equals the saved provider_store_id). The page first calls the search with a default store (entity-id e757fb7f-1559-4e85-bf65-0095a2c13e12) and re-queries after selection. org-id header 4e744e4d-e1eb-43f5-826f-867e1e702a0d is shared across the Stash chain.",
+ "age_gate": "click-through (/age-gate page, button '21+'); plus a store-picker modal that must be answered",
+ "data_loading": {
+  "mechanism": "REST POST to an Elasticsearch-style search API (Treez GAP commerce); UI pagination is client-side page links (?page=N) + RSC prefetches",
+  "endpoints": [
+   "POST https://search-kyrok9udlk.gapcommerceapi.com/product/search  headers: entity-id=<store uuid>, org-id, x-api-key (public key embedded in the page; value not recorded), content-type json. Body: {from,size,query:{bool:{must:[range customMinPrice 0.2..500000, isAboveThreshold true, isHideFromMenu false]}},collapse:{field:'catalogParentId',inner_hits:{name:'siblings',size:5,_source:[...]}}} (the UI form; size 10 or 20) plus aggs facets/productsCount",
+   "POST same URL, body with customProductGroups match, size 300 (promotion product groups)",
+   "GET https://www.stashdispensaries.com/shop?returnUrl=%2Fshop&page=N (and ?_rsc=... prefetches for every product link on the page)"
+  ],
+  "notes": "This POST URL is already in backend/network.py _READ_ONLY_SEARCH_POSTS with headers entity-id/org-id/x-api-key (it was added for exactly this host). The UI query is COLLAPSED by catalogParentId with sibling inner_hits capped at 5 per group, hence the adapter's detail-page expansion. Replaying the POST in page context WITHOUT collapse (size 100, sort [{_id:'asc'}]) returned every variant with productData (pricing/discounts/inventory), customSize, amount, unitOfMeasurement, category, subtype, brand, isAboveThreshold; sorts on id.keyword fail (no mapping) and no sort / '_doc' give unstable pages (duplicates). size=1000 failed at the network level, so keep size <= 100."
+ },
+ "paging": "Observed UI: 'Showing 1-20 of 1362 results' (collapsed parents, aggregation productsCount 1363), ~69 pages of 20. Uncollapsed raw hits.total = 1425-1426 (relation eq; drifts by a few between reads - the pipeline once observed 1437 variants). Direct replay: from=0..1400 step 100 with sort [{_id:'asc'}] -> 15 requests, 1426 unique ids = hits.total 1426 (exact). Without a sort the same 15 pages produce only 1380 unique (score ties) so the sort is mandatory.",
+ "approx_product_count": 1426,
+ "license_channels": "recreational ('ADULT' customer type on every pickup location); no separate medical menu observed",
+ "blockers": [
+  "none (no challenge); location picker and age gate must be answered",
+  "Next.js RSC prefetch fan-out makes the browser traversal very request-heavy"
+ ],
+ "evidence": [
+  "Probe text: 'Stash - Richton Park - Richton Park, IL 22214 Governors Hwy ADULT OPEN until 10:00 PM CT'",
+  "After SHOP PICKUP on Richton Park: 'PICKUP Stash - Richton Park 22214 Governors Hwy, Richton Park, IL 60471 ... Showing 1-20 of 1362 results'",
+  "Search POST with entity-id 03aba1e0-7fda-41de-b686-8deee9b43ded returned hits.total 1425 (UI form) and 1426 (uncollapsed replay), relation eq",
+  "live_endpoints.last_error: incomplete_treez_menu 'Browser response capture budget exceeded' (1437 variants observed in 376 s)"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched: 'Resolved 1 canonical menu target(s)' -> treez https://www.stashdispensaries.com/shop provider_store_id 03aba1e0-7fda-41de-b686-8deee9b43ded (earlier resolution: blocked 'Retailer requires age/terms confirmation')",
+  "saved_endpoints": "treez / https://www.stashdispensaries.com/shop / recreational / status partial",
+  "recent_attempts": "menu attempt tier native provider treez: partial, code UNKNOWN, grade C, 1437 items, 376 s: 'Browser response capture budget exceeded'",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "treez",
+    "license": "recreational",
+    "url": "https://www.stashdispensaries.com/shop",
+    "items": 20,
+    "declared_total": null,
+    "errors": [
+     "incomplete_treez_menu"
+    ],
+    "verdict": "SAMPLE_PRODUCTS",
+    "seconds": 11.5
+   }
+  }
+ },
+ "why_it_fails": "Resolution is right; the traversal is the problem. providers/treez.py fetch() walks the catalog through the browser UI: it follows 'Go to next page' links over ~69 pages of 20 collapsed parents, expands every group whose sibling inner_hits are truncated (>5 variants) by opening product detail pages, and needs 2-3 verification passes (verification_passes=3) of unchanged counts. Each Next.js page triggers many RSC prefetch fetches, so the 4000-response browser capture budget (see docs/PHASE3_PHILI_EXPERIMENT.md / browser_render) is exhausted after about 1437 variants, ending as partial grade C. Even without the budget, the raw total drifts (1425 vs 1426 vs 1437 observed) while paging, so the 'count_complete and unchanged fingerprint' rule is hard to satisfy on a 69-page walk.",
+ "fix_idea": "Shared Treez fix: after the single browser render that clears the age gate and picks the store, capture the search POST's headers (entity-id, org-id, x-api-key) and replay the allowlisted POST from the page context with an uncollapsed body (same must-filters, no collapse), size 100, sort [{_id:'asc'}] and from stepping by 100: ~15 requests, deterministic, siblings come back as separate hits so no detail-page expansion. Reconcile unique ids against hits.total (relation 'eq') on two passes. Keeps the existing normalize() (it already reads productData.pricing/discounts/inventory). Applies to every store on the Stash org (Peru, Orland Hills) and any other Treez Ecommerce site using gapcommerceapi.com. Also consider reducing prefetch noise by blocking _rsc requests in the browser worker for treez endpoints.",
+ "root_cause_tag": "treez-browser-traversal-budget-exceeded",
+ "confidence": "high"
+}

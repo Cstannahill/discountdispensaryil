@@ -1,0 +1,150 @@
+{
+ "key": "57a13646",
+ "url": "https://www.windycitycannabis.com/shop/recreational",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 404,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.windycitycannabis.com/shop/recreational",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://www.windycitycannabis.com/wp-json/user-ip/v1/data?_t=1792442011898&_r=zzk7o0mob",
+   "size": 558,
+   "sample": "{\"status\":\"success\",\"continent\":\"North America\",\"country\":\"United States\",\"countryCode\":\"US\",\"region\":\"IL\",\"regionName\":\"Illinois\",\"city\":\"Minonk\",\"zip\":\"61760\",\"lat\":40.8974,\"lon\":-89.0321,\"timezone\":\"America\\/Chicago\",\"currency\":\"USD\",\"isp\":\"Metro Communications Company\",\"mobile\":false,\"proxy\":fal"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-K1BTGL5EVC&gtm=45je6af0v898147276za20ozb9209851478zd9209851478xf1&_p=1792442011697&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGA&cid=490309321.1792442013&frm=0&pscdl=noapi&rcb=19&sr=1366x900&uaa=x86&uab=64&uaf",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 403,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://sr-client-cfg.amplitude.com/config/97a91cf0ec0048700dbd50667058a904?config_group=browser",
+   "size": 30,
+   "sample": "{\"errors\":[\"Invalid API key\"]}"
+  },
+  {
+   "m": "POST",
+   "s": 400,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://api2.amplitude.com/2/httpapi",
+   "size": 72,
+   "sample": "{\"code\":400,\"error\":\"Invalid API key: 97a91cf0ec0048700dbd50667058a904\"}",
+   "post": "{\"api_key\":\"97a91cf0ec0048700dbd50667058a904\",\"events\":[{\"device_id\":\"af351022-8b87-42dd-8f30-b0565c1cb927\",\"session_id\":1792442014252,\"time\":1792442014257,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"35a0c124-a311-468d-80b5-cf1954120ed3\",\"event_type\":\"$identify\",\"user_properties\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://app.termly.io/api/v1/snippets/websites/c68d65ab-4875-4135-a8ae-d50fb559106b",
+   "size": 32741,
+   "sample": "{\"consents_count\":15746,\"documents\":[{\"name\":\"Cookie Policy\",\"accepted_template_version\":8075,\"uuid\":\"2f87fc4c-e8d4-40b6-b430-d70a39ed2d93\",\"website_id\":2789633,\"document_version\":125,\"template_type\":\"Cookie\",\"total_published_count\":98,\"published_document_version_id\":98050610}],\"dsar_settings\":{\"nee"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://app.termly.io/api/v1/ip",
+   "size": 145,
+   "sample": "{\"request\":\"209.113.172.235\",\"ip\":\"209.113.172.235\",\"country_code2\":\"US\",\"country_name\":\"United States\",\"continent_code\":\"NA\",\"state\":\"Illinois\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://app.termly.io/api/v1/snippets/websites/c68d65ab-4875-4135-a8ae-d50fb559106b/cookies?lang=en",
+   "size": 3111,
+   "sample": "{\"cookies\":{\"unclassified\":[{\"category\":\"unclassified\",\"domain\":\"www.windycitycannabis.com\",\"expire\":\"Persistent\",\"purpose\":\"\",\"name\":\"AMP_unsent_97a91cf0ec\",\"service_policy_link\":null,\"tracker_type\":\"html_local_storage\"},{\"category\":\"unclassified\",\"domain\":\"www.windycitycannabis.com\",\"expire\":\"Pers"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://app.termly.io/resource-blocker/i18n/en.json?v=f1cf54b",
+   "size": 13919,
+   "sample": "{\n  \"advanced-gcm-defaults-disclosure.disclosure\": \"Default Google Consent Mode settings currently granted: {consentList}. Updating your preferences below will override these default settings.\",\n  \"back-button.back\": \"Back\",\n  \"blocked-content.enable\": \"Enable\",\n  \"blocked-content.notice\": \"This con"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "",
+   "u": "https://ad.ipredictive.com/d/track/event?upid=117085&cache_buster=1792442016&url=https%3A%2F%2Fwww.windycitycannabis.com%2Fshop%2Frecreational&val=%5Bsales_%E2%80%8Bamount%5D&tn=%5Btransaction_%E2%80%8Bid%5D&p1=%5Blocation%5D&p2=%5Bcity%5D&p3=%5Bevent_name%5D&",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 201,
+   "t": "xhr",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://app.termly.io/api/v1/snippets/websites/c68d65ab-4875-4135-a8ae-d50fb559106b/statistics",
+   "size": 3,
+   "sample": "201",
+   "post": "{\"event_types\":[\"unique_user_view\",\"page_view\"],\"website_uuid\":\"c68d65ab-4875-4135-a8ae-d50fb559106b\",\"impression_limit\":false}"
+  }
+ ],
+ "iframes": [
+  "https://ad.ipredictive.com/d/track/event?upid=117085&cache_buster=1792442016&url=https%3A%2F%2Fwww.windycitycannabis.com%2Fshop%2Frecreational&val=%5Bsales_%E2%80%8Bamount%5D&tn=%5Btransaction_%E2%80%8Bid%5D&p1=%5Blocation%5D&p2=%5Bcity%5D&p3=%5Bevent_name%5D&p4=%5Bip_address%5D&ps=0"
+ ],
+ "notes": [],
+ "status": 404,
+ "finalUrl": "https://www.windycitycannabis.com/shop/recreational",
+ "title": "Page not found - Windy City Cannabis",
+ "htmlBytes": 153260,
+ "sigs": [
+  "jane",
+  "wordpress"
+ ],
+ "links": [
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/",
+  "https://www.windycitycannabis.com/locations/",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bpath%5D=specials",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=flower",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=edibles",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=concentrates",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=vaporizers",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=pre-rolls",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=tinctures",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=topicals",
+  "https://www.windycitycannabis.com/locations/carpentersville/carpentersville-recreational/?dtche%5Bcategory%5D=accessories",
+  "https://www.windycitycannabis.com/cannabis-products/flower/",
+  "https://www.windycitycannabis.com/cannabis-products/edibles/",
+  "https://www.windycitycannabis.com/cannabis-products/concentrates/",
+  "https://www.windycitycannabis.com/cannabis-products/vaporizers/",
+  "https://www.windycitycannabis.com/cannabis-products/pre-rolls/",
+  "https://www.windycitycannabis.com/cannabis-products/tinctures/",
+  "https://www.windycitycannabis.com/cannabis-products/topicals/",
+  "https://www.windycitycannabis.com/cannabis-products/non-cannabis/",
+  "https://www.windycitycannabis.com/medical-use-menus/",
+  "https://www.windycitycannabis.com/recreational-use-menus/",
+  "https://www.windycitycannabis.com/locations/litchfield/",
+  "https://www.windycitycannabis.com/locations/homewood/",
+  "https://www.windycitycannabis.com/locations/posen/",
+  "https://www.windycitycannabis.com/locations/carpentersville/"
+ ],
+ "textSample": "We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to improve user experience and analyze website traffic. By clicking “Accept,” you agree to our website's cookie use as described in our Cookie Policy. You can change your cookie settings at any time by clicking “Preferences.” Preferences Decline Accept JOIN & EARN REWARDS MED CARD INFO Shop Specials Med Card Assistance Our Locations FAQ Is This Location Correct? Yes, this is my locationChange You're shopping recreational menu at Homewood, IL Shop Now 404 Sorry, the content you’re looking for doesn’t exist. Either it was removed, or you mistyped the link. Go to Homepage About Us Jobs Conta",
+ "productHints": [],
+ "priceCount": 0
+}

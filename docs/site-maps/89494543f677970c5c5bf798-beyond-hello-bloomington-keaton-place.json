@@ -1,0 +1,64 @@
+{
+ "name": "Beyond Hello  Bloomington Keaton Place",
+ "registry": {
+  "address": "118 Keaton Place",
+  "city": "Bloomington",
+  "state": "IL",
+  "latitude": 40.5013,
+  "longitude": -88.95216,
+  "distance_miles": 27.8
+ },
+ "operating_status": "open (iheartjane.com/stores/2754 \"BEYOND / HELLO - Bloomington (REC)\", pickup 9am-9pm, 4.8 stars, 899 live products; opened Jan 2021 per Pantagraph/WGLT)",
+ "website": "https://beyond-hello.com/illinois-dispensaries/bloomington/",
+ "menu_url": "https://beyond-hello.com/illinois-dispensaries/bloomington/adult-use-menu/ (recreational only; /bloomington/medical-menu/ returns 404). Alt embed https://www.iheartjane.com/embed/stores/2754/menu",
+ "platform": "jane",
+ "how_menu_reached": "Retailer page (WordPress, locator data in `var bhData`) renders the Jane Boost frameless embed in-page (runtimeConfig storeId 2754, partnerHostedPath illinois-dispensaries/bloomington/adult-use-menu, embedConfigId 4173); bhData also lists direct_menu_rec = iheartjane.com/embed/stores/2754/menu.",
+ "branch_selection": "Jane storeId 2754 in runtimeConfig and in bhData (stores[].direct_menu_rec). Retailer locator row \"Bloomington, IL\": address 1515 N Veterans Pkwy, lat/lng 40.5010665,-88.9522343, has_medical False, has_recreational True, menu_provider jane.",
+ "age_gate": "runtimeConfig showAgeGate=false",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search API)",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets?jdm_api_key=<public SDK key scraped from iheartjane.com/stores/<id> page>&jdm_source=monolith&jdm_version=2.25.0 body {appMode,janeDeviceId,searchFacets:[\"kind\"],storeId:<id>}",
+   "POST https://dmerch.iheartjane.com/v2/multi (placements[0].search_filter=kind:\"<kind>\", page_size 60, search_attributes [\"*\"], store_id) - returns nb_hits + products",
+   "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids batch of 60) - hydrates attributes beyond the first page"
+  ],
+  "notes": "Live 2026-10-19 kind facets: edible 218, extract 99, flower 243, gear 16, pre-roll 137, topical 2, vape 184 = 899 products (last accepted snapshot: 994 expanded variants). Records: store_id 2754, store_types [\"recreational\"], _geoloc 40.50107,-88.95223. Jane id 2755 returns an identical-looking catalog (899, same geoloc) but has no public Jane store page (redirects to Jane home); the retailer does not use it."
+ },
+ "paging": "No page walking: the kind facet counts sum to the store total; each kind (<=1000 hits window) is one /v2/multi slice that must return exactly its facet count (larger kinds are split by brand facet); two independent full traversals must agree. Verified live 2026-10-19: facets and multi return 200 with a plain client.",
+ "approx_product_count": 899,
+ "license_channels": "recreational-only (retailer has_medical=False, medical-menu URL 404, Jane store_types recreational). Registry says serves_medical=1 - registry/medical flag disagrees with the retailer; do not invent a medical menu.",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "Address alias: registry \"118 Keaton Place\" vs retailer/Jane \"1515 N(orth) Veterans Parkway\". Pantagraph/WGLT (Jan 2021) say \"Beyond/Hello Bloomington, 118 Keaton Place, off Veterans' Parkway ... old Slim Chickens building\"; Google results for \"118 Keaton Place\" return Beyond/Hello Bloomington. Jane _geoloc is 0.02 mi from the registry coordinate -> same site.",
+  "bhData Bloomington row has_medical False; /illinois-dispensaries/bloomington/medical-menu/ -> 404",
+  "dmerch live: nb_hits 899, store_types recreational",
+  "docs/JANE_SOURCE_RESEARCH.md recorded this address/service conflict; jane.py now proves the branch via platform coordinates instead"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched \"Resolved 1 canonical menu target(s)\" every run since 2026-10-17T17:05Z (latest 10-19T02:22Z). Before that 2026-10-17T08:00-13:13Z: ~19 unresolved rows (\"Retailer locator did not expose a corroborated branch/menu link\", \"Candidate website found; branch name/locality or street address still needs matching\").",
+  "saved_endpoints": "1 jane endpoint: 2754 recreational COMPLETE (last_success 2026-10-19T05:16Z, 994 items, grade A). identity_confidence = name_locality (not address).",
+  "recent_attempts": "10 attempts since 10-18T08:18Z: structured tier BRANCH_MISMATCH \"Generic menu changed branch address; selected store no longer matches\" (10-18T08:19Z, 17:22Z, older pipeline) then native jane tier all complete/A: 988 (10-18T18:42Z), 991 (23:13Z), 994 (10-19T02:22Z), 994 (05:16Z). No failure with the current engine.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "jane",
+    "license": "recreational",
+    "url": "https://beyond-hello.com/illinois-dispensaries/bloomington/adult-use-menu/",
+    "items": 978,
+    "declared_total": 978,
+    "errors": [],
+    "verdict": "SAMPLE_PRODUCTS",
+    "seconds": 4.4
+   }
+  }
+ },
+ "why_it_fails": "Not failing: native jane, complete/A on every run since 10-18T18:42Z. In the scheduler region (27.8 mi from centre) and refreshed by scheduled jobs 4c60697c (17:00Z), 29c4c77f (23:00Z), bb8983e6 (05:00Z), last success 05:16Z = 15.1 h at 20:22Z, i.e. stale only because no scheduled slot has run since 00:00 CDT (06:00/12:00 CDT missing; those jobs end with status \"partial\" after 24-36 min). Latent fragility: the registry address \"118 Keaton Place\" never matches the retailer locator's \"1515 N Veterans Pkwy\"; locators._directory_candidates compares street addresses only (it ignores the bhData lat/lng), so the chain connector path alone yields identity_conflict/no URL (\"Retailer branch in the same city has a different street address\"). The store resolves today only because a crawled branch page gets name_locality identity and jane.py then proves the branch from the Jane point (0.02 mi). (confidence medium on exactly which seed path produced the 10-17T17:05Z match; verifier leads for this store were added later, 10-18T23:42Z.)",
+ "fix_idea": "Shared: in locators._directory_candidates (and the bhData-style embedded store lists) pin a branch whose lat/lng is within jane.MAX_MILES of the registry point as \"matched\" (the same _pinned() rule _known_menu_candidates already uses for Sweed directories) so address aliases (shopping-centre name vs street number) resolve without the verifier. Operationally: refresh on the missed slots (keep uvicorn running).",
+ "root_cause_tag": "jane-ok-stale-no-scheduled-run-address-alias",
+ "confidence": "high",
+ "store_id": "89494543f677970c5c5bf798",
+ "slug": "beyond-hello-bloomington-keaton-place",
+ "investigated_at": "2026-10-19"
+}

@@ -1,0 +1,43 @@
+{
+  "store_id": "8623a103fe4b8450ce59e961",
+  "name": "Dutchess - Lynwood",
+  "slug": "dutchess-lynwood",
+  "registry": {"address": "20513 Torrence Ave", "city": "Lynwood", "state": "IL", "latitude": 41.52297, "longitude": -87.55769, "distance_miles": 88.1},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://dutchesscanna.com/stores/lynwood-illinois",
+  "menu_url": "https://dutchesscanna.com/stores/lynwood-illinois (Dutchie-hosted equivalent: https://dutchie.com/embedded-menu/6852f6b45f9646fe0127f4e0 and https://dutchie.com/dispensary/lynwood-illinois). Recreational menu; pricingType=rec toggle in the UI.",
+  "platform": "dutchie",
+  "how_menu_reached": "Dutchie 'Ecommerce Pro' white-label storefront: the retailer domain dutchesscanna.com (WordPress marketing site) reverse-proxies /stores/<slug>-illinois to a Dutchie Next.js app (assets2.dutchie.com chunks, __NEXT_DATA__ with Apollo state). Not an iframe, not a plugin script, not a dutchie.com link: the menu is rendered first-party on the retailer host. JSON-LD @type Store on the page carries the branch street address. The same chain site serves all Dutchess branches (chainId 'dutchess').",
+  "branch_selection": "URL path slug (/stores/lynwood-illinois) fixes the branch. The SSR HTML embeds \"dispensaryId\":\"6852f6b45f9646fe0127f4e0\" and \"chainId\":\"dutchess\"; every GraphQL call carries that dispensaryId in variables. Chain list (query getChainDispensaries, dispensaryFilter chain=dutchess) returns all branches with id, cName slug, address, status=open.",
+  "age_gate": "click-through (Dutchie 'yes/21+' overlay; probe auto-click works). Menu GraphQL responded 200 without any login.",
+  "data_loading": {
+    "mechanism": "GraphQL over GET with Apollo persisted queries, same-origin on the retailer host (and identically on dutchie.com/api-0/graphql for the embedded-menu form)",
+    "endpoints": [
+      "GET https://dutchesscanna.com/api-0/graphql?operationName=FilteredProducts&variables={includeEnterpriseSpecials:false,productsFilter:{dispensaryId:'6852f6b45f9646fe0127f4e0',pricingType:'rec',strainTypes:[],subcategories:[],Status:'Active',types:[],useCache:false,isDefaultSort:true,sortBy:'popular',sortDirection:1,bypassOnlineThresholds:false,ignoreQuantityThresholds:false,isKioskMenu:false,removeProductsBelowOptionThresholds:true,platformType:'ONLINE_MENU',preOrderType:null},page:0,perPage:25}&extensions={persistedQuery:{version:1,sha256Hash:'cfbda410fd502c77b467a174a666b809bec1e61c70ee7f75de1aff7440b59bf4'}}",
+      "GET .../api-0/graphql?operationName=MenuFiltersV2 | GetMenuSections | GetCollectionsNavigation | GetCollection | GetAddressBasedDispensaryData (taxes, delivery) | getChainDispensaries | GetSpecialMenuCards | PriceRangeFilterSettings"
+    ],
+    "notes": "The home view only issues collection-scoped FilteredProducts (collectionId set, 25 per page, e.g. 'Royal Deals'); the whole menu is the same query with no collectionId/types. Product shape: Name, Options[] (sizes like '3.5g'), recPrices[], recSpecialPrices[], medicalPrices[], type, subcategory, THCContent.range, Status, weight, isBelowThreshold. API version number in the path differs per white-label host (dutchess api-0, maribis/stashouse api-3); persisted-query hash was identical (cfbda410...) on all of them. Raw (non-browser) HTTP: same-origin GET without a Referer returned a 404 WordPress page; with Referer https://dutchesscanna.com/stores/... it returned the JSON (200). Direct https://dutchie.com/api-3/graphql from curl hit a Cloudflare 'Just a moment' 403 (browser context is fine). No challenge seen in Chrome."
+  },
+  "paging": "page (0-based) + perPage; perPage is capped at 100 (500 returned 98-100). queryInfo.totalCount / totalPages declared on every response. Measured on the whole menu (no filter): totalCount 727, 8 pages at perPage 100 (7x100 + 27), 30 pages at perPage 25; union of unique product ids = 727 = declared total (perfect reconcile). Category totals sum to 727 (Flower 221, Pre-Rolls 153, Edible 138, Vaporizers 118, Accessories 60, Concentrate 32, Topicals 3, Tincture 2).",
+  "approx_product_count": 727,
+  "license_channels": "recreational menu (pricingType rec); medical prices come as parallel medicalPrices arrays / pricingType=med on the same product set. Registry serves_medical=0.",
+  "blockers": ["none in Chrome (no CAPTCHA, 200s)", "raw HTTP to dutchie.com/api-N/graphql gets a Cloudflare JS challenge (403) - do not evade; use the browser path"],
+  "evidence": [
+    "dutchesscanna.com/stores/lynwood-illinois title 'Dutchess IL - Lynwood Cannabis Menu', OPEN badge, JSON-LD address 20513 Torrence Ave, Lynwood IL 60411 == registry address",
+    "getChainDispensaries: id 6852f6b45f9646fe0127f4e0 name 'Dutchess IL - Lynwood' status open phone (708) 668-7730 address 20513 Torrence Avenue",
+    "dutchie.com/embedded-menu/6852f6b45f9646fe0127f4e0 loads the same menu in Chrome via dutchie.com/api-0/graphql (200)",
+    "repo's dutchie_page_endpoints() run on the fetched store HTML returns exactly one endpoint https://dutchie.com/embedded-menu/6852f6b45f9646fe0127f4e0 with provider_store_id=6852f6b45f9646fe0127f4e0",
+    "jointcommerce.com/dispensaries/dutchess-cannabis-lynwood is only a directory listing (the saved lead)"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: 'Third-party directory is a discovery lead, not a retailer menu' (url https://www.jointcommerce.com/dispensaries/dutchess-cannabis-lynwood); earlier: 'No retailer locator connector configured for this brand'",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution attempt (job c2112fa0, 2026-10-18): status unresolved, code UNKNOWN, grade D, 106s; no menu-stage attempt ever ran",
+    "sample": null
+  },
+  "why_it_fails": "Fails at website discovery, before any menu fetch. backend/locators.py CONNECTORS has no entry for 'dutchess', so the connector stage returns 'No retailer locator connector configured'. The fallback search (site_discovery.search_websites, OpenRouter/Exa) then surfaced only a Joint Commerce directory page for Lynwood; is_directory_url() classifies it as a lead and it is never followed to the retailer, so dutchesscanna.com/stores/lynwood-illinois (whose JSON-LD address matches the registry exactly and whose HTML contains the single dispensaryId that dutchie_page_endpoints() would turn into a dutchie endpoint) is never inspected. Downstream the Dutchie path is already capable (embedded-menu/<id> browser path, whole-menu paging); the chain is simply never reached.",
+  "fix_idea": "(1) Add chain connectors for white-label Dutchie chains: ('dutchess', 'https://dutchesscanna.com/'), plus maribis and stashouse (see sibling maps). The root page lists /stores/<city>-illinois links; the existing city-token link matcher in _known_menu_candidates would select /stores/lynwood-illinois. (2) Better and shared: a Dutchie white-label chain locator that calls getChainDispensaries (or reads the /stores hub) and matches branches by address/coordinates, returning dutchie.com/embedded-menu/<dispensaryId> endpoints directly. (3) In the Dutchie fetch, request removeProductsBelowOptionThresholds=false and sortBy=name/isDefaultSort=false so paging is stable (see Markham/Oak Park maps); Lynwood reconciles even with defaults.",
+  "root_cause_tag": "dutchie-whitelabel-chain-no-connector",
+  "confidence": "high"
+}

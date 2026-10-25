@@ -1,0 +1,28 @@
+{
+ "store_id": "27ff8a26c92a3601d86dbb52",
+ "name": "Viola CHI",
+ "address": "1516 W Roosevelt Rd.",
+ "city": "Broadview",
+ "distance_miles": 90.635,
+ "accepted_menu": false,
+ "platform": "Dutchie (The Joint Dispensary Broadview; registry name Viola CHI is stale)",
+ "menu_url": "https://dutchie.com/dispensary/viola-chi",
+ "how_reached": "dutchie.com/dispensary/viola-chi; dispensaryId 6568ed1d36e2d10009d2dd18",
+ "branch_selection": "Dutchie slug viola-chi; page shows Broadview",
+ "products_load": "Dutchie FilteredProducts (api-1)",
+ "paging": "Dutchie pages",
+ "count_hint": "21 cards on rendered page",
+ "blockers": "none seen",
+ "why_it_fails": "Triage tried a URL that returns HTTP 404 (30 s). The registry name predates the rebrand, so the slug guess failed.",
+ "fix_idea": "Map the registry store to the current Dutchie slug via address (1516 W Roosevelt Rd, Broadview); not web search.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Public endpoint returned HTTP 404",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

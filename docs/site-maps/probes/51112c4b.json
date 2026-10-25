@@ -1,0 +1,42 @@
+{
+ "key": "51112c4b",
+ "url": "https://www.ntillinois.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.ntillinois.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://www.ntillinois.com/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792442010488,\"pageloadId\":\"90d30094-9334-4841-83a6-5ef26a41ffcc\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://www.ntillinois.com/\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv\":\"130\",\"ov\":\"10\"},\"memory\":{\"totalJSHeapSize\":23567388,\""
+  }
+ ],
+ "iframes": [],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://www.ntillinois.com/",
+ "title": "Welcome To Nature’s Treatment Of Illinois",
+ "htmlBytes": 152956,
+ "sigs": [
+  "leafly"
+ ],
+ "links": [
+  "https://www.ntillinois.com/shop/",
+  "https://www.ntillinois.com/products/",
+  "https://www.ntillinois.com/locations/"
+ ],
+ "textSample": "Shop Products Learn About Locations Deals Account Nature’s Treatment of Illinois We brought cannabis to the QC. SHOP Milan Medicinal + Recreational 973 Tech Drive; Milan, IL 61264 309-283-7642 Open Until - 2:00 AM SHOP Galesburg Recreational 735 W. Main Street; Galesburg, IL 61401 309-315-4684 Open Until - 9:45 PM Bringing You Cannabis Daily HEY, BUD! Get that good feeling before you ever make a purchase. NTI has friendly, experienced budtenders that guide you. Whether it’s your first visit or you want to try something new, NTI has the experts to help. MORE ABOUT NTI Try a Natural Remedy TREATMENT, STRAIGHT FROM THE SOURCE. Are you still looking for a solution after months? Years? Discover h",
+ "productHints": [],
+ "priceCount": 0
+}

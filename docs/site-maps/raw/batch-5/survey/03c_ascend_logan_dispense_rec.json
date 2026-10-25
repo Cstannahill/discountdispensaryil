@@ -1,0 +1,144 @@
+{
+ "key": "03c_ascend_logan_dispense_rec",
+ "url": "https://ascendcannabis.com/menu/ch-logan-sq-menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://r.surfside.io/00116/a2889/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 53
+  },
+  {
+   "u": "https://data.script.flowershop.media/",
+   "m": "POST",
+   "s": 201,
+   "ct": "application/json",
+   "len": 0,
+   "post": ""
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://tags.srv.stackadapt.com/sa.jpeg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/jpeg"
+  },
+  {
+   "u": "https://tags.srv.stackadapt.com/saq_pxl?uid=Yq9NVsqIBmWc2wL5NicVsw&is_js=true&landing_url=https%3A%2F%2Fletsascend.com%2Fmenu%2Fch-logan-sq-menu&t=Page%20Not%20Found%20-%20Ascend%20Cannabis&tip=yYiOmo",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://letsascend.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://ekr.zdassets.com/compose/fbb1b1a4-19c1-4dfe-8b7e-dc1a080032e5",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1917
+  },
+  {
+   "u": "https://contact-ascend.zendesk.com/frontendevents/pv?client=1B752747-577B-429A-A0E0-83861AF69088",
+   "m": "POST",
+   "s": 200,
+   "ct": ""
+  },
+  {
+   "u": "https://contact-ascend.zendesk.com/embeddable/config",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1574
+  }
+ ],
+ "frames": [
+  "https://12740414.fls.doubleclick.net/activityi;dc_pre=CPHj17r2xpcDFSj5hwkdkT4dzA;src=12740414;type=retar0;cat=ascen0;rcb=2;ord=3258195945440;npa=0;auiddc=262118689.1792441873;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;_tu=KFA;gtm=45fe6af0v9185245019z8893943164za20gzb893943164zd893943164xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938465~115938469~118012007~118897920~118897930~119863601~120213116~120385422~120469145~120469153~121246026~121246034;epver=2;dc_random=1792441909_8bfD4TvbzyK2DRBBA-iDPu8k7jyy9Q68GA;_dc_test=1;~oref=https%3A%2F%2Fletsascend.com%2Fmenu%2Fch-logan-sq-menu?",
+  "https://pixel-sync.sitescout.com/dmp/asyncPixelSync"
+ ],
+ "status": 404,
+ "age_gate_text": null,
+ "final_url": "https://letsascend.com/menu/ch-logan-sq-menu",
+ "title": "Page Not Found - Ascend Cannabis",
+ "htmlLen": 406421,
+ "prices": 0,
+ "textHead": "Skip to content You're currently shopping: Springfield - Horizon Dr, IL SHOP NOW TOP BRANDS LOCATIONS REWARDS HIGH NOTE ABOUT NEW STORE ALERT: The new Ascend Dispensary in Lewis Center, OH is now open",
+ "iframes": [
+  "https://12740414.fls.doubleclick.net/activityi;src=12740414;type=retar0;cat=ascen0;rcb=2;ord=3258195945440;npa=0;auiddc=262118689.1792441873;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;_tu=KFA;gtm=45fe6af0v9185245019z8893943164za20gzb893943164zd893943164xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938465~115938469~118012007~118897920~118897930~119863601~120213116~120385422~120469145~120469153~121246026~121246034;epver=2;dc_random=1792441909_8bfD4TvbzyK2DRBBA-iDPu8k7jyy9Q68GA;_dc_test=1;~oref=https%3A%2F%2Fletsascend.com%2Fmenu%2Fch-logan-sq-menu?",
+  "about:blank",
+  "about:blank"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [],
+ "hosts": [
+  [
+   "letsascend.com",
+   58
+  ],
+  [
+   "www.google.com",
+   14
+  ],
+  [
+   "static.zdassets.com",
+   11
+  ],
+  [
+   "www.googletagmanager.com",
+   8
+  ],
+  [
+   "use.typekit.net",
+   4
+  ],
+  [
+   "googleads.g.doubleclick.net",
+   4
+  ],
+  [
+   "tags.srv.stackadapt.com",
+   4
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "connect.facebook.net",
+   2
+  ],
+  [
+   "script.hotjar.com",
+   2
+  ],
+  [
+   "analytics.google.com",
+   2
+  ],
+  [
+   "ad.doubleclick.net",
+   2
+  ],
+  [
+   "12740414.fls.doubleclick.net",
+   2
+  ],
+  [
+   "contact-ascend.zendesk.com",
+   2
+  ]
+ ]
+}

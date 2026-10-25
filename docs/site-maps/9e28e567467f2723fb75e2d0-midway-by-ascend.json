@@ -1,0 +1,52 @@
+{
+  "store_id": "9e28e567467f2723fb75e2d0",
+  "slug": "midway-by-ascend",
+  "name": "Midway by Ascend",
+  "registry": {
+    "address": "5648 S Archer Ave",
+    "city": "Chicago",
+    "state": "IL",
+    "latitude": 41.78471,
+    "longitude": -87.773376,
+    "distance_miles": 89.6
+  },
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://letsascend.com/locations/illinois/chicago-midway/",
+  "menu_url": "https://letsascend.com/stores/chicago-midway-illinois (Dutchie storefront; legacy https://letsascend.com/menu/ch-midway-menu-rec 301s here). Frozen legacy Dispense menu still up at https://ascendcannabis.com/menu/ch-midway-menu-rec (venue 4c6eb6e45a7f9a4e, 723 products, stale)",
+  "platform": "dutchie",
+  "how_menu_reached": "letsascend.com location page \"SHOP NOW\" -> https://letsascend.com/stores/chicago-midway-illinois (Dutchie Next.js storefront on the custom domain). Old slug ch-midway-menu-rec redirects there.",
+  "branch_selection": "URL cName=chicago-midway-illinois; Dutchie dispensaryId 67db1a78b40c6b931564d063; platform-declared address location.ln1 \"5650 S Archer Ave\" Chicago IL 60638, coords 41.7975557,-87.752114. NOTE: registry says 5648 S Archer Ave (differs by 2) and the registry coordinates are ~1.4 miles WEST of the Ascend pin. Same business (only Ascend Midway; Google embed \"Midway Ascend Dispensary\"), but the street number and the pin do not satisfy addresses_match or _pinned.",
+  "age_gate": "click-through: Dutchie modal \"Yes\" (POST letsascend.com/age-check answer=yes); GraphQL fires before the click",
+  "data_loading": {
+    "mechanism": "GraphQL persisted queries over GET (Dutchie) via https://letsascend.com/api-4/graphql",
+    "endpoints": [
+      "GET https://letsascend.com/api-4/graphql?operationName=FilteredProducts&variables={productsFilter:{dispensaryId:67db1a78b40c6b931564d063,pricingType:'rec'|'med',Status:'Active',types:[<category>]|[],platformType:'ONLINE_MENU',...},page:N,perPage:100}&extensions={persistedQuery:{version:1,sha256Hash:<page-supplied>}}",
+      "GET .../api-4/graphql?operationName=MenuFiltersV2&variables={dispensaryId:\"67db1a78b40c6b931564d063\",pricingType:\"rec\",isKioskMenu:false}",
+      "Alternate: https://dutchie.com/embedded-menu/67db1a78b40c6b931564d063"
+    ],
+    "notes": "Category totals (types filter, rec pricing): Flower 280, Vaporizers 224, Edible 189, Concentrate 67, Tincture 4, Topicals 6, Accessories 107; types:[] whole menu 1003 (so Pre-Rolls ~126 implied; my \"Pre-rolls\" label returned null, the category label is \"Pre-Rolls\"). Flower alone read 279 then 280 minutes apart (live churn)."
+  },
+  "paging": "page/perPage; queryInfo.totalCount declared (1003 whole menu = 21 pages at 50). Category sum reconciles to the whole-menu total if Pre-Rolls=126 (not measured).",
+  "approx_product_count": 1003,
+  "license_channels": "rec+med one storefront (Ascend: \"Adult-Use & Medical\"); UI toggle \"MENU Recreational\"; pricingType rec|med",
+  "blockers": [
+    "none"
+  ],
+  "evidence": [
+    "Ascend directory JSON: \"Chicago - Midway\", address_1 \"5650 S Archer Ave\", dutchie_cname chicago-midway-illinois, menu_link /menu/ch-midway-menu-rec. Location page shows hours and \"Currently Open\".",
+    "In-page FilteredProducts: totalCount 1003 (types:[]); sample updatedAt 2026-10-19 (live).",
+    "Dispense legacy venue 4c6eb6e45a7f9a4e \"Chicago - Midway (Rec)\": count 723, newest product modified 2025-11-11, leaflogix.enabled=false: stale.",
+    "Chain facts shared by all Ascend IL stores: ascendcannabis.com now 301s to letsascend.com (WordPress marketing site). Menus moved from Dispense (ascendcannabis.com/menu/<slug>, Next.js) to Dutchie storefronts served from the custom domain letsascend.com/stores/<dutchie cName> (Dutchie Next.js app, GraphQL proxied at letsascend.com/api-4/graphql). letsascend.com/menu/<legacy-dispense-slug> 301s to the Dutchie storefront, so legacy rec and med slugs both land on ONE storefront. The Dispense venues are still served at ascendcannabis.com/menu/* but are frozen: product records last modified 2025-07..2025-11-11, venue.leaflogix.enabled=false, lastInventorySync 2025-01-21. Chain-level locator: GET https://letsascend.com/wp-json/ascend-store-mapper/v1/locations returns a GeoJSON FeatureCollection (41 stores, 10 in IL) with address_1, city, state, zip_code, geometry.coordinates [lng,lat], shop_url (letsascend.com/stores/<cName>), dutchie_cname, menu_link (legacy slug), is_outlet, phone, hours."
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: \"Fallback website search found no corroborated branch lead\" (2026-10-18 11:25; evidence = Bing 200 + DuckDuckGo ConnectTimeout); earlier \"No retailer locator connector configured for this brand\" (10-17)",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution/discovery attempt: unresolved, code NO_LEAD, grade D. Query was by address: \"5648 S Archer Ave\" \"Chicago\" IL dispensary menu.",
+    "sample": null
+  },
+  "why_it_fails": "Stage: website discovery. (1) locators.CONNECTORS has no Ascend entry, so _known_menu_candidates returns \"No retailer locator connector configured for this brand\"; the anchored regex style used elsewhere (^curaleaf\\b, ^rise\\b) would not match \"Midway by Ascend\" anyway because the brand is a suffix. (2) The fallback search (search_websites by address) requires street_in_text(registry street) in a result block; Ascend publishes 5650, the registry has 5648, so even a working search could not corroborate it. Per the lead, the fallback web search is currently dead (DuckDuckGo returns a 202 bot challenge, Bing returns unrelated pages); the stored evidence for this store is a Bing 200 plus a DuckDuckGo ConnectTimeout. (3) Even with the right URL, the Dutchie reader enforces the platform-declared street via locators.addresses_match: 5648 vs 5650 would raise BRANCH_MISMATCH (\"different street address\") unless an operator exception exists (see ACCEPTED_STREET_MISMATCHES in backend/providers/generic.py, commit b077228). The registry pin is also ~1.4 mi off so _pinned() cannot rescue it.",
+  "fix_idea": "Same chain-level Ascend connector as Springfield (ascend-store-mapper GeoJSON -> shop_url -> dutchie dispensaryId -> dutchie.com/embedded-menu/<id>). For this store the branch match also needs an operator decision: add registry id 9e28e567467f2723fb75e2d0 to ACCEPTED_STREET_MISMATCHES with both addresses (\"registry 5648 S Archer Ave, Dutchie menu 5650 S Archer Ave; same Midway store\") or match the connector on street name + city when it is the only Ascend branch on that street. Do not ingest the legacy Dispense venue (stale).",
+  "root_cause_tag": "locator-missing-for-brand",
+  "confidence": "high"
+}

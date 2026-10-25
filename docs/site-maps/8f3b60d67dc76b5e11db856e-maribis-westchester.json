@@ -1,0 +1,42 @@
+{
+  "store_id": "8f3b60d67dc76b5e11db856e",
+  "name": "Maribis Westchester",
+  "slug": "maribis-westchester",
+  "registry": {"address": "1137 South Mannheim Road", "city": "Westchester", "state": "IL", "latitude": 41.852951, "longitude": -87.886162, "distance_miles": 88.9},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://maribisllc.com/locations/westchester-il-cannabis-dispensary/ (WordPress marketing page; curl gets a 'Checking your browser' 403 interstitial) ; chain hub https://maribisllc.com/ lists Archer, Lindbergh, Springfield (Denver Dr) and Westchester",
+  "menu_url": "https://www.maribisllc.com/stores/maribis-westchester (category routes /stores/maribis-westchester/products/{flower,pre-rolls,vaporizers,concentrates,edibles,tinctures,topicals,accessories}; also /specials, /brands, /info). Dutchie-hosted equivalent: https://dutchie.com/embedded-menu/68a63a0c0721725549dbc59a. Recreational.",
+  "platform": "dutchie",
+  "how_menu_reached": "Dutchie 'Ecommerce Pro' white-label like Dutchess: the retailer domain (www.maribisllc.com) serves /stores/<slug> from a Dutchie Next.js app (assets2.dutchie.com, __NEXT_DATA__); the WordPress locations page links to it. First-party, no iframe/plugin. JSON-LD Store: 'Maribis - Westchester', 1137 S Mannheim Rd, Westchester IL 60154, phone (888) 888-2812, geo 41.8640,-87.8821 (registry coordinates are ~1.2 km off but the street address matches).",
+  "branch_selection": "URL slug maribis-westchester; SSR \"dispensaryId\":\"68a63a0c0721725549dbc59a\",\"chainId\":\"maribis\". The wrong-state lead in the DB was not Colorado: /stores/maribis-denver is the Springfield, IL branch on Denver Dr (2451 Denver Dr, Springfield IL 62702), a sibling, so the identity conflict was legitimate.",
+  "age_gate": "click-through (Dutchie 21+ overlay; WordPress site also has its own age gate)",
+  "data_loading": {
+    "mechanism": "GraphQL over GET with Apollo persisted queries, same-origin /api-3/graphql on www.maribisllc.com",
+    "endpoints": [
+      "GET https://www.maribisllc.com/api-3/graphql?operationName=FilteredProducts&variables={includeEnterpriseSpecials:false,productsFilter:{dispensaryId:'68a63a0c0721725549dbc59a',pricingType:'rec',Status:'Active',types:[],sortBy:'popular',isDefaultSort:true,removeProductsBelowOptionThresholds:true,platformType:'ONLINE_MENU',...},page:N,perPage:100}&extensions={persistedQuery:{version:1,sha256Hash:'cfbda410fd502c77b467a174a666b809bec1e61c70ee7f75de1aff7440b59bf4'}}",
+      "GET .../api-3/graphql?operationName=MenuFiltersV2 | GetMenuSections | GetSpecialMenuCards | GetSponsoredBrand | GetCollectionsNavigation | GetAddressBasedDispensaryData | GetPersonalizedProductsV2"
+    ],
+    "notes": "The store landing page issues NO FilteredProducts call (landing shows sections/specials); products load when a category route (e.g. /products/flower) or Shop is opened. Same persisted-query hash as dutchesscanna.com and stashouse.com, API path version differs (api-3 here, api-0 for Dutchess). IL adult-use tax 16%+ listed in GetAddressBasedDispensaryData (menu prices pre-tax)."
+  },
+  "paging": "page 0-based + perPage (cap 100). Whole menu totalCount 505, totalPages 6 at perPage 100 (5x100 + 5), 21 at perPage 25. All six sort/threshold variants (popular, name, price, createdAt, thresholds on/off) returned 505 unique = 505 declared. Category totals sum exactly: Flower 121, Pre-Rolls 87, Edible 82, Vaporizers 112, Concentrate 46, Accessories 50, Topicals 6, Tincture 1 = 505. Note Flower has 135 option rows for 121 products (multi-size products).",
+  "approx_product_count": 505,
+  "license_channels": "recreational (Recreational label on the menu header); registry serves_medical=0",
+  "blockers": ["maribisllc.com/locations/* pages return 403 'Checking your browser' to curl (WordPress/bot interstitial) - the www.maribisllc.com/stores/* Dutchie pages return 200", "raw HTTP to dutchie.com graphql = Cloudflare challenge (403), not evaded; Chrome fine"],
+  "evidence": [
+    "www.maribisllc.com/stores/maribis-westchester title 'Maribis - Westchester Cannabis Menu | Westchester, IL', OPEN badge",
+    "Hub page maribisllc.com/ links stores/maribis-chicago (Archer), maribis-denver (Springfield), maribis-lindbergh, maribis-westchester",
+    "repo dutchie_page_endpoints() on the store HTML -> https://dutchie.com/embedded-menu/68a63a0c0721725549dbc59a",
+    "Paging experiment: 505 unique = declared 505 under every variant"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: 'Candidate website found; branch name/locality or street address still needs matching' (first url maribisllc.com/stores/maribis-denver, identity conflict 2451 Denver Dr Springfield)",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution attempt (job c2112fa0, 2026-10-18): unresolved, code LEAD_UNVERIFIED, grade D, 142s; leads include maribis-denver /info /brands /specials, dutchie.com/dispensary/maribis-chicago/specials, theemeraldmagazine.com article; platform tags dutchie/weedmaps",
+    "sample": null
+  },
+  "why_it_fails": "Same failure class as Dutchess: website discovery picks a sibling branch. The search for 'Maribis Westchester' returned maribisllc.com/stores/maribis-denver (Springfield) and a Chicago Dutchie page; inspect_page marks them conflict/candidate, and the correct /stores/maribis-westchester page was never fetched. There is no CONNECTORS entry for 'maribis' (resolution #198 'No retailer locator connector configured'), and the hub page maribisllc.com/ that links all four branch slugs is never walked. The Dutchie side (dispensaryId in SSR HTML, whole-menu paging, 505 = 505) would work once the right page is found.",
+  "fix_idea": "Shared with Dutchess/Stashouse: add ('maribis', 'https://www.maribisllc.com/') to CONNECTORS or build a generic 'chain hub -> /stores/<slug> -> Dutchie dispensaryId' locator that matches the registry address to the page JSON-LD (here exact) and emits dutchie.com/embedded-menu/<dispensaryId>. When the search returns a sibling-branch URL on a host that is a chain hub, walk the hub for the slug whose JSON-LD street matches. Also make fetch of maribisllc.com/locations/* tolerant (403 interstitial) by preferring the /stores/* storefront.",
+  "root_cause_tag": "dutchie-whitelabel-chain-no-connector",
+  "confidence": "high"
+}

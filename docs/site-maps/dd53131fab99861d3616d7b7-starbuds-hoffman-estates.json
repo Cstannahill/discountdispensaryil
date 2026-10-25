@@ -1,0 +1,66 @@
+{
+  "store_id": "dd53131fab99861d3616d7b7",
+  "name": "Starbuds Hoffman Estates",
+  "slug": "starbuds-hoffman-estates",
+  "registry": {
+    "address": "5 E Golf Rd",
+    "city": "Hoffman Estates",
+    "state": "IL",
+    "distance_miles": 93.636
+  },
+  "site": "https://shop.starbuds.us/stores/hoffman-estates-dispensary/",
+  "platform": "joint-ecommerce on the store site (businessId 5867) plus a Dutchie embed that the resolver selects",
+  "menu_url_verified": "Joint search on shop.starbuds.us; Dutchie embed dutchie.com/embedded-menu/66be6d8c7ff5a2a94d19d3f3",
+  "access": "DOB gate (Verify you are over 21, month/day/year form)",
+  "branch_selection": "store page slug",
+  "product_loading": "Joint _search POST (site); Dutchie GraphQL (embed)",
+  "paging": "n/a",
+  "product_count_observed": "survey header '20 results'; Dutchie reader 559 unreconciled",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://shop.starbuds.us/stores/hoffman-estates-dispensary/",
+    "title": "Age Verification - Star Buds Cannabis Dispensaries",
+    "platforms": [
+      "dutchie"
+    ],
+    "age_gate_seen": true,
+    "age_click": null,
+    "count_text": "20 results",
+    "price_tags": 12,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Candidate website found; branch name/locality or street address still needs matching"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded1.json",
+      "targets": [
+        {
+          "provider": "dutchie",
+          "provider_store_id": "66be6d8c7ff5a2a94d19d3f3",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "dutchie",
+          "items": 559,
+          "expected": null,
+          "complete": false,
+          "errors": [
+            "incomplete_generic_menu"
+          ],
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "The pipeline picks the Dutchie embed, which does not reconcile (incomplete_generic_menu). The Joint business on the same page is not probed. Stored row unresolved (candidate, branch not matched).",
+  "fix_idea": "Probe joint-ecommerce on the store page and reconcile it; fix Dutchie reconciliation separately.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

@@ -1,0 +1,31 @@
+{
+ "store_id": "7f48ac07b32cfe68397a4334",
+ "name": "Revolution Dispensary - Normal",
+ "address": "1609 Northbrook Dr",
+ "city": "Normal",
+ "registry_distance_miles": 25.4,
+ "status": "lead_unverified",
+ "registry_flag": "rebrand",
+ "website": "risecannabis.com, Bloom Wellness Normal Northbrook (1609 Northbrook Dr #3, Normal; formerly Revolution)",
+ "menu_platform": "RISE storefront, Jane signature (unconfirmed)",
+ "how_menu_is_reached": "RISE store page loads; one price visible in the probe.",
+ "branch_selection": "Address 1609 Northbrook Dr matches registry.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Age gate (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Registry name is the old Revolution brand. Resolver leads were revcanna.com Schaumburg pages (wrong branch, correctly rejected) and the RISE Northbrook page (verifier lead). An address match on the RISE page would prove it.",
+ "fix_idea": "Brand alias (Revolution to Bloom Wellness, RISE, Normal). Then take the Jane store id from the RISE page. Refresh the registry name.",
+ "unverified": [
+  "Jane store id",
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

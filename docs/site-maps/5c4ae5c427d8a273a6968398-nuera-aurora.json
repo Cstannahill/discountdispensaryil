@@ -1,0 +1,47 @@
+{
+ "store_id": "5c4ae5c427d8a273a6968398",
+ "name": "NuEra Aurora",
+ "address": "1415 Corporate Blvd.",
+ "city": "Aurora",
+ "registry_distance_miles": 73.7,
+ "status": "works",
+ "registry_flag": null,
+ "website": "nueracannabis.com/dispensaries/il/aurora, linking to iheartjane.com/stores/3051",
+ "menu_platform": "Jane (native, store 3051)",
+ "how_menu_is_reached": "Chain page links to the Jane store page for the recreational menu.",
+ "branch_selection": "Jane store 3051 matches registry 1415 Corporate Blvd.",
+ "product_loading": "Jane API (native Jane provider).",
+ "product_count": "Baseline complete 1159 and 1167. Jane-safe wrapper (sample_ep.py): 1153 items, complete, declared 1153.",
+ "blockers": "None.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "jane",
+   "license": "recreational",
+   "status": "complete",
+   "code": null,
+   "grade": "A",
+   "items": 1159,
+   "at": "2026-10-19T02:34:21.338720+00:00"
+  },
+  "sample_mode": {
+   "verdict": "NO_PRODUCTS",
+   "provider": "jane",
+   "items": 0,
+   "declared": null,
+   "errors": [
+    "incomplete_jane_menu"
+   ],
+   "url": "https://www.iheartjane.com/stores/3051/nuera-aurora-rec/menu/featured"
+  }
+ },
+ "why_it_fails": "Not failing. The pipeline sampler (sample_stores.py) returns 0 items (incomplete_jane_menu): a sampler false negative. It skips the resolution_json merge that Store.endpoint() does, so the Jane provider rejects the platform point as a different location.",
+ "fix_idea": "Fix sample_stores.py to use the same endpoint loader as the sync (merge resolution_json). Do not change the Jane provider.",
+ "unverified": [],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

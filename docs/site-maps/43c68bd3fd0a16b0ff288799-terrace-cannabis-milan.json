@@ -1,0 +1,30 @@
+{
+ "store_id": "43c68bd3fd0a16b0ff288799",
+ "name": "Terrace Cannabis - Milan",
+ "address": "800 Tech Dr",
+ "city": "Milan",
+ "registry_distance_miles": 87.0,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "terracecannabis.com, Milan",
+ "menu_platform": "Jane (iHeartJane headless drawer)",
+ "how_menu_is_reached": "/shop/store/6119/shop-all embeds the Jane headless drawer (iheartjane.com/headless/drawer, app_mode=bloom). 6119 is in the site path, not a Jane store id.",
+ "branch_selection": "Site id 6119 in the URL. The Jane store id behind the drawer was not identified.",
+ "product_loading": "Jane smartpage POST to dmerch.iheartjane.com/v2/smartpage with object_ids (382 KB first response).",
+ "product_count": "\"673 products\" on the site.",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback website search never produced this site (NO_LEAD, search_fallback_dead). Google finds it at once, so the native Jane provider was never reached.",
+ "fix_idea": "Resolve by registry name + city (Google finds terracecannabis.com). Then read the Jane store id from the embedded drawer config and use the native Jane provider.",
+ "unverified": [
+  "Jane store id"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

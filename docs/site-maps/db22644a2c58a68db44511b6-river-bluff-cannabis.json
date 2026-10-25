@@ -1,0 +1,63 @@
+{
+  "store_id": "db22644a2c58a68db44511b6",
+  "name": "River Bluff Cannabis",
+  "slug": "river-bluff-cannabis",
+  "registry": {
+    "address": "1350 Lake St.",
+    "city": "Roselle",
+    "state": "IL",
+    "distance_miles": 88.093
+  },
+  "site": "https://riverbluffcannabis.com/store/menu/",
+  "platform": "jane (store 5438, srcdoc iframe embed)",
+  "menu_url_verified": "https://riverbluffcannabis.com/store/menu/",
+  "access": "21+ button (I am 21 or older); no block",
+  "branch_selection": "Single-location site; Jane store 5438 is in the embed; footer shows 1350 Lake St. Roselle",
+  "product_loading": "Jane storefront embed; api.iheartjane.com/v3/stores/5438/specials observed",
+  "paging": "not reached",
+  "product_count_observed": "not observed in survey",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://riverbluffcannabis.com/store/menu/",
+    "title": "Shop featured cannabis products | River Bluff Cannabis Dispensary Roselle, IL",
+    "platforms": [
+      "jane",
+      "joint"
+    ],
+    "age_gate_seen": true,
+    "age_click": "I am 21 or older",
+    "count_text": null,
+    "price_tags": 0,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Fallback website search found no corroborated branch lead"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded1.json",
+      "targets": [],
+      "failures": [
+        {
+          "status": "unresolved",
+          "reason": "Candidate website found; branch name/locality or street address still needs matching"
+        },
+        {
+          "status": "unresolved",
+          "reason": "Candidate website found; branch name/locality or street address still needs matching"
+        },
+        {
+          "status": "unresolved",
+          "reason": "Candidate website found; branch name/locality or street address still needs matching"
+        }
+      ],
+      "samples": []
+    }
+  },
+  "why_it_fails": "Branch identity fails, so the Jane embed is never read. Brand \"RiverBluff\" does not match registry \"River Bluff\" (business_words gives {bluff, river}), and the footer street address is outside Page.identity_text, so inspect_page stays candidate. Checked on the homepage and menu page: street_in_text is False on identity text, True on raw HTML.",
+  "fix_idea": "Compare brand tokens with spaces removed; include visible footer address in street_in_text. A Jane store id on the page then proves the branch.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

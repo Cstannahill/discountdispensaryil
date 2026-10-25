@@ -1,0 +1,51 @@
+{
+  "store_id": "a0e3b84fdc6e16c28bf8e615",
+  "slug": "ascend-cannabis-outlet-by-inlabs",
+  "name": "Ascend Cannabis Outlet by InLabs",
+  "registry": {
+    "address": "39 W North Ave.",
+    "city": "Northlake",
+    "state": "IL",
+    "latitude": 41.90669,
+    "longitude": -87.90563,
+    "distance_miles": 91.0
+  },
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://letsascend.com/locations/illinois/northlake/",
+  "menu_url": "https://letsascend.com/stores/northlake-illinois (Dutchie storefront; legacy menu_link /menu/illinois/northlake 301s here; ascendcannabis.com/menu/illinois/northlake redirects to https://dutchie.com/stores/northlake-illinois)",
+  "platform": "dutchie",
+  "how_menu_reached": "Ascend location page \"Northlake Marijuana Dispensary\" (WordPress category retail_brand-ascend-outlet, feature \"Outlet Store\") -> SHOP NOW https://letsascend.com/stores/northlake-illinois, a Dutchie storefront on the custom domain. The registry name \"Ascend Cannabis Outlet by InLabs\" is the Ascend Outlet store at this address (InLabs is the licensee); the storefront is titled \"Ascend Dispensary - Northlake\". There was NO legacy Dispense menu for this store (ch-northlake-menu*, il-northlake-menu* all 404), so no stale-Dispense risk here.",
+  "branch_selection": "cName=northlake-illinois; Dutchie dispensaryId 671c08fde21b5073ab1fd4ea; platform address location.ln1 \"39 W North Ave\", Northlake IL 60164, coords 41.9061135,-87.9053326 (matches the registry address; pin within ~0.02 mi of the registry point). Ascend directory flags is_outlet=true, retail_brand slug ascend-outlet.",
+  "age_gate": "click-through: Dutchie modal \"Yes\" (POST /age-check); API loads before the click",
+  "data_loading": {
+    "mechanism": "GraphQL persisted queries over GET (Dutchie) via https://letsascend.com/api-4/graphql",
+    "endpoints": [
+      "GET https://letsascend.com/api-4/graphql?operationName=FilteredProducts&variables={productsFilter:{dispensaryId:671c08fde21b5073ab1fd4ea,pricingType:'rec'|'med',Status:'Active',types:[<category>]|[],platformType:'ONLINE_MENU',...},page:N,perPage:100}&extensions={persistedQuery:{version:1,sha256Hash:<page-supplied>}}",
+      "Alternate: https://dutchie.com/embedded-menu/671c08fde21b5073ab1fd4ea (loads the same dispensary; its first FilteredProducts on the landing page is a carousel, not the whole menu)"
+    ],
+    "notes": "types:[] whole-menu totalCount 1079 for both pricingType rec and med (same product set; recPrices vs medicalPrices arrays)."
+  },
+  "paging": "page/perPage; queryInfo.totalCount declared (1079, 22 pages at 50)",
+  "approx_product_count": 1079,
+  "license_channels": "rec+med one storefront (Ascend directory availability \"Adult-Use & Medical\"; Dutchie recDispensary and medicalDispensary true)",
+  "blockers": [
+    "none"
+  ],
+  "evidence": [
+    "Dutchie Apollo state: Dispensaries:671c08fde21b5073ab1fd4ea name \"Ascend Dispensary - Northlake\", address 39 West North Avenue Northlake IL 60164, status open, phone (708) 786-4317, dposLspName \"Ascend Illinois - Chicagoland\".",
+    "In-page FilteredProducts replay: totalCount 1079; sample product updatedAt 2026-10-19T02:10Z (live).",
+    "Ascend directory JSON: \"Northlake\", address_1 \"39 W North Avenue\", is_outlet true, menu_link /menu/illinois/northlake, dutchie_cname northlake-illinois.",
+    "Chain facts shared by all Ascend IL stores: ascendcannabis.com now 301s to letsascend.com (WordPress marketing site). Menus moved from Dispense (ascendcannabis.com/menu/<slug>, Next.js) to Dutchie storefronts served from the custom domain letsascend.com/stores/<dutchie cName> (Dutchie Next.js app, GraphQL proxied at letsascend.com/api-4/graphql). letsascend.com/menu/<legacy-dispense-slug> 301s to the Dutchie storefront, so legacy rec and med slugs both land on ONE storefront. The Dispense venues are still served at ascendcannabis.com/menu/* but are frozen: product records last modified 2025-07..2025-11-11, venue.leaflogix.enabled=false, lastInventorySync 2025-01-21. Chain-level locator: GET https://letsascend.com/wp-json/ascend-store-mapper/v1/locations returns a GeoJSON FeatureCollection (41 stores, 10 in IL) with address_1, city, state, zip_code, geometry.coordinates [lng,lat], shop_url (letsascend.com/stores/<cName>), dutchie_cname, menu_link (legacy slug), is_outlet, phone, hours."
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: \"Fallback website search found no corroborated branch lead\" (2026-10-18 11:43; evidence = Bing 200 + DuckDuckGo ConnectTimeout); earlier \"No retailer locator connector configured for this brand\"",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution/discovery attempt: unresolved NO_LEAD grade D. Query: \"39 W North Ave.\" \"Northlake\" IL dispensary menu",
+    "sample": null
+  },
+  "why_it_fails": "Stage: website discovery. No Ascend entry in locators.CONNECTORS, and the registry name \"Ascend Cannabis Outlet by InLabs\" shares only the word \"ascend\" with the live storefront title \"Ascend Dispensary - Northlake\" (site_discovery.business_words strips dispensary/cannabis; remaining {ascend, outlet, by, inlabs} must overlap >=2 with the result block), so by-name search is weak. Per the lead, the fallback web search is currently dead (DuckDuckGo returns a 202 bot challenge, Bing returns unrelated pages); the stored evidence for this store is a Bing 200 plus a DuckDuckGo ConnectTimeout. Once a URL is found the rest is straightforward: address 39 W North Ave matches the Dutchie location.ln1 exactly.",
+  "fix_idea": "Chain-level Ascend connector (ascend-store-mapper GeoJSON): match addresses_match(\"39 W North Ave.\", \"39 W North Avenue\") or the coordinate pin, take shop_url, let dutchie_page_endpoints() produce dutchie.com/embedded-menu/671c08fde21b5073ab1fd4ea. Make the connector regex match the brand anywhere in the name and the InLabs licensee string: r\"\\bascend\\b|inlabs\", so \"Midway by Ascend\" and \"Ascend Cannabis Outlet by InLabs\" both hit.",
+  "root_cause_tag": "locator-missing-for-brand",
+  "confidence": "high"
+}

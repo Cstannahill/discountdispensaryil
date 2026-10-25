@@ -1,0 +1,75 @@
+{
+ "name": "EarthMed",
+ "registry": {
+  "address": "852 S Westgate St",
+  "city": "Addison",
+  "state": "IL",
+  "latitude": 41.932129,
+  "longitude": -88.007408,
+  "distance_miles": 89.1
+ },
+ "operating_status": "open (iheartjane.com/stores/2757 \"EarthMed - Addison (MED)\" and /2758 \"(REC)\", pickup 9am-9pm, 852 S Westgate St, Addison)",
+ "website": "https://earthmed.com/location/addison",
+ "menu_url": "REC https://menu.earthmed.com/addison-rec/menu ; MED https://menu.earthmed.com/addison-med/menu (earthmed.com/cannabis/products is a product-category info page, not a menu)",
+ "platform": "jane",
+ "how_menu_reached": "Subdomain menu.earthmed.com/addison-rec and /addison-med are Jane Boost frameless partner-hosted pages (no iframe): runtimeConfig is a JS object literal (unquoted keys) {isPartnerHosted:true, isFramelessEmbedMode:true, embedConfigId 4039 rec / 4038 med, storeId: 2758 rec / 2757 med, partnerHostedPath: `addison-rec` / `addison-med`}. earthmed.com location pages link to these two menus (also mchenry-rec and rosemont-rec).",
+ "branch_selection": "Jane storeId: REC 2758, MED 2757 (twins with identical _geoloc 41.9108,-87.9937 = 1.64 mi from registry point). Only 2757 (MED) is saved as a jane endpoint; the REC Jane store 2758 is NOT in the DB.",
+ "age_gate": "runtimeConfig showAgeGate=false",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search API)",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets?jdm_api_key=<public SDK key scraped from iheartjane.com/stores/<id> page>&jdm_source=monolith&jdm_version=2.25.0 body {appMode,janeDeviceId,searchFacets:[\"kind\"],storeId:<id>}",
+   "POST https://dmerch.iheartjane.com/v2/multi (placements[0].search_filter=kind:\"<kind>\", page_size 60, search_attributes [\"*\"], store_id) - returns nb_hits + products",
+   "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids batch of 60) - hydrates attributes beyond the first page"
+  ],
+  "notes": "Live 2026-10-19: store 2758 REC = 1276 products (edible 278, extract 59, flower 267, gear 60, pre-roll 240, tincture 6, topical 4, vape 362); store 2757 MED = 1294 products. The partner page itself carries no rendered product records and no quoted storeId, only the runtimeConfig literal."
+ },
+ "paging": "No page walking: the kind facet counts sum to the store total; each kind (<=1000 hits window) is one /v2/multi slice that must return exactly its facet count (larger kinds are split by brand facet); two independent full traversals must agree. Verified live 2026-10-19: facets and multi return 200 with a plain client.",
+ "approx_product_count": 1276,
+ "license_channels": "rec + med as separate Jane stores: REC 2758 (1276 products) NOT mapped by the pipeline; MED 2757 (1294) mapped and complete",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "curl menu.earthmed.com/addison-rec/menu and /addison-med/menu -> 200; storeId: 2758 / 2757 (unquoted JS literal)",
+  "Ran backend.adapters._observed_endpoint on the fetched HTML: provider \"unsupported\", method \"Unresolved provider contract\" for both pages (the quoted-key regex at adapters.py L138 does not match `storeId: 2758`)",
+  "dmerch live: 2758 recreational 1276, 2757 medical 1294",
+  "Real-Chrome probe: \"EarthMed - Addison (REC)\" /stores/2758 and \"(MED)\" /stores/2757, 852 S Westgate St"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched \"Resolved 1 canonical menu target(s)\" (2026-10-19T02:45Z, 10-18T19:08Z); earlier 10-18T11:13Z \"Resolved 4\" (the generic menu.earthmed.com pages); 10-17 unresolved \"No retailer locator connector configured for this brand\".",
+  "saved_endpoints": "jane 2757 medicinal COMPLETE (last_success 2026-10-19T02:44Z, 1347 items, URL iheartjane.com/stores/2757/earthmed-addison-med/menu/all) | generic PARTIAL x4: earthmed.com/cannabis/products (rec, RENDER_BLANK), menu.earthmed.com/addison-med/menu (med, COUNT_MISMATCH), menu.earthmed.com/addison-rec/menu and /menu/ (rec, COUNT_MISMATCH \"Structured product total does not reconcile with traversed catalog\", 1037 items grade C).",
+  "recent_attempts": "9 attempts: 10-18T11:1xZ generic structured tier x4 partial (COUNT_MISMATCH/C 1037 items, RENDER_BLANK/D); 10-18T19:08Z and 10-19T02:44Z native jane 2757 complete/A (1351, 1347 items). No attempt on a rec Jane store ever.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "jane",
+    "license": "medicinal",
+    "url": "https://www.iheartjane.com/stores/2757/earthmed-addison-med/menu/all",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_jane_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 0.9
+   },
+   "fixed_wrapper": [
+    {
+     "endpoint": "jane 2757 med",
+     "items": 1329,
+     "declared": 1329,
+     "complete": true
+    }
+   ],
+   "caveat": "sample_stores.py result is NOT reliable for Jane: it passes the raw endpoint row without resolution_json, so branch proof fails for platform points 0.35-5 mi from the registry point; see fixed result."
+  }
+ },
+ "why_it_fails": "Medical is accepted but stale (last_success 2026-10-19T02:44Z = 17.6 h at 20:22Z; store is 89 mi from the Minonk study centre and outside the scheduler region, so only manual jobs touch it). FRESHNESS: storage.py (~L420) counts a store fresh only if an accepted endpoint succeeded <12 h ago. Newest attempt of any kind in the whole DB is 2026-10-19T05:24Z; investigated 2026-10-19T20:22Z. Scheduler (main.py create_app: APScheduler menu-sync 4/day at 00/06/12/18 America/Chicago, only while uvicorn runs) enqueues only live_settings.active_region_id = ad41b2e9 (\"Browser GPS\", 50 mi around 40.98,-89.05); the last scheduled job ran 05:00Z (00:00 CDT) and the 06:00/12:00 CDT slots never ran (server not up). RECREATIONAL IS MISSING: the rec channel has a perfectly good Jane store (2758, 1276 products) but the resolver cannot read it. adapters._detect_endpoint line ~138 finds a partner-hosted Jane page only with the quoted-key regex `[\"']storeId[\"']\\s*:\\s*(\\d+)`; EarthMed's runtimeConfig is a JS object literal `storeId: 2758,` and the page has no rendered dmerch records for the L126-137 branch, so the page is classed provider \"unsupported\" (has_menu_contract False) and falls into the generic path, which saves menu.earthmed.com/addison-rec|med/menu as generic endpoints that fail the completeness gate (COUNT_MISMATCH, grade C). The med Jane endpoint 2757 only exists because a lead pointed at iheartjane.com/stores/2757/... directly. Also: the generic earthmed.com/cannabis/products endpoint is an informational category page saved as a rec \"menu\".",
+ "fix_idea": "Shared Jane-partner fix in adapters.py L138: accept unquoted JS keys (`\\bstoreId\\b[\"']?\\s*:\\s*(\\d+)`) and derive license from runtimeConfig partnerHostedPath (`addison-rec`/`addison-med`) - that resolves 2758/2757 from the menu.earthmed.com pages already in the endpoint list, and the same fix covers Earthmed McHenry (bd04fa89.., no endpoints; menu.earthmed.com/mchenry-rec) and Earthmed Rosemont (efa7c3ca.., has jane 2740 + generic partials). Then retire the generic menu.earthmed.com and earthmed.com/cannabis/products endpoints once the native ones are accepted (menu_document_scope/has_menu_contract). Scheduling: include regions with retained endpoints.",
+ "root_cause_tag": "jane-partner-storeid-unquoted-js-literal",
+ "confidence": "high",
+ "store_id": "a1a5d56fdd9af3e2dbda6d5e",
+ "slug": "earthmed",
+ "investigated_at": "2026-10-19"
+}

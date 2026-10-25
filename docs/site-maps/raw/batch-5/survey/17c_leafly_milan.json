@@ -1,0 +1,194 @@
+{
+ "key": "17c_leafly_milan",
+ "url": "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://www.leafly.com/cdn-cgi/challenge-platform/h/b/precursor/d2d3316b729e/0.6676923577476843:1792440026:eq-7wEBAAQBkMXcGFKpiINkUz-DBbd0f2D1_wpcrNxA/a4d2915d6f2957fd",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 18,
+   "post": "guin-Ai+H6CdLGBtfrNoaDTrspUXPDYN7Y0C$aO7kHi1hVILsbedCQ+EVKo$-ZraPzYFXeKMJb0rFkxssMxuDUTPYXo0Im0QXxGejHr3xrQ30LwfZYnQ9W9Bwk5Uwd6ICqB6Sh38O5HRs6aGFNNZdjvMDznU0SNF"
+  },
+  {
+   "u": "https://directus.leafly.com/items/global_footer?filter%5Bstatus%5D%5B_eq%5D=published&sort=-created_on",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 383
+  },
+  {
+   "u": "https://consumer-api.leafly.com/api/followers/v1/is_following?followeeType=dispensary&followeeId=174378",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 21
+  },
+  {
+   "u": "https://reservations-api.leafly.com/v2/cart?calculate_tax=false",
+   "m": "GET",
+   "s": 404,
+   "ct": "text/plain; charset=utf-8",
+   "len": 1
+  },
+  {
+   "u": "https://growthbook.leafly.com/api/features/sdk-rPWnVJg5slrfSKJP",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 4546
+  },
+  {
+   "u": "https://reservations-api.leafly.com/dispensaries/174378/pickup_readiness_time",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 14
+  },
+  {
+   "u": "https://public.leafly.com/web-web/_next/static/css/7a814997fda698aa.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css"
+  },
+  {
+   "u": "https://public.leafly.com/web-web/_next/static/css/f30fe31c2b7bb380.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css"
+  },
+  {
+   "u": "https://public.leafly.com/web-web/_next/static/css/f30fcf4af3128f1c.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css"
+  },
+  {
+   "u": "https://public.leafly.com/web-web/_next/static/css/f5f55d4c603ddc9b.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css"
+  },
+  {
+   "u": "https://r.surfside.io/e48ef/bna7d/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 43
+  },
+  {
+   "u": "https://api.sail-personalize.com/v1/personalize/simple?pageviews=1&isMobile=0",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 288
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://consumer-api.leafly.com/api/dispensaries/v1/174378/promotions?skip=0&take=3",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 39
+  },
+  {
+   "u": "https://consumer-api.leafly.com/api/dispensaries/v1/nature-s-treatment-of-illinois/updates?skip=0&take=3",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1730
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+ "title": "Nature's Treatment of Illinois - Milan (Medical & Recreational) | Dispensary Menu, Reviews & Photos",
+ "htmlLen": 1338768,
+ "prices": 119,
+ "textHead": "We use cookies for certain features and to improve your experience. See our Cookie Policy and Privacy Policy to learn more advertise on Leafly Minonk, IL change Shop Dispensaries Delivery Deals Strain",
+ "iframes": [],
+ "nextdata": true,
+ "links": [
+  "https://www.leafly.com/info/privacy-policy#cookies",
+  "https://www.leafly.com/info/privacy-policy",
+  "https://www.leafly.com/",
+  "https://success.leafly.com/biz?utm_source=site_header&utm_medium=header&utm_campaign=sell_on_leafly&utm_content=SOL",
+  "https://www.leafly.com/bag",
+  "https://www.leafly.com/shop",
+  "https://www.leafly.com/dispensaries",
+  "https://www.leafly.com/delivery",
+  "https://www.leafly.com/deals",
+  "https://www.leafly.com/strains/lists",
+  "https://www.leafly.com/brands",
+  "https://www.leafly.com/products"
+ ],
+ "count_text": "1085 products",
+ "platforms": [
+  "leafly"
+ ],
+ "hosts": [
+  [
+   "public.leafly.com",
+   167
+  ],
+  [
+   "leafly-production.imgix.net",
+   24
+  ],
+  [
+   "leafly-public.imgix.net",
+   17
+  ],
+  [
+   "growthbook.leafly.com",
+   6
+  ],
+  [
+   "www.leafly.com",
+   4
+  ],
+  [
+   "www.googletagmanager.com",
+   3
+  ],
+  [
+   "securepubads.g.doubleclick.net",
+   3
+  ],
+  [
+   "consumer-api.leafly.com",
+   3
+  ],
+  [
+   "reservations-api.leafly.com",
+   2
+  ],
+  [
+   "analytics.google.com",
+   2
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "directus.leafly.com",
+   1
+  ],
+  [
+   "bcp.crwdcntrl.net",
+   1
+  ],
+  [
+   "stats.g.doubleclick.net",
+   1
+  ]
+ ]
+}

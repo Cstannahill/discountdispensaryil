@@ -1,0 +1,43 @@
+{
+  "store_id": "8f7d6119a3975ec2d6c25932",
+  "name": "Bud & Ritas - West Town",
+  "slug": "bud-ritas-west-town",
+  "registry": {"address": "1914 W Chicago Ave", "city": "Chicago", "state": "IL", "latitude": 41.89623, "longitude": -87.67524, "distance_miles": 98.6},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://budandritas.com/stores/west-town-dispensary-chicago/ (brand site https://budandritas.com ; the brand is 'Bud & Rita's' with an apostrophe, registry spells it 'Bud & Ritas')",
+  "menu_url": "https://budandritas.com/menu/ (shared across the chain; branch chosen by the store-select cookie/geolocation) - the branch-pinned page that exposes the store id is https://budandritas.com/stores/west-town-dispensary-chicago/. Recreational menu only (MEDICAL search returns 0).",
+  "platform": "joint",
+  "how_menu_reached": "WordPress site with the Joint Commerce 'joint-ecommerce' plugin (v1.46.1) rendering the menu client-side on /menu/ (also on /stores/<slug>/ branch pages). Footer tag mentions dutchieplus (a CNNA tag manager), but the menu is not Dutchie: the product API is the plugin's own wp-json search. Chain has 7 IL stores: West Town, Avondale, The Loop, Niles, Wadsworth, Forsyth, Sycamore (coming soon).",
+  "branch_selection": "Joint business id. The branch page embeds `jointEcommerce.currentStore = {joint_business_id: 6359, display_name: \"Bud & Rita's: West Town\", name: \"Bud & Rita's West Town\", address_1: '1914 W Chicago Ave', city: 'Chicago'}` (exactly what backend/providers/joint.py joint_store() reads). The chain's business ids seen in stores/closest: 6359 (West Town), 6366, 6374, 6407, 6411, 6451. The generic /menu/ and home pages carry no currentStore, so they cannot be pinned to a branch.",
+  "age_gate": "click-through (WordPress age-gate plugin, GET /wp-json/age-gate/v3/check; auto-click works)",
+  "data_loading": {
+    "mechanism": "REST POST to an Elasticsearch-style search under the WordPress plugin namespace (no auth, no nonce needed for the search itself)",
+    "endpoints": [
+      "POST https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search  body: {query:{bool:{filter:[{bool:{should:[{term:{businessId:'6359'}}]}},{bool:{should:[{term:{menuType:'RECREATIONAL'}}]}},{bool:{must_not:[{term:{isDeleted:true}}]}}]}},from,size:100,sort:[{itemsSold:'desc'},{jointId:'asc'}]}",
+      "GET https://budandritas.com/wp-json/joint-ecommerce/v1/stores/closest?businessIds[]=6359&...&sort=distance&latitude=..&longitude=..",
+      "GET https://budandritas.com/wp-json/joint-api/v1/geolocation ; GET /wp-admin/admin-ajax.php?action=joint_ecommerce_nonce"
+    ],
+    "notes": "The POST URL is already supported by backend/network.py _JOINT_SEARCH_POST and providers/joint.py (native). Each hit has variants[] (option, price, specialPrice, quantity, menuType, jointId), category (FLOWER, PRE_ROLLS, VAPORIZERS, CONCENTRATES, EDIBLES, TOPICALS, ORAL, MERCH, NONE), brandName, potencies, applicableSpecials. Note providers/joint.py CATEGORIES only maps FLOWER/CONCENTRATES/VAPORIZERS, so PRE_ROLLS (187 products here) are categorized 'other'."
+  },
+  "paging": "from/size with size 100 (WINDOW 10000). hits.total = {value 948, relation eq}; 10 pages (9x100 + 48). Replaying the pipeline's own filter and sort gave 948 unique = 948 declared, 948 RECREATIONAL variants (one variant per product here). Without the jointId tiebreaker the pages are unstable (the page's own query returned 920 unique of 948), which providers/joint.py already handles.",
+  "approx_product_count": 948,
+  "license_channels": "recreational-only in practice: MEDICAL menuType search returned 0 for businessId 6359",
+  "blockers": ["none"],
+  "evidence": [
+    "Google results: budandritas.com/Stores 'Bud and Rita's West Town Dispensary Chicago', (312) 473-4111, 1914 W Chicago Ave Chicago IL 60622; recreational locator shows 'West Town ... Open - Closes at 10:00PM'; Yelp updated October 2026",
+    "curl budandritas.com/stores/west-town-dispensary-chicago/ -> 200, joint_store() returns id 6359 address '1914 W Chicago Ave' (== registry)",
+    "In-page replay of the pipeline's exact joint query: 948/948 RECREATIONAL, 0 MEDICAL",
+    "Category mix (products): Flower 244, Pre-Rolls 187, Vaporizers 168, Edibles 152, Merch 134, Concentrates 46, None 12, Oral 3, Topicals 2"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: 'Fallback website search found no corroborated branch lead' (earlier: 'No retailer locator connector configured for this brand')",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution attempt (job c2112fa0, 2026-10-18): unresolved, code NO_LEAD, grade D, 0.59 s (search returned nothing: by-address Bing query was recorded as evidence); no menu attempt",
+    "sample": null
+  },
+  "why_it_fails": "Pure discovery failure; the platform adapter is complete. (1) locators.CONNECTORS has no entry for the brand, so the chain-hub stage returns 'No retailer locator connector configured'. (2) The fallback search (site_discovery.search_websites by name, then by address) came back empty in 0.6 s - the brief's known dead search backend (DuckDuckGo 202 challenge / Bing unrelated), and the registry name 'Bud & Ritas' (no apostrophe) does not help a name query. Once budandritas.com/stores/west-town-dispensary-chicago/ is fetched, adapters.resolve_menu already detects 'jointEcommerce' and providers/joint.observe() yields provider joint, provider_store_id 6359, with retailer_address 1914 W Chicago Ave, and providers/joint.fetch would reconcile 948 = 948 (grade A candidate).",
+  "fix_idea": "Add a CONNECTORS entry such as (r\"^bud\\s*(?:&|and)?\\s*rita\", 'https://budandritas.com/stores/') so the hub's city-token link matcher yields the three Chicago branch pages (west-town / avondale / the-loop) and joint.observe() disambiguates by currentStore.address_1. More generally, a Joint-platform hub locator: any WordPress site with joint-ecommerce exposes /stores/<slug>/ pages with currentStore ids; walk them and match street address. Normalize registry names by stripping '&' and apostrophes before name matching ('Bud & Ritas' vs \"Bud & Rita's\"). Optional: map PRE_ROLLS in providers/joint.CATEGORIES so pre-roll $/g offers are comparable.",
+  "root_cause_tag": "no-connector-search-dead-joint-ready",
+  "confidence": "high"
+}

@@ -1,0 +1,410 @@
+{
+ "key": "7be78714",
+ "url": "https://grasshopperclub.com/shop/south-loop",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://grasshopperclub.com/shop/south-loop",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/index.json",
+   "size": 208877,
+   "sample": "{\n  \"grasshopper\": {\n    \"sizing\": {\n      \"scale\": {\n        \"xxxxs\": \"2px\",\n        \"xxxs\": \"4px\",\n        \"xxs\": \"8px\",\n        \"xs\": \"12px\",\n        \"sm\": \"16px\",\n        \"md\": \"24px\",\n        \"lg\": \"32px\",\n        \"xl\": \"40px\",\n        \"xxl\": \"48px\",\n        \"xxxl\": \"56px\",\n        \"xxxxl\": \"64"
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "other",
+   "ct": "application/json",
+   "u": "https://media.sweedpos.com/store/production/static/grasshopper/icon.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/search.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/cart.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/shop.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/chevron-down.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/chevron-left.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/chevron-right.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/discount-label.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/filter.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/thumb-up.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/minus.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/24/cart-add.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--grasshopper/b2-f9ff3c63c2e61ce5656526a803c88874495c76f593006483b81eac18fe994c29/icons/16/more.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 401,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Account/Get",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/StoreConfig/GetSignupModal",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Cart/GetV2",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/storefront/v1/pages/home",
+   "size": 1015,
+   "sample": "{\"components\":[{\"instanceId\":\"featured-deals\",\"content\":{\"type\":\"Section\",\"title\":\"Featured deals\"}},{\"instanceId\":\"buttons\",\"content\":{\"type\":\"Section\",\"title\":\"\"}},{\"instanceId\":\"categories\",\"content\":{\"type\":\"Section\",\"title\":\"Categories\"}},{\"instanceId\":\"product-carousel-4663\",\"content\":{\"type\":"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/AccountV2/GetAccountFulfillmentPreferencesV2",
+   "size": 109,
+   "sample": "{\"fulfillmentType\":\"InStorePickup\",\"fulfillment\":{\"inStorePickup\":{\"label\":\"Grasshopper Club | South Loop\"}}}",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetStoreConfig",
+   "size": 71341,
+   "sample": "{\"acceptDealsModalImageUrl\":null,\"acceptDealsModalLinkUrl\":null,\"addToCartButtonPosition\":\"top\",\"aeroPayEnv\":\"production\",\"aeroPayLocationId\":null,\"aeroPayMerchantId\":null,\"ageGateMode\":\"confirm\",\"agreementDisclaimerPosition\":\"below\",\"aiBudtenderConfig\":\"\",\"alternativeCheckoutLayoutEnabled\":false,\"a",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetShopInShopsList",
+   "size": 22,
+   "sample": "{\"shopInShopItems\":[]}",
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/CartV2/GetSettingsPreferences",
+   "size": 44,
+   "sample": "{\"isResident\":true,\"isResidencyLocked\":true}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetProductCategoryList",
+   "size": 1987,
+   "sample": "[{\"id\":2771,\"name\":\"Flower\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1730829502_d57079de-7994-445e-9f4b-44c5a289a08e.png\",\"filter\":{\"category\":[2771]},\"canonicalName\":\"flower\"},{\"id\":2778,\"name\":\"Pre-roll\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1730829773_59e4bcb9-ad2",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetCompliance",
+   "size": 54,
+   "sample": "{\"compliance\":{\"legalAge\":18,\"ageGateMode\":\"Confirm\"}}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetStoreInfoV2",
+   "size": 2484,
+   "sample": "{\"storeInfo\":{\"id\":229,\"name\":\"Grasshopper Club | South Loop\",\"description\":\"<p>Grasshopper Club started with a family from the South Side of Chicago and their vision to create a local dispensary that goes beyond merely selling flower. As a Chicago-born, Black-owned business, our mission is rooted i",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetAvailableFulfillmentTypesV2",
+   "size": 215,
+   "sample": "{\"storeFulfillmentOptions\":[{\"fulfillmentType\":\"InStorePickup\",\"title\":\"In-store pickup\",\"children\":[]}],\"organizationFulfillmentTypeInfos\":[{\"fulfillmentType\":\"InStorePickup\",\"name\":\"Pickup\",\"storeIds\":[228,229]}]}",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Loyalty/GetLoyaltyNotices",
+   "size": 14,
+   "sample": "{\"notices\":[]}",
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Loyalty/GetStoreLoyaltySettingsV2",
+   "size": 4117,
+   "sample": "{\"id\":37,\"enabled\":true,\"isDistributionSubscriptionRequired\":true,\"levels\":[{\"id\":79,\"name\":\"Member Level \",\"moneyToBonus\":1.00,\"bonusToMoney\":0.04,\"goal\":0,\"bonus\":0,\"rank\":1,\"enabled\":true,\"description\":null},{\"id\":80,\"name\":\"Young Grasshopper\",\"moneyToBonus\":1.00,\"bonusToMoney\":0.04,\"goal\":101.00",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetProductCarouselList",
+   "size": 20414,
+   "sample": "[{\"id\":2615,\"name\":\"Explore Craft Brands\",\"canonicalName\":\"explore-craft-brands\",\"description\":\"\",\"total\":30,\"products\":[{\"id\":322933,\"name\":\"Pearlz\",\"description\":\"Pearlz is indica-forward that blends Zoap x Lazergun genetics into a deeply relaxing, floaty experience perfect for unwinding. Expect a",
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Referral/GetV2",
+   "size": 637,
+   "sample": "{\"referralState\":{\"id\":190,\"enabled\":false,\"referralDiscountType\":\"PercentDiscount\",\"referralDiscountAmount\":25.000000,\"referralMinInvoiceAmount\":1.000000,\"referralMinInvoiceCount\":0,\"referralMinInvoiceCountForReferrer\":1,\"referralPromocodeMinApplyAmount\":1.000000,\"terms\":null,\"tiersEnabled\":false,\"",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792442050697&ver=1.161.3&compression=base64",
+   "size": 869,
+   "sample": "{\"config\": {\"enable_collect_everything\": true}, \"toolbarParams\": {}, \"isAuthenticated\": false, \"supportedCompression\": [\"gzip\", \"gzip-js\"], \"featureFlags\": {\"ecom-7583-alternative-checkout-layout\": \"test\", \"ecom-4991-new-signup-flow\": \"test\", \"ecom-6307-delivery-button-on-checkout\": \"test\", \"checkou",
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkZi0yODg5LTdmZDAtOTQ5Yy1mZDVmNDljYWMxMzciLCJncm91cHMiOnt9fQ%3D%3D"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792442050701&ver=1.161.3&compression=base64",
+   "size": 361,
+   "sample": "{\"featureFlags\": {}, \"featureFlagPayloads\": {}, \"errorsWhileComputingFlags\": false, \"supportedCompression\": [\"gzip-js\", \"base64\"], \"sessionRecording\": false, \"surveys\": false, \"heatmaps\": false, \"captureDeadClicks\": false, \"autocapture_opt_out\": false, \"siteApps\": [], \"isAuthenticated\": false, \"quot",
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWRmLTI4OGQtNzNjZS1iZTZlLWE4NjllYzRkY2QzZSIsImdyb3VwcyI6e319"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/QuickLinks/GetHomePageQuickLinks",
+   "size": 2049,
+   "sample": "{\"title\":\"Grasshopper Club | South Loop Dispensary Menu\",\"links\":[{\"name\":\"All Products\",\"imageUrl\":\"https://media.sweedpos.com/store/production/static/grasshopper/all_products.png\",\"navigateTo\":\"Catalog\",\"filter\":null},{\"name\":\"Flower\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1730829",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Banners/GetBanners",
+   "size": 2199,
+   "sample": "{\"banners\":[{\"id\":58992,\"name\":\"30% Off  Grassroots, Dark Heart, Find & Anthem\",\"link\":null,\"image\":\"https://media.sweedpos.com/store/production/1791910611_780d0d21-a426-4e14-9be8-d6b6fc50f2c7.png\",\"mobileImage\":\"https://media.sweedpos.com/store/production/1791910611_9962655a-a4c8-4cfe-a52d-c297626a",
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.googletagmanager.com/ns.html?id=GTM-TH79KJH",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-2YMG7L3GT8&gtm=45je6af0v899753650za20ozb899763870zd899763870xf1&_p=1792442050689&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=722668390&_eu=AAAAAGA&cid=1754820669.1792442051&frm=0&pscdl=noapi&rcb=3&sr=1366x900&uaa=x",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/WebAnalytics/AddEvent",
+   "size": 0,
+   "sample": null,
+   "post": "{\"events\":[{\"appName\":\"Shop\",\"platform\":\"NewShop\",\"eventType\":\"Ui\",\"sessionId\":\"8ba71e1e-79d6-4834-9de9-d840e5f0c3cf\",\"sessionStarted\":\"2026-10-19T20:34:10.551Z\",\"eventCreated\":\"2026-10-19T20:34:10.645Z\",\"deviceType\":\"Desktop\",\"deviceId\":\"cf3c4edd-0331-41c0-919a-d4b18d8609f6\",\"eventName\":\"page.view\""
+  }
+ ],
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-TH79KJH"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Confirm\") [Confirm]"
+ ],
+ "status": 200,
+ "finalUrl": "https://grasshopperclub.com/shop/south-loop",
+ "title": "Grasshopper Club | South Loop Dispensary | Chicago, IL",
+ "htmlBytes": 211845,
+ "sigs": [
+  "sweed",
+  "tymber"
+ ],
+ "links": [
+  "https://grasshopperclub.com/shop/south-loop#maincontent",
+  "https://grasshopperclub.com/shop/south-loop#footer",
+  "https://grasshopperclub.com/shop/south-loop",
+  "https://grasshopperclub.com/shop/south-loop/menu",
+  "https://grasshopperclub.com/shop/south-loop/menu/discounts?promo=deals",
+  "https://grasshopperclub.com/shop/south-loop/about-us",
+  "https://grasshopperclub.com/shop/south-loop/menu/discounts/30-off-grassroots-dark-heart-find-anthem-139156",
+  "https://grasshopperclub.com/shop/south-loop/menu/discounts/munchies-monday-20-off-edibles-and-earn-2x-points-78527",
+  "https://grasshopperclub.com/shop/south-loop/menu/discounts/20-off-northern-heights-89562",
+  "https://grasshopperclub.com/shop/south-loop/menu/flower-2771",
+  "https://grasshopperclub.com/shop/south-loop/menu/pre-roll-2778",
+  "https://grasshopperclub.com/shop/south-loop/menu/infused-pre-roll-2785",
+  "https://grasshopperclub.com/shop/south-loop/menu/concentrate-2779",
+  "https://grasshopperclub.com/shop/south-loop/menu/edible-2774",
+  "https://grasshopperclub.com/shop/south-loop/menu/accessories-2775",
+  "https://grasshopperclub.com/shop/south-loop/menu/apparel-2780",
+  "https://grasshopperclub.com/shop/south-loop/menu/beverages-2784",
+  "https://grasshopperclub.com/shop/south-loop/menu/disposable-2783",
+  "https://grasshopperclub.com/shop/south-loop/menu/vape-cartridge-2782",
+  "https://grasshopperclub.com/shop/south-loop/menu/flower-2771/indica-dominant-pearlz-flower-35g-470999?originId=carousel_2615+&originName=Explore+Craft+Brands&upsellRunId=undefined&idx=0&carousel=%5Bobject+Object%5D&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=229",
+  "https://grasshopperclub.com/shop/south-loop/menu/flower-2771/indica-dominant-bumbo-flower-35g-598985?originId=carousel_2615+&originName=Explore+Craft+Brands&upsellRunId=undefined&idx=1&carousel=%5Bobject+Object%5D&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=229",
+  "https://grasshopperclub.com/shop/south-loop/menu/flower-2771/indica-dominant-queen-of-diamonds-flower-35g-583232?originId=carousel_2615+&originName=Explore+Craft+Brands&upsellRunId=undefined&idx=2&carousel=%5Bobject+Object%5D&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=229",
+  "https://grasshopperclub.com/shop/south-loop/menu/flower-2771/indica-dominant-orange-cream-soda-flower-35g-621558?originId=carousel_2615+&originName=Explore+Craft+Brands&upsellRunId=undefined&idx=3&carousel=%5Bobject+Object%5D&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=229",
+  "https://grasshopperclub.com/shop/south-loop/menu/vape-cartridge-2782/sativa-dominant-lemon-headz-4-live-rosin-cartridge-05g-388975?originId=carousel_2615+&originName=Explore+Craft+Brands&upsellRunId=undefined&idx=4&carousel=%5Bobject+Object%5D&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=229",
+  "https://grasshopperclub.com/shop/south-loop/menu/vape-cartridge-2782/hybrid-baf-live-resin-cartridge-05g-617069?originId=carousel_2615+&originName=Explore+Craft+Brands&upsellRunId=undefined&idx=5&carousel=%5Bobject+Object%5D&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=229"
+ ],
+ "textSample": "Skip to main content or Skip to footer Home Menu Discounts About Us Sign up or log in to see exclusive deals Log In Sign Up Pickup at Grasshopper Club | South Loop Featured Deals View all 3 Deals Popular Search & Filter Grasshopper Club | South Loop Dispensary Menu All Products Flower Pre-roll Infused Pre-roll Concentrate Edible Accessories Apparel Beverages Disposable Vape Cartridge Explore Craft Brands View all 30 0 Indica Dominant Flower by Preferred Gardens Pearlz Flower THC: 23.3% 3.5g Only 2 left $52.00 0 Indica Dominant Flower by Northern Heights Bumbo Flower THC: 26.38% 3.5g $40.00 0 Indica Dominant Flower by Northern Heights Queen of Diamonds Flower THC: 24.48% CBD: 0.06% 3.5g $40.0",
+ "productHints": [],
+ "priceCount": 10
+}

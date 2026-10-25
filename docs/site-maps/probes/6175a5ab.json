@@ -1,0 +1,149 @@
+{
+ "key": "6175a5ab",
+ "url": "https://naturescarecompany.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html;charset=utf-8",
+   "u": "https://naturescarecompany.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json;charset=utf-8",
+   "u": "https://naturescarecompany.com/api/census/render-batch",
+   "size": 17,
+   "sample": "{\"success\": true}",
+   "post": "{\"events\":[{\"type\":\"PAGE_VIEW\",\"payload\":{\"event\":1,\"data\":{\"localStorageSupported\":true,\"queryString\":\"\",\"referrer\":\"\",\"websiteId\":\"5d94d10dde4f3373661b1608\",\"templateId\":\"55f0aac0e4b0f0a5b7e0b22e\",\"website_locale\":\"en-US\",\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (K"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/jpeg",
+   "u": "https://tags.srv.stackadapt.com/sa.jpeg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/cf59d/52bf5/config.json",
+   "size": 2,
+   "sample": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=utf-8",
+   "u": "https://tags.srv.stackadapt.com/saq_pxl?uid=ceZJILiyAmsPeemuQWePLQ&is_js=true&landing_url=https%3A%2F%2Fnaturescarecompany.com%2F&t=Nature%27s%20Care%20Co.%20%2F%20Cannabis%20Dispensary&tip=ADrOAUhs9zRY9bo9PQhbxsjcKXpOBQ4YxD8xQL0zqeY&host=https%3A%2F%2Fnatures",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn.acsbapp.com/config/naturescarecompany.com/config.json",
+   "size": 748,
+   "sample": "{\"time\":\"2026-10-19T12:30:05.847Z\",\"specifics\":\"\",\"addonAnalytics\":true,\"aiAssistant\":true,\"blockMeta\":false,\"blockImages\":false,\"blockStyles\":false,\"blockTextSimplifier\":false,\"widgetSettings\":{\"consistentHelpData\":[],\"copilotChat\":true,\"disableBgProcess\":false,\"footerHtml\":\"\",\"hideComponents\":[],\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json;charset=utf-8",
+   "u": "https://naturescarecompany.com/api/popup-overlay/render?currentUrl=%2F",
+   "size": 307664,
+   "sample": "{\"shouldDisplayOnPage\":true,\"renderedHtml\":\"<div class=\\\"sqs-slide-wrapper\\\" data-slide-id=\\\"5d95497aafaef17e643dff82\\\" data-slide-type=\\\"popup-overlay\\\">\\n\\t<div class=\\\"sqs-slide-container countdown-numeric-label-font-size-medium  page-border-size-medium   video-overlay-color-blend-mode-normal but"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://naturescarecompany.com/\",\"page\":\"Nature's Care Co. / Cannabis Dispensary\",\"eid\":\"010a7c80-8568-4dfa-ac8c-f2a0c2045902\",\"tv\":\"js-3.6.0\",\"tna\":\"digital\",\"aid\":\"waimea:iheartjane\",\"p\":\"web\",\"c"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-CE45S2K022&gtm=45je6af0v9116980809za20oxf1&_p=1792442030070&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZjQwMz&_eu=AAAIACAC&cid=2105061849.1792442031&frm=0&ibt=1&ngs=1&pscdl=noapi&rcb=0&sr=1366x900&uaa=x86&uab=64&",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+   "size": 58456,
+   "sample": "[\"Map data ©2026 Google\",[[\"obliques\",[[42.2285173562085,-88.505859375],[42.293564192170074,-87.71484375]]],[\"obliques\",[[42.163403424224008,-88.505859375],[42.2285173562085,-87.71484375]]],[\"obliques\",[[42.098222411189731,-88.505859375],[42.163403424224008,-87.626953125]]],[\"obliques\",[[42.0329743",
+   "post": "[[[41.93723869793266,-88.65542654110672],[42.259433096851104,-87.39782904855409]],12,null,\"en\",0,\"m@799000000\",0,0,null,null,null,1,\"https://naturescarecompany.com/\",1,null,null,\"2A6DAEDE-BD6E-4111-85AF-356D821B8B38\"]"
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://tags.srv.stackadapt.com/js_tracking?url=https%3A%2F%2Fnaturescarecompany.com%2F&uid=ceZJILiyAmsPeemuQWePLQ&v=1&host=https%3A%2F%2Fnaturescarecompany.com&l_src=&l_src_d=&u_src=&u_src_d=&shop=false",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json;charset=utf-8",
+   "u": "https://naturescarecompany.com/api/census/overlay",
+   "size": 17,
+   "sample": "{\"success\": true}",
+   "post": "{\"pagePath\":\"/\",\"version\":\"2\",\"action\":1,\"trigger\":1,\"layoutId\":\"overlay-center-card-01\",\"buttons\":[{\"buttonText\":\"Learn More\",\"clickthroughUrl\":null}],\"formId\":\"5f4534ab4126096a3af98210\",\"visitorCookie\":\"8c2758c6-d5bb-4e32-abdf-1de864212f31|1792442030196|1792442030196|1792442030196|1\",\"pagePermissi"
+  }
+ ],
+ "iframes": [
+  "about:srcdoc",
+  "about:blank"
+ ],
+ "notes": [
+  "clicked [class*=\"age\"] button [OK]"
+ ],
+ "status": 200,
+ "finalUrl": "https://naturescarecompany.com/",
+ "title": "Nature's Care Co. / Cannabis Dispensary",
+ "htmlBytes": 481079,
+ "sigs": [
+  "jane"
+ ],
+ "links": [
+  "https://naturescarecompany.com/rolling-meadows-menus",
+  "https://naturescarecompany.com/menus"
+ ],
+ "textSample": "Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window SUPERFLUX Flower is here! Join us for exclusive access to the flower that fuels their amazing concentrates. MENUS ROLLING MEADOWS MENUS VISIT US ROLLING MEADOWS SPECIALS LOYALTY PROGRAM PREFERRED PRICING PROGRAM RESOURCES FAQ'S PARKING CURBSIDE PICKUP LOGIN INSTRUCTIONS DEFECTIVE POLICY MERCH SOCIAL EQUITYCONTACT Welcome to Nature’s Care Co. A CANNABIS DISPENSARY Nature’s Care Co. dispensaries are conveniently located in Rolling Meadows. Visit us and discover a full range of high quality Cannabis products from all over the State of Illinois. Our care specialists offer one-on-one personalized service that sets the s",
+ "productHints": [],
+ "priceCount": 0
+}

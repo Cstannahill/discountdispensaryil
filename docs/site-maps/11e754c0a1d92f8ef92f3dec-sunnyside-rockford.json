@@ -1,0 +1,40 @@
+{
+ "store_id": "11e754c0a1d92f8ef92f3dec",
+ "name": "Sunnyside - Rockford",
+ "address": "2696 McFarland Rd",
+ "city": "Rockford",
+ "distance_miles": 95.397,
+ "accepted_menu": false,
+ "platform": "Cresco (Sunnyside own site)",
+ "menu_url": "https://www.sunnyside.shop/store/rockford-il",
+ "how_reached": "sunnyside.shop store page; Cresco store id 67 (from the specials call)",
+ "branch_selection": "Cookies and store slug",
+ "products_load": "api.crescolabs.com fifo-inventory per category",
+ "paging": "per category",
+ "count_hint": "not captured",
+ "blockers": "none seen",
+ "why_it_fails": "Stored endpoint is a lookyweed.com directory page (generic, 12 items, TOTAL_UNVERIFIABLE). A directory is a lead, never a menu, so this endpoint should not exist.",
+ "fix_idea": "Supersede the directory endpoint. Cresco reader with store id 67.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 2,
+   "sample": [
+    [
+     "generic",
+     118
+    ]
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

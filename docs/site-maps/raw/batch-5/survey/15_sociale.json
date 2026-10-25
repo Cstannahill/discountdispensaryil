@@ -1,0 +1,259 @@
+{
+ "key": "15_sociale",
+ "url": "https://socialedispensary.com/menu/park-ridge/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://ecom-api.blaze.me/api/v2/store/settings/",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 11298
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/site/?theme_format=web",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 14830
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v2/store/settings/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 11298
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/site/promotional-banners/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 1938
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/site/promotional-banners/config/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 247
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/site/integrations/?filter[exclude_deployment_integrations]=true&delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 2192
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/socials/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 550
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/deals/rewards/?filter[is_featured]=true&page[offset]=0&page[limit]=10&delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 72
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/pages/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 2401
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v2/groups/integrations/auth/configuration?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 331
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/deals/promotions/?filter[is_featured]=true&page[offset]=0&page[limit]=10&delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 72
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v2/products/filters/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 27026
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/products/?limit=3&on_sale=true&delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 11363
+  },
+  {
+   "u": "https://api.mapbox.com/geocoding/v5/mapbox.places/1036%20W%20Higgins,%20Park%20Ridge,%20IL%2060068.json?types=address&country=US&proximity=-120.72,36.98&access_token=pk.eyJ1IjoidHltYmVybWIiLCJhIjoiY2s",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.geo+json; char",
+   "len": 1303
+  },
+  {
+   "u": "https://growth-api.blaze.me/api/v1/public/merchants/blu-63fe2d6ebaf8ba0755bceec0-648b5162a9734e5eafe5d549/loyalty/status",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 17
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v2/store/settings/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 11298
+  },
+  {
+   "u": "https://g.surfside.io/enrich",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 203
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/products/recommendations/sponsored-user-top-picks/?limit=6&offset=0&zoneId=home.user-top-picks&delivery_type=pickup",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 167965,
+   "post": "{\"data\":{\"type\":\"recommendations\",\"attributes\":{\"url\":\"https://socialedispensary.com/menu/park-ridge/\",\"screen\":{\"height\":900,\"width\":1366},\"navigator\":{\"user_a"
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/products/recommendations/sponsored-user-top-picks/?limit=6&offset=0&zoneId=home.user-top-picks&order=brand&delivery_type=pickup",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 167965,
+   "post": "{\"data\":{\"type\":\"recommendations\",\"attributes\":{\"url\":\"https://socialedispensary.com/menu/park-ridge/?order=brand\",\"screen\":{\"height\":900,\"width\":1366},\"navigat"
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/store/?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 1031
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v2/groups/integrations/auth/configuration?delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 331
+  },
+  {
+   "u": "https://g.surfside.io/enrich",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 203
+  },
+  {
+   "u": "https://cdn.acsbapp.com/config/socialedispensary.com/config.json",
+   "m": "GET",
+   "s": 404,
+   "ct": "application/xml; charset=UTF-8"
+  },
+  {
+   "u": "https://cdn.acsbapp.com/cache/app/wildcards.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 264
+  },
+  {
+   "u": "https://ecom-api.blaze.me/api/v1/products/?limit=10&category=accessories&order=brand&zoneId=home.showcase-products-list&delivery_type=pickup",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/vnd.api+json; char",
+   "len": 25036
+  }
+ ],
+ "frames": [
+  "about:srcdoc"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://socialedispensary.com/menu/park-ridge/?order=brand",
+ "title": "Sociale Dispensary | Chicago",
+ "htmlLen": 379399,
+ "prices": 40,
+ "textHead": "Home Rewards Contact FAQs Deals Login Pickup Pickup at Sociale | Park Ridge All Flower Cartridges Pre-rolls Edibles Concentrates Beverages Topicals Accessories Disposable Menu Brand: A - Z Filter Unlo",
+ "iframes": [],
+ "nextdata": true,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "blaze",
+  "tymber"
+ ],
+ "hosts": [
+  [
+   "socialedispensary.com",
+   48
+  ],
+  [
+   "tymber-blaze-products.imgix.net",
+   31
+  ],
+  [
+   "ecom-api.blaze.me",
+   20
+  ],
+  [
+   "tymber-s3.imgix.net",
+   4
+  ],
+  [
+   "www.googletagmanager.com",
+   4
+  ],
+  [
+   "sentry.io",
+   3
+  ],
+  [
+   "irp.cdn-website.com",
+   3
+  ],
+  [
+   "cdn.surfside.io",
+   3
+  ],
+  [
+   "cdnjs.cloudflare.com",
+   3
+  ],
+  [
+   "fonts.googleapis.com",
+   2
+  ],
+  [
+   "g.surfside.io",
+   2
+  ],
+  [
+   "cdn.acsbapp.com",
+   2
+  ],
+  [
+   "www.google-analytics.com",
+   2
+  ],
+  [
+   "fonts.gstatic.com",
+   1
+  ]
+ ]
+}

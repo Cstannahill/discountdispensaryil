@@ -1,0 +1,244 @@
+{
+ "key": "43c68bd3",
+ "url": "https://terracecannabis.com/shop/store/6119/shop-all",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://terracecannabis.com/shop/store/6119/shop-all",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.googletagmanager.com/ns.html?id=GTM-TXPVHLJD",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "size": 284,
+   "sample": "{\"token\":\"EYU7IsMqq8ODlt4MLnIq\",\"endpoint\":\"https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l\",\"scriptUrlPattern\":\"https://iheartjane.com/aly2djS2yXoTGnR0/JiGrIFOganSXlo1y?apiKey=\\u003capiKey\\u003e\\u0026version=\\u003cversion\\u003e\\u0026loaderVersion=\\u003cloaderVersion\\u003e\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "size": 3,
+   "sample": "{}\n",
+   "post": "{\"distinctId\":\"W8qqdXI539ikM2drOSCRx\",\"engagements\":[{\"adToken\":\"01a155d3-9837-756c-b8f9-e47a0555ad9b\",\"kevelToken\":\"01a155d3-9837-7685-aff1-244c939d01e6\",\"myHighD\":\"aceafee7-cbfa-11f1-8e21-0a58a9feac02\",\"productId\":2391714}],\"janeDeviceId\":\"W8qqdXI539ikM2drOSCRx\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-script; charset=utf-8",
+   "u": "https://terracecannabis.com/shop/api/footer.data?_routes=routes%2Fapi.footer",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-4QWJJ4N424&gtm=45je6ag1h2v9135280089za20ozb9244208940zd9244208940xf1&_p=1792441293334&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=557904625.1792441297&frm=0&ngs=1&pscdl=noapi&rcb=11&sr=1366x900&uaa=x86&uab=64&uafvl=Goo",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://www.iheartjane.com/headless/drawer?jdid=W8qqdXI539ikM2drOSCRx&appmode=bloom",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 202,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://browser-intake-datadoghq.com/api/v2/rum?ddsource=browser&dd-api-key=pubb36230292b42564857bf144e27c1ef51&dd-evp-origin-version=7.15.0&dd-evp-origin=browser&dd-request-id=f5223d99-f16a-4f1a-b2a6-beeb3bba54f8&batch_time=1792441296185&_dd.api=fetch",
+   "size": 53,
+   "sample": "{\"request_id\":\"f5223d99-f16a-4f1a-b2a6-beeb3bba54f8\"}",
+   "post": "{\"type\":\"long_task\",\"_dd\":{\"format_version\":2,\"drift\":-1,\"configuration\":{\"session_sample_rate\":100,\"session_replay_sample_rate\":5,\"profiling_sample_rate\":0,\"trace_sample_rate\":10},\"sdk_name\":\"rum\",\"discarded\":false},\"application\":{\"id\":\"fc0e9420-aa6e-42ba-9d68-92aa6ea3d321\"},\"date\":1792441293296,\"s"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=utf-8",
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=EYU7IsMqq8ODlt4MLnIq",
+   "size": 0,
+   "sample": null,
+   "post": "),7)�\u0005��,\u0001J��k?���7��];\n�\n�\u0018���̼��\u0015o\u00114Vd��z�ˣཎ�?d�T�1\u0001Z��K5��m�R���R~�\u001dԽ\u000b�\f6����Gn\u0003�\u001b���\u0012�ɳԦg������a��\u0000T�E��\u0004�9�$b����C;�Q�+~k�\fu.:!\\6߼���\u0019��*!�C�¨\u000b�\u0016�.\u000f]\u001d\u0011��!mH�P�u�����Y��Y�`A8H�b�C\u0005K>TL71\u000bO���\u0000�^\u0019�\u0002�T��L�&{\u001c\r\u0014�\u0004�.����Jk�m��\u0019�\n[z�LǑ*G��J�jJv�|d��\u0014z��R&]�/��F@�\u0012���-s�� ݊�\t��+ۓ�\rZ�o\u001bX�X�\u001b���\u001e�����"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api-js.mixpanel.com/track/?verbose=1&ip=1&_=1792441299649",
+   "size": 25,
+   "sample": "{\"error\":null,\"status\":1}",
+   "post": "data=%5B%7B%22event%22%3A%22Searched%20Menu%20Products%22%2C%22properties%22%3A%7B%22%24os%22%3A%22Windows%22%2C%22%24browser%22%3A%22Chrome%22%2C%22%24current_url%22%3A%22https%3A%2F%2Fterracecannabis.com%2Fshop%2Fstore%2F6119%2Fshop-all%22%2C%22%24browser_version%22%3A130%2C%22%24screen_height%22%"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://www.iheartjane.com/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792441298188,\"pageloadId\":\"958a3a7a-198c-467c-8e2a-ebf2ac9f6c53\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://www.iheartjane.com/headless/drawer\",\"referrer\":\"https://terracecannabis.com/\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6IlRFTVBPUkFSWV9VU0VSX0lEIiwia2luZCI6InVzZXIifQ",
+   "size": 14821,
+   "sample": "{\"c3-show-relieved-feeling-label\":{\"version\":2240,\"flagVersion\":4,\"value\":false,\"variation\":1,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\":0},\"c3-gti-rise-branded-email\":{\"version\":2240,\"flagVersion\":8,\"value\":false,\"variation\":1,\"trackEvents\":false,\"trackReason\":false,\"debugEvents"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/goals/6384e85523613d11ad9588c5",
+   "size": 1231,
+   "sample": "[{\"key\":\"6d20bbbc-0b5f-4704-a7ee-124396c75171\",\"kind\":\"click\",\"selector\":\"#pending-cart-form \\u003e div \\u003e button\",\"urls\":[{\"kind\":\"canonical\",\"url\":\"https://www.iheartjane.com/cart\"}]},{\"key\":\"529ea355-c6e8-493a-8f4b-a2a323e9e8db\",\"kind\":\"click\",\"selector\":\"#content \\u003e div \\u003e form \\u003"
+  },
+  {
+   "m": "POST",
+   "s": 404,
+   "t": "xhr",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://terracecannabis.com/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792441286718,\"pageloadId\":\"6e961873-acfc-473b-93fb-c6203647a459\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://terracecannabis.com/shop/store/6119/shop-all\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv\":\"130\",\"ov\":\"10\"},\"memory\":{\"to"
+  },
+  {
+   "m": "POST",
+   "s": 202,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.launchdarkly.com/events/bulk/6384e85523613d11ad9588c5",
+   "size": 0,
+   "sample": "",
+   "post": "[{\"kind\":\"identify\",\"context\":{\"kind\":\"user\",\"key\":\"TEMPORARY_USER_ID\",\"anonymous\":true},\"creationDate\":1792441299549},{\"startDate\":1792441301228,\"endDate\":1792441302054,\"features\":{\"c2-disable-ga-in-bloom-headless\":{\"default\":false,\"counters\":[{\"value\":false,\"count\":3,\"variation\":1,\"version\":2}],\"c"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://sdk-04.moengage.com/v3/sdkconfig/web/FBMS77MLGF4QMXGVHT88GWLW",
+   "size": 431,
+   "sample": "{\"s_log\":\"allowed\",\"s_e_b_e\":\"allowed\",\"a_s\":\"allowed\",\"c_s\":\"blocked\",\"c_w_p_e\":\"blocked\",\"b_d\":\"blocked\",\"m_i_e\":\"allowed\",\"lp_t\":\"blocked\",\"b_e\":[],\"w_e\":[\"MOE_PUSH_PERMISSION_STATE_ALLOWED\",\"MOE_PUSH_PERMISSION_STATE_BLOCKED\"],\"a_c_i_s\":\"blocked\",\"u_i_s\":[\"u_em\",\"uid\"],\"ac_s\":\"blocked\",\"e_b_c\":1",
+   "post": "{\"query_params\":{\"unique_id\":null}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://sdk-04.moengage.com/v2/websdksettings?app_id=FBMS77MLGF4QMXGVHT88GWLW",
+   "size": 2564,
+   "sample": "{\"webData\": {\"sub_billing\": true, \"domain_level_storage\": true, \"show_overlay\": false, \"load_time\": 0, \"prompt_again\": 0, \"opt_in_type\": \"self-handled\", \"is_enabled\": false, \"opt_in_preview\": {\"mobile\": {\"nudge\": {\"title\": {\"text_color\": \"#FFFFFF\", \"text\": \"This website would like to send you awesom"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "ping",
+   "ct": "application/json",
+   "u": "https://api.iheartjane.com/v2/embed/telemetry",
+   "size": 0,
+   "sample": "",
+   "post": "h=terracecannabis.com&s=googletagmanager.com%2Ciframe%3Agoogletagmanager.com%2Cstatic.cloudflareinsights.com%2Ctags.srv.stackadapt.com&k=terracecannabis.com%3Agoogletagmanager.com%2Ciframe%3Agoogletagmanager.com%2Cstatic.cloudflareinsights.com%2Ctags.srv.stackadapt.com&t=1792441303740"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://dmerch.iheartjane.com/v2/smartpage?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "size": 382705,
+   "sample": "{\"products\":[{\"object_id\":\"27685272\",\"search_attributes\":{\"_geoloc\":{\"lat\":41.4447236,\"lng\":-90.5414436},\"activities\":[\"Hang with friends\",\"Get Active\",\"Stimulate my mind\",\"Ease my mind\"],\"aggregate_rating\":4.7,\"allergens\":[],\"allow_multiple_flower_count\":false,\"amount\":\"2oz\",\"applicable_any_discoun",
+   "post": "{\"app_mode\":\"bloom\",\"jane_device_id\":\"W8qqdXI539ikM2drOSCRx\",\"object_ids\":[\"36680449\",\"34740241\",\"36492643\",\"34230330\",\"34232965\",\"28131082\",\"30556764\",\"31457104\",\"35507673\",\"35841941\",\"35009807\",\"34231038\",\"34065370\",\"27706296\",\"35009805\",\"36002584\",\"34202303\",\"34232964\",\"36507256\",\"36003459\",\"3300"
+  }
+ ],
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-TXPVHLJD",
+  "https://www.iheartjane.com/headless/drawer?jdid=W8qqdXI539ikM2drOSCRx&appmode=bloom"
+ ],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://terracecannabis.com/shop/store/6119/shop-all?currentPage=2",
+ "title": "Shop all products | Terrace Cannabis Dispensary - Milan Dispensary Milan, IL",
+ "htmlBytes": 4312398,
+ "sigs": [
+  "jane",
+  "cresco",
+  "springbig",
+  "wordpress"
+ ],
+ "links": [
+  "https://terracecannabis.com/shop/checkout",
+  "https://terracecannabis.com/shop/featured",
+  "https://terracecannabis.com/shop/deals",
+  "https://terracecannabis.com/shop/jane-gold",
+  "https://terracecannabis.com/shop/flower",
+  "https://terracecannabis.com/shop/vape",
+  "https://terracecannabis.com/shop/edible",
+  "https://terracecannabis.com/shop/pre-roll",
+  "https://terracecannabis.com/shop/extract",
+  "https://terracecannabis.com/shop/tincture",
+  "https://terracecannabis.com/shop/topical",
+  "https://terracecannabis.com/shop/gear",
+  "https://terracecannabis.com/shop/shop-all",
+  "https://terracecannabis.com/shop/products/2391714/high-supply-sativa-jack-herer",
+  "https://terracecannabis.com/shop/products/2128053/high-supply-sativa-strawberry-cough",
+  "https://terracecannabis.com/shop/products/2291933/high-supply-indica-blackberry-kush",
+  "https://terracecannabis.com/shop/products/2174899/high-supply-hybrid-tropic-thunder",
+  "https://terracecannabis.com/shop/products/2362065/high-supply-indica-blue-cheese",
+  "https://terracecannabis.com/shop/products/2333551/high-supply-hybrid-bitter-orange",
+  "https://terracecannabis.com/shop/products/2659239/high-supply-hybrid-dew-too",
+  "https://terracecannabis.com/shop/products/395068/high-supply-hybrid-pineapple-express",
+  "https://terracecannabis.com/shop/products/2670540/high-supply-sativa-sour-pink-grapefruit",
+  "https://terracecannabis.com/shop/products/2580824/high-supply-hybrid-billy-ocean",
+  "https://terracecannabis.com/shop/products/2818016/high-supply-indica-slurty3",
+  "https://terracecannabis.com/shop/products/2659235/high-supply-sativa-curacao"
+ ],
+ "textSample": "My store Terrace Cannabis Dispensary - Milan Rec pickup Search Get more with a free account! Fast, secure checkout Personalized recommendations View order history anytime Sign up or sign in Featured Deals Jane Gold Flower Vape Edible Pre-roll Extract Tincture Topical Gear Shop all Shop all products | Terrace Cannabis Dispensary - Milan Dispensary Milan, IL Shop all Help me choose Jane Gold (89) Category Brand Lineage Deal Sort: Recommended 673 products Sponsored High Supply™ - Everything You Need & Nothing You Don’t 35% OFF Sativa vape Jack Herer High Supply™ Vape Cartridge THC 87.11% $25.35/0.5g $39/0.5g Add to bag 35% OFF Sativa vape Strawberry Cough 4.2 (6) High Supply™ Vape Cartridge THC",
+ "productHints": [
+  "673 products"
+ ],
+ "priceCount": 222
+}

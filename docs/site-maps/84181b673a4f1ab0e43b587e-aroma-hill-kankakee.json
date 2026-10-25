@@ -1,0 +1,63 @@
+{
+ "name": "Aroma Hill - Kankakee",
+ "registry": {
+  "address": "2255 E Court St",
+  "city": "Kankakee",
+  "state": "IL",
+  "latitude": 41.12019,
+  "longitude": -87.83235,
+  "distance_miles": 64.5
+ },
+ "operating_status": "open (Sweed storefront live with 705 products per channel; store hours 9am-9pm; platform address 2255 East Court Street, Kankakee 60901)",
+ "website": "https://aromahillcannabis.com/ (brand) / https://shop.aromahillcannabis.com/kankakee",
+ "menu_url": "REC https://shop.aromahillcannabis.com/kankakee/recreational/menu ; MED https://shop.aromahillcannabis.com/kankakee/medical/menu",
+ "platform": "sweed",
+ "how_menu_reached": "Embedded storefront on the shop.aromahillcannabis.com subdomain (Sweed multi-tenant storefront, one tenant for the whole brand; path prefix = branch). SSR react-query cache in window.__sw_qc. Branch directory: /Store/GetStoreShortInfoList on the root page lists Hoffman (194), Belvidere (195), Kankakee (196), Fox Lake (262), Peoria (263).",
+ "branch_selection": "Sweed store id 196 (GetStoreInfoV2.storeInfo.id) and URL prefix /kankakee/. Two sale types (saleTypes [\"Medical\",\"Recreational\"]) so the menu path carries /recreational/ or /medical/ and queries carry saleType. Platform coords 41.120025,-87.832423 = 0.012 mi from the registry point; address \"2255 East Court Street, Kankakee, Illinois\" matches the registry.",
+ "age_gate": "Sweed ageGateMode \"confirm\" (legalAge 21 for the recreational saleType); not needed for SSR reads (providers/sweed.py uses the ordinary /menu links)",
+ "data_loading": {
+  "mechanism": "SSR JSON (window.__sw_qc react-query cache), paginated /menu links; no API key",
+  "endpoints": [
+   "GET https://shop.aromahillcannabis.com/kankakee/recreational/menu?page=N (Products/GetProductList in __sw_qc, pageSize 24)",
+   "GET https://shop.aromahillcannabis.com/kankakee/medical/menu?page=N"
+  ],
+  "notes": "GetProductList SSR total 705 for both Recreational and Medical channels (24 per page, ~30 pages); last accepted snapshot 712 items each (variants). Providers/sweed.py VERSION sweed-ssr-3."
+ },
+ "paging": "Numbered pages of 24; the SSR payload declares the whole-menu total (705) which the adapter reconciles against the traversed rows (two stable traversals for grade A).",
+ "approx_product_count": 705,
+ "license_channels": "rec + med: two Sweed sale types on one store id (196), saved as two endpoints, both COMPLETE",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "curl shop.aromahillcannabis.com/ -> GetStoreShortInfoList; /kankakee/recreational/menu -> GetStoreInfoV2 id 196, saleTypes Medical+Recreational, GetProductList total 705; /kankakee/medical/menu total 705",
+  "DB: both endpoints last_success 2026-10-18T09:08-09:09Z, grade A, 712 items, pipeline_version regional-pipeline-2.5f5ba837b5 (older than the current 3af5418b55 fingerprint)"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "none recorded (no live_resolutions row); endpoints retained from earlier seeding, evidence fetched 2026-10-17T12:24Z with identity_confidence \"matched\" and retailer_location coords.",
+  "saved_endpoints": "sweed 196 medicinal COMPLETE and sweed 196 recreational COMPLETE (last_success 2026-10-18T09:08/09:09Z, 712 items each, grade A).",
+  "recent_attempts": "Only 2 attempts ever (menu, native, sweed): medicinal and recreational complete/A, 712 items, both in manual job c2112fa0 (region 8f7772ca, 190 stores, 08:05-13:20Z 10-18, older pipeline fingerprint). Never attempted since.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "sweed",
+    "license": "recreational",
+    "url": "https://shop.aromahillcannabis.com/kankakee/recreational/menu",
+    "items": 24,
+    "declared_total": 24,
+    "errors": [
+     "incomplete_menu"
+    ],
+    "verdict": "SAMPLE_PRODUCTS",
+    "seconds": 0.4
+   }
+  }
+ },
+ "why_it_fails": "Not a pipeline fault: native sweed, complete/A, both channels. Not fresh because it has not been attempted for ~35 h (09:09Z 10-18 -> 20:22Z 10-19; the 12 h window expired ~21:00Z 10-18). FRESHNESS: storage.py (~L420) counts a store fresh only if an accepted endpoint succeeded <12 h ago. Newest attempt of any kind in the whole DB is 2026-10-19T05:24Z; investigated 2026-10-19T20:22Z. Scheduler (main.py create_app: APScheduler menu-sync 4/day at 00/06/12/18 America/Chicago, only while uvicorn runs) enqueues only live_settings.active_region_id = ad41b2e9 (\"Browser GPS\", 50 mi around 40.98,-89.05); the last scheduled job ran 05:00Z (00:00 CDT) and the 06:00/12:00 CDT slots never ran (server not up). Kankakee (64.5 mi from the Minonk study centre; ~64 mi from the GPS centre) is outside the 50 mi scheduled region, so the only run that ever touched it was the one-off 190-store job c2112fa0, which finished \"partial\" at 13:20Z. Later targeted jobs listed other store ids. Its accepted snapshot also predates the current pipeline fingerprint, so it is not a current-engine result.",
+ "fix_idea": "No parser change. Run a retained-endpoints-only refresh for region 8f7772ca (service._process_store_unlocked already refreshes retained endpoints first and skips rediscovery when they succeed) and make the scheduler iterate every region that has retained accepted endpoints (or all stores whose newest last_success_at > 10 h), instead of active_region_id only.",
+ "root_cause_tag": "sweed-ok-stale-outside-scheduled-region",
+ "confidence": "high",
+ "store_id": "84181b673a4f1ab0e43b587e",
+ "slug": "aroma-hill-kankakee",
+ "investigated_at": "2026-10-19"
+}

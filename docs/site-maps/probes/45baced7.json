@@ -1,0 +1,455 @@
+{
+ "key": "45baced7",
+ "url": "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/index.json",
+   "size": 167000,
+   "sample": "{\n  \"ivyhall\": {\n    \"sizing\": {\n      \"scale\": {\n        \"xxxxs\": \"2px\",\n        \"xxxs\": \"4px\",\n        \"xxs\": \"8px\",\n        \"xs\": \"12px\",\n        \"sm\": \"16px\",\n        \"md\": \"24px\",\n        \"lg\": \"32px\",\n        \"xl\": \"40px\",\n        \"xxl\": \"48px\",\n        \"xxxl\": \"56px\",\n        \"xxxxl\": \"64px\","
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/search.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-down.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/cart.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/shop.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-left.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-right.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/sort.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/filter.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/info.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-up.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Cart/GetV2",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 401,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Account/Get",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/storefront/v1/pages/home",
+   "size": 2241,
+   "sample": "{\"components\":[{\"instanceId\":\"featured-deals\",\"content\":{\"type\":\"Section\",\"title\":\"Featured deals\"}},{\"instanceId\":\"buttons\",\"content\":{\"type\":\"Section\",\"title\":\"\"}},{\"instanceId\":\"categories\",\"content\":{\"type\":\"Section\",\"title\":\"Categories\"}},{\"instanceId\":\"surfside-carousel\",\"content\":{\"type\":\"Sec"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/11b04/8e577/config.json",
+   "size": 2,
+   "sample": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetCompliance?saleType=Recreational",
+   "size": 54,
+   "sample": "{\"compliance\":{\"legalAge\":21,\"ageGateMode\":\"Confirm\"}}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetStoreInfoV2",
+   "size": 2790,
+   "sample": "{\"storeInfo\":{\"id\":144,\"name\":\"Ivy Hall Montgomery\",\"description\":\"<p style=\\\"text-align:start;\\\"><span style=\\\"color: rgb(0,0,0);font-size: 14px;font-family: Montserrat, sans-serif;\\\"><strong>Ivy Hall</strong></span> <span style=\\\"color: rgb(0,0,0);font-size: 14px;font-family: Montserrat, sans-seri",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/CartV2/GetSettingsPreferences",
+   "size": 44,
+   "sample": "{\"isResident\":true,\"isResidencyLocked\":true}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441289409&ver=1.161.3&compression=base64",
+   "size": 361,
+   "sample": "{\"featureFlags\": {}, \"featureFlagPayloads\": {}, \"errorsWhileComputingFlags\": false, \"supportedCompression\": [\"gzip-js\", \"base64\"], \"sessionRecording\": false, \"surveys\": false, \"heatmaps\": false, \"captureDeadClicks\": false, \"autocapture_opt_out\": false, \"siteApps\": [], \"isAuthenticated\": false, \"quot",
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQzLThhYzEtN2NlNS1hNWU0LWJjN2RmMjllNWY4YSIsImdyb3VwcyI6e319"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441289403&ver=1.161.3&compression=base64",
+   "size": 869,
+   "sample": "{\"config\": {\"enable_collect_everything\": true}, \"toolbarParams\": {}, \"isAuthenticated\": false, \"supportedCompression\": [\"gzip\", \"gzip-js\"], \"featureFlags\": {\"ecom-7583-alternative-checkout-layout\": \"test\", \"ecom-4991-new-signup-flow\": \"test\", \"ecom-6307-delivery-button-on-checkout\": \"test\", \"checkou",
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkMy04YWJhLTc3MzktOTEwZC01ZTVjZTY1MWQxNTAiLCJncm91cHMiOnt9fQ%3D%3D"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetAvailableFulfillmentTypesV2",
+   "size": 247,
+   "sample": "{\"storeFulfillmentOptions\":[{\"fulfillmentType\":\"InStorePickup\",\"title\":\"In-store pickup\",\"children\":[]}],\"organizationFulfillmentTypeInfos\":[{\"fulfillmentType\":\"InStorePickup\",\"name\":\"Pickup\",\"storeIds\":[104,140,142,144,166,168,169,225,264,506]}]}",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Referral/GetV2",
+   "size": 1195,
+   "sample": "{\"referralState\":{\"id\":242,\"enabled\":true,\"referralDiscountType\":\"DollarOffDiscount\",\"referralDiscountAmount\":15.000000,\"referralMinInvoiceAmount\":15.000000,\"referralMinInvoiceCount\":1,\"referralMinInvoiceCountForReferrer\":1,\"referralPromocodeMinApplyAmount\":30.000000,\"terms\":\"<p>Referred customers m",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Loyalty/GetLoyaltyNotices",
+   "size": 14,
+   "sample": "{\"notices\":[]}",
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Loyalty/GetStoreLoyaltySettingsV2",
+   "size": 4010,
+   "sample": "{\"id\":19,\"enabled\":true,\"isDistributionSubscriptionRequired\":false,\"levels\":[{\"id\":46,\"name\":\"Green\",\"moneyToBonus\":1.00,\"bonusToMoney\":0.06,\"goal\":0,\"bonus\":0,\"rank\":1,\"enabled\":true,\"description\":null},{\"id\":47,\"name\":\"Gold\",\"moneyToBonus\":1.25,\"bonusToMoney\":0.06,\"goal\":1000.00,\"bonus\":250.00,\"ra",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetProductCategoryList",
+   "size": 2116,
+   "sample": "[{\"id\":611,\"name\":\"Flower\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1791381632_7fd5f8fb-678c-479d-95c6-af23850cefae.svg\",\"filter\":{\"category\":[611]},\"canonicalName\":\"flower\"},{\"id\":616,\"name\":\"Vapes\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1791381673_289bb8cc-1826-4bb4",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetProductList",
+   "size": 128970,
+   "sample": "{\"filters\":[{\"key\":\"quickFilter\",\"type\":\"Multiple\",\"options\":[{\"id\":3,\"name\":\"Popular\",\"canonicalName\":\"popular\",\"disabled\":null,\"selected\":false,\"tooltip\":null}],\"uiLabel\":\"\",\"expandedByDefault\":true,\"presentation\":\"Tag\"},{\"key\":\"strainPrevalence\",\"type\":\"Multiple\",\"options\":[{\"id\":2,\"name\":\"Hybrid",
+   "post": "{\"filters\":{},\"page\":1,\"pageSize\":24,\"sortingMethodId\":7,\"searchTerm\":\"\",\"saleType\":\"Recreational\",\"platformOs\":\"web\",\"productExposureContextId\":1,\"sourcePage\":2}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetStoreConfig",
+   "size": 57071,
+   "sample": "{\"acceptDealsModalImageUrl\":null,\"acceptDealsModalLinkUrl\":null,\"addToCartButtonPosition\":\"top\",\"aeroPayEnv\":\"production\",\"aeroPayLocationId\":\"1509\",\"aeroPayMerchantId\":\"1185\",\"ageGateMode\":\"confirm\",\"agreementDisclaimerPosition\":\"below\",\"aiBudtenderConfig\":\"\",\"alternativeCheckoutLayoutEnabled\":fals",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/StoreConfig/GetSignupModal",
+   "size": 255,
+   "sample": "{\"signupModal\":{\"variant\":\"Popup\",\"popup\":{\"title\":\"Want 25% off your first order?\",\"description\":\"Sign up for our Charter Club and get 25%<br>off your first order!\",\"continueButtonLabel\":\"Continue with Email\",\"delay\":0,\"timeout\":600,\"cookieTtl\":604800}}}",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/AccountV2/GetAccountFulfillmentPreferencesV2",
+   "size": 99,
+   "sample": "{\"fulfillmentType\":\"InStorePickup\",\"fulfillment\":{\"inStorePickup\":{\"label\":\"Ivy Hall Montgomery\"}}}",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts\",\"page\":\"Shop Cannabis Deals and Specials in Montgomery | Ivy Hall Montgomery, Illinois\",\"eid\":\"2b367a66-d64a-467"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/discount.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetPromotionsList",
+   "size": 18007,
+   "sample": "[{\"id\":139086,\"name\":\"(the) Essence 35% Off!\",\"canonicalName\":\"the-essence-35-off\",\"shortName\":\"35% Off!\",\"description\":\"(the) Essence 35% Off!\\n\\n*Non-stackable with other discounts\",\"isBogo\":false,\"startDate\":\"2026-10-12T00:00:00Z\",\"endDate\":\"2026-10-19T00:00:00Z\",\"interval\":[\"21:05\",\"21:05\"],\"ban",
+   "post": "{\"saleType\":\"Recreational\",\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/category/global.json",
+   "size": 1807,
+   "sample": "{\n  \"globalPatterns\": [\n    \"[?&]dtche%5Bcategory%5D=([a-z0-9_-]+)\",\n    \"[?&]cat=([a-z0-9_-]+)(?:%2C|&|$)\",\n    \"/(?:store/)?category/([a-z0-9_-]+)\",\n    \"/categories?/([a-z0-9_-]+)\",\n    \"/collections?/([a-z0-9_-]+)\",\n    \"https?://[^/?#]+/products?/([a-z0-9_-]+)\",\n    \"/deals(?:-collection)?/([a-"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.googletagmanager.com/ns.html?id=GTM-WLKVKKN",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://script.crazyegg.com/pages/data-scripts/0130/1109/site/ivyhalldispensary.com.json?t=1",
+   "size": 15750,
+   "sample": "{\"uid\":1301109,\"dkey\":\"c811d5713aea8aaebfa1a0f923af9daa\",\"updated_at\":1792436489,\"version\":\"11.5.557\",\"site_data_url_template\":\"https://script.crazyegg.com/pages/data-scripts/0130/1109/site/SITENAME.json\",\"site_sampling_url_template\":\"https://script.crazyegg.com/pages/data-scripts/0130/1109/sampling"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://script.crazyegg.com/pages/data-scripts/0130/1109/sampling/ivyhalldispensary.com.json?t=1",
+   "size": 178,
+   "sample": "{\"version\":\"11.5.557\",\"sites_sampling\":\"%8&4!}%|%]!}$<$5$7$5$1$;$1$,!}&%%?&$%^!}$<!}%|&.&2%{%?&!&!%]%|&+&(%^&%&+%?&*&2$.%[&&&$!}$,!}&*%^%[&&&*%]%|&%%`%=&*%?&,%|&&!}$<$2$7$7&6%;\"}"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-ERK8MWQK9E&gtm=45je6af0v894708579za20ozb894709250zd894709250xf1&_p=1792441289382&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=790133838.1792441290&frm=0&ngs=1&pscdl=noapi&rcb=10&sr=1366x900&uaa=x86&uab=64&uafvl=Google%2",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/ccm/collect?rcb=5&frm=0&apvc=1&auid=823892818.1792441290&dt=Shop%20Cannabis%20Deals%20and%20Specials%20in%20Montgomery%20%7C%20Ivy%20Hall%20Montgomery%2C%20Illinois&tid=AW-17475392061&en=page_view&dl=https%3A%2F%2Fivyhalldispensary.com%2",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/17475392061/?random=1792441290465&cv=11&fst=1792441290465&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6af0h1v9227313502za208zd9227313502xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://ad.doubleclick.net/ccm/s/collect?auid=823892818.1792441290&gtm=45be6af0h1v9227313502za208zd9227313502xecxf1&fmt=8",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/close.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/WebAnalytics/AddEvent",
+   "size": 0,
+   "sample": null,
+   "post": "{\"events\":[{\"appName\":\"Shop\",\"platform\":\"NewShop\",\"eventType\":\"Ui\",\"sessionId\":\"d4abce72-69b5-434a-a1af-7f9ad3f840c1\",\"sessionStarted\":\"2026-10-19T20:21:29.095Z\",\"eventCreated\":\"2026-10-19T20:21:29.292Z\",\"deviceType\":\"Desktop\",\"deviceId\":\"64b54a9f-444e-4b3f-9aac-eff3d9c8887b\",\"eventName\":\"page.view\""
+  }
+ ],
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-WLKVKKN",
+  "about:blank"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Confirm\") [Confirm]"
+ ],
+ "status": 200,
+ "finalUrl": "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts",
+ "title": "Shop Cannabis Deals and Specials in Montgomery | Ivy Hall Montgomery, Illinois",
+ "htmlBytes": 365697,
+ "sigs": [
+  "sweed",
+  "cresco"
+ ],
+ "links": [
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts#maincontent",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts#footer",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/rewards",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts?promo=deals",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/about-us",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/tilt-1g-pre-rolls-buy-more-save-more-132068",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/the-essence-35-off-139086",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/apparel-25-off-139087",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/ic-collective-30-off-139088",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/redemption-botanicals-30-off-139089",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/timeless-30-off-139091",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/rythm-30-off-139092",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/anthem-pre-roll-sale-139097",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/aeriz-upnorth-jeeter-sale-139104",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/lost-farms-camino-gummies-buy-one-get-one-50-off-139105",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/gron-gummy-sale-139109",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/simply-herb-sale-139114",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/menu/discounts/introducing-dialed-in-gummies-on-sale-139118",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/policies/privacy-policy",
+  "https://ivyhalldispensary.com/locations/montgomery/menu/recreational/policies/terms-of-service"
+ ],
+ "textSample": "Skip to main content or Skip to footer Home Rewards Menu Discounts About Us Refer Friends - Get $15 Off English Sign up or log in to see exclusive deals Log In Sign Up Pickup at Ivy Hall Montgomery saleType Adult Use Home / Menu / Discounts Discounts Filters By product By deal name Flower Vapes Edibles Pre-Rolls Concentrates Apparel Popular Strain prevalence Hybrid Indica Indica Dominant Sativa Sativa Dominant Category Deal Subcategory Product type Total size Unit size THC potency CBD potency Effect Brand Price Terpene Strain Flavor Tag TILT 1g Pre-Rolls - Buy More Save More! Date Till October 31 (the) Essence 35% Off! Date Till 09:05 PM October 19 Apparel 25% Off! Date Till 09:05 PM October",
+ "productHints": [],
+ "priceCount": 1
+}

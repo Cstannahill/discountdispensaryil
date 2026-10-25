@@ -1,0 +1,28 @@
+{
+ "store_id": "08303c6ff59011208f2e473c",
+ "name": "Snap Canna - Elk Grove Vilage",
+ "address": "840 E. Higgins Rd.",
+ "city": "Elk Grove Village",
+ "distance_miles": 95.401,
+ "accepted_menu": false,
+ "platform": "Blaze eCom (Snap Canna)",
+ "menu_url": "https://snapcanna.com/menu/elkgrove/",
+ "how_reached": "snapcanna.com/menu/elkgrove/ storefront; __NEXT_DATA__ shop \"elkgrove\", group grass-snap-canna",
+ "branch_selection": "URL slug and Blaze tenant from __NEXT_DATA__; storefront shows no street address",
+ "products_load": "ecom-api.blaze.me/api/v1/products/ per category (zoneId home sections)",
+ "paging": "unknown beyond home sections",
+ "count_hint": "717 product cards on rendered page",
+ "blockers": "none seen",
+ "why_it_fails": "Branch identity not corroborated. Snap Canna Pontiac was accepted on the same Blaze tenant context; Elk Grove was not. The chain root snapcanna.com lists \"840 E Higgins Rd, Elk Grove Village\" next to the /menu/elkgrove link, which could corroborate it. Hypothesis, not confirmed.",
+ "fix_idea": "Use the chain root location list as branch proof for Blaze tenants, then read through the Blaze reader already accepted for Pontiac.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Candidate website found; branch name/locality or street address still needs matching",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

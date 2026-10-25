@@ -1,0 +1,128 @@
+{
+ "key": "705f12d4",
+ "url": "https://parkwaydispensary.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 308,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://parkwaydispensary.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://www.parkwaydispensary.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://www.parkwaydispensary.com/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792442033401,\"pageloadId\":\"743149a1-3d0c-41f6-844d-e606d9dfaa43\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://www.parkwaydispensary.com/\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv\":\"130\",\"ov\":\"10\"},\"memory\":{\"totalJSHeapSize\":991"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://www.parkwaydispensary.com/cdn-cgi/challenge-platform/h/b/jsd/oneshot/d2d3316b729e/0.2149687575251502:1792440026:_qjrJjJkHAbmqAMO7sJTQhZchfr4054dmt2f2nQCWtM/a4d28f777aa50860",
+   "size": 0,
+   "sample": null,
+   "post": "WtUMEgB9Xqt4DwT+lIA7zS6fgpAatYLoaXxAHCdIn85o3ocH89uVxRM03Bu-h-Q6gSn9ilurlQAS-qSNCozgAoMgXeeKraJo3TOJqMjKGB2g7dKr0zyEJxFP6oGslRP30NntfCWC3m5-6yaqQcsjvsEhDEfpmEoBdNPZFF-ovMypzoTyBpjKGWCNn-3nUOvjJI48motMySnprBGyTYWu0iu2HoggyWEBxY2UAcGj3pT0wFdsr22K+kjaQ1wLIsCq9NOiGimBPPMMaJM$B81AYOUBlSdu2rjS5Yvo0UhGRtTd"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.parkwaydispensary.com/learn?_rsc=5CB68i4pnAekjehf",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.parkwaydispensary.com/shop?_rsc=5CB68i4pnAekjehf",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.parkwaydispensary.com/about?_rsc=5CB68i4pnAekjehf",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.parkwaydispensary.com/learn/juneteenth-reflecting-on-freedom-and-supporting-black-owned-businesses?_rsc=5CB68i4pnAekjehf",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.parkwaydispensary.com/learn/what-is-sprayed-weed-how-to-identify-and-avoid-it?_rsc=5CB68i4pnAekjehf",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.parkwaydispensary.com/learn/best-dispensary-near-the-indiana-border-ft-parkway-tilton-molly-s-joint?_rsc=5CB68i4pnAekjehf",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [
+  "about:blank"
+ ],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://www.parkwaydispensary.com/",
+ "title": "Home | Parkway Dispensary",
+ "htmlBytes": 100320,
+ "sigs": [
+  "sweed",
+  "nextjs",
+  "cloudflare"
+ ],
+ "links": [
+  "https://www.parkwaydispensary.com/shop",
+  "https://shop.parkwaydispensary.com/tilton/menu/flower-2305",
+  "https://shop.parkwaydispensary.com/tilton/menu/prerolls-2309",
+  "https://shop.parkwaydispensary.com/tilton/menu/vapes-2301",
+  "https://shop.parkwaydispensary.com/tilton/menu/extract-2303",
+  "https://shop.parkwaydispensary.com/tilton/menu/edibles-2302",
+  "https://shop.parkwaydispensary.com/tilton/menu/beverages-2300",
+  "https://shop.parkwaydispensary.com/tilton/menu/tinctures-2310",
+  "https://shop.parkwaydispensary.com/tilton/menu/topicals-2311",
+  "https://shop.parkwaydispensary.com/tilton",
+  "https://www.parkwaydispensary.com/learn/best-dispensary-near-the-indiana-border-ft-parkway-tilton-molly-s-joint",
+  "https://shop.parkwaydispensary.com/tilton/log-in?r=%2Fprofile"
+ ],
+ "textSample": "Home About Learn Shop By SHOP NOW WELCOME TO PARKWAY DISPENSARY CRAFTED FOR QUALITY NEIGHBORHOOD PRICES SHOP NOW ABOUT US Parkway Dispensary is your premier destination for your favorite cannabis products in the state of Illinois. Explore our curated collection of premium strains, each cultivated with care and precision. From the vibrant hues of craft grown sativas to the soothing depths of top shelf indicas, we have what you are looking to elevate and alleviate. OUR VALUES We are dedicated to providing a safe and inviting space for those seeking the highest quality cannabis experiences. We are dedicated to providing our valued customers and patients with nothing but the highest cannabis pro",
+ "productHints": [],
+ "priceCount": 0
+}

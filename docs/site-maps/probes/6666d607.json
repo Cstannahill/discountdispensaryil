@@ -1,0 +1,294 @@
+{
+ "key": "6666d607",
+ "url": "https://www.philidispensary.com/our-menu/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.philidispensary.com/our-menu/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6IlRFTVBPUkFSWV9VU0VSX0lEIiwia2luZCI6InVzZXIifQ",
+   "size": 14821,
+   "sample": "{\"c3-show-relieved-feeling-label\":{\"version\":2240,\"flagVersion\":4,\"value\":false,\"variation\":1,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\":0},\"c3-gti-rise-branded-email\":{\"version\":2240,\"flagVersion\":8,\"value\":false,\"variation\":1,\"trackEvents\":false,\"trackReason\":false,\"debugEvents"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/goals/6384e85523613d11ad9588c5",
+   "size": 1231,
+   "sample": "[{\"key\":\"6d20bbbc-0b5f-4704-a7ee-124396c75171\",\"kind\":\"click\",\"selector\":\"#pending-cart-form \\u003e div \\u003e button\",\"urls\":[{\"kind\":\"canonical\",\"url\":\"https://www.iheartjane.com/cart\"}]},{\"key\":\"529ea355-c6e8-493a-8f4b-a2a323e9e8db\",\"kind\":\"click\",\"selector\":\"#content \\u003e div \\u003e form \\u003"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-N175KM243H&gtm=45je6af0v897853543za208zd897853543xf1&_p=1792441396164&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=86953006.1792441397&frm=0&ngs=1&pscdl=noapi&rcb=6&sr=1366x900&uaa=x86&uab=64&uafvl=Google%2520Chrome%3B1",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://fd-api.cleantalk.org/frontend_data/v2",
+   "size": 247,
+   "sample": "{\"event_token\":\"6bd48efbe9b5014eeccc5c4a7e4301fa51443b5430ca9d16cfd08f96a7326a74\",\"data\":{\"operation_status\":\"SUCCESS\"},\"error_no\":0,\"error_message\":\"\",\"error_trace\":\"\",\"host_name\":\"localhost:3002\",\"page_url\":\"philidispensary.com\",\"ip_version\":4}\n",
+   "post": "{\"event_token\":null,\"js_event\":\"DOMContentLoaded\",\"page_url\":\"https://www.philidispensary.com/our-menu/\",\"data\":{\"agent\":\"bot_detector_2.1.9\",\"typo\":[],\"bot_detector_click_aim\":[],\"scrolling_additional\":[],\"webgl\":false,\"has_key_up\":false,\"has_input_focused\":false,\"cookies_enabled\":false,\"REFFERRER_"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://www.philidispensary.com/wp-json/cleantalk-antispam/v1/alt_sessions",
+   "size": 16,
+   "sample": "{\"success\":true}",
+   "post": "------WebKitFormBoundary4BP7ucKV8FroNWjq\r\nContent-Disposition: form-data; name=\"cookies\"\r\n\r\n[[\"ct_ps_timestamp\",1792441397],[\"ct_fkp_timestamp\",\"0\"],[\"ct_pointer_data\",\"0\"],[\"ct_timezone\",-5],[\"ct_screen_info\",\"\"],[\"apbct_headless\",true],[\"apbct_visible_fields\",\"0\"],[\"ct_checked_emails\",\"0\"],[\"ct_ch"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=utf-8",
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://sdk-04.moengage.com/v3/sdkconfig/web/FBMS77MLGF4QMXGVHT88GWLW",
+   "size": 431,
+   "sample": "{\"s_log\":\"allowed\",\"s_e_b_e\":\"allowed\",\"a_s\":\"allowed\",\"c_s\":\"blocked\",\"c_w_p_e\":\"blocked\",\"b_d\":\"blocked\",\"m_i_e\":\"allowed\",\"lp_t\":\"blocked\",\"b_e\":[],\"w_e\":[\"MOE_PUSH_PERMISSION_STATE_ALLOWED\",\"MOE_PUSH_PERMISSION_STATE_BLOCKED\"],\"a_c_i_s\":\"blocked\",\"u_i_s\":[\"u_em\",\"uid\"],\"ac_s\":\"blocked\",\"e_b_c\":1",
+   "post": "{\"query_params\":{\"unique_id\":null}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://sdk-04.moengage.com/v2/websdksettings?app_id=FBMS77MLGF4QMXGVHT88GWLW",
+   "size": 2564,
+   "sample": "{\"webData\": {\"sub_billing\": true, \"domain_level_storage\": true, \"show_overlay\": false, \"load_time\": 0, \"prompt_again\": 0, \"opt_in_type\": \"self-handled\", \"is_enabled\": false, \"opt_in_preview\": {\"mobile\": {\"nudge\": {\"title\": {\"text_color\": \"#FFFFFF\", \"text\": \"This website would like to send you awesom"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=EYU7IsMqq8ODlt4MLnIq",
+   "size": 0,
+   "sample": null,
+   "post": "��ɻЏ�\u0011+�p��\u0005��b�5�1U���qŶ��c<����\u0012ê��̧@�t�=���5NT�2�\u000f����H�&�\tC,\u001f泠��Q�\u0012�\rv��(tg-\u0002BΆA�N\u0004\u0010���\n҇Lq/�p���oK]\\d`k��\u0019x���8ڴ��kj#�^8\\˧+\u0019j}t�\u0014�R����Nq7\u001f�\u0015�Y|\u0015�&��#�.��;H\r�vn��7=#�(��r\u0002\u0004\u0011B\u0018U<{�)�>��?��g�/�|W�! T\u0003�\u0004��ala3L\u0004�L��o҈\f\u0014�=\u0003e���!����Jߑ�8\u0010z�\u000fy\\���ᄀ�\"h\u0010?��*�H�\u0000��\u000b�A���\"��Ţ{���&��:�q�ܹz�\u001d#�\t\u0013ָ���{�.\u0015"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.iheartjane.com/v1/whoami",
+   "size": 30,
+   "sample": "{\"user\":{},\"user_segments\":[]}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.iheartjane.com/v1/stores/5362?",
+   "size": 7977,
+   "sample": "{\"store\":{\"id\":5362,\"address\":\"1300 Locke Drive\",\"aeropay_integration\":null,\"allow_future_day_ordering\":false,\"allow_off_hours_ordering\":true,\"analytics_integration\":{\"enabled\":false,\"id\":4265,\"provider\":\"google_analytics\",\"provider_id\":\"\"},\"automatic_crm_redemption\":false,\"avg_response_time\":672,\"b"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6Imd1ZXN0OjQyNTc1MiIsImtpbmQiOiJ1c2VyIiwiamRpZCI6IkowVzZ2dm1RaVp3eDJvMFpNUVlJIiwiYXBwTW9kZSI6ImZyYW1lbGVzc0VtYmVkIiwic3RvcmVJZCI6NTM2Miwic3RhdGUiOiJJTCIsIm9",
+   "size": 14823,
+   "sample": "{\"c3-boost-apple-oauth\":{\"version\":2240,\"flagVersion\":4,\"value\":false,\"variation\":1,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\":0},\"p1-headless-privacy-mode\":{\"version\":2240,\"flagVersion\":10,\"value\":false,\"variation\":1,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.iheartjane.com/v1/gold_configs",
+   "size": 4573,
+   "sample": "[{\"id\":1,\"store_ids\":[17,26,117,125,137,149,173,178,194,300,320,333,377,378,396,416,427,428,429,430,431,432,463,470,471,501,515,519,567,570,630,647,689,710,724,767,769,784,793,809,810,839,843,846,857,858,869,935,936,937,952,956,957,958,960,1000,1003,1030,1061,1082,1094,1098,1102,1103,1105,1115,1116,"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.iheartjane.com/v1/stores/5362/seo",
+   "size": 22,
+   "sample": "{\"structured_data\":{}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.iheartjane.com/v2/brand_specials?store_id%5B%5D=5362&app_mode=framelessEmbed",
+   "size": 50794,
+   "sample": "{\"brand_specials\":[{\"active\":true,\"aeropay_location_id\":\"11011\",\"created_at\":\"2026-04-01T00:54:11.859Z\",\"description\":\"Buy 3 or more Good Tide products, get 20% cash back. While supplies last. \",\"discount_dollar_amount\":0.0,\"discount_label\":\"20% back\",\"discount_percent\":20.0,\"discount_target_price\":"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.iheartjane.com/v1/stores/5362/banner_message_settings",
+   "size": 6825,
+   "sample": "{\"id\":1642,\"enabled\":true,\"title\":\"NOW SERVING MEDICAL PATIENTS!\",\"message\":\"\\u003cp\\u003eAll orders must be picked up by the end of the day or will be canceled. \\u003cem\\u003eNo time slot needed!\\u003c/em\\u003e\\u003c/p\\u003e\\u003cp\\u003eTAXES WILL BE ACCURATELY CALCULATED AT TIME OF CHECKOUT.\\u003c"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.iheartjane.com/v3/stores/5362/specials?page=1&per_page=1000&app_mode=default&include_hidden=true",
+   "size": 39615,
+   "sample": "{\"specials\":[{\"id\":3516752,\"title\":\"40% OFF LAST CHANCE!!\",\"special_type\":\"product\",\"hidden_from_page\":false,\"hidden_from_row\":false,\"custom_badge\":null,\"description\":\"40% OFF SALE!!\",\"terms\":null,\"reservation_modes\":{\"kiosk\":true,\"pickup\":true,\"delivery\":true},\"discount_type\":\"percent\",\"discount_am"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://dmerch.iheartjane.com/v2/facets?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "size": 12782,
+   "sample": "{\"searchFacets\":{\"activities\":{\"Ease my mind\":313,\"Get Active\":61,\"Get intimate\":17,\"Get relief\":257,\"Get some sleep\":146,\"Hang with friends\":137,\"Stimulate my mind\":130},\"aggregate_rating\":{\"0\":478,\"3.2\":1,\"3.4\":2,\"3.6\":3,\"3.7\":1,\"3.8\":2,\"3.9\":3,\"4\":5,\"4.1\":6,\"4.2\":13,\"4.3\":28,\"4.4\":33,\"4.5\":35,\"4.",
+   "post": "{\"appMode\":\"framelessEmbed\",\"janeDeviceId\":\"J0W6vvmQiZwx2o0ZMQYI\",\"searchFacets\":[\"activities\",\"aggregate_rating\",\"applicable_bulk_special_ids\",\"applicable_bundle_special_ids.discount\",\"applicable_bundle_special_ids.qualify\",\"applicable_cart_total_special_ids\",\"applicable_special_ids\",\"available_wei"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://dmerch.iheartjane.com/v2/multi?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "size": 46547,
+   "sample": "{\"placements\":[{\"creative_ids\":[944761954],\"nb_hits\":738,\"placement\":\"menu_top_row\",\"products\":[{\"ad_token\":\"01a155d5-4031-78e7-88c0-19d617ef9644\",\"flight_id\":864097602,\"kevel_token\":\"01a155d5-4031-7311-8a17-11a67c9d3cf8\",\"my_high_d\":\"ed9c8c45-cbfa-11f1-912d-0a58a9feac02\",\"object_id\":\"21690513\",\"pro",
+   "post": "{\"app_mode\":\"framelessEmbed\",\"distinct_id\":\"$device:b7a25cf0-d0c1-4c6b-9602-08b9ede421a6\",\"jane_device_id\":\"J0W6vvmQiZwx2o0ZMQYI\",\"search_attributes\":[\"*\"],\"store_id\":5362,\"placements\":[{\"placement\":\"menu_top_row\",\"search_filter\":\"\"},{\"placement\":\"custom_image_row\",\"search_filter\":\"\"}],\"type\":\"custo"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "size": 284,
+   "sample": "{\"token\":\"EYU7IsMqq8ODlt4MLnIq\",\"endpoint\":\"https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l\",\"scriptUrlPattern\":\"https://iheartjane.com/aly2djS2yXoTGnR0/JiGrIFOganSXlo1y?apiKey=\\u003capiKey\\u003e\\u0026version=\\u003cversion\\u003e\\u0026loaderVersion=\\u003cloaderVersion\\u003e\"}"
+  },
+  {
+   "m": "POST",
+   "s": 202,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.launchdarkly.com/events/bulk/6384e85523613d11ad9588c5",
+   "size": 0,
+   "sample": "",
+   "post": "[{\"kind\":\"identify\",\"context\":{\"kind\":\"user\",\"key\":\"TEMPORARY_USER_ID\",\"anonymous\":true},\"creationDate\":1792441397282},{\"kind\":\"identify\",\"context\":{\"organizationId\":232,\"state\":\"IL\",\"storeId\":5362,\"appMode\":\"framelessEmbed\",\"jdid\":\"J0W6vvmQiZwx2o0ZMQYI\",\"kind\":\"user\",\"key\":\"guest:425752\",\"anonymous"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://dmerch.iheartjane.com/v2/smart?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "size": 62,
+   "sample": "{\"nb_hits\":738,\"placement\":\"menu_inline_table\",\"products\":[]}\n",
+   "post": "{\"app_mode\":\"framelessEmbed\",\"distinct_id\":\"$device:b7a25cf0-d0c1-4c6b-9602-08b9ede421a6\",\"jane_device_id\":\"J0W6vvmQiZwx2o0ZMQYI\",\"search_attributes\":[\"*\"],\"disable_ads\":false,\"max_products\":0,\"num_columns\":5,\"page_size\":60,\"placement\":\"menu_inline_table\",\"search_facets\":[],\"search_filter\":\"\",\"searc"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://www.philidispensary.com/wp-json/age-gate/v3/check?age_gate%5Bage%5D=HFwF0WxzrtxTHKNqmsTzFA%3D%3D&age_gate%5Blang%5D=en&age_gate%5Bconfirm%5D=1&ct_bot_detector_event_token=6bd48efbe9b5014eeccc5c4a7e4301fa51443b5430ca9d16cfd08f96a7326a74&apbct_visible_fi",
+   "size": 528,
+   "sample": "{\"data\":{\"user_age\":21,\"age_gate\":{\"age\":21,\"lang\":\"en\",\"confirm\":\"1\"},\"ct_bot_detector_event_token\":\"6bd48efbe9b5014eeccc5c4a7e4301fa51443b5430ca9d16cfd08f96a7326a74\",\"apbct_visible_fields\":\"eyIwIjp7InZpc2libGVfZmllbGRzIjoiIiwidmlzaWJsZV9maWVsZHNfY291bnQiOjAsImludmlzaWJsZV9maWVsZHMiOiJhZ2VfZ2F0ZVth"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "size": 3,
+   "sample": "{}\n",
+   "post": "{\"distinctId\":\"$device:b7a25cf0-d0c1-4c6b-9602-08b9ede421a6\",\"engagements\":[{\"adToken\":\"01a155d5-4031-78e7-88c0-19d617ef9644\",\"kevelToken\":\"01a155d5-4031-7311-8a17-11a67c9d3cf8\",\"myHighD\":\"ed9c8c45-cbfa-11f1-912d-0a58a9feac02\",\"productId\":4581}],\"janeDeviceId\":\"J0W6vvmQiZwx2o0ZMQYI\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://user-events.iheartjane.com/track/?verbose=1&ip=1&_=1792441403198",
+   "size": 25,
+   "sample": "{\"error\":null,\"status\":1}",
+   "post": "data=W3siZXZlbnQiOiJTdG9yZSBDb21tdW5pY2F0aW9uIEJhbm5lciBMb2FkZWQiLCJwcm9wZXJ0aWVzIjp7IiRvcyI6IldpbmRvd3MiLCIkYnJvd3NlciI6IkNocm9tZSIsIiRjdXJyZW50X3VybCI6Imh0dHBzOi8vd3d3LnBoaWxpZGlzcGVuc2FyeS5jb20vb3VyLW1lbnUvIiwiJGJyb3dzZXJfdmVyc2lvbiI6MTMwLCIkc2NyZWVuX2hlaWdodCI6OTAwLCIkc2NyZWVuX3dpZHRoIjoxMzY2LCJ"
+  }
+ ],
+ "iframes": [],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [Yes]"
+ ],
+ "status": 200,
+ "finalUrl": "https://www.philidispensary.com/our-menu/",
+ "title": "Rec Menu - Phili Dispensary",
+ "htmlBytes": 85878,
+ "sigs": [
+  "dutchie",
+  "jane",
+  "wordpress"
+ ],
+ "links": [
+  "https://www.philidispensary.com/our-menu/#",
+  "https://www.philidispensary.com/products/",
+  "https://www.philidispensary.com/location/",
+  "https://www.philidispensary.com/our-menu/",
+  "https://www.philidispensary.com/medical-menu/",
+  "https://www.philidispensary.com/our-menu/#page-top",
+  "https://www.philidispensary.com/our-menu/#content",
+  "https://www.philidispensary.com/our-menu/#results",
+  "https://www.philidispensary.com/our-menu/menu",
+  "https://www.philidispensary.com/our-menu/menu/products/4581/incredibles-mile-high-mint-bar-10pk-100mg",
+  "https://www.philidispensary.com/our-menu/menu/products/4587/incredibles-peanut-budda-buddha-bar-10pk-100mg",
+  "https://www.philidispensary.com/our-menu/menu/products/398489/incredibles-5-1-snoozzzeberry-cbn-10pk-100mg-thc-20mg-cbn",
+  "https://www.philidispensary.com/our-menu/menu/products/2525374/incredibles-2-1-lemon-lime-boost-thcv-10pk-100mg-thc-50mg-thcv",
+  "https://www.philidispensary.com/our-menu/menu/products/4682/incredibles-1-1-black-cherry-cbd-bar-10pk-100mg-cbd-100mg-thc",
+  "https://www.philidispensary.com/our-menu/menu/products/572409/incredibles-5-1-snoozzzeberry-cbn-bar-10pk-100mg-thc-20mg-cbn",
+  "https://www.philidispensary.com/our-menu/menu/products/4592/incredibles-strawberry-crunch-bar-10pk-100mg",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1289/buy-3-or-more-good-tide-products-get-20-cash-back",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1290/20-back-on-good-tide-for-new-customers",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1291/buy-3-or-more-wyld-products-get-20-cash-back",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1292/20-back-on-wyld-for-new-customers",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1592/20-back-on-kanha-for-new-customers",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1593/buy-3-or-more-kanha-products-get-20-back",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1751/buy-3-or-more-gron-products-get-20-cash-back",
+  "https://www.philidispensary.com/our-menu/menu/jane-gold/1752/20-back-on-gron-for-new-customers"
+ ],
+ "textSample": "1300 Locke Dr Bourbonnais, IL 60914 (815) 255-4367 Home About Us Products Location Community Contact Our Menus Rec Menu ©2026 Phili Dispensary – All Rights Reserved Website Design by Appnet.com | Sitemap | Terms & Privacy Policy",
+ "productHints": [],
+ "priceCount": 0
+}

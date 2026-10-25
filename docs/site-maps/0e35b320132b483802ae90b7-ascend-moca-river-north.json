@@ -1,0 +1,28 @@
+{
+ "store_id": "0e35b320132b483802ae90b7",
+ "name": "Ascend Moca  River North",
+ "address": "216 W. Ohio St.",
+ "city": "Chicago",
+ "distance_miles": 99.868,
+ "accepted_menu": false,
+ "platform": "Dutchie white-label (letsascend.com) and Dispense (ascendcannabis.com); two routes for one store",
+ "menu_url": "https://letsascend.com/stores/river-north-illinois",
+ "how_reached": "letsascend.com store page (Dutchie, dispensaryId 68499174987760156b788500); ascendcannabis.com/menu/ch-river-north-menu is a Dispense storefront (venue 4d9085a00443f996)",
+ "branch_selection": "Page address 216 W Ohio St, Chicago (verified in page HTML)",
+ "products_load": "Dutchie api-4 FilteredProducts (25 per page); Dispense api.dispenseapp.com products with limit/skip",
+ "paging": "Dutchie pages; Dispense skip=N in steps of 20",
+ "count_hint": "Dispense product-filters total not read; Dutchie totals not read",
+ "blockers": "A 403 from a third-party tracking host (crwdcntrl) on the Ascend page; no product block",
+ "why_it_fails": "Discovery finds no branch lead. Fallback search returns unrelated pages (terravaulthq, toppotshops, cannabrands) and an Illinois license PDF, whose decode error becomes the stored reason.",
+ "fix_idea": "Ascend connector: read the Ascend location list and map 216 W Ohio to the Dutchie store id; add the Dispense route as a second source. Skip non-HTML search results before decoding.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

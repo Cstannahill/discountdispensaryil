@@ -1,0 +1,297 @@
+{
+ "key": "03a_ascend_logan_dispense",
+ "url": "https://ascendcannabis.com/menu/ch-logan-sq-menu-med",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://us.i.posthog.com/flags/?v=2&config=true&ip=0&_=1792441184325&ver=1.345.2&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1058,
+   "post": "data=eyJ0b2tlbiI6InBoY19ramZ6TDV3ZUw3UWhkdWs3ZHBwUlhjZHNSSHZWTWVkaHdQTUI3dUdVd2hRVyIsImRpc3RpbmN0X2lkIjoiMDFhMTU1ZDEtZjA0My03ZmQ1LTg5MWMtOGNkOWQ5ZWQ3M2M3IiwiZ3J"
+  },
+  {
+   "u": "https://api.dispenseapp.com/user/me?organizationId=d360bbb9d0a62b2b",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 195
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/d357788924a67a7a/product-filters?brand=Triton&brand=Ozone",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 13540
+  },
+  {
+   "u": "https://us.i.posthog.com/flags/?v=2&config=true&ip=0&_=1792441184632&ver=1.345.2&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1058,
+   "post": "data=eyJ0b2tlbiI6InBoY19ramZ6TDV3ZUw3UWhkdWs3ZHBwUlhjZHNSSHZWTWVkaHdQTUI3dUdVd2hRVyIsImRpc3RpbmN0X2lkIjoiYzIyODMyMDk0ZDE4MmQwNyIsImdyb3VwcyI6e30sIiRhbm9uX2Rpc3R"
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/organizations/d360bbb9d0a62b2b/banners?sort=order&limit=20&enable=true&venueId=d357788924a67a7a",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 3603
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/users/c22832094d182d07/loyalty-profile?venueId=d357788924a67a7a",
+   "m": "GET",
+   "s": 404,
+   "ct": "application/json; charset=utf-",
+   "len": 138
+  },
+  {
+   "u": "https://lab.alpineiq.com/ads/anonymous/2028/ecommHomepage?limit=3&currentURL=https%3A%2F%2Fascendcannabis.com%2Fmenu%2Fch-logan-sq-menu-med&globalID=64b7757e-7553-4f16-b59d-cce0036ff18c",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 38
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/d357788924a67a7a/product-categories/9f98b254ebe66d52/products?skip=0&limit=10&orderPickUpType=IN_STORE",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 66972,
+   "arr": {
+    "n": 10,
+    "path": "$.data",
+    "keys": [
+     "id",
+     "_id",
+     "deleted",
+     "name",
+     "description",
+     "seoDescription",
+     "cannabisComplianceType",
+     "weight",
+     "weightInGrams",
+     "weightUnit",
+     "weightFormatted",
+     "effects"
+    ]
+   }
+  },
+  {
+   "u": "https://ekr.zdassets.com/compose/fbb1b1a4-19c1-4dfe-8b7e-dc1a080032e5",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1917
+  },
+  {
+   "u": "https://tags.srv.stackadapt.com/sa.jpeg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/jpeg"
+  },
+  {
+   "u": "https://contact-ascend.zendesk.com/frontendevents/pv?client=1B752747-577B-429A-A0E0-83861AF69088",
+   "m": "POST",
+   "s": 200,
+   "ct": ""
+  },
+  {
+   "u": "https://contact-ascend.zendesk.com/embeddable/config",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1574
+  },
+  {
+   "u": "https://tags.srv.stackadapt.com/saq_pxl?uid=Yq9NVsqIBmWc2wL5NicVsw&is_js=true&landing_url=https%3A%2F%2Fascendcannabis.com%2Fmenu%2Fch-logan-sq-menu-med&t=Chicago%2C%20IL%20-%20Logan%20Square%20Dispen",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://data.script.flowershop.media/",
+   "m": "POST",
+   "s": 201,
+   "ct": "application/json",
+   "len": 0,
+   "post": ""
+  },
+  {
+   "u": "https://ps19.pndsn.com/v2/subscribe/sub-c-daa0ecb2-a426-11eb-b1ae-be4e92e38e16/DISPENSE_PUBSUB_ADMIN_MENU_APP/0?heartbeat=300&uuid=dispense&pnsdk=PubNub-JS-Web%2F7.4.5",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/javascript; charset=\"UTF-"
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/d357788924a67a7a/product-categories/4f1d742db6041ba6/products?skip=0&limit=10&orderPickUpType=IN_STORE",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 28454,
+   "arr": {
+    "n": 5,
+    "path": "$.data",
+    "keys": [
+     "id",
+     "_id",
+     "deleted",
+     "name",
+     "description",
+     "seoDescription",
+     "cannabisComplianceType",
+     "weight",
+     "weightInGrams",
+     "weightUnit",
+     "weightFormatted",
+     "cannabisType"
+    ]
+   }
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/d357788924a67a7a/product-categories/4ba50ec91fe13d65/products?skip=0&limit=10&orderPickUpType=IN_STORE",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44810,
+   "arr": {
+    "n": 10,
+    "path": "$.data",
+    "keys": [
+     "id",
+     "_id",
+     "deleted",
+     "name",
+     "description",
+     "seoDescription",
+     "cannabisComplianceType",
+     "weight",
+     "weightInGrams",
+     "weightUnit",
+     "weightFormatted",
+     "effects"
+    ]
+   }
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/2028/devices/lookup",
+   "m": "POST",
+   "s": 404,
+   "ct": "application/json",
+   "len": 69,
+   "post": "{\"deviceId\":\"52589df3-86e3-47f3-873f-8cba873d2282\",\"aiq_device_id\":\"52589df3-86e3-47f3-873f-8cba873d2282\",\"deviceClass\":\"desktop\",\"os\":\"Windows\",\"browser\":\"Chro"
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/surveys/pop-ups/2028",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 38
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/signup-forms/pop-ups/2028",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 38
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/widget/enabled?uids=2028",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 103
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/2028/events",
+   "m": "POST",
+   "s": 404,
+   "ct": "application/json",
+   "len": 69,
+   "post": "{\"visitorId\":\"20ded769-b9d3-49ed-ac4b-4d6809c33eab\",\"name\":\"page_view\",\"data\":{\"href\":\"https://ascendcannabis.com/menu/ch-logan-sq-menu-med\",\"tz\":\"America/Chica"
+  }
+ ],
+ "frames": [
+  "https://12740414.fls.doubleclick.net/activityi;dc_pre=CM3LxOPzxpcDFex1PwEdGxgIHw;src=12740414;type=retar0;cat=ascen0;rcb=17;ord=8287618182678;npa=0;auiddc=1085518621.1792441189;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;_tu=KFA;gtm=45fe6af0v9185245019z8893943164za20gzb893943164zd893943164xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115616986~115938466~115938468~118897920~118897930~120213116~120385423~120469145~120469153~121246026~121246034;epver=2;dc_random=1792441190_J7NV21VSX0oHrfBBofpn19a_a7vASuD0tw;_dc_test=1;~oref=https%3A%2F%2Fascendcannabis.com%2Fmenu%2Fch-logan-sq-menu-med?",
+  "https://pixel-sync.sitescout.com/dmp/asyncPixelSync"
+ ],
+ "status": 200,
+ "age_gate_text": "Are you over 18? No Yes home Chicago - Logan Square Ann Arbor Battle Creek Detroit East Lansing Grand Rapids - 28th St. Grand Rapids - Century Ave. Grand Rapids - Scribner Ave Morenci Med Rec Med STORE INFO Menu Log In We are not currently accepting orders. Medical Monday High Wired Bundles Exrended",
+ "age_click": "Yes",
+ "final_url": "https://ascendcannabis.com/menu/ch-logan-sq-menu-med",
+ "title": "Chicago, IL - Logan Square Dispensary Medical Menu | Ascend",
+ "htmlLen": 400070,
+ "prices": 29,
+ "textHead": "Are you over 18? No Yes home Chicago - Logan Square Ann Arbor Battle Creek Detroit East Lansing Grand Rapids - 28th St. Grand Rapids - Century Ave. Grand Rapids - Scribner Ave Morenci Med Rec Med STOR",
+ "iframes": [
+  "https://12740414.fls.doubleclick.net/activityi;src=12740414;type=retar0;cat=ascen0;rcb=17;ord=8287618182678;npa=0;auiddc=1085518621.1792441189;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;_tu=KFA;gtm=45fe6af0v9185245019z8893943164za20gzb893943164zd893943164xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115616986~115938466~115938468~118897920~118897930~120213116~120385423~120469145~120469153~121246026~121246034;epver=2;dc_random=1792441190_J7NV21VSX0oHrfBBofpn19a_a7vASuD0tw;_dc_test=1;~oref=https%3A%2F%2Fascendcannabis.com%2Fmenu%2Fch-logan-sq-menu-med?",
+  "about:blank",
+  "about:blank"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "dispense"
+ ],
+ "hosts": [
+  [
+   "menus-ojhdl7fmn-dispense.vercel.app",
+   48
+  ],
+  [
+   "dispense-images.imgix.net",
+   26
+  ],
+  [
+   "www.google.com",
+   14
+  ],
+  [
+   "static.zdassets.com",
+   11
+  ],
+  [
+   "www.googletagmanager.com",
+   9
+  ],
+  [
+   "api.dispenseapp.com",
+   7
+  ],
+  [
+   "lab.alpineiq.com",
+   7
+  ],
+  [
+   "us-assets.i.posthog.com",
+   4
+  ],
+  [
+   "analytics.google.com",
+   4
+  ],
+  [
+   "googleads.g.doubleclick.net",
+   4
+  ],
+  [
+   "tags.srv.stackadapt.com",
+   4
+  ],
+  [
+   "ad.doubleclick.net",
+   3
+  ],
+  [
+   "us.i.posthog.com",
+   2
+  ],
+  [
+   "connect.facebook.net",
+   2
+  ]
+ ]
+}

@@ -1,0 +1,95 @@
+{
+  "store_id": "ea74053f26413fbd3f020f20",
+  "name": "Cannabist - Chicago",
+  "slug": "cannabist-chicago",
+  "registry": {
+    "address": "4758 N Milwaukee Ave",
+    "city": "Chicago",
+    "state": "IL",
+    "distance_miles": 99.248
+  },
+  "site": "https://www.gocannabist.com/shop/store/1346/featured",
+  "platform": "jane rec store 1346 (Cannabist Chicago); med store 936",
+  "menu_url_verified": "https://www.gocannabist.com/shop/store/1346/featured",
+  "access": "none",
+  "branch_selection": "store id in URL; URL /shop/store/2221 is Cannabist Villa Park",
+  "product_loading": "Jane storefront",
+  "paging": "Jane facet slices",
+  "product_count_observed": "reader 628 complete (rec, full)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://www.gocannabist.com/shop/store/1346/featured",
+    "title": "Shop featured cannabis products | Cannabist Chicago Dispensary Chicago, IL",
+    "platforms": [
+      "jane"
+    ],
+    "age_gate_seen": false,
+    "age_click": null,
+    "count_text": "3 products",
+    "price_tags": 136,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "matched",
+      "message": "Resolved 3 canonical menu target(s)"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}"
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "generic",
+      "items": 77,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "jane",
+          "provider_store_id": "1346",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "jane",
+          "items": 628,
+          "expected": 628,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Stored rows are generic endpoints for 936, 2221 and 1346. 2221 is the Villa Park store, so the 77-item sample from it is wrong-branch. The Jane rec store 1346 is not stored as the endpoint.",
+  "fix_idea": "Supersede the 2221 row; store Jane 1346 (rec) and 936 (med).",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

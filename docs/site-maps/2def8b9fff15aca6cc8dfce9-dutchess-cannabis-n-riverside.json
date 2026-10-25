@@ -1,0 +1,28 @@
+{
+ "store_id": "2def8b9fff15aca6cc8dfce9",
+ "name": "Dutchess Cannabis N. Riverside",
+ "address": "8380 W Cermak Rd",
+ "city": "North Riverside",
+ "distance_miles": 90.671,
+ "accepted_menu": false,
+ "platform": "Dutchie white-label (dutchesscanna.com)",
+ "menu_url": "https://dutchesscanna.com/stores/north-riverside-illinois",
+ "how_reached": "Dutchess site; Dutchie GraphQL on dutchesscanna.com/api-0/graphql",
+ "branch_selection": "Store slug north-riverside-illinois; page title Dutchess IL North Riverside; dispensaryId 6852f694aed07641c25a2dd3",
+ "products_load": "Dutchie FilteredProducts (25 per page)",
+ "paging": "Dutchie pages",
+ "count_hint": "not captured",
+ "blockers": "none seen",
+ "why_it_fails": "Discovery does not prove the branch (NO_LEAD / candidate found). The Dutchie page declares the same name and address through its platform data, which the pipeline does not use for proof here.",
+ "fix_idea": "Use the Dutchie platform-declared address check (DUTCHIE_DIAGNOSIS) as branch proof for Dutchess; add a Dutchess chain connector.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Candidate website found; branch name/locality or street address still needs matching",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

@@ -1,0 +1,492 @@
+{
+ "key": "7a5b7313",
+ "url": "https://shop.bisalina.com/carolstream/recreational/menu",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://shop.bisalina.com/carolstream/recreational/menu",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/index.json",
+   "size": 165380,
+   "sample": "{\n  \"bisalina\": {\n    \"sizing\": {\n      \"scale\": {\n        \"xxxxs\": \"2px\",\n        \"xxxs\": \"4px\",\n        \"xxs\": \"8px\",\n        \"xs\": \"12px\",\n        \"sm\": \"16px\",\n        \"md\": \"24px\",\n        \"lg\": \"32px\",\n        \"xl\": \"40px\",\n        \"xxl\": \"48px\",\n        \"xxxl\": \"56px\",\n        \"xxxxl\": \"64px\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/search.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/cart.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/shop.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/chevron-down.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/chevron-left.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/chevron-right.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/sort.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/filter.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/info.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/minus.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/cart-add.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/16/more.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/chevron-up.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.bisalina.com/_api/StoreConfig/GetSignupModal",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 401,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.bisalina.com/_api/Account/Get",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.bisalina.com/_api/Cart/GetV2",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Store/GetStoreInfoV2",
+   "size": 2475,
+   "sample": "{\"storeInfo\":{\"id\":243,\"name\":\"Bisa Lina - Carol Stream\",\"description\":\"<p>At Bisa Lina, we are your destination for high-quality, affordable cannabis products. As a leading cannabis dispensary outlet store, we offer the lowest prices for marijuana in Illinois, allowing you to elevate your quality o",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Store/GetCompliance?saleType=Recreational",
+   "size": 54,
+   "sample": "{\"compliance\":{\"legalAge\":21,\"ageGateMode\":\"Confirm\"}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/storefront/v1/pages/home",
+   "size": 2851,
+   "sample": "{\"components\":[{\"instanceId\":\"featured-deals\",\"content\":{\"type\":\"Section\",\"title\":\"Featured deals\"}},{\"instanceId\":\"buttons\",\"content\":{\"type\":\"Section\",\"title\":\"\"}},{\"instanceId\":\"categories\",\"content\":{\"type\":\"Section\",\"title\":\"Categories\"}},{\"instanceId\":\"surfside-carousel\",\"content\":{\"type\":\"Sec"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/CartV2/GetSettingsPreferences",
+   "size": 44,
+   "sample": "{\"isResident\":true,\"isResidencyLocked\":true}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/2b493/b0bbe/config.json",
+   "size": 8673,
+   "sample": "{\"templates\":{\"productCardTemplate\":\"{\\\"compiler\\\":[8,\\\">= 4.3.0\\\"],\\\"main\\\":function(container,depth0,helpers,partials,data) {\\n    return \\\"\\\";\\n},\\\"useData\\\":true}\",\"productCardStylesheet\":\"\",\"clickThroughUrlTemplate\":\"{\\\"compiler\\\":[8,\\\">= 4.3.0\\\"],\\\"main\\\":function(container,depth0,helpers,part"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441455981&ver=1.161.3&compression=base64",
+   "size": 361,
+   "sample": "{\"featureFlags\": {}, \"featureFlagPayloads\": {}, \"errorsWhileComputingFlags\": false, \"supportedCompression\": [\"gzip-js\", \"base64\"], \"sessionRecording\": false, \"surveys\": false, \"heatmaps\": false, \"captureDeadClicks\": false, \"autocapture_opt_out\": false, \"siteApps\": [], \"isAuthenticated\": false, \"quot",
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQ2LTE1NmQtN2YwMi1hZTk4LWVlNjFiYWM0OTdhOSIsImdyb3VwcyI6e319"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Store/GetAvailableFulfillmentTypesV2",
+   "size": 215,
+   "sample": "{\"storeFulfillmentOptions\":[{\"fulfillmentType\":\"InStorePickup\",\"title\":\"In-store pickup\",\"children\":[]}],\"organizationFulfillmentTypeInfos\":[{\"fulfillmentType\":\"InStorePickup\",\"name\":\"Pickup\",\"storeIds\":[243,584]}]}",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Loyalty/GetLoyaltyNotices",
+   "size": 14,
+   "sample": "{\"notices\":[]}",
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Loyalty/GetStoreLoyaltySettingsV2",
+   "size": 1815,
+   "sample": "{\"id\":42,\"enabled\":true,\"isDistributionSubscriptionRequired\":true,\"levels\":[{\"id\":108,\"name\":\"Bronze\",\"moneyToBonus\":1.00,\"bonusToMoney\":0.05,\"goal\":0,\"bonus\":0,\"rank\":1,\"enabled\":true,\"description\":\"Entry Level to Bisa Rewards!\"},{\"id\":109,\"name\":\"Silver\",\"moneyToBonus\":1.25,\"bonusToMoney\":0.05,\"go",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Products/GetProductCategoryList",
+   "size": 1561,
+   "sample": "[{\"id\":3145,\"name\":\"Flower\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1724676105_189dbe20-536f-4734-aac2-b84662419e67.png\",\"filter\":{\"category\":[3145]},\"canonicalName\":\"flower\"},{\"id\":3146,\"name\":\"Pre-Rolls\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1724676114_656de95c-41",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441455978&ver=1.161.3&compression=base64",
+   "size": 869,
+   "sample": "{\"config\": {\"enable_collect_everything\": true}, \"toolbarParams\": {}, \"isAuthenticated\": false, \"supportedCompression\": [\"gzip\", \"gzip-js\"], \"featureFlags\": {\"ecom-7583-alternative-checkout-layout\": \"test\", \"ecom-4991-new-signup-flow\": \"test\", \"ecom-6307-delivery-button-on-checkout\": \"test\", \"checkou",
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkNi0xNTY5LTcxMzctODljMS00ZjQ5M2U4NWQxZGYiLCJncm91cHMiOnt9fQ%3D%3D"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Products/GetProductList",
+   "size": 262826,
+   "sample": "{\"filters\":[{\"key\":\"quickFilter\",\"type\":\"Multiple\",\"options\":[{\"id\":2,\"name\":\"Deals\",\"canonicalName\":\"deals\",\"disabled\":null,\"selected\":false,\"tooltip\":null},{\"id\":3,\"name\":\"Popular\",\"canonicalName\":\"popular\",\"disabled\":null,\"selected\":false,\"tooltip\":null}],\"uiLabel\":\"\",\"expandedByDefault\":true,\"pr",
+   "post": "{\"filters\":{},\"page\":1,\"pageSize\":24,\"sortingMethodId\":7,\"searchTerm\":\"\",\"saleType\":\"Recreational\",\"platformOs\":\"web\",\"productExposureContextId\":1,\"sourcePage\":1}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Store/GetStoreConfig",
+   "size": 72846,
+   "sample": "{\"acceptDealsModalImageUrl\":null,\"acceptDealsModalLinkUrl\":null,\"addToCartButtonPosition\":\"top\",\"aeroPayEnv\":\"production\",\"aeroPayLocationId\":\"3005\",\"aeroPayMerchantId\":\"1991\",\"ageGateMode\":\"confirm\",\"agreementDisclaimerPosition\":\"below\",\"aiBudtenderConfig\":\"\",\"alternativeCheckoutLayoutEnabled\":fals",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/AccountV2/GetAccountFulfillmentPreferencesV2",
+   "size": 104,
+   "sample": "{\"fulfillmentType\":\"InStorePickup\",\"fulfillment\":{\"inStorePickup\":{\"label\":\"Bisa Lina - Carol Stream\"}}}",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://shop.bisalina.com/carolstream/recreational/menu\",\"page\":\"Bisa Lina - Carol Stream Recreational Cannabis Menu | Carol Stream, IL\",\"eid\":\"c72b3048-fa2e-4341-8904-e081b77d2368\",\"tv\":\"js-3.4.0\""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Referral/GetV2",
+   "size": 1756,
+   "sample": "{\"referralState\":{\"id\":211,\"enabled\":true,\"referralDiscountType\":\"DollarOffDiscount\",\"referralDiscountAmount\":10.000000,\"referralMinInvoiceAmount\":50.000000,\"referralMinInvoiceCount\":0,\"referralMinInvoiceCountForReferrer\":1,\"referralPromocodeMinApplyAmount\":20.000000,\"terms\":\"<p>The customer who is ",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/category/global.json",
+   "size": 1807,
+   "sample": "{\n  \"globalPatterns\": [\n    \"[?&]dtche%5Bcategory%5D=([a-z0-9_-]+)\",\n    \"[?&]cat=([a-z0-9_-]+)(?:%2C|&|$)\",\n    \"/(?:store/)?category/([a-z0-9_-]+)\",\n    \"/categories?/([a-z0-9_-]+)\",\n    \"/collections?/([a-z0-9_-]+)\",\n    \"https?://[^/?#]+/products?/([a-z0-9_-]+)\",\n    \"/deals(?:-collection)?/([a-"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.bisalina.com/_api/Products/GetPromotionsList",
+   "size": 86958,
+   "sample": "[{\"id\":133101,\"name\":\"70% off Fire Sale!\",\"canonicalName\":\"70-off-fire-sale\",\"shortName\":\"70FireSale\",\"description\":null,\"isBogo\":false,\"startDate\":\"2026-07-31T00:00:00Z\",\"endDate\":\"2026-10-31T00:00:00Z\",\"interval\":[],\"bannerUrl\":\"https://media.sweedpos.com/store/production/1790857584_ee7f85bf-b884-",
+   "post": "{\"saleType\":\"Recreational\",\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/discount.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://g.surfside.io/enrich",
+   "size": 203,
+   "sample": "{\"ip\":\"209.113.172.235\",\"country\":\"USA\",\"city\":\"Unknown\",\"region\":\"Unknown\",\"zip\":\"Unknown\",\"utcoffset\":-216,\"timezone\":\"America/Chicago\",\"coords\":{\"latitude\":37.751,\"longitude\":-97.822,\"accuracy\":1000}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.googletagmanager.com/ns.html?id=GTM-KZCJZK6C",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/jpeg",
+   "u": "https://tags.srv.stackadapt.com/sa.jpeg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json;charset=utf-8",
+   "u": "https://bid.surfside.io/rtb/bids/surfside",
+   "size": 7730,
+   "sample": "{\"seatbid\":[{\"seat\":\"SURF\",\"bid\":[{\"impid\":\"23eb15a2-3381-45b2-a363-f31958f4146e\",\"id\":\"2e412194-5852-462c-968a-0582b6dd85b5\",\"cat\":[\"IAB7\",\"IAB7-10\",\"IAB7-11\",\"IAB7-16\",\"IAB7-31\",\"IAB7-32\",\"IAB7-33\",\"IAB7-35\",\"IAB7-36\",\"IAB7-37\",\"IAB7-38\",\"IAB7-42\",\"IAB7-45\",\"IAB7-8\",\"IAB7-17\",\"IAB7-19\",\"IAB7-30\",\"",
+   "post": "{\"id\":\"2e412194-5852-462c-968a-0582b6dd85b5\",\"imp\":[{\"id\":\"23eb15a2-3381-45b2-a363-f31958f4146e\",\"tagid\":\"23eb15a2-3381-45b2-a363-f31958f4146e\",\"banner\":{\"w\":8,\"h\":1},\"ext\":{\"channelId\":\"bf9bc\",\"accountId\":\"2b493\",\"siteId\":\"b0bbe\",\"zoneId\":\"6d88m\",\"placementId\":\"6d88m\",\"accountLocationId\":\"2b493-243"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=utf-8",
+   "u": "https://tags.srv.stackadapt.com/saq_pxl?uid=ceZJILiyAmsPeemuQWePLQ&is_js=true&landing_url=https%3A%2F%2Fshop.bisalina.com%2Fcarolstream%2Frecreational%2Fmenu&t=Bisa%20Lina%20-%20Carol%20Stream%20Recreational%20Cannabis%20Menu%20%7C%20Carol%20Stream%2C%20IL&tip",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-E59FF547GB&gtm=45je6af0v9200640421za20ozb9179581325zd9179581325xf1&_p=1792441455969&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&ecid=731637048&_eu=EAAAAGA&cid=2077292754.1792441457&ec_mode=a&frm=0&ir=1&pscdl=noapi&rcb=4",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/html;charset=utf-8",
+   "u": "https://rtb.surfside.io/rtb/win?exchange=surfside&ad_id=1009068&fp_uid=16715197068440602886&account_id=74262&source_id=45101hf&line_item_id=46a7m&target_group_id=1009068&creative_id=378745847&price=20&bid_id=2e412194-5852-462c-968a-0582b6dd85b5&bid_type=SITE&i",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--bisalina/b2-dec7f3dfe923193051c10b701a637e65e8c4882745aa788909827e0b6be7aa65/icons/24/close.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.bisalina.com/_api/WebAnalytics/AddEvent",
+   "size": 0,
+   "sample": null,
+   "post": "{\"events\":[{\"appName\":\"Shop\",\"platform\":\"NewShop\",\"eventType\":\"Ui\",\"sessionId\":\"c9040d4b-24f6-4771-b26d-33ddb5918537\",\"sessionStarted\":\"2026-10-19T20:24:15.765Z\",\"eventCreated\":\"2026-10-19T20:24:15.916Z\",\"deviceType\":\"Desktop\",\"deviceId\":\"d3bd54c1-5bc6-40ac-9afd-8417008cabcc\",\"eventName\":\"page.view\""
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://tags.srv.stackadapt.com/js_tracking?url=https%3A%2F%2Fshop.bisalina.com%2Fcarolstream%2Frecreational%2Fmenu&uid=ceZJILiyAmsPeemuQWePLQ&v=1&host=https%3A%2F%2Fshop.bisalina.com&l_src=&l_src_d=&u_src=&u_src_d=&shop=false",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-KZCJZK6C"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Confirm\") [Confirm]"
+ ],
+ "status": 200,
+ "finalUrl": "https://shop.bisalina.com/carolstream/recreational/menu",
+ "title": "Bisa Lina - Carol Stream Recreational Cannabis Menu | Carol Stream, IL",
+ "htmlBytes": 574651,
+ "sigs": [
+  "sweed",
+  "joint",
+  "cresco"
+ ],
+ "links": [
+  "https://shop.bisalina.com/carolstream/recreational/menu#maincontent",
+  "https://shop.bisalina.com/carolstream/recreational/menu#footer",
+  "https://shop.bisalina.com/carolstream/recreational",
+  "https://shop.bisalina.com/carolstream/recreational/menu",
+  "https://shop.bisalina.com/carolstream/recreational/menu/discounts?promo=deals",
+  "https://shop.bisalina.com/carolstream/recreational/about-us",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-hybrid-og-kush-distillate-cartridge-1g-612864?originId=catalog&originName=catalog&upsellRunId=undefined&idx=0&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/accessories-3142/lighters-colorful-lighters-assorted-colors-427275?originId=catalog&originName=catalog&upsellRunId=undefined&idx=1&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-sativa-maui-wowie-cartridge-1g-584566?originId=catalog&originName=catalog&upsellRunId=undefined&idx=2&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/pre-rolls-3146/infused-pre-roll-pack-indica-violet-fog-thca-infused-pre-roll-2-pack-1g-582086?originId=catalog&originName=catalog&upsellRunId=undefined&idx=3&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-sativa-dominant-sour-diesel-cartridge-1g-584569?originId=catalog&originName=catalog&upsellRunId=undefined&idx=4&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-sativa-laughing-buddha-distillate-cartridge-1g-612866?originId=catalog&originName=catalog&upsellRunId=undefined&idx=5&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://rtb.surfside.io/callback?target=redirect&exchange=surfside&ad_id=1009068&fp_uid=16715197068440602886&account_id=74262&source_id=45101hf&line_item_id=46a7m&target_group_id=1009068&creative_id=378745847&price=20&bid_id=2e412194-5852-462c-968a-0582b6dd85b5&bid_type=SITE&imp_id=23eb15a2-3381-45b2-a363-f31958f4146e&pub_id=b0bbe&exg_pub_id=b0bbe&pub_name=shop.bisalina.com&pub_domain=shop.bisalina.com&pub_bundle=shop.bisalina.com&creative_size=8x1&creative_type=banner&deviceid={deviceid}&deviceid_hash={deviceid_hash}&lat=37.751&lon=-97.822&make=Microsoft&model=Windows&os=Windows&osv=10.0&ip=209.113.172.235&isp={isp}&deal_id={deal_id}&ua=Mozilla%2F5.0+%28Windows+NT+10.0%3B+Win64%3B+x64%29+AppleWebKit%2F537.36+%28KHTML%2C+like+Gecko%29+Chrome%2F130.0.0.0+Safari%2F537.36&pub_account_id=2b493&pub_channel_id=bf9bc&pub_site_id=b0bbe&pub_placement_id=6d88m&pub_zone=6d88m&pub_store_id=243&geo_city=Unknown&geo_country=USA&geo_region=Unknown&geo_metro={geo_metro}&geo_utcoffset=-216&geo_zip=Unknown&rule_id=2011132483&rule_group_id=100273423&ruleset_geo_id={ruleset_geo_id}&ruleset_audience_id={ruleset_audience_id}&ruleset_publisher_id={ruleset_publisher_id}&device_type=Personal+Computer&surf_domain_id={surf_domain_id}&location_id=243&cb=1792441457007&primary_category={primary_category}&surf_categories={surf_categories}&url=https://shop.bisalina.com/carolstream/recreational/menu/menu?searchTerm=the+essence",
+  "https://shop.bisalina.com/carolstream/recreational/menu/accessories-3142/rolling-supplies-white-cones-50-pack-98mm-481737?originId=catalog&originName=catalog&upsellRunId=undefined&idx=6&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-hybrid-pineapple-express-cartridge-1g-584567?originId=catalog&originName=catalog&upsellRunId=undefined&idx=7&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-sativa-xj-13-cartridge-1g-427240?originId=catalog&originName=catalog&upsellRunId=undefined&idx=8&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-sativa-dominant-alaskan-thunder-cartridge-1g-584561?originId=catalog&originName=catalog&upsellRunId=undefined&idx=9&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-hybrid-dosidos-cartridge-1g-584563?originId=catalog&originName=catalog&upsellRunId=undefined&idx=10&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/edible-3144/gummies-hybrid-peachy-punch-1-1-cbd-thc-guap-rso-gummy-1-pack-100mg-423046?originId=catalog&originName=catalog&upsellRunId=undefined&idx=11&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/edible-3144/gummies-indica-berry-drip-guap-rso-gummy-1-pack-100mg-428258?originId=catalog&originName=catalog&upsellRunId=undefined&idx=12&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/flower-3145/popcorn-sativa-rollins-popcorn-28g-427546?originId=catalog&originName=catalog&upsellRunId=undefined&idx=13&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/accessories-3142/pipes-3-colorful-ribbed-hand-pipe-assorted-615390?originId=catalog&originName=catalog&upsellRunId=undefined&idx=14&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/accessories-3142/rolling-papers-classic-cones-1-1-4-6pk-427921?originId=catalog&originName=catalog&upsellRunId=undefined&idx=15&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-indica-romulan-cartridge-05g-482614?originId=catalog&originName=catalog&upsellRunId=undefined&idx=16&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243",
+  "https://shop.bisalina.com/carolstream/recreational/menu/vapes-3149/cartridge-indica-dominant-skywalker-og-cartridge-1g-584568?originId=catalog&originName=catalog&upsellRunId=undefined&idx=17&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=243"
+ ],
+ "textSample": "Skip to main content or Skip to footer Home Menu Discounts About Us Refer Friends - Get $10 Off Sign up or log in to see exclusive deals Log In Sign Up Pickup at Bisa Lina - Carol Stream saleType Adult Use Home / Menu All Products Filters Flower Pre-Rolls Vapes Concentrates Edible Tincture Topical Accessories Deals Popular Strain prevalence CBD Hybrid Indica Indica Dominant Sativa Sativa Dominant Category Deal Subcategory Product type Total size Unit size THC potency CBD potency Brand Price Terpene Strain Quality line SALE 0 Hybrid Vapes by Under the Lights OG Kush Distillate Cartridge THC: 91.94% 1g Deals from $20.00 $45.00 SALE 0 Accessories by Bisa Lina Colorful Lighters Assorted Colors 4",
+ "productHints": [],
+ "priceCount": 49
+}

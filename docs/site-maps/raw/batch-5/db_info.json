@@ -1,0 +1,4337 @@
+{
+ "db22644a2c58a68db44511b6": {
+  "store": {
+   "id": "db22644a2c58a68db44511b6",
+   "name": "River Bluff Cannabis",
+   "address": "1350 Lake St.",
+   "city": "Roselle",
+   "state": "IL",
+   "distance_miles": 88.093,
+   "latitude": 41.97084,
+   "longitude": -88.11495
+  },
+  "reg": {
+   "source_key": "6a26ac5eda7e31f471664f01b1ff6d2cb2f702d16141de7d76cc22f258d437fd",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 199,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "River Bluff Cannabis",
+    "41.97084",
+    "-88.11495",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Roselle",
+    "River Bluff Cannabis",
+    "1350 Lake St."
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T10:56:32.935238+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T10:56:32.929259+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "db47d02a719281c877a87ee8": {
+  "store": {
+   "id": "db47d02a719281c877a87ee8",
+   "name": "Terrace Moline",
+   "address": "2727 Avenue of the Cities",
+   "city": "Moline",
+   "state": "IL",
+   "distance_miles": 86.437,
+   "latitude": 41.49276,
+   "longitude": -90.49793
+  },
+  "reg": {
+   "source_key": "dbaecad41853ae65de0c863ac33215d1f4a13fb6b8a156f202f2d1ae6a850b9c",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 241,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Terrace Moline",
+    "41.49276",
+    "-90.49793",
+    "Yes",
+    "Davenport-Moline-Rock Island",
+    "Moline",
+    "Terrace Moline",
+    "2727 Avenue of the Cities"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T10:20:11.289169+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T10:20:11.280541+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "dbea3d8039ff1fb89c7d1d4c": {
+  "store": {
+   "id": "dbea3d8039ff1fb89c7d1d4c",
+   "name": "Ascend Moca  Logan Square",
+   "address": "2367 N Milwaukee Ave.",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 98.857,
+   "latitude": 41.92049,
+   "longitude": -87.699768
+  },
+  "reg": {
+   "source_key": "cb5ad9857b8a396d36539db6ed662b907b29fc10098e9786f1ce76f4fdbcd67a",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 19,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Ascend Moca  Logan Square",
+    "41.92049",
+    "-87.699768",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Ascend Moca  Logan Square",
+    "2367 N Milwaukee Ave."
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T12:44:26.304086+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T12:44:26.297728+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "dcaf2a2c15eab43c3d99fdc3": {
+  "store": {
+   "id": "dcaf2a2c15eab43c3d99fdc3",
+   "name": "Cannect Dispensary",
+   "address": "3147 Mannheim Rd",
+   "city": "Franklin Park",
+   "state": "IL",
+   "distance_miles": 93.239,
+   "latitude": 41.93621,
+   "longitude": -87.8845
+  },
+  "reg": {
+   "source_key": "3da07740e61cee7b8611c6603606e8bf88b6afbf10bb1380b0d288dac6fef7b6",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 53,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Cannect Dispensary",
+    "41.93621",
+    "-87.8845",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Franklin Park",
+    "Cannect Dispensary",
+    "3147 Mannheim Rd"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T12:09:17.228833+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T12:09:17.221729+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "dcec1d7aec205601f57fbf35": {
+  "store": {
+   "id": "dcec1d7aec205601f57fbf35",
+   "name": "Bud and Ritas Chicago",
+   "address": "3425 W Belmont Ave",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 99.286,
+   "latitude": 41.93921,
+   "longitude": -87.7135
+  },
+  "reg": {
+   "source_key": "f24774a1e4778825a518ba2534fea629dcc6fb9d1257850e6f6eb7a18b2e1bb3",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 49,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Bud and Ritas Chicago",
+    "41.93921",
+    "-87.7135",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Bud and Ritas Chicago",
+    "3425 W Belmont Ave"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T12:52:29.610891+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T12:52:29.604262+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "dd53131fab99861d3616d7b7": {
+  "store": {
+   "id": "dd53131fab99861d3616d7b7",
+   "name": "Starbuds Hoffman Estates",
+   "address": "5 E Golf Rd",
+   "city": "Hoffman Estates",
+   "state": "IL",
+   "distance_miles": 93.636,
+   "latitude": 42.04905,
+   "longitude": -88.07909
+  },
+  "reg": {
+   "source_key": "9db138a9a139822ef4022ec680931e961d22f010ace6fa57728340a4fd4109cd",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 214,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Starbuds Hoffman Estates",
+    "42.04905",
+    "-88.07909",
+    "yes",
+    "Chicago-Naperville-Elgin",
+    "Hoffman Estates",
+    "Starbuds Hoffman Estates",
+    "5 E Golf Rd"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching",
+   "created_at": "2026-10-19T02:58:12.900459+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/cannabinoids/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/effects/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/menu/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/specials",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/specials/",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/stores/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/stores/hoffman-estates-dispensary/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/stores/pearl/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/stores/summit-dispensary/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/strains/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://shop.starbuds.us/terpenes/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://starbudsillinois.us/stores/star-buds-hoffman-estates",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://starbudsillinois.us/stores/star-buds-summit",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://www.starbuds.us/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://www.starbuds.us/locations",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "jane",
+    "url": "https://shop.starbuds.us/stores/pearl/",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/shop/deals",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/shop/edible",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/shop/featured",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/shop/flower",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/shop/login",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/shop/vape",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://starbudscolorado.com/stores/colorado-springs-dispensary",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "joint",
+    "url": "https://shop.starbuds.us/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "joint",
+    "url": "https://shop.starbuds.us/cannabinoids/",
+    "status": "unresolved",
+    "source": "resolver"
+   },
+   {
+    "platform": "joint",
+    "url": "https://shop.starbuds.us/stores/pearl/",
+    "status": "unresolved",
+    "source": "resolver"
+   }
+  ],
+  "leads": [
+   {
+    "url": "https://starbudscolorado.com/shop/edible",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://starbudscolorado.com/shop/flower",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://starbudscolorado.com/shop/deals",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://starbudscolorado.com/shop/login",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://starbudscolorado.com/shop/vape",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://shop.starbuds.us/cannabinoids/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://shop.starbuds.us/stores/pearl/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://shop.starbuds.us/terpenes/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Candidate website found; branch name/locality or street address still needs matching",
+    "created_at": "2026-10-19T02:58:12.890494+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Candidate website found; branch name/locality or street address still needs matching",
+    "created_at": "2026-10-18T12:19:50.791282+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "ded2fe3b1d7ff0fe2561f9ec": {
+  "store": {
+   "id": "ded2fe3b1d7ff0fe2561f9ec",
+   "name": "Hatch Dispensary",
+   "address": "1433 W Fullerton Ave Ste C",
+   "city": "Addison",
+   "state": "IL",
+   "distance_miles": 89.077,
+   "latitude": 41.932129,
+   "longitude": -88.007408
+  },
+  "reg": {
+   "source_key": "5e8e3583b2d3e2fed079d3e2a09667773945d70e6377cca9ae2bd6a4f9dc73c4",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 106,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Hatch Dispensary",
+    "41.932129",
+    "-88.007408",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Addison",
+    "Hatch Dispensary",
+    "1433 W Fullerton Ave Ste C"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "0236195ff01fa941c6bf03f5",
+    "url": "https://gohatch.com/shop/",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "b673c92fcb46bd9fc76b42ab",
+    "url": "https://www.iheartjane.com/stores/501/hatch-addison-med/menu/featured",
+    "provider": "jane",
+    "provider_store_id": "501",
+    "license_type": "medicinal",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-19T02:46:01.159134+00:00",
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)",
+   "created_at": "2026-10-19T02:46:09.543436+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "jane",
+    "url": "https://gohatch.com/shop/featured",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://www.iheartjane.com/stores/501/hatch-addison-med/menu/featured",
+    "status": "observed",
+    "source": "resolver"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-19T02:46:09.531628+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "jane",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 1582,
+    "detail": null,
+    "created_at": "2026-10-19T02:46:01.314258+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "jane",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 1585,
+    "detail": null,
+    "created_at": "2026-10-18T19:08:31.796721+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T19:08:24.459677+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "TOTAL_UNVERIFIABLE",
+    "grade": "C",
+    "items": 83,
+    "detail": "Products extracted, but source advertises no independently verifiable full-menu total",
+    "created_at": "2026-10-18T11:18:49.181325+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e090194df7ff6e9528a4fea9": {
+  "store": {
+   "id": "e090194df7ff6e9528a4fea9",
+   "name": "Dispensary 33 - Fulton Market",
+   "address": "1152 W. Randolph",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 98.739,
+   "latitude": 41.88472,
+   "longitude": -87.65628
+  },
+  "reg": {
+   "source_key": "f9ca1ac317fd49d792d2c0f3715201d5994796bf80fc43db46b7b7e072c587dc",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 82,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Dispensary 33 - Fulton Market",
+    "41.88472",
+    "-87.65628",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Dispensary 33 - Fulton Market",
+    "1152 W. Randolph"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching",
+   "created_at": "2026-10-18T12:44:25.646692+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "leafly",
+    "url": "https://gashousedfw.com/",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "leafly",
+    "url": "https://gashousedfw.com/locations",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "leafly",
+    "url": "https://gashousedfw.com/locations/dallas-dispensary",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "leafly",
+    "url": "https://gashousedfw.com/locations/irving-dispensary",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "leafly",
+    "url": "https://gashousedfw.com/menu",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [
+   {
+    "url": "https://gashousedfw.com/locations/irving-dispensary",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://gashousedfw.com/locations/dallas-dispensary",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://gashousedfw.com/locations",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://gashousedfw.com/menu",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://gashousedfw.com/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Candidate website found; branch name/locality or street address still needs matching",
+    "created_at": "2026-10-18T12:44:25.639083+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e0b6082dcb509a50436c59fe": {
+  "store": {
+   "id": "e0b6082dcb509a50436c59fe",
+   "name": "ZenLeaf  Lombard",
+   "address": "783 Butterfield Rd.",
+   "city": "Lombard",
+   "state": "IL",
+   "distance_miles": 85.492,
+   "latitude": 41.870789,
+   "longitude": -88.014877
+  },
+  "reg": {
+   "source_key": "21c3d0d00a6042aff208be50524efde0d116512d8dd88e7c29abb3c5f778fc66",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 287,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "ZenLeaf  Lombard",
+    "41.870789",
+    "-88.014877",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Lombard",
+    "ZenLeaf  Lombard",
+    "783 Butterfield Rd."
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "03b8bca099943b32d53d14df",
+    "url": "https://zenleafdispensaries.com/locations/hampton/menu/medical/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "128d1f1c6d8504857e57e915",
+    "url": "https://zenleafdispensaries.com/locations/norfolk/menu/medical/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "1ea4070987d109993dd35b38",
+    "url": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "261709bd2dcab78106cec2e4",
+    "url": "https://zenleafdispensaries.com/locations/westover/medical-menu/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "336b62162a1f4d51941b48bb",
+    "url": "https://zenleafdispensaries.com/locations/altoona/medical-menu/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "5cb24a667c0a25a5045f86c2",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/menu/recreational/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "73a9cd064a3f7fa6c92c1fde",
+    "url": "https://zenleafdispensaries.com/locations/malvern/medical-menu/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "7724e5ee6ceaed92af938552",
+    "url": "https://zenleafdispensaries.com/locations/suffolk/menu/medical/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "bf8906d8ebe01a06cc1b755c",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/recreational/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "ec1331413d514554808dd32c",
+    "url": "https://zenleafdispensaries.com/locations/york/medical-menu/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "fd135c8e78c120e877706f34",
+    "url": "https://zenleafdispensaries.com/locations/abington/medical-menu/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "medicinal",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 11 canonical menu target(s)",
+   "created_at": "2026-10-18T10:13:50.019865+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/abington/medical-menu/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/altoona/medical-menu/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/hampton/menu/medical/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/malvern/medical-menu/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/norfolk/menu/medical/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/menu/recreational",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/menu/recreational/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/suffolk/menu/medical/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/westover/medical-menu/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/york/medical-menu/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 241,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T10:18:38.275853+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 227,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T10:18:13.279107+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 227,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T10:17:47.252751+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 227,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T10:17:21.876120+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 233,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T10:16:54.027956+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e1691686ff5b8774ddced8a5": {
+  "store": {
+   "id": "e1691686ff5b8774ddced8a5",
+   "name": "Green Rose - Harwood Heights",
+   "address": "4660 N Harlem Ave",
+   "city": "Harwood Heights",
+   "state": "IL",
+   "distance_miles": 97.354,
+   "latitude": 41.96552,
+   "longitude": -87.80749
+  },
+  "reg": {
+   "source_key": "80009c76d43be7b6ae113b6b2100ef29d067123f7e35df566d0d10869e4e1586",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 101,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Green Rose - Harwood Heights",
+    "41.96552",
+    "-87.80749",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Harwood Heights",
+    "Green Rose - Harwood Heights",
+    "4660 N Harlem Ave"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "344ab999c4914c5ea6bea64d",
+    "url": "https://shop.greenroseil.com/harwoodheights/menu/",
+    "provider": "sweed",
+    "provider_store_id": "366",
+    "license_type": "recreational",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T12:35:26.135859+00:00",
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "unresolved",
+   "message": "No retailer locator connector configured for this brand",
+   "created_at": "2026-10-17T08:37:21.793613+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "sweed",
+    "url": "https://shop.greenroseil.com/harwoodheights/menu/",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "sweed",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 257,
+    "detail": null,
+    "created_at": "2026-10-18T12:35:26.204761+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e3d2ea9cd323afe948004331": {
+  "store": {
+   "id": "e3d2ea9cd323afe948004331",
+   "name": "Bud & Rita's - The Loop",
+   "address": "105 W Madison St",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 99.557,
+   "latitude": 41.88203,
+   "longitude": -87.63124
+  },
+  "reg": {
+   "source_key": "771c5031db639928bc1e33079d72bb03184b5e96db0ea1741c56fbc625229e56",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 45,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Bud & Rita's - The Loop",
+    "41.88203",
+    "-87.63124",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Bud & Rita's - The Loop",
+    "105 W Madison St"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T13:15:49.864845+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T13:15:49.859254+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e57f932cf71f5033d7946c6c": {
+  "store": {
+   "id": "e57f932cf71f5033d7946c6c",
+   "name": "Be. - Oak Forest",
+   "address": "5940 159th St",
+   "city": "Oak Forest",
+   "state": "IL",
+   "distance_miles": 82.061,
+   "latitude": 41.60366,
+   "longitude": -87.76372
+  },
+  "reg": {
+   "source_key": "bdf943ffb9fc3d5f3c537586800ec682db85cb2612b1f9676ef93f2e2d838b38",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 24,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Be. - Oak Forest",
+    "41.60366",
+    "-87.76372",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Oak Forest",
+    "Be. - Oak Forest",
+    "5940 159th St"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching",
+   "created_at": "2026-10-18T09:59:47.732771+00:00"
+  },
+  "platforms": [],
+  "leads": [
+   {
+    "url": "https://www.localdispensaryguide.com/iowa",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://maps.ganja.com/dashboard/products/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://maps.ganja.com/my-account/orders/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://maps.ganja.com/location/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/connecticut",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/california",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/delaware",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/colorado",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Candidate website found; branch name/locality or street address still needs matching",
+    "created_at": "2026-10-18T09:59:47.718652+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e5fae261ee26030956b7fb38": {
+  "store": {
+   "id": "e5fae261ee26030956b7fb38",
+   "name": "Zen Leaf Naperville",
+   "address": "1516 N. Naper Blvd, Spc 100",
+   "city": "Naperville",
+   "state": "IL",
+   "distance_miles": 76.399,
+   "latitude": 41.792278,
+   "longitude": -88.167747
+  },
+  "reg": {
+   "source_key": "33a46ceaf25a425e4d02ca7b1eb863fbed071f972ad2f758b3fc221ea2fff335",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 282,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Zen Leaf Naperville",
+    "41.792278",
+    "-88.167747",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Naperville",
+    "Zen Leaf Naperville",
+    "1516 N. Naper Blvd, Spc 100"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "0fadf7fbd41ccbbcab696f63",
+    "url": "https://zenleafdispensaries.com/locations/naperville/menu/recreational/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "17658a07aa68e996442605b8",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/menu/recreational/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "3bafa6b38580e80f76468521",
+    "url": "https://zenleafdispensaries.com/locations/naperville/menu/recreational",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "3f80e3ed76f40d24b2e1b468",
+    "url": "https://zenleafdispensaries.com/locations/naperville",
+    "provider": "sweed",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_menu\", \"message\": \"Sweed SSR query cache missing\"}; missing_traversal_evidence",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "b198a7ee64b570c392817c69",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/recreational/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "e3ce27e808bae6b384cd8efa",
+    "url": "https://zenleafdispensaries.com/locations/warrenville",
+    "provider": "sweed",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_menu\", \"message\": \"Sweed SSR query cache missing\"}; missing_traversal_evidence",
+    "last_success_at": null,
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 4 canonical menu target(s)",
+   "created_at": "2026-10-18T09:45:49.250749+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/naperville",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/naperville/menu/recreational",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/naperville/menu/recreational/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/menu/recreational",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/st-charles/menu/recreational/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://zenleafdispensaries.com/locations/warrenville",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 227,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T09:47:29.355967+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 227,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T09:47:04.632956+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 224,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T09:46:38.557985+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "C",
+    "items": 224,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required",
+    "created_at": "2026-10-18T09:46:13.747198+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 4,
+    "detail": null,
+    "created_at": "2026-10-18T09:45:49.240393+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e6419c1e8c7a2bfd1a8f7851": {
+  "store": {
+   "id": "e6419c1e8c7a2bfd1a8f7851",
+   "name": "Jane & Bud's - Elgin",
+   "address": "205 S Randall Rd",
+   "city": "Elgin",
+   "state": "IL",
+   "distance_miles": 85.985,
+   "latitude": 42.02807,
+   "longitude": -88.33793
+  },
+  "reg": {
+   "source_key": "ffebcbd7a76f074ca71b11d73b680bc838e011586bbcdbd683b5564600a5e639",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 128,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Jane & Bud's - Elgin",
+    "42.02807",
+    "-88.33793",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Elgin",
+    "Jane & Bud's - Elgin",
+    "205 S Randall Rd"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T10:20:09.409562+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T10:20:09.396963+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e72f2efe8f88800463e2ec58": {
+  "store": {
+   "id": "e72f2efe8f88800463e2ec58",
+   "name": "Sociale Park Ridge",
+   "address": "1036 Higgins Rd",
+   "city": "Park Ridge",
+   "state": "IL",
+   "distance_miles": 97.414,
+   "latitude": 41.98734,
+   "longitude": -87.84003
+  },
+  "reg": {
+   "source_key": "65916982700031a74c4cce44cdbea009794eeafc729161bbb0844f21d3886621",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 206,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Sociale Park Ridge",
+    "41.98734",
+    "-87.84003",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Park Ridge",
+    "Sociale Park Ridge",
+    "1036 Higgins Rd"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "64eb42e9e1852ce354522569",
+    "url": "https://socialedispensary.com/menu/park-ridge/",
+    "provider": "blaze",
+    "provider_store_id": "eeb5cf9b-a042-4b8c-9a8c-3628946500b4",
+    "license_type": "recreational",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T12:35:54.297196+00:00",
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)",
+   "created_at": "2026-10-18T12:35:45.471261+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "blaze",
+    "url": "https://socialedispensary.com/menu/park-ridge/",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "blaze",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 583,
+    "detail": null,
+    "created_at": "2026-10-18T12:35:54.458588+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T12:35:45.464030+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e7648fc31b2bf7617ed85d15": {
+  "store": {
+   "id": "e7648fc31b2bf7617ed85d15",
+   "name": "Curaleaf  Melrose Park",
+   "address": "1413 West North Ave.",
+   "city": "Melrose Park",
+   "state": "IL",
+   "distance_miles": 92.283,
+   "latitude": 41.900928,
+   "longitude": -87.858192
+  },
+  "reg": {
+   "source_key": "a7fbc5ae6dad44b3d9dc91af93deb30a10554c27b3f36bc1886df79f543e8e37",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 74,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Curaleaf  Melrose Park",
+    "41.900928",
+    "-87.858192",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Melrose Park",
+    "Curaleaf  Melrose Park",
+    "1413 West North Ave."
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "blocked",
+   "message": "Retailer requires age/terms confirmation; menu not fetched",
+   "created_at": "2026-10-18T11:57:01.449508+00:00"
+  },
+  "platforms": [],
+  "leads": [
+   {
+    "url": "https://curaleaf.com/age-gate?returnurl=%2F",
+    "source": "resolver",
+    "reason": "Retailer requires age/terms confirmation; menu not fetched"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "blocked",
+    "code": "GATE_AGE_TERMS",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer requires age/terms confirmation; menu not fetched",
+    "created_at": "2026-10-18T11:57:01.443186+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e76de41cbd03b761f7e2d898": {
+  "store": {
+   "id": "e76de41cbd03b761f7e2d898",
+   "name": "Natures Treatment of Illinois - Milan",
+   "address": "973 Tech Dr",
+   "city": "Milan",
+   "state": "IL",
+   "distance_miles": 87.733,
+   "latitude": 41.417488,
+   "longitude": -90.574127
+  },
+  "reg": {
+   "source_key": "ef4c118330ce019b88965295e4f0159c5dde82ad166e8cb69166ad2855d98fe4",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 158,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Natures Treatment of Illinois - Milan",
+    "41.417488",
+    "-90.574127",
+    "Yes",
+    "Davenport-Moline-Rock Island",
+    "Milan",
+    "Natures Treatment of Illinois - Milan",
+    "973 Tech Dr"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T10:49:14.619975+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T10:49:14.601547+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e8636a2dd21bbff9ea773047": {
+  "store": {
+   "id": "e8636a2dd21bbff9ea773047",
+   "name": "Cookies - Peoria Heights",
+   "address": "1209 E War Memorial Dr",
+   "city": "Peoria Heights",
+   "state": "IL",
+   "distance_miles": 30.473,
+   "latitude": 40.73685,
+   "longitude": -89.57711
+  },
+  "reg": {
+   "source_key": "a290fc74736592ac28030bd768013ace82578843d636349f7d585b1af7947e00",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 68,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Cookies - Peoria Heights",
+    "40.73685",
+    "-89.57711",
+    "Yes",
+    "Peoria",
+    "Peoria Heights",
+    "Cookies - Peoria Heights",
+    "1209 E War Memorial Dr"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "failed",
+   "message": "Public fetch failed: ConnectError",
+   "created_at": "2026-10-19T05:12:30.141192+00:00"
+  },
+  "platforms": [],
+  "leads": [
+   {
+    "url": "https://cookies.co/stores/",
+    "source": "resolver",
+    "reason": "Public fetch failed: ConnectError"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "failed",
+    "code": "TRANSPORT_ERROR",
+    "grade": "D",
+    "items": 0,
+    "detail": "Public fetch failed: ConnectError",
+    "created_at": "2026-10-19T05:12:30.134624+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "failed",
+    "code": "TRANSPORT_ERROR",
+    "grade": "D",
+    "items": 0,
+    "detail": "Public fetch failed: ConnectError",
+    "created_at": "2026-10-18T23:08:45.648818+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "failed",
+    "code": "TRANSPORT_ERROR",
+    "grade": "D",
+    "items": 0,
+    "detail": "Public fetch failed: ConnectError",
+    "created_at": "2026-10-18T17:09:02.363981+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "failed",
+    "code": "TRANSPORT_ERROR",
+    "grade": "D",
+    "items": 0,
+    "detail": "Public fetch failed: ConnectError",
+    "created_at": "2026-10-18T08:29:12.809355+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e89adcbf8de2860df51d8b26": {
+  "store": {
+   "id": "e89adcbf8de2860df51d8b26",
+   "name": "Stash - Peru",
+   "address": "1320 38th St",
+   "city": "Peru",
+   "state": "IL",
+   "distance_miles": 32.112,
+   "latitude": 41.35848,
+   "longitude": -89.12319
+  },
+  "reg": {
+   "source_key": "8c7ff22e61e7a822012d425836059dedae9329a4f666d32302e9959c98fd873c",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 217,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Stash - Peru",
+    "41.35848",
+    "-89.12319",
+    "No",
+    "Northwest Illinois nonmetropolitan area",
+    "Peru",
+    "Stash - Peru",
+    "1320 38th St"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "0584cbd510e42d2c3d9684e9",
+    "url": "https://www.stashdispensaries.com/shop?query=SELECT+BRIQ",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Filtered product/promotion page retained as evidence; not an independent full menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "1b62fa453b462dca353c0124",
+    "url": "https://www.stashdispensaries.com/shop?page=4",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Document-anchor or pagination alias of menu 309d389086a057c10fc4576e",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "2a26f436bcc068ed4bca145d",
+    "url": "https://www.jointcommerce.com/dispensaries/stash-dispensary-peru/menu#desktop-search",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "309d389086a057c10fc4576e",
+    "url": "https://www.stashdispensaries.com/shop",
+    "provider": "treez",
+    "provider_store_id": "17e5174c-4238-43a6-9f9c-fa0a1bfaa609",
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_treez_menu\", \"message\": \"Browser request budget exceeded (5000)\", \"evidence_id\": \"71af0746761f63334ba6619ecdf0bf86d139b26ecbca66be7e7abec1a17b54fb\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "3e6eef4839a64a2e7adf2762",
+    "url": "https://www.stashdispensaries.com/product-group/100-oz-peru?group_id=712321df-5d4a-4d93-a101-51d7cf6a538c",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Filtered product/promotion page retained as evidence; not an independent full menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "3f2067550286140fc45d536f",
+    "url": "https://www.stashdispensaries.com/product-group/byo-7gs-peru?group_id=b3b61e4c-50e5-4d88-8d6b-bb6dfad5fafc",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Filtered product/promotion page retained as evidence; not an independent full menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "4887d3d3b320e2595fc2e8f2",
+    "url": "https://www.stashdispensaries.com/product-group/byo-oz-14g-flower-peru?group_id=405671c9-c8ef-4554-9a3c-d662ca67ce10",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Filtered product/promotion page retained as evidence; not an independent full menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "645b4fea0e85e859723855e0",
+    "url": "https://www.jointcommerce.com/dispensaries/stash-dispensary-peru/menu#main-content",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "86bd441044445790624101b8",
+    "url": "https://www.stashdispensaries.com/shop?page=97",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Document-anchor or pagination alias of menu 309d389086a057c10fc4576e",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "a37afb6af5d9b8ef09d8d885",
+    "url": "https://www.stashdispensaries.com/product-group/peru-build-your-12oz-35g?group_id=bfce5349-b755-4531-97c8-dc0c38722762",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Filtered product/promotion page retained as evidence; not an independent full menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "a56b5b7bf6ba298702626370",
+    "url": "https://www.stashdispensaries.com/shop?page=2",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Document-anchor or pagination alias of menu 309d389086a057c10fc4576e",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "a8c504572c3610b3e476789a",
+    "url": "https://www.jointcommerce.com/dispensaries/stash-dispensary-peru/menu#main-nav",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "b953c3f2070de120167ad9ba",
+    "url": "https://www.stashdispensaries.com/product-group/last-chance-peru?group_id=d7325e82-c71f-4bf1-abd5-70fc54bfd732",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Filtered product/promotion page retained as evidence; not an independent full menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "c8f58e652f38413899e70be0",
+    "url": "https://www.stashdispensaries.com/shop?page=1",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Document-anchor or pagination alias of menu 309d389086a057c10fc4576e",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "d091da53427f2f1b66b3b5dc",
+    "url": "https://www.jointcommerce.com/dispensaries/stash-dispensary-peru/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "f8c481c1658a88f1d75908d9",
+    "url": "https://www.stashdispensaries.com/shop?page=5",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Document-anchor or pagination alias of menu 309d389086a057c10fc4576e",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "fca9a2c4544eccaa93056ac3",
+    "url": "https://www.stashdispensaries.com/shop?page=3",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Document-anchor or pagination alias of menu 309d389086a057c10fc4576e",
+    "last_success_at": null,
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)",
+   "created_at": "2026-10-19T05:00:27.501833+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "treez",
+    "url": "https://www.stashdispensaries.com/",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "treez",
+    "url": "https://www.stashdispensaries.com/shop",
+    "status": "observed",
+    "source": "resolver"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "treez",
+    "status": "partial",
+    "code": "UNKNOWN",
+    "grade": "C",
+    "items": 1346,
+    "detail": "Browser request budget exceeded (5000)",
+    "created_at": "2026-10-19T05:04:29.704889+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-19T05:00:27.494892+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "treez",
+    "status": "partial",
+    "code": "UNKNOWN",
+    "grade": "C",
+    "items": 1004,
+    "detail": "Browser request budget exceeded (5000)",
+    "created_at": "2026-10-18T23:03:27.132155+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T23:00:24.635617+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "treez",
+    "status": "partial",
+    "code": "UNKNOWN",
+    "grade": "C",
+    "items": 874,
+    "detail": "Browser request budget exceeded (5000)",
+    "created_at": "2026-10-18T17:04:03.491930+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e8ccd7ecbd0836e477f9dff0": {
+  "store": {
+   "id": "e8ccd7ecbd0836e477f9dff0",
+   "name": "Green Releaf - Bourbonnais",
+   "address": "1660 N State Route 50",
+   "city": "Bourbonnais",
+   "state": "IL",
+   "distance_miles": 64.623,
+   "latitude": 41.17621,
+   "longitude": -87.85083
+  },
+  "reg": {
+   "source_key": "0664896220a95a2afd3c4021b6ef2a935a9305f354ea7d6eb8dcdae8bb0bd237",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 98,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Green Releaf - Bourbonnais",
+    "41.17621",
+    "-87.85083",
+    "No",
+    "Kankakee",
+    "Bourbonnais",
+    "Green Releaf - Bourbonnais",
+    "1660 N State Route 50"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T09:09:04.700523+00:00"
+  },
+  "platforms": [],
+  "leads": [
+   {
+    "url": "https://greenreleafdispensary.com/stores/bourbonnais",
+    "source": "verifier",
+    "reason": "Store verifier website (xiaomi/mimo-v2.6-flash); branch identity still requires the resolver"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T09:09:04.690456+00:00"
+   }
+  ],
+  "verification": [
+   {
+    "status": "verified",
+    "verdict": "exists",
+    "detail": null,
+    "model": "xiaomi/mimo-v2.6-flash"
+   }
+  ]
+ },
+ "e8f93bec072966e4f2e41b58": {
+  "store": {
+   "id": "e8f93bec072966e4f2e41b58",
+   "name": "Ivy Hall - Crystal Lake",
+   "address": "501 Pingree Rd.",
+   "city": "Crystal Lake",
+   "state": "IL",
+   "distance_miles": 99.446,
+   "latitude": 42.22763,
+   "longitude": -88.29678
+  },
+  "reg": {
+   "source_key": "83c568276b471e0bfbe4053381182e9e87dfea1e4ac3c2d56de1d3cf551b4899",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 119,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Ivy Hall - Crystal Lake",
+    "42.22763",
+    "-88.29678",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Crystal Lake",
+    "Ivy Hall - Crystal Lake",
+    "501 Pingree Rd."
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching",
+   "created_at": "2026-10-18T12:54:26.657337+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "sweed",
+    "url": "https://ivyhalldispensary.com/locations/bucktown/menu",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://ivyhalldispensary.com/locations/bucktown/menu/menu/discounts?promo=deals",
+    "status": "identity_conflict",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/medical/menu",
+    "status": "identity_conflict",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/recreational/menu/beverages-617",
+    "status": "identity_conflict",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [
+   {
+    "url": "https://ivyhalldispensary.com/menu/",
+    "source": "resolver",
+    "reason": "Detected menu belongs to a different street address: 1720 North Damen Avenue, Chicago, Illinois"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Candidate website found; branch name/locality or street address still needs matching",
+    "created_at": "2026-10-18T12:54:26.651137+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "e9ccfac7375b5969b9c683ea": {
+  "store": {
+   "id": "e9ccfac7375b5969b9c683ea",
+   "name": "Cloud 9 - Oswego",
+   "address": "2420 US Highway 30",
+   "city": "Oswego",
+   "state": "IL",
+   "distance_miles": 67.861,
+   "latitude": 41.71903,
+   "longitude": -88.31628
+  },
+  "reg": {
+   "source_key": "4b9493e65281d50b9adb6690011800d54e6e34f51cd6a608fbc12ababb3f8a6c",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 55,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Cloud 9 - Oswego",
+    "41.71903",
+    "-88.31628",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Oswego",
+    "Cloud 9 - Oswego",
+    "2420 US Highway 30"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Provider reference detected, but store/tenant or full-catalog contract is unresolved; continuing discovery",
+   "created_at": "2026-10-18T09:13:52.320011+00:00"
+  },
+  "platforms": [],
+  "leads": [
+   {
+    "url": "https://www.cloud9dispensaries.shop/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "UNKNOWN",
+    "grade": "D",
+    "items": 0,
+    "detail": "Provider reference detected, but store/tenant or full-catalog contract is unresolved; continuing discovery",
+    "created_at": "2026-10-18T09:13:52.304729+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "ea1735321a9754e7656ba7cf": {
+  "store": {
+   "id": "ea1735321a9754e7656ba7cf",
+   "name": "Green Releaf - Villa Park",
+   "address": "305 W North Ave",
+   "city": "Villa Park",
+   "state": "IL",
+   "distance_miles": 88.323,
+   "latitude": 41.90614,
+   "longitude": -87.98619
+  },
+  "reg": {
+   "source_key": "0d883907b96383a6d541e62e1a7edc637d4a1578f71ca48f7305bef15bd54efe",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 99,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Green Releaf - Villa Park",
+    "41.90614",
+    "-87.98619",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Villa Park",
+    "Green Releaf - Villa Park",
+    "305 W North Ave"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Third-party directory is a discovery lead, not a retailer menu",
+   "created_at": "2026-10-18T10:58:28.173327+00:00"
+  },
+  "platforms": [],
+  "leads": [
+   {
+    "url": "https://www.localdispensaryguide.com/connecticut",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/california",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/delaware",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/colorado",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/arkansas",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/arizona",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/alabama",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   },
+   {
+    "url": "https://www.localdispensaryguide.com/alaska",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "UNKNOWN",
+    "grade": "D",
+    "items": 0,
+    "detail": "Third-party directory is a discovery lead, not a retailer menu",
+    "created_at": "2026-10-18T10:58:28.166237+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "ea74053f26413fbd3f020f20": {
+  "store": {
+   "id": "ea74053f26413fbd3f020f20",
+   "name": "Cannabist - Chicago",
+   "address": "4758 N Milwaukee Ave",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 99.248,
+   "latitude": 41.969872,
+   "longitude": -87.758629
+  },
+  "reg": {
+   "source_key": "e847fc0b26affdf0ba6fc3214f3e86914461fe9fa0c38eb76e10e84cbc0670b3",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 51,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Cannabist - Chicago",
+    "41.969872",
+    "-87.758629",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Cannabist - Chicago",
+    "4758 N Milwaukee Ave"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "3da483e28755b01e1c9bbec0",
+    "url": "https://www.gocannabist.com/shop/store/936/featured",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "766e52f7fbe0ab3e7888c0d8",
+    "url": "https://www.gocannabist.com/shop/store/2221/featured",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "b8a2e2be98e7985a296e2317",
+    "url": "https://www.gocannabist.com/shop/store/1346/featured",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 3 canonical menu target(s)",
+   "created_at": "2026-10-19T03:04:19.765135+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "jane",
+    "url": "https://www.gocannabist.com/shop/store/1346/featured",
+    "status": "observed",
+    "source": "resolver"
+   },
+   {
+    "platform": "jane",
+    "url": "https://www.gocannabist.com/shop/store/2221/featured",
+    "status": "observed",
+    "source": "resolver"
+   },
+   {
+    "platform": "jane",
+    "url": "https://www.gocannabist.com/shop/store/936/featured",
+    "status": "observed",
+    "source": "resolver"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "TOTAL_UNVERIFIABLE",
+    "grade": "C",
+    "items": 82,
+    "detail": "Products extracted, but source advertises no independently verifiable full-menu total",
+    "created_at": "2026-10-19T03:05:14.785529+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "TOTAL_UNVERIFIABLE",
+    "grade": "C",
+    "items": 68,
+    "detail": "Products extracted, but source advertises no independently verifiable full-menu total",
+    "created_at": "2026-10-19T03:04:56.569336+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "TOTAL_UNVERIFIABLE",
+    "grade": "C",
+    "items": 69,
+    "detail": "Products extracted, but source advertises no independently verifiable full-menu total",
+    "created_at": "2026-10-19T03:04:38.148282+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 3,
+    "detail": null,
+    "created_at": "2026-10-19T03:04:19.758939+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "TOTAL_UNVERIFIABLE",
+    "grade": "C",
+    "items": 83,
+    "detail": "Products extracted, but source advertises no independently verifiable full-menu total",
+    "created_at": "2026-10-18T19:12:31.518598+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "ea8a3aa539f29d593213e845": {
+  "store": {
+   "id": "ea8a3aa539f29d593213e845",
+   "name": "Aroma Hill - Belvidere",
+   "address": "1874 Crystal Parkway",
+   "city": "Belvidere",
+   "state": "IL",
+   "distance_miles": 93.068,
+   "latitude": 42.23586,
+   "longitude": -88.82023
+  },
+  "reg": {
+   "source_key": "8a09ec030a482399be15d34815ae2a525311dcdcd038114ee49fe9ddfb00479c",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 7,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Aroma Hill - Belvidere",
+    "42.23586",
+    "-88.82023",
+    "Yes",
+    "Rockford",
+    "Belvidere",
+    "Aroma Hill - Belvidere",
+    "1874 Crystal Parkway"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "65b36d2767cd6efb6566bbb1",
+    "url": "https://shop.aromahillcannabis.com/belvidere/medical/menu",
+    "provider": "sweed",
+    "provider_store_id": "195",
+    "license_type": "medicinal",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T12:05:01.156415+00:00",
+    "last_converged_at": null
+   },
+   {
+    "id": "b02bf71e759958f1dce5fd95",
+    "url": "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+    "provider": "sweed",
+    "provider_store_id": "195",
+    "license_type": "recreational",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T12:05:29.075277+00:00",
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {},
+  "platforms": [
+   {
+    "platform": "sweed",
+    "url": "https://shop.aromahillcannabis.com/belvidere/medical/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://shop.aromahillcannabis.com/belvidere/recreational",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "sweed",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 916,
+    "detail": null,
+    "created_at": "2026-10-18T12:05:29.335396+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "sweed",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 915,
+    "detail": null,
+    "created_at": "2026-10-18T12:05:01.424280+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "edb7a5af215c6fcbca61dd6f": {
+  "store": {
+   "id": "edb7a5af215c6fcbca61dd6f",
+   "name": "Curaleaf  Justice",
+   "address": "8340 S Roberts Rd",
+   "city": "Justice",
+   "state": "IL",
+   "distance_miles": 85.431,
+   "latitude": 41.744541,
+   "longitude": -87.834267
+  },
+  "reg": {
+   "source_key": "6e5363e5a49f7fc761d88187c421c0b768786fe4fc53efc922123b009e681704",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 72,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Curaleaf  Justice",
+    "41.744541",
+    "-87.834267",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Justice",
+    "Curaleaf  Justice",
+    "8340 S Roberts Rd"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "blocked",
+   "message": "Retailer requires age/terms confirmation; menu not fetched",
+   "created_at": "2026-10-18T10:13:04.756052+00:00"
+  },
+  "platforms": [],
+  "leads": [
+   {
+    "url": "https://curaleaf.com/age-gate?returnurl=%2F",
+    "source": "resolver",
+    "reason": "Retailer requires age/terms confirmation; menu not fetched"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "blocked",
+    "code": "GATE_AGE_TERMS",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer requires age/terms confirmation; menu not fetched",
+    "created_at": "2026-10-18T10:13:04.746132+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "edc950551c643872292ba9e2": {
+  "store": {
+   "id": "edc950551c643872292ba9e2",
+   "name": "Verilife Ottawa",
+   "address": "4100 Columbus St",
+   "city": "Ottawa",
+   "state": "IL",
+   "distance_miles": 32.692,
+   "latitude": 41.349312,
+   "longitude": -88.844193
+  },
+  "reg": {
+   "source_key": "be6fd17944648322b818ba4bc292e73f9afcca7d2ba344911124ce121978cb7e",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 264,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Verilife Ottawa",
+    "41.349312",
+    "-88.844193",
+    "Yes",
+    "Northwest Illinois nonmetropolitan area",
+    "Ottawa",
+    "Verilife Ottawa",
+    "4100 Columbus St"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Retailer locator did not expose a corroborated branch/menu link",
+   "created_at": "2026-10-19T05:05:55.489902+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "jane",
+    "url": "https://www.verilife.com/",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://www.verilife.com/ny/menu/albany-recreational",
+    "status": "evidence",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [
+   {
+    "url": "https://www.verilife.com/il/menu/ottawa-recreational/menu/products/1811101/ic-collective-t-i-t-s",
+    "source": "verifier",
+    "reason": "Store verifier menu_url (deepseek/deepseek-v4.1-flash); branch identity still requires the resolver"
+   },
+   {
+    "url": "https://www.verilife.com",
+    "source": "verifier",
+    "reason": "Store verifier website (deepseek/deepseek-v4.1-flash); branch identity still requires the resolver"
+   },
+   {
+    "url": "https://www.verilife.com/",
+    "source": "resolver",
+    "reason": "Retailer locator did not expose a corroborated branch/menu link"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer locator did not expose a corroborated branch/menu link",
+    "created_at": "2026-10-19T05:05:55.478301+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer locator did not expose a corroborated branch/menu link",
+    "created_at": "2026-10-19T02:24:06.460429+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer locator did not expose a corroborated branch/menu link",
+    "created_at": "2026-10-18T23:04:23.921885+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer locator did not expose a corroborated branch/menu link",
+    "created_at": "2026-10-18T17:04:56.730222+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer locator did not expose a corroborated branch/menu link",
+    "created_at": "2026-10-18T08:44:47.301734+00:00"
+   }
+  ],
+  "verification": [
+   {
+    "status": "budget_exceeded",
+    "verdict": "unknown",
+    "detail": "Step, time, token or spend budget reached before an answer",
+    "model": "xiaomi/mimo-v2.6-flash"
+   }
+  ]
+ },
+ "ede5c6950cb66686352db835": {
+  "store": {
+   "id": "ede5c6950cb66686352db835",
+   "name": "Windy City Cannabis Posen",
+   "address": "2535 Veterans Dr",
+   "city": "Posen",
+   "state": "IL",
+   "distance_miles": 86.27,
+   "latitude": 41.628429,
+   "longitude": -87.68721
+  },
+  "reg": {
+   "source_key": "384869e22c70b8558eb2ac50adbd8399de8e0ed7a5b6b9f173b91a1fb02e3a3f",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 278,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Windy City Cannabis Posen",
+    "41.628429",
+    "-87.68721",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Posen",
+    "Windy City Cannabis Posen",
+    "2535 Veterans Dr"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T10:20:10.663883+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T10:20:10.655513+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "ef4e9fb04d381b482b53c680": {
+  "store": {
+   "id": "ef4e9fb04d381b482b53c680",
+   "name": "Mystic Greenz - Lincoln",
+   "address": "1120 Woodlawn Rd",
+   "city": "Lincoln",
+   "state": "IL",
+   "distance_miles": 54.43,
+   "latitude": 40.15824,
+   "longitude": -89.38937
+  },
+  "reg": {
+   "source_key": "8520b73f51a47a35852326a072eb4d18a44207e6cddef1649d1c4ded708bffe7",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 153,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Mystic Greenz - Lincoln",
+    "40.15824",
+    "-89.38937",
+    "No",
+    "West Central Illinois Nonmetropolitan",
+    "Lincoln",
+    "Mystic Greenz - Lincoln",
+    "1120 Woodlawn Rd"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "1ba278d3839fcc83570dd87c",
+    "url": "https://order.mysticgreenz.com/lincoln/menu",
+    "provider": "sweed",
+    "provider_store_id": "1001",
+    "license_type": "recreational",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T08:56:16.879803+00:00",
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "unresolved",
+   "message": "No retailer locator connector configured for this brand",
+   "created_at": "2026-10-17T08:31:16.622623+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "sweed",
+    "url": "https://order.mysticgreenz.com/lincoln/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "sweed",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 578,
+    "detail": null,
+    "created_at": "2026-10-18T08:56:17.001582+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "efa7c3ca60452eb9e7d766db": {
+  "store": {
+   "id": "efa7c3ca60452eb9e7d766db",
+   "name": "Earthmed Rosemont",
+   "address": "10441 E. Touhy Ave.",
+   "city": "Rosemont",
+   "state": "IL",
+   "distance_miles": 97.003,
+   "latitude": 42.00893,
+   "longitude": -87.888649
+  },
+  "reg": {
+   "source_key": "022f746f2f48c374b1b2664e9679e320dde53ecaba8c33cdf7e313e937c658a7",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 92,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Earthmed Rosemont",
+    "42.00893",
+    "-87.888649",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Rosemont",
+    "Earthmed Rosemont",
+    "10441 E. Touhy Ave."
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "7e2bbe53f9f6a166fc6c3dac",
+    "url": "https://www.iheartjane.com/stores/2740/earthmed-rosemont-rec/menu",
+    "provider": "jane",
+    "provider_store_id": "2740",
+    "license_type": "recreational",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-19T02:59:15.632037+00:00",
+    "last_converged_at": null
+   },
+   {
+    "id": "979d79190e290b1fa2d30874",
+    "url": "https://menu.earthmed.com/rosemont-rec/menu",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Structured product total does not reconcile with traversed catalog\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "f85ffe7aaa13d17d16465789",
+    "url": "https://earthmed.com/cannabis/products",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}; missing_traversal_evidence",
+    "last_success_at": null,
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)",
+   "created_at": "2026-10-19T03:00:28.053992+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "jane",
+    "url": "https://menu.earthmed.com/rosemont-rec/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "jane",
+    "url": "https://www.iheartjane.com/stores/2740/earthmed-rosemont-rec/menu",
+    "status": "observed",
+    "source": "resolver"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-19T03:00:28.045850+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "jane",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 1159,
+    "detail": null,
+    "created_at": "2026-10-19T02:59:15.736625+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "jane",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 1171,
+    "detail": null,
+    "created_at": "2026-10-18T18:48:40.039875+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T18:48:34.181738+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "RENDER_BLANK",
+    "grade": "D",
+    "items": 0,
+    "detail": "No structured products extracted; JavaScript or an additional schema extractor may be required; missing_traversal_evidence",
+    "created_at": "2026-10-18T12:32:05.727770+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "f10b4177de25509157e12f41": {
+  "store": {
+   "id": "f10b4177de25509157e12f41",
+   "name": "Market 96 - S Wells Street",
+   "address": "529 S Wells St Ste 100",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 99.165,
+   "latitude": 41.87537,
+   "longitude": -87.63336
+  },
+  "reg": {
+   "source_key": "fb095688d4a3ef2d46d6505ceb08014ee5d7a506392790dc0640876a4c4e578d",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 142,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Market 96 - S Wells Street",
+    "41.87537",
+    "-87.63336",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Market 96 - S Wells Street",
+    "529 S Wells St Ste 100"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "32494021eeebd2a4bedb8e1b",
+    "url": "https://www.market-96.com/shop",
+    "provider": "treez",
+    "provider_store_id": "8a1808cd-038f-4c7a-962c-a67afe85f14a",
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_treez_menu\", \"message\": \"Browser response capture budget exceeded\", \"evidence_id\": \"8c1a63909145169b28fe1c079f86df4c6fa0685df1d0298610a3845e2c786162\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)",
+   "created_at": "2026-10-18T12:45:06.717583+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "treez",
+    "url": "https://www.market-96.com/shop",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "treez",
+    "status": "partial",
+    "code": "UNKNOWN",
+    "grade": "C",
+    "items": 1215,
+    "detail": "Browser response capture budget exceeded",
+    "created_at": "2026-10-18T12:51:20.658715+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T12:45:06.711019+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "f4a7a73f0d17f4dc901e9a7c": {
+  "store": {
+   "id": "f4a7a73f0d17f4dc901e9a7c",
+   "name": "Mission Calumet City",
+   "address": "1330 Torrence Ave.",
+   "city": "Calumet City",
+   "state": "IL",
+   "distance_miles": 91.618,
+   "latitude": 41.614929,
+   "longitude": -87.550621
+  },
+  "reg": {
+   "source_key": "4b9d158607f37061835973c07801a8e18fc90163958f1676475548d455d36aea",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 148,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Mission Calumet City",
+    "41.614929",
+    "-87.550621",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Calumet City",
+    "Mission Calumet City",
+    "1330 Torrence Ave."
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T11:51:04.205135+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T11:51:04.199133+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "f71776a9e6d4ce31a9a78234": {
+  "store": {
+   "id": "f71776a9e6d4ce31a9a78234",
+   "name": "Mission Illinois",
+   "address": "8554 S Commercial Ave",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 95.684,
+   "latitude": 41.726379,
+   "longitude": -87.556877
+  },
+  "reg": {
+   "source_key": "98e502d60967d70f86238c44e35c57d2bd150c0d8a46db5e4b89559e96a95671",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 149,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Mission Illinois",
+    "41.726379",
+    "-87.556877",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Mission Illinois",
+    "8554 S Commercial Ave"
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T12:27:25.246559+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T12:27:25.231556+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "f87caed4d9681e0f3b6fe4b4": {
+  "store": {
+   "id": "f87caed4d9681e0f3b6fe4b4",
+   "name": "Ascend - Springfield Horizon Dr.",
+   "address": "3201 Horizon Dr.",
+   "city": "Springfield",
+   "state": "IL",
+   "distance_miles": 83.882,
+   "latitude": 39.77354,
+   "longitude": -89.633713
+  },
+  "reg": {
+   "source_key": "3e72a16d74d9bcf2a51fb0dc0f246aa86c9c634b3ccfc1d67eb48ccf18aeaed3",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 14,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Ascend - Springfield Horizon Dr.",
+    "39.77354",
+    "-89.633713",
+    "Yes",
+    "Springfield",
+    "Springfield",
+    "Ascend - Springfield Horizon Dr.",
+    "3201 Horizon Dr."
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "8c003ad18fbfa8ef81c6d1bb",
+    "url": "https://ascendcannabis.com/menu/il-springfield-horizon-menu",
+    "provider": "dispense",
+    "provider_store_id": "0e98c8652a35fe4f",
+    "license_type": "recreational",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T10:03:14.579753+00:00",
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "unresolved",
+   "message": "No retailer locator connector configured for this brand",
+   "created_at": "2026-10-17T08:36:51.292469+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "dispense",
+    "url": "https://ascendcannabis.com/menu/il-springfield-horizon-menu/",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "flowhub",
+    "url": "https://ascendcannabis.com/menu/il-springfield-horizon-menu/",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "dispense",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 794,
+    "detail": null,
+    "created_at": "2026-10-18T10:03:15.009340+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "f8b405422957813c89a224a7": {
+  "store": {
+   "id": "f8b405422957813c89a224a7",
+   "name": "Verilife  Rosemont",
+   "address": "5540 Park Pl",
+   "city": "Rosemont",
+   "state": "IL",
+   "distance_miles": 97.003,
+   "latitude": 42.00893,
+   "longitude": -87.888649
+  },
+  "reg": {
+   "source_key": "64baf5d59a948d1ebd0a72196ebd59cbe10aa6bdf528367e12713684d4f2950d",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 266,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Verilife  Rosemont",
+    "42.00893",
+    "-87.888649",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Rosemont",
+    "Verilife  Rosemont",
+    "5540 Park Pl"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "76c4118f889f7d8f54b93c8e",
+    "url": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/?refinementList%5Bbrand%5D%5B%5D=%26Shine",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Filtered product/promotion page retained as evidence; not an independent full menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "db5ffccb56a4d9b24e7ade2d",
+    "url": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "converged",
+    "last_error": null,
+    "last_success_at": null,
+    "last_converged_at": "2026-10-18T19:10:37.977582+00:00"
+   }
+  ],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Retailer locator did not expose a corroborated branch/menu link",
+   "created_at": "2026-10-19T03:01:22.810306+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "jane",
+    "url": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+    "status": "observed",
+    "source": "resolver"
+   }
+  ],
+  "leads": [
+   {
+    "url": "https://www.verilife.com/",
+    "source": "resolver",
+    "reason": "Retailer locator did not expose a corroborated branch/menu link"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "LEAD_UNVERIFIED",
+    "grade": "D",
+    "items": 0,
+    "detail": "Retailer locator did not expose a corroborated branch/menu link",
+    "created_at": "2026-10-19T03:01:22.803186+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "converged",
+    "code": null,
+    "grade": "B",
+    "items": 1035,
+    "detail": null,
+    "created_at": "2026-10-18T19:10:38.181874+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T19:09:24.411696+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "TOTAL_UNVERIFIABLE",
+    "grade": "C",
+    "items": 32,
+    "detail": "Products extracted, but source advertises no independently verifiable full-menu total",
+    "created_at": "2026-10-18T12:33:48.844729+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "generic",
+    "status": "partial",
+    "code": "UNKNOWN",
+    "grade": "D",
+    "items": 0,
+    "detail": "locator.count: Frame was detached",
+    "created_at": "2026-10-18T12:33:40.933836+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "fb2837af392bea924b4cfca5": {
+  "store": {
+   "id": "fb2837af392bea924b4cfca5",
+   "name": "Ivy Hall - Streamwood",
+   "address": "630 S Sutton Rd",
+   "city": "Streamwood",
+   "state": "IL",
+   "distance_miles": 88.699,
+   "latitude": 42.02104,
+   "longitude": -88.20381
+  },
+  "reg": {
+   "source_key": "62ce818c2225bac62c1328f679506263de5e78c9f4fdc641fc159551b4ffce59",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 126,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Ivy Hall - Streamwood",
+    "42.02104",
+    "-88.20381",
+    "Yes",
+    "Chicago-Naperville-Elgin",
+    "Streamwood",
+    "Ivy Hall - Streamwood",
+    "630 S Sutton Rd"
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "6e92a72a6717b3f67007a60d",
+    "url": "https://ivyhalldispensary.com/locations/streamwood/menu/recreational/menu",
+    "provider": "sweed",
+    "provider_store_id": "264",
+    "license_type": "recreational",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T10:59:08.997634+00:00",
+    "last_converged_at": null
+   },
+   {
+    "id": "82072218be647fac74473401",
+    "url": "https://ivyhalldispensary.com/locations/streamwood/menu/medical/menu",
+    "provider": "sweed",
+    "provider_store_id": "264",
+    "license_type": "medicinal",
+    "status": "complete",
+    "last_error": null,
+    "last_success_at": "2026-10-18T10:58:47.337047+00:00",
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Provider found; license-specific menu context not corroborated",
+   "created_at": "2026-10-17T08:34:36.504698+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "sweed",
+    "url": "https://ivyhalldispensary.com/locations/bucktown/menu/menu/discounts?promo=deals",
+    "status": "identity_conflict",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://ivyhalldispensary.com/locations/streamwood/menu/medical/menu",
+    "status": "observed",
+    "source": "evidence_backfill"
+   },
+   {
+    "platform": "sweed",
+    "url": "https://ivyhalldispensary.com/locations/streamwood/menu/recreational/menu/beverages-617",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "sweed",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 1110,
+    "detail": null,
+    "created_at": "2026-10-18T10:59:09.224255+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "native",
+    "provider": "sweed",
+    "status": "complete",
+    "code": null,
+    "grade": "A",
+    "items": 1110,
+    "detail": null,
+    "created_at": "2026-10-18T10:58:47.560645+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "fc8fd8f73ae55bf08036c1be": {
+  "store": {
+   "id": "fc8fd8f73ae55bf08036c1be",
+   "name": "Cloud 9 - East Peoria",
+   "address": "406 W Camp St.",
+   "city": "East Peoria",
+   "state": "IL",
+   "distance_miles": 32.525,
+   "latitude": 40.67379,
+   "longitude": -89.58121
+  },
+  "reg": {
+   "source_key": "a8f3d9a7d4c14f705bbce7c61ea0e415ee9f4360bdff3255fa6fdaecd6871d68",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 1
+  },
+  "raw": {
+   "row_number": 54,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Cloud 9 - East Peoria",
+    "40.67379",
+    "-89.58121",
+    "Yes",
+    "Peoria",
+    "East Peoria",
+    "Cloud 9 - East Peoria",
+    "406 W Camp St."
+   ]
+  },
+  "endpoints": [
+   {
+    "id": "1c1f1d43b51696eb3c0a6cfa",
+    "url": "https://dutchie.com/embedded-menu/cloud9-east-peoria",
+    "provider": "dutchie",
+    "provider_store_id": "cloud9-east-peoria",
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Structured product total does not reconcile with traversed catalog\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "1d42ca08a124bef14e736eef",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria?category=flower",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "3f2613850a5c060ae9196c77",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria?category=edible",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "4fd5676145467595e5300350",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria/in-house-kief-1g-hybrid",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "566b22b84d72b42a65dda7cd",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria/find-midnight-snack-1-8",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "5f9a0a27397ca15e06705809",
+    "url": "https://dutchie.com/kiosks/cloud9-east-peoria",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "partial",
+    "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Structured product total does not reconcile with traversed catalog\"}",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "731c0ec2d3be2e5f3f857d64",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "968d0778478ac207da87f3d0",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria/cresco-the-bling-1-8",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "a4b973d6605cbcfd38ba88eb",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria/kaviar-gorilla-cake-1g",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "ba8e3839c0e7d8c53495e948",
+    "url": "https://cannabisshop.com/shop/",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "bb5ece066843e2b76ad7e64c",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria?category=pre-rolls",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "c4eb0451421d78559839f9aa",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria/ozone-zoap-1-8",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   },
+   {
+    "id": "df27a0220bc0d0b6aa97d2d5",
+    "url": "https://cannabrands.com/dispensaries/illinois/east-peoria/cloud-9-cannabis-east-peoria/evol-notorious-1-1-8",
+    "provider": "generic",
+    "provider_store_id": null,
+    "license_type": "recreational",
+    "status": "superseded",
+    "last_error": "Third-party directory retained as discovery evidence; not a retailer menu",
+    "last_success_at": null,
+    "last_converged_at": null
+   }
+  ],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Provider reference detected, but store/tenant or full-catalog contract is unresolved; continuing discovery",
+   "created_at": "2026-10-19T05:17:22.826981+00:00"
+  },
+  "platforms": [
+   {
+    "platform": "dutchie",
+    "url": "https://dutchie.com/embedded-menu/cloud9-east-peoria",
+    "status": "observed",
+    "source": "resolver"
+   },
+   {
+    "platform": "dutchie",
+    "url": "https://dutchie.com/kiosks/cloud9-east-peoria",
+    "status": "observed",
+    "source": "evidence_backfill"
+   }
+  ],
+  "leads": [
+   {
+    "url": "https://www.cloud9dispensaries.shop/",
+    "source": "resolver",
+    "reason": "Candidate website found; branch name/locality or street address still needs matching"
+   }
+  ],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "UNKNOWN",
+    "grade": "D",
+    "items": 0,
+    "detail": "Provider reference detected, but store/tenant or full-catalog contract is unresolved; continuing discovery",
+    "created_at": "2026-10-19T05:17:22.819584+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "dutchie",
+    "status": "partial",
+    "code": "COUNT_MISMATCH",
+    "grade": "C",
+    "items": 527,
+    "detail": "Structured product total does not reconcile with traversed catalog",
+    "created_at": "2026-10-18T23:18:18.427655+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T23:14:47.622206+00:00"
+   },
+   {
+    "stage": "menu",
+    "tier": "structured",
+    "provider": "dutchie",
+    "status": "partial",
+    "code": "COUNT_MISMATCH",
+    "grade": "C",
+    "items": 472,
+    "detail": "Structured product total does not reconcile with traversed catalog",
+    "created_at": "2026-10-18T17:26:15.008694+00:00"
+   },
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "matched",
+    "code": null,
+    "grade": "C",
+    "items": 1,
+    "detail": null,
+    "created_at": "2026-10-18T17:22:53.318668+00:00"
+   }
+  ],
+  "verification": []
+ },
+ "ff0cf8a8a033cd92290b1da4": {
+  "store": {
+   "id": "ff0cf8a8a033cd92290b1da4",
+   "name": "Green Rose - Chicago",
+   "address": "612 N. Wells St.",
+   "city": "Chicago",
+   "state": "IL",
+   "distance_miles": 99.963,
+   "latitude": 41.89293,
+   "longitude": -87.63401
+  },
+  "reg": {
+   "source_key": "d19dbac2162acf8b9f74dd71b5aef7ef2a2dfe3e63c9efb89c8d778bbeb9b364",
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "serves_medical": 0
+  },
+  "raw": {
+   "row_number": 100,
+   "columns": [
+    "Dispensary Name",
+    "Latitude",
+    "Longitude",
+    "Serves Medical Patients",
+    "BLS Region",
+    "City",
+    "Dispensary Name",
+    "Street Address"
+   ],
+   "values": [
+    "Green Rose - Chicago",
+    "41.89293",
+    "-87.63401",
+    "No",
+    "Chicago-Naperville-Elgin",
+    "Chicago",
+    "Green Rose - Chicago",
+    "612 N. Wells St."
+   ]
+  },
+  "endpoints": [],
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead",
+   "created_at": "2026-10-18T13:20:51.304966+00:00"
+  },
+  "platforms": [],
+  "leads": [],
+  "attempts": [
+   {
+    "stage": "resolution",
+    "tier": "discovery",
+    "provider": null,
+    "status": "unresolved",
+    "code": "NO_LEAD",
+    "grade": "D",
+    "items": 0,
+    "detail": "Fallback website search found no corroborated branch lead",
+    "created_at": "2026-10-18T13:20:51.298789+00:00"
+   }
+  ],
+  "verification": []
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "store_id": "92575c5276cb14919414bfdf",
+ "name": "Bisa Lina Joliet",
+ "slug": "bisa-lina-joliet",
+ "registry": {
+  "address": "2121 W Jefferson St",
+  "city": "Joliet",
+  "state": "IL",
+  "latitude": 41.52314,
+  "longitude": -88.13243
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://bisalina.com/locations/joliet-illinois-dispensary/",
+ "menu_url": "https://shop.bisalina.com/joliet/menu",
+ "platform": "sweed (first-party shop.<brand> domain)",
+ "how_menu_reached": "WordPress site links to shop.bisalina.com/joliet (and /bisalina, another store)",
+ "branch_selection": "path slug /joliet",
+ "age_gate": "click-through",
+ "data_loading": {
+  "mechanism": "REST POST same-origin _api (Sweed)",
+  "endpoints": [
+   "POST https://shop.bisalina.com/_api/Products/GetProductList"
+  ]
+ },
+ "paging": "page/pageSize; ~575 prices rendered on the landing page",
+ "approx_product_count": null,
+ "blockers": [
+  "none"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved NO_LEAD; LLM verifier had already stored leads bisalina.com/locations/joliet-illinois-dispensary/ and shop.bisalina.com/joliet (live_leads)",
+  "sample": "no saved endpoint, nothing to sample"
+ },
+ "why_it_fails": "resolution/website discovery: fallback search returned NO_LEAD. Stored evidence shows html.duckduckgo.com answers HTTP 202 with a bot challenge and www.bing.com/search answers 200 with unrelated Microsoft pages for the quoted-address query, so no candidate website is ever found even though the brand site exists. The verifier lead exists but leads are never promoted to endpoints automatically (CLAUDE.md: verifier never edits endpoints).",
+ "fix_idea": "Replace the fallback search with a working source (e.g. the OpenRouter web plugin the verifier already uses, or a brand-level locator) and treat a results page where nothing names the store as a search failure, not 'no lead'. Let a lead whose page proves the address feed resolve_menu.",
+ "root_cause_tag": "search-engine-dead; verified-lead-not-promoted",
+ "confidence": "high"
+}

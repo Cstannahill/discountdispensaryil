@@ -1,0 +1,60 @@
+{
+ "key": "17b_ntillinois_shop",
+ "url": "https://www.ntillinois.com/shop/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://www.ntillinois.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "Shop Products Learn About Locations Deals Account SHOP Home > Shop Excellent Experiences. Upfront Pricing. Discover high-quality cannabis products at prices you can trust. From premium flower and pre-rolls to edibles, vapes, concentrates, and wellness products, our carefully curated menu offers som",
+ "age_click": null,
+ "final_url": "https://www.ntillinois.com/shop/",
+ "title": "NTI Offers Excellent Experiences And Upfront Pricing",
+ "htmlLen": 48949,
+ "prices": 0,
+ "textHead": "Shop Products Learn About Locations Deals Account SHOP Home > Shop Excellent Experiences. Upfront Pricing. Discover high-quality cannabis products at prices you can trust. From premium flower and pre",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois---galesburg",
+  "https://sso.leafly.com/i/QwUY2shB0Tud6518IR3syFQ3FnzozS1XiCulDeNah9X",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois---galesburg",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "https://sso.leafly.com/i/QwUY2shB0Tud6518IR3syFQ3FnzozS1XiCulDeNah9X",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois---galesburg"
+ ],
+ "count_text": null,
+ "platforms": [
+  "leafly"
+ ],
+ "hosts": [
+  [
+   "www.ntillinois.com",
+   28
+  ],
+  [
+   "unpkg.com",
+   5
+  ],
+  [
+   "use.typekit.net",
+   4
+  ],
+  [
+   "static.cloudflareinsights.com",
+   1
+  ],
+  [
+   "p.typekit.net",
+   1
+  ]
+ ]
+}

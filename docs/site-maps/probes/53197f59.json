@@ -1,0 +1,388 @@
+{
+ "key": "53197f59",
+ "url": "https://shop.lyfeil.com/troy/menu",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://shop.lyfeil.com/troy/menu",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "other",
+   "ct": "application/json",
+   "u": "https://media-prime.sweedpos.com/store/prime/1789692969_eac1ceeb-8648-40e7-9f2b-bb091158c027.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/index.json",
+   "size": 195811,
+   "sample": "{\n  \"lyfe\": {\n    \"sizing\": {\n      \"scale\": {\n        \"xxxxs\": \"2px\",\n        \"xxxs\": \"4px\",\n        \"xxs\": \"8px\",\n        \"xs\": \"12px\",\n        \"sm\": \"16px\",\n        \"md\": \"24px\",\n        \"lg\": \"32px\",\n        \"xl\": \"40px\",\n        \"xxl\": \"48px\",\n        \"xxxl\": \"56px\",\n        \"xxxxl\": \"64px\",\n  "
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/search.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/cart.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/shop.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/chevron-down.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/chevron-left.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/chevron-right.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/sort.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/filter.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/info.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/minus.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/cart-add.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/16/more.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/chevron-up.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.lyfeil.com/_api/Cart/GetV2",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.lyfeil.com/_api/StoreConfig/GetSignupModal",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 401,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.lyfeil.com/_api/Account/Get",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441359429&ver=1.161.3&compression=base64",
+   "size": 869,
+   "sample": "{\"config\": {\"enable_collect_everything\": true}, \"toolbarParams\": {}, \"isAuthenticated\": false, \"supportedCompression\": [\"gzip\", \"gzip-js\"], \"featureFlags\": {\"ecom-7583-alternative-checkout-layout\": \"test\", \"ecom-4991-new-signup-flow\": \"test\", \"ecom-6307-delivery-button-on-checkout\": \"test\", \"checkou",
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkNC05YzQ0LTdjYzItYTc0ZC03MmZhYzRhMGMxM2QiLCJncm91cHMiOnt9fQ%3D%3D"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441359436&ver=1.161.3&compression=base64",
+   "size": 361,
+   "sample": "{\"featureFlags\": {}, \"featureFlagPayloads\": {}, \"errorsWhileComputingFlags\": false, \"supportedCompression\": [\"gzip-js\", \"base64\"], \"sessionRecording\": false, \"surveys\": false, \"heatmaps\": false, \"captureDeadClicks\": false, \"autocapture_opt_out\": false, \"siteApps\": [], \"isAuthenticated\": false, \"quot",
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQ0LTljNGItN2FkNi04OTNmLWUzMDgyZTFkZWNjYSIsImdyb3VwcyI6e319"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Store/GetStoreInfoV2",
+   "size": 2082,
+   "sample": "{\"storeInfo\":{\"id\":969,\"name\":\"Lyfe Dispensary\",\"description\":\"<p>At Lyfe Cannabis Dispensary, <strong>the price you see is the price you pay</strong>, including all taxes. Our transparent out the door pricing allows you to shop with confidence, knowing exactly what your purchase will cost.</p>\\n<p>",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Store/GetCompliance",
+   "size": 54,
+   "sample": "{\"compliance\":{\"legalAge\":18,\"ageGateMode\":\"Confirm\"}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/CartV2/GetSettingsPreferences",
+   "size": 44,
+   "sample": "{\"isResident\":true,\"isResidencyLocked\":true}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/storefront/v1/pages/home",
+   "size": 2132,
+   "sample": "{\"components\":[{\"instanceId\":\"featured-deals\",\"content\":{\"type\":\"Section\",\"title\":\"Featured deals\"}},{\"instanceId\":\"buttons\",\"content\":{\"type\":\"Section\",\"title\":\"\"}},{\"instanceId\":\"categories\",\"content\":{\"type\":\"Section\",\"title\":\"Categories\"}},{\"instanceId\":\"product-carousel-2156\",\"content\":{\"type\":"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Store/GetAvailableFulfillmentTypesV2",
+   "size": 211,
+   "sample": "{\"storeFulfillmentOptions\":[{\"fulfillmentType\":\"InStorePickup\",\"title\":\"In-store pickup\",\"children\":[]}],\"organizationFulfillmentTypeInfos\":[{\"fulfillmentType\":\"InStorePickup\",\"name\":\"Pickup\",\"storeIds\":[969]}]}",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Loyalty/GetLoyaltyNotices",
+   "size": 14,
+   "sample": "{\"notices\":[]}",
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Loyalty/GetStoreLoyaltySettingsV2",
+   "size": 4835,
+   "sample": "{\"id\":189,\"enabled\":true,\"isDistributionSubscriptionRequired\":true,\"levels\":[{\"id\":387,\"name\":\"Tier 1\",\"moneyToBonus\":1.00,\"bonusToMoney\":0.03,\"goal\":0,\"bonus\":150.00,\"rank\":1,\"enabled\":true,\"description\":null}],\"pointsPresets\":[{\"id\":1472,\"loyaltySystemId\":189,\"points\":30,\"stores\":[],\"distributionL",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Products/GetProductCategoryList",
+   "size": 1987,
+   "sample": "[{\"id\":10804,\"name\":\"FLOWER\",\"imageUrl\":\"https://media-prime.sweedpos.com/store/prime/1789694025_5358ea95-eed0-47b3-8996-4d00fde9e79b.png\",\"filter\":{\"category\":[10804]},\"canonicalName\":\"flower\"},{\"id\":10808,\"name\":\"EDIBLES\",\"imageUrl\":\"https://media-prime.sweedpos.com/store/prime/1789694071_9da8c59b",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Products/GetProductList",
+   "size": 193527,
+   "sample": "{\"filters\":[{\"key\":\"quickFilter\",\"type\":\"Multiple\",\"options\":[{\"id\":2,\"name\":\"Deals\",\"canonicalName\":\"deals\",\"disabled\":null,\"selected\":false,\"tooltip\":null},{\"id\":3,\"name\":\"Popular\",\"canonicalName\":\"popular\",\"disabled\":null,\"selected\":false,\"tooltip\":null}],\"uiLabel\":\"\",\"expandedByDefault\":true,\"pr",
+   "post": "{\"filters\":{},\"page\":1,\"pageSize\":24,\"sortingMethodId\":7,\"searchTerm\":\"\",\"platformOs\":\"web\",\"productExposureContextId\":1,\"sourcePage\":1}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Products/GetPromotionsList",
+   "size": 34308,
+   "sample": "[{\"id\":62835,\"name\":\"Legacy & Safety Meeting Select Concentrates\",\"canonicalName\":\"legacy-safety-meeting-select-concentrates\",\"shortName\":\"50% Off Limited\",\"description\":null,\"isBogo\":false,\"startDate\":\"2026-10-15T00:00:00Z\",\"endDate\":\"2026-10-22T00:00:00Z\",\"interval\":[],\"bannerUrl\":null,\"mobileBann",
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Store/GetStoreConfig",
+   "size": 89634,
+   "sample": "{\"acceptDealsModalImageUrl\":null,\"acceptDealsModalLinkUrl\":\"\",\"addToCartButtonPosition\":\"top\",\"aeroPayEnv\":\"production\",\"ageGateMode\":\"confirm\",\"agreementDisclaimerPosition\":\"below\",\"aiBudtenderConfig\":\"\",\"alternativeCheckoutLayoutEnabled\":false,\"androidIcon192x192PngSrc\":\"https://media-prime.sweedp",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/AccountV2/GetAccountFulfillmentPreferencesV2",
+   "size": 95,
+   "sample": "{\"fulfillmentType\":\"InStorePickup\",\"fulfillment\":{\"inStorePickup\":{\"label\":\"Lyfe Dispensary\"}}}",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.lyfeil.com/_api/Referral/GetV2",
+   "size": 636,
+   "sample": "{\"referralState\":{\"id\":220,\"enabled\":true,\"referralDiscountType\":\"DollarOffDiscount\",\"referralDiscountAmount\":10.000000,\"referralMinInvoiceAmount\":40.000000,\"referralMinInvoiceCount\":0,\"referralMinInvoiceCountForReferrer\":1,\"referralPromocodeMinApplyAmount\":40.000000,\"terms\":null,\"tiersEnabled\":fals",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--lyfe/b2-5a7757ac01c4caa120784b5ba635beeea1a3c6c141bf3496c9c7239dc1f7c79d/icons/24/discount.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.lyfeil.com/_api/WebAnalytics/AddEvent",
+   "size": 0,
+   "sample": null,
+   "post": "{\"events\":[{\"appName\":\"Shop\",\"platform\":\"NewShop\",\"eventType\":\"Ui\",\"sessionId\":\"89d5f5b7-86f4-4bcd-8c22-468cb37ae29b\",\"sessionStarted\":\"2026-10-19T20:22:39.015Z\",\"eventCreated\":\"2026-10-19T20:22:39.318Z\",\"deviceType\":\"Desktop\",\"deviceId\":\"5147b0d1-873f-44b6-b825-2d5d2c3d8f2d\",\"eventName\":\"page.view\""
+  }
+ ],
+ "iframes": [],
+ "notes": [
+  "clicked button:has-text(\"Confirm\") [Confirm]"
+ ],
+ "status": 200,
+ "finalUrl": "https://shop.lyfeil.com/troy/menu",
+ "title": "Lyfe Dispensary Cannabis Menu | Rockford, IL",
+ "htmlBytes": 552218,
+ "sigs": [
+  "sweed",
+  "joint",
+  "cresco"
+ ],
+ "links": [
+  "https://shop.lyfeil.com/troy/menu#maincontent",
+  "https://shop.lyfeil.com/troy/menu#footer",
+  "https://shop.lyfeil.com/troy",
+  "https://shop.lyfeil.com/troy/menu",
+  "https://shop.lyfeil.com/troy/menu/discounts?promo=deals",
+  "https://shop.lyfeil.com/troy/about-us",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-singles-indica-dominant-deep-fried-bananas-1g-741432?originId=catalog&originName=catalog&upsellRunId=undefined&idx=0&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-singles-hybrid-gogurtz-pre-roll-075g-700470?originId=catalog&originName=catalog&upsellRunId=undefined&idx=1&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-singles-indica-animal-face-075g-699689?originId=catalog&originName=catalog&upsellRunId=undefined&idx=2&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-packs-hybrid-hybrid-pre-roll-pack-1g-2pk-699867?originId=catalog&originName=catalog&upsellRunId=undefined&idx=3&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-singles-hybrid-afternoon-delight-4-pre-roll-075g-700450?originId=catalog&originName=catalog&upsellRunId=undefined&idx=4&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-packs-indica-indica-pre-roll-pack-1g-2pk-699868?originId=catalog&originName=catalog&upsellRunId=undefined&idx=5&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/edibles-10808/gummies-hybrid-strawberry-supernova-comets-gummies-100mg-10pk-697285?originId=catalog&originName=catalog&upsellRunId=undefined&idx=6&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/flower-10804/mixed-buds-hybrid-jet-fuel-og-mixed-buds-35g-698217?originId=catalog&originName=catalog&upsellRunId=undefined&idx=7&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/edibles-10808/gummies-hybrid-pineapple-express-fast-acting-gummies-100mg-10pk-697289?originId=catalog&originName=catalog&upsellRunId=undefined&idx=8&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-packs-hybrid-sneak-attack-og-pre-roll-pack-175g-5pk-699845?originId=catalog&originName=catalog&upsellRunId=undefined&idx=9&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/edibles-10808/gummies-indica-snoozzzierberry-2-1-1-thc-cbn-cbg-gummies-100mg-10pk-697325?originId=catalog&originName=catalog&upsellRunId=undefined&idx=10&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/flower-10804/flower-indica-violet-fog-flower-7g-698906?originId=catalog&originName=catalog&upsellRunId=undefined&idx=11&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/accessories-10815/lighters-clipper-jet-assorted-colors-lighter-each-694214?originId=catalog&originName=catalog&upsellRunId=undefined&idx=12&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/edibles-10808/gummies-sativa-pineapple-live-rosin-gummies-100mg-10pk-697349?originId=catalog&originName=catalog&upsellRunId=undefined&idx=13&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/accessories-10815/batteries-m4b-pro-black-lyfe-branded-battery-each-701176?originId=catalog&originName=catalog&upsellRunId=undefined&idx=14&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/vapes-10807/disposables-sativa-friyay-disposable-05g-695114?originId=catalog&originName=catalog&upsellRunId=undefined&idx=15&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/pre-rolls-10805/pre-roll-packs-indica-animal-scout-pre-roll-pack-175g-5pk-699755?originId=catalog&originName=catalog&upsellRunId=undefined&idx=16&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/flower-10804/mixed-buds-hybrid-giggle-gas-mixed-buds-7g-713458?originId=catalog&originName=catalog&upsellRunId=undefined&idx=17&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969",
+  "https://shop.lyfeil.com/troy/menu/vapes-10807/disposables-hybrid-pineapple-express-liquid-diamonds-disposable-1g-695365?originId=catalog&originName=catalog&upsellRunId=undefined&idx=18&carousel=undefined&wizard_origin=undefined&promo_wizard_id=undefined&accountId=undefined&stockType=Default&storeId=969"
+ ],
+ "textSample": "Skip to main content or Skip to footer Home Menu Discounts About Us Refer Friends - Get $10 Off Sign up or log in to see exclusive deals Log In Sign Up Pickup at Lyfe Dispensary Home / Menu All Products Filters FLOWER EDIBLES BEVERAGES PRE-ROLLS VAPES CONCENTRATES TOPICALS TINCTURES APPAREL ACCESSORIES Deals Popular Strain prevalence Hybrid Indica Indica Dominant Sativa Sativa Dominant Category Deal Subcategory Product type Total size Unit size THC potency CBD potency Effect Brand Price Terpene Strain Quality line Flavoring Scent Tag 0 Indica Dominant PRE-ROLLS by Galaxy Labs Deep Fried Bananas THC: 22.85% 1g Only 1 left $15.00 SALE 0 Hybrid PRE-ROLLS by DOGWALKERS GOGURTZ PRE-ROLL THC: 31.7",
+ "productHints": [],
+ "priceCount": 38
+}

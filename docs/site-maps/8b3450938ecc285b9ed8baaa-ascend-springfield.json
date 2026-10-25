@@ -1,0 +1,80 @@
+{
+ "store_id": "8b3450938ecc285b9ed8baaa",
+ "slug": "ascend-springfield",
+ "name": "Ascend - Springfield",
+ "registry": {
+  "address": "628 E Adams St",
+  "city": "Springfield",
+  "state": "IL",
+  "latitude": 39.800449,
+  "longitude": -89.649109,
+  "distance_miles": 82.5
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://letsascend.com/locations/illinois/springfield-adams-street/",
+ "menu_url": "https://letsascend.com/stores/springfield-adams-street-illinois (single Dutchie storefront for rec AND med; legacy slugs il-springfield-adams-menu-rec / -med 301 here). Canonical Dutchie host form: https://dutchie.com/stores/springfield-adams-street-illinois",
+ "platform": "dutchie",
+ "how_menu_reached": "letsascend.com location page -> SHOP NOW https://letsascend.com/stores/springfield-adams-street-illinois (Dutchie Next.js storefront on the custom domain letsascend.com; __NEXT_DATA__ initialApolloState carries the Dispensaries record). Legacy https://letsascend.com/menu/il-springfield-adams-menu-{rec,med} 301 to the same storefront. Stale legacy Dispense pages still exist at https://ascendcannabis.com/menu/il-springfield-adams-menu-{med,rec} (this is what the pipeline accepted).",
+ "branch_selection": "URL path cName=springfield-adams-street-illinois; Dutchie dispensaryId 672a65d9ebf0eda08e08f6b0 (24-hex, in page Apollo state and every GraphQL variable). Platform-declared address location.ln1 \"628 E Adams St\", Springfield IL 62701: exact match to registry. The second Springfield store (Horizon Dr, cName springfield-horizon-drive-illinois) is a different branch. Legacy Dispense venue ids: med 80f785ce42d5a928, rec b09b9055e3191712.",
+ "age_gate": "click-through: Dutchie modal overlay \"Yes\" button (probe clicked it; page then POSTs https://letsascend.com/age-check?return=<path> answer=yes). The GraphQL menu calls fire BEFORE the click, so data loads without it. No terms checkbox seen.",
+ "data_loading": {
+  "mechanism": "GraphQL persisted queries over GET (Dutchie) via the first-party path letsascend.com/api-4/graphql; first page also SSR in __NEXT_DATA__ Apollo cache",
+  "endpoints": [
+   "GET https://letsascend.com/api-4/graphql?operationName=FilteredProducts&variables={productsFilter:{dispensaryId:672a65d9ebf0eda08e08f6b0,pricingType:'rec'|'med',Status:'Active',types:[<category>]|[],platformType:'ONLINE_MENU',...},page:N,perPage:100}&extensions={persistedQuery:{version:1,sha256Hash:<page-supplied>}}",
+   "GET .../api-4/graphql?operationName=MenuFiltersV2&variables={dispensaryId,pricingType:\"rec\",isKioskMenu:false} (brands/filters)",
+   "GET .../api-4/graphql?operationName=GetAddressBasedDispensaryData&variables={input:{dispensaryId}} (platform-declared address)",
+   "Alternate host form the pipeline already knows: https://dutchie.com/embedded-menu/672a65d9ebf0eda08e08f6b0"
+  ],
+  "notes": "Rec vs med is the pricingType variable on the SAME product set: products carry parallel arrays Options[] / recPrices[] / recSpecialPrices[] / medicalPrices[]. In my in-page replay rec and med both returned totalCount 1120. Use pricingType \"rec\" for deals (omitted license context = recreational)."
+ },
+ "paging": "page/perPage variables (perPage 100 in the page; I replayed with 50). queryInfo.totalCount is declared: 1120 with types:[] (whole menu, 23 pages at 50). Per-category totals available by filtering types:[Flower|Pre-Rolls|Vaporizers|Edible|Concentrate|Tincture|Topicals|Accessories]. No infinite scroll needed if replayed.",
+ "approx_product_count": 1120,
+ "license_channels": "rec+med in ONE Dutchie storefront (recDispensary and medicalDispensary both true; \"MENU Recreational\" toggle in UI; pricingType rec|med). Ascend lists Springfield Downtown as \"Adult-Use & Medical\". The saved Dispense endpoint was the med-only legacy venue.",
+ "blockers": [
+  "none (no 403/captcha/geo; the age modal is a single Yes click and does not gate the API)"
+ ],
+ "evidence": [
+  "curl https://letsascend.com/stores/springfield-adams-street-illinois -> 200 SSR with __NEXT_DATA__; Dispensaries:672a65d9ebf0eda08e08f6b0 name \"Ascend Dispensary - Springfield (Adams Street)\", address 628 East Adams Street, status open, chain ascend-wellness-holdings, customDomainSettings.domain letsascend.com.",
+  "In-page FilteredProducts replay (types:[]): rec totalCount 1120, med totalCount 1120; sample product updatedAt 2026-10-19T17:11Z (live).",
+  "Dispense API for the saved venue 80f785ce42d5a928: count 783 (quantityMin=1); rec venue b09b9055e3191712 count 785. Product \"modified\" timestamps in the rec venue: 402 in 2025-07, 1 in 2025-08, 382 in 2025-11, NONE later (newest 2025-11-11T03:06Z). venue.leaflogix = {enabled:false, lastInventorySync:2025-01-21}. A current Dutchie product (\"Venom OG Infused Shake\" 7g $90) does not exist in the Dispense venue. The Dispense venue record itself shows modified=today, so venue.modified is NOT a freshness signal.",
+  "https://letsascend.com/menu/il-springfield-adams-menu-med and -rec both resolve to https://letsascend.com/stores/springfield-adams-street-illinois",
+  "Ascend store directory JSON lists \"Springfield - Downtown\", address_1 \"628 E. Adams St\", dutchie_cname springfield-adams-street-illinois, menu_link /menu/il-springfield-adams-menu-rec.",
+  "Chain facts shared by all Ascend IL stores: ascendcannabis.com now 301s to letsascend.com (WordPress marketing site). Menus moved from Dispense (ascendcannabis.com/menu/<slug>, Next.js) to Dutchie storefronts served from the custom domain letsascend.com/stores/<dutchie cName> (Dutchie Next.js app, GraphQL proxied at letsascend.com/api-4/graphql). letsascend.com/menu/<legacy-dispense-slug> 301s to the Dutchie storefront, so legacy rec and med slugs both land on ONE storefront. The Dispense venues are still served at ascendcannabis.com/menu/* but are frozen: product records last modified 2025-07..2025-11-11, venue.leaflogix.enabled=false, lastInventorySync 2025-01-21. Chain-level locator: GET https://letsascend.com/wp-json/ascend-store-mapper/v1/locations returns a GeoJSON FeatureCollection (41 stores, 10 in IL) with address_1, city, state, zip_code, geometry.coordinates [lng,lat], shop_url (letsascend.com/stores/<cName>), dutchie_cname, menu_link (legacy slug), is_outlet, phone, hours."
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved: \"No retailer locator connector configured for this brand\" (2026-10-17 08:36); no later resolution row",
+  "saved_endpoints": "dispense, url https://ascendcannabis.com/menu/il-springfield-adams-menu-med, provider_store_id 80f785ce42d5a928, license medicinal, status complete, last_success_at 2026-10-18T10:00Z",
+  "recent_attempts": "one menu attempt: native/dispense status complete grade A items 784 (2026-10-18 10:00). No recreational endpoint exists.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "dispense",
+    "license": "medicinal",
+    "url": "https://ascendcannabis.com/menu/il-springfield-adams-menu-med",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_dispense_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 0.0
+   },
+   "fixed_wrapper": [
+    {
+     "endpoint": "dispense med",
+     "items": 0,
+     "complete": false,
+     "errors": [
+      "incomplete_dispense_menu: Observed storefront SDK public key could not be located"
+     ]
+    }
+   ],
+   "caveat": "sample_stores picks the most recently attempted saved endpoint, which may be another branch or a category URL; fixed_wrapper names the endpoint actually sampled."
+  }
+ },
+ "why_it_fails": "The accepted catalog is WRONG even though it is grade A. (1) Ascend left Dispense for Dutchie; the Dispense venue behind ascendcannabis.com/menu/il-springfield-adams-menu-med is a frozen snapshot (newest product modified 2025-11-11, POS sync disabled), so the 784 accepted offers are about a year old. backend/providers/dispense.fetch only checks that the venue API reconciles to its own advertised count over two traversals, so a frozen catalog passes completeness (completeness grades internal consistency, not data age; the 12h freshness rule applies to fetch time). (2) It is medical-only (license medicinal); the shopper-facing recreational menu is not covered. (3) The endpoint was found by web search/legacy URL (resolution row: no connector configured for Ascend; backend/locators.py CONNECTORS has no ascend entry) and dispense.observe() simply recognised the venueId in the legacy page. The correct source is the Dutchie storefront (1120 products, rec+med in one menu).",
+ "fix_idea": "Chain-level (fixes all Ascend IL stores at once): add an Ascend connector to backend/locators.py CONNECTORS (r\"\\bascend\\b|inlabs\", \"https://letsascend.com/wp-json/ascend-store-mapper/v1/locations\") plus a GeoJSON branch handler (features[].properties address_1/city/zip_code/shop_url/dutchie_cname, geometry [lng,lat]) matching by addresses_match(registry address, address_1) or the coordinate pin. Resolve shop_url (letsascend.com/stores/<cName>); the existing dutchie_page_endpoints() turns the page dispensaryId into https://dutchie.com/embedded-menu/<id>, and the Dutchie browser path (paged FilteredProducts replay, queryInfo.totalCount, platform-declared location.ln1 address check) then applies. Also: (a) supersede the stale Dispense endpoint 6fd213184942ce9a738d31c7 (Store.supersede_endpoint, keep evidence) and withdraw its offers from /deals; (b) add a source-age guard to providers/dispense.py: if max(product.modified) is older than ~30 days treat as a stale source catalog (new FailureCode), since a frozen Dispense tenant otherwise passes grade A; (c) treat legacy ascendcannabis.com/menu/* as non-canonical (its link rel=canonical already points at letsascend.com).",
+ "root_cause_tag": "stale-dispense-menu-chain-moved-to-dutchie",
+ "confidence": "high"
+}

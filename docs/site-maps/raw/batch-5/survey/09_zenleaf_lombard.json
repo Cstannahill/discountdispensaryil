@@ -1,0 +1,287 @@
+{
+ "key": "09_zenleaf_lombard",
+ "url": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://zenleafdispensaries.com/global-age-gate.min.js?v=1792441215037",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript; charse"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/api/time?v=1792441215037",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 707
+  },
+  {
+   "u": "https://zenleafdispensaries.com/data/locations.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 92928,
+   "arr": {
+    "n": 100,
+    "path": "$.secondaryLocations",
+    "keys": [
+     "title",
+     "slug",
+     "primary-slug",
+     "primary-state"
+    ]
+   }
+  },
+  {
+   "u": "https://zenleafdispensaries.com/api/maxmind",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1666
+  },
+  {
+   "u": "https://get.geojs.io/v1/ip/geo.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 384
+  },
+  {
+   "u": "https://zenleafdispensaries.com/manifest.webmanifest",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/manifest+json",
+   "len": 2509
+  },
+  {
+   "u": "https://get.geojs.io/v1/ip/geo.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 384
+  },
+  {
+   "u": "https://zenleafdispensaries.com/about/careers?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/about?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/brands?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/locations?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/api/sweed/get-store-alert",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 232,
+   "post": "{\"storeSlug\":\"lombard\",\"menuType\":\"recreational\"}"
+  },
+  {
+   "u": "https://data.zenleafdispensaries.com/menu-config/lombard",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 412
+  },
+  {
+   "u": "https://data.zenleafdispensaries.com/menu-config/lombard",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 412
+  },
+  {
+   "u": "https://data.zenleafdispensaries.com/menu-config/lombard",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 412
+  },
+  {
+   "u": "https://zenleafdispensaries.com/learn?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/contact?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/cart?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/rewards?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu/discounts?promo=products&_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu/flower-5453?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu/vapes-5456?_rsc=EvRrl95mkdTJZh9S",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://zenleafdispensaries.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://data.zenleafdispensaries.com/catalog/540/recreational",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 840526,
+   "arr": {
+    "n": 1030,
+    "path": "$.products",
+    "keys": [
+     "id",
+     "name",
+     "category",
+     "subcategory",
+     "images",
+     "brand",
+     "strain",
+     "variants",
+     "canonicalName"
+    ]
+   }
+  },
+  {
+   "u": "https://data.zenleafdispensaries.com/catalog/540/recreational",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 840526,
+   "arr": {
+    "n": 1030,
+    "path": "$.products",
+    "keys": [
+     "id",
+     "name",
+     "category",
+     "subcategory",
+     "images",
+     "brand",
+     "strain",
+     "variants",
+     "canonicalName"
+    ]
+   }
+  }
+ ],
+ "frames": [
+  "https://16014768.fls.doubleclick.net/activityi;dc_pre=CMvLkfDzxpcDFZuHNgcdhs8ncg;src=16014768;type=ctalz0;cat=ctal_007;rcb=0;ord=7484985342064;npa=0;auiddc=1400689560.1792441216;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;user_data_mode=a;_tu=KFA;gtm=45fe6af0v9234967546z89104212353za20gzb9104212353zd9104212353xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938466~115938468~117776795~118131808~118897920~118897930~120213116~120385422~120469145~120469153~121246026~121246034;epver=2;em=tv.1;emd=tvd.1;dc_random=1792441216_p7ZFDes_2jSg2HPhyB8gJ2EAqIbEZS5Vug;_dc_test=1;~oref=https%3A%2F%2Fzenleafdispensaries.com%2Flocations%2Flombard%2Fmenu%2Frecreational%2Fmenu?"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu",
+ "title": "Zen Leaf Lombard, IL Recreational Cannabis Menu | Shop Online",
+ "htmlLen": 1461252,
+ "prices": 56,
+ "textHead": "Skip to content Skip to content Zen Leaf Cannabis Dispensary Sorry, stock availability has changed; we updated your cart Now Honoring IL Medical Cards Zen Leaf Aurora, Lombard & Prospect Heights c",
+ "iframes": [
+  "https://16014768.fls.doubleclick.net/activityi;src=16014768;type=ctalz0;cat=ctal_007;rcb=0;ord=7484985342064;npa=0;auiddc=1400689560.1792441216;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;user_data_mode=a;_tu=KFA;gtm=45fe6af0v9234967546z89104212353za20gzb9104212353zd9104212353xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938466~115938468~117776795~118131808~118897920~118897930~120213116~120385422~120469145~120469153~121246026~121246034;epver=2;em=tv.1;emd=tvd.1;dc_random=1792441216_p7ZFDes_2jSg2HPhyB8gJ2EAqIbEZS5Vug;_dc_test=1;~oref=https%3A%2F%2Fzenleafdispensaries.com%2Flocations%2Flombard%2Fmenu%2Frecreational%2Fmenu?"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "sweed"
+ ],
+ "hosts": [
+  [
+   "zenleafdispensaries.com",
+   119
+  ],
+  [
+   "media.sweedpos.com",
+   14
+  ],
+  [
+   "www.google.com",
+   11
+  ],
+  [
+   "static.klaviyo.com",
+   9
+  ],
+  [
+   "www.googletagmanager.com",
+   8
+  ],
+  [
+   "data.zenleafdispensaries.com",
+   6
+  ],
+  [
+   "tags.cnna.io",
+   6
+  ],
+  [
+   "bat.bing.com",
+   3
+  ],
+  [
+   "ad.doubleclick.net",
+   3
+  ],
+  [
+   "static-tracking.klaviyo.com",
+   3
+  ],
+  [
+   "googleads.g.doubleclick.net",
+   3
+  ],
+  [
+   "analytics.google.com",
+   3
+  ],
+  [
+   "get.geojs.io",
+   2
+  ],
+  [
+   "admin.zenleafdispensaries.com",
+   2
+  ]
+ ]
+}

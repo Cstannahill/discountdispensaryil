@@ -1,0 +1,40 @@
+{
+ "store_id": "827f2e0e9b4c1c6b7a139090",
+ "name": "High Profile Cannabis Shop",
+ "slug": "high-profile-springfield",
+ "registry": {
+  "address": "4211 Conestoga Dr",
+  "city": "Springfield",
+  "state": "IL",
+  "latitude": 39.73934,
+  "longitude": -89.70497
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open (Google lists 4211 Conestoga Dr, open until 10pm)",
+ "website": "https://highprofilecannabis.com/il/springfield",
+ "menu_url": "https://highprofilecannabis.com/stores/il-springfield-hp",
+ "platform": "dutchie (Dutchie Plus first-party storefront)",
+ "how_menu_reached": "WordPress brand site; \"Shop now\" goes to /stores/il-springfield-hp, a Next.js page using assets2.dutchie.com chunks on the retailer domain",
+ "branch_selection": "dispensaryId 64e61022f532f90009290055 in GraphQL variables; pricingType rec",
+ "age_gate": "click-through Yes button",
+ "data_loading": {
+  "mechanism": "GraphQL persisted queries via first-party proxy",
+  "endpoints": [
+   "GET https://highprofilecannabis.com/api-0/graphql?operationName=FilteredProducts&variables={productsFilter:{dispensaryId,pricingType:\"rec\",...}}&extensions={persistedQuery sha256}",
+   "also MenuFiltersV2, GetMenuSections, GetCollections"
+  ]
+ },
+ "paging": "FilteredProducts paged per category; Flower returned 95 products in one response",
+ "approx_product_count": null,
+ "blockers": [
+  "Cloudflare Turnstile iframe on the brand home page (headless still reached the store page)"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved NO_LEAD (2026-10-18)",
+  "sample": "no saved endpoint, nothing to sample"
+ },
+ "why_it_fails": "resolution/website discovery: fallback search returned NO_LEAD. Stored evidence shows html.duckduckgo.com answers HTTP 202 with a bot challenge and www.bing.com/search answers 200 with unrelated Microsoft pages for the quoted-address query, so no candidate website is ever found even though the brand site exists. Once found, this is the Dutchie browser path (docs/DUTCHIE_DIAGNOSIS.md); the first-party /api-0/graphql host differs from dutchie.com, so platform detection must key on assets2.dutchie.com + dispensaryId, not the dutchie.com hostname.",
+ "fix_idea": "Replace the fallback search with a working source (e.g. the OpenRouter web plugin the verifier already uses, or a brand-level locator) and treat a results page where nothing names the store as a search failure, not 'no lead'. Add a Dutchie Plus signature (/stores/<slug>, /api-0/graphql, dispensary_id in telemetry).",
+ "root_cause_tag": "search-engine-dead; dutchie-plus-first-party-storefront",
+ "confidence": "medium"
+}

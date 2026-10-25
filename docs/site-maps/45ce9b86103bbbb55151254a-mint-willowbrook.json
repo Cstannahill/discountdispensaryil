@@ -1,0 +1,47 @@
+{
+ "store_id": "45ce9b86103bbbb55151254a",
+ "name": "Mint - Willowbrook",
+ "address": "900 75th St",
+ "city": "Willowbrook",
+ "registry_distance_miles": 81.8,
+ "status": "works",
+ "registry_flag": null,
+ "website": "mintdeals.com, Willowbrook",
+ "menu_platform": "Dutchie (embedded menu)",
+ "how_menu_is_reached": "mintdeals.com/willowbrook-il/deals/?dtche[path]=specials; the menu is embed 65fdeeae06646630b2240e29.",
+ "branch_selection": "The embed id is the Willowbrook branch (registry 900 75th St).",
+ "product_loading": "Dutchie embedded menu (structured Dutchie path).",
+ "product_count": "Baseline complete, 657 items.",
+ "blockers": "Cloudflare signature on site; page loaded 200.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "structured",
+   "provider": "dutchie",
+   "license": "recreational",
+   "status": "complete",
+   "code": null,
+   "grade": "A",
+   "items": 657,
+   "at": "2026-10-18T09:58:49.313543+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "dutchie",
+   "items": 400,
+   "declared": null,
+   "errors": [
+    "incomplete_generic_menu"
+   ],
+   "url": "https://dutchie.com/embedded-menu/65fdeeae06646630b2240e29"
+  }
+ },
+ "why_it_fails": "Not failing: structured dutchie, complete, grade A, 657 items. The sampler took the generic path (400 items after 85 s, incomplete_generic_menu), so it does not reflect the structured route.",
+ "fix_idea": "None for the pipeline. Sample Dutchie stores through the structured path, not the generic one.",
+ "unverified": [],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

@@ -1,0 +1,129 @@
+{
+ "key": "11_budrita_loop",
+ "url": "https://budandritas.com/stores/the-loop-dispensary-chicago/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://budandritas.com/wp-admin/admin-ajax.php?action=joint_ecommerce_nonce",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 46
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/domains/YnVkYW5kcml0YXMuY29t.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 140077,
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/app-ids/ZDNlZGMzZGMtMjk1MS00NWUxLTg5YjItYzQ2OGEyMjRhYWEz.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 444,
+   "post": "{\"query\":{\"bool\":{\"filter\":[{\"bool\":{\"should\":[{\"term\":{\"businessId\":\"6374\"}}]}},{\"bool\":{\"should\":[{\"term\":{\"menuType\":\"RECREATIONAL\"}}]}},{\"bool\":{\"must_not\":"
+  },
+  {
+   "u": "https://budandritas.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  }
+ ],
+ "frames": [
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3426.919632073481!2d-87.6312275!3d41.8818291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2dee2efb4a33%3A0x3afa968144447dcf!2sBud%20%26%20Rita%27s%20The%20Loop%20Dispensary!5e1!3m2!1sen!2sus!4v1781273712205!5m2!1sen!2sus",
+  "https://ad.ipredictive.com/d/track/event?upid=115766&cache_buster=1792441225&url=https%3A%2F%2Fbudandritas.com%2Fstores%2Fthe-loop-dispensary-chicago%2F&val=undefined&tn=undefined&p1=&p2=gtm.js&itms=undefined_undefined_undefined_undefined_undefined&ps=0"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://budandritas.com/stores/the-loop-dispensary-chicago/",
+ "title": "Bud & Rita's – The Loop Cannabis Dispensary Dispensary - Bud & Rita's",
+ "htmlLen": 508828,
+ "prices": 44,
+ "textHead": "Skip to main content Coming soon to Sycamore, IL! Search SHOP ALL CATEGORIES LOCATIONS SPECIALS BUDRISTA CLUB MORE Login / Register Shop All Specials Flower Pre-Rolls Vaporizers Edibles Concentrates",
+ "iframes": [
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==",
+  "https://ad.ipredictive.com/d/track/event?upid=115766&cache_buster=1792441225&url=https%3A%2F%2Fbudandritas.com%2Fstores%2Fthe-loop-dispensary-chicago%2F&val=undefined&tn=undefined&p1=&p2=gtm.js&itms=undefined_undefined_undefined_undefined_undefined&ps=0"
+ ],
+ "nextdata": false,
+ "links": [
+  "https://business.dutchie.com/pay-by-bank/consumer"
+ ],
+ "count_text": "1045 results",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "budandritas.com",
+   189
+  ],
+  [
+   "maps.googleapis.com",
+   20
+  ],
+  [
+   "www.google.com",
+   13
+  ],
+  [
+   "tags.cnna.io",
+   6
+  ],
+  [
+   "www.googletagmanager.com",
+   4
+  ],
+  [
+   "lh3.googleusercontent.com",
+   3
+  ],
+  [
+   "fonts.gstatic.com",
+   3
+  ],
+  [
+   "fonts.googleapis.com",
+   2
+  ],
+  [
+   "test-custom-tags.cnna.io",
+   2
+  ],
+  [
+   "analytics.google.com",
+   2
+  ],
+  [
+   "collector-azsx401.dmp.cnna.io",
+   2
+  ],
+  [
+   "static.cloudflareinsights.com",
+   1
+  ],
+  [
+   "analytics.wpmucdn.com",
+   1
+  ],
+  [
+   "maps.gstatic.com",
+   1
+  ]
+ ]
+}

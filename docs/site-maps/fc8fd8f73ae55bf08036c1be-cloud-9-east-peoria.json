@@ -1,0 +1,86 @@
+{
+  "store_id": "fc8fd8f73ae55bf08036c1be",
+  "name": "Cloud 9 - East Peoria",
+  "slug": "cloud-9-east-peoria",
+  "registry": {
+    "address": "406 W Camp St.",
+    "city": "East Peoria",
+    "state": "IL",
+    "distance_miles": 32.525
+  },
+  "site": "https://dutchie.com/kiosks/cloud9-east-peoria; embed https://dutchie.com/embedded-menu/cloud9-east-peoria",
+  "platform": "dutchie",
+  "menu_url_verified": "https://dutchie.com/embedded-menu/cloud9-east-peoria",
+  "access": "none",
+  "branch_selection": "registry 406 W Camp St East Peoria; kiosk page shows 'COMING SOON' text",
+  "product_loading": "Dutchie GraphQL (api-2)",
+  "paging": "Dutchie traversal",
+  "product_count_observed": "reader 566 page-level (123 s seeded sample)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://dutchie.com/kiosks/cloud9-east-peoria",
+    "title": "Cloud9 - East Peoria Menu | East Peoria, IL | Dutchie",
+    "platforms": [
+      "dutchie"
+    ],
+    "age_gate_seen": false,
+    "age_click": null,
+    "count_text": "0\nitems",
+    "price_tags": 24,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Provider reference detected, but store/tenant or full-catalog contract is unresolved; continuing discovery"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "dutchie",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Structured product total does not reconcile with traversed catalog\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Structured product total does not reconcile with traversed catalog\"}"
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "dutchie",
+      "items": 566,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [],
+      "failures": [
+        {
+          "status": "unresolved",
+          "reason": "Candidate website found; branch name/locality or street address still needs matching"
+        },
+        {
+          "status": "unresolved",
+          "reason": "Candidate website found; branch name/locality or street address still needs matching"
+        },
+        {
+          "status": "unresolved",
+          "reason": "Fallback website search found no corroborated branch lead"
+        }
+      ],
+      "samples": []
+    }
+  },
+  "why_it_fails": "Dutchie total does not reconcile, and in the seeded run the identity check did not accept the Dutchie store against 406 W Camp St (unresolved). Stored dutchie row is partial with 0 offers.",
+  "fix_idea": "Dutchie paged replay; confirm live status ('COMING SOON') before treating it as a menu.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

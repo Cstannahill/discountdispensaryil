@@ -1,0 +1,36 @@
+{
+ "store_id": "13c8246798f6ca7b35b19cc8",
+ "name": "Ivy Hall - Glendale Heights",
+ "address": "2130 Bloomingdale Rd Unit B",
+ "city": "Glendale Heights",
+ "distance_miles": 87.131,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Sweed 168 med and rec (same catalog counts, 847 each). Site address 2130 Bloomingdale Rd matches registry; rediscovery shows identity_conflict (false conflict).",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "sweed",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-18T10:43:03.788215+00:00"
+   },
+   {
+    "provider": "sweed",
+    "license": "medicinal",
+    "status": "complete",
+    "last_success_at": "2026-10-18T10:42:48.244158+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

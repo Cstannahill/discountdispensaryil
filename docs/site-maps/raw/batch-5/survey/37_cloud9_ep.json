@@ -1,0 +1,378 @@
+{
+ "key": "37_cloud9_ep",
+ "url": "https://dutchie.com/kiosks/cloud9-east-peoria",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 212
+  },
+  {
+   "u": "https://dutchie.com/graphql?operationName=ConsumerDispensaries&variables=%7B%22dispensaryFilter%22%3A%7B%22cNameOrID%22%3A%22cloud9-east-peoria%22%7D%2C%22collectionChannel%22%3A%22KIOSK%22%7D&extensi",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 50206,
+   "arr": {
+    "n": 10,
+    "path": "$.data.filteredDispensaries[].taxConfig.taxes",
+    "keys": [
+     "id",
+     "type",
+     "name",
+     "rate",
+     "potencyRate",
+     "potency",
+     "medical",
+     "recreational",
+     "taxBasis",
+     "stages",
+     "applyTo",
+     "order"
+    ]
+   }
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiNjkxNWZkNWMtZjEyZS00ZmFhLWJmMjktNGQ3ODE1Y2MxYTg1IiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 329833
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation addSessionProperties($session_secure_id: String!, $properties_object: Any) {\\n  addSessionProperties(\\n    session_secure_id: $session_secure"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiNjkxNWZkNWMtZjEyZS00ZmFhLWJmMjktNGQ3ODE1Y2MxYTg1IiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 329833
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 137,
+   "post": "{\"query\":\"mutation initializeSession($session_secure_id: String!, $session_key: String, $organization_verbose_id: String!, $enable_strict_privacy: Boolean!, $pr"
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%2265f4ab2c9478fd00095c6e72%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Atrue%7D&extensions=",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81284,
+   "arr": {
+    "n": 154,
+    "path": "$.data.menuFiltersV2.brands",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "imageUrl",
+     "__typename"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%2265f4ab2c9478fd00095c6e72%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22KIOSK%22%7D&",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 89
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetMenuSections&variables=%7B%22dispensaryId%22%3A%2265f4ab2c9478fd00095c6e72%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha25",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 8696,
+   "arr": {
+    "n": 10,
+    "path": "$.data.getMenuSections",
+    "keys": [
+     "id",
+     "brandId",
+     "category",
+     "image",
+     "headingOverride",
+     "label",
+     "legacyLabel",
+     "linkLabel",
+     "position",
+     "subcategory",
+     "sectionType",
+     "products"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%2265f4ab2c9478fd00095c6e72%22%2C%22customCategory%22%3Atrue%2C%22enabled%22%3Atrue%2C%22acti",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 41
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%2265f4ab2c9478fd00095c6e72%22%2C%22customCategory%22%3Afalse%2C%22enabled%22%3Atrue%2C%22act",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 41
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetPersonalizedProductsV2&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%2265f4ab2c9478fd00095c6e72%22%2C%22limit%22%3A3%2C%22filters%22%3A%7B%22me",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 59468,
+   "arr": {
+    "n": 3,
+    "path": "$.data.getPersonalizedProductsV2.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://cdn-api.ethyca.com/location",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 78
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation PushSessionEvents($session_secure_id: String!, $payload_id: Int64ID!, $data: String!) {\\n  pushSessionEvents(\\n    session_secure_id: $sessio"
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GeolocateConsumer&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2224fe610f1b4d4a8a09f95dafb837ab399af",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 224
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81,
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"65f4ab2c9478fd00095c6e72\",\"dispensary_name\":"
+  },
+  {
+   "u": "https://dutchie.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"65f4ab2c9478fd00095c6e72\",\"menu_variant\":\"kiosk\",\"page\":\"https://dutchie.com/kiosks/cloud9-east-peoria\",\"pageTy"
+  },
+  {
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=t",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 51
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=PriceRangeFilterSettings&variables=%7B%22dispensaryId%22%3A%2265f4ab2c9478fd00095c6e72%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 457
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%2268f8ee2e5b74756e195e76d1%22%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 529087,
+   "arr": {
+    "n": 25,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%22681bd2694d507e372acc3722%22%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 521226,
+   "arr": {
+    "n": 25,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://dutchie.com/kiosks/cloud9-east-peoria",
+ "title": "Cloud9 - East Peoria Menu | East Peoria, IL | Dutchie",
+ "htmlLen": 210109,
+ "prices": 24,
+ "textHead": "Skip Navigation return to dispensary home page Home Shop Brands Search Dispensary Info COMING SOON Online ordering MENU Recreational 0 items in your shopping cart Categories Flower Pre-Rolls Vaporizer",
+ "iframes": [],
+ "nextdata": true,
+ "links": [
+  "https://dutchie.com/kiosks/cloud9-east-peoria#main-content",
+  "https://dutchie.com/kiosks/cloud9-east-peoria#",
+  "https://dutchie.com/kiosks/cloud9-east-peoria",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/brands",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/info",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/info",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/products/flower",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/products/pre-rolls",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/products/vaporizers",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/products/edibles",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/products/concentrates",
+  "https://dutchie.com/kiosks/cloud9-east-peoria/products/tinctures"
+ ],
+ "count_text": "0\nitems",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "assets2.dutchie.com",
+   69
+  ],
+  [
+   "images.dutchie.com",
+   31
+  ],
+  [
+   "dutchie.com",
+   16
+  ],
+  [
+   "pub.observability.app.launchdarkly.com",
+   8
+  ],
+  [
+   "www.googletagmanager.com",
+   4
+  ],
+  [
+   "app.launchdarkly.com",
+   3
+  ],
+  [
+   "clientstream.launchdarkly.com",
+   3
+  ],
+  [
+   "",
+   2
+  ],
+  [
+   "www.google-analytics.com",
+   2
+  ],
+  [
+   "privacy.dutchie.com",
+   1
+  ],
+  [
+   "cdn.sift.com",
+   1
+  ],
+  [
+   "cdn-api.ethyca.com",
+   1
+  ],
+  [
+   "fides.dutchie.com",
+   1
+  ],
+  [
+   "hexagon-analytics.com",
+   1
+  ]
+ ]
+}

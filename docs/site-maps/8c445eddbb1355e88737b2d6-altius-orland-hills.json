@@ -1,0 +1,40 @@
+{
+ "store_id": "8c445eddbb1355e88737b2d6",
+ "name": "Altius Dispensary - Orland Hills",
+ "slug": "altius-orland-hills",
+ "registry": {
+  "address": "9101 159th St",
+  "city": "Orland Hills",
+  "state": "IL",
+  "latitude": 41.60147,
+  "longitude": -87.84072
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open (9101 W 159th St)",
+ "website": "https://altiusdispensary.com/location/orland-hills",
+ "menu_url": "https://shop.altiusdispensary.com/locations/IL/orland-hills/menu",
+ "platform": "sweed (first-party shop.<brand> domain)",
+ "how_menu_reached": "altiusdispensary.com links to shop.altiusdispensary.com; Sweed storefront on the brand subdomain, _api proxied same-origin",
+ "branch_selection": "path /locations/IL/<slug>/menu (orland-hills; carol-stream is the default store)",
+ "age_gate": "click-through",
+ "data_loading": {
+  "mechanism": "REST POST same origin",
+  "endpoints": [
+   "POST https://shop.altiusdispensary.com/_api/Products/GetProductList {filters:{},page:1,pageSize:24,platformOs:\"web\"}",
+   "POST /_api/Store/GetStoreInfoV2"
+  ]
+ },
+ "paging": "page/pageSize 24, total in response",
+ "approx_product_count": null,
+ "blockers": [
+  "none"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved NO_LEAD (2026-10-18)",
+  "sample": "no saved endpoint, nothing to sample"
+ },
+ "why_it_fails": "resolution/website discovery: fallback search returned NO_LEAD. Stored evidence shows html.duckduckgo.com answers HTTP 202 with a bot challenge and www.bing.com/search answers 200 with unrelated Microsoft pages for the quoted-address query, so no candidate website is ever found even though the brand site exists. The platform itself (Sweed on a first-party host, same shape as Tree Haus and Bisa Lina) is natively supported.",
+ "fix_idea": "Replace the fallback search with a working source (e.g. the OpenRouter web plugin the verifier already uses, or a brand-level locator) and treat a results page where nothing names the store as a search failure, not 'no lead'. Brand locator: altiusdispensary.com location pages list the shop URLs.",
+ "root_cause_tag": "search-engine-dead",
+ "confidence": "high"
+}

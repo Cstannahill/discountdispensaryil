@@ -1,0 +1,88 @@
+{
+  "store_id": "ded2fe3b1d7ff0fe2561f9ec",
+  "name": "Hatch Dispensary",
+  "slug": "hatch-addison",
+  "registry": {
+    "address": "1433 W Fullerton Ave Ste C",
+    "city": "Addison",
+    "state": "IL",
+    "distance_miles": 89.077
+  },
+  "site": "https://gohatch.com/shop/",
+  "platform": "jane: rec store 2081 and med store 501",
+  "menu_url_verified": "https://www.iheartjane.com/stores/2081/hatch-addison-rec/menu/specials (rec); https://www.iheartjane.com/stores/501/hatch-addison-med/menu/featured (med)",
+  "access": "none",
+  "branch_selection": "site switches Jane store by license",
+  "product_loading": "Jane storefront facets and smartpage",
+  "paging": "Jane facet slices (reconciled)",
+  "product_count_observed": "rec 1594 complete; med 1612 complete (full read)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://gohatch.com/shop/featured",
+    "title": "Shop featured cannabis products | Hatch - Addison (REC) Dispensary Addison, IL",
+    "platforms": [
+      "jane"
+    ],
+    "age_gate_seen": false,
+    "age_click": null,
+    "count_text": "9 products",
+    "price_tags": 121,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "matched",
+      "message": "Resolved 1 canonical menu target(s)"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"Products extracted, but source advertises no independently verifiable full-menu total\"}"
+      },
+      {
+        "provider": "jane",
+        "license": "medicinal",
+        "status": "complete",
+        "last_success_at": "2026-10-19T02:46:01.159134+00:00",
+        "last_error": null
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "NO_PRODUCTS",
+      "provider": "jane",
+      "items": 0,
+      "errors": [
+        "incomplete_jane_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "jane",
+          "provider_store_id": "2081",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "jane",
+          "items": 1594,
+          "expected": 1594,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Two causes. (1) Rec Jane store 2081 is not a stored endpoint; the stored rec row is generic (78 items, partial). (2) sample_stores.py reports NO_PRODUCTS for the stored med Jane endpoint (0 items, 0.8 s), but sample_ep.py on the same endpoint returns 1612 complete. sample_stores passes the raw row without resolution_json (the bug the coordinator flagged).",
+  "fix_idea": "Store Jane 2081 as its own rec endpoint and supersede the generic row; fix sample_stores.py to merge resolution_json as Store.endpoint() does.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

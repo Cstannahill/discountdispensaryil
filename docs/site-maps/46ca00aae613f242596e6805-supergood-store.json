@@ -1,0 +1,50 @@
+{
+ "store_id": "46ca00aae613f242596e6805",
+ "name": "Supergood Store",
+ "address": "660 N. Wolf Rd.",
+ "city": "Des Plaines",
+ "registry_distance_miles": 99.5,
+ "status": "partial",
+ "registry_flag": null,
+ "website": "supergoodstore.com (chain: MI, OH, IL)",
+ "menu_platform": "Dutchie (one embed per store)",
+ "how_menu_is_reached": "Chain home has a store picker and per-store pages such as /store/supergood-des-plaines/. The resolver saved 7 Dutchie embeds from the chain (Grand Haven, Pentwater, New Buffalo, Ravenna, ...).",
+ "branch_selection": "Des Plaines store page exists. Which embed belongs to it was not isolated.",
+ "product_loading": "Dutchie embedded menu (structured path).",
+ "product_count": "Baseline COUNT_MISMATCH at 1557 and 1104; sampler 1038 items.",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 7 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "structured",
+   "provider": "dutchie",
+   "license": "recreational",
+   "status": "partial",
+   "code": "COUNT_MISMATCH",
+   "grade": "C",
+   "items": 1557,
+   "at": "2026-10-18T13:13:21.891449+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "dutchie",
+   "items": 1038,
+   "declared": null,
+   "errors": [
+    "incomplete_generic_menu"
+   ],
+   "url": "https://dutchie.com/embedded-menu/67be2c18b4e2acb817712ef2"
+  }
+ },
+ "why_it_fails": "Chain-wide embed set: the resolver attached embeds from other Supergood branches. Branch checks reject four attempts (BRANCH_MISMATCH) and two counts fail reconciliation (COUNT_MISMATCH). The Des Plaines embed was never taken from its own store page.",
+ "fix_idea": "Scope resolution to the Des Plaines store page: take its embed and address, then reconcile the Dutchie total.",
+ "unverified": [
+  "which embed id is Des Plaines",
+  "Dutchie total field"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

@@ -1,0 +1,45 @@
+{
+ "store_id": "6666d607171c9195c37541f8",
+ "name": "Phili Dispensary",
+ "address": "1300 Locke Dr.",
+ "city": "Bourbonnais",
+ "registry_distance_miles": 64.5,
+ "status": "works",
+ "registry_flag": null,
+ "website": "philidispensary.com, Bourbonnais (1300 Locke Dr)",
+ "menu_platform": "Jane framelessEmbed (store 5362)",
+ "how_menu_is_reached": "/our-menu/ (recreational) and /medical-menu/ (medical); the page calls the Jane API.",
+ "branch_selection": "Jane store 5362 is the Bourbonnais store.",
+ "product_loading": "Jane API: stores/5362, specials, facets, multi (native Jane provider).",
+ "product_count": "Baseline complete: 799 recreational, 780 medical. Sampler: 786 items, declared 786.",
+ "blockers": "Age \"Yes\" button (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 2 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "jane",
+   "license": "recreational",
+   "status": "complete",
+   "code": null,
+   "grade": "A",
+   "items": 799,
+   "at": "2026-10-19T02:28:27.418584+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "jane",
+   "items": 786,
+   "declared": 786,
+   "errors": [],
+   "url": "https://www.philidispensary.com/our-menu/"
+  }
+ },
+ "why_it_fails": "Not failing now. PROJECT_STATUS_REPORT says Phili returned zero products; the latest attempts are complete. A leftover generic products endpoint (partial) is still saved.",
+ "fix_idea": "Retire the generic products endpoint for Phili so only the Jane endpoints remain.",
+ "unverified": [],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

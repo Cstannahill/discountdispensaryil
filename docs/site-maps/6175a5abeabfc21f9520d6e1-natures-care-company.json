@@ -1,0 +1,30 @@
+{
+ "store_id": "6175a5abeabfc21f9520d6e1",
+ "name": "Natures Care Company",
+ "address": "975 Rohlwing Rd",
+ "city": "Rolling Meadows",
+ "registry_distance_miles": 96.5,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "naturescarecompany.com, Rolling Meadows (975 Rohlwing Rd)",
+ "menu_platform": "Jane (probe signature); Google also lists a JointCommerce \"Med\" menu (unverified)",
+ "how_menu_is_reached": "/rolling-meadows-menus and /menus. The probe clicked the age \"OK\" button.",
+ "branch_selection": "/rolling-meadows-menus matches the registry address.",
+ "product_loading": "Unknown (menu not loaded).",
+ "product_count": "n/a",
+ "blockers": "Age gate (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search could not find the site (NO_LEAD). The site's own /rolling-meadows-menus page was never followed.",
+ "fix_idea": "Name + city search finds the site. Add menu-path discovery for /<city>-menus pages (shared pattern).",
+ "unverified": [
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

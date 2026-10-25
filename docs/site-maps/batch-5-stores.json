@@ -1,0 +1,398 @@
+{
+  "batch": 5,
+  "of": 5,
+  "region_id": "8f7772ca082601b630476779",
+  "region_label": "Minonk, IL 61760",
+  "radius_miles": 100,
+  "total_regional_stores": 190,
+  "batch_sizes": [
+    38,
+    38,
+    38,
+    38,
+    38
+  ],
+  "method": "live_stores within region radius (haversine, same as Store.stores_in_region), sorted by id, split into 5 contiguous batches (sizes front-loaded)",
+  "stores": [
+    {
+      "id": "db22644a2c58a68db44511b6",
+      "name": "River Bluff Cannabis",
+      "address": "1350 Lake St.",
+      "city": "Roselle",
+      "state": "IL",
+      "distance_miles": 88.093,
+      "latitude": 41.97084,
+      "longitude": -88.11495
+    },
+    {
+      "id": "db47d02a719281c877a87ee8",
+      "name": "Terrace Moline",
+      "address": "2727 Avenue of the Cities",
+      "city": "Moline",
+      "state": "IL",
+      "distance_miles": 86.437,
+      "latitude": 41.49276,
+      "longitude": -90.49793
+    },
+    {
+      "id": "dbea3d8039ff1fb89c7d1d4c",
+      "name": "Ascend Moca  Logan Square",
+      "address": "2367 N Milwaukee Ave.",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 98.857,
+      "latitude": 41.92049,
+      "longitude": -87.699768
+    },
+    {
+      "id": "dcaf2a2c15eab43c3d99fdc3",
+      "name": "Cannect Dispensary",
+      "address": "3147 Mannheim Rd",
+      "city": "Franklin Park",
+      "state": "IL",
+      "distance_miles": 93.239,
+      "latitude": 41.93621,
+      "longitude": -87.8845
+    },
+    {
+      "id": "dcec1d7aec205601f57fbf35",
+      "name": "Bud and Ritas Chicago",
+      "address": "3425 W Belmont Ave",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.286,
+      "latitude": 41.93921,
+      "longitude": -87.7135
+    },
+    {
+      "id": "dd53131fab99861d3616d7b7",
+      "name": "Starbuds Hoffman Estates",
+      "address": "5 E Golf Rd",
+      "city": "Hoffman Estates",
+      "state": "IL",
+      "distance_miles": 93.636,
+      "latitude": 42.04905,
+      "longitude": -88.07909
+    },
+    {
+      "id": "ded2fe3b1d7ff0fe2561f9ec",
+      "name": "Hatch Dispensary",
+      "address": "1433 W Fullerton Ave Ste C",
+      "city": "Addison",
+      "state": "IL",
+      "distance_miles": 89.077,
+      "latitude": 41.932129,
+      "longitude": -88.007408
+    },
+    {
+      "id": "e090194df7ff6e9528a4fea9",
+      "name": "Dispensary 33 - Fulton Market",
+      "address": "1152 W. Randolph",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 98.739,
+      "latitude": 41.88472,
+      "longitude": -87.65628
+    },
+    {
+      "id": "e0b6082dcb509a50436c59fe",
+      "name": "ZenLeaf  Lombard",
+      "address": "783 Butterfield Rd.",
+      "city": "Lombard",
+      "state": "IL",
+      "distance_miles": 85.492,
+      "latitude": 41.870789,
+      "longitude": -88.014877
+    },
+    {
+      "id": "e1691686ff5b8774ddced8a5",
+      "name": "Green Rose - Harwood Heights",
+      "address": "4660 N Harlem Ave",
+      "city": "Harwood Heights",
+      "state": "IL",
+      "distance_miles": 97.354,
+      "latitude": 41.96552,
+      "longitude": -87.80749
+    },
+    {
+      "id": "e3d2ea9cd323afe948004331",
+      "name": "Bud & Rita's - The Loop",
+      "address": "105 W Madison St",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.557,
+      "latitude": 41.88203,
+      "longitude": -87.63124
+    },
+    {
+      "id": "e57f932cf71f5033d7946c6c",
+      "name": "Be. - Oak Forest",
+      "address": "5940 159th St",
+      "city": "Oak Forest",
+      "state": "IL",
+      "distance_miles": 82.061,
+      "latitude": 41.60366,
+      "longitude": -87.76372
+    },
+    {
+      "id": "e5fae261ee26030956b7fb38",
+      "name": "Zen Leaf Naperville",
+      "address": "1516 N. Naper Blvd, Spc 100",
+      "city": "Naperville",
+      "state": "IL",
+      "distance_miles": 76.399,
+      "latitude": 41.792278,
+      "longitude": -88.167747
+    },
+    {
+      "id": "e6419c1e8c7a2bfd1a8f7851",
+      "name": "Jane & Bud's - Elgin",
+      "address": "205 S Randall Rd",
+      "city": "Elgin",
+      "state": "IL",
+      "distance_miles": 85.985,
+      "latitude": 42.02807,
+      "longitude": -88.33793
+    },
+    {
+      "id": "e72f2efe8f88800463e2ec58",
+      "name": "Sociale Park Ridge",
+      "address": "1036 Higgins Rd",
+      "city": "Park Ridge",
+      "state": "IL",
+      "distance_miles": 97.414,
+      "latitude": 41.98734,
+      "longitude": -87.84003
+    },
+    {
+      "id": "e7648fc31b2bf7617ed85d15",
+      "name": "Curaleaf  Melrose Park",
+      "address": "1413 West North Ave.",
+      "city": "Melrose Park",
+      "state": "IL",
+      "distance_miles": 92.283,
+      "latitude": 41.900928,
+      "longitude": -87.858192
+    },
+    {
+      "id": "e76de41cbd03b761f7e2d898",
+      "name": "Natures Treatment of Illinois - Milan",
+      "address": "973 Tech Dr",
+      "city": "Milan",
+      "state": "IL",
+      "distance_miles": 87.733,
+      "latitude": 41.417488,
+      "longitude": -90.574127
+    },
+    {
+      "id": "e8636a2dd21bbff9ea773047",
+      "name": "Cookies - Peoria Heights",
+      "address": "1209 E War Memorial Dr",
+      "city": "Peoria Heights",
+      "state": "IL",
+      "distance_miles": 30.473,
+      "latitude": 40.73685,
+      "longitude": -89.57711
+    },
+    {
+      "id": "e89adcbf8de2860df51d8b26",
+      "name": "Stash - Peru",
+      "address": "1320 38th St",
+      "city": "Peru",
+      "state": "IL",
+      "distance_miles": 32.112,
+      "latitude": 41.35848,
+      "longitude": -89.12319
+    },
+    {
+      "id": "e8ccd7ecbd0836e477f9dff0",
+      "name": "Green Releaf - Bourbonnais",
+      "address": "1660 N State Route 50",
+      "city": "Bourbonnais",
+      "state": "IL",
+      "distance_miles": 64.623,
+      "latitude": 41.17621,
+      "longitude": -87.85083
+    },
+    {
+      "id": "e8f93bec072966e4f2e41b58",
+      "name": "Ivy Hall - Crystal Lake",
+      "address": "501 Pingree Rd.",
+      "city": "Crystal Lake",
+      "state": "IL",
+      "distance_miles": 99.446,
+      "latitude": 42.22763,
+      "longitude": -88.29678
+    },
+    {
+      "id": "e9ccfac7375b5969b9c683ea",
+      "name": "Cloud 9 - Oswego",
+      "address": "2420 US Highway 30",
+      "city": "Oswego",
+      "state": "IL",
+      "distance_miles": 67.861,
+      "latitude": 41.71903,
+      "longitude": -88.31628
+    },
+    {
+      "id": "ea1735321a9754e7656ba7cf",
+      "name": "Green Releaf - Villa Park",
+      "address": "305 W North Ave",
+      "city": "Villa Park",
+      "state": "IL",
+      "distance_miles": 88.323,
+      "latitude": 41.90614,
+      "longitude": -87.98619
+    },
+    {
+      "id": "ea74053f26413fbd3f020f20",
+      "name": "Cannabist - Chicago",
+      "address": "4758 N Milwaukee Ave",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.248,
+      "latitude": 41.969872,
+      "longitude": -87.758629
+    },
+    {
+      "id": "ea8a3aa539f29d593213e845",
+      "name": "Aroma Hill - Belvidere",
+      "address": "1874 Crystal Parkway",
+      "city": "Belvidere",
+      "state": "IL",
+      "distance_miles": 93.068,
+      "latitude": 42.23586,
+      "longitude": -88.82023
+    },
+    {
+      "id": "edb7a5af215c6fcbca61dd6f",
+      "name": "Curaleaf  Justice",
+      "address": "8340 S Roberts Rd",
+      "city": "Justice",
+      "state": "IL",
+      "distance_miles": 85.431,
+      "latitude": 41.744541,
+      "longitude": -87.834267
+    },
+    {
+      "id": "edc950551c643872292ba9e2",
+      "name": "Verilife Ottawa",
+      "address": "4100 Columbus St",
+      "city": "Ottawa",
+      "state": "IL",
+      "distance_miles": 32.692,
+      "latitude": 41.349312,
+      "longitude": -88.844193
+    },
+    {
+      "id": "ede5c6950cb66686352db835",
+      "name": "Windy City Cannabis Posen",
+      "address": "2535 Veterans Dr",
+      "city": "Posen",
+      "state": "IL",
+      "distance_miles": 86.27,
+      "latitude": 41.628429,
+      "longitude": -87.68721
+    },
+    {
+      "id": "ef4e9fb04d381b482b53c680",
+      "name": "Mystic Greenz - Lincoln",
+      "address": "1120 Woodlawn Rd",
+      "city": "Lincoln",
+      "state": "IL",
+      "distance_miles": 54.43,
+      "latitude": 40.15824,
+      "longitude": -89.38937
+    },
+    {
+      "id": "efa7c3ca60452eb9e7d766db",
+      "name": "Earthmed Rosemont",
+      "address": "10441 E. Touhy Ave.",
+      "city": "Rosemont",
+      "state": "IL",
+      "distance_miles": 97.003,
+      "latitude": 42.00893,
+      "longitude": -87.888649
+    },
+    {
+      "id": "f10b4177de25509157e12f41",
+      "name": "Market 96 - S Wells Street",
+      "address": "529 S Wells St Ste 100",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.165,
+      "latitude": 41.87537,
+      "longitude": -87.63336
+    },
+    {
+      "id": "f4a7a73f0d17f4dc901e9a7c",
+      "name": "Mission Calumet City",
+      "address": "1330 Torrence Ave.",
+      "city": "Calumet City",
+      "state": "IL",
+      "distance_miles": 91.618,
+      "latitude": 41.614929,
+      "longitude": -87.550621
+    },
+    {
+      "id": "f71776a9e6d4ce31a9a78234",
+      "name": "Mission Illinois",
+      "address": "8554 S Commercial Ave",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 95.684,
+      "latitude": 41.726379,
+      "longitude": -87.556877
+    },
+    {
+      "id": "f87caed4d9681e0f3b6fe4b4",
+      "name": "Ascend - Springfield Horizon Dr.",
+      "address": "3201 Horizon Dr.",
+      "city": "Springfield",
+      "state": "IL",
+      "distance_miles": 83.882,
+      "latitude": 39.77354,
+      "longitude": -89.633713
+    },
+    {
+      "id": "f8b405422957813c89a224a7",
+      "name": "Verilife  Rosemont",
+      "address": "5540 Park Pl",
+      "city": "Rosemont",
+      "state": "IL",
+      "distance_miles": 97.003,
+      "latitude": 42.00893,
+      "longitude": -87.888649
+    },
+    {
+      "id": "fb2837af392bea924b4cfca5",
+      "name": "Ivy Hall - Streamwood",
+      "address": "630 S Sutton Rd",
+      "city": "Streamwood",
+      "state": "IL",
+      "distance_miles": 88.699,
+      "latitude": 42.02104,
+      "longitude": -88.20381
+    },
+    {
+      "id": "fc8fd8f73ae55bf08036c1be",
+      "name": "Cloud 9 - East Peoria",
+      "address": "406 W Camp St.",
+      "city": "East Peoria",
+      "state": "IL",
+      "distance_miles": 32.525,
+      "latitude": 40.67379,
+      "longitude": -89.58121
+    },
+    {
+      "id": "ff0cf8a8a033cd92290b1da4",
+      "name": "Green Rose - Chicago",
+      "address": "612 N. Wells St.",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.963,
+      "latitude": 41.89293,
+      "longitude": -87.63401
+    }
+  ]
+}

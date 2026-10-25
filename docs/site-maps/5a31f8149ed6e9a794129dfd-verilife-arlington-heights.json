@@ -1,0 +1,31 @@
+{
+ "store_id": "5a31f8149ed6e9a794129dfd",
+ "name": "Verilife Arlington Heights",
+ "address": "1816 S Arlington Heights Rd",
+ "city": "Arlington Heights",
+ "registry_distance_miles": 97.2,
+ "status": "lead_unverified",
+ "registry_flag": null,
+ "website": "verilife.com (chain site), Arlington Heights (1816 S Arlington Heights Rd)",
+ "menu_platform": "Jane signature on site (unconfirmed)",
+ "how_menu_is_reached": "Homepage asks for state, then 21+. Menu links it exposes are NY (/ny/menu/albany-recreational). No IL store URL was found.",
+ "branch_selection": "Not located. The only lead is the chain homepage, which cannot prove a branch.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Invisible reCAPTCHA on the homepage (effect on scripted access unverified).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Only lead is the chain homepage (LEAD_UNVERIFIED). With no IL branch URL in the homepage links, branch identity cannot pass. The rejection is correct, but nothing in the current pipeline gets further.",
+ "fix_idea": "Chain connector for Verilife: choose Illinois at the state gate, read the IL store list with addresses, then take each store's Jane id. One connector covers the three Verilife rows.",
+ "unverified": [
+  "IL store list location",
+  "reCAPTCHA effect"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

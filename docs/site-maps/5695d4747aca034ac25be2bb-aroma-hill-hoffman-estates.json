@@ -1,0 +1,44 @@
+{
+ "store_id": "5695d4747aca034ac25be2bb",
+ "name": "Aroma Hill - Hoffman Estates",
+ "address": "1237 North Barrington Road",
+ "city": "Hoffman Estates",
+ "registry_distance_miles": 91.7,
+ "status": "works",
+ "registry_flag": null,
+ "website": "shop.aromahillcannabis.com/hoffman, Hoffman Estates",
+ "menu_platform": "Sweed storefront (c--aromahill)",
+ "how_menu_is_reached": "/hoffman/recreational/menu and /hoffman/medical/menu.",
+ "branch_selection": "Path slug hoffman; registry 1237 N Barrington Rd matches.",
+ "product_loading": "Same Sweed _api proxy as Lyfe, with saleType Recreational/Medical.",
+ "product_count": "Baseline complete, 814 on each channel.",
+ "blockers": "Confirm button (passable).",
+ "pipeline_result": {
+  "resolution": null,
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "sweed",
+   "license": "recreational",
+   "status": "complete",
+   "code": null,
+   "grade": "A",
+   "items": 814,
+   "at": "2026-10-18T11:51:43.859698+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "sweed",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ],
+   "url": "https://shop.aromahillcannabis.com/hoffman/recreational/menu"
+  }
+ },
+ "why_it_fails": "Not failing: complete, grade A, 814 on each channel. No row in live_resolutions for this store.",
+ "fix_idea": "None.",
+ "unverified": [],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

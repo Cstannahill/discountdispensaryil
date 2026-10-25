@@ -1,0 +1,66 @@
+{
+  "store_id": "dbea3d8039ff1fb89c7d1d4c",
+  "name": "Ascend Moca  Logan Square",
+  "slug": "ascend-moca-logan-square",
+  "registry": {
+    "address": "2367 N Milwaukee Ave.",
+    "city": "Chicago",
+    "state": "IL",
+    "distance_miles": 98.857
+  },
+  "site": "https://letsascend.com/stores/chicago-logan-square-illinois (rec); https://ascendcannabis.com/menu/ch-logan-sq-menu-med (med)",
+  "platform": "dutchie via letsascend api-4 (dispensaryId 6849913eb382fce1e8a26c37) for rec; dispense venue d357788924a67a7a for med",
+  "menu_url_verified": "https://letsascend.com/stores/chicago-logan-square-illinois",
+  "access": "21+ confirm; the survey clicked a Google sign-in button by mistake (regex since tightened)",
+  "branch_selection": "store id in page",
+  "product_loading": "Dutchie persisted GraphQL (MenuFiltersV2, GetMenuSections, FilteredProducts)",
+  "paging": "Dutchie traversal",
+  "product_count_observed": "not reconciled; seeded rec read 498",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://ascendcannabis.com/menu/ch-logan-sq-menu-med",
+    "title": "Chicago, IL - Logan Square Dispensary Medical Menu | Ascend",
+    "platforms": [
+      "dispense"
+    ],
+    "age_gate_seen": true,
+    "age_click": "Yes",
+    "count_text": null,
+    "price_tags": 29,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Fallback website search found no corroborated branch lead"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "dutchie",
+          "provider_store_id": "6849913eb382fce1e8a26c37",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "dutchie",
+          "items": 498,
+          "expected": null,
+          "complete": false,
+          "errors": [
+            "incomplete_generic_menu"
+          ],
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Dutchie traversal does not reconcile to the advertised total (incomplete_generic_menu). Stored row unresolved (search dead), no endpoint. The medical Dispense venue is not a stored target.",
+  "fix_idea": "Dutchie paged replay per docs/DUTCHIE_DIAGNOSIS.md; add the Dispense medical venue as its own license target.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

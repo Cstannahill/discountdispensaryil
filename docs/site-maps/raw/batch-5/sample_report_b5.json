@@ -1,0 +1,245 @@
+{
+  "pipeline_version": "regional-pipeline-2.5609f30e9d",
+  "pages": 1,
+  "note": "Sample only; nothing was accepted or stored.",
+  "results": [
+    {
+      "store_id": "ded2fe3b1d7ff0fe2561f9ec",
+      "name": "Hatch Dispensary",
+      "provider": "jane",
+      "url": "https://www.iheartjane.com/stores/501/hatch-addison-med/menu/featured",
+      "license_type": "medicinal",
+      "pages": 1,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_jane_menu"
+      ],
+      "seconds": 0.8,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "e0b6082dcb509a50436c59fe",
+      "name": "ZenLeaf  Lombard",
+      "provider": "generic",
+      "url": "https://zenleafdispensaries.com/locations/westover/medical-menu/menu",
+      "license_type": "medicinal",
+      "pages": 1,
+      "items": 239,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "seconds": 18.2,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "e1691686ff5b8774ddced8a5",
+      "name": "Green Rose - Harwood Heights",
+      "provider": "sweed",
+      "url": "https://shop.greenroseil.com/harwoodheights/menu/",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.5,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "e5fae261ee26030956b7fb38",
+      "name": "Zen Leaf Naperville",
+      "provider": "generic",
+      "url": "https://zenleafdispensaries.com/locations/st-charles/menu/recreational/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 225,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "seconds": 19.3,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "e72f2efe8f88800463e2ec58",
+      "name": "Sociale Park Ridge",
+      "provider": "blaze",
+      "url": "https://socialedispensary.com/menu/park-ridge/",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.9,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "e89adcbf8de2860df51d8b26",
+      "name": "Stash - Peru",
+      "provider": "treez",
+      "url": "https://www.stashdispensaries.com/shop",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 20,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_treez_menu"
+      ],
+      "seconds": 12.5,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "ea74053f26413fbd3f020f20",
+      "name": "Cannabist - Chicago",
+      "provider": "generic",
+      "url": "https://www.gocannabist.com/shop/store/2221/featured",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 77,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "seconds": 36.6,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "ea8a3aa539f29d593213e845",
+      "name": "Aroma Hill - Belvidere",
+      "provider": "sweed",
+      "url": "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.5,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "ef4e9fb04d381b482b53c680",
+      "name": "Mystic Greenz - Lincoln",
+      "provider": "sweed",
+      "url": "https://order.mysticgreenz.com/lincoln/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.7,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "efa7c3ca60452eb9e7d766db",
+      "name": "Earthmed Rosemont",
+      "provider": "jane",
+      "url": "https://www.iheartjane.com/stores/2740/earthmed-rosemont-rec/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 1162,
+      "declared_total": 1162,
+      "complete": true,
+      "errors": [],
+      "seconds": 6.3,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "f10b4177de25509157e12f41",
+      "name": "Market 96 - S Wells Street",
+      "provider": "treez",
+      "url": "https://www.market-96.com/shop",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 20,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_treez_menu"
+      ],
+      "seconds": 15.4,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "f87caed4d9681e0f3b6fe4b4",
+      "name": "Ascend - Springfield Horizon Dr.",
+      "provider": "dispense",
+      "url": "https://ascendcannabis.com/menu/il-springfield-horizon-menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_dispense_menu"
+      ],
+      "seconds": 0.0,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "f8b405422957813c89a224a7",
+      "name": "Verilife  Rosemont",
+      "provider": "generic",
+      "url": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 1,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "seconds": 15.3,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "fb2837af392bea924b4cfca5",
+      "name": "Ivy Hall - Streamwood",
+      "provider": "sweed",
+      "url": "https://ivyhalldispensary.com/locations/streamwood/menu/recreational/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.5,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "fc8fd8f73ae55bf08036c1be",
+      "name": "Cloud 9 - East Peoria",
+      "provider": "dutchie",
+      "url": "https://dutchie.com/embedded-menu/cloud9-east-peoria",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 566,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "seconds": 123.3,
+      "verdict": "SAMPLE_PRODUCTS"
+    }
+  ]
+}

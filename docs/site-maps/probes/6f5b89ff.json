@@ -1,0 +1,58 @@
+{
+ "key": "6f5b89ff",
+ "url": "https://blocdispensary.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://blocdispensary.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-4D6S2CZJ9P&gtm=45Pe6af0h1v9220641367za208zb9236226791zd9236226791xf1&_p=1792441419792&gcd=13l3l3l3l1l1&npa=0&dma=0&gdid=dZTNiMT&cid=1149179027.1792441420&frm=0&ngs=1&pscdl=noapi&rcb=10&sr=1366x900&uaa=x86&ua",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://pixel.quantserve.com/cs?a=p-4RQTexAkDCq5L&gdpr=0&sf2=1",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://blocdispensary.com/wp-json/age-gate/v3/check?age_gate%5Bage%5D=HFwF0WxzrtxTHKNqmsTzFA%3D%3D&age_gate%5Blang%5D=en&age_gate%5Bconfirm%5D=1&age_gate%5Bremember%5D=1",
+   "size": 187,
+   "sample": "{\"data\":{\"user_age\":21,\"age_gate\":{\"age\":21,\"lang\":\"en\",\"confirm\":\"1\",\"remember\":\"1\"}},\"status\":true,\"redirect\":\"\",\"cookieLength\":365,\"transition\":\"fade\",\"user_data\":[],\"set_cookie\":true}"
+  }
+ ],
+ "iframes": [],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [Yes]"
+ ],
+ "status": 200,
+ "finalUrl": "https://blocdispensary.com/",
+ "title": "Choose Your BLOC - BLOC Dispensary",
+ "htmlBytes": 161296,
+ "sigs": [
+  "wordpress"
+ ],
+ "links": [],
+ "textSample": "Choose Your Bloc Illinois ADULT USE DISPENSARY Select your store Antioch, IL Berwyn, IL Chicago, IL (Avondale) Chicago, IL (Loop) (COMING SOON) Chicago, IL (Mckinley Park) (COMING SOON) Creve Coeur, IL (Justice Grown) (COMING SOON) Forest Park, IL Mattoon, IL Metropolis, IL Northfield, IL Michigan MEDICAL & ADULT USE DISPENSARY Select your store Benton Harbor, MI New Jersey MEDICAL & ADULT USE DISPENSARY Select your store Somerset, NJ (Recreational) Somerset, NJ (Medical) Waretown, NJ (Recreational) Waretown, NJ (Medical) Ewing, NJ (Recreational) Ewing, NJ (Medical) Pennsylvania MEDICAL DISPENSARY Select your store Bethlehem, PA Dickson City, PA (Justice Grown) Edwardsville, PA (Justice Grow",
+ "productHints": [],
+ "priceCount": 0
+}

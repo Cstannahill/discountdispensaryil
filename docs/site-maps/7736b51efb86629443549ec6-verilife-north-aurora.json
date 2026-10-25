@@ -1,0 +1,30 @@
+{
+ "store_id": "7736b51efb86629443549ec6",
+ "name": "Verilife North Aurora",
+ "address": "2080 West Orchard Rd",
+ "city": "North Aurora",
+ "registry_distance_miles": 72.5,
+ "status": "lead_unverified",
+ "registry_flag": null,
+ "website": "verilife.com (chain site), North Aurora (2080 W Orchard Rd)",
+ "menu_platform": "Jane signature on site (unconfirmed)",
+ "how_menu_is_reached": "Same chain homepage and state gate; no IL store URL in the links.",
+ "branch_selection": "Not located. Chain homepage is the only lead.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Invisible reCAPTCHA on the homepage (unverified effect).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Only lead is the chain homepage (LEAD_UNVERIFIED). Branch identity cannot pass.",
+ "fix_idea": "Same Verilife chain connector as 5a31f814.",
+ "unverified": [
+  "IL store list location"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

@@ -1,0 +1,28 @@
+{
+ "store_id": "17ad46e2a110f5ddbc12f4b4",
+ "name": "High Haven Darien",
+ "address": "8131 Cass Ave",
+ "city": "Darien",
+ "distance_miles": 80.164,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Jane 6286 rec; sample 914 items, declared 914.",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "items": 914,
+   "declared": 914,
+   "errors": []
+  },
+  "stored_endpoints": [
+   {
+    "provider": "jane",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-19T02:34:55.861852+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

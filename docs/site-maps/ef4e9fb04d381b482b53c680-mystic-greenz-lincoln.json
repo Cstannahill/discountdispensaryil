@@ -1,0 +1,81 @@
+{
+  "store_id": "ef4e9fb04d381b482b53c680",
+  "name": "Mystic Greenz - Lincoln",
+  "slug": "mystic-greenz-lincoln",
+  "registry": {
+    "address": "1120 Woodlawn Rd",
+    "city": "Lincoln",
+    "state": "IL",
+    "distance_miles": 54.43
+  },
+  "site": "https://order.mysticgreenz.com/lincoln/menu",
+  "platform": "sweed (store 1001, rec)",
+  "menu_url_verified": "https://order.mysticgreenz.com/lincoln/menu",
+  "access": "age confirm (Confirm)",
+  "branch_selection": "lincoln path",
+  "product_loading": "Sweed SSR",
+  "paging": "Sweed pages",
+  "product_count_observed": "reader 601 complete (full)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://order.mysticgreenz.com/lincoln/menu",
+    "title": "Mystic Greenz - Lincoln Cannabis Menu | Lincoln, IL",
+    "platforms": [
+      "sweed"
+    ],
+    "age_gate_seen": true,
+    "age_click": "Confirm",
+    "count_text": null,
+    "price_tags": 49,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "No retailer locator connector configured for this brand"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "sweed",
+        "license": "recreational",
+        "status": "complete",
+        "last_success_at": "2026-10-18T08:56:16.879803+00:00",
+        "last_error": null
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "sweed",
+      "items": 24,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "sweed",
+          "provider_store_id": "1001",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "sweed",
+          "items": 601,
+          "expected": 601,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Works. Accepted row (578 offers, 2026-10-18 08:56) is stale.",
+  "fix_idea": "Refresh.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

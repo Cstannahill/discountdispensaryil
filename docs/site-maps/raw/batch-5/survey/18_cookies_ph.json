@@ -1,0 +1,201 @@
+{
+ "key": "18_cookies_ph",
+ "url": "https://peoriaheights.cookies.co/menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://peoriaheights.cookies.co/wp-json/joint-api/v1/geolocation",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 103
+  },
+  {
+   "u": "https://peoriaheights.cookies.co/wp-admin/admin-ajax.php?action=joint_ecommerce_nonce",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 46
+  },
+  {
+   "u": "https://peoriaheights.cookies.co/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 91890,
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},"
+  },
+  {
+   "u": "https://peoriaheights.cookies.co/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 392,
+   "post": "{\"query\":{\"bool\":{\"filter\":[{\"bool\":{\"should\":[{\"term\":{\"businessId\":\"5478\"}}]}},{\"bool\":{\"should\":[{\"term\":{\"menuType\":\"RECREATIONAL\"}}]}},{\"bool\":{\"must_not\":"
+  },
+  {
+   "u": "https://api.moodiday.com/api/clients-partners",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1764,
+   "post": "{\"uuid\":\"FsrjjOb9t\",\"path\":\"/menu/\"}"
+  },
+  {
+   "u": "https://peoriaheights.cookies.co/wp-json/joint-ecommerce/v1/stores/closest?businessIds[]=5478&sort=distance&latitude=40.8974&longitude=-89.0321",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 7927,
+   "arr": {
+    "n": 10,
+    "path": "$.businesses[].taxSettings",
+    "keys": [
+     "id",
+     "createdAt",
+     "updatedAt",
+     "businessId",
+     "menuType",
+     "taxType",
+     "applicableCategories",
+     "label",
+     "rate",
+     "addTaxToMenu",
+     "thcThresholdPercent",
+     "thcThresholdOperator"
+    ]
+   }
+  },
+  {
+   "u": "https://api.moodiday.com/api/retailer-products-matches",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 3183,
+   "post": "{\"retailer-products-list\":[\"134c815b-a7db-462c-8609-e8cca21bd078\",\"dca63c17-20ec-4e8a-a3d5-883f96f08b4b\",\"60fe96a7-4582-4903-a8f4-97ba4732494a\",\"3263f505-74a6-4"
+  },
+  {
+   "u": "https://peoriaheights.cookies.co/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 72814,
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},"
+  },
+  {
+   "u": "https://api.moodiday.com/api/video-overlays",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 100,
+   "post": "{\"product-ids-list\":[4066,5457,4400,5432,4474,4971,4165,5454],\"client_uuid\":\"FsrjjOb9t\",\"state\":\"Illinois\",\"sku_mode\":true}"
+  },
+  {
+   "u": "https://api.moodiday.com/api/ratings-products",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1667,
+   "post": "{\"product-ids-list\":[4066,5457,4400,5432,4474,4971,4165,5454],\"client\":\"FsrjjOb9t\",\"sku_mode\":true}"
+  },
+  {
+   "u": "https://api.moodiday.com/api/retailer-products-matches",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1133,
+   "post": "{\"retailer-products-list\":[\"0171056e-29e8-4512-8c70-85ef8a116c81\",\"ce232d69-6034-411f-8838-3d755f16edf2\",\"cb0788f3-65e9-408a-820a-d0277406d68f\",\"7406393e-6e98-4"
+  },
+  {
+   "u": "https://api.moodiday.com/api/video-overlays",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 40,
+   "post": "{\"product-ids-list\":[5452,2450],\"client_uuid\":\"FsrjjOb9t\",\"state\":\"Illinois\",\"sku_mode\":true}"
+  },
+  {
+   "u": "https://api.moodiday.com/api/ratings-products",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 455,
+   "post": "{\"product-ids-list\":[5452,2450],\"client\":\"FsrjjOb9t\",\"sku_mode\":true}"
+  },
+  {
+   "u": "https://peoriaheights.cookies.co/wp-json/age-gate/v3/check?age_gate%5Bage%5D=HFwF0WxzrtxTHKNqmsTzFA%3D%3D&age_gate%5Blang%5D=en&age_gate%5Bconfirm%5D=1",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 170
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "PEORIA HEIGHTS Are you over 21 years of age? Yes No Cookies Peoria Heights Open • Closes at 9:00PM | Pickup Opens store selection 🍪 SHOP ALL CATEGORIES EVENTS NEWSLETTER SIGN-UP RESOURCES FACEBOOK INSTAGRAM X-TWITTER TIKTOK MEDICAL LICENSE NOW LIVE! • 1% TAX WITH VALID MEDICAL CARD 💸 5% CA",
+ "age_click": "Yes",
+ "final_url": "https://peoriaheights.cookies.co/menu/",
+ "title": "Dispensary Menu - Cookies Peoria Heights IL Dispensary",
+ "htmlLen": 548126,
+ "prices": 65,
+ "textHead": "Cookies Peoria Heights Open • Closes at 9:00PM | Pickup Opens store selection 🍪 SHOP ALL CATEGORIES EVENTS NEWSLETTER SIGN-UP RESOURCES FACEBOOK INSTAGRAM X-TWITTER TIKTOK MEDICAL LICENSE NOW L",
+ "iframes": [],
+ "nextdata": false,
+ "links": [],
+ "count_text": "540 items",
+ "platforms": [],
+ "hosts": [
+  [
+   "peoriaheights.cookies.co",
+   146
+  ],
+  [
+   "hb.wpmucdn.com",
+   13
+  ],
+  [
+   "api.moodiday.com",
+   7
+  ],
+  [
+   "joint-product-photos.s3.amazonaws.com",
+   7
+  ],
+  [
+   "analytics.google.com",
+   6
+  ],
+  [
+   "www.googletagmanager.com",
+   3
+  ],
+  [
+   "www.google-analytics.com",
+   3
+  ],
+  [
+   "use.typekit.net",
+   2
+  ],
+  [
+   "review-module.moodiday.com",
+   2
+  ],
+  [
+   "stats.g.doubleclick.net",
+   2
+  ],
+  [
+   "p.typekit.net",
+   1
+  ],
+  [
+   "www.google.com",
+   1
+  ],
+  [
+   "ad.doubleclick.net",
+   1
+  ]
+ ]
+}

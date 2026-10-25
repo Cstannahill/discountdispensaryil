@@ -1,0 +1,586 @@
+{
+ "key": "446368c3",
+ "url": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/javascript; charset=UTF-8",
+   "u": "https://zenleafdispensaries.com/global-age-gate.min.js?v=1792441289642",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://zenleafdispensaries.com/api/time?v=1792441289643",
+   "size": 707,
+   "sample": "{\"success\":true,\"timestamp\":\"2026-10-19T20:21:29.854Z\",\"times\":[{\"name\":\"Eastern Time (ET)\",\"timezone\":\"America/Detroit\",\"time\":\"4:21 pm\",\"day\":\"monday\",\"date\":\"10/19/2026\",\"tomorrow\":{\"day\":\"tuesday\",\"date\":\"10/20/2026\"}},{\"name\":\"Mountain Time (MT)\",\"timezone\":\"America/Shiprock\",\"time\":\"2:21 pm\",\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://zenleafdispensaries.com/data/locations.json",
+   "size": 92928,
+   "sample": "{\"locations\":[{\"sweedId\":158,\"post_id\":419,\"locationId\":\"PA008\",\"slug\":\"abington\",\"post_title\":\"Abington\",\"title\":\"Abington\",\"location_status\":\"Open\",\"hours\":{\"timezoneOffset\":\"America/Detroit\",\"specialHoursOverride\":[{\"closed\":null,\"closingTime\":\"8:00 pm\",\"date\":\"09/07/2026\",\"noticeToDisplayOnWebsi"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://get.geojs.io/v1/ip/geo.json",
+   "size": 384,
+   "sample": "{\"accuracy\":20,\"area_code\":\"0\",\"asn\":53610,\"city\":\"Minonk\",\"continent_code\":\"NA\",\"country\":\"United States\",\"country_code\":\"US\",\"country_code3\":\"USA\",\"ip\":\"209.113.172.235\",\"latitude\":\"40.8974\",\"longitude\":\"-89.0321\",\"organization\":\"AS53610 Metro Communications Company, Inc.\",\"organization_name\":\"Met"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://zenleafdispensaries.com/api/maxmind",
+   "size": 1773,
+   "sample": "{\"continent\":{\"code\":\"NA\",\"geonameId\":6255149,\"names\":{\"en\":\"North America\",\"es\":\"Norteamérica\",\"fr\":\"Amérique du Nord\",\"ja\":\"北アメリカ\",\"pt-BR\":\"América do Norte\",\"ru\":\"Северная Америка\",\"zh-CN\":\"北美洲\",\"de\":\"Nordamerika\"}},\"country\":{\"isoCode\":\"US\",\"geonameId\":6252001,\""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://zenleafdispensaries.com/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792441286809,\"pageloadId\":\"11dbc721-22ef-423f-ba49-5e97f6932795\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv\":\"13"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "manifest",
+   "ct": "application/manifest+json",
+   "u": "https://zenleafdispensaries.com/manifest.webmanifest",
+   "size": 2509,
+   "sample": "{\"name\":\"Zen Leaf Dispensaries\",\"display\":\"standalone\",\"orientation\":\"natural\",\"theme_color\":\"#000000\",\"background_color\":\"#000000\",\"icons\":[{\"src\":\"https://media.sweedpos.com/store/production/zenleaf/icon-192.png\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://media.sweedpos.com/store/produc"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/about?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/brands?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/about/careers?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://zenleafdispensaries.com/api/sweed/get-store-alert",
+   "size": 14,
+   "sample": "{\"notices\":[]}",
+   "post": "{\"storeSlug\":\"chicago-pilsen\",\"menuType\":\"recreational\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/learn?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://data.zenleafdispensaries.com/menu-config/chicago-pilsen",
+   "size": 449,
+   "sample": "{\"slug\":\"chicago-pilsen\",\"name\":\"Chicago (Pilsen)\",\"state\":\"illinois\",\"sweedId\":536,\"isSweedStore\":true,\"hasMedicalMenu\":true,\"hasRecreationalMenu\":true,\"hasBothMenuTypes\":true,\"menuType\":\"dual\",\"defaultMenuPath\":\"/locations/chicago-pilsen/menu/recreational/menu/\",\"medicalMenuPath\":\"/locations/chica"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/contact?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/learn/strain-guide?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/learn/terpene-guide?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/learn/cannabis-products?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/discounts?promo=products&_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://data.zenleafdispensaries.com/catalog/536/recreational",
+   "size": 816662,
+   "sample": "{\"products\":[{\"id\":386053,\"name\":\"Mango\",\"category\":{\"id\":6389,\"name\":\"Drinks\",\"canonicalName\":\"drinks\"},\"subcategory\":{\"id\":6390,\"name\":\"Drink Mix\",\"canonicalName\":\"drink-mix\"},\"images\":[\"https://media.sweedpos.com/store/production/1782232751_c8dc621f-8cc5-45c0-9f5e-a5d4227ad7a5.png\"],\"brand\":{\"nam"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/vapes-5456?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/edibles-5454?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/flower-5453?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/ccm/collect?rcb=16&frm=0&apvc=1&ae=g&auid=625827825.1792441291&dt=Zen%20Leaf%20Chicago%2C%20IL%20(Pilsen)%20Recreational%20Cannabis%20Menu%20%7C%20Shop%20Online&en=page_view&dl=https%3A%2F%2Fzenleafdispensaries.com%2Flocations%2Fchicago-",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/pre-rolls-5457?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://ad.doubleclick.net/ccm/s/collect?auid=625827825.1792441291&gtm=45He6af0v9104212353za200zd9104212353xeaxf1&fmt=8",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/learn/cannabis-glossary?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-mango-drink-mix-100mg-2fl-oz-581831?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/17495325031/?random=1792441291680&cv=11&fst=1792441291680&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6af0v9227934371za20ozb9104212353zd9104212353xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118131809",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/11407111081/?random=1792441291783&cv=11&fst=1792441291783&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6af0v9170719497za208zd9170719497xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118131809~118897920~1",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/11440344355/?random=1792441291824&cv=11&fst=1792441291824&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6af0v9170719497za208zd9170719497xecxf1&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118131809~118897920~1",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/cart?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-watermelon-drink-mix-100mg-2fl-oz-581759?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-lemon-lime-drink-mix-100mg-2fl-oz-581828?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-black-cherry-12-cbnthc-drink-mix-100mg-2fl-oz-581725?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/javascript",
+   "u": "https://test-custom-tags.cnna.io/domains/emVubGVhZmRpc3BlbnNhcmllcy5jb20=.js",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/rewards?_rsc=mOge1zm7dXuk8QcQ",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/javascript",
+   "u": "https://test-custom-tags.cnna.io/app-ids/NmUyZDc2ZTctY2RhMC00ZmRkLThlOTktZGIwY2M0YzM2YWNl.js",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/74262/d5a8c/config.json",
+   "size": 6647,
+   "sample": "{\"templates\":{\"productCardTemplate\":\"{\\\"compiler\\\":[8,\\\">= 4.3.0\\\"],\\\"main\\\":function(container,depth0,helpers,partials,data) {\\n    return \\\"\\\";\\n},\\\"useData\\\":true}\",\"productCardStylesheet\":\"\",\"clickThroughUrlTemplate\":\"{\\\"compiler\\\":[8,\\\">= 4.3.0\\\"],\\\"main\\\":function(container,depth0,helpers,part"
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://16014768.fls.doubleclick.net/activityi;src=16014768;type=ctalz0;cat=ctal_007;rcb=2;ord=1026039291242;npa=0;auiddc=625827825.1792441291;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://16014768.fls.doubleclick.net/activityi;dc_pre=CIvolpT0xpcDFc9CwgEdMDMkdw;src=16014768;type=ctalz0;cat=ctal_007;rcb=2;ord=1026039291242;npa=0;auiddc=625827825.1792441291;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 302,
+   "t": "fetch",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://ad.doubleclick.net/activity;src=16014768;type=ctalz0;cat=ctal_007;rcb=2;ord=1026039291242;npa=0;auiddc=625827825.1792441291;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=W",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "fetch",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://ad.doubleclick.net/activity;dc_pre=COPljpT0xpcDFaONjggdOrQ3yg;src=16014768;type=ctalz0;cat=ctal_007;rcb=2;ord=1026039291242;npa=0;auiddc=625827825.1792441291;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253A",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/gif",
+   "u": "https://www.google.com/gmp/conversion/_dc_unique_id=12769282241240243595;_dc_ptd=ChAI8P_W1gYQoouCl9Wi2q9cEh8AfgJjQmhOACz9D_B-A-6Nn6oRNMTaF5J6pK15wh16;_dc_time=1792441292;cid=CAQS4gEAQM4h3O0op_GXb_WNd5b0LC2SQbLWvTMiB2kAAP7HPeP0YW1omWw7x41eSHnDW-WNQqZdE-HUxtimzO",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/concentrates-5460?_rsc=FYMNu8zu_V2jRkh9",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://y.clarity.ms/collect",
+   "size": 0,
+   "sample": null,
+   "post": "\u001f�\b\u0000\u0000\u0000\u0000\u0000\u0000\n�UY��6\u0010�+�<m�1-���yJ�@\u001a�*�)\u0002T\u0016\nZ���%R ��:i��\u000b��v7H��\u0016\u0002�9�94\u001c}\u0002\t�%Ĥ y��I/\u0000)��R����hi��\u0006\u0010L�?ܥ�@?Ƣu��.<p���.��R�R��r��NX%\u001d�Ͱ�M-�2ڭ�\u001bU�άF�;�׃������Y/�Y\u0002\u0015��˲�`��g\u0019&9�+,\u0013���$�x\u0016$�\n�\u0015�i�l�\u001ci�r�\u0005ۜ\u000e�r���\fY�aȋt>x8R��fY�'\bZܪNx\t\b7\f���\tR��\b�\u001d<A����5`\t1 �P-�Ј\u0012^�����:%qt�^��\u001c\\��]Dc\u0012?��+�%O��,y\u0012=\u001b�^����ʯS"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389?_rsc=FYMNu8zu_V2jRkh9",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/accessories-5452?_rsc=FYMNu8zu_V2jRkh9",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/tinctures-5484?_rsc=FYMNu8zu_V2jRkh9",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/topicals-5459?_rsc=FYMNu8zu_V2jRkh9",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/apparel-5451?_rsc=FYMNu8zu_V2jRkh9",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-ZRRVX901E6&gtm=45je6af0v881556369za20ozb9104212353zd9104212353xf1&_p=1792441290910&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAAAAGAC&_ng=1&cid=1738486331.1792441292&frm=0&pscdl=noapi&rcb=19&sr=1366x900&uaa=x86&ua",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu\",\"page\":\"Zen Leaf Chicago, IL (Pilsen) Recreational Cannabis Menu | Shop Online\",\"eid\":\"60625a69-43f1-4a60-b4a8-675db"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://collector-azsx401.dmp.cnna.io/analytics/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu\",\"page\":\"Zen Leaf Chicago, IL (Pilsen) Recreational Cannabis Menu | Shop Online\",\"eid\":\"c997606a-70ee-44a4-a52a-a4ef5"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://zenleafdispensaries.com/api/build-info?t=1792441294670",
+   "size": 135,
+   "sample": "{\"buildId\":\"2026-10-19T16:39:42Z\",\"sha\":\"b9eec04c51e5839e5da5a14b1346c66987a2954f\",\"builtAt\":\"2026-10-19T16:39:42Z\",\"env\":\"production\"}"
+  }
+ ],
+ "iframes": [
+  "https://16014768.fls.doubleclick.net/activityi;dc_pre=CIvolpT0xpcDFc9CwgEdMDMkdw;src=16014768;type=ctalz0;cat=ctal_007;rcb=2;ord=1026039291242;npa=0;auiddc=625827825.1792441291;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;user_data_mode=a;_tu=KFA;gtm=45fe6af0v9234967546z89104212353za20gzb9104212353zd9104212353xeaxf1;gcd=13l3l3l3l1l1;dma=0;dc_fmt=2;tag_exp=115938465~115938468~118131809~118897920~118897930~120213116~120385422~120469145~120469153~121246026~121246034;epver=2;em=tv.1;emd=tvd.1;dc_random=1792441292_LbRDfvc7IVD3GWlk41OhEPA0B_RBbWx1nw;_dc_test=1;~oref=https%3A%2F%2Fzenleafdispensaries.com%2Flocations%2Fchicago-pilsen%2Fmenu%2Frecreational%2Fmenu?"
+ ],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu",
+ "title": "Zen Leaf Chicago, IL (Pilsen) Recreational Cannabis Menu | Shop Online",
+ "htmlBytes": 1452246,
+ "sigs": [
+  "jane",
+  "sweed",
+  "blaze",
+  "cresco",
+  "wordpress",
+  "nextjs"
+ ],
+ "links": [
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu#page-content",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/cart",
+  "https://zenleafdispensaries.com/locations",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/log-in",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/discounts?promo=products",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/flower-5453",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/vapes-5456",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/edibles-5454",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/pre-rolls-5457",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/concentrates-5460",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/tinctures-5484",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/topicals-5459",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/accessories-5452",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/apparel-5451",
+  "https://zenleafdispensaries.com/learn/cannabis-products",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-mango-drink-mix-100mg-2fl-oz-581831",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-watermelon-drink-mix-100mg-2fl-oz-581759",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-lemon-lime-drink-mix-100mg-2fl-oz-581828",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/drinks-6389/easy-landings-black-cherry-12-cbnthc-drink-mix-100mg-2fl-oz-581725",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/pre-rolls-5457/swift-lifts-long-lifts-guava-casquitos-pre-roll-single-1g-1pk-581410",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/pre-rolls-5457/swift-lifts-long-lifts-yum-yum-pre-roll-single-1g-1pk-605738",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/pre-rolls-5457/swift-lifts-short-lifts-strawberry-guava-pre-roll-multipack-3.5g-10pk-545454",
+  "https://zenleafdispensaries.com/locations/chicago-pilsen/menu/recreational/menu/pre-rolls-5457/swift-lifts-long-lifts-yuzu-sour-pre-roll-single-1g-1pk-608842"
+ ],
+ "textSample": "Skip to content Skip to content Zen Leaf Cannabis Dispensary Sorry, stock availability has changed; we updated your cart Pickup Chicago, IL - Pilsen (Rec) 10PM Sign in Deals Flower Vapes Edibles Pre-Rolls More Rewards About Featured Brands Discover our curated collection of premium cannabis brands and exclusive partnerships. Get started ABOUT ZEN LEAF Our Story Our mission and values Careers Join our team FIND US Store Locations Find a dispensary near you Contact Us Get in touch SAVINGS & DEALS Discounts Everyday savings Rewards Earn points on purchases Learn Start Here New to Cannabis? Start your journey with our comprehensive guide for first-time visitors. Get started CANNABIS EDUCATION Ca",
+ "productHints": [],
+ "priceCount": 56
+}

@@ -1,0 +1,33 @@
+{
+ "store_id": "1bbb7a6daaac0789f05915d5",
+ "name": "NuEra - Dekalb",
+ "address": "818 W Lincoln Hwy Ste 7",
+ "city": "DeKalb",
+ "distance_miles": 72.627,
+ "accepted_menu": false,
+ "platform": "Jane (nuEra site embeds Jane store 5932 rec, 7417 med)",
+ "menu_url": "https://nueracannabis.com/dispensaries/il/dekalb/",
+ "how_reached": "nuEra DeKalb page links to /shop/store/5932 (rec) and /shop/store/7417 (med)",
+ "branch_selection": "Jane store 5932 = 818 West Lincoln Highway Space #7, DeKalb (api.iheartjane.com/v1/stores/5932)",
+ "products_load": "Jane storefront search",
+ "paging": "Jane search pages",
+ "count_hint": "triage reads 976 items",
+ "blockers": "none seen (watchdog timeout in probe on a heavy page)",
+ "why_it_fails": "Stored state: HTTP 404 on a guessed /med-deals/ lead. The Jane store id on the nuEra page was not used.",
+ "fix_idea": "Take the Jane store id from the nuEra store links; supersede the 404 lead.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "jane",
+     976
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

@@ -1,0 +1,452 @@
+{
+ "key": "4e4b53e0",
+ "url": "https://www.goodiescanna.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 307,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://www.goodiescanna.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://www.goodiescanna.com/age-gate?returnUrl=%2F",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://www.goodiescanna.com/age-gate?returnUrl=%2F\",\"page\":\"Age Gate\",\"eid\":\"e2e3e863-4896-410e-b6c2-d2d93bbc2c25\",\"tv\":\"js-3.6.0\",\"tna\":\"gapcommerce\",\"aid\":\"gapcommerce\",\"p\":\"web\",\"cookie\":\"1\",\"c"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-NPTSVCF6DJ&gtm=45je6af0v9205677806za20ozb9208139918zd9208139918xf1&_p=1792441354261&_gaz=1&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&_eu=AAAAAGAC&cid=62487601.1792441355&frm=0&pscdl=noapi&rcb=1&sr=1366x900&uaa=x86&u",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-75DQJHV2S4&gtm=45je6af0v9236485716za20ozb9202126937zd9202126937xf1&_p=1792441354261&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&cid=62487601.1792441355&frm=0&ngs=1&pscdl=noapi&rcb=17&sr=1366x900&uaa=x86&uab=64&uaf",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "size": 64901,
+   "sample": "{\"took\":5,\"timed_out\":false,\"_shards\":{\"total\":1,\"successful\":1,\"failed\":0,\"failures\":null,\"skipped\":0},\"hits\":{\"total\":{\"value\":409,\"relation\":\"eq\"},\"max_score\":0.11938117,\"hits\":[{\"_index\":\"product_84fc073c-1502-4329-bdb0-7c33c3d6a090\",\"_id\":\"c0c00201-3edb-4877-b940-8d8c5cfec157\",\"_routing\":\"\",\"_s",
+   "post": "{\"from\":0,\"size\":10,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0,\"lte\":500000}}}}},{\"bool\":{\"should\":[{\"match\":{\"isAboveThreshold\":true}}]}},{\"bool\":{\"should\":[{\"match\":{\"isHideFromMenu\":false}}]}}]}},\"collapse\":{\"field\":\"catalogParentId\",\"inner_hits\":{\"name\":\"sibli"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/discount?excludeInactive=true&timezone=America%2FChicago&fulfillmentType=PICKUP",
+   "size": 5215,
+   "sample": "[{\"id\":\"d2961648-c7f3-452a-bc83-51ad913875b3\",\"title\":\"50% Off Cannabis Deals\",\"displayTitle\":\"50% Off Select Cannabis Products\",\"description\":\"Save 50% on select cannabis products at Goodies Dispensary in Streamwood, IL. Shop participating cannabis flower, pre-rolls, vapes, concentrates, edibles an"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/category/global.json",
+   "size": 1807,
+   "sample": "{\n  \"globalPatterns\": [\n    \"[?&]dtche%5Bcategory%5D=([a-z0-9_-]+)\",\n    \"[?&]cat=([a-z0-9_-]+)(?:%2C|&|$)\",\n    \"/(?:store/)?category/([a-z0-9_-]+)\",\n    \"/categories?/([a-z0-9_-]+)\",\n    \"/collections?/([a-z0-9_-]+)\",\n    \"https?://[^/?#]+/products?/([a-z0-9_-]+)\",\n    \"/deals(?:-collection)?/([a-"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/542e1/d1c6f/config.json",
+   "size": 31092,
+   "sample": "{\"templates\":{\"productCardTemplate\":\"{\\\"1\\\":function(container,depth0,helpers,partials,data) {\\n    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || functi"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google.com/g/collect?v=2&tid=G-NPTSVCF6DJ&gtm=45je6af0v9205677806z89208139918za20gzb9208139918zd9208139918xf1&_p=1792441354261&gcs=G1--&gcd=13l3l3R3l5l1&npa=0&dma=0&_eu=IAAAAGQC&cid=62487601.1792441355&frm=0&pscdl=noapi&rcb=1&sr=1366x900&uaa=x86&ua",
+   "size": 0,
+   "sample": null,
+   "post": "en=view_item_list&pr1=idc0c00201-3edb-4877-b940-8d8c5cfec157~nmEXTRA%20LARGE%20GOODIES%20CREW-NECK%20%E2%80%93%20XL%20%7C%20Branded%20Cannabis%20Sweatshirt%20at%20Goodies~brGOODIES~caMerch~vaEXTRA%20LARGE%20GOODIES%20CREW-NECK%20-%20XL~lp0~pr11.2~qt1~k0image_id~v0https%3A%2F%2Fd1hhy58mqsa6c3.cloudfr"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://g.surfside.io/enrich",
+   "size": 203,
+   "sample": "{\"ip\":\"209.113.172.235\",\"country\":\"USA\",\"city\":\"Unknown\",\"region\":\"Unknown\",\"zip\":\"Unknown\",\"utcoffset\":-216,\"timezone\":\"America/Chicago\",\"coords\":{\"latitude\":37.751,\"longitude\":-97.822,\"accuracy\":1000}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/promotions?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/night-phantom-night-phantom-dawn-cyclone-flower-28g-28-g-flower-28-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/wishlist?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/deals?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/shop?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/high-supply-high-supply-green-kush-2-cartridge-0-5g-0-5-g-cartridge-0-5-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/p37-p37-kiwi-sour-28g-exotic-flower-28-g-flower-28-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/blog/what-first-time-visitors-should-know-before-visiting-goodies-dispensary?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/brand/rove?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/goodies-dispensary-vip-program?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/brand/cookies?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/brands?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/dispensary/goodies-dispensary?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/blog?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "application/json;charset=utf-8",
+   "u": "https://bid.surfside.io/rtb/bids/surfside",
+   "size": 0,
+   "sample": null,
+   "post": "{\"id\":\"388a57d2-2257-419f-8456-5ef4e1caf9f7\",\"allimps\":0,\"imp\":[{\"id\":\"bc2f7941-6aa3-444d-87c6-8002a8f9ba3d\",\"ext\":{\"channelId\":\"bf9bc\",\"accountId\":\"542e1\",\"siteId\":\"d1c6f\",\"zoneId\":\"d78ga\",\"placementId\":\"d78ga\",\"accountLocationId\":\"542e1-goodiesstreamwood\",\"locationId\":\"goodiesstreamwood\",\"storeId\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://creative.surfside.io/native/v2/brand/542e1/goodiesstreamwood/999998286.json",
+   "size": 7066,
+   "sample": "[{\"account_id\":\"542e1\",\"source_id\":\"8875b\",\"location_id\":\"goodiesstreamwood\",\"item_id\":\"5ae0c08d-ac85-4b6e-9461-fd8082c46c97\",\"name\":\"Tickled Pink Frozen Empress Cannabis Pre-Rolls (0.4G Each) - 0.8G 2PK\",\"list\":\"treez_ecom\",\"brand\":\"TICKLED PINK\",\"category\":\"PREROLL\",\"variant\":\"FLOWER\",\"description"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://creative.surfside.io/native/v2/brand/542e1/goodiesstreamwood/999998285.json",
+   "size": 10916,
+   "sample": "[{\"account_id\":\"542e1\",\"source_id\":\"8875b\",\"location_id\":\"goodiesstreamwood\",\"item_id\":\"4d71aea1-413d-4159-8fc1-9f404f31d360\",\"name\":\"Korner Boys Blood Diamond Runtz Cannabis Flower Eighth - 3.5G\",\"list\":\"treez_ecom\",\"brand\":\"KORNER BOYS\",\"category\":\"FLOWER\",\"variant\":\"PRE-PACK\",\"description\":\"<stro"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://creative.surfside.io/native/v2/brand/542e1/goodiesstreamwood/999997468.json",
+   "size": 240831,
+   "sample": "[{\"account_id\":\"542e1\",\"source_id\":\"d1c6f\",\"location_id\":\"goodiesstreamwood\",\"item_id\":\"73da71c4-405b-441a-9964-c0717dde8d4e\",\"name\":\"Rove Watermelon Burst Triple Infused Pre-Roll with Rosin Hash and Diamonds - 1g\",\"list\":\"treez_ecom\",\"brand\":\"ROVE\",\"category\":\"PREROLL\",\"variant\":\"INFUSED\",\"descript"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/blog/goodies-dispensary-now-offers-curbside-pickup-in-streamwood-illinois?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/special/50-off-select-cannabis-products?special_id=d2961648-c7f3-452a-bc83-51ad913875b3&_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/special/30-off-everyday-low-pricing?special_id=d63c58d0-67d2-4ac8-bcf7-71eddb82b536&_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/triple-crown-triple-crown-blood-orange-2-0-flower-3-5g-3-5-g-flower-3-5-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/ic-collective-ic-collective-pheno-hunt-otw-flower-14g-14-g-flower-14-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/bedford-grow-bedford-grow-sugar-shack-flower-1g-1-g-flower-1-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/superflux-superflux-chem-chillz-infused-ground-flower-3-5g-3-5-g-flower-3-5-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/northern-heights-northern-heights-gogurtz-flower-3-5g-3-5-g-flower-3-5-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/rove-rove-acapulco-gold-triple-infused-pre-roll-pack-2-5g-5pk-2-5-g-5-pack-preroll-2-5-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/rove-rove-acapulco-gold-triple-infused-pre-roll-1g-1-g-preroll-1-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/rove-rove-permanent-marker-rosin-infused-pre-rolls-2pk-1g-1-g-2-pack-preroll-1-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/rove-rove-purple-trainwreck-triple-infused-pre-roll-1g-1-g-preroll-1-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/product/keefy-keefy-sherbacio-rosin-bubble-hash-infused-pre-rolls-1g-2pk-1-g-2-pack-preroll-1-grams?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/x-component",
+   "u": "https://www.goodiescanna.com/collection/preroll?_rsc=5duy6",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [],
+ "notes": [
+  "clicked [data-testid*=\"age\"] button [I'M AT LEAST 21 YEARS OLD]"
+ ],
+ "status": 200,
+ "finalUrl": "https://www.goodiescanna.com/",
+ "title": "Goodies Dispensary Cannabis Store | Premium Cannabis in Streamwood, IL",
+ "htmlBytes": 1535547,
+ "sigs": [
+  "treez",
+  "weedmaps",
+  "cresco",
+  "nextjs"
+ ],
+ "links": [
+  "https://www.goodiescanna.com/shop",
+  "https://www.goodiescanna.com/product/night-phantom-night-phantom-dawn-cyclone-flower-28g-28-g-flower-28-grams",
+  "https://www.goodiescanna.com/product/high-supply-high-supply-green-kush-2-cartridge-0-5g-0-5-g-cartridge-0-5-grams",
+  "https://www.goodiescanna.com/shop?query=Trippy%20sipps%20sticky%20greens",
+  "https://www.goodiescanna.com/product/p37-p37-kiwi-sour-28g-exotic-flower-28-g-flower-28-grams",
+  "https://www.goodiescanna.com/shop?query=blues%20brothers",
+  "https://www.goodiescanna.com/shop?query=loud",
+  "https://www.goodiescanna.com/special/50-off-select-cannabis-products?special_id=d2961648-c7f3-452a-bc83-51ad913875b3",
+  "https://www.goodiescanna.com/product/ic-collective-ic-collective-pheno-hunt-otw-flower-14g-14-g-flower-14-grams",
+  "https://www.goodiescanna.com/product/northern-heights-northern-heights-gogurtz-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/superflux-superflux-chem-chillz-infused-ground-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/triple-crown-triple-crown-blood-orange-2-0-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/bedford-grow-bedford-grow-sugar-shack-flower-1g-1-g-flower-1-grams",
+  "https://www.goodiescanna.com/product/sol-canna-sol-canna-ak47-bud-14g-14-g-flower-14-grams",
+  "https://www.goodiescanna.com/product/sol-canna-sol-canna-dank-dough-bud-14g-14-g-flower-14-grams",
+  "https://www.goodiescanna.com/product/i420-i420-project-903-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/high-supply-high-supply-curacao-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/ripperz-ripperz-zkywalker-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/ripperz-ripperz-glitter-bomb-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/ripperz-ripperz-muel-fuel-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/ripperz-ripperz-mafia-funeral-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/ic-collective-ic-collective-alley-cat-smalls-28g-28-g-flower-28-grams",
+  "https://www.goodiescanna.com/product/ripperz-ripperz-super-boof-flower-3-5g-3-5-g-flower-3-5-grams",
+  "https://www.goodiescanna.com/product/sol-canna-sol-canna-lemon-og-bud-14g-14-g-flower-14-grams",
+  "https://www.goodiescanna.com/product/ic-collective-ic-collective-tidewater-flower-3-5g-3-5-g-flower-3-5-grams"
+ ],
+ "textSample": "PICKUP Goodies Dispensary - 1594 Buttitta Dr, Streamwood, IL 60107 SHOP & SAVE ON OUR LATEST CANNABIS DEALS! Home Shop Categories Deals Shop Recreational Cannabis Online For Pickup At Goodies Dispensary In Streamwood, IL Browse cannabis flower, vape cartridges, edibles, concentrates, pre-rolls & accessories from licensed Illinois cannabis brands. Goodies Streamwood cannabis store offers a regularly updated menu featuring top brands & new releases Shop Cannabis in Streamwood at Goodies Dispensary Goodies Dispensary in Streamwood, Illinois brings together flower, pre-rolls, vapes, concentrates, edibles, THC beverages and more from established Illinois cannabis brands and new arrivals. Browse t",
+ "productHints": [],
+ "priceCount": 270
+}

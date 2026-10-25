@@ -1,0 +1,55 @@
+{
+ "key": "73a93789",
+ "url": "https://lakeshorecannabisclub.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 301,
+   "t": "document",
+   "ct": "",
+   "u": "https://lakeshorecannabisclub.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html;charset=utf-8",
+   "u": "https://www.lakeshorecannabisclub.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json;charset=utf-8",
+   "u": "https://www.lakeshorecannabisclub.com/api/census/render-batch",
+   "size": 17,
+   "sample": "{\"success\": true}",
+   "post": "{\"events\":[{\"type\":\"PAGE_VIEW\",\"payload\":{\"event\":1,\"data\":{\"localStorageSupported\":true,\"queryString\":\"\",\"referrer\":\"\",\"websiteId\":\"6a0297a8a743ba2905d7bf5f\",\"templateId\":\"5c5a519771c10ba3470d8101\",\"website_locale\":\"en-US\",\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (K"
+  }
+ ],
+ "iframes": [],
+ "notes": [
+  "clicked button:has-text(\"Accept\") [What forms of payment do you accept?]",
+  "clicked button:has-text(\"Accept\") [What forms of payment do you accept?]"
+ ],
+ "status": 200,
+ "finalUrl": "https://www.lakeshorecannabisclub.com/",
+ "title": "Lakeshore Cannabis Club | Romeoville’s Premier Cannabis Dispensary",
+ "htmlBytes": 300129,
+ "sigs": [],
+ "links": [
+  "https://shop.lakeshorecannabisclub.com/menu/featured",
+  "https://shop.lakeshorecannabisclub.com/menu/flower",
+  "https://shop.lakeshorecannabisclub.com/menu/pre-roll",
+  "https://shop.lakeshorecannabisclub.com/menu/vape",
+  "https://shop.lakeshorecannabisclub.com/menu/edible",
+  "https://shop.lakeshorecannabisclub.com/menu/extract"
+ ],
+ "textSample": "Skip to Content privacy policy Home Shop About Contact LAKESHORE CANNABIS CLUB Login 0 PREMIUM CANNABIS REAL PRICING _________________________________ OUT-THE-DOOR PRICING. NO SURPRISES. SHOP CONFIDENTLY. SHOP NOW FLOWER/PRE-ROLL/VAPE/CONCENTRATE/EDIBLES/BEVERAGES/FLOWER/PRE-ROLL/VAPE/CONCENTRATE/EDIBLES/BEVERAGES/FLOWER/PRE-ROLL/VAPE FLOWER / PRE-ROLL / VAPE / CONCENTRATE / EDIBLES / BEVERAGES / Lakeshore Cannabis Club is a premium adult-use cannabis dispensary in Romeoville, Illinois, serving customers 21+ from Romeoville, Bolingbrook, Joliet, Lockport, Plainfield, Lemont, and surrounding southwest suburbs. Shop curated flower, vapes, edibles, prerolls, concentrates, beverages, and exclusi",
+ "productHints": [],
+ "priceCount": 0
+}

@@ -1,0 +1,101 @@
+{
+  "store_id": "ea8a3aa539f29d593213e845",
+  "name": "Aroma Hill - Belvidere",
+  "slug": "aroma-hill-belvidere",
+  "registry": {
+    "address": "1874 Crystal Parkway",
+    "city": "Belvidere",
+    "state": "IL",
+    "distance_miles": 93.068
+  },
+  "site": "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+  "platform": "sweed (store 195; rec and med)",
+  "menu_url_verified": "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+  "access": "age confirm (Confirm)",
+  "branch_selection": "belvidere path",
+  "product_loading": "Sweed SSR",
+  "paging": "Sweed pages",
+  "product_count_observed": "reader 884 rec / 883 med complete (full)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://shop.aromahillcannabis.com/belvidere/recreational/menu",
+    "title": "Aroma Hill Belvidere Recreational Cannabis Menu | Belvidere, IL",
+    "platforms": [
+      "sweed"
+    ],
+    "age_gate_seen": true,
+    "age_click": "Confirm",
+    "count_text": null,
+    "price_tags": 48,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": null,
+      "message": null
+    },
+    "stored_endpoints": [
+      {
+        "provider": "sweed",
+        "license": "medicinal",
+        "status": "complete",
+        "last_success_at": "2026-10-18T12:05:01.156415+00:00",
+        "last_error": null
+      },
+      {
+        "provider": "sweed",
+        "license": "recreational",
+        "status": "complete",
+        "last_success_at": "2026-10-18T12:05:29.075277+00:00",
+        "last_error": null
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "sweed",
+      "items": 24,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "sweed",
+          "provider_store_id": "195",
+          "license": "recreational"
+        },
+        {
+          "provider": "sweed",
+          "provider_store_id": "195",
+          "license": "medicinal"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "sweed",
+          "items": 884,
+          "expected": 884,
+          "complete": true,
+          "errors": null,
+          "error": null
+        },
+        {
+          "provider": "sweed",
+          "items": 883,
+          "expected": 883,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Works. Accepted rows (915 and 916 offers, 2026-10-18 12:05) are older than 12 h and differ from the current read by about 30 items.",
+  "fix_idea": "Refresh; check churn between accepted and current counts.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

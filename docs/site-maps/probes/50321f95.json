@@ -1,0 +1,198 @@
+{
+ "key": "50321f95",
+ "url": "https://cookieschicago.co/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://cookieschicago.co/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-6KVEQ14HFV&gtm=45je6af0v9177631558za200zd9177631558xf1&_p=1792442012495&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AEAEACAC&ae=a&cid=549786688.1792442013&frm=0&ibt=1&ngs=1&pscdl=noapi&rcb=15&sr=1366x900&uaa=x86&uab",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/e4541/426c2/config.json",
+   "size": 12553,
+   "sample": "{\"templates\":{\"productCardTemplate\":\"{\\\"compiler\\\":[8,\\\">= 4.3.0\\\"],\\\"main\\\":function(container,depth0,helpers,partials,data) {\\n    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = c"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/html",
+   "u": "https://cdn.trustindex.io/widgets/ca/ca97db161182648a023672d046a/content.html",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://cookieschicago.co/\",\"page\":\"Chicago Dispensary with Fire Strains | COOKIES CHICAGO\",\"eid\":\"1f7ebdee-2b3c-49a6-98a3-8d1ef42bd898\",\"tv\":\"js-3.6.0\",\"tna\":\"digital\",\"aid\":\"waimea:ga4\",\"p\":\"web\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn.acsbapp.com/config/cookieschicago.co/config.json",
+   "size": 922,
+   "sample": "{\"time\":\"2026-09-04T15:42:15.543Z\",\"specifics\":\"\",\"addonAnalytics\":false,\"aiAssistant\":false,\"blockMeta\":false,\"blockImages\":false,\"blockStyles\":false,\"blockTextSimplifier\":false,\"widgetSettings\":{\"consistentHelpData\":[],\"copilotChat\":false,\"disableBgProcess\":false,\"footerHtml\":\"\",\"hideComponents\":["
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.9183622776077!2d-87.64370592391502!3d41.88614777124085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2d5e6a745d49%3A0x82521699afc69abe!2sCookies%20Chicago%20Dispensary!5e1!3m2!1sen!2sus!4v175",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://cookieschicago.co/wp-json/dovetail-api/v1/categories?retailer=cookies-chicago-clinton&repository=dutchie_plus",
+   "size": 1968,
+   "sample": "[{\"name\":\"Accessories\",\"description\":null,\"order\":12,\"link\":\"https:\\/\\/cookieschicago.co\\/shop\\/?category=accessories\",\"slug\":\"accessories\",\"pos_name\":\"ACCESSORIES\"},{\"name\":\"Apparel\",\"description\":null,\"order\":11,\"link\":\"https:\\/\\/cookieschicago.co\\/shop\\/?category=apparel\",\"slug\":\"apparel\",\"pos_na"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://cookieschicago.co/wp-json/dovetail-api/v1/specials?retailer=cookies-chicago-clinton",
+   "size": 1836,
+   "sample": "[{\"id\":\"69274358c0682f0007c15599\",\"name\":\"Select Product 50% Off\",\"slug\":\"select-product-50-off\",\"link\":\"https:\\/\\/cookieschicago.co\\/specials\\/select-product-50-off\\/\",\"type\":\"SALE\",\"redemption_limit\":1,\"menu_type\":\"BOTH\",\"menu_display\":{\"name\":\"Select Product 50% Off\",\"description\":\"Select Product"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://cookieschicago.co/wp-json/dovetail-api/v1/retailer/cookies-chicago-clinton/place",
+   "size": 19724,
+   "sample": "{\"name\":\"places\\/ChIJSV10al4tDogRvprGr5kWUoI\",\"id\":\"ChIJSV10al4tDogRvprGr5kWUoI\",\"nationalPhoneNumber\":\"(312) 313-7374\",\"formattedAddress\":\"215 N Clinton St, Chicago, IL 60661, USA\",\"addressComponents\":[{\"longText\":\"215\",\"shortText\":\"215\",\"types\":[\"street_number\"],\"languageCode\":\"en-US\"},{\"longText\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://cookieschicago.co/wp-json/dovetail-api/v1/products?page=1&perpage=8&orderby=popular&order=desc&brand=cookies&retailer=cookies-chicago-clinton&menutype=recreational&repository=dutchie_plus&categories%5B%5D=premium-flower",
+   "size": 71,
+   "sample": "{\"total\":0,\"page\":1,\"pages\":1,\"per_page\":8,\"next_page\":\"\",\"results\":[]}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+   "size": 27,
+   "sample": "[2088179155,[\"1792980000\"]]",
+   "post": "[\"https://www.google.com\"]"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+   "size": 35064,
+   "sample": "[\"Map data ©2026 Google Imagery ©2026 Airbus, Maxar Technologies, Vexcel Imaging US, Inc.\",[[\"obliques\",[[41.89409955811395,-87.659912109375],[41.898188430430444,-87.6214599609375]]],[\"obliques\",[[41.89001042401825,-87.659912109375],[41.89409955811395,-87.6214599609375]]],[\"obliques\",[[41.88592102",
+   "post": "[[[41.8750078797553,-87.65989298017236],[41.897292526536056,-87.62251228234659]],16,null,\"en\",3,\"m@799000000\",0,0,null,null,289,1,\"https://www.google.com/maps/embed\",1,null,null,\"097E2A72-427B-439A-B22B-481402E36945\"]"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+   "size": 1417,
+   "sample": "[\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNzAyNDk5OGFiYWY3YTRlZTdhODExZTJmM2Q3OTkzMzkzMjIzMDEiLCJ0eXAiOiJKV1QifQ.ewoJImV4cCIgOiAxNzkyNDQ1NjI1LAoJImZpZWxkX21hc2siIDogImRpc3BsYXlOYW1lLGZvcm1hdHRlZEFkZHJlc3Msc2hvcnRGb3JtYXR0ZWRBZGRyZXNzLGlzUHVyZVNlcnZpY2VBcmVhQnVzaW5lc3MsdXNlclJhdGluZ0NvdW50LHJhdGluZyx1c2VyUmF",
+   "post": "[9,\"89864\",\"https://www.google.com\",null,1]"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://www.google.com/maps/vt?pb=!1m4!1m3!1i16!2i16812!3i24355!1m4!1m3!1i16!2i16813!3i24355!1m4!1m3!1i16!2i16814!3i24355!1m4!1m3!1i16!2i16812!3i24356!1m4!1m3!1i16!2i16813!3i24356!1m4!1m3!1i16!2i16814!3i24356!2m3!1e0!2sm!3i799566048!2m3!1e2!2sspotlit!5i1!3m12!",
+   "size": 7390,
+   "sample": "[{\"id\":\"twtuuuuwvtwtvvuu\",\"zrange\":[16,16],\"layer\":\"spotlit\"},{\"id\":\"twtuuuuwvtwtvvuu\",\"base\":[550896000,798088704],\"zrange\":[16,16],\"layer\":\"m@799566048\",\"features\":[{\"id\":\"0x880e2d34c6ee2f1f:0x7fcee2c881c30612\",\"a\":[0,0,550896000,798088704,550896000,798088704,550896000,798088704],\"bb\":[-14,-29,13,"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://places.googleapis.com/$rpc/google.maps.places.v1.Places/GetPlace",
+   "size": 1485,
+   "sample": "[null,null,null,null,[\"womens_clothing_store\",\"clothing_store\",\"point_of_interest\",\"store\",\"establishment\"],null,null,null,\"215 N Clinton St, Chicago, IL 60661\",null,null,null,null,5,\"https://maps.google.com/?cid=9390593022355741374&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF\",",
+   "post": "[\"places/ChIJSV10al4tDogRvprGr5kWUoI\",\"en\",\"US\"]"
+  }
+ ],
+ "iframes": [
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.9183622776077!2d-87.64370592391502!3d41.88614777124085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e2d5e6a745d49%3A0x82521699afc69abe!2sCookies%20Chicago%20Dispensary!5e1!3m2!1sen!2sus!4v1750445185005!5m2!1sen!2sus",
+  "about:blank",
+  "about:srcdoc",
+  "about:blank"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [YES]"
+ ],
+ "status": 200,
+ "finalUrl": "https://cookieschicago.co/",
+ "title": "Chicago Dispensary with Fire Strains | COOKIES CHICAGO",
+ "htmlBytes": 705954,
+ "sigs": [
+  "dutchie",
+  "wordpress"
+ ],
+ "links": [
+  "https://cookieschicago.co/shop/",
+  "https://cookieschicago.co/locations/cookies-chicago-clinton/",
+  "https://cookieschicago.co/shop/?category=premium-flower",
+  "https://cookieschicago.co/shop/?category=pre-rolls",
+  "https://cookieschicago.co/shop/?category=vapes",
+  "https://cookieschicago.co/shop/?category=concentrates",
+  "https://cookieschicago.co/shop/?category=edibles",
+  "https://cookieschicago.co/shop/?category=apparel",
+  "https://cookieschicago.co/shop/?category=accessories",
+  "https://cookieschicago.co/specials/select-product-50-off/",
+  "https://cookieschicago.co/specials/select-product-75-off/"
+ ],
+ "textSample": "Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window SHOP SPECIALS BRANDS STRAINS STORE INFO ABOUT US REWARDS 0 ALL PRODUCTS PREMIUM FLOWER PRE-ROLLS VAPES CONCENTRATES EDIBLES APPAREL ACCESSORIES COOKIES PREMIUM CHICAGO DISPENSARY 30% Off THC Products SHOP NOW SHOP CANNABIS Shop All Premium Flower Pre-Rolls Vapes Concentrates Edibles Accessories Apparel Premium Flower Pre-Rolls Vapes Concentrates Edibles Accessories Apparel Premium Flower Pre-Rolls Vapes Concentrates Edibles Accessories Apparel SHOP SPECIALS View All COOKIES TOP PICKS Find Your Fire In Chicago Cookies Chicago dispensary brings people together through good energy and premium cannabis. We believe when",
+ "productHints": [],
+ "priceCount": 2
+}

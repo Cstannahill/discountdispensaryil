@@ -1,0 +1,33 @@
+{
+ "store_id": "17cb43f4374931b4e8dd633e",
+ "name": "Revolution Dispensary - Mt. Prospect",
+ "address": "2015 E Euclid Ave",
+ "city": "Mt Prospect",
+ "distance_miles": 98.143,
+ "accepted_menu": false,
+ "platform": "Sweed (Revolution own site)",
+ "menu_url": "https://shop.revcanna.com/mount-prospect/recreational/menu/",
+ "how_reached": "shop.revcanna.com branch slug mount-prospect",
+ "branch_selection": "Branch slug mount-prospect; registry address 2015 E Euclid Ave",
+ "products_load": "POST shop.revcanna.com/_api/Products/GetProductList (pageSize 24) and Store/GetStoreConfig",
+ "paging": "page and pageSize in POST body",
+ "count_hint": "24 cards on rendered page",
+ "blockers": "none seen",
+ "why_it_fails": "Stored leads point at the Schaumburg branch (shop.revcanna.com/schaumburg) and a discounts page. The Mount Prospect slug is reached only by a search the stored state did not follow.",
+ "fix_idea": "Resolve Revolution branches by slug from the chain list and check the store address; reject the Schaumburg slug for this store.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 2,
+   "sample": [
+    [
+     "sweed",
+     30
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

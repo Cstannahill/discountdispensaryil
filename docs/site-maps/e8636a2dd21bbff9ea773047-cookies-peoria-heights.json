@@ -1,0 +1,62 @@
+{
+  "store_id": "e8636a2dd21bbff9ea773047",
+  "name": "Cookies - Peoria Heights",
+  "slug": "cookies-peoria-heights",
+  "registry": {
+    "address": "1209 E War Memorial Dr",
+    "city": "Peoria Heights",
+    "state": "IL",
+    "distance_miles": 30.473
+  },
+  "site": "https://peoriaheights.cookies.co/menu/",
+  "platform": "joint-ecommerce businessId 5478",
+  "menu_url_verified": "https://peoriaheights.cookies.co/menu/",
+  "access": "21+ confirm (Yes)",
+  "branch_selection": "store subdomain",
+  "product_loading": "POST joint-ecommerce _search",
+  "paging": "Joint exact-total traversal",
+  "product_count_observed": "reader 540 complete (full)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://peoriaheights.cookies.co/menu/",
+    "title": "Dispensary Menu - Cookies Peoria Heights IL Dispensary",
+    "platforms": [],
+    "age_gate_seen": true,
+    "age_click": "Yes",
+    "count_text": "540 items",
+    "price_tags": 65,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "failed",
+      "message": "Public fetch failed: ConnectError"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "joint",
+          "provider_store_id": "5478",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "joint",
+          "items": 540,
+          "expected": 540,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Stored row is failed (Public fetch failed: ConnectError), a transient fetch error. The one-page run returns 0 items ('Joint search page limit reached'); the full run completes.",
+  "fix_idea": "Retry the fetch; the sampler must not judge Joint on one page.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

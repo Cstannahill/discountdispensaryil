@@ -1,0 +1,52 @@
+{
+  "store_id": "e8ccd7ecbd0836e477f9dff0",
+  "name": "Green Releaf - Bourbonnais",
+  "slug": "green-releaf-bourbonnais",
+  "registry": {
+    "address": "1660 N State Route 50",
+    "city": "Bourbonnais",
+    "state": "IL",
+    "distance_miles": 64.623
+  },
+  "site": "https://greenreleafdispensary.com/bourbonnais/category/all (redirects to /login)",
+  "platform": "Green ReLeaf own API (prod-api.greenreleafdispensary.com)",
+  "menu_url_verified": "https://greenreleafdispensary.com/stores/bourbonnais",
+  "access": "login wall on Bourbonnais category pages (Villa Park has none)",
+  "branch_selection": "store slug bourbonnais",
+  "product_loading": "POST /product, /store-list/onlineStoreList",
+  "paging": "not read",
+  "product_count_observed": "not read",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://greenreleafdispensary.com/login?returnUrl=%2Fbourbonnais%2Fcategory%2Fall",
+    "title": "Login to Green ReLeaf | Green ReLeaf",
+    "platforms": [],
+    "age_gate_seen": true,
+    "age_click": "Yes",
+    "count_text": null,
+    "price_tags": 0,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Fallback website search found no corroborated branch lead"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded1.json",
+      "targets": [],
+      "failures": [
+        {
+          "status": "unresolved",
+          "reason": "Fallback website search found no corroborated branch lead"
+        }
+      ],
+      "samples": []
+    }
+  },
+  "why_it_fails": "No Green Releaf reader in the pipeline, and search is dead. The category page is login-gated; do not log in.",
+  "fix_idea": "Green Releaf reader against the store-list and product APIs (read-only, no account).",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

@@ -1,0 +1,36 @@
+{
+ "store_id": "325739f471fedaa468609209",
+ "name": "Terrabis Plainfield",
+ "address": "16020 S Route 59",
+ "city": "Plainfield",
+ "distance_miles": 64.49,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Joint 6459 med and 6240 rec; accepted 712 offers. Sample returned 0 items at the sample cap (same as Dixon).",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "NO_PRODUCTS",
+   "items": 0,
+   "declared": null,
+   "errors": [
+    "incomplete_joint_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "joint",
+    "license": "medicinal",
+    "status": "complete",
+    "last_success_at": "2026-10-18T16:31:47.803637+00:00"
+   },
+   {
+    "provider": "joint",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-18T16:31:40.713016+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

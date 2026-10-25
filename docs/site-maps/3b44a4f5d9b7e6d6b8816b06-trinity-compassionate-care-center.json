@@ -1,0 +1,50 @@
+{
+ "store_id": "3b44a4f5d9b7e6d6b8816b06",
+ "name": "Trinity Compassionate Care Center",
+ "address": "2301 W. Glen Ave.",
+ "city": "Peoria",
+ "registry_distance_miles": 31.6,
+ "status": "partial",
+ "registry_flag": null,
+ "website": "trinitydispensaries.com, Peoria (2301 W Glen Ave)",
+ "menu_platform": "Treez / GapCommerce storefront",
+ "how_menu_is_reached": "/shop redirects to /age-gate?returnUrl=%2Fshop; the \"I'M AT LEAST 21\" button clears it. Products come from a browser POST to search-kyrok9udlk.gapcommerceapi.com/product/search.",
+ "branch_selection": "Not proven. The second Peoria row (48ed19f4, 3125 N University) resolves to the same /shop URL and endpoint. Unverified whether the site has a location picker.",
+ "product_loading": "Client-side POST, Elasticsearch-style body {from, size, query}; sampler uses size 10.",
+ "product_count": "Page text shows \"1435 results\" (probe). Baseline extracted 1513 items.",
+ "blockers": "Age gate (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "treez",
+   "license": "recreational",
+   "status": "partial",
+   "code": "UNKNOWN",
+   "grade": "C",
+   "items": 1513,
+   "at": "2026-10-19T05:16:03.929899+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "treez",
+   "items": 28,
+   "declared": null,
+   "errors": [
+    "incomplete_treez_menu"
+   ],
+   "url": "https://www.trinitydispensaries.com/shop"
+  }
+ },
+ "why_it_fails": "Total not reconciled: the attempt is partial with UNKNOWN count. One sampled page gives 28 items (incomplete_treez_menu). The same endpoint is attached to two registry addresses, so branch identity is unproven for at least one.",
+ "fix_idea": "Read the declared count from the search response and page to it. Prove branch with a store-specific signal, or do not attach one storefront to two registry rows.",
+ "unverified": [
+  "whether 1435 covers one branch or both",
+  "location picker"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

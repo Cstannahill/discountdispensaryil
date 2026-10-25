@@ -1,0 +1,34 @@
+{
+ "store_id": "36cf511c490e311e0529bc32",
+ "name": "NuEra Champaign",
+ "address": "102 E. Green St.",
+ "city": "Champaign",
+ "distance_miles": 68.634,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Jane 3057 rec; sample 905 items, declared 905.",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "items": 905,
+   "declared": 905,
+   "errors": []
+  },
+  "stored_endpoints": [
+   {
+    "provider": "jane",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-19T02:30:27.879216+00:00"
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

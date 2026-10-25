@@ -1,0 +1,678 @@
+{
+ "pipeline_version": "regional-pipeline-2.5609f30e9d",
+ "results": [
+  {
+   "store_id": "db22644a2c58a68db44511b6",
+   "name": "River Bluff Cannabis",
+   "seed": "https://riverbluffcannabis.com/store/menu/\r",
+   "targets": [],
+   "platforms": [
+    "jane"
+   ],
+   "failures": [
+    {
+     "status": "unresolved",
+     "reason": "Candidate website found; branch name/locality or street address still needs matching",
+     "url": "https://riverbluffcannabis.com/store/menu/"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Candidate website found; branch name/locality or street address still needs matching",
+     "url": "https://riverbluffcannabis.com/store"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Candidate website found; branch name/locality or street address still needs matching",
+     "url": "https://riverbluffcannabis.com/store/login"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Candidate website found; branch name/locality or street address still needs matching",
+     "url": "https://riverbluffcannabis.com/store/"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Candidate website found; branch name/locality or street address still needs matching",
+     "url": "https://riverbluffcannabis.com/store/login/"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Fallback website search found no corroborated branch lead",
+     "url": ""
+    }
+   ],
+   "seconds": 103.2
+  },
+  {
+   "store_id": "db47d02a719281c877a87ee8",
+   "name": "Terrace Moline",
+   "seed": "https://terracecannabis.com/shop/store/5529/shop-all\r",
+   "targets": [
+    {
+     "provider": "jane",
+     "url": "https://terracecannabis.com/shop/store/5529/shop-all",
+     "provider_store_id": "5529",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "jane"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "jane",
+     "url": "https://terracecannabis.com/shop/store/5529/shop-all",
+     "items": 803,
+     "expected": 803,
+     "complete": true,
+     "errors": []
+    }
+   ],
+   "seconds": 6.1
+  },
+  {
+   "store_id": "dcaf2a2c15eab43c3d99fdc3",
+   "name": "Cannect Dispensary",
+   "seed": "https://cannectdispensary.com/menu/\r",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/68276db91b08255e42c71b94",
+     "provider_store_id": "68276db91b08255e42c71b94",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/68276db91b08255e42c71b94",
+     "items": 420,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_generic_menu",
+       "Structured product total does not reconcile with traversed catalog"
+      ]
+     ]
+    }
+   ],
+   "seconds": 90.8
+  },
+  {
+   "store_id": "dd53131fab99861d3616d7b7",
+   "name": "Starbuds Hoffman Estates",
+   "seed": "https://shop.starbuds.us/stores/hoffman-estates-dispensary/\r",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/66be6d8c7ff5a2a94d19d3f3",
+     "provider_store_id": "66be6d8c7ff5a2a94d19d3f3",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/66be6d8c7ff5a2a94d19d3f3",
+     "items": 559,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_generic_menu",
+       "Structured product total does not reconcile with traversed catalog"
+      ]
+     ]
+    }
+   ],
+   "seconds": 253.9
+  },
+  {
+   "store_id": "e090194df7ff6e9528a4fea9",
+   "name": "Dispensary 33 - Fulton Market",
+   "seed": "https://dispensary33.com/westloop/menu\r",
+   "targets": [
+    {
+     "provider": "sweed",
+     "url": "https://dispensary33.com/westloop/menu",
+     "provider_store_id": "569",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "sweed"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "sweed",
+     "url": "https://dispensary33.com/westloop/menu",
+     "items": 24,
+     "expected": 24,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_menu",
+       "Sweed configured page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 1.5
+  },
+  {
+   "store_id": "e3d2ea9cd323afe948004331",
+   "name": "Bud & Rita's - The Loop",
+   "seed": "https://budandritas.com/stores/the-loop-dispensary-chicago/\r",
+   "targets": [
+    {
+     "provider": "joint",
+     "url": "https://budandritas.com/stores/the-loop-dispensary-chicago/",
+     "provider_store_id": "6374",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "dutchie",
+    "joint"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "joint",
+     "url": "https://budandritas.com/stores/the-loop-dispensary-chicago/",
+     "items": 0,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_joint_menu",
+       "Joint search page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 1.2
+  },
+  {
+   "store_id": "e57f932cf71f5033d7946c6c",
+   "name": "Be. - Oak Forest",
+   "seed": "https://menu.bestoresil.com/\r",
+   "targets": [
+    {
+     "provider": "generic",
+     "url": "https://menu.bestoresil.com/shop",
+     "provider_store_id": null,
+     "license": "recreational",
+     "identity": "name_locality"
+    }
+   ],
+   "platforms": [
+    "treez"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "generic",
+     "url": "https://menu.bestoresil.com/shop",
+     "items": 20,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_generic_menu",
+       "Products extracted, but source advertises no independently verifiable full-menu total"
+      ]
+     ]
+    }
+   ],
+   "seconds": 52.8
+  },
+  {
+   "store_id": "e6419c1e8c7a2bfd1a8f7851",
+   "name": "Jane & Bud's - Elgin",
+   "seed": "https://www.janeandbuds.com/dispensary/jane-buds\r",
+   "targets": [
+    {
+     "provider": "treez",
+     "url": "https://www.janeandbuds.com/shop",
+     "provider_store_id": "863b958b-337d-4f87-88a0-e215fef5ab3e",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "treez"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "treez",
+     "url": "https://www.janeandbuds.com/shop",
+     "items": 24,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_treez_menu",
+       "Treez traversal page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 30.2
+  },
+  {
+   "store_id": "e76de41cbd03b761f7e2d898",
+   "name": "Natures Treatment of Illinois - Milan",
+   "seed": "https://menu-milan.ntillinois.com/stores/natures-treatment-of-illinois\r",
+   "targets": [],
+   "platforms": [],
+   "failures": [
+    {
+     "status": "failed",
+     "reason": "Public destination DNS lookup failed",
+     "url": "https://menu-milan.ntillinois.com/stores/natures-treatment-of-illinois"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Fallback website search found no corroborated branch lead",
+     "url": ""
+    }
+   ],
+   "seconds": 0.1
+  },
+  {
+   "store_id": "e8636a2dd21bbff9ea773047",
+   "name": "Cookies - Peoria Heights",
+   "seed": "https://peoriaheights.cookies.co/menu/\r",
+   "targets": [
+    {
+     "provider": "joint",
+     "url": "https://peoriaheights.cookies.co/menu/",
+     "provider_store_id": "5478",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "joint"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "joint",
+     "url": "https://peoriaheights.cookies.co/menu/",
+     "items": 0,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_joint_menu",
+       "Joint search page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 0.8
+  },
+  {
+   "store_id": "e8ccd7ecbd0836e477f9dff0",
+   "name": "Green Releaf - Bourbonnais",
+   "seed": "https://greenreleafdispensary.com/bourbonnais/category/all\r",
+   "targets": [],
+   "platforms": [],
+   "failures": [
+    {
+     "status": "unresolved",
+     "reason": "Fallback website search found no corroborated branch lead",
+     "url": ""
+    }
+   ],
+   "seconds": 0.0
+  },
+  {
+   "store_id": "e9ccfac7375b5969b9c683ea",
+   "name": "Cloud 9 - Oswego",
+   "seed": "https://cloud9cannabis.com/oswego-menu-2/\r",
+   "targets": [],
+   "platforms": [],
+   "failures": [
+    {
+     "status": "failed",
+     "reason": "HTML source returned HTTP 403",
+     "url": "https://cloud9cannabis.com/oswego-menu-2/"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Fallback website search found no corroborated branch lead",
+     "url": ""
+    }
+   ],
+   "seconds": 21.0
+  },
+  {
+   "store_id": "ea1735321a9754e7656ba7cf",
+   "name": "Green Releaf - Villa Park",
+   "seed": "https://greenreleafdispensary.com/villa-park/category/all\r",
+   "targets": [],
+   "platforms": [],
+   "failures": [
+    {
+     "status": "unresolved",
+     "reason": "Fallback website search found no corroborated branch lead",
+     "url": ""
+    }
+   ],
+   "seconds": 0.0
+  },
+  {
+   "store_id": "ede5c6950cb66686352db835",
+   "name": "Windy City Cannabis Posen",
+   "seed": "https://www.windycitycannabis.com/shop/posen/recreational/menu\r",
+   "targets": [
+    {
+     "provider": "sweed",
+     "url": "https://www.windycitycannabis.com/shop/posen/recreational/menu",
+     "provider_store_id": "978",
+     "license": "recreational",
+     "identity": "matched"
+    },
+    {
+     "provider": "sweed",
+     "url": "https://www.windycitycannabis.com/shop/posen/medical/menu",
+     "provider_store_id": "978",
+     "license": "medicinal",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "sweed"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "sweed",
+     "url": "https://www.windycitycannabis.com/shop/posen/recreational/menu",
+     "items": 24,
+     "expected": 24,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_menu",
+       "Sweed configured page limit reached"
+      ]
+     ]
+    },
+    {
+     "provider": "sweed",
+     "url": "https://www.windycitycannabis.com/shop/posen/medical/menu",
+     "items": 24,
+     "expected": 24,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_menu",
+       "Sweed configured page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 4.0
+  },
+  {
+   "store_id": "f4a7a73f0d17f4dc901e9a7c",
+   "name": "Mission Calumet City",
+   "seed": "https://missiondispensaries.com/stores/mission-calumet-city\r",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/5fcd7ccbb4ee6300fd1b0963",
+     "provider_store_id": "5fcd7ccbb4ee6300fd1b0963",
+     "license": "recreational",
+     "identity": "name_locality"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/5fcd7ccbb4ee6300fd1b0963",
+     "items": 462,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_generic_menu",
+       "Structured product total does not reconcile with traversed catalog"
+      ]
+     ]
+    }
+   ],
+   "seconds": 125.5
+  },
+  {
+   "store_id": "f71776a9e6d4ce31a9a78234",
+   "name": "Mission Illinois",
+   "seed": "https://missiondispensaries.com/stores/mission-south-shore\r",
+   "targets": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/mission-south-shore",
+     "provider_store_id": "mission-south-shore",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "dutchie"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/mission-south-shore",
+     "items": 446,
+     "expected": null,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_generic_menu",
+       "Structured product total does not reconcile with traversed catalog"
+      ]
+     ]
+    }
+   ],
+   "seconds": 114.2
+  },
+  {
+   "store_id": "ff0cf8a8a033cd92290b1da4",
+   "name": "Green Rose - Chicago",
+   "seed": "https://shop.greenroseil.com/river-north\r",
+   "targets": [
+    {
+     "provider": "sweed",
+     "url": "https://shop.greenroseil.com/river-north/menu",
+     "provider_store_id": "112",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "sweed"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "sweed",
+     "url": "https://shop.greenroseil.com/river-north/menu",
+     "items": 24,
+     "expected": 24,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_menu",
+       "Sweed configured page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 1.0
+  },
+  {
+   "store_id": "e7648fc31b2bf7617ed85d15",
+   "name": "Curaleaf  Melrose Park",
+   "seed": "https://curaleaf.com/shop/illinois/curaleaf-il-melrose-park/menu\r",
+   "targets": [
+    {
+     "provider": "sweed",
+     "url": "https://curaleaf.com/shop/illinois/curaleaf-il-melrose-park/menu",
+     "provider_store_id": "96",
+     "license": "recreational",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "sweed"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "sweed",
+     "url": "https://curaleaf.com/shop/illinois/curaleaf-il-melrose-park/menu",
+     "items": 25,
+     "expected": 25,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_menu",
+       "Sweed configured page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 1.5
+  },
+  {
+   "store_id": "edb7a5af215c6fcbca61dd6f",
+   "name": "Curaleaf  Justice",
+   "seed": "https://curaleaf.com/shop/illinois/curaleaf-il-justice/recreational/menu\r",
+   "targets": [],
+   "platforms": [],
+   "failures": [
+    {
+     "status": "failed",
+     "reason": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: /^(?:yes[,! ]*|i am |i'm |i\u2019m ).*(?:21|older)|^yes$/i })\u001b[22m\n\u001b[2m    - locator resolved to <button d",
+     "url": "https://curaleaf.com/shop/illinois/curaleaf-il-justice/recreational/menu"
+    },
+    {
+     "status": "unresolved",
+     "reason": "Fallback website search found no corroborated branch lead",
+     "url": ""
+    }
+   ],
+   "seconds": 36.6
+  },
+  {
+   "store_id": "edc950551c643872292ba9e2",
+   "name": "Verilife Ottawa",
+   "seed": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/\r",
+   "targets": [
+    {
+     "provider": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/",
+     "provider_store_id": "7320",
+     "license": "recreational",
+     "identity": "name_locality"
+    }
+   ],
+   "platforms": [
+    "jane"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/",
+     "items": 1083,
+     "expected": 1083,
+     "complete": true,
+     "errors": []
+    }
+   ],
+   "seconds": 5.7
+  },
+  {
+   "store_id": "e8f93bec072966e4f2e41b58",
+   "name": "Ivy Hall - Crystal Lake",
+   "seed": "https://ivyhalldispensary.com/locations/crystal-lake/menu/recreational/menu",
+   "targets": [
+    {
+     "provider": "sweed",
+     "url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/recreational/menu",
+     "provider_store_id": "140",
+     "license": "recreational",
+     "identity": "matched"
+    },
+    {
+     "provider": "sweed",
+     "url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/medical/menu",
+     "provider_store_id": "140",
+     "license": "medicinal",
+     "identity": "matched"
+    }
+   ],
+   "platforms": [
+    "sweed"
+   ],
+   "failures": [],
+   "samples": [
+    {
+     "provider": "sweed",
+     "url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/recreational/menu",
+     "items": 24,
+     "expected": 24,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_menu",
+       "Sweed configured page limit reached"
+      ]
+     ]
+    },
+    {
+     "provider": "sweed",
+     "url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/medical/menu",
+     "items": 24,
+     "expected": 24,
+     "complete": false,
+     "errors": [
+      [
+       "incomplete_menu",
+       "Sweed configured page limit reached"
+      ]
+     ]
+    }
+   ],
+   "seconds": 2.1
+  }
+ ]
+}

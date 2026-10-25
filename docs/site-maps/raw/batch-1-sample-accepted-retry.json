@@ -1,0 +1,71 @@
+{
+  "pipeline_version": "regional-pipeline-2.5609f30e9d",
+  "pages": 3,
+  "note": "Sample only; nothing was accepted or stored.",
+  "results": [
+    {
+      "store_id": "1b9e7e570fc8f0c9dbf45cba",
+      "name": "Terrabis - Dixon",
+      "provider": "joint",
+      "url": "https://terrabis.co/stores/terrabis-cannabis-dispensary-dixon-il/",
+      "license_type": "recreational",
+      "pages": 3,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_joint_menu"
+      ],
+      "seconds": 2.4,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "1eeeb8ef3a5e7cfc7faeffa4",
+      "name": "NuEra Pekin",
+      "provider": "jane",
+      "url": "https://www.iheartjane.com/stores/3050/nuera-pekin-rec/menu",
+      "license_type": "recreational",
+      "pages": 3,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_jane_menu"
+      ],
+      "seconds": 1.0,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "28c37ef748bc5d3046b875c8",
+      "name": "Snap Canna - Pontiac",
+      "provider": "blaze",
+      "url": "https://snapcanna.com/menu/pontiac/",
+      "license_type": "recreational",
+      "pages": 3,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 2.4,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "325739f471fedaa468609209",
+      "name": "Terrabis Plainfield",
+      "provider": "joint",
+      "url": "https://terrabis.co/menu/plainfield-il-med/",
+      "license_type": "medicinal",
+      "pages": 3,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_joint_menu"
+      ],
+      "seconds": 1.9,
+      "verdict": "NO_PRODUCTS"
+    }
+  ]
+}

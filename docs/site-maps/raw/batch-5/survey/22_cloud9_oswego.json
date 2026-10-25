@@ -1,0 +1,378 @@
+{
+ "key": "22_cloud9_oswego",
+ "url": "https://dutchie.com/stores/cloud9-oswego",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 212
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiNjkxNWZkNWMtZjEyZS00ZmFhLWJmMjktNGQ3ODE1Y2MxYTg1IiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 329832
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Afalse%7D&extensions",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 77154,
+   "arr": {
+    "n": 148,
+    "path": "$.data.menuFiltersV2.brands",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "imageUrl",
+     "__typename"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22ONLINE_MENU%",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 89
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetMenuSections&variables=%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha25",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 8723,
+   "arr": {
+    "n": 10,
+    "path": "$.data.getMenuSections",
+    "keys": [
+     "id",
+     "brandId",
+     "category",
+     "image",
+     "headingOverride",
+     "label",
+     "legacyLabel",
+     "linkLabel",
+     "position",
+     "subcategory",
+     "sectionType",
+     "products"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%2C%22customCategory%22%3Afalse%2C%22enabled%22%3Atrue%2C%22act",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 41
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetAddressBasedDispensaryData&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%7D%7D&extensions=%7B%22persistedQuery%22",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 7125
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetPersonalizedProductsV2&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%2C%22limit%22%3A3%2C%22filters%22%3A%7B%22me",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 59364,
+   "arr": {
+    "n": 3,
+    "path": "$.data.getPersonalizedProductsV2.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://events.launchdarkly.com/events/diagnostic/5ee2761738b5d10a6705cadf",
+   "m": "POST",
+   "s": 202,
+   "ct": "application/json",
+   "len": 0,
+   "post": "{\"kind\":\"diagnostic-combined\",\"id\":{\"diagnosticId\":\"b129df90-cbfa-11f1-915a-1ff920c8f4d3\",\"sdkKeySuffix\":\"05cadf\"},\"creationDate\":1792441299986,\"dataSinceDate\":"
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%2C%22customCategory%22%3Atrue%2C%22enabled%22%3Atrue%2C%22acti",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 41
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=GeolocateConsumer&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2224fe610f1b4d4a8a09f95dafb837ab399af",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 224
+  },
+  {
+   "u": "https://cdn-api.ethyca.com/location",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 78
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 137,
+   "post": "{\"query\":\"mutation initializeSession($session_secure_id: String!, $session_key: String, $organization_verbose_id: String!, $enable_strict_privacy: Boolean!, $pr"
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81,
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"65f4ab8192c77f0009f0fe1f\",\"dispensary_name\":"
+  },
+  {
+   "u": "https://dutchie.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"65f4ab8192c77f0009f0fe1f\",\"menu_variant\":\"store-front\",\"page\":\"https://dutchie.com/stores/cloud9-oswego\"}}"
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=PriceRangeFilterSettings&variables=%7B%22dispensaryId%22%3A%2265f4ab8192c77f0009f0fe1f%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 457
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation addSessionProperties($session_secure_id: String!, $properties_object: Any) {\\n  addSessionProperties(\\n    session_secure_id: $session_secure"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%2268d6ff787b2dec46088886c9%22%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 332978,
+   "arr": {
+    "n": 16,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%22693ccf0dfc655ca14d5464ac%22%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 444000,
+   "arr": {
+    "n": 21,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-2/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%22690cf1d3b59ccde35f19a15d%22%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 526654,
+   "arr": {
+    "n": 25,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=t",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 51
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation PushSessionEvents($session_secure_id: String!, $payload_id: Int64ID!, $data: String!) {\\n  pushSessionEvents(\\n    session_secure_id: $sessio"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://dutchie.com/stores/cloud9-oswego",
+ "title": "Cloud9 - Oswego Cannabis Menu | Oswego, IL",
+ "htmlLen": 211412,
+ "prices": 0,
+ "textHead": "Skip Navigation return to dispensary home page Back home | Browse Locations Home Shop Brands Search Dispensary Info COMING SOON Online ordering MENU Recreational Login 0 items in your shopping car",
+ "iframes": [],
+ "nextdata": true,
+ "links": [
+  "https://dutchie.com/stores/cloud9-oswego#main-content",
+  "https://dutchie.com/stores/cloud9-oswego",
+  "https://dutchie.com/stores/cloud9-oswego/brands",
+  "https://dutchie.com/stores/cloud9-oswego/info",
+  "https://dutchie.com/stores/cloud9-oswego/info",
+  "https://dutchie.com/stores/cloud9-oswego/products/flower",
+  "https://dutchie.com/stores/cloud9-oswego/products/pre-rolls",
+  "https://dutchie.com/stores/cloud9-oswego/products/edibles",
+  "https://dutchie.com/stores/cloud9-oswego/products/vaporizers",
+  "https://dutchie.com/stores/cloud9-oswego/products/concentrates",
+  "https://dutchie.com/stores/cloud9-oswego/products/tinctures",
+  "https://dutchie.com/stores/cloud9-oswego/products/topicals"
+ ],
+ "count_text": "0\nitems",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "assets2.dutchie.com",
+   45
+  ],
+  [
+   "dutchie.com",
+   16
+  ],
+  [
+   "images.dutchie.com",
+   12
+  ],
+  [
+   "www.googletagmanager.com",
+   5
+  ],
+  [
+   "pub.observability.app.launchdarkly.com",
+   5
+  ],
+  [
+   "",
+   2
+  ],
+  [
+   "app.launchdarkly.com",
+   2
+  ],
+  [
+   "clientstream.launchdarkly.com",
+   2
+  ],
+  [
+   "www.google-analytics.com",
+   2
+  ],
+  [
+   "cdn.sift.com",
+   1
+  ],
+  [
+   "events.launchdarkly.com",
+   1
+  ],
+  [
+   "privacy.dutchie.com",
+   1
+  ],
+  [
+   "cdn-api.ethyca.com",
+   1
+  ],
+  [
+   "fides.dutchie.com",
+   1
+  ]
+ ]
+}

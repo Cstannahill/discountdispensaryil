@@ -1,0 +1,39 @@
+{
+ "store_id": "a47ea043ae850cbf226eb1d2",
+ "name": "Ivy Hall - Bolingbrook",
+ "slug": "ivy-hall-bolingbrook",
+ "registry": {
+  "address": "361 S Bolingbrook Dr",
+  "city": "Bolingbrook",
+  "state": "IL",
+  "latitude": 41.68972,
+  "longitude": -88.06892
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://ivyhalldispensary.com/locations/bolingbrook/",
+ "menu_url": "https://ivyhalldispensary.com/locations/bolingbrook/menu/recreational (and /medical)",
+ "platform": "sweed",
+ "how_menu_reached": "brand site shop_url /locations/bolingbrook/menu/",
+ "branch_selection": "Sweed store 166; separate rec/med routes",
+ "age_gate": "click-through",
+ "data_loading": {
+  "mechanism": "Sweed proxy API",
+  "endpoints": [
+   "POST web-ui-production.sweedpos.com/_api/proxy/Products/GetProductList"
+  ]
+ },
+ "paging": "24 per page",
+ "approx_product_count": 1225,
+ "blockers": [
+  "none"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched; both endpoints status suspicious (SUSPICIOUS_DROP). Snapshots: complete 1225 earlier, then 368, then 357",
+  "sample": "sample_stores --pages 1: 24 items, declared 24, incomplete_menu (page cap only); saved endpoint is the /menu/discounts route"
+ },
+ "why_it_fails": "Saved endpoint URLs are the /menu/discounts view; GetProductList on that route reports total 323 (the discount listing), so the fetch now sees a fraction of the 1225-item catalog and the >30% drop guard correctly refuses it. Medium confidence: the plain /menu count was not captured.",
+ "fix_idea": "Canonicalise Sweed endpoints to the /menu route (never /menu/discounts or ?promo=deals) and re-sync once.",
+ "root_cause_tag": "sweed-discounts-route-canonicalised",
+ "confidence": "medium"
+}

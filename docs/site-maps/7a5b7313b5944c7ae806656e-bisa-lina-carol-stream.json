@@ -1,0 +1,49 @@
+{
+ "store_id": "7a5b7313b5944c7ae806656e",
+ "name": "Bisa Lina Carol Stream",
+ "address": "720 E North Ave",
+ "city": "Carol Stream",
+ "registry_distance_miles": 84.7,
+ "status": "partial",
+ "registry_flag": null,
+ "website": "shop.bisalina.com/carolstream, Carol Stream (720 E North Ave)",
+ "menu_platform": "Sweed storefront",
+ "how_menu_is_reached": "/carolstream/recreational/menu and /carolstream/medical/menu.",
+ "branch_selection": "Path slug carolstream; registry matches.",
+ "product_loading": "Sweed _api GetProductList (pageSize 24); promotions list is separate.",
+ "product_count": "Baseline COUNT_MISMATCH at 3408 items on both channels.",
+ "blockers": "Confirm button (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 2 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "sweed",
+   "license": "medicinal",
+   "status": "partial",
+   "code": "COUNT_MISMATCH",
+   "grade": "C",
+   "items": 3408,
+   "at": "2026-10-18T10:08:25.421290+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "sweed",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ],
+   "url": "https://shop.bisalina.com/carolstream/medical/menu"
+  }
+ },
+ "why_it_fails": "COUNT_MISMATCH: 3408 extracted items do not match the declared total. Cause not established; duplicates across categories or promotions merged into the list is one possibility.",
+ "fix_idea": "Compare the GetProductList total with unique product ids, and check whether promotion items are added to the list.",
+ "unverified": [
+  "cause of mismatch"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

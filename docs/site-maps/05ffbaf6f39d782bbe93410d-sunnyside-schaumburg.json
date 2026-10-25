@@ -1,0 +1,33 @@
+{
+ "store_id": "05ffbaf6f39d782bbe93410d",
+ "name": "Sunnyside - Schaumburg",
+ "address": "1739 E. Golf Rd.",
+ "city": "Schaumburg",
+ "distance_miles": 94.68,
+ "accepted_menu": false,
+ "platform": "Cresco (Sunnyside own site)",
+ "menu_url": "https://www.sunnyside.shop/store/schaumburg-il",
+ "how_reached": "sunnyside.shop store page; products from api.crescolabs.com (Schaumburg is Cresco store 559)",
+ "branch_selection": "Cookies (_store, _customer_type) and store slug; no per-branch menu URL",
+ "products_load": "api.crescolabs.com/p/inventory/op/fifo-inventory per category with usage_type=recreational",
+ "paging": "per category (limit param)",
+ "count_hint": "not captured for Schaumburg",
+ "blockers": "none seen (Prismic toolbar and ad iframes only)",
+ "why_it_fails": "No Cresco reader. Generic structured/DOM path gives a partial list that never reconciles, and no chain connector exists, so branch identity is unproven (NO_LEAD in the stored state).",
+ "fix_idea": "Cresco reader keyed by Cresco store id. The chain list api.crescolabs.com/p/stores?ids=... returns all Sunnyside branches with addresses in one call, which also proves branch identity.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 2,
+   "sample": [
+    [
+     "generic",
+     115
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

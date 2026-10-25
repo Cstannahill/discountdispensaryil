@@ -1,0 +1,322 @@
+{
+  "batch": 1,
+  "of": 5,
+  "region_id": "8f7772ca082601b630476779",
+  "region_label": "Minonk, IL 61760",
+  "radius_miles": 100,
+  "total_regional_stores": 190,
+  "batch_sizes": [
+    38,
+    38,
+    38,
+    38,
+    38
+  ],
+  "method": "live_stores within region radius (haversine, same as Store.stores_in_region), sorted by id, split into 5 contiguous batches (sizes front-loaded)",
+  "stores": [
+    {
+      "id": "01113fe5a740d21eda0f758b",
+      "name": "Curaleaf  Morris",
+      "address": "2400 W US Route 6",
+      "city": "Morris",
+      "state": "IL",
+      "distance_miles": 45.464
+    },
+    {
+      "id": "0158155256df6c17e7828e6a",
+      "name": "Rise - Joliet  Colorado Ave",
+      "address": "2903 Colorado Ave.",
+      "city": "Joliet",
+      "state": "IL",
+      "distance_miles": 62.996
+    },
+    {
+      "id": "05ffbaf6f39d782bbe93410d",
+      "name": "Sunnyside - Schaumburg",
+      "address": "1739 E. Golf Rd.",
+      "city": "Schaumburg",
+      "state": "IL",
+      "distance_miles": 94.68
+    },
+    {
+      "id": "07905c02767558fcaac4ee82",
+      "name": "Market 96 - Owego",
+      "address": "1144 Douglas Rd.",
+      "city": "Oswego",
+      "state": "IL",
+      "distance_miles": 66.958
+    },
+    {
+      "id": "08303c6ff59011208f2e473c",
+      "name": "Snap Canna - Elk Grove Vilage",
+      "address": "840 E. Higgins Rd.",
+      "city": "Elk Grove Village",
+      "state": "IL",
+      "distance_miles": 95.401
+    },
+    {
+      "id": "0ac3dcca0d75cfa7c3564a91",
+      "name": "nuEra Chicago Southland",
+      "address": "16950 Halsted St.",
+      "city": "Harvey",
+      "state": "IL",
+      "distance_miles": 86.655
+    },
+    {
+      "id": "0c8e3a7ea3240ce935494281",
+      "name": "Maribis of Springfield",
+      "address": "2451 Denver Drive",
+      "city": "Springfield",
+      "state": "IL",
+      "distance_miles": 79.282
+    },
+    {
+      "id": "0dfbfc6731ecf38bc86970c9",
+      "name": "Nuera East Peoria",
+      "address": "504 Riverside Dr",
+      "city": "East Peoria",
+      "state": "IL",
+      "distance_miles": 30.294
+    },
+    {
+      "id": "0e35b320132b483802ae90b7",
+      "name": "Ascend Moca  River North",
+      "address": "216 W. Ohio St.",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.868
+    },
+    {
+      "id": "0f23fc8f61ad91daf8d969a5",
+      "name": "Ascend by Homecoming",
+      "address": "16200 Harlem Ave.",
+      "city": "Tinley Park",
+      "state": "IL",
+      "distance_miles": 80.489
+    },
+    {
+      "id": "0ffd4a4edc5a7c32bd1ae596",
+      "name": "Aces Dispensary - Plainfield",
+      "address": "12627 S Route 59",
+      "city": "Plainfield",
+      "state": "IL",
+      "distance_miles": 67.727
+    },
+    {
+      "id": "10a51004a5cfae2f4ddb9e73",
+      "name": "Sunnyside - Champaign",
+      "address": "1704 S Neil St Ste C",
+      "city": "Champaign",
+      "state": "IL",
+      "distance_miles": 69.249
+    },
+    {
+      "id": "11e754c0a1d92f8ef92f3dec",
+      "name": "Sunnyside - Rockford",
+      "address": "2696 McFarland Rd",
+      "city": "Rockford",
+      "state": "IL",
+      "distance_miles": 95.397
+    },
+    {
+      "id": "12a98fb3b18174f2a88c459c",
+      "name": "Starbuds-Burbank",
+      "address": "7844 S Cicero Ave",
+      "city": "Burbank",
+      "state": "IL",
+      "distance_miles": 89.235
+    },
+    {
+      "id": "12adbbe4a9168b5be65bfee7",
+      "name": "Sunnyside - Danville",
+      "address": "369 Lynch Dr.",
+      "city": "Danville",
+      "state": "IL",
+      "distance_miles": 85.763
+    },
+    {
+      "id": "13c8246798f6ca7b35b19cc8",
+      "name": "Ivy Hall - Glendale Heights",
+      "address": "2130 Bloomingdale Rd Unit B",
+      "city": "Glendale Heights",
+      "state": "IL",
+      "distance_miles": 87.131
+    },
+    {
+      "id": "157bdfd9c5dd8a2f01bcc6e6",
+      "name": "Village Bucktown",
+      "address": "1850 W Webster Ave",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.826
+    },
+    {
+      "id": "178da00c4b0e351125963f0e",
+      "name": "Mint Cannabis - Forest Park",
+      "address": "7207 Roosevelt Rd",
+      "city": "Forest Park",
+      "state": "IL",
+      "distance_miles": 92.359
+    },
+    {
+      "id": "17ad46e2a110f5ddbc12f4b4",
+      "name": "High Haven Darien",
+      "address": "8131 Cass Ave",
+      "city": "Darien",
+      "state": "IL",
+      "distance_miles": 80.164
+    },
+    {
+      "id": "17cb43f4374931b4e8dd633e",
+      "name": "Revolution Dispensary - Mt. Prospect",
+      "address": "2015 E Euclid Ave",
+      "city": "Mt Prospect",
+      "state": "IL",
+      "distance_miles": 98.143
+    },
+    {
+      "id": "1b9e7e570fc8f0c9dbf45cba",
+      "name": "Terrabis - Dixon",
+      "address": "1679 S Galena Ave.",
+      "city": "Dixon",
+      "state": "IL",
+      "distance_miles": 68.09
+    },
+    {
+      "id": "1bbb7a6daaac0789f05915d5",
+      "name": "NuEra - Dekalb",
+      "address": "818 W Lincoln Hwy Ste 7",
+      "city": "DeKalb",
+      "state": "IL",
+      "distance_miles": 72.627
+    },
+    {
+      "id": "1e1f5401e15343527ab8c0a4",
+      "name": "Zen Leaf - West Loop",
+      "address": "222 S Halsted St",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.143
+    },
+    {
+      "id": "1eeeb8ef3a5e7cfc7faeffa4",
+      "name": "NuEra Pekin",
+      "address": "3249 Court St.",
+      "city": "Pekin",
+      "state": "IL",
+      "distance_miles": 38.727
+    },
+    {
+      "id": "219662ce51b84d9c39d857e1",
+      "name": "Altius Dispensary - Carol Stream",
+      "address": "506 S Schmale Rd",
+      "city": "Carol Stream",
+      "state": "IL",
+      "distance_miles": 83.8
+    },
+    {
+      "id": "27ff8a26c92a3601d86dbb52",
+      "name": "Viola CHI",
+      "address": "1516 W Roosevelt Rd.",
+      "city": "Broadview",
+      "state": "IL",
+      "distance_miles": 90.635
+    },
+    {
+      "id": "2873d919d013f51473989442",
+      "name": "Bloom Wellness- Hometown",
+      "address": "4140 Southwest Hwy",
+      "city": "Hometown",
+      "state": "IL",
+      "distance_miles": 89.153
+    },
+    {
+      "id": "288251dd859d1590f0b3852f",
+      "name": "Ivy Hall - Damen",
+      "address": "1720 N Damen Ave.",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 99.321
+    },
+    {
+      "id": "28c37ef748bc5d3046b875c8",
+      "name": "Snap Canna - Pontiac",
+      "address": "1910 W Reynolds St Unit A",
+      "city": "Pontiac",
+      "state": "IL",
+      "distance_miles": 19.365
+    },
+    {
+      "id": "29984290a3b8ee0c0349abdd",
+      "name": "The Dispensary Champaign",
+      "address": "1826 Glenn Park Dr",
+      "city": "Champaign",
+      "state": "IL",
+      "distance_miles": 66.855
+    },
+    {
+      "id": "2d17c9b393dc1cab8d13fd82",
+      "name": "Tree Haus - Diamond",
+      "address": "2910 E. Division St",
+      "city": "Diamond",
+      "state": "IL",
+      "distance_miles": 49.407
+    },
+    {
+      "id": "2def8b9fff15aca6cc8dfce9",
+      "name": "Dutchess Cannabis N. Riverside",
+      "address": "8380 W Cermak Rd",
+      "city": "North Riverside",
+      "state": "IL",
+      "distance_miles": 90.671
+    },
+    {
+      "id": "2e3a171976b9c6306ad05d30",
+      "name": "Maribis of Springfield 2",
+      "address": "3025 Lindbergh Blvd",
+      "city": "Springfield",
+      "state": "IL",
+      "distance_miles": 84.445
+    },
+    {
+      "id": "30bc01e23ac51b5af8ed2ff1",
+      "name": "Bloc Dispensary Berwyn",
+      "address": "7122 Ogden Ave",
+      "city": "Berwyn",
+      "state": "IL",
+      "distance_miles": 90.563
+    },
+    {
+      "id": "325739f471fedaa468609209",
+      "name": "Terrabis Plainfield",
+      "address": "16020 S Route 59",
+      "city": "Plainfield",
+      "state": "IL",
+      "distance_miles": 64.49
+    },
+    {
+      "id": "36cf511c490e311e0529bc32",
+      "name": "NuEra Champaign",
+      "address": "102 E. Green St.",
+      "city": "Champaign",
+      "state": "IL",
+      "distance_miles": 68.634
+    },
+    {
+      "id": "391e2b9b1c568de147c753eb",
+      "name": "Maribis Of Chicago",
+      "address": "4570 S Archer Ave",
+      "city": "Chicago",
+      "state": "IL",
+      "distance_miles": 93.157
+    },
+    {
+      "id": "39bb12e26af49c0a74502597",
+      "name": "Ivy Hall - Peoria",
+      "address": "3929 W. War Memorial Dr",
+      "city": "Peoria",
+      "state": "IL",
+      "distance_miles": 33.582
+    }
+  ]
+}

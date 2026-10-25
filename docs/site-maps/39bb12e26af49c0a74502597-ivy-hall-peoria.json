@@ -1,0 +1,36 @@
+{
+ "store_id": "39bb12e26af49c0a74502597",
+ "name": "Ivy Hall - Peoria",
+ "address": "3929 W. War Memorial Dr",
+ "city": "Peoria",
+ "distance_miles": 33.582,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Sweed 169 med and rec; accepted 331 offers. Rediscovery shows identity_conflict, but the site address 3929 W War Memorial Dr matches registry (false conflict).",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "sweed",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-19T05:17:14.740870+00:00"
+   },
+   {
+    "provider": "sweed",
+    "license": "medicinal",
+    "status": "complete",
+    "last_success_at": "2026-10-19T05:17:06.204191+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

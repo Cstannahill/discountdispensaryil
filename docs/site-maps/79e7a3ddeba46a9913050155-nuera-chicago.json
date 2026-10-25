@@ -1,0 +1,40 @@
+{
+ "store_id": "79e7a3ddeba46a9913050155",
+ "name": "Nuera Chicago",
+ "address": "1308 W North Ave",
+ "city": "Chicago",
+ "registry_distance_miles": 99.8,
+ "status": "lead_unverified",
+ "registry_flag": null,
+ "website": "nueracannabis.com/dispensaries/il/chicago, Chicago (1308 W North Ave)",
+ "menu_platform": "Jane (chain pattern as Aurora; Chicago Jane store id not identified)",
+ "how_menu_is_reached": "Chain Chicago page (not probed).",
+ "branch_selection": "Chicago Jane store id not identified.",
+ "product_loading": "Jane (presumed).",
+ "product_count": "Baseline generic partial TOTAL_UNVERIFIABLE, 83-97 items.",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "structured",
+   "provider": "generic",
+   "license": "recreational",
+   "status": "partial",
+   "code": "TOTAL_UNVERIFIABLE",
+   "grade": "C",
+   "items": 83,
+   "at": "2026-10-18T13:17:55.575961+00:00"
+  },
+  "sample_mode": null
+ },
+ "why_it_fails": "Resolver lead is ky.nueracannabis.com/shop, a Kentucky subdomain, so branch proof fails. The generic path cannot total a Jane page.",
+ "fix_idea": "NuEra chain connector: read the IL Chicago store page for its Jane store id, as for Aurora (3051). Exclude non-IL subdomains.",
+ "unverified": [
+  "Chicago Jane store id"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

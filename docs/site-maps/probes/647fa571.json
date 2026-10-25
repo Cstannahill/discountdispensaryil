@@ -1,0 +1,433 @@
+{
+ "key": "647fa571",
+ "url": "https://keycannabis.com/shop/mt-zion-il",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 301,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://keycannabis.com/shop/mt-zion-il",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://keycannabis.com/shop/mt-zion-il/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/javascript",
+   "u": "https://test-custom-tags.cnna.io/domains/a2V5Y2FubmFiaXMuY29t.js",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://c.ba.contentsquare.net/pageview?ex=&dt=67&pvt=n&la=en-US&uc=0&url=https%3A%2F%2Fkeycannabis.com%2Fshop%2Fmt-zion-il%2F&dr=&dw=1366&dh=6172&ww=1366&wh=900&sw=1366&sh=900&uu=3ea46f66-d1bc-a436-92f3-aed062781634&sn=1&hd=1792442033&v=15.266.3&pid=829992&pn",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "HEAD",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?a=adblocker_check",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/aiq-sdk/2856/devices/lookup",
+   "size": 51,
+   "sample": "{\"data\":{\"found\":false},\"code\":200,\"success\":true}\n",
+   "post": "{\"deviceId\":\"a2b6c31a-7cb2-4bc9-a846-69fdf57e3076\",\"aiq_device_id\":\"a2b6c31a-7cb2-4bc9-a846-69fdf57e3076\",\"deviceClass\":\"desktop\",\"os\":\"Windows\",\"browser\":\"Chrome\",\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://ctx.keycannabis.com/_/service_worker/6a60/sw_iframe.html?origin=https%3A%2F%2Fkeycannabis.com&1p=1",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/jpeg",
+   "u": "https://tags.srv.stackadapt.com/sa.jpeg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/aiq-sdk/surveys/pop-ups/2856",
+   "size": 38,
+   "sample": "{\"data\":[],\"code\":200,\"success\":true}\n"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=utf-8",
+   "u": "https://tags.srv.stackadapt.com/saq_pxl?uid=7GCRrQJGtMgbl2n2R0BZbA&is_js=true&landing_url=https%3A%2F%2Fkeycannabis.com%2Fshop%2Fmt-zion-il%2F&t=Weed%20Dispensary%20in%20Mt.%20Zion%2C%20IL%20-%20Shop%20Key%20Cannabis&tip=1sKRoB4TOMbU5xrABhPS9-2kH5kPf_gAdP5Zgv-",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 308,
+   "t": "document",
+   "ct": "",
+   "u": "https://dutchie.com/embedded-menu/key-illinois-mt-zion/?dutchie_sid=89bc173e-b9ee-4645-a8dc-8ce98eb58cf7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://ctx.keycannabis.com/ejragzxwv?5b64e65e=L2cvY29sbGVjdD92PTImdGlkPUctU0VSVkVSJmd0bT00NWplNmFmMGgxejg5X0ctU0VSVkVSemEyMHN6YjkyMzMyMTgzNjR6ZDkyMzMyMTgzNjR4ZjMmX3A9MTc5MjQ0MjAzMzUwOCZnY2Q9MTNsM2wzbDNsMWwxJm5wYT0wJmRtYT0wJmVjaWQ9OTUxODUxNzkzJl9mcGxjPTAmY2lkP",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://keycannabis.com/wp-admin/admin-ajax.php",
+   "size": 81,
+   "sample": "{\"success\":true,\"data\":{\"address\":\"1225 N. State Route 121, Mt. Zion, IL 62549\"}}",
+   "post": "action=fetch_address"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/aiq-sdk/signup-forms/pop-ups/2856",
+   "size": 38,
+   "sample": "{\"data\":[],\"code\":200,\"success\":true}\n"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-XQXS9211GG&gtm=45je6af0v9192611229za20ozb9192291343zd9192291343xf1&_p=1792442033508&_gaz=1&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=EAAAAGAC&cid=1352128465.1792442034&frm=0&ir=1&pscdl=noapi&rcb=13&sr=1366x900&uaa=x86&ua",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://collector-azsx401.dmp.cnna.io/analytics/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://keycannabis.com/shop/mt-zion-il/\",\"page\":\"Weed Dispensary in Mt. Zion, IL - Shop Key Cannabis\",\"eid\":\"58829b80-1b16-4727-bbbb-13a9c7351c8d\",\"tv\":\"js-3.22.1\",\"tna\":\"ed2642c8-c88e-42c8-8e04-e"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/aiq-sdk/widget/enabled?uids=2856",
+   "size": 100,
+   "sample": "{\"data\":{\"enabled\":true,\"chatEnabled\":true,\"recommendationEnabled\":true},\"code\":200,\"success\":true}\n"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://dutchie.com/embedded-menu/key-illinois-mt-zion?dutchie_sid=89bc173e-b9ee-4645-a8dc-8ce98eb58cf7",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://f.clarity.ms/collect",
+   "size": 0,
+   "sample": null,
+   "post": "\u001f�\b\u0000\u0000\u0000\u0000\u0000\u0000\n�ۖ�F� �+h�'�\u001a`��\u001d��U�k)�t�Q���*37\u000eH�\u0011P�\u0004�`ܤќ���y�\u001f�3��o�)�%{��\u0001�� ��\f�t�3\u0019R\u0004i�fn~w737�yRL��L��L�Lf�.��4&1%&��_��o�[/ZO��b���O�xR�f=[�l�3���6������~���٬���juV_U���.����I�<���'����\u001b\u0015��r�bŤz\u0017��&��BRB,������\u0000\u001f\\ē�.^���o&d\u0012O\b\u0010�����\u001c@���.�V�i�TN�\u0010�P�|��`T��\u00182�\u0004Q� �,��(��f�0l�\n�P��\\�\u001e�q���i�5�~�"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://lab.alpineiq.com/aiq-sdk/2856/events",
+   "size": 0,
+   "sample": null,
+   "post": "{\"visitorId\":\"f04b2946-4fe6-4ca6-860c-928f16b30a3f\",\"name\":\"page_view\",\"data\":{\"href\":\"https://keycannabis.com/shop/mt-zion-il/\",\"tz\":\"America/Chicago\",\"deviceId\":\"a2b6c31a-7cb2-4bc9-a846-69fdf57e3076\",\"aiq_device_id\":\"a2b6c31a-7cb2-4bc9-a846-69fdf57e3076\",\"deviceClass\":\"desktop\",\"os\":\"Windows\",\"bro"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/graphql?operationName=ConsumerDispensaries&variables=%7B%22dispensaryFilter%22%3A%7B%22cNameOrID%22%3A%22key-illinois-mt-zion%22%7D%2C%22collectionChannel%22%3A%22WEB%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha2",
+   "size": 66698,
+   "sample": "{\"data\":{\"filteredDispensaries\":[{\"id\":\"6a74ce5ec5ddf43570e79812\",\"customDomainSettings\":{\"domain\":null,\"__typename\":\"Dispensaries_profile_customDomain_settings\"},\"plusSettings\":null,\"distance\":null,\"name\":\"Key Illinois (Mt. Zion)\",\"cName\":\"key-illinois-mt-zion\",\"timezone\":\"US/Central\",\"phone\":\"(217"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/css",
+   "u": "https://lab.alpineiq.com/widget/widget.css",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "size": 212,
+   "sample": "[{\"key\":\"73539f8c-4c57-4fc7-8bb8-9ba2a5c4c391\",\"kind\":\"click\",\"selector\":\"test-experiment-button\",\"urls\":[{\"kind\":\"substring\",\"substring\":\"/embedded-menu/oregrown\"},{\"kind\":\"substring\",\"substring\":\"/oregrown\"}]}]"
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "document",
+   "ct": "",
+   "u": "https://pixel-sync.sitescout.com/dmp/asyncPixelSync",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 202,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.launchdarkly.com/events/diagnostic/5ee2761738b5d10a6705cadf",
+   "size": 0,
+   "sample": "",
+   "post": "{\"kind\":\"diagnostic-combined\",\"id\":{\"diagnosticId\":\"67a527b0-cbfc-11f1-a376-212ed572cafc\",\"sdkKeySuffix\":\"05cadf\"},\"creationDate\":1792442035630,\"dataSinceDate\":1792442035627,\"droppedEvents\":0,\"eventsInLastBatch\":0,\"streamInits\":[],\"sdk\":{\"name\":\"js-client-sdk\",\"version\":\"3.9.0\",\"wrapperName\":\"react-"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiODliYzE3M2UtYjllZS00NjQ1LWE4ZGMtOGNlOThlYjU4Y2Y3IiwidHlwZSI6Imd1ZXN0Q3VzdG9tZXIiLCJjYW5hcnkiOmZhbHNlfSwiYXBwbGljYXRpb24iOnsia2V",
+   "size": 329836,
+   "sample": "{\"pos.backoffice.brands-bulk-actions.rollout\":{\"version\":35081,\"flagVersion\":3,\"value\":false,\"variation\":1,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\":0,\"reason\":{\"kind\":\"FALLTHROUGH\"}},\"fintech.cats.deleted-brand-restriction-fix.rollout\":{\"version\":35081,\"flagVersion\":3,\"value\":f"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-api.ethyca.com/location",
+   "size": 78,
+   "sample": "{\"country\":\"US\",\"ip\":\"209.113.172.235:62408\",\"location\":\"US-IL\",\"region\":\"IL\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/api/v1/widget/locations?locType=all",
+   "size": 12807,
+   "sample": "{\"data\":{\"enabled\":true,\"ecomLocations\":[{\"uid\":\"2856\",\"globalID\":\"8855736e-3bc4-44f6-bf37-9a38058b72a8\",\"locationName\":\"Key Cannabis - KC North\",\"subEcomLocations\":[{\"menuType\":\"rec\",\"availableCategories\":[\"Concentrates \\u0026 Extracts\",\"Flower\",\"Preroll\",\"Vape Cartridge\",\"Edible\"],\"edibleSubCatego",
+   "post": "{\"uids\":[\"2856\"],\"coords\":{\"latitude\":0,\"longitude\":0,\"accuracy\":0},\"preview\":false,\"sessionId\":\"afe64711-ff8c-41ab-a177-b2e39b78e736\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/api-2/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%226a74ce5ec5ddf43570e79812%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22ONLINE_MENU%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%",
+   "size": 21299,
+   "sample": "{\"data\":{\"getSpecialMenuCards\":{\"menuCards\":[{\"_id\":\"335703\",\"applicableCategories\":[{\"category\":\"Flower\",\"subcategories\":[],\"__typename\":\"SpecialApplicableCategory\"}],\"applicablePreOrderTypes\":[\"PICKUP\",\"DELIVERY\",\"CURBSIDE\",\"KIOSK\",\"DRIVE_THRU\"],\"displayRank\":2,\"endStamp\":\"4200-04-19T01:00:00.0000"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/api/v1/widget/settings/2856/both?merge=true&mergeUserSettings=true",
+   "size": 4991,
+   "sample": "{\"data\":{\"userID\":\"2856\",\"menuType\":\"both\",\"merged\":true,\"enabled\":null,\"recommendationSettings\":{\"enabled\":null,\"enableDeviceLocation\":null,\"screenSettings\":{\"selectStore\":{},\"category\":{},\"subcategory\":{\"enabled\":null,\"required\":null,\"edibleEnabled\":null,\"edibleRequired\":null},\"effects\":{\"enabled\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/api/v1/widget/signin/2856",
+   "size": 96,
+   "sample": "{\"data\":{\"signupLink\":\"https://lab.alpineiq.com/join/c/2856/104315\"},\"code\":200,\"success\":true}\n"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/aiq-sdk/stores/2856/external-ids?provider=dutchie",
+   "size": 1280,
+   "sample": "{\"data\":{\"mappings\":[{\"storeID\":1,\"globalID\":\"8855736e-3bc4-44f6-bf37-9a38058b72a8\"},{\"storeID\":3,\"globalID\":\"11762a25-17ea-4df7-9980-17b38d67a36b\"},{\"storeID\":6,\"globalID\":\"f9949c18-ef47-40a3-9721-c1e0a6c371f4\"},{\"storeID\":7,\"globalID\":\"6ff09f8e-1c31-4a69-8e2b-58849c4c876a\"},{\"storeID\":9,\"globalID\""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/api/v1/widget/event",
+   "size": 117,
+   "sample": "{\"data\":{\"event_hash\":\"b3b56c81acfea25c826e4abba45d8e9b4df4b8104330b0e3f4fdfea90fa02c0a\"},\"code\":200,\"success\":true}\n",
+   "post": "{\"uids\":[\"2856\"],\"event_type\":\"internal\",\"action\":\"chat_initialized\",\"details\":{\"aiq_rec\":null,\"aiq_viewed\":[],\"demo\":false,\"source\":\"widgetSettings\"},\"deviceId\":\"a2b6c31a-7cb2-4bc9-a846-69fdf57e3076\",\"sessionId\":\"afe64711-ff8c-41ab-a177-b2e39b78e736\",\"url\":\"https://keycannabis.com/shop/mt-zion-il/\""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/api-2/graphql",
+   "size": 81,
+   "sample": "{\"data\":{\"logAnalyticsPayload\":{\"success\":true,\"__typename\":\"GenericResponse\"}}}\n",
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"6a74ce5ec5ddf43570e79812\",\"dispensary_name\":\"Key Illinois (Mt. Zion)\",\"dispensary_state\":\"IL\",\"dutchie_pay_enabled\":false,\"event\":\"page_view\",\"user_enrolled_dutchie_pay\":false,\"page_ur"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/vnd.api+json",
+   "u": "https://dutchie.com/telemetry",
+   "size": 153,
+   "sample": "{\"data\":{\"id\":\"a998f6bf-f89e-4f0a-9384-45ca1baca051\",\"type\":\"generic_response\",\"attributes\":{\"success\":true,\"message\":null}},\"jsonapi\":{\"version\":\"1.0\"}}",
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"6a74ce5ec5ddf43570e79812\",\"menu_variant\":\"embedded\",\"page\":\"https://dutchie.com/embedded-menu/key-illinois-mt-zion\",\"pageType\":\"home\"}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=true&include_meta=true",
+   "size": 51,
+   "sample": "{\"items\":[],\"total\":0,\"page\":1,\"size\":50,\"pages\":0}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://lab.alpineiq.com/api/v1/widget/rewards/2856?rewardType=rec&deviceId=a2b6c31a-7cb2-4bc9-a846-69fdf57e3076",
+   "size": 218,
+   "sample": "{\"data\":{\"signupLink\":\"https://lab.alpineiq.com/join/c/2856/104315\",\"loyaltyProgramName\":\"Key Rewards\",\"rec\":{\"points\":50,\"userEligible\":true},\"eligibility\":{\"isEligible\":true,\"message\":\"\"}},\"code\":200,\"success\":true}\n"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-FZN7LD29Z4&gtm=45je6af0h1v886842690za20ozb858544012zd858544012xf1&_p=1792442036036&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=453658362.1792442037&frm=2&ngs=1&pscdl=noapi&rcb=10&sr=800x600&uaa=x86&uab=64&uafvl=Google%",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://q.clarity.ms/collect",
+   "size": 0,
+   "sample": null,
+   "post": "\u001f�\b\u0000\u0000\u0000\u0000\u0000\u0000\n콋v۸� �+\u001cezN�7��M�^9s��$�<�;��seQ$$1�H������3�Oܿ�_rW\u0001 \b� E�I�3kf�n�\r\u0016\n\u0005�P(\u0014\nU�\u001349�81��4��9���n�nY�>�X~�v�-Ͼ�\u0013}by���҅ߐ�\u0017�9\u0001�&���T�w�$�:^�h\u001a\u0017�;h=GI�\u0012c���\u0013ta�Y��EZ\u0019����\u0016��>�&�\u001f?��P�\u001c�׽0�?�\u001fmW�,��\u000eu���2-ݞ�\u0019p���k��k[��:�e�\u001e���\u001eھ�O��4]F5�蓕=у�o�\u00158&`�L�q�Ƀ/ǯ&�ǉ9�'&з�Py���,乶癶�;�\u0019�v\u001cڮ\u0013�\b��\n�x������"
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://tags.srv.stackadapt.com/js_tracking?url=https%3A%2F%2Fkeycannabis.com%2Fshop%2Fmt-zion-il%2F&uid=7GCRrQJGtMgbl2n2R0BZbA&v=1&host=https%3A%2F%2Fkeycannabis.com&l_src=&l_src_d=&u_src=&u_src_d=&shop=false",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [
+  "about:blank",
+  "about:blank",
+  "https://ctx.keycannabis.com/_/service_worker/6a60/sw_iframe.html?origin=https%3A%2F%2Fkeycannabis.com&1p=1",
+  "https://dutchie.com/embedded-menu/key-illinois-mt-zion",
+  "https://pixel-sync.sitescout.com/dmp/asyncPixelSync?cookieQ=1",
+  "https://pixel-sync.sitescout.com/dmp/asyncPixelSync"
+ ],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://keycannabis.com/shop/mt-zion-il/",
+ "title": "Weed Dispensary in Mt. Zion, IL - Shop Key Cannabis",
+ "htmlBytes": 217747,
+ "sigs": [
+  "dutchie",
+  "jane",
+  "wordpress"
+ ],
+ "links": [
+  "https://keycannabis.com/shop/mt-zion-il/#content",
+  "https://keycannabis.com/shop/mt-zion-il/#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjI0MjM4IiwidG9nZ2xlIjpmYWxzZX0%3D",
+  "https://keycannabis.com/shop/",
+  "https://keycannabis.com/shop/mt-zion-il/#storeInfo",
+  "https://keycannabis.com/shop/mt-zion-il/#",
+  "https://keycannabis.com/shop/phoenix-az/",
+  "https://keycannabis.com/shop/springerville-az/",
+  "https://keycannabis.com/shop/carbondale-il/",
+  "https://keycannabis.com/shop/mt-zion-il/",
+  "https://keycannabis.com/shop/belton-mo/",
+  "https://keycannabis.com/shop/kc-east-mo/",
+  "https://keycannabis.com/shop/kc-north-mo/",
+  "https://keycannabis.com/shop/south-kansas-city/",
+  "https://keycannabis.com/shop/kirksville-mo/",
+  "https://keycannabis.com/shop/cameron-mo/",
+  "https://keycannabis.com/shop/cottleville-mo/",
+  "https://keycannabis.com/shop/desloge-mo/",
+  "https://keycannabis.com/shop/ofallon-mo/",
+  "https://keycannabis.com/shop/richmond-heights-mo/",
+  "https://keycannabis.com/shop/nixa-mo/",
+  "https://keycannabis.com/shop/springfield-mo/",
+  "https://keycannabis.com/shop/rolla-mo/",
+  "https://keycannabis.com/shop/st-james-mo/"
+ ],
+ "textSample": "SKIP TO MENU REWARDS EVENTS OUR BRANDS FIND YOUR STRAIN BLOG Skip to content SHOP FIND YOUR LOCATION REWARDS EVENTS OUR BRANDS FIND YOUR STRAIN BLOG SHOP YOUR KEY Mt. Zion Dispensary Menu ORDER ONLINE, PICKUP IN STORE ADDRESS 1225 N. State Route 121, Mt. Zion, IL 62549 STORE INFO sEARCH YOUR ZIP SEE ALL LOCATIONS FIND YOUR KEY GET DIRECTIONS Call (217) 864-8415 Store Hours Monday 8:00 AM – 9:00 PM Tuesday 8:00 AM – 9:00 PM Wednesday 8:00 AM – 9:00 PM Thursday 8:00 AM – 9:00 PM Friday 8:00 AM – 9:00 PM Saturday 8:00 AM – 9:00 PM Sunday 8:00 AM – 7:00 PM send an email customercare@keycannabis.com accepted forms of payment We accept cash and debit. Debit transactions are subject to a transactio",
+ "productHints": [],
+ "priceCount": 0,
+ "frameText": [
+  {
+   "url": "https://dutchie.com/embedded-menu/key-illinois-mt-zion",
+   "prices": 123,
+   "sample": "Skip Navigation Home Shop Brands Specials Search Dispensary Info OPEN Pickup MENU Recreational Login 0 items in your shopping cart Login for recommendations & re‑ordering of your favorites New Illinois Purchase Limits 🌿 Flower: Up to 60g (In-State) "
+  }
+ ]
+}

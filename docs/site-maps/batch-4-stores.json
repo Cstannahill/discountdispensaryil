@@ -1,0 +1,1302 @@
+{
+ "region_id": "8f7772ca082601b630476779",
+ "region_label": "Minonk, IL 61760",
+ "radius_miles": 100,
+ "total_region_stores": 190,
+ "batch_sizes": [
+  38,
+  38,
+  38,
+  38,
+  38
+ ],
+ "batch": 4,
+ "slice": [
+  114,
+  152
+ ],
+ "stores": [
+  {
+   "id": "a793a61e88a8c38d89c25573",
+   "source_key": "86355f0afd0ad6826513d3657f3015d6684e8a9248ba7b9872cdc389fb4cc115",
+   "name": "Bud and Ritas Forsyth",
+   "address": "1401 Hickory Point Dr.",
+   "city": "Macon",
+   "state": "IL",
+   "latitude": 39.92204,
+   "longitude": -88.95701,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 67.6,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "a7d1742cbe01649ce144f749",
+   "source_key": "7a5ca06d66dbba3104bc534b9c9723124859de866daf9821440bf596cba60642",
+   "name": "Rise - Canton",
+   "address": "3104 N Main St",
+   "city": "Canton",
+   "state": "IL",
+   "latitude": 40.556808,
+   "longitude": -90.026962,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 57.1,
+   "endpoints": [
+    {
+     "provider": "generic",
+     "url": "https://wheresweed.com/illinois/canton/marijuana-dispensaries/evergreen-il",
+     "status": "partial",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/canton/1343/recreational-menu/",
+     "status": "evidence"
+    }
+   ]
+  },
+  {
+   "id": "a83b7e25428671afe6d5d178",
+   "source_key": "53f4094116d69a25b19b123b65c21076216bbde16ec0bbcce7880ccd49157356",
+   "name": "Consume St. Charles",
+   "address": "584 S Randall Rd.",
+   "city": "St Charles",
+   "state": "IL",
+   "latitude": 41.90451,
+   "longitude": -88.33858,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 78.3,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "a8885742a7f0704804740fd0",
+   "source_key": "00de7dd81c894007c4c350a983bbfe103851f93ebfc582d0392e4a82a3b35803",
+   "name": "Sunnyside - Elmwood Park",
+   "address": "7955 W Grand Ave",
+   "city": "Elmwood Park",
+   "state": "IL",
+   "latitude": 41.922359,
+   "longitude": -87.807732,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 95.1,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "a9b8267a1dc370dc2b19cd77",
+   "source_key": "48e75dc37b801ab29c7a21192353b704a2531fc38528d8e0adaca364d7c17296",
+   "name": "Mint Cannabis - Villa Park",
+   "address": "310 E North Ave",
+   "city": "Villa Park",
+   "state": "IL",
+   "latitude": 41.90663,
+   "longitude": -87.9706,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 88.8,
+   "endpoints": [],
+   "platforms": [
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/arizona/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/florida5/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/michigan/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/missouri/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/las-vegas-strip/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/find-your-mint/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/mesa-az/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/tempe-az/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/phoenix-az/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/75-ave-phx/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/buckeye-az/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/gilbert-az/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/east-mesa-az/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/scottsdale-az/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/northern-ave-phx/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/miami/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/stuart/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/brandon/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/orlando/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/madison/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/longwood/menu/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://mintdeals.com/sarasota/menu/",
+     "status": "evidence"
+    }
+   ]
+  },
+  {
+   "id": "aaf1a4f16f95df2e7b369839",
+   "source_key": "b6df4204eda8ff922132e6cf86abc80a0ba4482997c362098a5384eece140bf9",
+   "name": "NCC Chi-West Loop",
+   "address": "810 W. Randolph St.",
+   "city": "Chicago",
+   "state": "IL",
+   "latitude": 41.88617,
+   "longitude": -87.64754,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 99.1,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "ab4f4bad620551a9b54a2a51",
+   "source_key": "9f3b7646e470ad7e30b69a866790f0a761d1b6bbf55fb21ec5d7a73f4181cf4d",
+   "name": "Mood Shine Chicago Heights",
+   "address": "628 W Lincoln Hwy",
+   "city": "Chicago Heights",
+   "state": "IL",
+   "latitude": 41.50587,
+   "longitude": -87.66986,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 82.4,
+   "endpoints": [
+    {
+     "provider": "sweed",
+     "url": "https://moodshine.com/chicagoheights/menu/discounts",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "sweed",
+     "url": "https://moodshine.com/chicagoheights/menu/discounts?promo=products",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "ad3b9a466cfa63aa1e9b4864",
+   "source_key": "fa75f73b9b49a8dfe274725e3af93451e92c95ca03f6b20f8ea7400f76363051",
+   "name": "Be Blue Island",
+   "address": "12720 Western Ave",
+   "city": "Blue Island",
+   "state": "IL",
+   "latitude": 41.66685,
+   "longitude": -87.6821,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 88.0,
+   "endpoints": [
+    {
+     "provider": "generic",
+     "url": "https://menu.bestoresil.com/shop",
+     "status": "partial",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "treez",
+     "url": "https://menu.bestoresil.com/shop",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "ad8a9c6c2c0f33b2985abc47",
+   "source_key": "26673027dda10d4880cfc78a51c59429eb619bcb84417734f5b762a19a948a7a",
+   "name": "Bloc - Forest Park",
+   "address": "7216 Circle Ave",
+   "city": "Forest Park",
+   "state": "IL",
+   "latitude": 41.88649,
+   "longitude": -87.80596,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 93.4,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "b1eeff216532a0d70f3b5197",
+   "source_key": "a61cb186408f30be664d43a1ed51f66b8b8baa609dff13373413cc8974de2299",
+   "name": "Starbuds WM",
+   "address": "101 W Ogden Ave",
+   "city": "Westmont",
+   "state": "IL",
+   "latitude": 41.80992,
+   "longitude": -87.97909,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 83.5,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "b2e41af95cd61321332edcc5",
+   "source_key": "9773d370991747a6e69516d4b044e73406ee25863613fb3e4646d6e481c4dfd7",
+   "name": "Cookies Bolingbrook",
+   "address": "190 S Weber Rd",
+   "city": "Bolingbrook",
+   "state": "IL",
+   "latitude": 41.69409,
+   "longitude": -88.10299,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 73.2,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "b316a6a7506798eca042de3e",
+   "source_key": "584e9adfcdaaa8f679e2649a3933eaae2167a3b70856a1bbb6495d6ed3cba26d",
+   "name": "Here and Now - Des Plaines",
+   "address": "1587 Lee St.",
+   "city": "Des Plaines",
+   "state": "IL",
+   "latitude": 42.02752,
+   "longitude": -87.89354,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 97.9,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "b418eec40d538072dd9c2403",
+   "source_key": "30fa5347d0598f14f5efde7ced48404a463b16f5f09bd4df2610fdffb1efa3c5",
+   "name": "Stash Orland Hills",
+   "address": "9545 167th St.",
+   "city": "Orland Hills",
+   "state": "IL",
+   "latitude": 41.58614,
+   "longitude": -87.85076,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 77.7,
+   "endpoints": [
+    {
+     "provider": "generic",
+     "url": "https://www.stashdispensaries.com/shop",
+     "status": "partial",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "treez",
+     "url": "https://www.stashdispensaries.com/shop",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "b850cedaea79404e2302a52b",
+   "source_key": "5598bed571cf78ed55e7e032e8a6750bedef28a0e5a0db7e7526f0512f3ba48c",
+   "name": "Starbuds - Summit",
+   "address": "5436 S Harlem Ave",
+   "city": "Summit",
+   "state": "IL",
+   "latitude": 41.79287,
+   "longitude": -87.802,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 88.9,
+   "endpoints": [
+    {
+     "provider": "generic",
+     "url": "https://shop.starbuds.us/menu/",
+     "status": "partial",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "dutchie",
+     "url": "https://starbudsillinois.us/stores/star-buds-summit",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "b90f81a69836f9fae35b8ba1",
+   "source_key": "77accb9af534a261eefbf317d7098cdd321b043f922fa854a499286af9ac0e53",
+   "name": "Sparkd Dispensary - South Loop",
+   "address": "2114 S Wabash Ave",
+   "city": "Chicago",
+   "state": "IL",
+   "latitude": 41.85375,
+   "longitude": -87.62593,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 98.4,
+   "endpoints": [
+    {
+     "provider": "sweed",
+     "url": "https://www.sparkdcannabis.com/southloop/menu",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "sweed",
+     "url": "https://www.sparkdcannabis.com/southloop/menu",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "b9bead709f127c0480fe495b",
+   "source_key": "6f03cb57190efbdc9851573e828727575118d36c1dca2cb39409677e3f49f586",
+   "name": "SHARE - Springfield",
+   "address": "3600 S 6th Street Rd",
+   "city": "Springfield",
+   "state": "IL",
+   "latitude": 39.75154,
+   "longitude": -89.64391,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 85.5,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "ba627424559915d9bc2241fe",
+   "source_key": "91ba5fa20b63dc6be3b4137be3579df1d9e74544d4169e93179e04b3ab8ae785",
+   "name": "Spark'd Wicker Park",
+   "address": "1212 N Ashland Ave",
+   "city": "Chicago",
+   "state": "IL",
+   "latitude": 41.90408,
+   "longitude": -87.66784,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 99.2,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "bab723d30622656510427200",
+   "source_key": "f27ccf63aa9f955e3efd1e82ab34ad5c582f40222a301cfe92d979a365d2e01a",
+   "name": "Cloud 9 Cannabis - Schaumburg",
+   "address": "1823 W Wise Rd.",
+   "city": "Schaumburg",
+   "state": "IL",
+   "latitude": 42.00338,
+   "longitude": -88.1257,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 89.7,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "bac059232aba18c341b977e5",
+   "source_key": "17fddd1f8cadb6ab79b97b530a66ebacaf417e0822bd3a403f0949427c3c9d91",
+   "name": "Mission - Norridge",
+   "address": "4113 N Harlem Ave",
+   "city": "Norridge",
+   "state": "IL",
+   "latitude": 41.95872,
+   "longitude": -87.8064,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 97.0,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "bacce4841f4db8c440872a29",
+   "source_key": "0a0cfecb0090701a597caed1b6d7bc7d27076f2adaff74192a63f2b5593e645c",
+   "name": "Prairie Cannabis South Loop",
+   "address": "622 W Roosevelt Rd",
+   "city": "Chicago",
+   "state": "IL",
+   "latitude": 41.86751,
+   "longitude": -87.64317,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 98.4,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "c26e7ce34d808ba352c257c0",
+   "source_key": "7fee594523907dc5e23d6df162393a11623eabdc27d33d60ba5f884951d8bb4d",
+   "name": "Prairie Cannabis - Naperville",
+   "address": "4S120 N Route 59",
+   "city": "Warrenville",
+   "state": "IL",
+   "latitude": 41.79645,
+   "longitude": -88.20552,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 75.5,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "c2c8560a3475b2a23c6e7f7d",
+   "source_key": "8f5b2f2885d45f776eab59f4bc5e66a0918a35767f7f6b80a4d841ea9abd3a65",
+   "name": "Starbuds - Riverside",
+   "address": "2704 Harlem Ave",
+   "city": "Riverside",
+   "state": "IL",
+   "latitude": 41.84185,
+   "longitude": -87.80374,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 91.2,
+   "endpoints": [],
+   "platforms": [
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "joint",
+     "url": "https://shop.starbuds.us/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://www.starbuds.us/locations",
+     "status": "unresolved"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/stores/colorado-springs-dispensary",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://starbudsillinois.us/stores/star-buds-summit",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://starbudsillinois.us/stores/star-buds-riverside",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/specials",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/specials/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/stores/pearl/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "jane",
+     "url": "https://shop.starbuds.us/stores/pearl/",
+     "status": "evidence"
+    },
+    {
+     "platform": "joint",
+     "url": "https://shop.starbuds.us/stores/pearl/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/cannabinoids/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "joint",
+     "url": "https://shop.starbuds.us/cannabinoids/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/shop/vape",
+     "status": "evidence"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/shop/featured",
+     "status": "evidence"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/shop/deals",
+     "status": "evidence"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/shop/flower",
+     "status": "evidence"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/shop/edible",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://www.starbuds.us/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/stores/summit-dispensary/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/stores/riverside-dispensary/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/menu/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/stores/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/effects/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/strains/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://shop.starbuds.us/terpenes/",
+     "status": "unresolved"
+    },
+    {
+     "platform": "jane",
+     "url": "https://starbudscolorado.com/shop/login",
+     "status": "unresolved"
+    }
+   ]
+  },
+  {
+   "id": "c3cf6985376664c83de29969",
+   "source_key": "3436c3d6cd8869bd46c116e14f3a479df1652c1c1aebf693ebb0f2c9b0c70c07",
+   "name": "Windy City Cannabis  Carpentersville",
+   "address": "125 S Western Ave",
+   "city": "Carpentersville",
+   "state": "IL",
+   "latitude": 42.121529,
+   "longitude": -88.275726,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 93.2,
+   "endpoints": [
+    {
+     "provider": "sweed",
+     "url": "https://www.windycitycannabis.com/shop/carpentersville/menu",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "sweed",
+     "url": "https://www.windycitycannabis.com/shop/carpentersville",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "c46f48bf9bc1183a7e4a5bbd",
+   "source_key": "157af618a426319d4309701520e84a9e03c552c220bed0ae24db090e85ba80f9",
+   "name": "Mystic Greenz - Decatur",
+   "address": "5405 Indus. Dr.",
+   "city": "Decatur",
+   "state": "IL",
+   "latitude": 39.84513,
+   "longitude": -89.03858,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 72.8,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "c4716614cca0642dca14a85c",
+   "source_key": "965280d98efb48a52644ff264bd8b5d9f4e9bec2c64df979eae95324f3fdd82b",
+   "name": "Lux Leaf Dispensary",
+   "address": "5539 Miller Circle Dr",
+   "city": "Matteson",
+   "state": "IL",
+   "latitude": 41.4998,
+   "longitude": -87.74937,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 78.7,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "c4bfab8f31fb033ab6174b5c",
+   "source_key": "8ba403a9a00c6b7074681d7ff2f60181d38da5c306c03e255676b1d7452dd0a1",
+   "name": "Namaste Wellness",
+   "address": "6119 East Ave A",
+   "city": "Hodgkins",
+   "state": "IL",
+   "latitude": 41.77939,
+   "longitude": -87.85795,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 86.2,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "c87b36b0aab30bd55e18248c",
+   "source_key": "99cd069dd5c32869847418b318b4f66d86fbc470f6f3813cd2c2b22cce1459bc",
+   "name": "AuraLight - Aurora",
+   "address": "1350 N Orchard Rd",
+   "city": "Aurora",
+   "state": "IL",
+   "latitude": 41.7844,
+   "longitude": -88.3756,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 70.1,
+   "endpoints": [
+    {
+     "provider": "dispense",
+     "url": "https://www.auralightdispensary.com/shop",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "dispense",
+     "url": "https://www.auralightdispensary.com/shop/categories/concentrates",
+     "status": "observed"
+    },
+    {
+     "platform": "flowhub",
+     "url": "https://www.auralightdispensary.com/shop/categories/concentrates",
+     "status": "observed"
+    },
+    {
+     "platform": "posabit",
+     "url": "https://www.auralightdispensary.com/shop/categories/concentrates",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "cd2371f54ceb4e50bdaaceb7",
+   "source_key": "6e015d9074ec370f024157a3d456c899a5171ecf19bde1436a199a7a61a7738d",
+   "name": "Noxx - East Peoria",
+   "address": "300 S Main St",
+   "city": "East Peoria",
+   "state": "IL",
+   "latitude": 40.66587,
+   "longitude": -89.58316,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 32.9,
+   "endpoints": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/65772a69ac53410009424572",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "weedmaps",
+     "url": "https://noxx.com/locations/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://noxx.com/location/noxx-peoria/",
+     "status": "observed"
+    },
+    {
+     "platform": "weedmaps",
+     "url": "https://noxx.com/location/noxx-peoria/",
+     "status": "observed"
+    },
+    {
+     "platform": "weedmaps",
+     "url": "https://noxx.com/",
+     "status": "observed"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/65772a69ac53410009424572",
+     "status": "observed"
+    },
+    {
+     "platform": "weedmaps",
+     "url": "https://dutchie.com/embedded-menu/65772a69ac53410009424572",
+     "status": "observed"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchie.com/embedded-menu/noxx-peoria",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "ce1679e75e0f76b342edb28f",
+   "source_key": "e776896518300ed5fab3d482215fc313570cdc7dff7fcc5aeb20bf3eae6bc74c",
+   "name": "Beyond/Hello - Peoria",
+   "address": "7620 N IL Rt 91",
+   "city": "Peoria",
+   "state": "IL",
+   "latitude": 40.78163,
+   "longitude": -89.66802,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 34.1,
+   "endpoints": [],
+   "platforms": [
+    {
+     "platform": "jane",
+     "url": "https://beyond-hello.com/illinois-dispensaries/",
+     "status": "unresolved"
+    }
+   ]
+  },
+  {
+   "id": "ceaac795f469be6d55c40b5a",
+   "source_key": "1ad893c53508ec6d30719c940453ebc9a0817d6a50ac7c31c28a4033e0d061f0",
+   "name": "High Haven Elgin",
+   "address": "15 Clock Tower Plz",
+   "city": "Elgin",
+   "state": "IL",
+   "latitude": 42.02897,
+   "longitude": -88.27615,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 87.4,
+   "endpoints": [
+    {
+     "provider": "jane",
+     "url": "https://highhavencannabis.com/elgin-il-dispensary-the-record-store/elgin-menu/",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "jane",
+     "url": "https://highhavencannabis.com/elgin-il-dispensary-the-record-store/elgin-menu/",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "cebd23a438ae273e645ca1c2",
+   "source_key": "0faece6f2c30fe1cf44428d485455cb938bb24246d0fc5d79ca735abd45ea373",
+   "name": "Windy City Cannabis  Macomb",
+   "address": "518 W Jackson St",
+   "city": "Macomb",
+   "state": "IL",
+   "latitude": 40.45649,
+   "longitude": -90.669296,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 90.9,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "cf638f1df34b46b50f7ef28e",
+   "source_key": "12c296d3f27db67b17052bad4f621f7d6600266aadd7d9846feada76ad951ca5",
+   "name": "Revolution Dispensary Schaumburg",
+   "address": "820 E. Golf Rd.",
+   "city": "Schaumburg",
+   "state": "IL",
+   "latitude": 42.052132,
+   "longitude": -88.047821,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 94.7,
+   "endpoints": [
+    {
+     "provider": "sweed",
+     "url": "https://shop.revcanna.com/schaumburg/menu/discounts",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "sweed",
+     "url": "https://shop.revcanna.com/schaumburg/menu/discounts",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "d427d05ec02693a6db6173b9",
+   "source_key": "de6bad4c0494d9d91064dec46e083133c243ee4941fa247454e4de35ec30498b",
+   "name": "Excelleaf Dispensary",
+   "address": "305 E Locust St",
+   "city": "DeKalb",
+   "state": "IL",
+   "latitude": 41.93122,
+   "longitude": -88.7506,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 72.9,
+   "endpoints": [
+    {
+     "provider": "dutchie",
+     "url": "https://dutchie.com/api/v2/embedded-menu/64888ad400476b00104ffe4d.js",
+     "status": "partial",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "dutchie",
+     "url": "https://www.excelleaf.com/menu/?dtche%5Bcategory%5D=concentrates",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "d5810e9acb67d055ac59d062",
+   "source_key": "c16ecd6389f40e0f7ab84a35c10d14faf8a56a60a7ce24ebc7450efa930c117f",
+   "name": "The Happy Cannabis Company - Rockford",
+   "address": "4777 Stenstrom Rd",
+   "city": "Rockford",
+   "state": "IL",
+   "latitude": 42.213741,
+   "longitude": -89.045242,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 90.9,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "d5cc4078f2c2168a3b77337f",
+   "source_key": "6e02c97fa715e874ff35125b403734bbc6c6834a3a3331b8a363a1850d004047",
+   "name": "Hi Rise Dispensary",
+   "address": "1795 N Barrington Rd",
+   "city": "Hoffman Estates",
+   "state": "IL",
+   "latitude": 42.05792,
+   "longitude": -88.14376,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 92.4,
+   "endpoints": [],
+   "platforms": []
+  },
+  {
+   "id": "d711331250acabacc8627479",
+   "source_key": "360cae122a1cffcbbf5558099e2e294664c6db78eab0b79cf40bf0b217e5c9b4",
+   "name": "Parkway Dispensary - Tilton",
+   "address": "2 Donna Dr.",
+   "city": "Tilton",
+   "state": "IL",
+   "latitude": 40.08974,
+   "longitude": -87.63429,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 92.4,
+   "endpoints": [
+    {
+     "provider": "sweed",
+     "url": "https://shop.parkwaydispensary.com/tilton/menu",
+     "status": "complete",
+     "license": "recreational"
+    },
+    {
+     "provider": "dispense",
+     "url": "https://www.parkwaydispensary.com/order-online",
+     "status": "complete",
+     "license": "recreational"
+    }
+   ],
+   "platforms": [
+    {
+     "platform": "sweed",
+     "url": "https://shop.parkwaydispensary.com/tilton/menu",
+     "status": "observed"
+    },
+    {
+     "platform": "dispense",
+     "url": "https://www.parkwaydispensary.com/order-online",
+     "status": "observed"
+    },
+    {
+     "platform": "flowhub",
+     "url": "https://www.parkwaydispensary.com/order-online",
+     "status": "observed"
+    },
+    {
+     "platform": "posabit",
+     "url": "https://www.parkwaydispensary.com/order-online",
+     "status": "observed"
+    }
+   ]
+  },
+  {
+   "id": "d82d521f2ac403f80a41a7c0",
+   "source_key": "3a30fc949cc12622e91aa2c1f1b61809a622f2afa30e067f78838889af1581eb",
+   "name": "Dutchess Cannabis - Batavia",
+   "address": "144 S Randall Rd",
+   "city": "Batavia",
+   "state": "IL",
+   "latitude": 41.84802,
+   "longitude": -88.33947,
+   "serves_medical": 0,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 74.9,
+   "endpoints": [],
+   "platforms": [
+    {
+     "platform": "dutchie",
+     "url": "https://dutchie.com/dispensary/lynwood-illinois",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/oak-park-illinois",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/lynwood-illinois",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/markham-illinois",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/morton-grove-illinois",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/dutchess-plano-il",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/oak-park-illinois/info",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/oak-park-illinois/brands",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchesscanna.com/stores/north-riverside-illinois",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchie.com/",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchie.com/cities",
+     "status": "evidence"
+    },
+    {
+     "platform": "dutchie",
+     "url": "https://dutchie.com/us/dispensaries/il-lynwood",
+     "status": "evidence"
+    }
+   ]
+  },
+  {
+   "id": "da9463219e357dcdd5051b68",
+   "source_key": "0a79c54fad074b1619cae078f532844b203d6931ed695d0c8a8069289b933f74",
+   "name": "Rise  Lake in the Hills",
+   "address": "270 N Randall Rd",
+   "city": "Lake In The Hills",
+   "state": "IL",
+   "latitude": 42.18713,
+   "longitude": -88.34729,
+   "serves_medical": 1,
+   "identity_status": "registry_candidate",
+   "operating_status": "unverified",
+   "source_present": 1,
+   "source_evidence": "0f1224b615a15c4b96113f509e992c1a331e0f48a8d0cad0ac900927de83439c",
+   "observed_at": "2026-10-17T13:10:15.475767+00:00",
+   "distance_miles": 95.9,
+   "endpoints": [],
+   "platforms": [
+    {
+     "platform": "jane",
+     "url": "https://risecannabis.com/dispensaries/illinois/lake-in-the-hills/2901/recreational-menu/",
+     "status": "evidence"
+    }
+   ]
+  }
+ ]
+}

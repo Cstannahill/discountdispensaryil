@@ -1,0 +1,42 @@
+{
+  "store_id": "8ce3f490d5c2e8700b3ed175",
+  "name": "Dutchess Cannabis Oak Park",
+  "slug": "dutchess-cannabis-oak-park",
+  "registry": {"address": "1132 Lake St", "city": "Oak Park", "state": "IL", "latitude": 41.88886, "longitude": -87.80427, "distance_miles": 93.5},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://dutchesscanna.com/stores/oak-park-illinois",
+  "menu_url": "https://dutchesscanna.com/stores/oak-park-illinois (Dutchie-hosted equivalent: https://dutchie.com/embedded-menu/67db07ba10222724bf2c44a3). Recreational menu; medical toggle shares the same product set.",
+  "platform": "dutchie",
+  "how_menu_reached": "Same Dutchie white-label storefront as the other Dutchess branches (dutchesscanna.com reverse-proxies /stores/oak-park-illinois to a Dutchie Next.js app; also sub-routes /brands, /info, /specials). No iframe/plugin. The platform and JSON-LD declare the address as 1142 Lake St, Oak Park IL 60301 (geo 41.88871,-87.80450), 25 m from the registry point; the registry has 1132. Already decided by the operator in backend/providers/generic.py ACCEPTED_STREET_MISMATCHES (commit b077228) for this store id.",
+  "branch_selection": "URL slug oak-park-illinois; SSR \"dispensaryId\":\"67db07ba10222724bf2c44a3\",\"chainId\":\"dutchess\"; getChainDispensaries id 67db07ba10222724bf2c44a3 name 'Dutchess IL - Oak Park' status open phone (708) 898-4180 address 1142 Lake Street.",
+  "age_gate": "click-through (Dutchie 21+ overlay)",
+  "data_loading": {
+    "mechanism": "GraphQL over GET with Apollo persisted queries, same-origin /api-0/graphql",
+    "endpoints": [
+      "GET https://dutchesscanna.com/api-0/graphql?operationName=FilteredProducts&variables={includeEnterpriseSpecials:false,productsFilter:{dispensaryId:'67db07ba10222724bf2c44a3',pricingType:'rec',Status:'Active',types:[],sortBy:'popular',isDefaultSort:true,removeProductsBelowOptionThresholds:true,platformType:'ONLINE_MENU',...},page:N,perPage:100}&extensions={persistedQuery:{version:1,sha256Hash:'cfbda410fd502c77b467a174a666b809bec1e61c70ee7f75de1aff7440b59bf4'}}",
+      "GET .../api-0/graphql?operationName=MenuFiltersV2 | GetMenuSections | GetCollection(s) | getChainDispensaries | GetAddressBasedDispensaryData (IL REC tax 31%/35% potency, delivery info)"
+    ],
+    "notes": "Page load issues only collection-scoped FilteredProducts (e.g. 'Royal Deals' 40 items). Whole-menu query = no collectionId/types. Taxes are exposed separately; prices are pre-tax. Product has recPrices/recSpecialPrices/medicalPrices arrays parallel to Options."
+  },
+  "paging": "page 0-based + perPage (cap 100). Whole menu: totalCount 796-799 depending on flags/sort (varies by query), totalPages 8 at perPage 100. With removeProductsBelowOptionThresholds=true (the shopper-visible default) the declared total includes ~5-7 products that are dropped from the pages, so the union is 792 unique no matter the sort (popular/name/price/createdAt all 792; declared 796-798). With removeProductsBelowOptionThresholds=false the union is 799 unique = declared 799 exactly (stable with a deterministic sort). pricingType=med also reported 799. Category totals (default flags): Flower 224-226, Pre-Rolls 139, Edible 167-168, Vaporizers 129, Concentrate 52, Accessories 78, Tincture 2, Topicals 2.",
+  "approx_product_count": 799,
+  "license_channels": "Registry serves_medical=1; site says it serves adult-use and medical. Dutchie exposes one product set with rec and medical price arrays (pricingType 'rec' | 'med' both returned 799 products). No separate menu URL observed.",
+  "blockers": ["none in Chrome", "raw HTTP to dutchie.com graphql = Cloudflare challenge (403), not evaded"],
+  "evidence": [
+    "dutchesscanna.com/stores/oak-park-illinois: 'Dutchess IL - Oak Park Cannabis Menu', OPEN badge, JSON-LD streetAddress 1142 Lake St",
+    "getChainDispensaries lists Dutchess IL branches: Morton Grove, Oak Park, North Riverside, Lynwood, Markham, Batavia, Plano (+MA/Verilife OH on same chain list)",
+    "Threshold experiment: removeProductsBelowOptionThresholds=false -> 799 unique / 799 total; true -> 792 unique / 796-798 total",
+    "Resolver result: first candidate dutchesscanna.com/stores/oak-park-illinois had identity_status 'conflict' (JSON-LD 1142 Lake St vs registry 1132)"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: 'Candidate website found; branch name/locality or street address still needs matching' (identity conflict on the correct page because of the 1132 vs 1142 street number)",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution attempt (job c2112fa0, 2026-10-18): unresolved, code LEAD_UNVERIFIED, grade D, 196s; 8 leads (sibling branch pages incl. /info and /brands sub-routes)",
+    "sample": null
+  },
+  "why_it_fails": "The correct page was found (it was the first candidate) but rejected by branch identity: site_discovery.inspect_page() compares the registry street (1132 Lake St) with the page's JSON-LD (1142 Lake St); addresses_match fails so identity_status='conflict' and the store is left unresolved. The operator's later exception (generic.py ACCEPTED_STREET_MISMATCHES, commit b077228) only relaxes the fetch-time check in providers/generic.py; it does not relax the resolver's inspect_page conflict nor create the endpoint, so the exception is never reached. As for extraction, after fixing identity the Dutchie path would still not grade A: at default flags the declared total (796-798) exceeds the achievable union (792) because thresholded products are counted but not returned.",
+  "fix_idea": "(1) Apply the accepted-street-mismatch table in the resolver too (inspect_page/provider_address_matches) or, better, add a coordinate proof: the page's geo (41.88871,-87.80450) is 25 m from the registry point; treat address conflict + coords within ~100 m + same city as 'matched with note'. (2) Add the dutchess chain connector / Dutchie white-label locator (see Lynwood/Markham maps) so the correct slug is found without search. (3) Dutchie replay must request removeProductsBelowOptionThresholds=false (and a deterministic sortBy) so unique ids == queryInfo.totalCount (799/799), and treat isBelowThreshold products as unavailable rather than dropping them silently.",
+  "root_cause_tag": "dutchie-whitelabel-address-digit-conflict",
+  "confidence": "high"
+}

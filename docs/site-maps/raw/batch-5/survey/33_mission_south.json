@@ -1,0 +1,324 @@
+{
+ "key": "33_mission_south",
+ "url": "https://missiondispensaries.com/stores/mission-south-shore",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://extensions.the-grow-agency.dutchie.partners/mf-manifest.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 271363,
+   "arr": {
+    "n": 100,
+    "path": "$.exposes",
+    "keys": [
+     "id",
+     "name",
+     "assets",
+     "path"
+    ]
+   }
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 212
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiMzcxNTI0MzQtZjhjNy00OWQ4LTkwMGYtYjYzNmYxMzM1MGYzIiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 330260
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=PriceRangeFilterSettings&variables=%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 457
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Afalse%7D&exten",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 31594,
+   "arr": {
+    "n": 88,
+    "path": "$.data.menuFiltersV2.brands",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "imageUrl",
+     "__typename"
+    ]
+   }
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22ONLINE_",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 11335
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetMenuSections&variables=%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2609
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetAddressBasedDispensaryData&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%7D%7D&extensions=%7B%22persistedQue",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 5536
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetPersonalizedProductsV2&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%2C%22limit%22%3A3%2C%22filters%22%3A%7B",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 25184,
+   "arr": {
+    "n": 3,
+    "path": "$.data.getPersonalizedProductsV2.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%2C%22customCategory%22%3Atrue%2C%22enabled%22%3Atrue%2C%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 316
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetDutchiePosLoyaltyConfig&variables=%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 793
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GeolocateConsumer&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2224fe610f1b4d4a8a09f95da",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 224
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation identifySession($session_secure_id: String!, $user_identifier: String!, $user_object: Any) {\\n  identifySession(\\n    session_secure_id: $ses"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation addSessionProperties($session_secure_id: String!, $properties_object: Any) {\\n  addSessionProperties(\\n    session_secure_id: $session_secure"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 137,
+   "post": "{\"query\":\"mutation initializeSession($session_secure_id: String!, $session_key: String, $organization_verbose_id: String!, $enable_strict_privacy: Boolean!, $pr"
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81,
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"jiobsXYAusMTG8ivs\",\"dispensary_name\":\"Missio"
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%226a4d81b9c85a3ca7f",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 42691,
+   "arr": {
+    "n": 5,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://cdn-api.ethyca.com/location",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 78
+  },
+  {
+   "u": "https://missiondispensaries.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"jiobsXYAusMTG8ivs\",\"menu_variant\":\"store-front\",\"page\":\"https://missiondispensaries.com/stores/mission-south-sh"
+  },
+  {
+   "u": "https://pub.observability.app.launchdarkly.com/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/graphql-response+j",
+   "len": 0,
+   "post": "{\"query\":\"mutation PushSessionEvents($session_secure_id: String!, $payload_id: Int64ID!, $data: String!) {\\n  pushSessionEvents(\\n    session_secure_id: $sessio"
+  },
+  {
+   "u": "https://missiondispensaries.com/api-0/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%22jiobsXYAusMTG8ivs%22%2C%22customCategory%22%3Afalse%2C%22enabled%22%3Atrue%2C%",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 41
+  },
+  {
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=t",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 51
+  },
+  {
+   "u": "https://r.surfside.io/7ed89/91ef1/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 31575
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://missiondispensaries.com/stores/mission-south-shore",
+ "title": "Mission (South Chicago) Cannabis Menu | Chicago, IL",
+ "htmlLen": 338286,
+ "prices": 40,
+ "textHead": "Skip Navigation return to dispensary home page Back home | Browse Locations Home Shop Brands Specials Search Dispensary Info OPEN Pickup MENU Recreational Login 0 items in your shopping cart Login",
+ "iframes": [],
+ "nextdata": true,
+ "links": [
+  "https://dutchie.com/kiosks/mission-south-shore/product/hrc-membership-one-month",
+  "https://dutchie.com/kiosks/mission-south-shore/product/hrc-membership-three-month",
+  "https://dutchie.com/privacy"
+ ],
+ "count_text": "0\nitems",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "assets2.dutchie.com",
+   48
+  ],
+  [
+   "images.dutchie.com",
+   25
+  ],
+  [
+   "missiondispensaries.com",
+   21
+  ],
+  [
+   "pub.observability.app.launchdarkly.com",
+   8
+  ],
+  [
+   "www.googletagmanager.com",
+   7
+  ],
+  [
+   "tags.cnna.io",
+   6
+  ],
+  [
+   "extensions.the-grow-agency.dutchie.partners",
+   5
+  ],
+  [
+   "",
+   5
+  ],
+  [
+   "cdn.surfside.io",
+   4
+  ],
+  [
+   "www.google.com",
+   4
+  ],
+  [
+   "r.surfside.io",
+   3
+  ],
+  [
+   "www.google-analytics.com",
+   3
+  ],
+  [
+   "app.launchdarkly.com",
+   2
+  ],
+  [
+   "clientstream.launchdarkly.com",
+   2
+  ]
+ ]
+}

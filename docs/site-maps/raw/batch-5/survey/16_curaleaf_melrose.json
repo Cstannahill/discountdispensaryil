@@ -1,0 +1,163 @@
+{
+ "key": "16_curaleaf_melrose",
+ "url": "https://curaleaf.com/shop/illinois/curaleaf-il-melrose-park/menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://curaleaf.com/privacy-policy?_rsc=aGTQR0_eS7JJk1kN",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/terms-of-service?_rsc=aGTQR0_eS7JJk1kN",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/cookie-policy?_rsc=aGTQR0_eS7JJk1kN",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/web-accessibility-statement?_rsc=aGTQR0_eS7JJk1kN",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/api/users/me",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 33
+  },
+  {
+   "u": "https://curaleaf.com/notice-of-privacy-practices?_rsc=aGTQR0_eS7JJk1kN",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/web-accessibility-statement?_rsc=YfyxrNWavzqGlD2B",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/terms-of-service?_rsc=YfyxrNWavzqGlD2B",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/privacy-policy?_rsc=YfyxrNWavzqGlD2B",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/notice-of-privacy-practices?_rsc=YfyxrNWavzqGlD2B",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://curaleaf.com/cookie-policy?_rsc=YfyxrNWavzqGlD2B",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://r.surfside.io/5b224/bef15/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 18532
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  }
+ ],
+ "frames": [
+  "https://curaleaf.com/metrics/_/service_worker/6a60/sw_iframe.html?origin=https%3A%2F%2Fcuraleaf.com&1p=1&path=%2Fmetrics"
+ ],
+ "status": 200,
+ "age_gate_text": "Enable accessibility Hey, Welcome to Curaleaf SELECT YOUR STATE Illinois Arizona Connecticut Florida Illinois Maine Maryland Massachusetts Nevada New Jersey New York North Dakota Ohio Pennsylvania Utah You must be 21 or older to view this site, or a qualified medical patient in Illinois. I am 21 y",
+ "age_click": "I'm over 21",
+ "final_url": "https://curaleaf.com/age-gate?returnurl=%2Fshop%2Fillinois%2Fcuraleaf-il-melrose-park%2Fmenu",
+ "title": "Age Gate",
+ "htmlLen": 262897,
+ "prices": 0,
+ "textHead": "Enable accessibility Hey, Welcome to Curaleaf SELECT YOUR STATE Illinois Arizona Connecticut Florida Illinois Maine Maryland Massachusetts Nevada New Jersey New York North Dakota Ohio Pennsylvania Uta",
+ "iframes": [],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "curaleaf"
+ ],
+ "hosts": [
+  [
+   "curaleaf.com",
+   49
+  ],
+  [
+   "cdn.cookielaw.org",
+   12
+  ],
+  [
+   "t.co",
+   3
+  ],
+  [
+   "analytics.twitter.com",
+   3
+  ],
+  [
+   "www.googletagmanager.com",
+   2
+  ],
+  [
+   "a42cdn.usablenet.com",
+   2
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "static.ads-twitter.com",
+   1
+  ],
+  [
+   "www.datadoghq-browser-agent.com",
+   1
+  ],
+  [
+   "us-37600-adswizz.attribution.adswizz.com",
+   1
+  ],
+  [
+   "ad.ipredictive.com",
+   1
+  ],
+  [
+   "beacons.extremereach.io",
+   1
+  ],
+  [
+   "geolocation.onetrust.com",
+   1
+  ],
+  [
+   "r.surfside.io",
+   1
+  ]
+ ]
+}

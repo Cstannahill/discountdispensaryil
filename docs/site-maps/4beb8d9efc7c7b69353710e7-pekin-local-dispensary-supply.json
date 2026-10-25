@@ -1,0 +1,30 @@
+{
+ "store_id": "4beb8d9efc7c7b69353710e7",
+ "name": "Pekin Local Dispensary & Supply",
+ "address": "359 Court St.",
+ "city": "Pekin",
+ "registry_distance_miles": 39.3,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "pekindispensary.com, Pekin (359 Court St)",
+ "menu_platform": "Dutchie embedded storefront (cName pekins-local-dispensary-and-supply)",
+ "how_menu_is_reached": "Home embeds dutchie.com/embedded-menu/pekins-local-dispensary-and-supply/carousels/... with routeRoot www.pekindispensary.com/stores/pekins-local-dispensary-and-supply. The probe loaded dutchie.com/graphql ConsumerDispensaries.",
+ "branch_selection": "Map on the page shows 359 Court St, Pekin, IL 61554, which matches the registry. The cName is the branch.",
+ "product_loading": "Dutchie GraphQL (ConsumerDispensaries and carousel queries).",
+ "product_count": "Not read.",
+ "blockers": "Cloudflare signature; page loaded 200.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search dead (NO_LEAD on 4 attempts). The verifier verified a lead and saved 5 leads, but verifier leads are not promoted to a resolution. The site's own embed was never read.",
+ "fix_idea": "Promote a site whose own page shows a matching address to a resolution, then use the Dutchie cName route.",
+ "unverified": [
+  "Dutchie total"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

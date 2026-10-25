@@ -1,0 +1,424 @@
+{
+ "key": "78f23088",
+ "url": "https://www.sunnyside.shop/store/naperville-il",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://www.sunnyside.shop/store/naperville-il",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://sunnyside.prismic.io/prismic-toolbar/5e015029/iframe.html",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/p/ordering_apps/op/store-inventory-breakdown?host=www.sunnyside.shop&lat=40.89740&lng=-89.03210&country=US",
+   "size": 24953,
+   "sample": "{\"type\":\"ordering_apps\",\"rows\":1,\"data\":[{\"id\":\"9ha3c289-1260-4he2-nm62-4598bca34naa\",\"default_store_id\":632,\"name\":\"Sunnyside\",\"updated\":\"2026-09-30T12:32:18.442Z\",\"deleted\":null,\"stores\":[67,70,85,86,101,202,203,221,222,228,229,318,418,419,420,421,453,454,491,493,494,498,559,592,600,601,602,603,60"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://www.sunnyside.shop/seo.json",
+   "size": 152983,
+   "sample": "[{\"seo_slug\":\"/about\",\"seo_title\":\"About Us | Sunnyside Medical & Recreational Cannabis Dispensaries\",\"seo_description\":\"Sunnyside Dispensaries offers simple online cannabis shopping with flower, vapes, pre-rolls, edibles, and concentrates from the most trusted brands in the industry.\",\"seo_image\":\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://cdn.segment.com/v1/projects/5QH4quWhkSHTp8N3hnaj2IjXIpkOUrXQ/settings",
+   "size": 14295,
+   "sample": "{\"_lastModified\":\"2026-10-01T05:46:42.754Z\",\"integrations\":{\"Visual Tagger\":{\"instrumentationSpec\":[{\"selector\":\"div > .prismic-wrapper > .prismic-card\",\"url\":\"https://www.sunnyside.shop/\",\"handler\":\"click\",\"event\":\"Learn More Button Clicked\",\"taggingMethod\":\"event\",\"formAction\":\"track\",\"state\":\"pub"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/p/ordering_apps/9f1c2a6e-4b9d-4e7a-8c3a-6d2f9a8b1c54",
+   "size": 2096,
+   "sample": "{\"type\":\"ordering_apps\",\"rows\":1,\"data\":[{\"stores_detail\":[{\"id\":971,\"name\":\"Cloud9\",\"ecomm_display_name\":\"Oswego, IL\",\"city\":\"Oswego\",\"state\":\"IL\"},{\"id\":972,\"name\":\"Cloud9\",\"ecomm_display_name\":\"Edwardsville, IL\",\"city\":\"Edwardsville\",\"state\":\"IL\"},{\"id\":973,\"name\":\"Cloud9\",\"ecomm_display_name\":\"C"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/p/potency_map",
+   "size": 4734,
+   "sample": "{\"type\":\"potency_map\",\"rows\":28,\"data\":[{\"id\":1,\"key\":\"b_caryophyllene\",\"display\":\"Beta-Caryophyllene\",\"flavor\":\"Pepper/Spice\",\"color\":\"#C19853\",\"abbrev\":\"CYE\",\"updated\":null,\"deleted\":null,\"created_ago\":\"2 years ago\"},{\"id\":2,\"key\":\"b_myrcene\",\"display\":\"Beta-Myrcene\",\"flavor\":\"Clove/Herbal\",\"color"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/p/ordering_apps/9xq7l2pa-7314-Gd3C-cf57-7a1mzp4kq82",
+   "size": 1763,
+   "sample": "{\"type\":\"ordering_apps\",\"rows\":1,\"data\":[{\"stores_detail\":[{\"id\":970,\"name\":\"Shangri-La\",\"ecomm_display_name\":\"Springfield, IL\",\"city\":\"Springfield\",\"state\":\"IL\"}],\"id\":\"9xq7l2pa-7314-Gd3C-cf57-7a1mzp4kq82\",\"default_store_id\":970,\"name\":\"Shangri-La\",\"updated\":\"2026-10-01T14:49:39.854Z\",\"deleted\":nul"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/cms/op/get-all-by-store?document_type=special_message&store_id=86&state=IL&tags=rec",
+   "size": 2420,
+   "sample": "{\"data\":[{\"id\":\"YzsU7xEAADssSn5c\",\"uid\":null,\"url\":null,\"type\":\"special_message\",\"href\":\"https://sunnyside.cdn.prismic.io/api/v2/documents/search?ref=atZc1xYAADIAo2DA&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YzsU7xEAADssSn5c%22%29+%5D%5D\",\"tags\":[\"67\",\"559\",\"592\",\"70\",\"86\",\"rec\",\"85\",\"med\",\"632\"],\"fi"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/p/specials/op/store-discount?only_running_now=true&store_ids=86&usage_type=recreational&order_by=priority",
+   "size": 141505,
+   "sample": "{\"rows\":43,\"data\":[{\"stores\":[{\"id\":67,\"name\":\"Sunnyside*\",\"city\":\"Rockford\",\"state\":\"IL\",\"ecomm_display_name\":\"Rockford, IL\",\"neighborhood\":null},{\"id\":70,\"name\":\"Sunnyside*\",\"city\":\"Buffalo Grove\",\"state\":\"IL\",\"ecomm_display_name\":\"Buffalo Grove, IL\",\"neighborhood\":null},{\"id\":85,\"name\":\"Sunnyside"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/p/stores?ids=67,70,85,86,101,202,203,221,222,228,229,318,418,419,420,421,453,454,491,493,494,498,559,592,600,601,602,603,604,605,607,609,619,620,622,624,625,626,627,628,629,630,631,632,633,634,635,636,650,654,658,686,687,688,689,690,",
+   "size": 545344,
+   "sample": "{\"type\":\"stores\",\"rows\":76,\"data\":[{\"id\":67,\"name\":\"Sunnyside*\",\"address\":\"2696 McFarland Road\",\"city\":\"Rockford\",\"state\":\"IL\",\"zip\":\"61107\",\"phone\":\"8153150090\",\"lat\":42.2997197,\"lng\":-88.9790048,\"hidden\":false,\"brands\":[\"cresco\",\"reserve\",\"mindys\"],\"updated\":\"2026-08-05T12:28:26.022Z\",\"deleted\":nu"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/cms/op/get-list-by-ids?ids=ZuHcbhAAACAAhBdR,Xi8qxBAAACIAaA9s,Zf2Y4BcAACYA3ZIe,aDdfNhIAAB8AHQqT,aiHRUREAACoAdcBJ,Z4gQ-hIAACIAnye5",
+   "size": 153324,
+   "sample": "{\"data\":[{\"id\":\"ZuHcbhAAACAAhBdR\",\"uid\":\"fall-essentials\",\"url\":null,\"type\":\"education_post\",\"href\":\"https://sunnyside.cdn.prismic.io/api/v2/documents/search?ref=atZc1xYAADIAo2DA&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZuHcbhAAACAAhBdR%22%29+%5D%5D\",\"tags\":[],\"first_publication_date\":\"2024-09-16T20:"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://api.crescolabs.com/cms/op/get-list-by-type?document_type=education_post",
+   "size": 988056,
+   "sample": "{\"data\":[{\"id\":\"Xi8qxBAAACIAaA9s\",\"uid\":\"indica-vs-sativa\",\"url\":null,\"type\":\"education_post\",\"href\":\"https://sunnyside.cdn.prismic.io/api/v2/documents/search?ref=atZc1xYAADIAo2DA&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Xi8qxBAAACIAaA9s%22%29+%5D%5D\",\"tags\":[\"flower\"],\"first_publication_date\":\"2020-"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/ccm/collect?rcb=12&frm=0&apvc=1&ae=g&auid=915429900.1792441440&dt=Naperville%20IL%20Dispensary%20%7C%20Recreational%20%26%20Medical%20Marijuana%20Illinois%20%7C%20Sunnyside&en=page_view&dl=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaper",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://ad.doubleclick.net/ccm/s/collect?auid=915429900.1792441440&gtm=45He6ag1h2v830375146za200zd830375146xeaxf1&fmt=8",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/11172224478/?random=1792441440427&cv=11&fst=1792441440427&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6ag1h2v9123001769za208zd9123001769xecxf1&gcd=13v3v3v3v5l1&dma=0&tag_exp=115938466~115938468~118897920~118897930",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/18224562135/?random=1792441440460&cv=11&fst=1792441440460&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6ag1h2v9123001769za208zd9123001769xecxf1&gcd=13v3v3v3v5l1&dma=0&tag_exp=115938466~115938468~118897920~118897930",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/rmkt/collect/18323342684/?random=1792441440470&cv=11&fst=1792441440470&fmt=8&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6ag1h2v9123001769za208zd9123001769xecxf1&gcd=13v3v3v3v5l1&dma=0&tag_exp=115938466~115938468~118897920~118897930",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/javascript",
+   "u": "https://test-custom-tags.cnna.io/domains/d3d3LnN1bm55c2lkZS5zaG9w.js",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/javascript",
+   "u": "https://test-custom-tags.cnna.io/app-ids/MGJhMjQ1NDctNGIxZS00YjI3LTgyNmQtMTk3Y2Q4NTVhMjNk.js",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://nytrng.com/iframe?vcp=TLSS1RUA&_=0.019640687657188405",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/a4913/046fe/config.json",
+   "size": 25735,
+   "sample": "{\"templates\":{\"productCardTemplate\":\"{\\\"1\\\":function(container,depth0,helpers,partials,data) {\\n    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = container.lookupProperty || functi"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/jpeg",
+   "u": "https://tags.srv.stackadapt.com/sa.jpeg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://api.segment.io/v1/p",
+   "size": 21,
+   "sample": "{\n  \"success\": true\n}",
+   "post": "{\"timestamp\":\"2026-10-19T20:24:00.647Z\",\"integrations\":{},\"type\":\"page\",\"properties\":{\"path\":\"/store/naperville-il\",\"referrer\":\"\",\"search\":\"\",\"title\":\"Naperville IL Dispensary | Recreational & Medical Marijuana Illinois | Sunnyside\",\"url\":\"https://www.sunnyside.shop/store/naperville-il\"},\"context\":{"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=utf-8",
+   "u": "https://tags.srv.stackadapt.com/saq_pxl?uid=IEzOSwD2mXT4cHGyoe9xlw&is_js=true&landing_url=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il&t=Naperville%20IL%20Dispensary%20%7C%20Recreational%20%26%20Medical%20Marijuana%20Illinois%20%7C%20Sunnyside&tip=",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://10089018.fls.doubleclick.net/activityi;src=10089018;type=sales;cat=us_su0;rcb=1;ord=6320726618719;npa=0;auiddc=915429900.1792441440;u2=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChr",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 302,
+   "t": "fetch",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://ad.doubleclick.net/activity;src=10089018;type=sales;cat=us_su0;rcb=1;ord=6320726618719;npa=0;auiddc=915429900.1792441440;u2=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "fetch",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://ad.doubleclick.net/activity;dc_pre=CMack9v0xpcDFUPxrQAdw2MrOA;src=10089018;type=sales;cat=us_su0;rcb=1;ord=6320726618719;npa=0;auiddc=915429900.1792441440;u2=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il;uaa=x86;uab=64;uafvl=Google%2520Chrom",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/gif",
+   "u": "https://www.google.com/gmp/conversion/_dc_unique_id=3878917337937944865;_dc_ptd=ChAI8P_W1gYQoouCl9Wi2q9cEh8AfgJjQu_BJlp1ooosE3EPwGLUwY4NjKvv7P0XC0vM;_dc_time=1792441441;cid=CAQS4gEAQM4h3B3DmiX_QAMFtl7EMSWH3RB_5oLxPwEtqCwBiCUuZmHWXEsF7RMrF-ggjs1_ypzPRsytvOmLJCK",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 301,
+   "t": "xhr",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://nytrng.com/mper",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 301,
+   "t": "fetch",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://herb.aggle.net/r3r",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://nytrng.com/mper/182edaf59beeb30ceba5dc120688ea76",
+   "size": 58,
+   "sample": "{\"store\": {\"vcnpxid\": \"182edaf59beeb30ceba5dc120688ea76\"}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://herb.aggle.net/r3r/dde1e17f-3d27-42a8-92e8-81058fd13208",
+   "size": 76,
+   "sample": "{\"data\":\"eyJyM3IiOiAiZGRlMWUxN2YtM2QyNy00MmE4LTkyZTgtODEwNThmZDEzMjA4In0=\"}\n"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://nytrng.com/lst",
+   "size": 206,
+   "sample": "{\"load\": \"!function(e){e&&e.instance&&(!0)}(window.PlPixel);\", \"store\": {\"vcnpxst\": \"w5p4w5XDlcOmw4HDk8Kfw5LCu8OUw5rClsKIf3HClsKPwqHCoMKof8KTdMKRwoLCj8KOw6LDg8OMwqLDhMOIw47Dm8Oawq3DksKlw4TDhMKRwqbClH_DnA\"}}",
+   "post": "{\"vcp\":\"TLSS1RUA\",\"_\":\"0.019640687657188405\",\"vcnpxid\":\"182edaf59beeb30ceba5dc120688ea76\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://10089018.fls.doubleclick.net/activityi;dc_pre=CNK5pNv0xpcDFZ41sgMdzTkqcA;src=10089018;type=sales;cat=us_su0;rcb=1;ord=6320726618719;npa=0;auiddc=915429900.1792441440;u2=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il;uaa=x86;uab=64;uafvl=Googl",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://herb.aggle.net/csc",
+   "size": 0,
+   "sample": null,
+   "post": "eyJfX25vcGdzYzJpdSI6MSwiX190b3NjZTJpdSI6MCwiX19ub3Bnc2MyaXUyIjoxLCJfX3VpZGNlaSI6ImRkZTFlMTdmLTNkMjctNDJhOC05MmU4LTgxMDU4ZmQxMzIwOCIsIm9pcnZlciI6IjA4MDEwMSIsInBpZCI6IkVUUkpTUUs3IiwicHR5cGUiOiI2MzExYWUxNyJ9"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://herb.aggle.net/ack",
+   "size": 0,
+   "sample": null,
+   "post": "eyJfX25vcGdzYzJpdSI6MSwiX190b3NjZTJpdSI6MSwiX19ub3Bnc2MyaXUyIjoxLCJyZWZlcmVyX3VybCI6Imh0dHBzOi8vd3d3LnN1bm55c2lkZS5zaG9wL3N0b3JlL25hcGVydmlsbGUtaWwiLCJyZWZlcmVyX3RpdGxlIjoiTmFwZXJ2aWxsZSBJTCBEaXNwZW5zYXJ5IHwgUmVjcmVhdGlvbmFsICYgTWVkaWNhbCBNYXJpanVhbmEgSWxsaW5vaXMgfCBTdW5ueXNpZGUiLCJfX3VpZGNlaSI6ImRk"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://www.sunnyside.shop/store/naperville-il\",\"page\":\"Naperville IL Dispensary | Recreational & Medical Marijuana Illinois | Sunnyside\",\"eid\":\"20966405-e25e-41be-b45c-bae9e45e777a\",\"tv\":\"js-3.6.0"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://collector-azsx401.dmp.cnna.io/analytics/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://www.sunnyside.shop/store/naperville-il\",\"page\":\"Naperville IL Dispensary | Recreational & Medical Marijuana Illinois | Sunnyside\",\"eid\":\"13f2907b-5858-4fbc-95d3-44f912cd89e8\",\"tv\":\"js-3.22."
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "xhr",
+   "ct": "",
+   "u": "https://tags.srv.stackadapt.com/js_tracking?url=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il&uid=IEzOSwD2mXT4cHGyoe9xlw&v=1&host=https%3A%2F%2Fwww.sunnyside.shop&l_src=&l_src_d=&u_src=&u_src_d=&shop=false",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [
+  "https://sunnyside.prismic.io/prismic-toolbar/5e015029/iframe.html",
+  "https://nytrng.com/iframe?vcp=TLSS1RUA&_=0.019640687657188405",
+  "about:blank",
+  "about:blank",
+  "chrome-error://chromewebdata/",
+  "https://10089018.fls.doubleclick.net/activityi;dc_pre=CNK5pNv0xpcDFZ41sgMdzTkqcA;src=10089018;type=sales;cat=us_su0;rcb=1;ord=6320726618719;npa=0;auiddc=915429900.1792441440;u2=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il;uaa=x86;uab=64;uafvl=Google%2520Chrome%3B155.0.8059.85%7CChromium%3B155.0.8059.85%7CNot(A%253ABrand%3B24.0.0.0;uamb=0;uam=;uap=Windows;uapv=10.0;uaw=0;pscdl=noapi;frm=0;_tu=KFA;gtm=45fe6ag1h2v9181800071z8830375146za20gzb830375146zd830375146xeaxf1;gcs=G111;gcd=13r3r3X3r5l1;dma=0;dc_fmt=2;tag_exp=115616985~115938466~115938468~118897920~118897930~120213116~120385422~120469145~120469153~121246026~121246034;epver=2;dc_random=1792441441_eoYBTkL2UoRuH5J3nRuJwbKzlMtxWIEgYQ;_dc_test=1;~oref=https%3A%2F%2Fwww.sunnyside.shop%2Fstore%2Fnaperville-il?"
+ ],
+ "notes": [],
+ "status": 200,
+ "finalUrl": "https://www.sunnyside.shop/store/naperville-il",
+ "title": "Naperville IL Dispensary | Recreational & Medical Marijuana Illinois | Sunnyside",
+ "htmlBytes": 179016,
+ "sigs": [
+  "cresco"
+ ],
+ "links": [
+  "https://www.sunnyside.shop/store/naperville-il#main-content",
+  "https://www.sunnyside.shop/locations",
+  "https://www.sunnyside.shop/loyalty-terms-of-service",
+  "https://www.sunnyside.shop/page/how-to-get-a-medical-marijuana-card-illinois",
+  "https://www.sunnyside.shop/page/promos-and-deals-sunnyside-dispensaries-illinois",
+  "https://www.sunnyside.shop/products/flower",
+  "https://www.sunnyside.shop/page/sunnyside-rewards",
+  "https://www.sunnyside.shop/account",
+  "https://sunnyside.shop/account",
+  "https://www.sunnyside.shop/tour",
+  "https://www.sunnyside.shop/reviews",
+  "https://www.sunnyside.shop/about",
+  "https://www.sunnyside.shop/faq",
+  "https://www.sunnyside.shop/news",
+  "https://www.sunnyside.shop/contact",
+  "https://www.sunnyside.shop/products/vapes",
+  "https://www.sunnyside.shop/products/edibles",
+  "https://www.sunnyside.shop/products/prerolls",
+  "https://www.sunnyside.shop/products/concentrates",
+  "https://www.sunnyside.shop/products/topicals",
+  "https://www.sunnyside.shop/products/capsules",
+  "https://www.sunnyside.shop/products/tinctures",
+  "https://www.sunnyside.shop/products/beverages",
+  "https://www.sunnyside.shop/products/accessories",
+  "https://www.sunnyside.shop/collection/fall-collection"
+ ],
+ "textSample": "Skip to main content Shop Deals Learn Find a Dispensary You're Shopping Adult Use at Champaign, IL 0 Sunnyside* Rewards now works at partner dispensaries. See our updated Privacy Policy and Rewards Terms for how we share member data — Learn More We're aware of issues with online loyalty point accrual and redemption and are working on a resolution. Thanks for your patience! Medical card shopping is here! Medical cardholders get an additional 10% off purchases. Plus, save up to 40% on taxes with your med card. — Learn More $55-$69 select High Supply 14g Popcorn — View Deals​ Sunnyside* Rewards now works at partner dispensaries. See our updated Privacy Policy and Rewards Terms for how we share ",
+ "productHints": [],
+ "priceCount": 16
+}

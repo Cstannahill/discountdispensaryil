@@ -1,0 +1,49 @@
+{
+ "store_id": "48ed19f41aa954c86c817a63",
+ "name": "Trinity Compassionate Care Centers",
+ "address": "3125 N University St Ste B",
+ "city": "Peoria",
+ "registry_distance_miles": 34.0,
+ "status": "partial",
+ "registry_flag": null,
+ "website": "trinitydispensaries.com, Peoria (3125 N University St Ste B)",
+ "menu_platform": "Treez / GapCommerce storefront",
+ "how_menu_is_reached": "Same /shop URL and the same gapcommerce endpoint as 3b44a4f5.",
+ "branch_selection": "Address 3125 N University. The shared endpoint cannot prove both Peoria addresses.",
+ "product_loading": "Same as 3b44a4f5.",
+ "product_count": "Baseline 1404 items, UNKNOWN count.",
+ "blockers": "Age gate (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "matched",
+   "message": "Resolved 1 canonical menu target(s)"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "treez",
+   "license": "recreational",
+   "status": "partial",
+   "code": "UNKNOWN",
+   "grade": "C",
+   "items": 1404,
+   "at": "2026-10-19T05:21:59.331365+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "treez",
+   "items": 23,
+   "declared": null,
+   "errors": [
+    "incomplete_treez_menu"
+   ],
+   "url": "https://www.trinitydispensaries.com/shop"
+  }
+ },
+ "why_it_fails": "Same storefront and endpoint as 3b44a4f5; attempt is partial with UNKNOWN count. Branch proof fails for at least one of the two Peoria rows.",
+ "fix_idea": "As for 3b44a4f5: reconcile the declared count, and separate the two registry rows by a store-specific signal.",
+ "unverified": [
+  "location picker"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

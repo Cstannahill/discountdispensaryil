@@ -1,0 +1,284 @@
+{
+ "key": "21_ivy_cl",
+ "url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/recreational/menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/index.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 167000
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-down.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/cart.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/shop.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-left.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-right.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/sort.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/filter.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/info.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/minus.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/cart-add.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/16/more.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/chevron-up.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--ivyhall/b2-3d7f606929b4ad226a64a8fd27d0bbb0fc2c9dea28325b61d12a3daff0009da5/icons/24/search.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml",
+   "len": 307
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/storefront/v1/pages/home",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2241
+  },
+  {
+   "u": "https://r.surfside.io/11b04/8e577/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 2
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/CartV2/GetSettingsPreferences",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetCompliance?saleType=Recreational",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 54
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetStoreInfoV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2773,
+   "post": "{}"
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Store/GetAvailableFulfillmentTypesV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 247,
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441277583&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 869,
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkMy01YzhlLTc4ODAtODY3Ny04NDVlOThiZWYwYmQiLCJncm9"
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Referral/GetV2",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1195,
+   "post": "{}"
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Loyalty/GetLoyaltyNotices",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 14,
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetProductCategoryList",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2116,
+   "arr": {
+    "n": 11,
+    "path": "$",
+    "keys": [
+     "id",
+     "name",
+     "imageUrl",
+     "filter",
+     "canonicalName"
+    ]
+   },
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "u": "https://web-ui-production.sweedpos.com/_api/proxy/Products/GetProductList",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 153332,
+   "arr": {
+    "n": 24,
+    "path": "$.list",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "category",
+     "subcategory",
+     "images",
+     "brand",
+     "strain",
+     "tags",
+     "effects",
+     "qualityLine",
+     "productType"
+    ]
+   },
+   "post": "{\"filters\":{},\"page\":1,\"pageSize\":24,\"sortingMethodId\":7,\"searchTerm\":\"\",\"saleType\":\"Recreational\",\"platformOs\":\"web\",\"productExposureContextId\":1,\"sourcePage\":"
+  }
+ ],
+ "frames": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-WLKVKKN"
+ ],
+ "status": 200,
+ "age_gate_text": "Skip to main content or Skip to footer Home Rewards Menu Discounts About Us Refer Friends - Get $15 Off English Sign up or log in to see exclusive deals Log In Sign Up Pickup at Ivy Hall Crystal Lake saleType Adult Use Home / Menu All Products Filters Flower Vapes Edibles Pre-Rolls Concentrates Acce",
+ "age_click": "Confirm",
+ "final_url": "https://ivyhalldispensary.com/locations/crystal-lake/menu/recreational/menu",
+ "title": "Shop Crystal Lake Dispensary Menu & Online Deals | Crystal Lake, Illinois",
+ "htmlLen": 474391,
+ "prices": 39,
+ "textHead": "Skip to main content or Skip to footer Home Rewards Menu Discounts About Us Refer Friends - Get $15 Off English Sign up or log in to see exclusive deals Log In Sign Up Pickup at Ivy Hall Crystal Lake ",
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-WLKVKKN"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "sweed"
+ ],
+ "hosts": [
+  [
+   "static-production.sweedpos.com",
+   195
+  ],
+  [
+   "media.sweedpos.com",
+   20
+  ],
+  [
+   "web-ui-production.sweedpos.com",
+   18
+  ],
+  [
+   "static.sweedpos.com",
+   4
+  ],
+  [
+   "www.googletagmanager.com",
+   4
+  ],
+  [
+   "col.surfside.io",
+   4
+  ],
+  [
+   "script.crazyegg.com",
+   4
+  ],
+  [
+   "sweedpos.s3.amazonaws.com",
+   3
+  ],
+  [
+   "r.surfside.io",
+   3
+  ],
+  [
+   "cdn.surfside.io",
+   3
+  ],
+  [
+   "www.google.com",
+   3
+  ],
+  [
+   "connect.facebook.net",
+   2
+  ],
+  [
+   "edge.surfside.io",
+   2
+  ],
+  [
+   "match.adsrvr.org",
+   2
+  ]
+ ]
+}

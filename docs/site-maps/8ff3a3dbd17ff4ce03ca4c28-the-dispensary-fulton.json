@@ -1,0 +1,40 @@
+{
+ "store_id": "8ff3a3dbd17ff4ce03ca4c28",
+ "name": "The Dispensary",
+ "slug": "the-dispensary-fulton",
+ "registry": {
+  "address": "1801 16th Ave",
+  "city": "Fulton",
+  "state": "IL",
+  "latitude": 41.85714,
+  "longitude": -90.150642
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://www.thedispensaryfulton.com",
+ "menu_url": "https://www.thedispensaryfulton.com/fulton-rec-store/",
+ "platform": "jane (script embed on retailer domain)",
+ "how_menu_reached": "Retailer pages /fulton-rec-store/ and /fulton-med-store/ load iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l loader script; no iframe",
+ "branch_selection": "Loader token is per store; render calls api.iheartjane.com/v1/stores/4056 and dmerch store_id 4056 (REC). Medical is a separate page/store.",
+ "age_gate": "\"Are you over 21\" gate",
+ "data_loading": {
+  "mechanism": "Jane dmerch search (app_mode framelessEmbed)",
+  "endpoints": [
+   "GET api.iheartjane.com/v1/stores/4056",
+   "POST dmerch.iheartjane.com/v2/multi|facets|smart (store_id 4056)"
+  ]
+ },
+ "paging": "jane provider facet slices",
+ "approx_product_count": null,
+ "blockers": [
+  "none in a browser"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "unresolved NO_LEAD (2026-10-18)",
+  "sample": "no saved endpoint, nothing to sample"
+ },
+ "why_it_fails": "resolution/website discovery: fallback search returned NO_LEAD. Stored evidence shows html.duckduckgo.com answers HTTP 202 with a bot challenge and www.bing.com/search answers 200 with unrelated Microsoft pages for the quoted-address query, so no candidate website is ever found even though the brand site exists. Static HTML has only the loader token, no numeric store id, so adapters._detect_endpoint cannot name the Jane store without observing the render's network calls.",
+ "fix_idea": "Replace the fallback search with a working source (e.g. the OpenRouter web plugin the verifier already uses, or a brand-level locator) and treat a results page where nothing names the store as a search failure, not 'no lead'. Resolve Jane loader embeds by observing api.iheartjane.com/v1/stores/<id> during render. Rec store id = 4056.",
+ "root_cause_tag": "search-engine-dead; jane-script-embed-hidden-store-id",
+ "confidence": "medium"
+}

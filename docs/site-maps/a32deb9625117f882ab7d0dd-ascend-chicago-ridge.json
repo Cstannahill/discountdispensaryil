@@ -1,0 +1,66 @@
+{
+ "store_id": "a32deb9625117f882ab7d0dd",
+ "slug": "ascend-chicago-ridge",
+ "name": "Ascend Chicago Ridge",
+ "registry": {
+  "address": "9820 Ridgeland Ave",
+  "city": "Chicago Ridge",
+  "state": "IL",
+  "latitude": 41.703678,
+  "longitude": -87.77919,
+  "distance_miles": 85.7
+ },
+ "investigated_at": "2026-10-19",
+ "operating_status": "open",
+ "website": "https://letsascend.com/locations/illinois/chicago-ridge/",
+ "menu_url": "https://letsascend.com/stores/chicago-ridge-illinois (Dutchie storefront; legacy https://letsascend.com/menu/ch-chicago-ridge-menu 301s here). Frozen legacy Dispense menu: https://ascendcannabis.com/menu/ch-chicago-ridge-menu (venue f623cdcc0ab48711, 822 products, stale)",
+ "platform": "dutchie",
+ "how_menu_reached": "letsascend.com location page -> SHOP NOW https://letsascend.com/stores/chicago-ridge-illinois (Dutchie Next.js storefront on the custom domain).",
+ "branch_selection": "cName=chicago-ridge-illinois; Dutchie dispensaryId 67f6846ef91fe22078752b06; platform address location.ln1 \"9820 S Ridgeland Ave\", Chicago Ridge IL 60415 (matches registry; addresses_match tolerates the extra \"S\"). Legacy Dispense venue id f623cdcc0ab48711 (JSON-LD streetAddress \"9820 South Ridgeland Avenue\", medicalDispensary false).",
+ "age_gate": "click-through: Dutchie modal \"Yes\" (POST /age-check); API loads before the click",
+ "data_loading": {
+  "mechanism": "GraphQL persisted queries over GET (Dutchie) via https://letsascend.com/api-4/graphql",
+  "endpoints": [
+   "GET https://letsascend.com/api-4/graphql?operationName=FilteredProducts&variables={productsFilter:{dispensaryId:67f6846ef91fe22078752b06,pricingType:'rec'|'med',Status:'Active',types:[<category>]|[],platformType:'ONLINE_MENU',...},page:N,perPage:100}&extensions={persistedQuery:{version:1,sha256Hash:<page-supplied>}}",
+   "Alternate: https://dutchie.com/embedded-menu/67f6846ef91fe22078752b06"
+  ],
+  "notes": "types:[] whole-menu totalCount 1153 (rec and med identical)."
+ },
+ "paging": "page/perPage; queryInfo.totalCount declared (1153, 24 pages at 50)",
+ "approx_product_count": 1153,
+ "license_channels": "rec+med one storefront (\"Adult-Use & Medical\"); the saved URL / legacy Dispense menu is recreational-labelled",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "In-page FilteredProducts replay: totalCount 1153; sample updatedAt 2026-10-19T17:10Z (live).",
+  "https://ascendcannabis.com/menu/ch-chicago-ridge-menu/sitemap.xml is an XML sitemap of 7,540 product URLs (letsascend.com/menu/ch-chicago-ridge-menu/none/<slug>, grouped by brand: high-supply 613, ozone 591, ...): historic catalog slugs, NOT an inventory and not a menu.",
+  "Dispense legacy venue f623cdcc0ab48711 \"Chicago Ridge (Rec)\": count 822, newest product modified 2025-11-11: stale. The legacy page canonical already points to https://letsascend.com/menu/ch-chicago-ridge-menu.",
+  "Ascend directory JSON: Chicago Ridge, address_1 \"9820 S. Ridgeland Ave\", dutchie_cname chicago-ridge-illinois.",
+  "Chain facts shared by all Ascend IL stores: ascendcannabis.com now 301s to letsascend.com (WordPress marketing site). Menus moved from Dispense (ascendcannabis.com/menu/<slug>, Next.js) to Dutchie storefronts served from the custom domain letsascend.com/stores/<dutchie cName> (Dutchie Next.js app, GraphQL proxied at letsascend.com/api-4/graphql). letsascend.com/menu/<legacy-dispense-slug> 301s to the Dutchie storefront, so legacy rec and med slugs both land on ONE storefront. The Dispense venues are still served at ascendcannabis.com/menu/* but are frozen: product records last modified 2025-07..2025-11-11, venue.leaflogix.enabled=false, lastInventorySync 2025-01-21. Chain-level locator: GET https://letsascend.com/wp-json/ascend-store-mapper/v1/locations returns a GeoJSON FeatureCollection (41 stores, 10 in IL) with address_1, city, state, zip_code, geometry.coordinates [lng,lat], shop_url (letsascend.com/stores/<cName>), dutchie_cname, menu_link (legacy slug), is_outlet, phone, hours."
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched: \"Resolved 1 canonical menu target(s)\" (2026-10-18 10:19; menu_targets [510e8821851ae483988e272b]); earlier unresolved \"No retailer locator connector configured for this brand\"",
+  "saved_endpoints": "generic, url https://ascendcannabis.com/menu/ch-chicago-ridge-menu/sitemap.xml, license recreational, status partial, identity_status name_locality, last_error incomplete_generic_menu \"No structured products extracted\"",
+  "recent_attempts": "resolution/discovery matched grade C (items 1); menu structured/generic status partial code RENDER_BLANK grade D items 0 \"No structured products extracted ...; missing_traversal_evidence\" (2026-10-18 10:19)",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "generic",
+    "license": "recreational",
+    "url": "https://ascendcannabis.com/menu/ch-chicago-ridge-menu/sitemap.xml",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_generic_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 24.4
+   }
+  }
+ },
+ "why_it_fails": "Stage: website discovery -> menu resolution. A search lead pointing at the XML sitemap (https://ascendcannabis.com/menu/ch-chicago-ridge-menu/sitemap.xml) was accepted as the \"menu\" (identity name_locality: the URL/body names Chicago Ridge) and saved as a generic endpoint. XML is not a menu document: dispense.observe() never ran because there is no venueId in it (the real page https://ascendcannabis.com/menu/ch-chicago-ridge-menu/ does carry venueId f623cdcc0ab48711 and Store JSON-LD), and generic.fetch finds no products, giving RENDER_BLANK/partial. Even had it resolved to the Dispense page, that venue is a frozen 2025-11-11 snapshot (see Springfield). The live menu is the Dutchie storefront, reachable only through the Ascend locator, which is not configured.",
+ "fix_idea": "(1) Ascend chain connector (ascend-store-mapper GeoJSON -> shop_url -> dutchie dispensaryId) as for the other Ascend stores. (2) Shared resolver hardening: reject *.xml / sitemap.xml and other non-HTML documents as menu candidates in site_discovery (menu_document_scope / is_directory_url / canonical_menu_url) so a sitemap can never become an endpoint, and supersede endpoint 510e8821851ae483988e272b. (3) Dispense source-age guard (max product.modified > ~30 days old => stale source catalog) so legacy ascendcannabis.com/menu pages cannot be accepted if search ever surfaces them.",
+ "root_cause_tag": "stale-dispense-menu-chain-moved-to-dutchie",
+ "confidence": "high"
+}

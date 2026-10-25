@@ -1,0 +1,197 @@
+{
+ "key": "45ce9b86",
+ "url": "https://mintdeals.com/willowbrook-il/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://mintdeals.com/willowbrook-il/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "other",
+   "ct": "application/speculationrules+json",
+   "u": "https://mintdeals.com/cdn-cgi/speculation",
+   "size": 151,
+   "sample": "{\"tag\":\"cf-speed-brain\",\"prefetch\":[{\"eagerness\":\"conservative\",\"source\":\"document\",\"where\":{\"and\":[{\"href_matches\":\"/*\",\"relative_to\":\"document\"}]}}]}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "script",
+   "ct": "application/json",
+   "u": "https://config.clym-widget.net/v2/faf0b86e542d410aa20fe211qrxd2zbo.js",
+   "size": 791,
+   "sample": "(function() {\n  window._clymConfig = {\"native\":true,\"instance\":\"us10.clym.io\",\"property_id\":\"faf0b86e542d410aa20fe211qrxd2zbo\",\"iab_gpp_stub\":true,\"iab_tcf_stub\":true,\"blocking_mode\":\"IMPLICIT\",\"widget_execution\":\"ASYNC\",\"element_identifiers\":[],\"gcm_wait_for_update\":1000,\"mcm_wait_for_update\":1000,"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11905.946482737223!2d-87.943896!3d41.753165!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e4fea9447eaef%3A0x27c560bb772a9e59!2sMint%20Cannabis!5e0!3m2!1sen!2sus!4v1729034735570!5m2!1sen!2sus",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://mintdeals.com/cdn-cgi/challenge-platform/h/b/jsd/oneshot/d2d3316b729e/0.2149687575251502:1792440026:_qjrJjJkHAbmqAMO7sJTQhZchfr4054dmt2f2nQCWtM/a4d27df848468b53",
+   "size": 0,
+   "sample": null,
+   "post": "WtUMEgB9Xqt4DwT+lIA7E1gygOAatYLoaXxAHCdIn85o3ocH89uVxRM03Bu-h-Q6gSn9ilurlQAS-qSNCozgAoMgXeeKraJo3TOJqMjKGB2g7dKr0zyEJxFP6oGslRP30NntfCWC3m5-6yaqQcsjvsEhDEfpmEoBdNPZFF-ovMypzoTyBpjKGWCNn-3nUOvjJI48motMySnprBGyTYWu0iu2HoggyWEBxY2UAcGj3pT0wFdsr22K+kjaQ1wLIsCq9NOiGimBPPMMaJM$B81AYOUBlSdu2rjS5Yvo0UhGRtTd"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://cf.clym-widget.net/latest/api-bridge/?api=aHR0cHM6Ly9wcml2YWN5LWFwaS11czEwLmNseW0uaW8%3D&is_dedicated=true&id=faf0b86e542d410aa20fe211qrxd2zbo&channel=0425d62ed3d4f3ffc5f2fed19c9d04e4&origin=mintdeals.com&native=true&instance=us10.clym.io",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://r.surfside.io/36341/b47eb/config.json",
+   "size": 8756,
+   "sample": "{\"templates\":{\"productCardTemplate\":\"{\\\"compiler\\\":[8,\\\">= 4.3.0\\\"],\\\"main\\\":function(container,depth0,helpers,partials,data) {\\n    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3=container.escapeExpression, lookupProperty = c"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://mintdeals.com/cdn-cgi/rum?",
+   "size": 0,
+   "sample": null,
+   "post": "{\"startTime\":1792441316299,\"pageloadId\":\"a520faf2-f256-475d-8270-32673c97c29c\",\"eventType\":1,\"nt\":\"navigate\",\"location\":\"https://mintdeals.com/willowbrook-il/\",\"versions\":{\"fl\":\"2024.11.0\",\"js\":\"2026.10.1\",\"timings\":2},\"bi\":{\"be\":\"Blink\",\"bev\":\"130\",\"bv\":\"130\",\"ov\":\"10\"},\"memory\":{\"totalJSHeapSize\":"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://col.surfside.io/event/track",
+   "size": 0,
+   "sample": null,
+   "post": "{\"schema\":\"iglu:com.snowplowanalytics.snowplow/payload_data/jsonschema/1-0-4\",\"data\":[{\"e\":\"pv\",\"url\":\"https://mintdeals.com/willowbrook-il/\",\"page\":\"Age Verification | Mint Deals - Mint Cannabis Willowbrook\",\"eid\":\"de1e4f35-0263-4ac2-a938-52a43f722ed7\",\"tv\":\"js-3.6.0\",\"tna\":\"digital\",\"aid\":\"waimea:"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://mintdeals.com/willowbrook-il/wp-json/age-gate/v3/check?age_gate%5Bage%5D=HFwF0WxzrtxTHKNqmsTzFA%3D%3D&age_gate%5Blang%5D=en&age_gate%5Bconfirm%5D=1&age_gate%5Bremember%5D=1",
+   "size": 189,
+   "sample": "{\"data\":{\"user_age\":21,\"age_gate\":{\"age\":21,\"lang\":\"en\",\"confirm\":\"1\",\"remember\":\"1\"}},\"status\":true,\"redirect\":\"\",\"cookieLength\":7,\"transition\":\"slide-up\",\"user_data\":[],\"set_cookie\":true}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://privacy-api-us10.clym.io/",
+   "size": 139,
+   "sample": "{\"type\":\"api.consent.save\",\"result\":{\"receipt_id\":\"RCPT_6wMW2oIkFI7zUlTrgeLCPRbITWgIRvCp\",\"profile_id\":\"8c452ceb4aec4abd84c5fd02axwa4gc0\"}}",
+   "post": "{\"type\":\"api.consent.save\",\"payload\":{\"country\":\"US\",\"state\":\"IL\",\"tags\":[{\"id\":\"6f4379095d6c47ac9653cf90rqbmthys\",\"accepted\":true,\"name\":\"Microsoft Consent Mode Advertising\",\"category\":\"Advertising\"},{\"id\":\"f9df760aadc54202991f2326wzqepxqr\",\"accepted\":true,\"name\":\"Google Consent Mode Advertising\",\""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/InitMapsJwt",
+   "size": 27,
+   "sample": "[2088179155,[\"1792980000\"]]",
+   "post": "[\"https://www.google.com\"]"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+   "size": 48997,
+   "sample": "[\"Map data ©2026 Google\",[[\"obliques\",[[41.779504865903583,-87.989501953125],[41.78360106648077,-87.8961181640625]]],[\"obliques\",[[41.77540840366327,-87.989501953125],[41.779504865903583,-87.8961181640625]]],[\"obliques\",[[41.771311679764061,-87.989501953125],[41.77540840366327,-87.8961181640625]]],",
+   "post": "[[[41.72290510202066,-87.9888429188792],[41.782454368050246,-87.89855854780208]],15,null,\"en\",0,\"m@799000000\",0,0,null,null,289,1,\"https://www.google.com/maps/embed\",1,null,null,\"7AFE000F-DCD5-43C9-BD33-C4E546C96131\"]"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetPlaceWidgetMetadata",
+   "size": 1417,
+   "sample": "[\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjdiNzAyNDk5OGFiYWY3YTRlZTdhODExZTJmM2Q3OTkzMzkzMjIzMDEiLCJ0eXAiOiJKV1QifQ.ewoJImV4cCIgOiAxNzkyNDQ0OTMxLAoJImZpZWxkX21hc2siIDogImRpc3BsYXlOYW1lLGZvcm1hdHRlZEFkZHJlc3Msc2hvcnRGb3JtYXR0ZWRBZGRyZXNzLGlzUHVyZVNlcnZpY2VBcmVhQnVzaW5lc3MsdXNlclJhdGluZ0NvdW50LHJhdGluZyx1c2VyUmF",
+   "post": "[9,\"89864\",\"https://www.google.com\",null,1]"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://www.google.com/maps/vt?pb=!1m4!1m3!1i15!2i8377!3i12193!1m4!1m3!1i15!2i8377!3i12194!1m4!1m3!1i15!2i8377!3i12195!1m4!1m3!1i15!2i8378!3i12193!1m4!1m3!1i15!2i8379!3i12193!1m4!1m3!1i15!2i8378!3i12194!1m4!1m3!1i15!2i8378!3i12195!1m4!1m3!1i15!2i8379!3i12194!1",
+   "size": 15275,
+   "sample": "[{\"id\":\"twtuuuuwtwvvttw\",\"zrange\":[15,15],\"layer\":\"spotlit\"},{\"id\":\"twtuuuuwtwvvttw\",\"base\":[549042176,799149312],\"zrange\":[15,15],\"layer\":\"m@799566048\",\"features\":[{\"id\":\"0x880e4f6f1a9bb657:0x65e3ee48db4c6c84\",\"a\":[0,0,549042176,799149312,549042176,799149312,549042176,799149312],\"bb\":[-14,-29,13,2,"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://places.googleapis.com/$rpc/google.maps.places.v1.Places/GetPlace",
+   "size": 1453,
+   "sample": "[null,null,null,null,[\"store\",\"health\",\"point_of_interest\",\"establishment\"],null,null,null,\"900 75th St, Willowbrook, IL 60527\",null,null,null,null,4.9,\"https://maps.google.com/?cid=2865803096165621337&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF\",null,null,null,null,null,null,n",
+   "post": "[\"places/ChIJ7-pHlOpPDogRWZ4qd7tgxSc\",\"en\",\"US\"]"
+  }
+ ],
+ "iframes": [
+  "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11905.946482737223!2d-87.943896!3d41.753165!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e4fea9447eaef%3A0x27c560bb772a9e59!2sMint%20Cannabis!5e0!3m2!1sen!2sus!4v1729034735570!5m2!1sen!2sus",
+  "about:blank",
+  "about:blank",
+  "https://cf.clym-widget.net/latest/api-bridge/?api=aHR0cHM6Ly9wcml2YWN5LWFwaS11czEwLmNseW0uaW8%3D&is_dedicated=true&id=faf0b86e542d410aa20fe211qrxd2zbo&channel=0425d62ed3d4f3ffc5f2fed19c9d04e4&origin=mintdeals.com&native=true&instance=us10.clym.io",
+  "about:blank",
+  "about:blank",
+  "about:blank",
+  "about:blank"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [Yes]",
+  "clicked button:has-text(\"Accept\") [Accept all]"
+ ],
+ "status": 200,
+ "finalUrl": "https://mintdeals.com/willowbrook-il/",
+ "title": "Mint Willowbrook, IL Dispensary | Mint Cannabis",
+ "htmlBytes": 128092,
+ "sigs": [
+  "dutchie",
+  "wordpress",
+  "cloudflare"
+ ],
+ "links": [
+  "https://mintdeals.com/location/willowbrook-il/menu",
+  "https://mintdeals.com/location/willowbrook-il/deals"
+ ],
+ "textSample": "info@themintdispensary.com Shop FIND YOUR LOCATION CANNABIS EVENTS EARN WEED ABOUT US CONTACT US Our Deals #1 WEED DEALS IN WILLOWBROOK DOWNLOAD THE MINT APP Download Now START SHOPPING NOW! All Products MINT CANNABIS IN WILLOWBROOK, IL Come Visit Us for the Best Cannabis Deals 900 75th St. Willowbrook, IL 60527 (630) 216-9135 Monday-Sunday 8AM - 10PM Our Menu Get Directions 1 2 3 4 5 EVENTS WHAT OUR CUSTOMERS ARE SAYING A August 11, 2024 sierra was so sweet and helpful John Wilson August 10, 2024 Very cordial Derek Dewar August 9, 2024 Emma- A pleasure meeting you as my Bud tender at The mint❣️ always fun to visit the Mint in Mesa. Thanks again Harper Cazares August 9, 2024 Gabi was awesome",
+ "productHints": [],
+ "priceCount": 0
+}

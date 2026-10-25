@@ -1,0 +1,32 @@
+{
+ "store_id": "6cce82f58dc5c807adcb6d63",
+ "name": "Rise - Joliet  Rock Creek",
+ "address": "1627 Rock Creek Blvd",
+ "city": "Joliet",
+ "registry_distance_miles": 60.7,
+ "status": "lead_unverified",
+ "registry_flag": null,
+ "website": "risecannabis.com, Joliet Rock Creek (1627 Rock Creek Blvd)",
+ "menu_platform": "RISE storefront, Jane signature (unconfirmed)",
+ "how_menu_is_reached": "/dispensaries/illinois/joliet-rock-creek/1344/recreational-menu/ loads; page text shows \"1379 results\".",
+ "branch_selection": "Path contains 1344 (probably a store id, unverified). Site address not checked in this pass.",
+ "product_loading": "Unknown.",
+ "product_count": "Page text: 1379 results.",
+ "blockers": "Cloudflare signature; page loaded 200.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Menu page is reachable, but branch identity (address) was not proven, so the verifier kept it as a lead.",
+ "fix_idea": "Read the RISE store address and compare to the registry. If it matches, take the Jane store id for the native Jane provider.",
+ "unverified": [
+  "store address",
+  "Jane store id",
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

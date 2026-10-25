@@ -1,0 +1,62 @@
+{
+ "key": "17_ntillinois",
+ "url": "https://www.ntillinois.com/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://www.ntillinois.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "Shop Products Learn About Locations Deals Account Nature’s Treatment of Illinois We brought cannabis to the QC. SHOP Milan Medicinal + Recreational 973 Tech Drive; Milan, IL 61264 309-283-7642 Open Until - 2:00 AM SHOP Galesburg Recreational 735 W. Main Street; Galesburg, IL 61401 309-315-4684 Open ",
+ "age_click": null,
+ "final_url": "https://www.ntillinois.com/",
+ "title": "Welcome To Nature’s Treatment Of Illinois",
+ "htmlLen": 152941,
+ "prices": 0,
+ "textHead": "Shop Products Learn About Locations Deals Account Nature’s Treatment of Illinois We brought cannabis to the QC. SHOP Milan Medicinal + Recreational 973 Tech Drive; Milan, IL 61264 309-283-7642 Open Un",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois---galesburg",
+  "https://sso.leafly.com/i/QwUY2shB0Tud6518IR3syFQ3FnzozS1XiCulDeNah9X",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois---galesburg",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois/deals",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois---galesburg/deals",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois",
+  "https://sso.leafly.com/i/QwUY2shB0Tud6518IR3syFQ3FnzozS1XiCulDeNah9X",
+  "https://www.leafly.com/dispensary-info/nature-s-treatment-of-illinois---galesburg"
+ ],
+ "count_text": null,
+ "platforms": [
+  "leafly"
+ ],
+ "hosts": [
+  [
+   "www.ntillinois.com",
+   61
+  ],
+  [
+   "use.typekit.net",
+   5
+  ],
+  [
+   "unpkg.com",
+   5
+  ],
+  [
+   "static.cloudflareinsights.com",
+   1
+  ],
+  [
+   "p.typekit.net",
+   1
+  ]
+ ]
+}

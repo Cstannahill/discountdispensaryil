@@ -1,0 +1,32 @@
+{
+ "store_id": "6f5b89ff2a5a0eea04429e08",
+ "name": "BLOC Dispensary Kedzie",
+ "address": "3545 N Kedzie Ave",
+ "city": "Chicago",
+ "registry_distance_miles": 99.9,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "blocdispensary.com, store selector (Antioch, Berwyn, Chicago Avondale, Chicago Loop, ...)",
+ "menu_platform": "Unknown (WordPress signature only)",
+ "how_menu_is_reached": "Home is a store selector with no store-level menu links in the DOM.",
+ "branch_selection": "Registry 3545 N Kedzie Ave is in the Avondale area; the Avondale store may be this branch (unverified).",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Age button (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search returned an unrelated BLOC Pharmacy page (NO_LEAD, search_fallback_dead). The selector exposes no store URLs to the resolver.",
+ "fix_idea": "Name + city search, select the Avondale store page, read its menu link, and confirm Avondale = Kedzie address.",
+ "unverified": [
+  "Avondale = Kedzie",
+  "menu route",
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

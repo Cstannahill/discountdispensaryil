@@ -1,0 +1,66 @@
+{
+  "store_id": "e6419c1e8c7a2bfd1a8f7851",
+  "name": "Jane & Bud's - Elgin",
+  "slug": "jane-and-buds-elgin",
+  "registry": {
+    "address": "205 S Randall Rd",
+    "city": "Elgin",
+    "state": "IL",
+    "distance_miles": 85.985
+  },
+  "site": "https://www.janeandbuds.com/dispensary/jane-buds",
+  "platform": "GapCommerce (Treez family); pipeline labels it treez (store 863b958b-337d-4f87-88a0-e215fef5ab3e)",
+  "menu_url_verified": "https://www.janeandbuds.com/shop",
+  "access": "21+ button (I'M AT LEAST 21 YEARS OLD)",
+  "branch_selection": "Elgin, 205 S Randall Rd in pickup chooser",
+  "product_loading": "GapCommerce discount and product APIs",
+  "paging": "Treez traversal (page cap)",
+  "product_count_observed": "not established (one-page run)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://www.janeandbuds.com/dispensary/jane-buds",
+    "title": "Shop Premium Cannabis Products at Dispensary | Jane & Buds!",
+    "platforms": [
+      "treez"
+    ],
+    "age_gate_seen": true,
+    "age_click": "I'M AT LEAST 21 YEARS OLD",
+    "count_text": null,
+    "price_tags": 1,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Fallback website search found no corroborated branch lead"
+    },
+    "stored_endpoints": [],
+    "sample_stores": null,
+    "seeded_resolve": {
+      "run": "seeded1.json",
+      "targets": [
+        {
+          "provider": "treez",
+          "provider_store_id": "863b958b-337d-4f87-88a0-e215fef5ab3e",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "treez",
+          "items": 24,
+          "expected": null,
+          "complete": false,
+          "errors": [
+            "incomplete_treez_menu"
+          ],
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Discovery dead (stored unresolved). One-page run returns 24, then 'Treez traversal page limit reached'. Full read not run in this batch.",
+  "fix_idea": "Seed the site; run a full traversal; share the GapCommerce reader with Be. and Market 96.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

@@ -1,0 +1,268 @@
+{
+ "key": "23_greenreleaf_vp",
+ "url": "https://greenreleafdispensary.com/stores/villa-park",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://cdn.acsbapp.com/config/greenreleafdispensary.com/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 748
+  },
+  {
+   "u": "https://r.surfside.io/7a0hm/718di/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 56
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/createGuest",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1655,
+   "post": "{\"data\":\"ZJSp/AwnBVaeROLow+bLYf7c6xlB24tnrxY7ykqjuWTZMEOashhjrkGWRc5as/or\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/createGuest",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1655,
+   "post": "{\"data\":\"ZJSp/AwnBVaeROLow+bLYf7c6xlB24tnrxY7ykqjuWTZMEOashhjrkGWRc5as/or\"}"
+  },
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/store-list/onlineStoreList",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 28323,
+   "post": "{\"data\":\"pd9aeSQx8zz+E9Sm6+q2ApZ3J50wamCjCptL+z6ssyKkC5sq6WDIsjHRoEWQkG7r\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/store-list/onlineStoreList",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 28323,
+   "post": "{\"data\":\"pd9aeSQx8zz+E9Sm6+q2ApZ3J50wamCjCptL+z6ssyKkC5sq6WDIsjHRoEWQkG7r\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/update",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1655,
+   "post": "{\"data\":\"Vwj8BKl2lOIY2dRhjw01MIWlcAoMQXCBYNmY9UJLmeY8+jHauVatVLratsPuLIRJ80MmOCleZeu1LLE5965HrUzxCZ5zCnyjPEGzkw8mDcI=\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/content/meta",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 823,
+   "post": "{\"data\":\"uLJ80CkV0E8xWmmHH7FgpU644rDGGqFytjzLvrpvLbHwVt67nUfgNI7X97W3zqtVHANB6wv7urnxA8g4R8wOZo8A9WWOdAgea0g/eWpmwY4=\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/product",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 9227,
+   "post": "{\"data\":\"RFU9iR/Q8i1MqfOeOCANNvVkdDo648UzMhnaTHwkO0KFJEq7sRa5cQaN/iVbd7/PJGMbh7sxvDwTUf6Ow7G12tNLxGjvlL/PxSM3jKKAZ1xn4BkQ9BPiau8HZhozmD6ZNFf21GYbso64TozaOJPNU4X"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/update",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1675,
+   "post": "{\"data\":\"ZJSp/AwnBVaeROLow+bLYf7c6xlB24tnrxY7ykqjuWRQlGym5ggoPCrEuXRbPsszhR6Yxc5RogGcfMhRPVQN1iKdNPKoC+yXmCoMihEVk/p8AIm6u39QvqTxYrW0fROREpZzMoM+7Onc6AjOeRKo9os"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/user/checkAgeVerification",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 55,
+   "post": "{\"data\":\"ByYeBpEDop4R3LwWLCADXr/i2MA6uqMYpbvY3DQB+N90ojbpkBkXlB5B2BnH70zr\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/poll-survey/get-poll-list?storeId=6662e860b81cc3439c556c72&userId=6ad67bbe6db52c0dced4b92a",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 55
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/offer/storeOffer",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 110327,
+   "post": "{\"data\":\"yxFrlOhaRV+lIOId+Vu/HNL0mG7Dm2MB32x8EfjFMCx+VaUX1f91IMH7iQen6u0SeT6G7wf7XjBVqZkBIPPkpA==\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/cart/cart-list",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 119,
+   "post": "{\"data\":\"ByYeBpEDop4R3LwWLCADXr/i2MA6uqMYpbvY3DQB+N9lCBRfARmWhqWL+pK7T/91ApgPNohs7sNS8omSmY43UTOpeg5nxen4LEN2Gl42FwXiNcqpZvE36+gmpy5ksr3IAS+p/kCTemM+DvDNzKH3aw="
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/product",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 37731,
+   "post": "{\"data\":\"RFU9iR/Q8i1MqfOeOCANNs0gQa7LMUWI0cWoz5PIUO5kSIYRruW7T5etpIkM2/701qMTP0u2kBCC/X/Z2K+6ViIgTsksuqQt6mSn+TnmZYRFZXhTkgsTUY9bpb6KyDo02nQo+pTqEeQG/Vl9DCibe0M"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/offer/storeOffer",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 110327,
+   "post": "{\"data\":\"yxFrlOhaRV+lIOId+Vu/HNL0mG7Dm2MB32x8EfjFMCx+VaUX1f91IMH7iQen6u0SeT6G7wf7XjBVqZkBIPPkpA==\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/cart/cart-count",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 75,
+   "post": "{\"data\":\"ByYeBpEDop4R3LwWLCADXr/i2MA6uqMYpbvY3DQB+N9lCBRfARmWhqWL+pK7T/91ApgPNohs7sNS8omSmY43UYssAwpwRpbEiDmrBtU3SgM=\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/banner/get-banners?storeId=6662e860b81cc3439c556c72&status=active",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 20747
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/cart/cart-count",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 75,
+   "post": "{\"data\":\"ByYeBpEDop4R3LwWLCADXr/i2MA6uqMYpbvY3DQB+N9lCBRfARmWhqWL+pK7T/91ApgPNohs7sNS8omSmY43UYssAwpwRpbEiDmrBtU3SgM=\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/content?storeId=6662e860b81cc3439c556c72",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 8203
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/announcement/getAnnouncementByStoreId",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 55,
+   "post": "{\"data\":\"ECHgoxQFjQl5bwAFNNJy0PIyjJv+71PICy1xVTHgISUrsIVD+58YE9F4cC4H1XS9\"}"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/product",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 38883,
+   "post": "{\"data\":\"Pn7bvQ5ASknspddecZRY1kt1a5D11R4ltljGrVgspkKapGTw7zc1J/CYm7trIpq8J7IiL7dDr9Zn0XTLL0zG8snz/0i0WtM3vS5M2RE21DVW2Ez8pNTHjLIbwjcJShJZxD5Wg+64rV40igWspC7Tzte"
+  },
+  {
+   "u": "https://prod-api.greenreleafdispensary.com/product",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 38391,
+   "post": "{\"data\":\"czrfl595H1f9yuxMbp0aZSKfvtq2GcShdUfR6Xe+ynKW2vlJNPUHgMPmI+jbuKvjjpppKqrQTj2ppOBP2k6gx5w/Xi5WdrWJDr16R0/qq6keWAYAa6kUzto89sszK83f0UTJ62Aqn0cV8/l6gbsMYmz"
+  }
+ ],
+ "frames": [
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.2307072829635!2d-87.99067413045763!3d41.90577541974751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fb397a3b59d91%3A0x7e1b6af214440e93!2sGreen%20Releaf%20Villa%20Park%20Dispensary!5e0!3m2!1sen!2sus!4v1733476991145!5m2!1sen!2sus",
+  "about:srcdoc"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://greenreleafdispensary.com/stores/villa-park",
+ "title": "Best Cannabis Dispensary in Villa Park, IL | Quality Products & Expert Advice",
+ "htmlLen": 971398,
+ "prices": 245,
+ "textHead": "Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window Green Releaf Villa Park SHOP CATEGORIES BRANDS SPECIALS Previous Next Green Releaf Dispensary Villa Park, IL 🍃Come Smell",
+ "iframes": [
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.2307072829635!2d-87.99067413045763!3d41.90577541974751!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fb397a3b59d91%3A0x7e1b6af214440e93!2sGreen%20Releaf%20Villa%20Park%20Dispensary!5e0!3m2!1sen!2sus!4v1733476991145!5m2!1sen!2sus"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [],
+ "hosts": [
+  [
+   "grd-product-images.s3.amazonaws.com",
+   78
+  ],
+  [
+   "greenreleafdispensary.com",
+   69
+  ],
+  [
+   "maps.googleapis.com",
+   38
+  ],
+  [
+   "prod-api.greenreleafdispensary.com",
+   21
+  ],
+  [
+   "www.google.com",
+   13
+  ],
+  [
+   "backend.greenreleaf.live",
+   8
+  ],
+  [
+   "fonts.gstatic.com",
+   5
+  ],
+  [
+   "www.googletagmanager.com",
+   3
+  ],
+  [
+   "maps.gstatic.com",
+   3
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "analytics.google.com",
+   2
+  ],
+  [
+   "accounts.google.com",
+   1
+  ],
+  [
+   "fonts.googleapis.com",
+   1
+  ],
+  [
+   "acsbapp.com",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "store_id": "0dfbfc6731ecf38bc86970c9",
+ "name": "Nuera East Peoria",
+ "address": "504 Riverside Dr",
+ "city": "East Peoria",
+ "distance_miles": 30.294,
+ "accepted_menu": false,
+ "platform": "Jane (nuEra site embeds Jane store 1517 rec, 1518 med)",
+ "menu_url": "https://nueracannabis.com/dispensaries/il/east-peoria/menu-rec/",
+ "how_reached": "nuEra page embeds the Jane storefront (store 1517)",
+ "branch_selection": "Jane store 1517 = 504 Riverside Drive, East Peoria (api.iheartjane.com/v1/stores/1517)",
+ "products_load": "Jane storefront search",
+ "paging": "Jane search pages",
+ "count_hint": "page shows 523 products (probe); triage reads 1563 items",
+ "blockers": "none seen",
+ "why_it_fails": "Leads include ky.nueracannabis.com/shop (a Kentucky site). The lead set is not filtered by state, so branch proof for the Illinois store fails.",
+ "fix_idea": "Filter leads by state and prefer the Jane store id linked from the nuEra Illinois page (1517).",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 2,
+   "sample": [
+    [
+     "jane",
+     1563
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

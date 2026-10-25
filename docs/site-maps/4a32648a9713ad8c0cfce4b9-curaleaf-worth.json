@@ -1,0 +1,30 @@
+{
+ "store_id": "4a32648a9713ad8c0cfce4b9",
+ "name": "Curaleaf  Worth",
+ "address": "11425 S Harlem Ave",
+ "city": "Worth",
+ "registry_distance_miles": 84.6,
+ "status": "gated",
+ "registry_flag": null,
+ "website": "curaleaf.com, Worth (11425 S Harlem Ave)",
+ "menu_platform": "Curaleaf custom Next.js storefront (springbig signature seen; unverified)",
+ "how_menu_is_reached": "/shop/illinois/curaleaf-il-worth redirects to /age-gate?returnurl=... The gate has a state picker (Illinois), two consent checkboxes (21+ and Terms) and an \"I'm over 21\" button.",
+ "branch_selection": "Shop path curaleaf-il-worth. Not reached.",
+ "product_loading": "Not reached.",
+ "product_count": "n/a",
+ "blockers": "Age/terms gate. In a scripted probe, forced checkbox clicks did not change state and the over-21 click timed out.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "blocked",
+   "message": "Retailer requires age/terms confirmation; menu not fetched"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Gate not passed, so no menu is fetched (GATE_AGE_TERMS, blocked). The generic gate click does not pass this gate (checked with a scripted probe, not the pipeline code).",
+ "fix_idea": "A shared Curaleaf gate handler that clicks the consent labels and the state picker, then checks the redirect. Covers Worth, New Lenox and Westmont. Test in the browser before adding it.",
+ "unverified": [
+  "gate interaction that works"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

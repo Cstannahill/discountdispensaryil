@@ -1,0 +1,28 @@
+{
+ "store_id": "0f23fc8f61ad91daf8d969a5",
+ "name": "Ascend by Homecoming",
+ "address": "16200 Harlem Ave.",
+ "city": "Tinley Park",
+ "distance_miles": 80.489,
+ "accepted_menu": false,
+ "platform": "Dutchie white-label (letsascend.com)",
+ "menu_url": "https://letsascend.com/stores/chicago-tinley-park-illinois",
+ "how_reached": "letsascend.com store page; products via Dutchie GraphQL",
+ "branch_selection": "Page address 16200 S Harlem Ave, Tinley Park (matches registry 16200 Harlem Ave)",
+ "products_load": "Dutchie FilteredProducts",
+ "paging": "Dutchie pages",
+ "count_hint": "not captured (probe output truncated)",
+ "blockers": "none seen",
+ "why_it_fails": "Same as Ascend River North: no branch lead accepted (NO_LEAD); the decode error from a license PDF is the reported reason in triage.",
+ "fix_idea": "Ascend location-list connector (shared with River North); Dutchie reader.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "'utf-8' codec can't decode byte 0xb5 in position 11: invalid start byte",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

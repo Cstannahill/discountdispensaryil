@@ -1,0 +1,28 @@
+{
+ "store_id": "0c8e3a7ea3240ce935494281",
+ "name": "Maribis of Springfield",
+ "address": "2451 Denver Drive",
+ "city": "Springfield",
+ "distance_miles": 79.282,
+ "accepted_menu": false,
+ "platform": "Dutchie white-label (maribisllc.com)",
+ "menu_url": "https://maribisllc.com/stores/maribis-denver",
+ "how_reached": "Maribis location page links to /stores/maribis-denver; that page loads for a browser and for plain HTTP (200)",
+ "branch_selection": "Store slug maribis-denver; location page is titled Denver Dr., Springfield",
+ "products_load": "Dutchie GraphQL on maribisllc.com/api-3/graphql, dispensaryId 68a63767b39159402b15959d",
+ "paging": "Dutchie FilteredProducts paging (not replayed in this pass)",
+ "count_hint": "not captured",
+ "blockers": "maribisllc.com/locations/* returns 403 \"Confirm you are human\" to plain HTTP (not evaded)",
+ "why_it_fails": "Discovery never reached the brand store page. Fallback search found only magazine and directory leads, and a fetch failed with ConnectError (triage).",
+ "fix_idea": "Brand connector: map each Maribis location to /stores/maribis-<slug> and use the shared Dutchie reader. Slug list not yet extracted from the store pages.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Public fetch failed: ConnectError",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

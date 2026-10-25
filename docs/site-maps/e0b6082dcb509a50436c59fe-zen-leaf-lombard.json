@@ -1,0 +1,151 @@
+{
+  "store_id": "e0b6082dcb509a50436c59fe",
+  "name": "ZenLeaf  Lombard",
+  "slug": "zen-leaf-lombard",
+  "registry": {
+    "address": "783 Butterfield Rd.",
+    "city": "Lombard",
+    "state": "IL",
+    "distance_miles": 85.492
+  },
+  "site": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu",
+  "platform": "verano (Zen Leaf): Sweed catalog served as whole-branch JSON, data.zenleafdispensaries.com/catalog/540/recreational",
+  "menu_url_verified": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu",
+  "access": "none seen",
+  "branch_selection": "slug lombard maps to Sweed store 540 in zenleafdispensaries.com/data/locations.json",
+  "product_loading": "whole-catalog download (providers/verano.py)",
+  "paging": "none (single document)",
+  "product_count_observed": "reader 1183 products; grade B by design (no advertised total)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://zenleafdispensaries.com/locations/lombard/menu/recreational/menu",
+    "title": "Zen Leaf Lombard, IL Recreational Cannabis Menu | Shop Online",
+    "platforms": [
+      "sweed"
+    ],
+    "age_gate_seen": false,
+    "age_click": null,
+    "count_text": null,
+    "price_tags": 56,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "matched",
+      "message": "Resolved 11 canonical menu target(s)"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "recreational",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      },
+      {
+        "provider": "generic",
+        "license": "medicinal",
+        "status": "partial",
+        "last_success_at": null,
+        "last_error": "{\"code\": \"incomplete_generic_menu\", \"message\": \"No structured products extracted; JavaScript or an additional schema extractor may be required\"}"
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "generic",
+      "items": 239,
+      "errors": [
+        "incomplete_generic_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "verano",
+          "provider_store_id": "540",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "verano",
+          "items": 1183,
+          "expected": 1183,
+          "complete": false,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Reader works, but it grades B (converged), which is correct for this source. The stored store has 11 generic endpoints for other branches (Hampton, Norfolk, Westover, Altoona, Suffolk, York, Malvern, St. Charles); the verano endpoint 540 is not stored.",
+  "fix_idea": "Store verano 540 as the endpoint; supersede the other-branch generic rows.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

@@ -1,0 +1,30 @@
+{
+ "store_id": "446368c3a6b72043229742fb",
+ "name": "ZenLeaf Pilsen",
+ "address": "1301 S Western Ave",
+ "city": "Chicago",
+ "registry_distance_miles": 96.8,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "zenleafdispensaries.com, Pilsen",
+ "menu_platform": "Zen Leaf storefront (whole-branch catalog JSON)",
+ "how_menu_is_reached": "/locations/chicago-pilsen/menu/recreational/menu loads data.zenleafdispensaries.com/catalog/536/recreational (about 816 KB).",
+ "branch_selection": "Branch slug chicago-pilsen; Pilsen address matches registry 1301 S Western.",
+ "product_loading": "One GET of the whole-branch catalog JSON; no paging seen.",
+ "product_count": "Not read (catalog JSON about 816 KB).",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search never produced the site (NO_LEAD, search_fallback_dead). The whole-branch reader from commit 6d14ca8 covers Zen Leaf, but the resolver never reaches the /locations/<slug> page.",
+ "fix_idea": "Name + city search finds the Pilsen branch page; then the existing Zen Leaf whole-branch reader applies.",
+ "unverified": [
+  "catalog total vs site count"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

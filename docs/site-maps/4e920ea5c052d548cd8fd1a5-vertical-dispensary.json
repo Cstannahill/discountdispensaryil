@@ -1,0 +1,30 @@
+{
+ "store_id": "4e920ea5c052d548cd8fd1a5",
+ "name": "Vertical Dispensary",
+ "address": "20 Northwest Hwy",
+ "city": "Cary",
+ "registry_distance_miles": 99.5,
+ "status": "lead_unverified",
+ "registry_flag": null,
+ "website": "vertical-cannabis.com, Cary (20 Northwest Hwy)",
+ "menu_platform": "Dutchie (iframe)",
+ "how_menu_is_reached": "/shop/recreational-shop/ embeds dutchie.com/embedded-menu/vertical-dispensary-saint-joseph?menuType=rec.",
+ "branch_selection": "The only menu embed is the Saint Joseph branch. No Cary menu was found on the site.",
+ "product_loading": "Dutchie embedded (structured path).",
+ "product_count": "n/a",
+ "blockers": "None seen.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Candidate website found; branch name/locality or street address still needs matching"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Correct rejection: the embed belongs to Saint Joseph, not Cary. The resolver has no Cary menu to accept.",
+ "fix_idea": "No pipeline change. Confirm whether Cary has its own page or drop the registry row. Do not accept the Saint Joseph embed for Cary.",
+ "unverified": [
+  "whether a Cary page exists"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

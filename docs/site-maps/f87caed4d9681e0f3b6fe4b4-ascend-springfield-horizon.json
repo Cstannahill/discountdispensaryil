@@ -1,0 +1,83 @@
+{
+  "store_id": "f87caed4d9681e0f3b6fe4b4",
+  "name": "Ascend - Springfield Horizon Dr.",
+  "slug": "ascend-springfield-horizon",
+  "registry": {
+    "address": "3201 Horizon Dr.",
+    "city": "Springfield",
+    "state": "IL",
+    "distance_miles": 83.882
+  },
+  "site": "https://ascendcannabis.com/menu/il-springfield-horizon-menu; also https://letsascend.com/stores/springfield-horizon-drive-illinois",
+  "platform": "dispense venue 0e98c8652a35fe4f (rec); dutchie 672a669586978539af252a4a (letsascend)",
+  "menu_url_verified": "https://ascendcannabis.com/menu/il-springfield-horizon-menu",
+  "access": "age confirm (Are you over 21? Yes)",
+  "branch_selection": "Horizon Drive slug",
+  "product_loading": "Dispense venues/{id}/product-categories/{id}/products (skip/limit)",
+  "paging": "Dispense skip/limit",
+  "product_count_observed": "Dispense reader 100 (capped by sample pages); Dutchie 495 unreconciled",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://ascendcannabis.com/menu/il-springfield-horizon-menu",
+    "title": "Springfield, IL - Horizon Drive Dispensary Recreational Menu",
+    "platforms": [
+      "dispense"
+    ],
+    "age_gate_seen": true,
+    "age_click": "Yes",
+    "count_text": null,
+    "price_tags": 6,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "No retailer locator connector configured for this brand"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "dispense",
+        "license": "recreational",
+        "status": "complete",
+        "last_success_at": "2026-10-18T10:03:14.579753+00:00",
+        "last_error": null
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "NO_PRODUCTS",
+      "provider": "dispense",
+      "items": 0,
+      "errors": [
+        "incomplete_dispense_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "dutchie",
+          "provider_store_id": "672a669586978539af252a4a",
+          "license": "recreational"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "dutchie",
+          "items": 495,
+          "expected": null,
+          "complete": false,
+          "errors": [
+            "incomplete_generic_menu"
+          ],
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Stored dispense row is accepted (794 offers, 2026-10-18 10:03, stale). sample_stores returns 0 (raw-row bug); the current reader gets 100 with 'Dispense page limit reached'. Dutchie route does not reconcile.",
+  "fix_idea": "Full Dispense read to confirm 794; refresh; fix Dutchie reconciliation.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

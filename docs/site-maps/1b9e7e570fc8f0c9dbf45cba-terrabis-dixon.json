@@ -1,0 +1,36 @@
+{
+ "store_id": "1b9e7e570fc8f0c9dbf45cba",
+ "name": "Terrabis - Dixon",
+ "address": "1679 S Galena Ave.",
+ "city": "Dixon",
+ "distance_miles": 68.09,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Joint 6460 med and 6241 rec. Sample returned 0 items with \"Joint search page limit reached\" at 1 and 3 pages; the full sync accepted 808 offers. Sampler limit, not a catalog failure (unverified).",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "NO_PRODUCTS",
+   "items": 0,
+   "declared": null,
+   "errors": [
+    "incomplete_joint_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "joint",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-19T02:29:01.397296+00:00"
+   },
+   {
+    "provider": "joint",
+    "license": "medicinal",
+    "status": "complete",
+    "last_success_at": "2026-10-19T02:28:46.236711+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

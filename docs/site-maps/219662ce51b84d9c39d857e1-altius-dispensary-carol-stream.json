@@ -1,0 +1,30 @@
+{
+ "store_id": "219662ce51b84d9c39d857e1",
+ "name": "Altius Dispensary - Carol Stream",
+ "address": "506 S Schmale Rd",
+ "city": "Carol Stream",
+ "distance_miles": 83.8,
+ "accepted_menu": true,
+ "manual_map": "not mapped by hand in this batch (already accepted)",
+ "note": "Sweed 28 rec; accepted 626 offers.",
+ "pipeline_result": {
+  "sample_stores_py": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "sweed",
+    "license": "recreational",
+    "status": "complete",
+    "last_success_at": "2026-10-18T10:03:10.091634+00:00"
+   }
+  ]
+ },
+ "why_it_fails": null,
+ "fix_idea": null
+}

@@ -1,0 +1,239 @@
+{
+ "key": "19_stash_peru",
+ "url": "https://www.stashdispensaries.com/shop",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/shop?_rsc=5xsnk",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/wishlist?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/deals?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/shop?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 106522,
+   "post": "{\"from\":0,\"size\":10,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0.2,\"lte\":500000}}}}},{\"bool\":{\"should\":[{\"match\":{\"isAboveThre"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/collection/merch?subtype=SNACK&_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/storz-bickel-storz-bickel-volcano-hybrid-vaporizer-onyx-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-g-pen-khalifa-x-stundenglass-gravity-infuser-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-stundenglass-kompact-gravity-infuser-pink-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/https://www.instagram.com/stash.sesh?_rsc=1pqhz",
+   "m": "GET",
+   "s": 308,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/puffco-avant-garde-columnar-puffco-peak-piece-clear-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/https:/www.instagram.com/stash.sesh?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/rewards?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-g-pen-grateful-dead-x-stundenglass-gravity-infuser-legacy-patchwork-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/g-pen-g-pen-modul-dok-deluxe-travel-set-purple-glass-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/puffco-puffco-peak-pro-w-3dxl-chamber-plasma-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-studenglass-gravity-infuser-v3-black-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-studenglass-khalifa-x-stundenglass-modul-w-dok-travel-set-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-studenglass-gravity-infuser-v3-purple-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-studenglass-gravity-infuser-v3-velvet-burgundy-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/stundenglass-stundenglass-modul-dok-deluxe-travel-set-amber-glass-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/product/g-pen-g-pen-modul-dok-deluxe-travel-set-clear-glass-one-size-merch?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.stashdispensaries.com/collection/cartridge?_rsc=1pqhz",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  }
+ ],
+ "frames": [
+  "https://stash-dispensaries.prismic.io/prismic-toolbar/5e015029/iframe.html"
+ ],
+ "status": 200,
+ "age_gate_text": "Please confirm you are at least 21 years of age. You must be 21 or older to visit this website. Your age will be verified at checkout. By proceeding, you agree to our Terms & Conditions. I'M AT LEAST 21 YEARS OLD EXIT THE SITE",
+ "age_click": "I'M AT LEAST 21 YEARS OLD",
+ "final_url": "https://www.stashdispensaries.com/shop",
+ "title": "Shop Cannabis Products Online & More | Stash Dispensaries",
+ "htmlLen": 400279,
+ "prices": 39,
+ "textHead": "CHECK OUT OUR INSTORE DEALS! How do you want to shop? Select a pickup location Use Current Location Stash Peru - Peru - Peru, IL 1320 38th St ADULT OPEN until 9:00 PM CT Stash Orland Hills - Orland Hi",
+ "iframes": [
+  "https://stash-dispensaries.prismic.io/prismic-toolbar/5e015029/iframe.html"
+ ],
+ "nextdata": false,
+ "links": [
+  "https://www.treez.io/meet-treez-ecommerce"
+ ],
+ "count_text": "1881 results",
+ "platforms": [
+  "treez"
+ ],
+ "hosts": [
+  [
+   "www.stashdispensaries.com",
+   111
+  ],
+  [
+   "images.prismic.io",
+   17
+  ],
+  [
+   "www.google-analytics.com",
+   8
+  ],
+  [
+   "www.googletagmanager.com",
+   5
+  ],
+  [
+   "fonts.gstatic.com",
+   4
+  ],
+  [
+   "maps.googleapis.com",
+   2
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "fonts.googleapis.com",
+   1
+  ],
+  [
+   "assets.terpli.io",
+   1
+  ],
+  [
+   "ad.ipredictive.com",
+   1
+  ],
+  [
+   "col.surfside.io",
+   1
+  ],
+  [
+   "search-kyrok9udlk.gapcommerceapi.com",
+   1
+  ],
+  [
+   "static.cdn.prismic.io",
+   1
+  ],
+  [
+   "stash-dispensaries.prismic.io",
+   1
+  ]
+ ]
+}

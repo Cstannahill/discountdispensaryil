@@ -1,0 +1,156 @@
+{
+ "key": "27_verilife_ottawa",
+ "url": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://risecannabis.com/rise-rewards/?_rsc=zz7r9",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/?_rsc=zz7r9",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/dispensaries/illinois/deals/?_rsc=zz7r9",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/cdn-cgi/challenge-platform/h/b/jsd/oneshot/d2d3316b729e/0.2149687575251502:1792440026:_qjrJjJkHAbmqAMO7sJTQhZchfr4054dmt2f2nQCWtM/a4d27df23fa0eac6",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/?currentSort=thc-potency-desc&_rsc=12lvw",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=2ac0a083-6233-4b68-b4a6-b0ea26bb5715&jdm_source=sdk&jdm_version=2.17.0",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 284
+  },
+  {
+   "u": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/?_rsc=12lvw",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://consent.api.osano.com/record",
+   "m": "POST",
+   "s": 204,
+   "ct": "",
+   "len": 0,
+   "post": "{\"consentingDomain\":\"risecannabis.com\",\"extUsrData\":\"\",\"osnoCustomerId\":\"6riX1EcQmw\",\"osnoConfigId\":\"445103c0-341b-47ae-a4d5-3005b8d4ed7b\",\"userConsentId\":\"1bf8"
+  },
+  {
+   "u": "https://risecannabis.com/api/store-locator-bar",
+   "m": "GET",
+   "s": 308,
+   "ct": ""
+  },
+  {
+   "u": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/?refinementList[root_types][]=flower&_rsc=zz7r9",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/api/store-locator-bar/",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 351
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=glTvHHxR1JO2Jwg1P4A9",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=glTvHHxR1JO2Jwg1P4A9",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://risecannabis.com/?_rsc=zz7r9",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. To learn more, view the following link: Privacy PolicyTerms of Service Manage Preferences WE'RE GLAD YOU FOUND RISE DISPENSARIES! 21+ ARE YO",
+ "age_click": "YES",
+ "final_url": "https://risecannabis.com/dispensaries/illinois/verilife-ottawa/7320/recreational-menu/?currentSort=thc-potency-desc",
+ "title": "Verilife Ottawa Recreational Menu | Cannabis Dispensary",
+ "htmlLen": 3699849,
+ "prices": 92,
+ "textHead": "This website utilizes technologies such as cookies to enable essential site functionality, as well as for analytics, personalization, and targeted advertising. To learn more, view the following link: ",
+ "iframes": [],
+ "nextdata": false,
+ "links": [],
+ "count_text": "1055 results",
+ "platforms": [
+  "jane",
+  "rise"
+ ],
+ "hosts": [
+  [
+   "risecannabis.com",
+   139
+  ],
+  [
+   "images.ctfassets.net",
+   5
+  ],
+  [
+   "cmp.osano.com",
+   3
+  ],
+  [
+   "iheartjane.com",
+   3
+  ],
+  [
+   "www.datadoghq-browser-agent.com",
+   2
+  ],
+  [
+   "cdn-bong.risecannabis.com",
+   1
+  ],
+  [
+   "",
+   1
+  ],
+  [
+   "dmerch.iheartjane.com",
+   1
+  ],
+  [
+   "consent.api.osano.com",
+   1
+  ]
+ ]
+}

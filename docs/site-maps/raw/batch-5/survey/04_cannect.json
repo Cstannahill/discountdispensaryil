@@ -1,0 +1,301 @@
+{
+ "key": "04_cannect",
+ "url": "https://cannectdispensary.com/menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://connect.cannectdispensary.com/events",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 65,
+   "post": "{\"client_id\":\"bb8f49d0-1eaa-46d3-8084-fa44a93f330b\",\"event_name\":\"PageView\",\"event_id\":\"c923735d-a445-4500-ac7b-0cd38e6d7d4d\",\"url\":\"https://cannectdispensary.c"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 212
+  },
+  {
+   "u": "https://dutchie.com/graphql?operationName=ConsumerDispensaries&variables=%7B%22dispensaryFilter%22%3A%7B%22cNameOrID%22%3A%22cannect-dispensary-franklin-park%22%7D%2C%22collectionChannel%22%3A%22WEB%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 51876
+  },
+  {
+   "u": "https://events.launchdarkly.com/events/diagnostic/5ee2761738b5d10a6705cadf",
+   "m": "POST",
+   "s": 202,
+   "ct": "application/json",
+   "len": 0,
+   "post": "{\"kind\":\"diagnostic-combined\",\"id\":{\"diagnosticId\":\"550bb850-cbfa-11f1-aa1f-339d7c003f81\",\"sdkKeySuffix\":\"05cadf\"},\"creationDate\":1792441145432,\"dataSinceDate\":"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiY2M1OTY3YWEtNWY3Zi00NDFkLWFkNWItODNjYTc4ZmRhZTU2IiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 329649
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiY2M1OTY3YWEtNWY3Zi00NDFkLWFkNWItODNjYTc4ZmRhZTU2IiwidHlwZSI6Imd1ZXN",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 329649
+  },
+  {
+   "u": "https://cdn-api.ethyca.com/location",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 78
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=GetAddressBasedDispensaryData&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%7D%7D&extensions=%7B%22persistedQuery%22",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 4067
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%2C%22customCategory%22%3Afalse%2C%22enabled%22%3Atrue%2C%22act",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 1318
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=GetMenuSections&variables=%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha25",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 3926
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=GetCollectionsNavigation&variables=%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%2C%22customCategory%22%3Atrue%2C%22enabled%22%3Atrue%2C%22acti",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 41
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Afalse%7D&extensions",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44481,
+   "arr": {
+    "n": 94,
+    "path": "$.data.menuFiltersV2.brands",
+    "keys": [
+     "id",
+     "name",
+     "description",
+     "imageUrl",
+     "__typename"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=GetPersonalizedProductsV2&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%2C%22limit%22%3A3%2C%22filters%22%3A%7B%22me",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 42758,
+   "arr": {
+    "n": 3,
+    "path": "$.data.getPersonalizedProductsV2.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81,
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"68276db91b08255e42c71b94\",\"dispensary_name\":"
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=GeolocateConsumer&variables=%7B%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%2224fe610f1b4d4a8a09f95dafb837ab399af",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 224
+  },
+  {
+   "u": "https://dutchie.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"68276db91b08255e42c71b94\",\"menu_variant\":\"embedded\",\"page\":\"https://dutchie.com/embedded-menu/cannect-dispensar"
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 81,
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"68276db91b08255e42c71b94\",\"dispensary_name\":"
+  },
+  {
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=t",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 51
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22ONLINE_MENU%",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 5490
+  },
+  {
+   "u": "https://dutchie.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"loginNudge\",\"payload\":{\"dispensary_id\":\"68276db91b08255e42c71b94\",\"menu_variant\":\"embedded\",\"page\":\"https://dutchie.com/embedded-menu/cannect-dispensar"
+  },
+  {
+   "u": "https://dutchie.com/telemetry",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/vnd.api+json",
+   "len": 153,
+   "post": "{\"type\":\"loginNudge\",\"payload\":{\"dispensary_id\":\"68276db91b08255e42c71b94\",\"menu_variant\":\"embedded\",\"page\":\"https://dutchie.com/embedded-menu/cannect-dispensar"
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=PriceRangeFilterSettings&variables=%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 457
+  },
+  {
+   "u": "https://dutchie.com/api-1/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22dispensaryId%22%3A%2268276db91b08255e42c71b94%22%2C",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 378030,
+   "arr": {
+    "n": 25,
+    "path": "$.data.filteredProducts.products",
+    "keys": [
+     "_id",
+     "id",
+     "AdditionalOptions",
+     "avgRating",
+     "reviewCount",
+     "duplicatedProductId",
+     "libraryProductId",
+     "libraryProductScore",
+     "brand",
+     "brandId",
+     "brandName",
+     "CBD"
+    ]
+   }
+  }
+ ],
+ "frames": [
+  "https://dutchie.com/embedded-menu/cannect-dispensary-franklin-park"
+ ],
+ "status": 200,
+ "age_gate_text": "Skip to menu 3147 MANNHEIM RD | FRANKLIN PARK, IL LOCATIONS LOYALTY SPECIALS MORE SHOP MENU MENU ABOUT BLOG CONTACT First Name(Required) Last Name(Required) Email(Required) SUBMIT 3147 Mannheim, Franklin Park, IL 60131 DAILY HOURS SUNDAY 9AM - 10PM MONDAY 8AM - 9PM TUESDAY 8AM - 9PM WEDNES",
+ "age_click": "YES, GET CANNECTED!",
+ "final_url": "https://cannectdispensary.com/menu/",
+ "title": "Shop Our Menu Cannect Dispensary | Franklin Park",
+ "htmlLen": 120919,
+ "prices": 0,
+ "textHead": "Skip to menu 3147 MANNHEIM RD | FRANKLIN PARK, IL LOCATIONS LOYALTY SPECIALS MORE SHOP MENU MENU ABOUT BLOG CONTACT First Name(Required) Last Name(Required) Email(Required) SUBMIT 3147 Mannheim, Fr",
+ "iframes": [
+  "https://dutchie.com/embedded-menu/cannect-dispensary-franklin-park/?dutchie_sid=cc5967aa-5f7f-441d-ad5b-83ca78fdae56",
+  "about:blank"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "assets2.dutchie.com",
+   67
+  ],
+  [
+   "cannectdispensary.com",
+   34
+  ],
+  [
+   "dutchie.com",
+   20
+  ],
+  [
+   "images.dutchie.com",
+   17
+  ],
+  [
+   "fonts.gstatic.com",
+   7
+  ],
+  [
+   "cdnjs.cloudflare.com",
+   5
+  ],
+  [
+   "www.googletagmanager.com",
+   5
+  ],
+  [
+   "www.google-analytics.com",
+   5
+  ],
+  [
+   "connect.cannectdispensary.com",
+   3
+  ],
+  [
+   "app.launchdarkly.com",
+   3
+  ],
+  [
+   "unpkg.com",
+   2
+  ],
+  [
+   "fonts.googleapis.com",
+   2
+  ],
+  [
+   "",
+   2
+  ],
+  [
+   "clientstream.launchdarkly.com",
+   2
+  ]
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "store_id": "07905c02767558fcaac4ee82",
+ "name": "Market 96 - Owego",
+ "address": "1144 Douglas Rd.",
+ "city": "Oswego",
+ "distance_miles": 66.958,
+ "accepted_menu": false,
+ "platform": "Treez/GapCommerce (new Market 96 site); old site Dispense",
+ "menu_url": "https://www.market-96.com/dispensary/market-96-oswego",
+ "how_reached": "market-96.com store page; product search is a POST to a gapcommerceapi.com search endpoint with an Elasticsearch body",
+ "branch_selection": "Store slug market-96-oswego; registry says \"Owego\" (typo) at 1144 Douglas Rd",
+ "products_load": "GapCommerce product search POST",
+ "paging": "from/size in the POST body",
+ "count_hint": "not captured",
+ "blockers": "Old /shop/oswego storefront says \"We are not currently accepting orders\"",
+ "why_it_fails": "Stored state has no endpoint (fallback search found no branch lead). Current triage finds a Treez target and reads 20 items, then hits the sample page cap.",
+ "fix_idea": "Native GapCommerce/Treez reader keyed by store slug, with the branch address from the store page as proof.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 2,
+   "sample": [
+    [
+     "dispense",
+     0
+    ],
+    [
+     "treez",
+     20
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

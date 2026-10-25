@@ -1,0 +1,153 @@
+{
+ "key": "05b_budrita_avondale_store",
+ "url": "https://budandritas.com/stores/avondale-dispensary-chicago/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://budandritas.com/wp-admin/admin-ajax.php?action=joint_ecommerce_nonce",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 46
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 444,
+   "post": "{\"query\":{\"bool\":{\"filter\":[{\"bool\":{\"should\":[{\"term\":{\"businessId\":\"6407\"}}]}},{\"bool\":{\"should\":[{\"term\":{\"menuType\":\"RECREATIONAL\"}}]}},{\"bool\":{\"must_not\":"
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 143702,
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/domains/YnVkYW5kcml0YXMuY29t.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://test-custom-tags.cnna.io/app-ids/ZDNlZGMzZGMtMjk1MS00NWUxLTg5YjItYzQ2OGEyMjRhYWEz.js",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/javascript"
+  },
+  {
+   "u": "https://budandritas.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 106135,
+   "post": "{\"aggs\":{\"facet_bucket_applicableSpecials.specialName\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\""
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 86138,
+   "post": "{\"aggs\":{\"facet_bucket_applicableSpecials.specialName\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\""
+  },
+  {
+   "u": "https://budandritas.com/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json; charset=UTF-",
+   "len": 91400,
+   "post": "{\"aggs\":{\"facet_bucket_applicableSpecials.specialName\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\""
+  }
+ ],
+ "frames": [
+  "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11871.399719617457!2d-87.7135286!3d41.939076!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fcd8f0319f473%3A0x1dcb198a53e07f50!2sBud%20%26%20Rita%27s!5e0!3m2!1sen!2sus!4v1705078997119!5m2!1sen!2sus",
+  "https://ad.ipredictive.com/d/track/event?upid=115766&cache_buster=1792441867&url=https%3A%2F%2Fbudandritas.com%2Fstores%2Favondale-dispensary-chicago%2F&val=undefined&tn=undefined&p1=&p2=gtm.js&itms=undefined_undefined_undefined_undefined_undefined&ps=0",
+  "https://widgets-v7.birdeye.com/api/widgets?bid=170550936862781&wno=16&seoEnabled=false"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://budandritas.com/stores/avondale-dispensary-chicago/",
+ "title": "Bud and Rita's Avondale Dispensary Chicago - Bud & Rita's",
+ "htmlLen": 734174,
+ "prices": 132,
+ "textHead": "Skip to main content Coming soon to Sycamore, IL! Search SHOP ALL CATEGORIES LOCATIONS SPECIALS BUDRISTA CLUB MORE Login / Register Shop All Specials Flower Pre-Rolls Vaporizers Edibles Concentrates",
+ "iframes": [
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==",
+  "https://widgets-v7.birdeye.com/api/widgets?bid=170550936862781&wno=16&seoEnabled=false",
+  "https://ad.ipredictive.com/d/track/event?upid=115766&cache_buster=1792441867&url=https%3A%2F%2Fbudandritas.com%2Fstores%2Favondale-dispensary-chicago%2F&val=undefined&tn=undefined&p1=&p2=gtm.js&itms=undefined_undefined_undefined_undefined_undefined&ps=0"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": "1344 results",
+ "platforms": [
+  "dutchie"
+ ],
+ "hosts": [
+  [
+   "budandritas.com",
+   201
+  ],
+  [
+   "maps.googleapis.com",
+   20
+  ],
+  [
+   "joint-product-photos.s3.amazonaws.com",
+   18
+  ],
+  [
+   "widgets-v7.birdeye.com",
+   14
+  ],
+  [
+   "www.google.com",
+   11
+  ],
+  [
+   "tags.cnna.io",
+   6
+  ],
+  [
+   "fonts.gstatic.com",
+   5
+  ],
+  [
+   "www.googletagmanager.com",
+   4
+  ],
+  [
+   "fonts.googleapis.com",
+   3
+  ],
+  [
+   "analytics.google.com",
+   2
+  ],
+  [
+   "stats.g.doubleclick.net",
+   2
+  ],
+  [
+   "test-custom-tags.cnna.io",
+   2
+  ],
+  [
+   "widget-v7-cdn.birdeye.com",
+   2
+  ],
+  [
+   "collector-azsx401.dmp.cnna.io",
+   2
+  ]
+ ]
+}

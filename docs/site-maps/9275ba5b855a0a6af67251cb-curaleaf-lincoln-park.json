@@ -1,0 +1,53 @@
+{
+  "store_id": "9275ba5b855a0a6af67251cb",
+  "slug": "curaleaf-lincoln-park",
+  "name": "Curaleaf  Lincoln Park",
+  "registry": {
+    "address": "923 W. Weed St.",
+    "city": "Chicago",
+    "state": "IL",
+    "latitude": 41.89859,
+    "longitude": -87.65892,
+    "distance_miles": 99.3
+  },
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://curaleaf.com/illinois/curaleaf-il-weed-street (store info page; Curaleaf names this branch \"Weed Street, IL\", not \"Lincoln Park\")",
+  "menu_url": "https://curaleaf.com/shop/illinois/curaleaf-il-weed-street/menu (recreational; paginated ?page=N; product pages /menu/<category-slug-id>/<product-slug>). All routes sit behind the /age-gate redirect for clients that have not confirmed.",
+  "platform": "custom",
+  "how_menu_reached": "Curaleaf-hosted Next.js (App Router, Vercel) site; each branch is a route /shop/illinois/curaleaf-il-<slug>/... Branch is selected purely by URL slug. Every route, including /, /stores/*, /shop/* and /dispensaries/*, answers HTTP 307 to /age-gate?returnurl=<path> until the gate is confirmed. The data source behind the gate (own API vs Dutchie-backed) is UNKNOWN: I did not accept Curaleaf terms. The age-gate page loads a Surfside \"dutchie_proxy\" SDK (cdn.surfside.io wave.js ... p=dutchie_proxy) like the Ascend pages do, which hints at Dutchie plumbing but is not proof of the menu source.",
+  "branch_selection": "URL slug curaleaf-il-weed-street (= registry \"923 W. Weed St.\"; Curaleaf store info page: 923 West Weed Street, Chicago, Illinois 60642, +1 872-249-0246). IL store slugs come from the PUBLIC https://curaleaf.com/dispensaries-sitemap.xml (152 entries nationally; 10 Illinois: deerfield, new-lenox, justice, melrose-park, morris, northbrook, skokie, weed-street, westmont, worth, matching the 10 Curaleaf registry stores in terpscout.db). Slug tokens (city or street name) map to the registry rows deterministically.",
+  "age_gate": "GATE (server-side redirect, cookie-based, not a JS overlay): /age-gate?returnurl=... shows <select name=\"state\"> (Arizona..Utah, includes Illinois), checkbox \"I am 21 years of age or older\", checkbox \"I agree to the Terms of Use and acknowledge that I've read and understood the Privacy Policy\", and button \"I'm over 21\", which is DISABLED on load and stayed disabled after I only selected Illinois. I did NOT tick the Terms checkbox or click the button (accepting Terms of Use needs the user's explicit approval; the project itself treats it as a separate opt-in: browser_worker.cjs options.terms_accepted vs age_confirmed).",
+  "data_loading": {
+    "mechanism": "NOT OBSERVED past the gate. From public indexed pages/sitemaps: server-rendered paginated product grid (Google shows \"Page 2 | Weed Street, IL ...\", \"Page 5 | ...\" titles for /menu?page=N) with price ranges; product detail URLs /menu/<category>/<slug>.",
+    "endpoints": [
+      "GET https://curaleaf.com/api/users/me (fired by the age-gate page; session probe)",
+      "GET https://curaleaf.com/shop/illinois/curaleaf-il-weed-street/sitemap.xml (public, 985 KB, 1,826 loc entries, 1,814 under /menu/)",
+      "GET https://curaleaf.com/dispensaries-sitemap.xml (public store-slug list)"
+    ],
+    "notes": "Per-store sitemap menu URLs by category id: flower-196 583, vape-203 326, edibles-202 265, pre-rolls-197 259, concentrates-195 129, accessories-194 92, discounts 53, beverage-201 49, oral-200 20, topical-204 11, apparel-198 10. This is an upper bound of product URLs ever listed, not a live count. A third-party mirror appears in search (jointcommerce.com \"Menu at Curaleaf - Weed Street\"): a directory page, lead only."
+  },
+  "paging": "unknown behind the gate. Public evidence: ?page=N pagination on /menu. No declared total observed.",
+  "approx_product_count": null,
+  "license_channels": "recreational (Weedmaps lists \"Recreational\"; registry serves_medical=0). Other Curaleaf IL stores expose /medical (e.g. morris/medical) but no medical route is advertised for Weed Street.",
+  "blockers": [
+    "age/terms gate (server-side 307 to /age-gate; needs state select + 21+ checkbox + Terms-of-Use acceptance). Not a bot wall or captcha. I stopped before the Terms acceptance; it needs the user's OK. robots.txt only disallows /admin/*."
+  ],
+  "evidence": [
+    "curl -sI https://curaleaf.com/ -> 307 Location /age-gate?returnurl=%2F, Server Vercel; same for /shop/illinois/curaleaf-il-weed-street.",
+    "Public (ungated) robots.txt lists sitemap.xml, articles/pages/dispensaries sitemaps; dispensaries-sitemap.xml contains https://curaleaf.com/shop/illinois/curaleaf-il-weed-street/sitemap.xml.",
+    "Google results (browser pane): \"Weed Street, IL\" at curaleaf.com/illinois/curaleaf-il-weed-street (\"Store Information 923 West Weed Street Chicago, Illinois 60642 +1 872-249-0246\"), paginated menu pages, Weedmaps shows open, 923 Weed Street Chicago 60642, Recreational.",
+    "Pipeline evidence from sibling Curaleaf Morris (live_endpoints.last_error): Playwright waited on the button /^(?:yes...|i am |i'm ).*(?:21|older)/ and logged \"element is not enabled\" about 60 times until the 30 s timeout: the same disabled \"I'm over 21\" button.",
+    "backend/browser_worker.cjs confirmAgeOnce(): handles the 21+ checkbox, an optional terms checkbox (options.terms_accepted) and a yes/enter button, but has no <select> handling, so the state picker is never set."
+  ],
+  "pipeline_result": {
+    "saved_resolution": "blocked: \"Retailer requires age/terms confirmation; menu not fetched\" url https://curaleaf.com/age-gate?returnurl=%2F (2026-10-18 12:53; also 10-17 08:37)",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution/discovery attempt: status blocked, code GATE_AGE_TERMS, grade D; live_leads holds the age-gate URL. Sibling Curaleaf stores Justice, Melrose Park, New Lenox, Westmont, Worth show the same code; Deerfield, Northbrook, Skokie have no attempts.",
+    "sample": null
+  },
+  "why_it_fails": "Stage: website discovery. locators.CONNECTORS maps ^curaleaf\\b to https://curaleaf.com/, which the server redirects to /age-gate; _known_menu_candidates sees the gate text and returns blocked / \"Retailer requires age/terms confirmation\". The browser retry in discover_menu_candidates (options.age_confirmed) runs browser_worker.confirmAgeOnce, which cannot satisfy this gate: the \"I'm over 21\" button is disabled until the state select and the checkboxes (21+, Terms) are set; the worker has no select handling and ticks the Terms box only when terms_accepted is set (docs/EXTRACTION_FAILURE_AUDIT.md line 55 and 65: 30 s locator.click timeout, brittle selector). Separately, even past the gate the pipeline must find the branch: Curaleaf calls this store \"Weed Street\", so name matching for \"Lincoln Park\" fails; only the street (\"Weed St.\") matches the slug.",
+  "fix_idea": "Chain-level Curaleaf fix (7+ stores): (1) teach browser_worker.confirmAgeOnce the Curaleaf gate: select the registry state in select[name=state], tick the 21+ checkbox, tick Terms only when terms_accepted, then click \"I'm over 21\" once enabled; this needs the user's decision to enable terms_accepted for curaleaf.com. (2) Replace root-page crawling with a Curaleaf connector that reads the ungated https://curaleaf.com/dispensaries-sitemap.xml, filters /shop/illinois/curaleaf-il-<slug>/, maps slug tokens (weed-street, melrose-park, justice, worth, ...) to registry address/city, and proposes https://curaleaf.com/shop/illinois/curaleaf-il-<slug>/menu; verify branch identity from the store info page address (923 West Weed Street) after the gate. (3) After a gated fetch, capture the XHR/RSC data source (network_extract) to decide whether this is Dutchie-backed (reuse the Dutchie reader) or needs a curaleaf provider; the per-store sitemap (1,814 menu URLs) is a cross-check, not a total.",
+  "root_cause_tag": "age-gate-state-select-and-terms-checkboxes",
+  "confidence": "medium"
+}

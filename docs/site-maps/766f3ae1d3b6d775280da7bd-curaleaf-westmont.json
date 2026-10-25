@@ -1,0 +1,30 @@
+{
+ "store_id": "766f3ae1d3b6d775280da7bd",
+ "name": "Curaleaf Westmont",
+ "address": "11 E. Ogden Ave.",
+ "city": "Westmont",
+ "registry_distance_miles": 82.5,
+ "status": "gated",
+ "registry_flag": null,
+ "website": "curaleaf.com, Westmont (11 E. Ogden Ave.)",
+ "menu_platform": "Curaleaf custom storefront (as Worth)",
+ "how_menu_is_reached": "Same age-gate flow as Worth (4a32648a). The probe ran on Worth only.",
+ "branch_selection": "Not reached.",
+ "product_loading": "Not reached.",
+ "product_count": "n/a",
+ "blockers": "Age/terms gate.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "blocked",
+   "message": "Retailer requires age/terms confirmation; menu not fetched"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Gate not passed, so no menu is fetched (GATE_AGE_TERMS, blocked).",
+ "fix_idea": "Shared Curaleaf gate handler (see 4a32648a).",
+ "unverified": [
+  "gate interaction that works"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

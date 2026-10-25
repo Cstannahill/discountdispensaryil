@@ -1,0 +1,255 @@
+{
+ "key": "24_cannabist_1346",
+ "url": "https://www.gocannabist.com/shop/store/1346/featured",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 284
+  },
+  {
+   "u": "https://cdn.acsbapp.com/config/gocannabist.com/config.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 22789
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"Eoom_FFWHJmTUensNrqr_\",\"engagements\":[{\"adToken\":\"01a155d3-c26f-789f-a4f7-869fcb7a4086\",\"kevelToken\":\"01a155d3-c26f-723a-8286-7ee9d95d4bc2\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"Eoom_FFWHJmTUensNrqr_\",\"engagements\":[{\"adToken\":\"01a155d3-c26f-78a0-b5db-1d95055835dc\",\"kevelToken\":\"01a155d3-c26f-723a-8286-7ee9d95d4bc2\",\"myHi"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"Eoom_FFWHJmTUensNrqr_\",\"engagements\":[{\"adToken\":\"01a155d3-c26f-78a1-815d-ce0d08bcbe78\",\"kevelToken\":\"01a155d3-c26f-723a-8286-7ee9d95d4bc2\",\"myHi"
+  },
+  {
+   "u": "https://www.gocannabist.com/shop/api/footer.data?_routes=routes%2Fapi.footer",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-script; charset=utf-8",
+   "len": 303006
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/event/1?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=bloom&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 3,
+   "post": "{\"distinctId\":\"Eoom_FFWHJmTUensNrqr_\",\"engagements\":[{\"adToken\":\"01a155d3-c264-7bc6-a574-bdeb90c8f5a6\",\"kevelToken\":\"01a155d3-c264-73d3-982d-d3cd4b002ba0\",\"myHi"
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6IlRFTVBPUkFSWV9VU0VSX0lEIiwia2luZCI6InVzZXIifQ",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 14821
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/6384e85523613d11ad9588c5",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1231
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/index.DNfMNz_-.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/index.BPWpOujo.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/index.csVqdA8M.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/index.DIN3o5le.css",
+   "m": "GET",
+   "s": 404,
+   "ct": "text/html; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/sitemap.D-sOYhHQ.css",
+   "m": "GET",
+   "s": 404,
+   "ct": "text/html; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/index.CAf-wPtT.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/index.X5j991C1.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/AgeGate.VCN2iWLC.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css; charset=utf-8"
+  },
+  {
+   "u": "https://www.gocannabist.com/_astro/Interstitial.DLnYZPxB.css",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/css; charset=utf-8"
+  },
+  {
+   "u": "https://www.iheartjane.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 204,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v2/websdksettings?app_id=FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 2564
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v3/sdkconfig/web/FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 431,
+   "post": "{\"query_params\":{\"unique_id\":null}}"
+  },
+  {
+   "u": "https://www.gocannabist.com/cdn-cgi/rum?",
+   "m": "POST",
+   "s": 404,
+   "ct": "text/html; charset=utf-8"
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://api-js.mixpanel.com/track/?verbose=1&ip=1&_=1792441310321",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 25,
+   "post": "data=%5B%7B%22event%22%3A%22Searched%20Menu%20Products%22%2C%22properties%22%3A%7B%22%24os%22%3A%22Windows%22%2C%22%24browser%22%3A%22Chrome%22%2C%22%24current_"
+  }
+ ],
+ "frames": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-5ZSQV49",
+  "about:srcdoc",
+  "https://www.iheartjane.com/headless/drawer?jdid=Eoom_FFWHJmTUensNrqr_&appmode=bloom"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://www.gocannabist.com/shop/store/1346/featured",
+ "title": "Shop featured cannabis products | Cannabist Chicago Dispensary Chicago, IL",
+ "htmlLen": 2720817,
+ "prices": 136,
+ "textHead": "Press Alt+1 for screen-reader mode, Alt+0 to cancel Accessibility Screen-Reader Guide, Feedback, and Issue Reporting | New window My store Cannabist Chicago Rec pickup Search Get more with a free",
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-5ZSQV49",
+  "https://www.iheartjane.com/headless/drawer?jdid=Eoom_FFWHJmTUensNrqr_&appmode=bloom"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": "3 products",
+ "platforms": [
+  "jane"
+ ],
+ "hosts": [
+  [
+   "bloom-assets.iheartjane.com",
+   164
+  ],
+  [
+   "www.iheartjane.com",
+   25
+  ],
+  [
+   "browser-intake-datadoghq.com",
+   21
+  ],
+  [
+   "www.gocannabist.com",
+   14
+  ],
+  [
+   "product-assets.iheartjane.com",
+   11
+  ],
+  [
+   "uploads.iheartjane.com",
+   7
+  ],
+  [
+   "www.googletagmanager.com",
+   5
+  ],
+  [
+   "dmerch.iheartjane.com",
+   5
+  ],
+  [
+   "fonts.googleapis.com",
+   3
+  ],
+  [
+   "iheartjane.com",
+   3
+  ],
+  [
+   "janetech-core-prod-product-assets.s3.amazonaws.com",
+   3
+  ],
+  [
+   "static.cloudflareinsights.com",
+   2
+  ],
+  [
+   "www.google-analytics.com",
+   2
+  ],
+  [
+   "api.iheartjane.com",
+   2
+  ]
+ ]
+}

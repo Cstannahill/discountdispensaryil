@@ -1,0 +1,72 @@
+{
+ "key": "35_verilife_rosemont",
+ "url": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://risecannabis.com/rise-rewards/?_rsc=17fju",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/dispensaries/illinois/deals/?_rsc=17fju",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/?_rsc=17fju",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/x-component"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://risecannabis.com/dispensaries/illinois/verilife-rosemont/7309/recreational-menu/",
+ "title": "Verilife Rosemont Recreational Menu | Cannabis Dispensary",
+ "htmlLen": 3834663,
+ "prices": 128,
+ "textHead": "Locally Grown Goods — Shop latest deals Pick Up At Verilife Rosemont You're shopping at Verilife Rosemont. Prices and availability may vary depending on your location. Change location My Account ",
+ "iframes": [],
+ "nextdata": false,
+ "links": [],
+ "count_text": "1021 results",
+ "platforms": [
+  "rise"
+ ],
+ "hosts": [
+  [
+   "risecannabis.com",
+   119
+  ],
+  [
+   "images.ctfassets.net",
+   4
+  ],
+  [
+   "cmp.osano.com",
+   2
+  ],
+  [
+   "www.datadoghq-browser-agent.com",
+   2
+  ],
+  [
+   "cdn-bong.risecannabis.com",
+   1
+  ],
+  [
+   "",
+   1
+  ]
+ ]
+}

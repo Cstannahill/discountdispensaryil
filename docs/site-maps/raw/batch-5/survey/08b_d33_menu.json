@@ -1,0 +1,224 @@
+{
+ "key": "08b_d33_menu",
+ "url": "https://menu.dispensary33.com/menu?c=10",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1775666652_d9db42e5-1b55-4f11-8b76-ce7e70175bde.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1775666622_247c735c-7cf4-4684-ac4a-f4eecd14d0af.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1775666601_6a7ffbfa-323a-43b4-8292-388c05239bd5.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1775666582_4c78fad4-b1e3-4694-9c37-48911046fb3b.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1776891409_52cc8d68-3a25-4261-acf2-094593288841.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1775666644_2b0d50ff-0671-4692-83a2-8defaf570835.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1776891426_659761b6-a887-4224-a9ea-a4e9b83c133a.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://media-prime.sweedpos.com/store/prime/1776891483_ff048b9d-c09d-4960-9ece-782cf78bee88.svg?width=96",
+   "m": "GET",
+   "s": 302,
+   "ct": "application/json"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/index.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 250222
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/cart.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/shop.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/chevron-down.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/chevron-left.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/chevron-right.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/filter.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/minus.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/cart-add.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/discount-label.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/16/more.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/thumb-up.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/social-instagram-mono.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/social-linkedin-mono.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml"
+  },
+  {
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441214712&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 869,
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkMi0zMjczLTc1Y2EtODZkMS1lZTZmYzQ2YTViZWQiLCJncm9"
+  },
+  {
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441214718&ver=1.161.3&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 361,
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQyLTMyN2ItN2FhOC1hY2VmLTE0OWY2NTk5MDJmMCIsImdyb3VwcyI6e319"
+  },
+  {
+   "u": "https://static-prime.sweedpos.com/ecom-themes/builds/prime/c--d-33/b2-7c5eadc08830e3af0b87f435822c52fe1f99d82ac6d949c565958186351571d3/icons/24/search.svg",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/svg+xml",
+   "len": 307
+  }
+ ],
+ "frames": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-WRQ6X5VB"
+ ],
+ "status": 200,
+ "age_gate_text": null,
+ "final_url": "https://dispensary33.com/andersonville",
+ "title": "Dispensary 33 Andersonville Dispensary | Chicago, IL",
+ "htmlLen": 630305,
+ "prices": 98,
+ "textHead": "Skip to main content or Skip to footer Thanks for Rolling With Us During the Upgrade! ✨ We’ve updated our pricing display — taxes are now calculated at checkout so you can see your final total before ",
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-WRQ6X5VB"
+ ],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "sweed"
+ ],
+ "hosts": [
+  [
+   "static-prime.sweedpos.com",
+   216
+  ],
+  [
+   "media-prime.sweedpos.com",
+   61
+  ],
+  [
+   "web-ui-prime.sweedpos.com",
+   18
+  ],
+  [
+   "www.googletagmanager.com",
+   3
+  ],
+  [
+   "menu.dispensary33.com",
+   1
+  ],
+  [
+   "www.dispensary33.com",
+   1
+  ],
+  [
+   "dispensary33.com",
+   1
+  ],
+  [
+   "posthog.sweedpos.com",
+   1
+  ],
+  [
+   "events.dwh.sweedkube.com",
+   1
+  ],
+  [
+   "www.google-analytics.com",
+   1
+  ]
+ ]
+}

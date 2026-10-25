@@ -1,0 +1,260 @@
+{
+ "key": "14_janebuds",
+ "url": "https://www.janeandbuds.com/dispensary/jane-buds",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://www.janeandbuds.com/dispensary/jane-buds?_rsc=9xxp1",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/https://www.instagram.com/janeandbuds_?_rsc=11tx6",
+   "m": "GET",
+   "s": 308,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://www.janeandbuds.com/rewards?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/wishlist?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/deals?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/https:/www.instagram.com/janeandbuds_?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 67195,
+   "post": "{\"from\":0,\"size\":10,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0,\"lte\":500000}}}}},{\"bool\":{\"should\":[{\"match\":{\"isAboveThresh"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 67197,
+   "post": "{\"from\":0,\"size\":10,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0,\"lte\":500000}}}}},{\"bool\":{\"should\":[{\"match\":{\"isAboveThresh"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/discount?excludeInactive=true&timezone=America%2FChicago&fulfillmentType=PICKUP",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 62551,
+   "arr": {
+    "n": 28,
+    "path": "$",
+    "keys": [
+     "id",
+     "title",
+     "displayTitle",
+     "description",
+     "imageUrl",
+     "displayImageOnly",
+     "method",
+     "stackable",
+     "currentFlag",
+     "groups",
+     "groupsRequired",
+     "discountRules"
+    ]
+   }
+  },
+  {
+   "u": "https://www.janeandbuds.com/?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/preroll?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/shop?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/cartridge?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/flower?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/edible?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/beverage?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/tincture?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/extract?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/topical?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/pill?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/blog?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/collection/merch?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/contact-us?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://www.janeandbuds.com/terms-and-conditions?_rsc=11tx6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  }
+ ],
+ "frames": [
+  "https://jane-and-buds.prismic.io/prismic-toolbar/5e015029/iframe.html"
+ ],
+ "status": 200,
+ "age_gate_text": "Please confirm you are at least 21 years of age. You must be 21 or older to visit this website. Your age will be verified at checkout. By proceeding, you agree to our Terms & Conditions. I'M AT LEAST 21 YEARS OLD EXIT THE SITE",
+ "age_click": "I'M AT LEAST 21 YEARS OLD",
+ "final_url": "https://www.janeandbuds.com/dispensary/jane-buds",
+ "title": "Shop Premium Cannabis Products at Dispensary | Jane & Buds!",
+ "htmlLen": 207261,
+ "prices": 1,
+ "textHead": "EARN ON EVERY PURCHASE : JOIN OUR REWARDS PROGRAM! PICKUP Jane & Buds 205 S Randall Rd, Elgin, IL 60123 Home Shop Categories Deals Rewards Jane and Buds ADULT MEDICAL OPEN until 9:00 PM CT Home Jane a",
+ "iframes": [
+  "https://jane-and-buds.prismic.io/prismic-toolbar/5e015029/iframe.html"
+ ],
+ "nextdata": false,
+ "links": [
+  "https://www.treez.io/meet-treez-ecommerce"
+ ],
+ "count_text": null,
+ "platforms": [
+  "treez"
+ ],
+ "hosts": [
+  [
+   "www.janeandbuds.com",
+   66
+  ],
+  [
+   "images.prismic.io",
+   17
+  ],
+  [
+   "maps.googleapis.com",
+   16
+  ],
+  [
+   "fonts.gstatic.com",
+   5
+  ],
+  [
+   "fonts.googleapis.com",
+   4
+  ],
+  [
+   "www.googletagmanager.com",
+   4
+  ],
+  [
+   "www.google-analytics.com",
+   4
+  ],
+  [
+   "search-kyrok9udlk.gapcommerceapi.com",
+   3
+  ],
+  [
+   "maps.gstatic.com",
+   3
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "col.surfside.io",
+   1
+  ],
+  [
+   "static.cdn.prismic.io",
+   1
+  ],
+  [
+   "jane-and-buds.prismic.io",
+   1
+  ],
+  [
+   "jane-and-buds.cdn.prismic.io",
+   1
+  ]
+ ]
+}

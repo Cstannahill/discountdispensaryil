@@ -1,0 +1,40 @@
+{
+  "store_id": "8b624981016fafcc76a66fb8",
+  "name": "Grasshopper Club Logan Square",
+  "slug": "grasshopper-club-logan-square",
+  "registry": {"address": "2551 N. Milwaukee Ave.", "city": "Chicago", "state": "IL", "latitude": 41.92798, "longitude": -87.70494, "distance_miles": 99.0},
+  "investigated_at": "2026-10-19",
+  "operating_status": "closed",
+  "website": "https://grasshopperclub.com/ (brand homepage now advertises only the South Loop store, 58 E. Roosevelt Rd); the Logan Square shop page still exists at https://grasshopperclub.com/shop/logan-square",
+  "menu_url": "https://grasshopperclub.com/shop/logan-square (Sweed storefront; shows an empty menu) - the live menu is the South Loop one: https://grasshopperclub.com/shop/south-loop/menu/<category>-<id>",
+  "platform": "sweed",
+  "how_menu_reached": "Retailer-hosted Sweed 'ecom-theme' storefront (theme build c--grasshopper loaded from static-production.sweedpos.com) at grasshopperclub.com/shop/<store-slug>/menu/<category>-<categoryId>. Per-store slugs: south-loop (open) and logan-square (page present but empty). Not a Dutchie/Jane site. Note the headless Chrome probe with the shared probe script got a plain '403 Forbidden' from grasshopperclub.com for /shop/menu (and curl got 403 on / ), while the built-in browser pane loads the site normally.",
+  "branch_selection": "URL slug /shop/logan-square vs /shop/south-loop (Sweed store slug); the Sweed theme's store id/slug is in the page's Sweed config. Not extracted because the Logan Square storefront has no products.",
+  "age_gate": "click-through ('Are you 21 or older?' overlay on the Sweed storefront)",
+  "data_loading": {
+    "mechanism": "Sweed storefront (client rendered; Sweed API/GraphQL not captured because the Logan Square menu is empty). South Loop page shows products with prices in the DOM (31 price strings on the flower category page).",
+    "endpoints": ["not captured (store closed); backend/providers/sweed.py handles Sweed storefronts natively"],
+    "notes": "Logan Square storefront text: 'Menu All Products Apparel 0 ... License number(s): 284.000187' - i.e. zero products. This is the shell of a closed store, not an extraction failure."
+  },
+  "paging": "n/a (no products at Logan Square)",
+  "approx_product_count": 0,
+  "license_channels": "recreational (registry serves_medical=0)",
+  "blockers": ["store temporarily closed (no inventory)", "headless-Chrome/curl requests to grasshopperclub.com returned plain 403 Forbidden (not evaded; the built-in browser pane could load it)"],
+  "evidence": [
+    "Google snippet from the brand's Instagram bio: 'South Loop - 58 E. Roosevelt; Logan Square - temporarily closed'",
+    "CannMenus listing 'Grasshopper Club Logan Square Chicago Dispensary (Temporarily Closed)', 2551 N Milwaukee Ave Chicago IL 60647",
+    "CBS Chicago/Facebook result (about 5 months ago): Black-owned Logan Square dispensary Grasshopper Club affected by a fire",
+    "grasshopperclub.com homepage lists a single store (South Loop); nav SHOP -> /shop/south-loop only",
+    "grasshopperclub.com/shop/logan-square renders a Sweed shell with 'Apparel 0' and no products; Yelp still lists (773) 697-3191"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: 'Fallback website search found no corroborated branch lead' (earlier: 'No retailer locator connector configured for this brand')",
+    "saved_endpoints": "none",
+    "recent_attempts": "1 resolution attempt (job c2112fa0, 2026-10-18): unresolved, code NO_LEAD, grade D, 0.59 s",
+    "sample": null
+  },
+  "why_it_fails": "Two layers. (1) Discovery: no CONNECTORS entry for 'grasshopper' and the fallback name/address web search returned nothing in 0.6 s (the dead search backend), so grasshopperclub.com was never found. (2) Even with the right site, the store is temporarily closed after a fire: the Sweed storefront for logan-square exposes zero products, which the pipeline correctly must not treat as an authoritative empty menu without independent confirmation, and nothing would ever be accepted for this registry row. So this row is expected to stay without an endpoint until it reopens.",
+  "fix_idea": "No adapter work needed for this row. Mark the registry candidate as temporarily closed (operator decision; keep with an evidence note and re-check periodically, e.g. when /shop/logan-square shows products). Chain-level: add a CONNECTORS entry ('grasshopper' -> https://grasshopperclub.com/) for the sibling South Loop store, which is a normal Sweed storefront the sweed provider already supports; the connector should list the /shop/<slug> storefronts and match by street address, and treat a Sweed shell with zero categories/products as 'closed' rather than as an empty accepted menu.",
+  "root_cause_tag": "store-temporarily-closed",
+  "confidence": "medium"
+}

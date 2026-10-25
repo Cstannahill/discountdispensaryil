@@ -1,0 +1,314 @@
+{
+ "key": "01_riverbluff",
+ "url": "https://riverbluffcannabis.com/store/menu/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://app.launchdarkly.com/sdk/goals/6384e85523613d11ad9588c5",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1231
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6IlRFTVBPUkFSWV9VU0VSX0lEIiwia2luZCI6InVzZXIifQ",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 14821
+  },
+  {
+   "u": "https://cdn.acsbapp.com/config/riverbluffcannabis.com/config.json",
+   "m": "GET",
+   "s": 404,
+   "ct": "application/xml; charset=UTF-8"
+  },
+  {
+   "u": "https://cdn.acsbapp.com/cache/app/wildcards.json",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 264
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://pixel.quantserve.com/cs?a=p-CFNeJACVb2-AJ&gdpr=0&sf2=1",
+   "m": "GET",
+   "s": 204,
+   "ct": ""
+  },
+  {
+   "u": "https://app.jointcommerce.com/api/event-data/",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 21,
+   "post": "{\"pixel_id\":1243,\"advertiser_id\":5467,\"event_type\":\"tracking\",\"revenue\":null,\"order_id\":null,\"product_list\":[],\"client_user_id\":null,\"current_url\":\"https://rive"
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l?ci=js/3.12.16&q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v3/sdkconfig/web/FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 431,
+   "post": "{\"query_params\":{\"unique_id\":null}}"
+  },
+  {
+   "u": "https://sdk-04.moengage.com/v2/websdksettings?app_id=FBMS77MLGF4QMXGVHT88GWLW",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 2564
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/whoami",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 30
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/5438?",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 8960
+  },
+  {
+   "u": "https://tjs.iheartjane.com/capture?token=e00ed203eaa54757b49f55b9215deb2c&v=3.10.4",
+   "m": "POST",
+   "s": 202,
+   "ct": ""
+  },
+  {
+   "u": "https://app.launchdarkly.com/sdk/evalx/6384e85523613d11ad9588c5/contexts/eyJhbm9ueW1vdXMiOnRydWUsImtleSI6Imd1ZXN0OjQyNTc1MiIsImtpbmQiOiJ1c2VyIiwiamRpZCI6IkowVzZ2dm1RaVp3eDJvMFpNUVlJIiwiYXBwTW9kZSI6ImZ",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 14823
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/5438",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 8960
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/gold_configs",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 4573
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/5438/seo",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 22
+  },
+  {
+   "u": "https://api.iheartjane.com/v2/brand_specials?store_id%5B%5D=5438&app_mode=framelessEmbed",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 31601,
+   "arr": {
+    "n": 16,
+    "path": "$.brand_specials",
+    "keys": [
+     "active",
+     "aeropay_location_id",
+     "created_at",
+     "description",
+     "discount_dollar_amount",
+     "discount_label",
+     "discount_percent",
+     "discount_target_price",
+     "discount_type",
+     "enabled",
+     "end_time",
+     "excluded_app_modes"
+    ]
+   }
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/facets?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 13359,
+   "post": "{\"appMode\":\"framelessEmbed\",\"janeDeviceId\":\"J0W6vvmQiZwx2o0ZMQYI\",\"searchFacets\":[\"activities\",\"aggregate_rating\",\"applicable_bulk_special_ids\",\"applicable_bund"
+  },
+  {
+   "u": "https://api.iheartjane.com/v1/stores/5438/banner_message_settings",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 13201
+  },
+  {
+   "u": "https://api.iheartjane.com/v3/stores/5438/specials?page=1&per_page=1000&app_mode=default&include_hidden=true",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 21375,
+   "arr": {
+    "n": 11,
+    "path": "$.specials",
+    "keys": [
+     "id",
+     "title",
+     "special_type",
+     "hidden_from_page",
+     "hidden_from_row",
+     "custom_badge",
+     "description",
+     "terms",
+     "reservation_modes",
+     "discount_type",
+     "discount_amount",
+     "discount_percent"
+    ]
+   }
+  },
+  {
+   "u": "https://api.iheartjane.com/v3/stores/5438/specials?page=1&per_page=16&app_mode=default",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 21375,
+   "arr": {
+    "n": 11,
+    "path": "$.specials",
+    "keys": [
+     "id",
+     "title",
+     "special_type",
+     "hidden_from_page",
+     "hidden_from_row",
+     "custom_badge",
+     "description",
+     "terms",
+     "reservation_modes",
+     "discount_type",
+     "discount_amount",
+     "discount_percent"
+    ]
+   }
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/v2/multi?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 107994,
+   "post": "{\"app_mode\":\"framelessEmbed\",\"distinct_id\":\"$device:743d9203-4393-48ba-94dd-16362f63f532\",\"jane_device_id\":\"J0W6vvmQiZwx2o0ZMQYI\",\"search_attributes\":[\"*\"],\"sto"
+  },
+  {
+   "u": "https://dmerch.iheartjane.com/fp/token?jdm_api_key=ce5f15c9-3d09-441d-9bfd-26e87aff5925&jdm_source=monolith&jdm_version=2.25.0",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 284
+  },
+  {
+   "u": "https://iheartjane.com/aly2djS2yXoTGnR0/DBeqE6HSSwijog9l/OOoE/ZoIz-7/AHi?q=EYU7IsMqq8ODlt4MLnIq",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/plain; charset=utf-8"
+  }
+ ],
+ "frames": [
+  "about:srcdoc"
+ ],
+ "status": 200,
+ "age_gate_text": " Home About Us Loyalty Login Store Blog FAQ Contact Us HOURS OF OPERATION Mon-Sat: 10am to 10pm Sun: 10am to 6pm Location 1350 Lake St. Roselle, Illinois 60172 Contact Phone: 1-847-306-9916 Email: Dispensary@riverbluffcannabis.com Careers KEEP OUT OF REACH OF CHILDREN. FOR USE ONLY B",
+ "age_click": "I am 21 or older",
+ "final_url": "https://riverbluffcannabis.com/store/menu/",
+ "title": "Shop featured cannabis products | River Bluff Cannabis Dispensary Roselle, IL",
+ "htmlLen": 171687,
+ "prices": 0,
+ "textHead": " Home About Us Loyalty Login Store Blog FAQ Contact Us HOURS OF OPERATION Mon-Sat: 10am to 10pm Sun: 10am to 6pm Location 1350 Lake St. Roselle, Illinois 60172 Contact Phone: 1-847-306-",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://www.jointcommerce.com/",
+  "https://www.jointcommerce.com/"
+ ],
+ "count_text": null,
+ "platforms": [
+  "jane",
+  "joint"
+ ],
+ "hosts": [
+  [
+   "boost-assets.iheartjane.com",
+   80
+  ],
+  [
+   "product-assets.iheartjane.com",
+   34
+  ],
+  [
+   "dmerch.iheartjane.com",
+   26
+  ],
+  [
+   "riverbluffcannabis.com",
+   24
+  ],
+  [
+   "uploads.iheartjane.com",
+   23
+  ],
+  [
+   "static.klaviyo.com",
+   19
+  ],
+  [
+   "api.iheartjane.com",
+   9
+  ],
+  [
+   "fonts.gstatic.com",
+   7
+  ],
+  [
+   "www.googletagmanager.com",
+   5
+  ],
+  [
+   "iheartjane.com",
+   5
+  ],
+  [
+   "static-tracking.klaviyo.com",
+   4
+  ],
+  [
+   "www.google.com",
+   4
+  ],
+  [
+   "app.launchdarkly.com",
+   3
+  ],
+  [
+   "fonts.googleapis.com",
+   2
+  ]
+ ]
+}

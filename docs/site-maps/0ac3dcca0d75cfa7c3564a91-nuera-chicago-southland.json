@@ -1,0 +1,100 @@
+{
+ "store_id": "0ac3dcca0d75cfa7c3564a91",
+ "name": "nuEra Chicago Southland",
+ "address": "16950 Halsted St.",
+ "city": "Harvey",
+ "distance_miles": 86.655,
+ "accepted_menu": false,
+ "platform": "Jane (nuEra site embeds Jane store 6878 rec, 7415 med)",
+ "menu_url": "https://nueracannabis.com/dispensaries/il/chicago-southland/",
+ "how_reached": "nuEra store page links into a Jane storefront (/shop/store/6878 rec, /shop/store/7415 med)",
+ "branch_selection": "Jane store 6878 = 16950 S Halsted, Chicago (api.iheartjane.com/v1/stores/6878)",
+ "products_load": "Jane storefront search",
+ "paging": "Jane search pages",
+ "count_hint": "triage reads 615 items",
+ "blockers": "Probe watchdog at 90 s on the heavy Jane page; no block seen",
+ "why_it_fails": "Stored endpoints are 11 generic pages for other nuEra branches (store ids 1461-1520, 3050, 3057, 7414; 1517 is East Peoria, 3050 Pekin, 3057 Champaign). None is the Chicago Southland store, so branch identity fails and the generic path reads 74 products with TOTAL_UNVERIFIABLE.",
+ "fix_idea": "Take the Jane store id from the Chicago Southland page links, check its address, use the Jane reader, and supersede the 11 wrong-branch rows.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "jane",
+     615
+    ]
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   },
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

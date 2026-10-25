@@ -1,0 +1,74 @@
+{
+ "name": "Nuera Urbana",
+ "registry": {
+  "address": "105 E University Ave",
+  "city": "Urbana",
+  "state": "IL",
+  "latitude": 40.107571,
+  "longitude": -88.211029,
+  "distance_miles": 69.7
+ },
+ "operating_status": "open (iheartjane.com/stores/1519 \"nuEra - Urbana (REC)\" and /1520 \"(MED)\", pickup 9am-8pm, 105 East University Avenue, Urbana; nueracannabis.com/dispensaries/il/urbana/ lists 105 E University Ave)",
+ "website": "https://nueracannabis.com/dispensaries/il/urbana/",
+ "menu_url": "REC https://nueracannabis.com/shop/store/1519/featured (also /dispensaries/il/urbana/menu-rec/ redirects there) ; MED https://nueracannabis.com/shop/store/1520/featured (/dispensaries/il/urbana/menu-med/)",
+ "platform": "jane",
+ "how_menu_reached": "nueracannabis.com is WordPress + the heady-janeboost-addon plugin: /shop/store/<jane store id>/... pages are Jane Boost partner-hosted SSR pages (Next-style flight JSON in the HTML with escaped \"storeId\\\":1519\", dmerch records and _geoloc included). The branch page /dispensaries/il/urbana/ links to /shop/store/1519/ and /1520/. The lead pointed at ky.nueracannabis.com (Kentucky subdomain) - wrong state.",
+ "branch_selection": "Jane storeId in the URL path (/shop/store/<id>/): Urbana REC 1519, MED 1520 (identical _geoloc 40.11599,-88.20592 = 0.64 mi from registry point). Chain map (all Jane store ids on the same site, useful for other stores): Chicago 1461 med/1462 rec, East Peoria 1517 rec/1518 med, Pekin 3050 rec, Aurora 3051 rec, Champaign 3057 rec, DeKalb 5932 rec, East Dubuque 6250 rec/7412 med, Chicago Southland (Harvey) 6878 rec.",
+ "age_gate": "none observed on the SSR page; Jane in-app gate not needed for the API read",
+ "data_loading": {
+  "mechanism": "REST (Jane dmerch search API); the nueracannabis.com page also embeds the same records in SSR JSON",
+  "endpoints": [
+   "POST https://dmerch.iheartjane.com/v2/facets?jdm_api_key=<public SDK key scraped from iheartjane.com/stores/<id> page>&jdm_source=monolith&jdm_version=2.25.0 body {appMode,janeDeviceId,searchFacets:[\"kind\"],storeId:<id>}",
+   "POST https://dmerch.iheartjane.com/v2/multi (placements[0].search_filter=kind:\"<kind>\", page_size 60, search_attributes [\"*\"], store_id) - returns nb_hits + products",
+   "POST https://dmerch.iheartjane.com/v2/smartpage (object_ids batch of 60) - hydrates attributes beyond the first page"
+  ],
+  "notes": "Live 2026-10-19: 1519 REC = 1295 products (edible 229, extract 89, flower 353, gear 70, pre-roll 224, tincture 4, topical 9, vape 317); 1520 MED = 1296 products. I ran backend.adapters._observed_endpoint on both fetched /shop/store pages: provider jane, store 1519 / 1520, license recreational / medicinal, platform_location 40.1160,-88.2059 - the existing resolver already understands these pages."
+ },
+ "paging": "No page walking: the kind facet counts sum to the store total; each kind (<=1000 hits window) is one /v2/multi slice that must return exactly its facet count (larger kinds are split by brand facet); two independent full traversals must agree. Verified live 2026-10-19: facets and multi return 200 with a plain client.",
+ "approx_product_count": 1295,
+ "license_channels": "rec + med as separate Jane stores: REC 1519 (1295 products) NOT in the DB; MED 1520 (1296) saved and complete",
+ "blockers": [
+  "none"
+ ],
+ "evidence": [
+  "curl nueracannabis.com/shop/store/1519/featured and /1520/featured -> 200, titles \"Urbana recreational|medical Dispensary Menu + Prices | nuEra\"; dmerch present; store_types recreational / medical",
+  "Emulating resolve_menu link ordering on nueracannabis.com/dispensaries/il/urbana/ (59 candidate links): indexes 0-7 are /dispensaries/il/urbana/menu-rec/?filters[root_types][]=vape|gear|flower|edible|extract|topical|pre-roll|tincture, 8-11 other urbana pages, /shop/store/1519/ and /1520/ are at 18 and 19 - beyond the links[:10] cap",
+  "Real-Chrome probe: \"nuEra - Urbana (REC)\" /stores/1519 and \"(MED)\" /stores/1520, 105 East University Avenue, Urbana"
+ ],
+ "pipeline_result": {
+  "saved_resolution": "matched \"Resolved 1 canonical menu target(s)\" (2026-10-19T02:32Z); 10-18T13:55Z unresolved \"Candidate website found; branch name/locality or street address still needs matching\" (lead ky.nueracannabis.com/shop recorded in live_leads); 10-18T09:23Z matched 2 targets = filtered category pages; 10-17 unresolved \"Menu identity has no corroborated matching address\".",
+  "saved_endpoints": "jane 1520 medicinal COMPLETE (iheartjane.com/stores/1520/nuera-urbana-med, last_success 2026-10-19T02:32Z, 1347 items) | 2 generic recreational endpoints SUPERSEDED (nueracannabis.com/shop/?filters[root_types][]=edible and =extract: \"Filtered product/promotion page retained as evidence; not an independent full menu\", 83 items TOTAL_UNVERIFIABLE). No rec endpoint (store 1519) exists.",
+  "recent_attempts": "6 attempts: 10-18T09:23Z resolution matched 2 (filtered); 10-18T09:24Z two generic structured menu attempts partial/C TOTAL_UNVERIFIABLE (83 items); 10-18T13:55Z resolution unresolved LEAD_UNVERIFIED; 10-19T02:32Z resolution matched 1 and native jane 1520 complete/A (1347 items). Never attempted 1519.",
+  "sample": {
+   "tool": "scripts/sample_stores.py --pages 1 (2026-10-19, fingerprint regional-pipeline-2.5609f30e9d); page cap makes incomplete_* expected when declared == items",
+   "sample_stores": {
+    "provider": "jane",
+    "license": "medicinal",
+    "url": "https://www.iheartjane.com/stores/1520/nuera-urbana-med",
+    "items": 0,
+    "declared_total": null,
+    "errors": [
+     "incomplete_jane_menu"
+    ],
+    "verdict": "NO_PRODUCTS",
+    "seconds": 0.6
+   },
+   "fixed_wrapper": [
+    {
+     "endpoint": "jane 1520 med",
+     "items": 1347,
+     "declared": 1347,
+     "complete": true
+    }
+   ],
+   "caveat": "sample_stores.py result is NOT reliable for Jane: it passes the raw endpoint row without resolution_json, so branch proof fails for platform points 0.35-5 mi from the registry point; see fixed result."
+  }
+ },
+ "why_it_fails": "Medical works (but is stale: 17.8 h at 20:22Z; 69.7 mi from the study centre, outside the scheduled region). FRESHNESS: storage.py (~L420) counts a store fresh only if an accepted endpoint succeeded <12 h ago. Newest attempt of any kind in the whole DB is 2026-10-19T05:24Z; investigated 2026-10-19T20:22Z. Scheduler (main.py create_app: APScheduler menu-sync 4/day at 00/06/12/18 America/Chicago, only while uvicorn runs) enqueues only live_settings.active_region_id = ad41b2e9 (\"Browser GPS\", 50 mi around 40.98,-89.05); the last scheduled job ran 05:00Z (00:00 CDT) and the 06:00/12:00 CDT slots never ran (server not up). RECREATIONAL IS NEVER DISCOVERED: resolve_menu crawls at most `links[:10]` of the branch page (adapters.py ~L299, sorted by city-in-path, then menu|shop, then length). On /dispensaries/il/urbana/ the first 8 slots are category-filter links (`.../menu-rec/?filters[root_types][]=...`) that are then discarded by `menu_document_scope(url)==\"filtered\"` (L216), and the branch's real menu links /shop/store/1519/ and /1520/ rank 18-19, so they are never fetched. The 1520 SPA endpoint came in through a lead, not the chain crawl. Secondary: the search lead ky.nueracannabis.com/shop (Kentucky) survived because branch_slug_conflict only inspects path slugs, not a state subdomain; and the connector regex `nuera|nu\\s*era` -> https://nueracannabis.com/ (a chain root, not a locator) forces this crawl. The sampler cannot show a rec menu because none is saved.",
+ "fix_idea": "Shared crawl fix in resolve_menu: drop `menu_document_scope(link)==\"filtered\"` (and query-string category) links BEFORE applying the [:10] cap, and when the page identity is address-matched, prioritise same-host links that carry a numeric store id (/shop/store/<id>/) - these resolve straight to jane via the existing dmerch branch (L126-137) with platform_location proof. Also treat a state subdomain (ky./oh./...) like a state slug in branch_slug_conflict. The same fix would pick up the other nuEra stores that have no endpoints (Chicago 79e7a3dd.., Dekalb 1bbb7a6d.., East Dubuque 6c58b293.., East Peoria 0dfbfc67.., Harvey 0ac3dcca.. [11 generic partials]) using the store-id map above. Retire the superseded generic filtered endpoints.",
+ "root_cause_tag": "link-budget-eaten-by-filtered-category-links-rec-twin-missed",
+ "confidence": "high",
+ "store_id": "a64ec729fd77e25bbf11395f",
+ "slug": "nuera-urbana",
+ "investigated_at": "2026-10-19"
+}

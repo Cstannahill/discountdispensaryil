@@ -1,0 +1,207 @@
+{
+  "pipeline_version": "regional-pipeline-2.5609f30e9d",
+  "pages": 1,
+  "note": "Sample only; nothing was accepted or stored.",
+  "results": [
+    {
+      "store_id": "0ffd4a4edc5a7c32bd1ae596",
+      "name": "Aces Dispensary - Plainfield",
+      "provider": "jane",
+      "url": "https://acesdispensary.com/plainfield-menu/",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 866,
+      "declared_total": 866,
+      "complete": true,
+      "errors": [],
+      "seconds": 6.9,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "13c8246798f6ca7b35b19cc8",
+      "name": "Ivy Hall - Glendale Heights",
+      "provider": "sweed",
+      "url": "https://ivyhalldispensary.com/locations/glendaleheights/menu/recreational/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.6,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "17ad46e2a110f5ddbc12f4b4",
+      "name": "High Haven Darien",
+      "provider": "jane",
+      "url": "https://highhavencannabis.com/d-dispensary-il/darien-menu/",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 914,
+      "declared_total": 914,
+      "complete": true,
+      "errors": [],
+      "seconds": 6.9,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "1b9e7e570fc8f0c9dbf45cba",
+      "name": "Terrabis - Dixon",
+      "provider": "joint",
+      "url": "https://terrabis.co/stores/terrabis-cannabis-dispensary-dixon-il/",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_joint_menu"
+      ],
+      "seconds": 4.7,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "1eeeb8ef3a5e7cfc7faeffa4",
+      "name": "NuEra Pekin",
+      "provider": "jane",
+      "url": "https://www.iheartjane.com/stores/3050/nuera-pekin-rec/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_jane_menu"
+      ],
+      "seconds": 1.0,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "219662ce51b84d9c39d857e1",
+      "name": "Altius Dispensary - Carol Stream",
+      "provider": "sweed",
+      "url": "https://shop.altiusdispensary.com/locations/IL/carol-stream/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.5,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "2873d919d013f51473989442",
+      "name": "Bloom Wellness- Hometown",
+      "provider": "jane",
+      "url": "https://www.iheartjane.com/stores/7451/bloom-wellness-hometown-medical/menu",
+      "license_type": "medicinal",
+      "pages": 1,
+      "items": 1101,
+      "declared_total": 1101,
+      "complete": true,
+      "errors": [],
+      "seconds": 8.0,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "288251dd859d1590f0b3852f",
+      "name": "Ivy Hall - Damen",
+      "provider": "sweed",
+      "url": "https://ivyhalldispensary.com/locations/bucktown/menu/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.8,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "28c37ef748bc5d3046b875c8",
+      "name": "Snap Canna - Pontiac",
+      "provider": "blaze",
+      "url": "https://snapcanna.com/menu/pontiac/",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 1.3,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "2d17c9b393dc1cab8d13fd82",
+      "name": "Tree Haus - Diamond",
+      "provider": "sweed",
+      "url": "https://shop.treehausil.com/diamond/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.6,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "325739f471fedaa468609209",
+      "name": "Terrabis Plainfield",
+      "provider": "joint",
+      "url": "https://terrabis.co/menu/plainfield-il-med/",
+      "license_type": "medicinal",
+      "pages": 1,
+      "items": 0,
+      "declared_total": null,
+      "complete": false,
+      "errors": [
+        "incomplete_joint_menu"
+      ],
+      "seconds": 3.3,
+      "verdict": "NO_PRODUCTS"
+    },
+    {
+      "store_id": "36cf511c490e311e0529bc32",
+      "name": "NuEra Champaign",
+      "provider": "jane",
+      "url": "https://www.iheartjane.com/stores/3057/nuera-champaign-rec/menu",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 905,
+      "declared_total": 905,
+      "complete": true,
+      "errors": [],
+      "seconds": 5.6,
+      "verdict": "SAMPLE_PRODUCTS"
+    },
+    {
+      "store_id": "39bb12e26af49c0a74502597",
+      "name": "Ivy Hall - Peoria",
+      "provider": "sweed",
+      "url": "https://ivyhalldispensary.com/locations/peoria/menu/recreational/menu/discounts",
+      "license_type": "recreational",
+      "pages": 1,
+      "items": 24,
+      "declared_total": 24,
+      "complete": false,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "seconds": 0.6,
+      "verdict": "SAMPLE_PRODUCTS"
+    }
+  ]
+}

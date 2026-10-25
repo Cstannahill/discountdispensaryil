@@ -1,0 +1,40 @@
+{
+ "store_id": "12a98fb3b18174f2a88c459c",
+ "name": "Starbuds-Burbank",
+ "address": "7844 S Cicero Ave",
+ "city": "Burbank",
+ "distance_miles": 89.235,
+ "accepted_menu": false,
+ "platform": "Dutchie (Starbuds own site, embedded Dutchie)",
+ "menu_url": "https://starbudsillinois.us/stores/starbuds-burbank/products",
+ "how_reached": "starbudsillinois.us store page; Dutchie GraphQL (dutchie.com/embedded-menu/636117cb88dfb700fd8d791d in triage)",
+ "branch_selection": "URL slug starbuds-burbank; Dutchie tenant id from embed",
+ "products_load": "Dutchie FilteredProducts",
+ "paging": "Dutchie pages",
+ "count_hint": "98 cards on the rendered page",
+ "blockers": "Age gate (\"Yes\", clicked in probe)",
+ "why_it_fails": "Stored endpoint is generic, partial, with GATE_UNKNOWN: the generic path could not find the age-gate locator within 3 s. The Dutchie path works (triage 606 items, sample cap).",
+ "fix_idea": "Route Starbuds to the Dutchie reader with the embed tenant id; keep the generic path only as a fallback.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "dutchie",
+     606
+    ]
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

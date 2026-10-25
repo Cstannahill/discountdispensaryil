@@ -1,0 +1,225 @@
+{
+ "key": "4e920ea5",
+ "url": "https://www.vertical-cannabis.com/shop/recreational-shop/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.vertical-cannabis.com/shop/recreational-shop/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain; charset=UTF-8",
+   "u": "https://www.vertical-cannabis.com/cdn-cgi/challenge-platform/h/b/jsd/oneshot/d2d3316b729e/0.2149687575251502:1792440026:_qjrJjJkHAbmqAMO7sJTQhZchfr4054dmt2f2nQCWtM/a4d27ed9ba50c485",
+   "size": 0,
+   "sample": null,
+   "post": "WtUMEgB9Xqt4DwT+lIA7E1g6gpAatYLoaXxAHCdIn85o3ocH89uVxRM03Bu-h-Q6gSn9ilurlQAS-qSNCozgAoMgXeeKraJo3TOJqMjKGB2g7dKr0zyEJxFP6oGslRP30NntfCWC3m5-6yaqQcsjvsEhDEfpmEoBdNPZFF-ovMypzoTyBpjKGWCNn-3nUOvjJI48motMySnprBGyTYWu0iu2HoggyWEBxY2UAcGj3pT0wFdsr22K+kjaQ1wLIsCq9NOiGimBPPMMaJM$B81AYOUBlSdu2rjS5Yvo0UhGRtTd"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-cookieyes.com/client_data/325807009533bf5818087453/_PVaAVpY.json",
+   "size": 44,
+   "sample": "[{\"targetBanner\":2248308,\"condition\":\"all\"}]"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-cookieyes.com/client_data/325807009533bf5818087453/config/00JD3BcT.json",
+   "size": 35684,
+   "sample": "{\"reloadOnAccept\":false,\"dataShortCodes\":[{\"key\":\"cky_show_desc\",\"content\":{\"button\":\"<button class=\\\"cky-show-desc-btn\\\" data-cky-tag=\\\"show-desc-button\\\" aria-expanded=\\\"false\\\" aria-label=\\\"[cky_showmore_text]\\\">[cky_showmore_text]</button>\"},\"uiTag\":\"show-desc-button\",\"type\":\"data\",\"customTag\":\""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-cookieyes.com/client_data/325807009533bf5818087453/translations/uTuLMe_T.json",
+   "size": 1775,
+   "sample": "{\"cky_notice_title\":\"We value your privacy\",\"cky_notice_description\":\"<p>We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking \\\"Accept All\\\", you consent to our use of cookies.</p>\",\"cky_notice_close_label\":\"Close\",\"cky_readmore_"
+  },
+  {
+   "m": "GET",
+   "s": 308,
+   "t": "document",
+   "ct": "",
+   "u": "https://dutchie.com/embedded-menu/vertical-dispensary-saint-joseph/?menuType=rec&dutchie_sid=b7c97343-a63b-4963-9f58-b697790ab0c6",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-cookieyes.com/client_data/325807009533bf5818087453/audit-table/xpHIgKhD.json",
+   "size": 2973,
+   "sample": "{\"cookies\":{\"XSRF-TOKEN\":{\"cookie_id\":\"XSRF-TOKEN\",\"duration\":\"7 days\",\"description\":\"This cookie enhances visitor browsing security by preventing cross-site request forgery.\"},\"__cf_bm\":{\"cookie_id\":\"__cf_bm\",\"duration\":\"1 hour\",\"description\":\"This cookie, set by Cloudflare, is used to support Clou"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://dutchie.com/embedded-menu/vertical-dispensary-saint-joseph?dutchie_sid=b7c97343-a63b-4963-9f58-b697790ab0c6&menuType=rec",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/graphql?operationName=ConsumerDispensaries&variables=%7B%22dispensaryFilter%22%3A%7B%22cNameOrID%22%3A%22vertical-dispensary-saint-joseph%22%7D%2C%22collectionChannel%22%3A%22WEB%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3",
+   "size": 68120,
+   "sample": "{\"data\":{\"filteredDispensaries\":[{\"id\":\"678fa6dcd0b208f78ea04f8f\",\"customDomainSettings\":{\"domain\":null,\"__typename\":\"Dispensaries_profile_customDomain_settings\"},\"plusSettings\":null,\"distance\":null,\"name\":\"Vertical Dispensary - Saint Joseph\",\"cName\":\"vertical-dispensary-saint-joseph\",\"timezone\":\"US"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/goals/5ee2761738b5d10a6705cadf",
+   "size": 212,
+   "sample": "[{\"key\":\"73539f8c-4c57-4fc7-8bb8-9ba2a5c4c391\",\"kind\":\"click\",\"selector\":\"test-experiment-button\",\"urls\":[{\"kind\":\"substring\",\"substring\":\"/embedded-menu/oregrown\"},{\"kind\":\"substring\",\"substring\":\"/oregrown\"}]}]"
+  },
+  {
+   "m": "POST",
+   "s": 202,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.launchdarkly.com/events/diagnostic/5ee2761738b5d10a6705cadf",
+   "size": 0,
+   "sample": "",
+   "post": "{\"kind\":\"diagnostic-combined\",\"id\":{\"diagnosticId\":\"d2553ca0-cbfa-11f1-8696-cf3004655799\",\"sdkKeySuffix\":\"05cadf\"},\"creationDate\":1792441355632,\"dataSinceDate\":1792441355626,\"droppedEvents\":0,\"eventsInLastBatch\":0,\"streamInits\":[],\"sdk\":{\"name\":\"js-client-sdk\",\"version\":\"3.9.0\",\"wrapperName\":\"react-"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://app.launchdarkly.com/sdk/evalx/5ee2761738b5d10a6705cadf/contexts/eyJraW5kIjoibXVsdGkiLCJ1c2VyIjp7ImtpbmQiOiJ1c2VyIiwia2V5IjoiYjdjOTczNDMtYTYzYi00OTYzLTlmNTgtYjY5Nzc5MGFiMGM2IiwidHlwZSI6Imd1ZXN0Q3VzdG9tZXIiLCJjYW5hcnkiOmZhbHNlfSwiYXBwbGljYXRpb24iOnsia2V",
+   "size": 329592,
+   "sample": "{\"ecomm.concierge.product-list-entry.rollout\":{\"version\":35081,\"flagVersion\":4,\"value\":true,\"variation\":0,\"trackEvents\":false,\"trackReason\":false,\"debugEventsUntilDate\":0,\"reason\":{\"kind\":\"FALLTHROUGH\"}},\"consumer.ecomm.image-banner-section.rollout\":{\"version\":35081,\"flagVersion\":9,\"value\":true,\"var"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://cdn-api.ethyca.com/location",
+   "size": 78,
+   "sample": "{\"country\":\"US\",\"ip\":\"209.113.172.235:58823\",\"location\":\"US-IL\",\"region\":\"IL\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/api-4/graphql?operationName=GetSpecialMenuCards&variables=%7B%22dispensaryId%22%3A%22678fa6dcd0b208f78ea04f8f%22%2C%22menuType%22%3A%22REC%22%2C%22platformType%22%3A%22ONLINE_MENU%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%",
+   "size": 10358,
+   "sample": "{\"data\":{\"getSpecialMenuCards\":{\"menuCards\":[{\"_id\":\"6a19bea3974f0900940da465\",\"applicableCategories\":null,\"applicablePreOrderTypes\":null,\"displayRank\":5,\"endStamp\":null,\"isBundledDiscount\":false,\"isRestricted\":false,\"menuDisplayDescription\":\"MIX AND MATCH ANY 4 COVERT 1G CARTS OR CONCENTRATES FOR $"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://dutchie.com/api-4/graphql",
+   "size": 81,
+   "sample": "{\"data\":{\"logAnalyticsPayload\":{\"success\":true,\"__typename\":\"GenericResponse\"}}}\n",
+   "post": "{\"operationName\":\"SendAnalyticsPayload\",\"variables\":{\"payload\":{\"checkoutToken\":null,\"gtmPayload\":{\"dispensary_id\":\"678fa6dcd0b208f78ea04f8f\",\"dispensary_name\":\"Vertical Dispensary - Saint Joseph\",\"dispensary_state\":\"MO\",\"dutchie_pay_enabled\":false,\"event\":\"page_view\",\"user_enrolled_dutchie_pay\":fal"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/vnd.api+json",
+   "u": "https://dutchie.com/telemetry",
+   "size": 153,
+   "sample": "{\"data\":{\"id\":\"e2d5c393-2e5d-496c-b30d-eae8b29b0bf8\",\"type\":\"generic_response\",\"attributes\":{\"success\":true,\"message\":null}},\"jsonapi\":{\"version\":\"1.0\"}}",
+   "post": "{\"type\":\"viewedPage\",\"payload\":{\"dispensary_id\":\"678fa6dcd0b208f78ea04f8f\",\"menu_variant\":\"embedded\",\"page\":\"https://dutchie.com/embedded-menu/vertical-dispensary-saint-joseph?menuType=rec\",\"pageType\":\"home\"}}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://www.vertical-cannabis.com/wp-json/age-gate/v3/check?age_gate%5Bage%5D=HFwF0WxzrtxTHKNqmsTzFA%3D%3D&age_gate%5Blang%5D=en&age_gate%5Bconfirm%5D=1",
+   "size": 169,
+   "sample": "{\"data\":{\"user_age\":21,\"age_gate\":{\"age\":21,\"lang\":\"en\",\"confirm\":\"1\"}},\"status\":true,\"redirect\":\"\",\"cookieLength\":0,\"transition\":false,\"user_data\":[],\"set_cookie\":true}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://fides.dutchie.com/api/v1/privacy-experience?show_disabled=false&region=us_il&component=overlay&has_notices=true&has_config=true&systems_applicable=true&include_gvl=true&exclude_gvl_languages=true&include_meta=true",
+   "size": 51,
+   "sample": "{\"items\":[],\"total\":0,\"page\":1,\"size\":50,\"pages\":0}"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-ZNEV4RY2MG&gtm=45je6ag1h2v9178804317z8858544012za20gzb858544012zd858544012xf1&_p=1792441356195&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1034926422.1792441358&frm=2&ngs=1&pscdl=noapi&rcb=8&sr=800x600&uaa=x86&uab=64&u",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "text/plain; charset=utf-8",
+   "u": "https://directory.cookieyes.com/api/v1/ip",
+   "size": 0,
+   "sample": null
+  }
+ ],
+ "iframes": [
+  "about:blank",
+  "https://dutchie.com/embedded-menu/vertical-dispensary-saint-joseph?menuType=rec"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [Yes]",
+  "clicked button:has-text(\"Accept\") [Accept All]"
+ ],
+ "status": 200,
+ "finalUrl": "https://www.vertical-cannabis.com/shop/recreational-shop/",
+ "title": "Vertical Cannabis | Shop Recreational Marijuana",
+ "htmlBytes": 208166,
+ "sigs": [
+  "dutchie",
+  "weedmaps",
+  "leafly",
+  "wordpress",
+  "cloudflare"
+ ],
+ "links": [
+  "https://www.cookieyes.com/product/cookie-consent/?ref=cypbcyb&utm_source=cookie-banner&utm_medium=powered-by-cookieyes",
+  "https://www.vertical-cannabis.com/shop/recreational-shop/#newsletter",
+  "https://www.vertical-cannabis.com/shop/"
+ ],
+ "textSample": "Skip to menu Strains About Careers Find Contact Strains About Careers Find Contact Stay connected with Vertical. Sign up for text notifications to receive updates on new products, daily deals, and exclusive offers. Sign Up Today Shop Strains About Careers Contact What Are Terpenes NEW HOURS 8:00AM – 10:00PM Everyday! 908 N Belt Hwy St Joseph, MO 64506 Get Directions (816) 396-8573 Find us on Weedmaps | Leafly © 2025 Vertical Premium Cannabis. All Rights Reserved. Privacy Policy",
+ "productHints": [],
+ "priceCount": 0,
+ "frameText": [
+  {
+   "url": "https://dutchie.com/embedded-menu/vertical-dispensary-saint-joseph?menuType=rec",
+   "prices": 113,
+   "sample": "Skip Navigation Home Shop Brands Specials Search Dispensary Info OPEN Pickup MENU Recreational Login 0 items in your shopping cart Login for recommendations & re‑ordering of your favorites 🔥 Weekly Deals 🔥 7 DAYS A WEEK! Select Vertical 3.5G Flower"
+  }
+ ]
+}

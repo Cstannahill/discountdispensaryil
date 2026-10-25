@@ -1,0 +1,13 @@
+SAMPLE_PRODUCTS    Aces Dispensary - Plainfield   jane     items=866 declared=866 6.9s  
+SAMPLE_PRODUCTS    Ivy Hall - Glendale Heights    sweed    items=24 declared=24 0.6s  ['incomplete_menu']
+SAMPLE_PRODUCTS    High Haven Darien              jane     items=914 declared=914 6.9s  
+NO_PRODUCTS        Terrabis - Dixon               joint    items=0 declared=None 4.7s  ['incomplete_joint_menu']
+NO_PRODUCTS        NuEra Pekin                    jane     items=0 declared=None 1.0s  ['incomplete_jane_menu']
+SAMPLE_PRODUCTS    Altius Dispensary - Carol Stre sweed    items=24 declared=24 0.5s  ['incomplete_menu']
+SAMPLE_PRODUCTS    Bloom Wellness- Hometown       jane     items=1101 declared=1101 8.0s  
+SAMPLE_PRODUCTS    Ivy Hall - Damen               sweed    items=24 declared=24 0.8s  ['incomplete_menu']
+NO_PRODUCTS        Snap Canna - Pontiac           blaze    items=0 declared=None 1.3s  ['incomplete_menu']
+SAMPLE_PRODUCTS    Tree Haus - Diamond            sweed    items=24 declared=24 0.6s  ['incomplete_menu']
+NO_PRODUCTS        Terrabis Plainfield            joint    items=0 declared=None 3.3s  ['incomplete_joint_menu']
+SAMPLE_PRODUCTS    NuEra Champaign                jane     items=905 declared=905 5.6s  
+SAMPLE_PRODUCTS    Ivy Hall - Peoria              sweed    items=24 declared=24 0.6s  ['incomplete_menu']

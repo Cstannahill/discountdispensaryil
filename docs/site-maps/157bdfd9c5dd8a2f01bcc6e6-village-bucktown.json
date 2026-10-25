@@ -1,0 +1,28 @@
+{
+ "store_id": "157bdfd9c5dd8a2f01bcc6e6",
+ "name": "Village Bucktown",
+ "address": "1850 W Webster Ave",
+ "city": "Chicago",
+ "distance_miles": 99.826,
+ "accepted_menu": false,
+ "platform": "Dutchie kiosk (Village Bucktown); brand site does not list it",
+ "menu_url": "https://dutchie.com/kiosks/village-bucktown/products",
+ "how_reached": "Found in search results only; not probed in this pass",
+ "branch_selection": "Address 1850 W Webster Ave (registry and third-party listings agree)",
+ "products_load": "unknown",
+ "paging": "unknown",
+ "count_hint": "unknown",
+ "blockers": "unknown",
+ "why_it_fails": "dutchie.com/dispensary/village-bucktown is Page Not Found. thevillagebrands.com/stores/village-bucktown is a 404. No branch proof exists in the stored state.",
+ "fix_idea": "Probe the kiosk URL. If it is the live menu, add a Dutchie kiosk variant to the Dutchie reader.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Candidate website found; branch name/locality or street address still needs matching",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

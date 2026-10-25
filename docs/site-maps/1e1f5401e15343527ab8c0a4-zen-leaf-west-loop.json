@@ -1,0 +1,33 @@
+{
+ "store_id": "1e1f5401e15343527ab8c0a4",
+ "name": "Zen Leaf - West Loop",
+ "address": "222 S Halsted St",
+ "city": "Chicago",
+ "distance_miles": 99.143,
+ "accepted_menu": false,
+ "platform": "Verano catalog (Zen Leaf own site)",
+ "menu_url": "https://zenleafdispensaries.com/locations/chicago-west-loop/",
+ "how_reached": "zenleafdispensaries.com location page; catalog at data.zenleafdispensaries.com/catalog/537/recreational (1178 products)",
+ "branch_selection": "Address 222 S Halsted St (embedded map on page); catalog id 537",
+ "products_load": "Verano catalog JSON",
+ "paging": "single catalog file",
+ "count_hint": "1178 products in catalog",
+ "blockers": "none seen",
+ "why_it_fails": "Stored state: no endpoint; fallback search found no branch lead. Current triage reads the Verano reader in 5 s (1122 items), so only discovery is missing.",
+ "fix_idea": "Add a Zen Leaf location-to-catalog mapping so discovery finds the catalog id without web search.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "verano",
+     1122
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

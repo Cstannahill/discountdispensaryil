@@ -1,0 +1,280 @@
+{
+ "key": "34_ascend_spfld",
+ "url": "https://ascendcannabis.com/menu/il-springfield-horizon-menu",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://edge.surfside.io/track/pv?aid=00116&cid=4f440&url=https%253A%252F%252Fascendcannabis.com%252Fmenu%252Fil-springfield-horizon-menu&page=%252Fmenu%252Fil-springfield-horizon-menu",
+   "m": "GET",
+   "s": 302,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://us.i.posthog.com/flags/?v=2&config=true&ip=0&_=1792441358558&ver=1.345.2&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1058,
+   "post": "data=eyJ0b2tlbiI6InBoY19ramZ6TDV3ZUw3UWhkdWs3ZHBwUlhjZHNSSHZWTWVkaHdQTUI3dUdVd2hRVyIsImRpc3RpbmN0X2lkIjoiMDFhMTU1ZDQtOThkYS03ZDdjLThhNDktZWM5MmY5ZTc0N2FjIiwiZ3J"
+  },
+  {
+   "u": "https://col.surfside.io/i?tna=surf&p=mob&e=pv&cx=eyJzY2hlbWEiOiJpZ2x1OmNvbS5zbm93cGxvd2FuYWx5dGljcy5zbm93cGxvdy9jb250ZXh0cy9qc29uc2NoZW1hLzEtMC0wIiwiZGF0YSI6W3sic2NoZW1hIjoiaWdsdTpjb20uc3VyZnNpZGUvY2F",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/gif"
+  },
+  {
+   "u": "https://api.dispenseapp.com/user/me?organizationId=d360bbb9d0a62b2b",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 195
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/0e98c8652a35fe4f/product-filters?brand=Triton&brand=Ozone",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 14124
+  },
+  {
+   "u": "https://edge.surfside.io/id/uid",
+   "m": "GET",
+   "s": 302,
+   "ct": "text/plain; charset=utf-8"
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/organizations/d360bbb9d0a62b2b/banners?sort=order&limit=20&enable=true&venueId=0e98c8652a35fe4f",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 2803
+  },
+  {
+   "u": "https://us.i.posthog.com/flags/?v=2&config=true&ip=0&_=1792441359113&ver=1.345.2&compression=base64",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 1058,
+   "post": "data=eyJ0b2tlbiI6InBoY19ramZ6TDV3ZUw3UWhkdWs3ZHBwUlhjZHNSSHZWTWVkaHdQTUI3dUdVd2hRVyIsImRpc3RpbmN0X2lkIjoiZDlhYTFjNDdjNThhYzQyMiIsImdyb3VwcyI6e30sIiRhbm9uX2Rpc3R"
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/users/d9aa1c47c58ac422/loyalty-profile?venueId=0e98c8652a35fe4f",
+   "m": "GET",
+   "s": 404,
+   "ct": "application/json; charset=utf-",
+   "len": 138
+  },
+  {
+   "u": "https://match.adsrvr.org/track/cmf/generic/?ttd_pid=tkfr5iv&ttd_tpi=1",
+   "m": "GET",
+   "s": 302,
+   "ct": ""
+  },
+  {
+   "u": "https://match.adsrvr.org/track/cmb/generic?ttd_pid=tkfr5iv&ttd_tpi=1",
+   "m": "GET",
+   "s": 200,
+   "ct": "image/gif"
+  },
+  {
+   "u": "https://lab.alpineiq.com/ads/anonymous/2028/ecommHomepage?limit=3&currentURL=https%3A%2F%2Fascendcannabis.com%2Fmenu%2Fil-springfield-horizon-menu&globalID=85503148-b502-49df-aa49-b0081b92cc25",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 38
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/0e98c8652a35fe4f/product-categories/d8641ebee47eabb2/products?skip=0&limit=10&orderPickUpType=IN_STORE",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 32036,
+   "arr": {
+    "n": 6,
+    "path": "$.data",
+    "keys": [
+     "id",
+     "_id",
+     "deleted",
+     "name",
+     "description",
+     "seoDescription",
+     "cannabisComplianceType",
+     "weight",
+     "weightInGrams",
+     "weightUnit",
+     "weightFormatted",
+     "effects"
+    ]
+   }
+  },
+  {
+   "u": "https://ps13.pndsn.com/v2/subscribe/sub-c-daa0ecb2-a426-11eb-b1ae-be4e92e38e16/DISPENSE_PUBSUB_ADMIN_MENU_APP/0?heartbeat=300&uuid=dispense&pnsdk=PubNub-JS-Web%2F7.4.5",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/javascript; charset=\"UTF-"
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/0e98c8652a35fe4f/product-categories/909c4958bb6328d2/products?skip=0&limit=10&orderPickUpType=IN_STORE",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 29247,
+   "arr": {
+    "n": 6,
+    "path": "$.data",
+    "keys": [
+     "id",
+     "_id",
+     "deleted",
+     "name",
+     "description",
+     "seoDescription",
+     "cannabisComplianceType",
+     "weight",
+     "weightInGrams",
+     "weightUnit",
+     "weightFormatted",
+     "cannabisType"
+    ]
+   }
+  },
+  {
+   "u": "https://api.dispenseapp.com/v1/venues/0e98c8652a35fe4f/product-categories/d6e7dc76d87ad16a/products?skip=0&limit=10&orderPickUpType=IN_STORE",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json; charset=utf-",
+   "len": 44607,
+   "arr": {
+    "n": 10,
+    "path": "$.data",
+    "keys": [
+     "id",
+     "_id",
+     "deleted",
+     "name",
+     "description",
+     "seoDescription",
+     "cannabisComplianceType",
+     "weight",
+     "weightInGrams",
+     "weightUnit",
+     "weightFormatted",
+     "effects"
+    ]
+   }
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/2028/devices/lookup",
+   "m": "POST",
+   "s": 404,
+   "ct": "application/json",
+   "len": 69,
+   "post": "{\"deviceId\":\"7e0e01bc-ec98-4603-ae29-2dcaedb35c20\",\"aiq_device_id\":\"7e0e01bc-ec98-4603-ae29-2dcaedb35c20\",\"deviceClass\":\"desktop\",\"os\":\"Windows\",\"browser\":\"Chro"
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/signup-forms/pop-ups/2028",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 38
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/surveys/pop-ups/2028",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 38
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/widget/enabled?uids=2028",
+   "m": "GET",
+   "s": 200,
+   "ct": "application/json",
+   "len": 103
+  },
+  {
+   "u": "https://lab.alpineiq.com/aiq-sdk/2028/events",
+   "m": "POST",
+   "s": 404,
+   "ct": "application/json",
+   "len": 69,
+   "post": "{\"visitorId\":\"563caef7-ca7a-48b4-b37c-cba80daefef9\",\"name\":\"page_view\",\"data\":{\"href\":\"https://ascendcannabis.com/menu/il-springfield-horizon-menu\",\"tz\":\"Americ"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "Are you over 21? No Yes home Springfield - Horizon Drive Ann Arbor Battle Creek Detroit East Lansing Grand Rapids - 28th St. Grand Rapids - Century Ave. Grand Rapids - Scribner Ave Morenci STORE INFO Menu Log In We are not currently accepting orders. High Wired Bundles Triton Vapes Red, White, and B",
+ "age_click": "Yes",
+ "final_url": "https://ascendcannabis.com/menu/il-springfield-horizon-menu",
+ "title": "Springfield, IL - Horizon Drive Dispensary Recreational Menu",
+ "htmlLen": 277670,
+ "prices": 6,
+ "textHead": "Are you over 21? No Yes home Springfield - Horizon Drive Ann Arbor Battle Creek Detroit East Lansing Grand Rapids - 28th St. Grand Rapids - Century Ave. Grand Rapids - Scribner Ave Morenci STORE INFO ",
+ "iframes": [],
+ "nextdata": false,
+ "links": [],
+ "count_text": null,
+ "platforms": [
+  "dispense"
+ ],
+ "hosts": [
+  [
+   "menus-ojhdl7fmn-dispense.vercel.app",
+   48
+  ],
+  [
+   "dispense-images.imgix.net",
+   17
+  ],
+  [
+   "api.dispenseapp.com",
+   7
+  ],
+  [
+   "us-assets.i.posthog.com",
+   4
+  ],
+  [
+   "us.i.posthog.com",
+   2
+  ],
+  [
+   "edge.surfside.io",
+   2
+  ],
+  [
+   "match.adsrvr.org",
+   2
+  ],
+  [
+   "lab.alpineiq.com",
+   2
+  ],
+  [
+   "ps13.pndsn.com",
+   2
+  ],
+  [
+   "ascendcannabis.com",
+   1
+  ],
+  [
+   "o1127219.ingest.us.sentry.io",
+   1
+  ],
+  [
+   "col.surfside.io",
+   1
+  ],
+  [
+   "cdn.pubnub.com",
+   1
+  ],
+  [
+   "",
+   1
+  ]
+ ]
+}

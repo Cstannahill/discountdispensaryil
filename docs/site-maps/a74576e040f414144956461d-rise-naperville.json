@@ -1,0 +1,47 @@
+{
+  "store_id": "a74576e040f414144956461d",
+  "name": "Rise - Naperville",
+  "slug": "rise-naperville",
+  "registry": {"address": "1700 Quincy Ave Ste 103", "city": "Naperville", "state": "IL", "latitude": 41.765789, "longitude": -88.149422, "distance_miles": 75.5},
+  "investigated_at": "2026-10-19",
+  "operating_status": "open",
+  "website": "https://risecannabis.com/dispensaries/illinois/naperville/",
+  "menu_url": "rec: https://risecannabis.com/dispensaries/illinois/naperville/2265/recreational-menu/  |  med: https://risecannabis.com/dispensaries/illinois/naperville/255/medical-menu/",
+  "platform": "jane",
+  "how_menu_reached": "Rise (Green Thumb Industries) custom Next.js site; the branch landing page links to Recreational menu and Medical menu SPA routes on the same host. Menu grid is Rise's own UI over Jane's Merch SDK (dmerch.iheartjane.com), no iframe, no Jane-hosted page.",
+  "branch_selection": "Jane store id is the numeric path segment: 2265 (recreational) and 255 (medical). Rise chain API menuDetails[] for slug /dispensaries/illinois/naperville/ lists both. Visible address card reads '1700 Quincy Ave #103, Naperville, IL 60540'. Jane _geoloc for both stores is 41.7741,-88.1911 (Rise API coordinates 41.7746,-88.1908), which is 2.22 mi from the registry pin (registry coordinates are approximate for this store).",
+  "age_gate": "click-through (Yes / 21+ button; probe auto-click works), plus Osano cookie consent",
+  "data_loading": {
+    "mechanism": "REST (Jane dmerch search) from the browser; chain directory via Rise REST API",
+    "endpoints": [
+      "GET https://risecannabis.com/api/opensearch/dispensaries/nearest?lat=&lon=&limit=25&state=Illinois (limit max 25; returns results[] with name, slug, address{street_one, street_two=house number, city, state_code, zip}, coordinates{lat,lon}, menuDetails[{slug,menuType,menuId}])",
+      "GET https://risecannabis.com/api/store-locator-bar/ (current branch name/slug)",
+      "GET https://dmerch.iheartjane.com/fp/token (SDK), POST https://dmerch.iheartjane.com/v2/facets|multi|smartpage with storeId 2265 (read by backend/providers/jane.py)"
+    ],
+    "notes": "Plain honest-UA POSTs to dmerch work once the SDK key is read from iheartjane.com/stores/<id>."
+  },
+  "paging": "kind facet counts sum to the store total (declared total); slices under the 1000-hit window; hydrate 60 per call",
+  "approx_product_count": 1689,
+  "license_channels": "rec+med separate Jane stores: 2265 recreational 1689 products (edible 299, extract 172, flower 341, gear 241, merch 86, pre-roll 214, tincture 5, topical 11, vape 320); 255 medical 1688",
+  "blockers": [
+    "risecannabis.com: Cloudflare managed challenge for plain HTTP clients (403, cf-mitigated: challenge) on HTML and /api; installed Chrome loads the page without a visible challenge"
+  ],
+  "evidence": [
+    "curl -I risecannabis.com/dispensaries/illinois/naperville/ -> 403 cf-mitigated: challenge",
+    "Chrome probe: title 'RISE Naperville Dispensary', links /naperville/2265/recreational-menu/ and /naperville/255/medical-menu/",
+    "Rendered page JSON-LD PostalAddress streetAddress = '#103 Quincy Ave 1700' (swapped); visible card = '1700 Quincy Ave #103, Naperville, IL 60540'",
+    "Running backend.site_discovery.inspect_page on the rendered HTML with the registry store returns identity_status conflict (name_match True, city_match True, address unmatched)",
+    "backend.providers.jane.hosted_store(store, '.../naperville/2265/recreational-menu/') returns ('2265', 'name_locality')",
+    "Jane facets 2265 total 1689, 255 total 1688"
+  ],
+  "pipeline_result": {
+    "saved_resolution": "unresolved: Candidate website found; branch name/locality or street address still needs matching (2026-10-18T09:44, LEAD_UNVERIFIED); before that failed: Public endpoint returned HTTP 403 (2026-10-17)",
+    "saved_endpoints": "none; live_leads row https://risecannabis.com/dispensaries/illinois/naperville/",
+    "recent_attempts": "single resolution attempt, LEAD_UNVERIFIED, fingerprint 5f5ba837b5 (older than commit 5a9deee 'Resolve Rise-hosted menus to their Jane store ids'; HEAD is 5609f30e9d). Not re-run since.",
+    "sample": null
+  },
+  "why_it_fails": "Stage = website discovery identity check. (1) Plain fetch of any risecannabis.com URL is a Cloudflare 403. (2) When the branch landing page is rendered by the browser, site_discovery.inspect_page trusts the JSON-LD PostalAddress, which Rise writes as street_one + street_two ('#103 Quincy Ave 1700'), so addresses_match fails and identity becomes 'conflict' even though the visible address and branch name match; the lead is therefore left as LEAD_UNVERIFIED. (3) backend/providers/jane.py hosted_store (RISE_MENU) only fires for URLs that already contain the numeric Jane id (menu URLs), not for the branch landing URL. Once a menu URL is queued, the Jane reader should pass (pin 2.22 mi is inside NEAR_MILES=5 and hosted_store returns name_locality), producing a grade A catalog.",
+  "fix_idea": "Same chain-level fix as the other Rise-network stores: read Rise's own directory (/api/opensearch/dispensaries/nearest via browser context; number is in street_two) or the landing page's menuDetails, and queue the numeric menu URLs (2265 rec, 255 med) straight into hosted_store. Also normalize the swapped JSON-LD streetAddress in inspect_page (and/or prefer the visible address card) so landing pages do not read as conflict. Keep a rerun after fixing, since the stored attempt predates the Rise-hosted Jane commit.",
+  "root_cause_tag": "rise-chain-locator-cloudflare-and-swapped-address",
+  "confidence": "high"
+}

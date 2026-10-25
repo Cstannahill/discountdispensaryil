@@ -1,0 +1,457 @@
+{
+ "key": "7f48ac07",
+ "url": "https://shop.revcanna.com/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "document",
+   "ct": "text/html; charset=utf-8",
+   "u": "https://shop.revcanna.com/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://shop.revcanna.com/schaumburg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "other",
+   "ct": "application/json",
+   "u": "https://media.sweedpos.com/store/production/static/revcanna/icon.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/index.json",
+   "size": 168187,
+   "sample": "{\n  \"revolution\": {\n    \"sizing\": {\n      \"scale\": {\n        \"xxxxs\": \"2px\",\n        \"xxxs\": \"4px\",\n        \"xxs\": \"8px\",\n        \"xs\": \"12px\",\n        \"sm\": \"16px\",\n        \"md\": \"24px\",\n        \"lg\": \"32px\",\n        \"xl\": \"40px\",\n        \"xxl\": \"48px\",\n        \"xxxl\": \"56px\",\n        \"xxxxl\": \"64p"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/search.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/cart.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/shop.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/chevron-left.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/chevron-down.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/chevron-right.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/thumb-up.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/discount-label.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/filter.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/cart-add.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/minus.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/16/more.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.revcanna.com/_api/Cart/GetV2",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 401,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.revcanna.com/_api/Account/Get",
+   "size": 0,
+   "sample": null,
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://posthog.sweedpos.com/decide/?v=3&ip=1&_=1792441459794&ver=1.161.3&compression=base64",
+   "size": 869,
+   "sample": "{\"config\": {\"enable_collect_everything\": true}, \"toolbarParams\": {}, \"isAuthenticated\": false, \"supportedCompression\": [\"gzip\", \"gzip-js\"], \"featureFlags\": {\"ecom-7583-alternative-checkout-layout\": \"test\", \"ecom-4991-new-signup-flow\": \"test\", \"ecom-6307-delivery-button-on-checkout\": \"test\", \"checkou",
+   "post": "data=eyJ0b2tlbiI6InBoY19tR1Qyb0ZKdjBEd3ZpMjZ2YkxqUXhGUHZQTEdIdVVwRmV5QmtudGhGYXRqIiwiZGlzdGluY3RfaWQiOiIwMWExNTVkNi0yNDUxLTdiMTMtYjE5OS02NzY4ZjgzNGJjNGEiLCJncm91cHMiOnt9fQ%3D%3D"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://events.dwh.sweedkube.com/decide/?v=3&ip=1&_=1792441459797&ver=1.161.3&compression=base64",
+   "size": 361,
+   "sample": "{\"featureFlags\": {}, \"featureFlagPayloads\": {}, \"errorsWhileComputingFlags\": false, \"supportedCompression\": [\"gzip-js\", \"base64\"], \"sessionRecording\": false, \"surveys\": false, \"heatmaps\": false, \"captureDeadClicks\": false, \"autocapture_opt_out\": false, \"siteApps\": [], \"isAuthenticated\": false, \"quot",
+   "post": "data=eyJ0b2tlbiI6InBoY19zd2VlZF9kd2giLCJkaXN0aW5jdF9pZCI6IjAxYTE1NWQ2LTI0NTQtN2I1Mi1hMWM1LWZlOTgxZDBiOTU3NCIsImdyb3VwcyI6e319"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Store/GetStoreInfoV2",
+   "size": 3217,
+   "sample": "{\"storeInfo\":{\"id\":173,\"name\":\"Revolution Schaumburg\",\"description\":\"<p><span style=\\\"color: rgb(96,100,111);background-color: rgb(255,255,255);font-size: inherit;\\\">Revolution Dispensary in Schaumburg, Illinois provides meaningful cannabis connections, where everyone is welcome. Explore our live ca",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/storefront/v1/pages/home",
+   "size": 3685,
+   "sample": "{\"components\":[{\"instanceId\":\"featured-deals\",\"content\":{\"type\":\"Section\",\"title\":\"Featured deals\"}},{\"instanceId\":\"buttons\",\"content\":{\"type\":\"Section\",\"title\":\"\"}},{\"instanceId\":\"categories\",\"content\":{\"type\":\"Section\",\"title\":\"Categories\"}},{\"instanceId\":\"product-carousel-8058\",\"content\":{\"type\":"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/CartV2/GetSettingsPreferences",
+   "size": 44,
+   "sample": "{\"isResident\":true,\"isResidencyLocked\":true}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Store/GetCompliance",
+   "size": 54,
+   "sample": "{\"compliance\":{\"legalAge\":18,\"ageGateMode\":\"Confirm\"}}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Store/GetAvailableFulfillmentTypesV2",
+   "size": 219,
+   "sample": "{\"storeFulfillmentOptions\":[{\"fulfillmentType\":\"InStorePickup\",\"title\":\"In-store pickup\",\"children\":[]}],\"organizationFulfillmentTypeInfos\":[{\"fulfillmentType\":\"InStorePickup\",\"name\":\"Pickup\",\"storeIds\":[173,185,235]}]}",
+   "post": "{\"saleType\":\"Recreational\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Referral/GetV2",
+   "size": 635,
+   "sample": "{\"referralState\":{\"id\":165,\"enabled\":true,\"referralDiscountType\":\"DollarOffDiscount\",\"referralDiscountAmount\":10.000000,\"referralMinInvoiceAmount\":50.000000,\"referralMinInvoiceCount\":0,\"referralMinInvoiceCountForReferrer\":1,\"referralPromocodeMinApplyAmount\":50.000000,\"terms\":null,\"tiersEnabled\":fals",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Loyalty/GetLoyaltyNotices",
+   "size": 14,
+   "sample": "{\"notices\":[]}",
+   "post": "{\"platformOs\":\"web\",\"loggedIn\":false}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Loyalty/GetStoreLoyaltySettingsV2",
+   "size": 2456,
+   "sample": "{\"id\":24,\"enabled\":true,\"isDistributionSubscriptionRequired\":true,\"levels\":[{\"id\":69,\"name\":\"Rev+ Rewards\",\"moneyToBonus\":1.00,\"bonusToMoney\":0.05,\"goal\":0,\"bonus\":0,\"rank\":1,\"enabled\":true,\"description\":null}],\"pointsPresets\":[{\"id\":248,\"loyaltySystemId\":24,\"points\":200,\"stores\":[],\"distributionLev",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Banners/GetBanners",
+   "size": 10587,
+   "sample": "{\"banners\":[{\"id\":59253,\"name\":\"26% off Verano, Kanha, Mozey, Higher Self Cartridges\",\"link\":null,\"image\":\"https://media.sweedpos.com/store/production/1792441014_ee1991cb-cee5-4096-a641-696ab94f09dc.jpg\",\"mobileImage\":\"https://media.sweedpos.com/store/production/1792441014_ce486407-f7f8-482d-93f1-3b",
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Products/GetProductCategoryList",
+   "size": 2029,
+   "sample": "[{\"id\":1022,\"name\":\"Flower\",\"imageUrl\":\"https://sweedpos.s3.amazonaws.com/store/production/1713333499_6d2d12dd-440f-403b-b616-46d773e8aeca.jpg\",\"filter\":{\"category\":[1022]},\"canonicalName\":\"flower\"},{\"id\":1023,\"name\":\"Cartridges\",\"imageUrl\":\"https://sweedpos.s3.amazonaws.com/store/production/1713546",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Products/GetShopInShopsList",
+   "size": 22,
+   "sample": "{\"shopInShopItems\":[]}",
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Products/GetProductCarouselList",
+   "size": 764933,
+   "sample": "[{\"id\":8058,\"name\":\"\\uD83D\\uDCB0 31% Off Select Flower\",\"canonicalName\":\"31-off-select-flower\",\"description\":\"\",\"total\":29,\"products\":[{\"id\":76935,\"name\":\"Garlic Z\",\"description\":\"This limited release batch was 1 of only 100 seed packs exclusively dropped by Dark Horse genetics, making this a rarifi",
+   "post": "{\"platformOs\":\"web\"}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/Store/GetStoreConfig",
+   "size": 74299,
+   "sample": "{\"acceptDealsModalImageUrl\":null,\"acceptDealsModalLinkUrl\":null,\"addToCartButtonPosition\":\"top\",\"aeroPayEnv\":\"production\",\"aeroPayLocationId\":null,\"aeroPayMerchantId\":null,\"ageGateMode\":\"confirm\",\"agreementDisclaimerPosition\":\"below\",\"aiBudtenderConfig\":\"\",\"alternativeCheckoutLayoutEnabled\":false,\"a",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/StoreConfig/GetSignupModal",
+   "size": 381,
+   "sample": "{\"signupModal\":{\"variant\":\"Modal\",\"modal\":{\"title\":\"Save on Your First Three Visits\",\"description\":\"New customers save 35% on a first purchase, $10 off the second, and $20 off the third.\",\"continueButtonLabel\":\"Continue with Email\",\"imageUrl\":\"https://media.sweedpos.com/store/production/1771511681_a",
+   "post": "{}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/AccountV2/GetAccountFulfillmentPreferencesV2",
+   "size": 101,
+   "sample": "{\"fulfillmentType\":\"InStorePickup\",\"fulfillment\":{\"inStorePickup\":{\"label\":\"Revolution Schaumburg\"}}}",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/discount.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://shop.revcanna.com/_api/QuickLinks/GetHomePageQuickLinks",
+   "size": 2086,
+   "sample": "{\"title\":\"Revolution Schaumburg Dispensary Menu\",\"links\":[{\"name\":\"All Products\",\"imageUrl\":\"https://media.sweedpos.com/store/production/revcanna/AllProducts.jpg\",\"navigateTo\":\"Catalog\",\"filter\":null},{\"name\":\"Flower\",\"imageUrl\":\"https://sweedpos.s3.amazonaws.com/store/production/1713333499_6d2d12dd",
+   "post": "{}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.googletagmanager.com/ns.html?id=GTM-TSJ5S652",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-WX8LMJSQ0M&gtm=45je6af0v9106901683za20gzb9179978886zd9179978886xf1&_p=1792441459785&gcd=13l3l3l3l1l1&npa=0&dma=0&_eu=AAgAAGQ&cid=914943870.1792441461&frm=0&pscdl=noapi&rcb=10&sr=1366x900&uaa=x86&uab=64&uafvl=Goo",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 302,
+   "t": "document",
+   "ct": "",
+   "u": "https://pixel-sync.sitescout.com/dmp/asyncPixelSync",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/close.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "image/svg+xml",
+   "u": "https://static-production.sweedpos.com/ecom-themes/builds/production/c--revolution/b2-7701348680fefe21e0ab94982e45ae372b257c8e67167e11f17313688dbd1774/icons/24/social-apple-color.svg",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://shop.revcanna.com/_api/WebAnalytics/AddEvent",
+   "size": 0,
+   "sample": null,
+   "post": "{\"events\":[{\"appName\":\"Shop\",\"platform\":\"NewShop\",\"eventType\":\"Ui\",\"sessionId\":\"3fe39bbc-f6df-4897-a154-f9749d13e6b8\",\"sessionStarted\":\"2026-10-19T20:24:19.516Z\",\"eventCreated\":\"2026-10-19T20:24:19.728Z\",\"deviceType\":\"Desktop\",\"deviceId\":\"68bc003f-ad4a-4a20-a58f-5f4f66748c9e\",\"eventName\":\"page.view\""
+  }
+ ],
+ "iframes": [
+  "https://www.googletagmanager.com/ns.html?id=GTM-TSJ5S652",
+  "https://pixel-sync.sitescout.com/dmp/asyncPixelSync?cookieQ=1"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Confirm\") [CONFIRM]"
+ ],
+ "status": 200,
+ "finalUrl": "https://shop.revcanna.com/schaumburg",
+ "title": "Revolution Schaumburg Dispensary | Schaumburg, IL",
+ "htmlBytes": 2064413,
+ "sigs": [
+  "sweed",
+  "blaze",
+  "cresco"
+ ],
+ "links": [
+  "https://shop.revcanna.com/schaumburg#maincontent",
+  "https://shop.revcanna.com/schaumburg#footer",
+  "https://shop.revcanna.com/schaumburg",
+  "https://shop.revcanna.com/schaumburg/rewards",
+  "https://shop.revcanna.com/schaumburg/menu",
+  "https://shop.revcanna.com/schaumburg/menu/discounts?promo=deals",
+  "https://shop.revcanna.com/schaumburg/about-us",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/26-off-verano-kanha-mozey-higher-self-cartridges-139690",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/26-off-greenthumbs-redemption-blaze-and-tales-travels-pre-rolls-139689",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/21-off-pts-paul-bunyan-outfitters-higher-self-flower-139673",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/21-off-verano-kanha-mozey-higher-self-cartridges-139676",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/21-off-greenthumbs-redemption-blaze-and-tales-travels-pre-rolls-139678",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/21-off-kanha-ogeez-edibles-139680",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/21-off-mile-high-redemption-mozey-concentrates-139681",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/31-off-select-flower-139544",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/add-a-5-product-with-5-purchase-138974",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/get-a-1-select-tales-travels-pre-roll-when-you-spend-80-114456",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/get-10-after-any-100-cartridge-or-disposable-purchase-137683",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/get-10-bonus-points-when-you-turn-on-email-notifications-137684",
+  "https://shop.revcanna.com/schaumburg/menu/discounts/get-5-after-buying-2-revolution-tales-travels-beverages-137685",
+  "https://shop.revcanna.com/schaumburg/menu/flower-1022",
+  "https://shop.revcanna.com/schaumburg/menu/cartridges-1023",
+  "https://shop.revcanna.com/schaumburg/menu/pre-rolls-1024",
+  "https://shop.revcanna.com/schaumburg/menu/edibles-1025",
+  "https://shop.revcanna.com/schaumburg/menu/concentrates-1026"
+ ],
+ "textSample": "SKIP TO MAIN CONTENT OR SKIP TO FOOTER HOME REWARDS MENU DISCOUNTS ABOUT US REFER FRIENDS - GET $10 OFF SIGN UP OR LOG IN TO SEE EXCLUSIVE DEALS LOG IN SIGN UP PICKUP AT REVOLUTION SCHAUMBURG FEATURED DEALS VIEW ALL 16 DEALS POPULAR SEARCH & FILTER REVOLUTION SCHAUMBURG DISPENSARY MENU ALL PRODUCTS FLOWER CARTRIDGES PRE-ROLLS EDIBLES CONCENTRATES TINCTURES TOPICAL ACCESSORIES BEVERAGES MERCH 💰 31% OFF SELECT FLOWER VIEW ALL 29 SALE 0 INDICA Flower by Island GARLIC Z PREMIUM FLOWER THC: 29.22% 3.5G ONLY 3 LEFT 31% OFF $27.60 $40.00 SALE 0 HYBRID Flower by PTS GARLIC OG PREMIUM FLOWER THC: 25.02% 7G ONLY 1 LEFT DEALS FROM $44.85 $65.00 SALE 0 HYBRID Flower by PTS APPLE FRITTER PREMIUM FLOWER ",
+ "productHints": [],
+ "priceCount": 439
+}

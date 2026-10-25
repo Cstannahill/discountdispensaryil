@@ -1,0 +1,40 @@
+{
+ "store_id": "10a51004a5cfae2f4ddb9e73",
+ "name": "Sunnyside - Champaign",
+ "address": "1704 S Neil St Ste C",
+ "city": "Champaign",
+ "distance_miles": 69.249,
+ "accepted_menu": false,
+ "platform": "Cresco (Sunnyside own site)",
+ "menu_url": "https://www.sunnyside.shop/store/champaign-il",
+ "how_reached": "sunnyside.shop store page; Cresco store id 86 (from the specials call)",
+ "branch_selection": "Cookies (_store) and store slug",
+ "products_load": "api.crescolabs.com fifo-inventory per category; flower shows \"275 results\"",
+ "paging": "per category",
+ "count_hint": "275 flower results (page)",
+ "blockers": "none seen",
+ "why_it_fails": "No Cresco reader. Generic path reads 117 items (triage) and never reconciles (COUNT_MISMATCH earlier, 108 to 168 rows).",
+ "fix_idea": "Cresco reader keyed by store id 86 with per-category totals; branch proof from api.crescolabs.com/p/stores.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 2,
+   "sample": [
+    [
+     "generic",
+     117
+    ]
+   ]
+  },
+  "stored_endpoints": [
+   {
+    "provider": "generic",
+    "license": "recreational",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

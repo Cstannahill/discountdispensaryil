@@ -1,0 +1,31 @@
+{
+ "store_id": "51112c4b86ce05b7f28ce790",
+ "name": "Natures Treatment of Illinois - Galesburg",
+ "address": "735 W. Main St.",
+ "city": "Galesburg",
+ "registry_distance_miles": 69.7,
+ "status": "no_lead",
+ "registry_flag": null,
+ "website": "ntillinois.com (Nature's Treatment of Illinois; Galesburg is 735 W Main St)",
+ "menu_platform": "Unknown (Leafly signature only)",
+ "how_menu_is_reached": "/shop/, /products/, /locations/. The probe loaded a multi-location home page with no menu data.",
+ "branch_selection": "Galesburg location page not identified; the home page shows Milan.",
+ "product_loading": "Unknown.",
+ "product_count": "n/a",
+ "blockers": "Probably a location choice before /shop (unverified).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "Fallback website search found no corroborated branch lead"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Fallback search could not find the site (NO_LEAD). The Galesburg location page was not located, so no platform was identified.",
+ "fix_idea": "Name + city search (Google finds ntillinois.com for Galesburg), then the /locations/ page should give the Galesburg menu link.",
+ "unverified": [
+  "location picker",
+  "platform"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

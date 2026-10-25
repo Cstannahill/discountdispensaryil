@@ -1,0 +1,30 @@
+{
+ "store_id": "623261ad021a4dd4740bf4dd",
+ "name": "Curaleaf New Lenox",
+ "address": "705 E Lincoln Hwy.",
+ "city": "New Lenox",
+ "registry_distance_miles": 70.7,
+ "status": "gated",
+ "registry_flag": null,
+ "website": "curaleaf.com, New Lenox (705 E Lincoln Hwy)",
+ "menu_platform": "Curaleaf custom storefront (as Worth)",
+ "how_menu_is_reached": "Same age-gate flow as Worth (4a32648a). The probe ran on Worth only.",
+ "branch_selection": "Not reached.",
+ "product_loading": "Not reached.",
+ "product_count": "n/a",
+ "blockers": "Age/terms gate.",
+ "pipeline_result": {
+  "resolution": {
+   "status": "blocked",
+   "message": "Retailer requires age/terms confirmation; menu not fetched"
+  },
+  "latest_menu_attempt": null,
+  "sample_mode": null
+ },
+ "why_it_fails": "Gate not passed, so no menu is fetched (GATE_AGE_TERMS, blocked).",
+ "fix_idea": "Shared Curaleaf gate handler (see 4a32648a).",
+ "unverified": [
+  "gate interaction that works"
+ ],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

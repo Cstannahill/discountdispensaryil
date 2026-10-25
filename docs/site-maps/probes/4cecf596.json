@@ -1,0 +1,313 @@
+{
+ "key": "4cecf596",
+ "url": "https://bloomington.cookies.co/menu/",
+ "requests": [
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://bloomington.cookies.co/menu/",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://highq.chat/widget/?ref=false&open=false",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 301,
+   "t": "document",
+   "ct": "text/html",
+   "u": "https://maps.google.com/maps?q=Cookies%20Dispensary%20Bloomington%20IL&t=m&z=9&output=embed&iwloc=near",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://www.google.com/maps/embed?origin=mfe&pb=!1m4!2m1!1sCookies+Dispensary+Bloomington+IL!5e0!6i9",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://ad.doubleclick.net/ccm/s/collect?auid=1172764182.1792441344&gtm=45He6af0v9166299579za200zd9166299579xeaxf1&fmt=8",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "",
+   "u": "https://www.google.com/ccm/collect?rcb=2&frm=0&apvc=1&ae=g&auid=1172764182.1792441344&dt=Age%20Verification%20-%20Cookies%20Bloomington&en=page_view&dl=https%3A%2F%2Fbloomington.cookies.co%2Fmenu%2F&scrsrc=www.googletagmanager.com&rnd=404337720.1792441344&navt",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+   "size": 3,
+   "sample": "{}\n"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://dmerch.iheartjane.com/v2/smart?jdm_api_key=c9fb768b-f154-48c7-8311-8853fd791e72&jdm_source=sdk&jdm_version=2.10.0",
+   "size": 7644,
+   "sample": "{\"creative_ids\":[777685597],\"nb_hits\":394,\"placement\":\"menu_top_row\",\"products\":[{\"ad_token\":\"01a155d4-6350-7a1e-b312-12137b0fe64b\",\"flight_id\":861388275,\"kevel_token\":\"01a155d4-6350-7afb-b490-5a67606c581a\",\"my_high_d\":\"cbe861f3-cbfa-11f1-8d2b-0a58a9feac02\",\"object_id\":\"32488865\",\"product_id\":143332",
+   "post": "{\"app_mode\":\"headless\",\"jane_device_id\":\"c2BkVJYG-V1onIArp4h5y\",\"search_attributes\":[\"*\"],\"store_id\":6751,\"placement\":\"menu_top_row\",\"search_filter\":\"\"}"
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://analytics.google.com/g/collect?v=2&tid=G-E2YK4H50X6&gtm=45je6af0v869468570za20ozb9166299579zd9166299579xf1&_p=1792441342815&em=tv.1~em.xRfOqqPuhRLUUkACFhfqgZzTmg4iKHEfRfgMnsTS-cA&emd=tvd.1~i1.fem.ma.r27.n27.lDIV.s!b64!Ym9keT4uZWxlbWVudG9yLmVsZW1lbnRvci",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "POST",
+   "s": 204,
+   "t": "fetch",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/g/collect?v=2&tid=G-2ZXZWCS0C0&gtm=45je6af0v9166303495za20ozb9166299579zd9166299579xf1&_p=1792441342815&gcd=13l3l3l3l1l1&npa=0&dma=0&cid=1931948282.1792441345&frm=0&ngs=1&pscdl=noapi&rcb=15&sr=1366x900&uaa=x86&uab=64&uafvl=Goog",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://bloomington.cookies.co/wp-admin/admin-ajax.php?action=joint_ecommerce_nonce",
+   "size": 46,
+   "sample": "{\"success\":true,\"data\":{\"nonce\":\"dd8fd8efdd\"}}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.moodiday.com/api/clients-partners",
+   "size": 1761,
+   "sample": "{\"data\":{\"id\":96,\"name\":\"Cookies - Bloomington\",\"disclaimer\":null,\"scroll_carousel\":{\"ext\":null,\"int\":false},\"onsite_intake\":{\"ext\":null,\"int\":true},\"enable_social_ratings\":{\"ext\":null,\"int\":false},\"qa_content_enabled\":{\"ext\":null,\"int\":true},\"video_overlays_enabled\":{\"ext\":null,\"int\":true},\"ecom_la",
+   "post": "{\"uuid\":\"HTFBj6mn0\",\"path\":\"/menu/\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://highq.chat/api/widget/info/40fa601f-cb2b-4c91-81a1-572f2537c41e?language=en",
+   "size": 2205,
+   "sample": "{\n  \"data\" : {\n    \"botName\" : \"Cookies Bloomington Rank AI\",\n    \"welcomeTitle\" : \"Hey there!\",\n    \"welcomeSubtitle\" : \"Ready to start a journey with HighQ?\",\n    \"widgetName\" : \"CookiesAI\",\n    \"logo\" : \"https://highq.chat/api/file/1724793290983-COOKIES-LogoBite.png\",\n    \"color\" : \"#00a0dc\",\n   "
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "text/plain",
+   "u": "https://www.google-analytics.com/j/collect?v=1&_v=j102&a=139584368&t=pageview&_s=1&dl=https%3A%2F%2Fbloomington.cookies.co%2Fmenu%2F&ul=en-us&dt=Age%20Verification%20-%20Cookies%20Bloomington&sr=1366x900&vp=1366x900&_u=YCDACEABBAAAACAAI~&jid=1892733562&gjid=81",
+   "size": 0,
+   "sample": null,
+   "post": ""
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://highq.chat/api/widget/40fa601f-cb2b-4c91-81a1-572f2537c41e/greeting?pageUrl=https%3A%2F%2Fbloomington.cookies.co%2Fmenu%2F&browserLanguage=en-US&deviceCategory=Desktop&browser=Chrome&widgetMetadata=null&language=en",
+   "size": 217,
+   "sample": "{\n  \"data\" : {\n    \"hash\" : \"fe9f62b6aa045e4f0dd1393c59b5990c225c502bb0e27b45564436e84a8072694085257240586504741\",\n    \"isDefault\" : true,\n    \"greetingText\" : \"Ready to start a journey?\",\n    \"delaySeconds\" : 3\n  }\n}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "audio/mpeg",
+   "u": "https://highq.chat/widget/static/media/notification.0a8b6eebdc223ca96d13.mp3",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://bloomington.cookies.co/wp-json/joint-ecommerce/v1/products/ecommerce-production/_search",
+   "size": 78400,
+   "sample": "{\"took\":37,\"timed_out\":false,\"_shards\":{\"total\":1,\"successful\":1,\"skipped\":0,\"failed\":0},\"hits\":{\"total\":{\"value\":481,\"relation\":\"eq\"},\"max_score\":null,\"hits\":[{\"_index\":\"search-ecommerce-production-9\",\"_id\":\"7c27b61c-ffd9-493f-bf2f-8049986e86d4\",\"_score\":null,\"_source\":{\"jointId\":\"7c27b61c-ffd9-493",
+   "post": "{\"aggs\":{\"facet_bucket_all\":{\"aggs\":{\"applicableSpecials.specialName\":{\"terms\":{\"field\":\"applicableSpecials.specialName\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},\"category\":{\"terms\":{\"field\":\"category\",\"size\":100,\"order\":{\"_count\":\"desc\"}}},\"variants.option\":{\"terms\":{\"field\":\"variants.option\",\"size\":"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://bloomington.cookies.co/wp-json/joint-api/v1/geolocation",
+   "size": 103,
+   "sample": "{\"city\":\"Minonk\",\"state\":\"IL\",\"postal_code\":\"61760\",\"latitude\":40.897399999999998,\"longitude\":-89.0321}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.moodiday.com/api/retailer-products-matches",
+   "size": 3741,
+   "sample": "{\"data\":{\"fa0a2ac2-99b8-454b-b7b5-be6c04534ccd\":{\"brand\":{\"id\":9,\"name\":\"Betty's Eddies\",\"uniqueID\":\"GmdkcQFtv\"},\"product_line\":{\"id\":38,\"name\":\"Fruit Chews\"},\"product\":{\"id\":4407},\"store\":{\"id\":222,\"name\":\"Cookies Bloomington\",\"source_state\":\"Illinois\",\"disable_vo\":false,\"state\":{\"id\":3,\"name\":\"Ill",
+   "post": "{\"retailer-products-list\":[\"fa0a2ac2-99b8-454b-b7b5-be6c04534ccd\",\"7c27b61c-ffd9-493f-bf2f-8049986e86d4\",\"1c5005d8-d608-483d-8042-233249f2e547\",\"3a4cac6d-1479-4ebc-97f4-128135b15df5\",\"1bcea09a-964e-4c0f-901c-2a7c351c36fc\",\"18f70923-b1c1-4447-9cb6-70842df7bf23\",\"9d87c7cc-eb88-4f67-b9eb-22051578d8d6\","
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://bloomington.cookies.co/wp-json/joint-ecommerce/v1/stores/closest?businessIds[]=5449&sort=distance&latitude=40.8974&longitude=-89.0321",
+   "size": 9568,
+   "sample": "{\"businesses\":[{\"id\":5449,\"name\":\"Cookies Dispensary Bloomington\",\"displayName\":\"Cookies Bloomington\",\"createdAt\":\"2023-09-06T16:50:03.732Z\",\"updatedAt\":\"2026-10-19T20:01:12.200Z\",\"address1\":\"1006 Jc Pkwy Ste 108\",\"address2\":null,\"city\":\"Bloomington\",\"stateAbbr\":\"IL\",\"country\":\"US\",\"postalCode\":\"617"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.moodiday.com/api/ratings-products",
+   "size": 3048,
+   "sample": "{\"data\":{\"140\":{\"product_line_id\":89,\"product_line_name\":\"Classic Soda\",\"total\":2,\"disappointed\":0,\"meh\":0,\"mixed\":0,\"enjoyed\":1,\"loved\":1,\"average\":4.5,\"thumbnails\":[\"https://image.mux.com/01M01bR3ETQ3mnbYQfok6VBxCnwqhYLV3GYGkOcg46u1M/thumbnail.webp?width=88&height=156&fit_mode=smartcrop&time=0\"],\"",
+   "post": "{\"product-ids-list\":[4407,5793,3542,4971,4984,4102,4348,5432,4111,140],\"client\":\"HTFBj6mn0\",\"sku_mode\":true}"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json; charset=utf-8",
+   "u": "https://api.moodiday.com/api/video-overlays",
+   "size": 119,
+   "sample": "{\"data\":{\"140\":[],\"3542\":[],\"4102\":[],\"4111\":[],\"4348\":[],\"4407\":[],\"4971\":[],\"4984\":[],\"5432\":[],\"5793\":[]},\"meta\":{}}",
+   "post": "{\"product-ids-list\":[4407,5793,3542,4971,4984,4102,4348,5432,4111,140],\"client_uuid\":\"HTFBj6mn0\",\"state\":\"Illinois\",\"sku_mode\":true}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json; charset=UTF-8",
+   "u": "https://bloomington.cookies.co/wp-json/age-gate/v3/check?age_gate%5Bage%5D=HFwF0WxzrtxTHKNqmsTzFA%3D%3D&age_gate%5Blang%5D=en&age_gate%5Bconfirm%5D=1",
+   "size": 170,
+   "sample": "{\"data\":{\"user_age\":21,\"age_gate\":{\"age\":21,\"lang\":\"en\",\"confirm\":\"1\"}},\"status\":true,\"redirect\":\"\",\"cookieLength\":0,\"transition\":\"fade\",\"user_data\":[],\"set_cookie\":true}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "document",
+   "ct": "text/html; charset=UTF-8",
+   "u": "https://bloomington.cookies.co/?s=&e_search_props=e069625-513009",
+   "size": 0,
+   "sample": null
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json+protobuf; charset=UTF-8",
+   "u": "https://maps.googleapis.com/$rpc/google.internal.maps.mapsjs.v1.MapsJsInternalService/GetViewportInfo",
+   "size": 26809,
+   "sample": "[\"Map data ©2026 Google\",[[\"obliques\",[[41.640078384678915,-90.52734375],[41.771311679764061,-90.3515625]]],[\"obliques\",[[41.640078384678915,-88.41796875],[41.771311679764061,-87.5390625]]],[\"obliques\",[[41.508577297439338,-90.52734375],[41.640078384678915,-90.17578125]]],[\"obliques\",[[41.508577297",
+   "post": "[[[39.19299900209241,-90.43268822377533],[41.75085788433423,-87.70980618784048]],9,null,\"en-US\",0,\"m@799000000\",0,0,null,null,289,1,\"https://www.google.com/maps/embed\",1,null,null,\"17277543-267C-4B01-BCF1-2DED20CD502C\"]"
+  },
+  {
+   "m": "POST",
+   "s": 200,
+   "t": "fetch",
+   "ct": "application/json",
+   "u": "https://highq.chat/api/widget/40fa601f-cb2b-4c91-81a1-572f2537c41e/greeting/event",
+   "size": 40,
+   "sample": "{\n  \"data\" : {\n    \"id\" : 21929624\n  }\n}",
+   "post": "{\"hash\":\"fe9f62b6aa045e4f0dd1393c59b5990c225c502bb0e27b45564436e84a8072694085257240586504741\",\"event\":\"SENT\"}"
+  },
+  {
+   "m": "GET",
+   "s": 200,
+   "t": "xhr",
+   "ct": "application/json",
+   "u": "https://www.google.com/maps/vt?pb=!1m4!1m3!1i9!2i128!3i192!1m4!1m3!1i9!2i128!3i193!1m4!1m3!1i9!2i129!3i192!1m4!1m3!1i9!2i129!3i193!2m3!1e0!2sm!3i799566048!2m3!1e2!2sspotlit!5i1!3m13!2sen-US!3sUS!5e289!12m5!1e68!2m2!1sset!2sRoadmap!4e2!12m3!1e37!2m1!1ssmartmaps",
+   "size": 1028,
+   "sample": "[{\"id\":\"twutttttt\",\"zrange\":[9,9],\"layer\":\"spotlit\"},{\"id\":\"twutttttt\",\"zrange\":[9,9],\"layer\":\"m@799566048\"},{\"id\":\"twutttttu\",\"zrange\":[9,9],\"layer\":\"spotlit\"},{\"id\":\"twutttttu\",\"zrange\":[9,9],\"layer\":\"m@799566048\"},{\"id\":\"twutttttv\",\"zrange\":[9,9],\"layer\":\"spotlit\"},{\"id\":\"twutttttv\",\"base\":[54258"
+  }
+ ],
+ "iframes": [
+  "https://www.google.com/maps/embed?origin=mfe&pb=!1m4!2m1!1sCookies+Dispensary+Bloomington+IL!5e0!6i9",
+  "about:blank",
+  "https://highq.chat/widget/?ref=false&open=false",
+  "about:blank"
+ ],
+ "notes": [
+  "clicked button:has-text(\"Yes\") [YES]"
+ ],
+ "status": 200,
+ "finalUrl": "https://bloomington.cookies.co/?e_search_props=e069625-513009&sort=best-selling",
+ "title": "You searched for - Cookies Bloomington",
+ "htmlBytes": 573951,
+ "sigs": [
+  "jane",
+  "joint",
+  "wordpress"
+ ],
+ "links": [
+  "https://bloomington.cookies.co/menu/",
+  "https://bloomington.cookies.co/menu/under-20/",
+  "https://enrollnow.vip/join/27098?location=cookies-blm",
+  "https://bloomington.cookies.co/products/?product_page=1c5005d8-d608-483d-8042-233249f2e547",
+  "https://bloomington.cookies.co/products/?product_page=c47db6bc-14ca-4b36-a49c-3cef85cfd69c",
+  "https://bloomington.cookies.co/products/?product_page=44a5ce84-8365-47b3-9cf2-b4b53935941c",
+  "https://bloomington.cookies.co/products/?product_page=52d0d617-3f95-4472-acdb-87841b7e149e",
+  "https://bloomington.cookies.co/products/?product_page=ce99a675-7fe7-46d7-b07f-11ba36234cf7",
+  "https://bloomington.cookies.co/products/?product_page=bb220a61-b898-4403-80de-46d987064a37",
+  "https://bloomington.cookies.co/products/?product_page=161ca304-0163-4dfd-b7f7-e9fdebf40d0d",
+  "https://bloomington.cookies.co/products/?product_page=b4a9e5ce-c6bc-4b55-a37e-3e46e9e48d00",
+  "https://bloomington.cookies.co/products/?product_page=17c6af88-95f6-41eb-ad20-0d55f978e303",
+  "https://bloomington.cookies.co/products/?product_page=04d32309-c6b7-4c21-98e7-e1592301fc45",
+  "https://bloomington.cookies.co/products/?product_page=23832d00-cdca-48ab-9443-d32776f16dd1",
+  "https://bloomington.cookies.co/products/?product_page=f3a40b2d-ce6e-4ff3-b77a-711fd79ee483",
+  "https://bloomington.cookies.co/products/?product_page=d5c4f9c4-005a-45c3-a740-85555aff2dfa",
+  "https://bloomington.cookies.co/products/?product_page=9850b4d0-2a6b-4992-9450-cf2dcecbb4f6",
+  "https://bloomington.cookies.co/products/?product_page=fa6b1e54-1e9a-4a8c-98c3-f4c56f2816ee",
+  "https://bloomington.cookies.co/products/?product_page=7c27b61c-ffd9-493f-bf2f-8049986e86d4",
+  "https://bloomington.cookies.co/products/?product_page=3a4cac6d-1479-4ebc-97f4-128135b15df5",
+  "https://bloomington.cookies.co/products/?product_page=1bcea09a-964e-4c0f-901c-2a7c351c36fc",
+  "https://bloomington.cookies.co/products/?product_page=18f70923-b1c1-4447-9cb6-70842df7bf23",
+  "https://bloomington.cookies.co/products/?product_page=9d87c7cc-eb88-4f67-b9eb-22051578d8d6",
+  "https://bloomington.cookies.co/products/?product_page=b3a44feb-cf8b-4301-afda-925b10e6eb4f",
+  "https://bloomington.cookies.co/products/?product_page=5312926c-ed22-4339-b2af-070b74dff6cc"
+ ],
+ "textSample": "Cookies Bloomington Open • Closes at 9:00PM | Curbside Opens store selection BLOOMINGTON, IL 🍪 SHOP ALL CATEGORIES EVENTS NEWSLETTER SIGN-UP RESOURCES FACEBOOK INSTAGRAM X-TWITTER CLICK HERE TO LEARN ABOUT OUR 5% CASH BACK REWARDS! SEARCH SEARCH COOKIES 💥 DEALS UNDER $20 FLOWER PRE-ROLLS VAPES EDIBLES CONCENTRATES TOPICALS TINCTURES ACCESSORIES MERCH CBD MEDICAL • NOW LIVE! 1% TAX with VALID ID! | PRE-PAID CURBSIDE PICK-UP • NOW AVAILABLE! 🚙💨 Specials All Items On Sale 25% OFF ROVE (34) B1G1 1/2 OFF JEETERS (15) BOGO BREEZE MED (5) COOKIES 25% (4) 30% OFF GRASSROOTS EXTRACTS (2) SHOW MORE Category Merch (204) Vaporizers (81) Edibles (68) Pre Rolls (63) Flower (43) SHOW MORE Weights Each ",
+ "productHints": [
+  "481 results",
+  "0 results"
+ ],
+ "priceCount": 44
+}

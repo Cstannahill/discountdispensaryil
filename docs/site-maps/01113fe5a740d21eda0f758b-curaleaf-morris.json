@@ -1,0 +1,35 @@
+{
+ "store_id": "01113fe5a740d21eda0f758b",
+ "name": "Curaleaf  Morris",
+ "address": "2400 W US Route 6",
+ "city": "Morris",
+ "distance_miles": 45.464,
+ "accepted_menu": false,
+ "platform": "Sweed (Curaleaf own site)",
+ "menu_url": "https://curaleaf.com/shop/illinois/curaleaf-il-morris/recreational/menu",
+ "how_reached": "curaleaf.com redirects to /age-gate?returnurl=...; menu is a Sweed storefront (web-ui-curaleaf.sweedpos.com/_api/proxy/...)",
+ "branch_selection": "Fixed by URL slug curaleaf-il-morris; state select (Illinois) on the gate",
+ "products_load": "Sweed storefront JSON proxy; not reached because the gate never clears",
+ "paging": "unknown",
+ "count_hint": "unknown",
+ "blockers": "Age/terms gate: 'I'm over 21' stays disabled until the state select and two checkboxes (age-confirm, legal-confirm) are ticked. I did not tick them.",
+ "why_it_fails": "Generic path clicks the disabled 'I'm over 21' button and times out at 30 s. The stored endpoint is a generic medical page with no products.",
+ "fix_idea": "Gate handler for Curaleaf that selects the state and ticks the required boxes, then the Sweed reader. Needs an explicit decision that the pipeline may tick terms checkboxes. Other Curaleaf stores share this gate.",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "NO_TARGET",
+   "reason": "Retailer locator did not expose a corroborated branch/menu link",
+   "targets": 0,
+   "sample": []
+  },
+  "stored_endpoints": [
+   {
+    "provider": "generic",
+    "license": "medicinal",
+    "status": "partial",
+    "last_success_at": null
+   }
+  ]
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

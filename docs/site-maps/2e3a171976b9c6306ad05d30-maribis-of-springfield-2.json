@@ -1,0 +1,33 @@
+{
+ "store_id": "2e3a171976b9c6306ad05d30",
+ "name": "Maribis of Springfield 2",
+ "address": "3025 Lindbergh Blvd",
+ "city": "Springfield",
+ "distance_miles": 84.445,
+ "accepted_menu": false,
+ "platform": "Dutchie white-label (maribisllc.com)",
+ "menu_url": "https://maribisllc.com/stores/maribis-lindbergh",
+ "how_reached": "/stores/maribis-lindbergh loads in browser and HTTP 200",
+ "branch_selection": "Store slug maribis-lindbergh; dispensaryId 68a6373c2003cb653e9b0193",
+ "products_load": "Dutchie FilteredProducts",
+ "paging": "Dutchie pages",
+ "count_hint": "not captured in probe",
+ "blockers": "maribisllc.com/locations/* 403 to plain HTTP (not evaded)",
+ "why_it_fails": "Discovery: lead is an Emerald Magazine article, not the branch page. Triage reads 469 items via Dutchie once the menu is the lead.",
+ "fix_idea": "Brand connector to /stores/maribis-<slug> (shared with Denver and Chicago).",
+ "pipeline_result": {
+  "triage_current_engine": {
+   "verdict": "WORKS",
+   "reason": null,
+   "targets": 1,
+   "sample": [
+    [
+     "dutchie",
+     469
+    ]
+   ]
+  },
+  "stored_endpoints": []
+ },
+ "manual_map": "done in real Chrome / curl (this batch)"
+}

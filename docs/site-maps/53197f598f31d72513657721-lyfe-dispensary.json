@@ -1,0 +1,47 @@
+{
+ "store_id": "53197f598f31d72513657721",
+ "name": "Lyfe Dispensary",
+ "address": "6774 Troy Dr",
+ "city": "Rockford",
+ "registry_distance_miles": 94.8,
+ "status": "works",
+ "registry_flag": null,
+ "website": "shop.lyfeil.com/troy/menu, Rockford",
+ "menu_platform": "Sweed storefront (ecom theme c--lyfe)",
+ "how_menu_is_reached": "Direct storefront at /troy/menu.",
+ "branch_selection": "Branch slug troy; registry 6774 Troy Dr matches.",
+ "product_loading": "POST /_api/Products/GetProductList {page, pageSize 24, sortingMethodId, platformOs}; also Store/GetStoreInfoV2 and GetStoreConfig.",
+ "product_count": "Baseline complete, 973 items.",
+ "blockers": "Confirm button (passable).",
+ "pipeline_result": {
+  "resolution": {
+   "status": "unresolved",
+   "message": "No retailer locator connector configured for this brand"
+  },
+  "latest_menu_attempt": {
+   "stage": "menu",
+   "tier": "native",
+   "provider": "sweed",
+   "license": "recreational",
+   "status": "complete",
+   "code": null,
+   "grade": "A",
+   "items": 973,
+   "at": "2026-10-18T12:21:55.345746+00:00"
+  },
+  "sample_mode": {
+   "verdict": "SAMPLE_PRODUCTS",
+   "provider": "sweed",
+   "items": 24,
+   "declared": 24,
+   "errors": [
+    "incomplete_menu"
+   ],
+   "url": "https://shop.lyfeil.com/troy/menu"
+  }
+ },
+ "why_it_fails": "Not failing: complete, grade A, 973 items. The resolution row still reads \"unresolved: no retailer locator connector\", which is stale.",
+ "fix_idea": "None for extraction. Refresh the resolution row when a complete endpoint exists.",
+ "unverified": [],
+ "method": "Manual browser check (installed Chrome probe and Google/Bing search); pipeline data read-only from terpscout.db; sample run with scripts/sample_stores.py --pages 1."
+}

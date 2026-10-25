@@ -1,0 +1,101 @@
+{
+  "store_id": "fb2837af392bea924b4cfca5",
+  "name": "Ivy Hall - Streamwood",
+  "slug": "ivy-hall-streamwood",
+  "registry": {
+    "address": "630 S Sutton Rd",
+    "city": "Streamwood",
+    "state": "IL",
+    "distance_miles": 88.699
+  },
+  "site": "https://ivyhalldispensary.com/locations/streamwood/menu/recreational/menu",
+  "platform": "sweed (store 264; rec and med)",
+  "menu_url_verified": "https://ivyhalldispensary.com/locations/streamwood/menu/recreational/menu",
+  "access": "none seen",
+  "branch_selection": "streamwood path",
+  "product_loading": "Sweed SSR",
+  "paging": "Sweed pages",
+  "product_count_observed": "reader 1104 complete (both channels, full)",
+  "chrome_survey": {
+    "status": 200,
+    "final_url": "https://ivyhalldispensary.com/locations/streamwood/menu/recreational/menu",
+    "title": "Shop Streamwood Dispensary Menu & Online Deals | Streamwood, Illinois",
+    "platforms": [
+      "sweed"
+    ],
+    "age_gate_seen": false,
+    "age_click": null,
+    "count_text": null,
+    "price_tags": 47,
+    "error": null
+  },
+  "pipeline_result": {
+    "stored_resolution": {
+      "status": "unresolved",
+      "message": "Provider found; license-specific menu context not corroborated"
+    },
+    "stored_endpoints": [
+      {
+        "provider": "sweed",
+        "license": "recreational",
+        "status": "complete",
+        "last_success_at": "2026-10-18T10:59:08.997634+00:00",
+        "last_error": null
+      },
+      {
+        "provider": "sweed",
+        "license": "medicinal",
+        "status": "complete",
+        "last_success_at": "2026-10-18T10:58:47.337047+00:00",
+        "last_error": null
+      }
+    ],
+    "sample_stores": {
+      "pipeline_version": "regional-pipeline-2.5609f30e9d",
+      "verdict": "SAMPLE_PRODUCTS",
+      "provider": "sweed",
+      "items": 24,
+      "errors": [
+        "incomplete_menu"
+      ],
+      "error": null
+    },
+    "seeded_resolve": {
+      "run": "seeded2.json",
+      "targets": [
+        {
+          "provider": "sweed",
+          "provider_store_id": "264",
+          "license": "recreational"
+        },
+        {
+          "provider": "sweed",
+          "provider_store_id": "264",
+          "license": "medicinal"
+        }
+      ],
+      "failures": [],
+      "samples": [
+        {
+          "provider": "sweed",
+          "items": 1104,
+          "expected": 1104,
+          "complete": true,
+          "errors": null,
+          "error": null
+        },
+        {
+          "provider": "sweed",
+          "items": 1104,
+          "expected": 1104,
+          "complete": true,
+          "errors": null,
+          "error": null
+        }
+      ]
+    }
+  },
+  "why_it_fails": "Works. Stored accepted rec and med rows both hold 1110 offers (2026-10-18 10:58): identical counts for two channels suggest one catalog counted twice. Rows are stale. identity_conflict rows point to bucktown pages.",
+  "fix_idea": "Verify whether medical duplicates rec; refresh; supersede bucktown rows.",
+  "evidence": "docs/site-maps/raw/batch-5/ (survey/, seeded1.json, seeded2.json, sample_report_b5.json, db_info.json)"
+}

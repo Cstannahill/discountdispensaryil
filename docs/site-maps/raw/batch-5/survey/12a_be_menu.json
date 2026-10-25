@@ -1,0 +1,358 @@
+{
+ "key": "12a_be_menu",
+ "url": "https://menu.bestoresil.com/",
+ "requests": [],
+ "json": [
+  {
+   "u": "https://col.surfside.io/event/track",
+   "m": "POST",
+   "s": 200,
+   "ct": "text/plain; charset=UTF-8"
+  },
+  {
+   "u": "https://menu.bestoresil.com/?_rsc=deina",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 120883,
+   "arr": {
+    "n": 22,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":10,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0,\"lte\":500000}}}}},{\"bool\":{\"should\":[{\"match\":{\"isAboveThresh"
+  },
+  {
+   "u": "https://menu.bestoresil.com/wishlist?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/collection/cartridge?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/shop?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/deals?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/collection/flower?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/collection/extract?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/collection/preroll?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://menu.bestoresil.com/collection/edible?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 208,
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"FLOWER\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 418264,
+   "arr": {
+    "n": 24,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"FLOWER\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 446034,
+   "arr": {
+    "n": 23,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"FLOWER\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 444313,
+   "arr": {
+    "n": 23,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"CARTRIDGE\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 491738,
+   "arr": {
+    "n": 22,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"PREROLL\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 456733,
+   "arr": {
+    "n": 23,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"EXTRACT\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 458540,
+   "arr": {
+    "n": 22,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"BEVERAGE\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\""
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 439148,
+   "arr": {
+    "n": 23,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"EDIBLE\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 41781,
+   "arr": {
+    "n": 21,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"TINCTURE\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\""
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 208,
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"PILL\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0,\""
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 92945,
+   "arr": {
+    "n": 23,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"TOPICAL\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":"
+  },
+  {
+   "u": "https://search-kyrok9udlk.gapcommerceapi.com/product/search",
+   "m": "POST",
+   "s": 200,
+   "ct": "application/json",
+   "len": 291554,
+   "arr": {
+    "n": 20,
+    "path": "$.hits.hits[]._source.productData.productGroups",
+    "keys": [
+     "id",
+     "name"
+    ]
+   },
+   "post": "{\"from\":0,\"size\":20,\"query\":{\"bool\":{\"must\":[{\"bool\":{\"should\":[{\"match\":{\"category.keyword\":\"MERCH\"}}]}},{\"bool\":{\"filter\":{\"range\":{\"customMinPrice\":{\"gte\":0,"
+  },
+  {
+   "u": "https://menu.bestoresil.com/product/good-green-durban-z-mixed-buds-good-green-28-g-flower-28-grams?_rsc=5duy6",
+   "m": "GET",
+   "s": 200,
+   "ct": "text/x-component"
+  }
+ ],
+ "frames": [],
+ "status": 200,
+ "age_gate_text": "Please confirm you are at least 21 years of age. You must be 21 or older to visit this website. Your age will be verified at checkout. By proceeding, you agree to our Terms & Conditions. I'M AT LEAST 21 YEARS OLD EXIT THE SITE",
+ "age_click": "I'M AT LEAST 21 YEARS OLD",
+ "final_url": "https://menu.bestoresil.com/",
+ "title": "Be. The Cannabis Store",
+ "htmlLen": 1409547,
+ "prices": 483,
+ "textHead": "THANKS FOR VISITING OUR NEW WEBSITE! How do you want to shop? Home Shop Categories Deals Loyalty DEALS VAPES FLOWER PRE-ROLL EDIBLES EXTRACTS DRINKS TINCTURES CAPSULES TOPICALS ACCESSORIES ",
+ "iframes": [],
+ "nextdata": false,
+ "links": [
+  "https://menu.bestoresil.com/shop",
+  "https://menu.bestoresil.com/",
+  "https://menu.bestoresil.com/wishlist",
+  "https://menu.bestoresil.com/",
+  "https://menu.bestoresil.com/collection/cartridge",
+  "https://menu.bestoresil.com/collection/flower",
+  "https://menu.bestoresil.com/collection/preroll",
+  "https://menu.bestoresil.com/collection/edible",
+  "https://menu.bestoresil.com/collection/extract",
+  "https://menu.bestoresil.com/collection/tincture",
+  "https://menu.bestoresil.com/collection/pill",
+  "https://menu.bestoresil.com/collection/topical"
+ ],
+ "count_text": null,
+ "platforms": [
+  "treez"
+ ],
+ "hosts": [
+  [
+   "menu.bestoresil.com",
+   105
+  ],
+  [
+   "images.prismic.io",
+   47
+  ],
+  [
+   "www.google-analytics.com",
+   15
+  ],
+  [
+   "search-kyrok9udlk.gapcommerceapi.com",
+   13
+  ],
+  [
+   "www.googletagmanager.com",
+   5
+  ],
+  [
+   "o.clarity.ms",
+   5
+  ],
+  [
+   "www.google.com",
+   3
+  ],
+  [
+   "maps.googleapis.com",
+   2
+  ],
+  [
+   "cdn.surfside.io",
+   2
+  ],
+  [
+   "c.clarity.ms",
+   2
+  ],
+  [
+   "fonts.googleapis.com",
+   1
+  ],
+  [
+   "fonts.gstatic.com",
+   1
+  ],
+  [
+   "www.clarity.ms",
+   1
+  ],
+  [
+   "col.surfside.io",
+   1
+  ]
+ ]
+}
