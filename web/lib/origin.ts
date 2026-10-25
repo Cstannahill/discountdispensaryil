@@ -1,4 +1,4 @@
-import type { Origin } from './deals';
+import type { Origin } from './deals.ts';
 
 // Parses an ad-hoc origin (browser GPS or a geocoded ZIP/city) from query params; null when absent or out of range.
 export function parseOrigin(get: (k: string) => string | null | undefined): (Origin & { label: string }) | null {

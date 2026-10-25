@@ -1,9 +1,35 @@
-import { rows } from './db';
-import { withProductUrl } from './product-links';
+import { rows } from './db.ts';
+import { withProductUrl } from './product-links.ts';
 
 export const CATEGORIES = ['concentrate', 'flower', 'vapes'] as const;
 export const GRADES = ['whole', 'smalls', 'shake', 'infused', 'all'] as const;
 export const LICENSES = ['recreational', 'medicinal'] as const;
+export const STRAINS = ['Indica', 'Sativa', 'Hybrid'] as const;
+export const SIZES = ['any', '0.5', '1', '3.5', '7', '14', '28'] as const;
+export const FLOWER_ONLY_SIZES = new Set(['3.5', '7', '14', '28']);
+
+export function parseSize(v?: string | null): number | null {
+  if (!v || v === 'any') return null;
+  const n = Number(v);
+  return Number.isFinite(n) && n > 0 && n <= 200 ? n : null;
+}
+
+export function sizeForCategory(category: string, size?: string | null): string | undefined {
+  const n = parseSize(size);
+  if (n == null) return undefined;
+  const key = String(size).trim();
+  if (FLOWER_ONLY_SIZES.has(key) && category !== 'flower') return undefined;
+  return key;
+}
+
+export function strainClause(strain?: string | null, _bind?: (v: unknown) => string): string | null {
+  const s = (strain ?? '').trim().toLowerCase();
+  const col = `lower(coalesce(j->>'strain_type',''))`;
+  if (s === 'indica') return `position('indica' in ${col}) > 0`;
+  if (s === 'sativa') return `(position('sativa' in ${col}) > 0 AND position('indica' in ${col}) = 0)`;
+  if (s === 'hybrid') return `(position('hybrid' in ${col}) > 0 AND position('indica' in ${col}) = 0 AND position('sativa' in ${col}) = 0)`;
+  return null;
+}
 
 export interface Region { id: string; label: string; latitude: number; longitude: number; radius_miles: number; precision: string }
 export interface Offer {
@@ -19,7 +45,7 @@ export interface Variant { id: string; name: string; strain_type: string | null;
 export interface Origin { latitude: number; longitude: number; radius_miles: number }
 export interface DealQuery {
   region_id?: string; origin?: Origin; license_type?: string; category?: string; q?: string; include_stale?: boolean; include_unverified?: boolean;
-  flower_grade?: string; strain_type?: string; promo?: string; group?: boolean; page?: number; page_size?: number;
+  flower_grade?: string; strain_type?: string; size?: string; promo?: string; group?: boolean; page?: number; page_size?: number;
 }
 export interface Page<T> { items: T[]; total: number; page: number; page_size: number; data_version: string }
 
@@ -82,7 +108,13 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
     if (!q.include_unverified) where.push(`completeness='A'`, `(j->>'price_outlier') IS DISTINCT FROM 'true'`);
   }
   if (q.category && q.category !== 'all') where.push(`(j->>'category')=${arg(q.category)}`);
-  if (q.strain_type && q.strain_type.toLowerCase() !== 'all') where.push(`lower(coalesce(j->>'strain_type',''))=${arg(q.strain_type.toLowerCase())}`);
+  const sClause = strainClause(q.strain_type, arg);
+  if (sClause) where.push(sClause);
+  const sz = parseSize(q.size);
+  if (sz != null) {
+    const ref = arg(sz);
+    where.push(`abs((NULLIF(j->>'weight_grams','')::numeric) - ${ref}::numeric) <= (${ref}::numeric * 0.03)`);
+  }
   if (q.q) where.push(`position(${arg(q.q.toLowerCase())} in lower(concat_ws(' ',j->>'name',j->>'brand',store_name,j->>'subcategory')))>0`);
   const grade = q.flower_grade ?? 'whole';
   if (grade !== 'all') where.push(`(fgrade IS NULL OR fgrade=${arg(grade)})`);
