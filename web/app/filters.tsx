@@ -1,7 +1,15 @@
 'use client';
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { GRADES, STRAINS } from '@/lib/deals';
+import { GRADES, STRAINS, SORT_OPTIONS, type SortOption } from '@/lib/deals';
+
+const SORT_LABELS: Record<SortOption, string> = {
+  value: 'Best $/g',
+  price: 'Lowest Price',
+  thc: 'Highest THC',
+  distance: 'Closest',
+  discount: 'Biggest % Off',
+};
 
 const SIZE_OPTIONS: readonly { value: string; label: string }[] = [
   { value: 'any', label: 'Any Size' },
@@ -35,6 +43,7 @@ export default function FilterStrip({
   bogo,
   stale,
   unverified,
+  sort = 'value',
 }: {
   q: string;
   grade: string;
@@ -43,6 +52,7 @@ export default function FilterStrip({
   bogo: boolean;
   stale: boolean;
   unverified: boolean;
+  sort?: string;
 }) {
   const router = useRouter();
   const sp = useSearchParams();
@@ -57,7 +67,13 @@ export default function FilterStrip({
   const updateParams = (updates: Record<string, string | null>) => {
     const u = new URLSearchParams(sp.toString());
     for (const [k, v] of Object.entries(updates)) {
-      if (v == null || v === '' || (k === 'grade' && v === 'whole') || (k === 'size' && v === 'any')) {
+      if (
+        v == null ||
+        v === '' ||
+        (k === 'grade' && v === 'whole') ||
+        (k === 'size' && v === 'any') ||
+        (k === 'sort' && v === 'value')
+      ) {
         u.delete(k);
       } else {
         u.set(k, v);
@@ -91,7 +107,8 @@ export default function FilterStrip({
     Boolean(size && size !== 'any') ||
     bogo ||
     stale ||
-    unverified;
+    unverified ||
+    (Boolean(sort) && sort !== 'value');
 
   const resetAll = () => {
     setSearch('');
@@ -103,6 +120,7 @@ export default function FilterStrip({
       promo: null,
       stale: null,
       unverified: null,
+      sort: null,
     });
   };
 
@@ -142,6 +160,29 @@ export default function FilterStrip({
               ✕
             </button>
           )}
+        </div>
+
+        {/* Compact Sort Selector */}
+        <div className="relative shrink-0">
+          <select
+            aria-label="Sort deals by"
+            value={sort || 'value'}
+            onChange={(e) => updateParams({ sort: e.target.value === 'value' ? null : e.target.value })}
+            className={`btn !py-2 !px-2.5 text-xs appearance-none pr-6 cursor-pointer font-medium ${
+              sort && sort !== 'value'
+                ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15'
+                : 'text-slate-300 bg-slate-900/90 border-slate-700/80 hover:border-slate-600'
+            }`}
+          >
+            {SORT_OPTIONS.map((opt) => (
+              <option key={opt} value={opt} className="bg-slate-900 text-slate-200">
+                ⇅ {SORT_LABELS[opt]}
+              </option>
+            ))}
+          </select>
+          <span className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[9px] text-slate-400" aria-hidden="true">
+            ▾
+          </span>
         </div>
 
         <button

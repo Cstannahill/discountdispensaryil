@@ -5,6 +5,7 @@ import OfferCard from './offer-card';
 import CalculatorModal from './calculator';
 import SavedModal from './saved-modal';
 import ToastContainer from './toast';
+import BackToTop from './back-to-top';
 import { parseOrigin } from '@/lib/origin';
 import {
   CATEGORIES,
@@ -12,6 +13,8 @@ import {
   LICENSES,
   SIZES,
   STRAINS,
+  SORT_OPTIONS,
+  type SortOption,
   queryDeals,
   regions,
   sizeForCategory,
@@ -48,6 +51,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const stale = one(sp.stale) === '1';
   const unverified = one(sp.unverified) === '1';
   const bogo = one(sp.promo) === 'bogo';
+  const sortRaw = one(sp.sort);
+  const sort = SORT_OPTIONS.includes(sortRaw as never) ? (sortRaw as SortOption) : 'value';
   const cats = CATEGORIES;
   const pages = Object.fromEntries(
     cats.map((c) => [c, Math.max(1, Number(one(sp[`p_${c}`])) || 1)])
@@ -68,6 +73,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         size: sizeForCategory(category, size),
         promo: bogo ? 'bogo' : undefined,
         group: true,
+        sort,
         page: pages[category],
         page_size: PAGE_SIZE,
       })
@@ -91,6 +97,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     stale: stale ? '1' : '',
     unverified: unverified ? '1' : '',
     promo: bogo ? 'bogo' : '',
+    sort: sort !== 'value' ? sort : '',
   };
 
   const link = (category: string, page: number) => {
@@ -144,6 +151,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         bogo={bogo}
         stale={stale}
         unverified={unverified}
+        sort={sort}
       />
 
       {region && (
@@ -324,6 +332,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
       <CalculatorModal />
       <SavedModal />
       <ToastContainer />
+      <BackToTop />
     </main>
   );
 }
