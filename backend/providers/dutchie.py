@@ -111,7 +111,9 @@ def prove_branch(dispensary, target):
     if not isinstance(street, str) or not street.strip():
         raise ValueError('Dutchie dispensary declares no street address; branch cannot be proven')
     from backend.locators import addresses_match
-    if not addresses_match(target['address'], street):
+    from backend.providers.generic import ACCEPTED_STREET_MISMATCHES
+    accepted = ACCEPTED_STREET_MISMATCHES.get(target.get('id'))
+    if not accepted and not addresses_match(target['address'], street):
         raise ValueError('Menu source belongs to a different street address: ' + street)
     distance = None
     point = (location.get('geometry') or {}).get('coordinates')
@@ -124,7 +126,7 @@ def prove_branch(dispensary, target):
         raise ValueError(f'Menu source belongs to a different location: {distance:.2f} mi from the registry address')
     return dict(method='platform_address', dispensary_id=str(dispensary.get('id')), cName=dispensary.get('cName'), street=street.strip(),
                 city=location.get('city'), platform_distance_miles=round(distance, 2) if distance is not None else None,
-                dispensary_status=dispensary.get('status'))
+                dispensary_status=dispensary.get('status'), **(dict(accepted_street_mismatch=accepted) if accepted else {}))
 
 
 def _traverse(endpoint, target, license_type, result):

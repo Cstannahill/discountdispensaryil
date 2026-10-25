@@ -54,6 +54,8 @@ class DutchieFixture:
             record = value['data']['filteredDispensaries'][0]
             if self.mode == 'other_address':
                 record['location'].update(ln1='2440 28th St SE', city='Grand Rapids', state='MI', geometry=dict(coordinates=[-85.6, 42.9]))
+            if self.mode == 'street_number':
+                record['location']['ln1'] = '310 S Main St'
             if self.mode == 'far_same_street':
                 record['location']['geometry']['coordinates'] = [-87.63, 41.88]
             if self.mode == 'rec_closed':
@@ -178,6 +180,18 @@ class DutchieTests(unittest.TestCase):
         other = fetch(dict(ENDPOINT, provider_store_id='627458da5d75a3008f52fc56'), DutchieFixture(10))
         self.assertFalse(other['complete'])
         self.assertEqual(classify(other['errors'][0]['message']), FailureCode.BRANCH_MISMATCH)
+
+    def test_an_operator_accepted_street_mismatch_still_proves_the_branch_by_its_point(self):
+        from backend.providers.generic import ACCEPTED_STREET_MISMATCHES
+        accepted = 'a9b8267a1dc370dc2b19cd77'
+        self.assertIn(accepted, ACCEPTED_STREET_MISMATCHES)
+        unaccepted = fetch(ENDPOINT, DutchieFixture(10, mode='street_number'))
+        self.assertFalse(unaccepted['complete'])
+        fixture = DutchieFixture(10, mode='street_number')
+        fixture.browser_options = {'target_store': dict(TARGET, id=accepted)}
+        proven = fetch(ENDPOINT, fixture)
+        self.assertTrue(proven['complete'], proven['errors'])
+        self.assertIn('operator accepted', proven['branch_proof']['accepted_street_mismatch'])
 
     def test_branch_cannot_be_proven_without_a_registry_address(self):
         fixture = DutchieFixture(10)
