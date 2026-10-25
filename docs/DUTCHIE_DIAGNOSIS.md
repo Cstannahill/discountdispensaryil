@@ -41,3 +41,16 @@ Probes: `data/dutchie-probe1.json`, `data/dutchie-explore*.json`, `data/dutchie-
 - Fix: `replayDutchieWholeMenu` (`browser_worker.cjs`) learns the query template from one `/products/<category>` page, then reads the whole menu from the page (`types: []`, `sortBy: name`, `removeProductsBelowOptionThresholds: false`, 100 per page, until the first empty page). With that flag off, rows equal `queryInfo.totalCount` and two traversals agree; with it on, the server drops 0 to 18 rows after paging and the rows never reach the total. If the read is not clean, the old category crawl still runs. `options.whole_menu_query=false` turns it off.
 - `generic.py` now reports `Browser tunnel byte budget exceeded` (classified `RESPONSE_TOO_LARGE`) when the error page follows budget blocks, and keeps the "refused this browser session" wording for any other error page.
 - Live, read-only provider fetches (nothing stored): Batavia 496/496 in 74 s, Mint Willowbrook 666/666 in 41 s (was COUNT_MISMATCH), Cookies Bolingbrook 1430/1430 in 170 s; each complete with two stable traversals. Not yet run through a sync or checked against registry branch addresses beyond the existing in-fetch check.
+
+## Update: native provider (2026-10-18)
+
+`backend/providers/dutchie.py` replaces the generic path for Dutchie endpoints. See `docs/PLATFORM_FIRST_PLAN.md`
+section 7 for details. Two findings explain why generic Dutchie captures often failed with "does not reconcile":
+
+- **Below-threshold products are counted but not returned.** `removeProductsBelowOptionThresholds: true` (the
+  storefront's setting) drops products whose every option is below the online threshold after `totalCount` is
+  computed. Noxx pages came back with 98 or 99 of 100, for 1042 of 1053. With `false`, every page is full, and the 11
+  extra products carry their options in `optionsBelowThreshold`, so they are read as unavailable.
+- **The default sort is not a stable paging order.** Under "Featured" order, Cloud9 East Peoria repeats 2 products and
+  drops 2 across page boundaries, identically on every pass. The storefront's "Price low to high" view (`sortBy: price`,
+  `isDefaultSort: false`) reconciles 1458/1458. `sortBy: "_id"` is not honored; it behaves like an unknown key.

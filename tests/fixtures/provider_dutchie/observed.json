@@ -1,0 +1,34 @@
+[
+ {
+  "url": "https://dutchie.com/graphql?operationName=ConsumerDispensaries&variables=%7B%22dispensaryFilter%22%3A%7B%22cNameOrID%22%3A%2265772a69ac53410009424572%22%7D%2C%22collectionChannel%22%3A%22WEB%22%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%222c7500bffc520e78f84ef694d9795ac3c9472e1d9867c98d36d96aaaddb181b2%22%7D%7D",
+  "headers": {
+   "accept": "*/*",
+   "content-type": "application/json",
+   "apollographql-client-name": "Marketplace (production)"
+  }
+ },
+ {
+  "url": "https://dutchie.com/api-1/graphql?operationName=MenuFiltersV2&variables=%7B%22dispensaryId%22%3A%2265772a69ac53410009424572%22%2C%22pricingType%22%3A%22rec%22%2C%22isKioskMenu%22%3Afalse%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%222f0b3233b8a2426b391649ca3f0f7a5d43b9aefd683f6286d7261a2517e3568e%22%7D%7D",
+  "headers": {
+   "accept": "*/*",
+   "content-type": "application/json",
+   "apollographql-client-name": "Marketplace (production)"
+  }
+ },
+ {
+  "url": "https://dutchie.com/api-1/graphql?operationName=GetAddressBasedDispensaryData&variables=%7B%22input%22%3A%7B%22dispensaryId%22%3A%2265772a69ac53410009424572%22%7D%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%229e66035adae1c08c60e0020946ca012a4f028bb8e57ef1e070e7f1e0da1f5301%22%7D%7D",
+  "headers": {
+   "accept": "*/*",
+   "content-type": "application/json",
+   "apollographql-client-name": "Marketplace (production)"
+  }
+ },
+ {
+  "url": "https://dutchie.com/api-1/graphql?operationName=FilteredProducts&variables=%7B%22includeEnterpriseSpecials%22%3Afalse%2C%22productsFilter%22%3A%7B%22productIds%22%3A%5B%5D%2C%22dispensaryId%22%3A%2265772a69ac53410009424572%22%2C%22pricingType%22%3A%22rec%22%2C%22strainTypes%22%3A%5B%5D%2C%22subcategories%22%3A%5B%5D%2C%22Status%22%3A%22Active%22%2C%22types%22%3A%5B%5D%2C%22useCache%22%3Afalse%2C%22isDefaultSort%22%3Afalse%2C%22sortBy%22%3A%22price%22%2C%22sortDirection%22%3A1%2C%22bypassOnlineThresholds%22%3Afalse%2C%22ignoreQuantityThresholds%22%3Afalse%2C%22isKioskMenu%22%3Afalse%2C%22removeProductsBelowOptionThresholds%22%3Atrue%2C%22platformType%22%3A%22ONLINE_MENU%22%2C%22preOrderType%22%3Anull%7D%2C%22page%22%3A0%2C%22perPage%22%3A100%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22cfbda410fd502c77b467a174a666b809bec1e61c70ee7f75de1aff7440b59bf4%22%7D%7D",
+  "headers": {
+   "accept": "*/*",
+   "content-type": "application/json",
+   "apollographql-client-name": "Marketplace (production)"
+  }
+ }
+]

@@ -186,6 +186,8 @@ async function clickMore(page){
   control.scrollIntoView({block:'center'});control.click();return true;
  });
 }
+// Request headers a page's API client sends that a replay of its own query must repeat.
+const READ_HEADERS=['accept','content-type','apollo-require-preflight','x-apollo-operation-name','apollographql-client-name','apollographql-client-version'];
 // Observed read-only JSON queries (GET) whose response says there are more pages of the same query.
 const pagedQueries=[],replayed=new Set();
 // The storefront's own product-search POSTs (GapCommerce). Kept so the page's request can be replayed from the page.
@@ -548,7 +550,7 @@ async function run({url,options,storage_state,native_proxy}){
   // WebSockets are closed by default; the allow_websockets option exists for diagnostic experiments only.
   if(options.allow_websockets!==true)await context.routeWebSocket('**/*',socket=>socket.close());
   let count=0;// Paging through a whole menu (category pages, numbered pages) legitimately makes thousands of requests.
-  const requestLimit=options.catalog_navigation?8000:options.await_menu&&options.scroll_menu!==false?4000:600;
+  const requestLimit=options.catalog_navigation?8000:options.page_reads?3000:options.await_menu&&options.scroll_menu!==false?4000:600;
   let catalogPhase=false;diagnostics.request_limit=requestLimit;diagnostics.requests=0;diagnostics.auxiliary_requests_skipped=0;
   const staticCache=new Map(),cachedRequests=new WeakSet();let cacheBytes=0;
   await context.route('**/*',async route=>{
@@ -583,6 +585,13 @@ async function run({url,options,storage_state,native_proxy}){
   page.on('pageerror',error=>retainError('page_errors',error.message));
   page.on('console',message=>{if(message.type()==='error')retainError('console_errors',message.text());});
   page.on('response',response=>{if(response.request().isNavigationRequest()&&response.frame()===page.mainFrame())mainStatus=response.status();});
+  // JSON queries the page itself made, with the headers its client sent: what a page_reads provider builds its reads on.
+  const observedReads=[];
+  if(options.page_reads)page.on('response',response=>{
+   const req=response.request();
+   if(observedReads.length>=300||req.method()!=='GET'||response.status()!==200||!(response.headers()['content-type']||'').includes('json'))return;
+   req.allHeaders().then(all=>observedReads.push({url:response.url(),headers:Object.fromEntries(READ_HEADERS.filter(key=>all[key]).map(key=>[key,all[key]]))})).catch(()=>{});
+  });
   const captures=[],captureErrors=[],flightPages=[];let capturedBytes=0;
   diagnostics.capture_errors=captureErrors;diagnostics.streaming_responses_skipped=[];
   if(native_proxy)page.on('response',response=>{
@@ -615,7 +624,7 @@ async function run({url,options,storage_state,native_proxy}){
      staticCache.set(response.url(),{status:200,headers:{'content-type':responseHeaders['content-type']||'application/octet-stream'},body});cacheBytes+=body.length;
     }
     // Paged menus share the catalog budget: one Dutchie page of 100 products is ~2 MB, so 64 MB ran out mid-menu (Cloud9).
-    if(body.length>25*1024*1024||capturedBytes>(options.catalog_navigation||options.await_menu&&options.scroll_menu!==false?256:64)*1024*1024)throw new Error('Browser response capture budget exceeded');
+    if(body.length>25*1024*1024||capturedBytes>(options.catalog_navigation||options.page_reads||options.await_menu&&options.scroll_menu!==false?256:64)*1024*1024)throw new Error('Browser response capture budget exceeded');
     if((await response.headerValue('content-type')||'').includes('text/x-component')){
      flightPages.push({url:response.url(),body:body.toString('utf8'),status:response.status()});
      if(flightPages.length>30)flightPages.shift();
@@ -642,6 +651,30 @@ async function run({url,options,storage_state,native_proxy}){
    const types=await retried(()=>selectMenuContext(page,options));
    contextTransitions.push(...locations,...types);
    if(!locations.length&&!types.length)break;
+  }
+  if(options.page_reads){
+   // The provider decides each read from the page's own queries and the previous results; the page performs it (same
+   // origin, its cookies, GET only), so every response crosses the same validated boundary and is captured as evidence.
+   catalogPhase=true;
+   await page.waitForLoadState('networkidle',{timeout:8000}).catch(()=>{});
+   await progress('page_reads');
+   const origin=new URL(page.url()).origin;let results=[];
+   for(let round=0;round<2000;round++){
+    const reply=await request({method:'PAGE_READ',url:page.url(),observed:round===0?observedReads:undefined,results});
+    if(reply.error)throw new Error(reply.error);
+    if(!Array.isArray(reply.reads)||!reply.reads.length)break;
+    results=[];
+    for(const read of reply.reads.slice(0,8)){
+     if(new URL(read.url).origin!==origin)throw new Error('Page reads cannot leave the page origin');
+     results.push(await retried(()=>page.evaluate(async ({url,headers})=>{
+      try{
+       const response=await fetch(url,{method:'GET',headers,credentials:'include'});const body=await response.text();
+       return body.length>25*1024*1024?{url,status:response.status,body:'',error:'Page read exceeds 25 MB'}:{url,status:response.status,body};
+      }catch(error){return {url,status:0,body:'',error:String(error).slice(0,200)};}
+     },{url:read.url,headers:read.headers||{}})));
+    }
+   }
+   await Promise.allSettled(captures.splice(0));
   }
   if(options.catalog_navigation){
    catalogPhase=true;

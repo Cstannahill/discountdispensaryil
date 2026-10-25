@@ -18,7 +18,7 @@ from .storage import REGISTRY_URL
 from .runtime import PIPELINE_VERSION, PipelineInterrupted
 
 
-NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'gapcommerce', 'joint', 'jane', 'verano', 'leafly')
+NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'gapcommerce', 'joint', 'jane', 'verano', 'leafly', 'dutchie')
 # Sample runs stop a store's discovery crawl after this many seconds; full runs never budget discovery.
 SAMPLE_DISCOVERY_SECONDS = 120
 # Sample runs process this many stores at once; full runs stay sequential.

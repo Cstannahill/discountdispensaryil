@@ -287,6 +287,11 @@ class PublicFetcher:
         """Save web-search results fetched by the keyed LLM client as evidence. Only the result list is stored; the
         request, its headers and the key never reach this boundary."""
         return self._record(url, 200, body, {'content-type': 'application/json'}, attempt=1, method='POST')
+    def render_reads(self,url,page_reader,*,license_type='recreational'):
+        """Render `url` and let `page_reader` drive same-origin GET reads from inside the page (see browser_worker page_reads)."""
+        from .browser_render import render
+        options=dict({**BROWSER_DEFAULTS,**getattr(self,'browser_options',{})},license_type=license_type)
+        return render(url,self,options=options,page_reader=page_reader)
 
     def post(self, url, *, json, headers=None) -> FetchResult:
         """Only explicitly observed public read-only search URLs are permitted.
