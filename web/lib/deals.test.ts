@@ -74,7 +74,8 @@ describe('OTD calculator and Illinois tax inference', () => {
     assert.equal(inferTaxRate({ license_type: 'medicinal', category: 'concentrate', thc_pct: '80' }), 1);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'concentrate', thc_pct: '72' }), 37);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', thc_pct: '38' }), 37);
-    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: '85' }), 32);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: '85' }), 37);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: null }), 32);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'infused', thc_pct: '30' }), 32);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'whole', thc_pct: '24' }), 22);
   });

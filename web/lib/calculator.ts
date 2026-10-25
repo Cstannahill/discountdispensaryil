@@ -22,9 +22,8 @@ export function inferTaxRate(offer?: {
   if (!offer) return 22;
   if (offer.license_type === 'medicinal') return 1;
   const thc = Number(offer.thc_pct);
-  if (offer.category === 'concentrate') return 37;
+  if (offer.category === 'concentrate' || (Number.isFinite(thc) && thc > 35)) return 37;
   if (offer.category === 'vapes' || offer.flower_grade === 'infused') return 32;
-  if (Number.isFinite(thc) && thc > 35) return 37;
   return 22;
 }
 

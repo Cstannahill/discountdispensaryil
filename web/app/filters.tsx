@@ -73,7 +73,7 @@ export default function FilterStrip({
     if (search === q) return;
     const timer = setTimeout(() => {
       updateParams({ q: search.trim() || null });
-    }, 300);
+    }, 250);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, q]);
@@ -119,6 +119,12 @@ export default function FilterStrip({
             aria-label="Search deals by product, brand, or dispensary"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                updateParams({ q: search.trim() || null });
+              }
+            }}
             placeholder="Search strain, brand, or dispensary…"
             maxLength={300}
             className="w-full !pl-8 !pr-8 !py-2"
