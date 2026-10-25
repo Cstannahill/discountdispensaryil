@@ -35,7 +35,7 @@ class Fetcher:
                        IVY_LIST: fixture('ivy_locations.html'),
                        NUERA_LIST: fixture('nuera_dispensaries.html'),
                        'verilife.com/locations': fixture('verilife_locations.html'),
-                       'verilife.com/il/locations/galena': FetchError('Public endpoint returned HTTP 403', 'evidence-403'),
+                       'verilife.com/il/locations/': FetchError('Public endpoint returned HTTP 403', 'evidence-403'),
                        # Order matters: the bundle path also starts with the storefront origin.
                        'www.sunnyside.shop/static/js/main': fixture('sunnyside_bundle.js'),
                        'https://www.sunnyside.shop/': fixture('sunnyside_home.html'),
@@ -132,6 +132,14 @@ class ChainListTests(unittest.TestCase):
         self.assertEqual([('blocked', 'https://www.verilife.com/il/locations/galena')], [(c['status'], c['url']) for c in found])
         self.assertIn('HTTP 403', found[0]['reason'])
 
+    def test_verilife_rise_branches_get_their_jane_store_id_though_rise_refuses_this_client(self):
+        found = chain_candidates(store('Verilife North Aurora', '2080 W Orchard Rd', 'North Aurora'), Fetcher())
+        self.assertEqual(['matched'], [c['status'] for c in found])
+        endpoint = found[0]['endpoint']
+        self.assertEqual(('jane', '7314', 'recreational', 'matched'),
+                         (endpoint['provider'], endpoint['provider_store_id'], endpoint['license_type'], endpoint['identity_confidence']))
+        self.assertTrue(endpoint['url'].startswith('https://risecannabis.com/dispensaries/illinois/verilife-north-aurora/7314/'))
+
     def test_chain_list_answers_discovery_without_web_search(self):
         with mock.patch.object(site_discovery, 'search_websites', no_search):
             ivy = discover_menu_candidates(store('Ivy Hall - Crystal Lake', '501 Pingree Rd.', 'Crystal Lake'), Fetcher())
@@ -145,6 +153,13 @@ class ChainListTests(unittest.TestCase):
             endpoints = resolve_menu(store('Midway by Ascend', '5650 S Archer Ave', 'Chicago'), fetcher)
         self.assertEqual([('dutchie', MIDWAY_ID)], [(e['provider'], e['provider_store_id']) for e in endpoints])
         self.assertFalse(any('dutchie.com' in url for url in fetcher.fetched))
+
+    def test_resolver_carries_the_verilife_jane_menu_without_reading_rise(self):
+        fetcher = Fetcher()
+        with mock.patch.object(site_discovery, 'search_websites', no_search):
+            endpoints = resolve_menu(store('Verilife Ottawa', '4100 Columbus St', 'Ottawa'), fetcher)
+        self.assertEqual([('jane', '7320')], [(e['provider'], e['provider_store_id']) for e in endpoints])
+        self.assertFalse(any('risecannabis.com' in url for url in fetcher.fetched))
 
 
 if __name__ == '__main__':
