@@ -12,7 +12,7 @@ export interface SavedDeal {
   brand?: string | null;
   store_name: string;
   price_per_gram?: string | null;
-  effective_price: string;
+  effective_price?: string | null;
   regular_price?: string | null;
   massLabel: string;
   category: string;
