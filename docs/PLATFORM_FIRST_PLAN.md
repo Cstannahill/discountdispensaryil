@@ -184,3 +184,22 @@ Re-resolving the 11 Jane-signature extraction failures detected Jane store ids o
 Aurora (1,167), EarthMed (1,351), and Hatch (1,585) now grade A, and Verilife Rosemont is B. The region stands at 48
 accepted and 2 converged. The rest (RISE, NuEra Chicago Southland's filtered shop pages, Cannabist) need chain entries
 (step 5).
+
+**Step 3, directory-anchored discovery: implemented; the targeted sync is pending approval.**
+- **How it reads:** `backend/directory.py` reads Weedmaps' public discovery listings per 0.5° region tile (30 mi query radius, paged to the advertised total). Requests are serialized with 1 s between them, go through `PublicFetcher` (so every page and detail is evidence), and are cached for 72 h under `data/evidence/directory-cache/`. A listing's detail is fetched only when it matches.
+- **Match rule:** within 0.25 mi of the registry coordinates, at the same street number, in the same state. Name tokens only order qualifying listings. A unit letter is not part of the number (registry "6119 East Ave A" = listing "6119A East Ave"); a DuPage grid number (4S120) is.
+- **A lead, never a menu:** the listing's `website` (tracking parameters dropped) seeds `resolve_menu` ahead of web search as an unverified candidate. The retailer page must still prove the branch, and search stays the fallback. The service records each matched listing in `live_leads` (source `directory:weedmaps`, keyed by the listing URL, with distance, license number and type, and evidence ids), and the directory outcome in the resolution evidence. Nothing creates an endpoint from the directory.
+- **Near-misses rejected (measured):** Ascend Moca River North vs Green Rose (0.12 mi) and Sunnyside (0.16 mi); Starbuds Westmont vs Curaleaf Westmont (0.22 mi); Curaleaf New Lenox, where the registry says 705 and the listing says 709 E. Lincoln Hwy. 0.01 mi away (a registry dispute, left for a human).
+
+Measured with `scripts/measure_directory_leads.py --inspect` (read-only for the database) on the 112 discovery-failed stores of region 8f7772ca082601b630476779:
+
+| Outcome | Stores |
+|---|---|
+| Corroborated website lead | 14 |
+| – page proves the branch on a plain fetch (address, or name and locality) | 10 |
+| – chain hub page; the branch link is still to follow | 2 |
+| – HTTP 403 without the browser | 2 |
+| Strict listing match, but the listing has no usable website | 15 |
+| No strict listing match | 83 |
+
+The earlier estimate (40 of 63 with a listing within 2 mi) overstated the gain: chain listings (Curaleaf, Sunnyside, Zen Leaf, RISE, Verilife) mostly have an empty `website`. 22 unmatched stores have a listing at the same full street address 0.3–2.7 mi away (registry coordinates off, as with NuEra Pekin), but only 3 of those listings name a website, so loosening the radius is not worth the risk now. For chain stores, the chain registry (step 5) is still the lever.

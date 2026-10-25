@@ -20,7 +20,7 @@ Normal work goes through `POST /api/v1/sync/runs` (`region_id`, `store_ids`, `di
 
 ## Pipeline map (`backend/`)
 
-registry (`discovery.py`) -> candidate stores (`storage.py`) -> website/menu discovery (`chains.py` published chain location lists: a list answers for its chain, no web search follows; `locators.py` chain connectors; `site_discovery.py` search + branch identity + platform links) -> `adapters.resolve_menu` -> endpoint (provider + store id + license) -> `adapters.fetch_menu` dispatches to `providers/{sweed,dispense,treez,generic}.py` or Blaze inline -> `storage.apply_snapshot` (accept / partial / suspicious) -> offers.
+registry (`discovery.py`) -> candidate stores (`storage.py`) -> website/menu discovery (`chains.py` published chain location lists: a list answers for its chain, no web search follows; `locators.py` chain connectors; `directory.py` Weedmaps listings as website leads ahead of search; `site_discovery.py` search + branch identity + platform links) -> `adapters.resolve_menu` -> endpoint (provider + store id + license) -> `adapters.fetch_menu` dispatches to `providers/{sweed,dispense,treez,generic}.py` or Blaze inline -> `storage.apply_snapshot` (accept / partial / suspicious) -> offers.
 
 - `service.py`: orchestration. Retained accepted endpoints refresh first, independent of rediscovery. Per-store locks, bounded regional + targeted executors.
 - `network.py` `PublicFetcher`: all HTTP (SSRF-safe, DNS pinned, evidence recorded, POST only to an exact allowlist `_READ_ONLY_SEARCH_POSTS`). `browser_render.py` + `browser_worker.cjs` + `browser_proxy.py` + `browser_locations.cjs`: Chrome through the same boundary; age/terms/license/branch controls.

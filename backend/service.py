@@ -9,6 +9,7 @@ import time
 
 from . import neon_mirror
 from .adapters import fetch_menu, resolve_menu, has_menu_contract
+from .directory import lookup as directory_lookup
 from .discovery import parse_registry, resolve_location, REGISTRY_SOURCE_PAGE
 from .domain import age_hours, utcnow
 from .failures import FailureCode, classify
@@ -91,12 +92,12 @@ def llm_verifier(database):
 
 
 class SyncService:
-    def __init__(self, store, fetcher, *, resolver=resolve_menu, menu_fetcher=fetch_menu, verifier=None):
+    def __init__(self, store, fetcher, *, resolver=resolve_menu, menu_fetcher=fetch_menu, verifier=None, directory=directory_lookup):
         from .runtime import configure_worker_stack
         configure_worker_stack()
         self.store, self._base_fetcher = store, fetcher
         self._contexts=threading.local()
-        self.resolver, self.menu_fetcher, self.verify = resolver, menu_fetcher, verifier
+        self.resolver, self.menu_fetcher, self.verify, self.directory = resolver, menu_fetcher, verifier, directory
         self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="terpscout-sync")
         self.target_executor=ThreadPoolExecutor(max_workers=1,thread_name_prefix='terpscout-target')
         self.state_lock=threading.Lock()
@@ -218,6 +219,20 @@ class SyncService:
         results.append(dict(stage='verification',store_id=store['id'],store_name=store['name'],status=record.get('status'),verdict=record.get('verdict'),detail=record.get('detail')))
         return dict(store,**self.store.identity(store['id']))
 
+    def _directory_leads(self,store):
+        # A directory listing is recorded as a website lead and seeds the resolver; it never becomes an endpoint,
+        # and directory trouble never blocks resolution (web search stays the fallback).
+        try:found=self.directory(store,self.fetcher)
+        except PipelineInterrupted:raise
+        except Exception as exc:found=dict(status='failed',leads=[],matches=[],error=str(exc))
+        for match in found.get('matches') or []:
+            where=f"Weedmaps listing {match.get('distance_miles')} mi from the registry location at street number {match.get('street_number')}"
+            if match.get('lead_url'):outcome=f"website {match['lead_url']} is a lead, not a menu"
+            elif match.get('error'):outcome='listing detail unavailable: '+str(match['error'])
+            else:outcome='listing names no retailer website'+(f" ({match['website']} is not one)" if match.get('website') else '')
+            self.store.record_lead(store['id'],match['listing_url'],'directory:'+str(match.get('source') or 'weedmaps'),where+'; '+outcome,[match])
+        return found
+
     def _process_store_unlocked(self,store,results,force_resolution=False):
         started=time.monotonic();attempted=set();accepted=0;had_failure=False;stages=[];read_ok=set()
         if store.get('operating_status')=='closed':
@@ -320,6 +335,7 @@ class SyncService:
                                         menu_targets_attempted=0,accepted_snapshots=0,seconds=round(time.monotonic()-started,3),stages=[]))
                     return False
             self._check_stop();resolution_start=time.monotonic();failures=[];targets={}
+            directory=self._directory_leads(store)
             try:
                 # Pages the store verifier cited or an operator seeded are crawl seeds; the resolver still has to prove the branch on them.
                 # Sites a paid search found before are saved as 'search' leads and crawled first, so the search is not paid for twice.
@@ -332,6 +348,7 @@ class SyncService:
                             known.add(lead['url']);self.store.record_lead(store_id,lead['url'],'search','Found by website search',lead.get('evidence') or [])
                 resolver_store=dict(resolver_store,search_sink=save_search_leads,no_search=vouched)
                 if sample:resolver_store=dict(resolver_store,discovery_seconds=SAMPLE_DISCOVERY_SECONDS)
+                resolver_store=dict(resolver_store,directory_leads=directory.get('leads') or [])
                 resolved=self.resolver(resolver_store,self.fetcher)
                 self._check_stop()
                 # Census input: which menu platforms this store's pages showed, including rejected (wrong-branch) pages.
@@ -377,7 +394,8 @@ class SyncService:
                           code=None if targets else classify(first and first.get('error'),resolution_status=first and first.get('status')),
                           items=len(targets),seconds=round(time.monotonic()-resolution_start,3),detail=(first or {}).get('error'),
                           provider=None)
-            evidence=dict(pipeline_version=PIPELINE_VERSION,failures=failures,menu_targets=list(targets))
+            evidence=dict(pipeline_version=PIPELINE_VERSION,failures=failures,menu_targets=list(targets),
+                          directory=dict(status=directory.get('status'),leads=[lead['url'] for lead in directory.get('leads') or []],error=directory.get('error')))
             if targets:
                 self.store.record_resolution(store['id'],'matched',f'Resolved {len(targets)} canonical menu target(s)',evidence)
             elif retained:

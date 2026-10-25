@@ -288,6 +288,8 @@ def discover_menu_candidates(store, fetcher):
     known=[dict(candidate,source_role='retailer') if candidate.get('url') else candidate for candidate in known]
     # A published chain list answers for its branch (matched, absent or blocked); open-web search would only add other branches.
     if any(x.get('chain_list') for x in known):return known
+    # Websites named by an address-corroborated directory listing are leads like search results; the resolver proves them.
+    directory=[dict(lead) for lead in store.get('directory_leads') or [] if lead.get('url')]
     options=getattr(fetcher,'browser_options',{})
     if options.get('age_confirmed') and hasattr(fetcher,'render'):
         for candidate in known:
@@ -298,11 +300,14 @@ def discover_menu_candidates(store, fetcher):
                     inspected=inspect_page(store,rendered)
                     links=[link for link in inspected['links'] if re.search(r'menu|shop|location|store',link,re.I) and not re.search(r'\.(?:js|css|png|jpg|svg)',link)]
                     if links:
-                        return [dict(url=link,status='candidate',reason='Observed after ordinary consent-enabled browser flow',evidence=[inspected['evidence']]) for link in links[:12]]
+                        return [dict(url=link,status='candidate',reason='Observed after ordinary consent-enabled browser flow',evidence=[inspected['evidence']]) for link in links[:12]]+directory
                 except Exception as exc:
                     candidate['reason']+='; browser attempt: '+str(exc)
     if any(x['status'] in ('matched','candidate') for x in known):
-        return known
+        return known+directory
+    if directory:
+        # The directory replaces web search as the first resort; search stays the resolver's fallback.
+        return [x for x in known if x.get('url')]+directory
     searched=search_websites(store,fetcher)
     if searched:
         # Keep the known retailer and its actual failure visible. Search leads
