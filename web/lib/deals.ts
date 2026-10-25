@@ -52,7 +52,7 @@ export function sizeForCategory(category: string, size?: string | null): string 
   const n = parseSize(size);
   if (n == null) return undefined;
   const key = String(size).trim();
-  if (FLOWER_ONLY_SIZES.has(key) && category !== 'flower') return undefined;
+  if (FLOWER_ONLY_SIZES.has(key) && category !== 'flower' && category !== 'all') return undefined;
   return key;
 }
 
@@ -178,7 +178,7 @@ e AS (
            coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(split_part(coalesce(j->>'name',''), ' - ', 1)), '${LINE_RE}', 'g') m), '')) AS gkey
   FROM d WHERE ${where.join(' AND ')}),
 f AS (SELECT e.*, ${q.group ? `CASE WHEN count(*) OVER (PARTITION BY gkey) >= ${MIN_GROUP} THEN gkey ELSE id END` : 'id'} AS gk FROM e),
-reps AS (SELECT DISTINCT ON (gk) gk, j, distance_miles, id FROM f ORDER BY gk, id),
+reps AS (SELECT DISTINCT ON (gk) gk, j, distance_miles, id FROM f ORDER BY gk, ${sortOrderClause(q.sort)}),
 pg AS (
   SELECT gk, row_number() OVER (ORDER BY ${sortOrderClause(q.sort)}) AS ord, count(*) OVER() AS total
   FROM reps ORDER BY ord LIMIT ${arg(size)} OFFSET ${arg((page - 1) * size)})

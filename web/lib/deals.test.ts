@@ -2,7 +2,7 @@ import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { strainBucket, parseSize, sizeForCategory, strainClause, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS } from './deals.ts';
 import { formatRelativeTime } from './time.ts';
-import { calculateOtd, inferTaxRate, calculateSavings } from './calculator.ts';
+import { calculateOtd, inferTaxRate, calculateSavings, parseThc } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
 
 describe('strainBucket and strainClause consistency', () => {
@@ -76,8 +76,13 @@ describe('OTD calculator and Illinois tax inference', () => {
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'concentrate', thc_pct: '72' }), 37);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', thc_pct: '38' }), 37);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: '85' }), 37);
-    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: null }), 32);
-    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'infused', thc_pct: '30' }), 32);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: null }), 37);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: '30' }), 22);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', thc_pct: '38.5%' }), 37);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', thc_pct: '24' }, 10), 26.25);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', thc_pct: null }), 22);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'infused', thc_pct: '30' }), 22);
+    assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'infused', thc_pct: null }), 37);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'whole', thc_pct: '24' }), 22);
   });
 });
@@ -199,5 +204,13 @@ describe('QUICK_HUBS validity', () => {
   });
 });
 
-
-
+describe('parseThc', () => {
+  it('extracts the first number from messy THC text', () => {
+    assert.equal(parseThc('24.5'), 24.5);
+    assert.equal(parseThc('38%'), 38);
+    assert.equal(parseThc('THC 20-25 %'), 20);
+    assert.equal(parseThc(''), null);
+    assert.equal(parseThc(null), null);
+    assert.equal(parseThc('n/a'), null);
+  });
+});
