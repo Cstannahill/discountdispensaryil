@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { strainBucket, parseSize, sizeForCategory, strainClause } from './deals.ts';
+import { strainBucket, parseSize, sizeForCategory, strainClause, SORT_OPTIONS, type SortOption, sortOrderClause } from './deals.ts';
 import { calculateOtd, inferTaxRate, calculateSavings } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
 
@@ -121,3 +121,20 @@ describe('parseOrigin', () => {
     assert.deepEqual(o, { latitude: 40.6936, longitude: -89.589, radius_miles: 200, label: 'Peoria, IL' });
   });
 });
+
+describe('SORT_OPTIONS and sortOrderClause', () => {
+  it('defines all 5 supported sorting criteria', () => {
+    assert.deepEqual(SORT_OPTIONS, ['value', 'price', 'thc', 'distance', 'discount']);
+  });
+
+  it('generates safe SQL clauses for all options', () => {
+    assert.match(sortOrderClause('value'), /effective_price.*weight_grams.*ASC/);
+    assert.match(sortOrderClause('price'), /effective_price.*ASC/);
+    assert.match(sortOrderClause('thc'), /thc_pct.*DESC/);
+    assert.match(sortOrderClause('distance'), /distance_miles.*ASC/);
+    assert.match(sortOrderClause('discount'), /regular_price.*effective_price.*DESC/);
+    assert.match(sortOrderClause(undefined as unknown as SortOption), /effective_price.*weight_grams/);
+    assert.match(sortOrderClause('invalid' as SortOption), /effective_price.*weight_grams/);
+  });
+});
+

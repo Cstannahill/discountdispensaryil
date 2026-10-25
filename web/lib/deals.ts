@@ -7,6 +7,24 @@ export const LICENSES = ['recreational', 'medicinal'] as const;
 export const STRAINS = ['Indica', 'Sativa', 'Hybrid'] as const;
 export const SIZES = ['any', '0.5', '1', '3.5', '7', '14', '28'] as const;
 export const FLOWER_ONLY_SIZES = new Set(['3.5', '7', '14', '28']);
+export const SORT_OPTIONS = ['value', 'price', 'thc', 'distance', 'discount'] as const;
+export type SortOption = (typeof SORT_OPTIONS)[number];
+
+export function sortOrderClause(sort?: SortOption | string | null): string {
+  switch (sort) {
+    case 'price':
+      return `(j->>'effective_price')::numeric ASC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+    case 'thc':
+      return `nullif(regexp_replace(j->>'thc_pct', '[^0-9.]', '', 'g'), '')::numeric DESC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+    case 'distance':
+      return `distance_miles ASC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+    case 'discount':
+      return `CASE WHEN (NULLIF(j->>'regular_price','')::numeric) > (NULLIF(j->>'effective_price','')::numeric) AND (NULLIF(j->>'regular_price','')::numeric) > 0 THEN (((NULLIF(j->>'regular_price','')::numeric) - (NULLIF(j->>'effective_price','')::numeric)) / (NULLIF(j->>'regular_price','')::numeric)) ELSE 0 END DESC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+    case 'value':
+    default:
+      return `(j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, round(distance_miles::numeric,3) ASC, id`;
+  }
+}
 
 export function parseSize(v?: string | null): number | null {
   if (!v || v === 'any') return null;
@@ -45,7 +63,7 @@ export interface Variant { id: string; name: string; strain_type: string | null;
 export interface Origin { latitude: number; longitude: number; radius_miles: number }
 export interface DealQuery {
   region_id?: string; origin?: Origin; license_type?: string; category?: string; q?: string; include_stale?: boolean; include_unverified?: boolean;
-  flower_grade?: string; strain_type?: string; size?: string; promo?: string; group?: boolean; page?: number; page_size?: number;
+  flower_grade?: string; strain_type?: string; size?: string; promo?: string; group?: boolean; sort?: SortOption; page?: number; page_size?: number;
 }
 export interface Page<T> { items: T[]; total: number; page: number; page_size: number; data_version: string }
 
@@ -146,7 +164,7 @@ e AS (
 f AS (SELECT e.*, ${q.group ? `CASE WHEN count(*) OVER (PARTITION BY gkey) >= ${MIN_GROUP} THEN gkey ELSE id END` : 'id'} AS gk FROM e),
 reps AS (SELECT DISTINCT ON (gk) gk, j, distance_miles, id FROM f ORDER BY gk, id),
 pg AS (
-  SELECT gk, row_number() OVER (ORDER BY (j->>'effective_price')::numeric/(j->>'weight_grams')::numeric, round(distance_miles::numeric,3), id) AS ord, count(*) OVER() AS total
+  SELECT gk, row_number() OVER (ORDER BY ${sortOrderClause(q.sort)}) AS ord, count(*) OVER() AS total
   FROM reps ORDER BY ord LIMIT ${arg(size)} OFFSET ${arg((page - 1) * size)})
 SELECT f.id, endpoint_id, last_diff_action, last_seen_at, snapshot_id, j, store_id, license_type, store_name, endpoint_url, provider,
        completeness, fgrade, distance_miles, fresh, gk, total
