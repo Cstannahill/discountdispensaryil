@@ -108,6 +108,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     ? { radius_miles: origin.radius_miles, label: origin.label }
     : reg.items.find((r) => r.id === regionId);
 
+  const categoryChips = cats.map((c, i) => ({
+    id: c,
+    label: c,
+    total: results[i].total,
+    color: ACCENT[c],
+  }));
+
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-5 pb-12 sm:py-4 space-y-3">
       <LocationControl
@@ -116,6 +123,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         place={region?.label ?? ''}
         license={license}
         dataVersion={results[0]?.data_version}
+        chips={categoryChips}
       />
 
       <FilterStrip
@@ -136,14 +144,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         </p>
       )}
 
-      <CategoryGrid
-        chips={cats.map((c, i) => ({
-          id: c,
-          label: c,
-          total: results[i].total,
-          color: ACCENT[c],
-        }))}
-      >
+      <CategoryGrid chips={categoryChips}>
         {cats.map((category, i) => {
           const r = results[i];
           const last = Math.max(1, Math.ceil(r.total / PAGE_SIZE));

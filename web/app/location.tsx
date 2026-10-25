@@ -19,18 +19,36 @@ const QUICK_HUBS: readonly [string, string][] = [
 
 const RADII = [5, 10, 25, 50, 100, 200] as const;
 
+export type CategoryChip = {
+  id: string;
+  label: string;
+  total: number;
+  color: string;
+};
+
+const ICONS: Record<string, string> = {
+  flower: '🌿',
+  concentrate: '🍯',
+  vapes: '💨',
+  all: '⚡',
+};
+
+const CATEGORY_EVENT = 'terpscout:category-change';
+
 export default function LocationControl({
   active,
   radius,
   place,
   license = 'recreational',
   dataVersion,
+  chips,
 }: {
   active: boolean;
   radius: number;
   place: string;
   license?: string;
   dataVersion?: string;
+  chips?: readonly CategoryChip[];
 }) {
   const router = useRouter();
   const sp = useSearchParams();
@@ -39,6 +57,30 @@ export default function LocationControl({
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
   const [text, setText] = useState('');
+  const [activeCategory, setActiveCategory] = useState('flower');
+
+  useEffect(() => {
+    try {
+      const v = localStorage.getItem('terpscout.category');
+      if (v) setActiveCategory(v);
+    } catch {}
+
+    const onCategoryChange = (e: Event) => {
+      const detail = (e as CustomEvent<string>).detail;
+      if (detail) setActiveCategory(detail);
+    };
+
+    window.addEventListener(CATEGORY_EVENT, onCategoryChange);
+    return () => window.removeEventListener(CATEGORY_EVENT, onCategoryChange);
+  }, []);
+
+  const pickCategory = (id: string) => {
+    setActiveCategory(id);
+    try {
+      localStorage.setItem('terpscout.category', id);
+    } catch {}
+    window.dispatchEvent(new CustomEvent(CATEGORY_EVENT, { detail: id }));
+  };
 
   const pushUrl = (u: URLSearchParams) => {
     ['p_concentrate', 'p_flower', 'p_vapes'].forEach((k) => u.delete(k));
@@ -135,6 +177,19 @@ export default function LocationControl({
 
   const allRadii = [...new Set([...RADII, radius])].sort((a, b) => a - b);
 
+  const orderedChips = chips
+    ? [
+        ...chips.filter((c) => c.id === 'flower'),
+        ...chips.filter((c) => c.id !== 'flower'),
+        {
+          id: 'all',
+          label: 'All',
+          total: chips.reduce((sum, c) => sum + c.total, 0),
+          color: '#10b981',
+        },
+      ]
+    : [];
+
   return (
     <header className="glass-header sticky top-0 z-40 -mx-3 px-3 sm:mx-0 sm:px-4 sm:rounded-2xl sm:border sm:border-white/10 py-2.5">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -208,6 +263,44 @@ export default function LocationControl({
           </button>
         </div>
       </div>
+
+      {/* Row 2: Mobile-only Category Segmented Rail */}
+      {chips && chips.length > 0 && (
+        <nav
+          aria-label="Category navigation"
+          className="lg:hidden flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-2 border-t border-slate-800/80"
+        >
+          {orderedChips.map((c) => {
+            const isSelected = activeCategory === c.id;
+            return (
+              <button
+                key={c.id}
+                type="button"
+                aria-pressed={isSelected}
+                onClick={() => pickCategory(c.id)}
+                style={isSelected ? { borderColor: c.color } : undefined}
+                className={`btn shrink-0 capitalize !py-1 !px-2.5 rounded-xl text-xs transition-all ${
+                  isSelected ? 'selected' : 'text-slate-300'
+                }`}
+              >
+                <span aria-hidden="true">{ICONS[c.id] ?? '🌿'}</span>
+                <span>{c.label}</span>
+                {c.total >= 0 && (
+                  <span
+                    className={`font-mono text-[10px] px-1.5 py-0.5 rounded-md ${
+                      isSelected
+                        ? 'bg-slate-950/30 text-slate-950 font-extrabold'
+                        : 'bg-slate-950/70 text-slate-400'
+                    }`}
+                  >
+                    {c.total}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </nav>
+      )}
 
       {/* Expandable Location Drawer */}
       {open && (
