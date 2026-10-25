@@ -26,18 +26,19 @@ export const QUICK_HUBS: readonly (readonly [string, string])[] = [
 ] as const;
 
 export function sortOrderClause(sort?: SortOption | string | null): string {
+  const valueExpr = `NULLIF(j->>'effective_price', '')::numeric / nullif(NULLIF(j->>'weight_grams', '')::numeric, 0)`;
   switch (sort) {
     case 'price':
-      return `(j->>'effective_price')::numeric ASC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+      return `NULLIF(j->>'effective_price', '')::numeric ASC NULLS LAST, ${valueExpr} ASC NULLS LAST, id`;
     case 'thc':
-      return `nullif(regexp_replace(j->>'thc_pct', '[^0-9.]', '', 'g'), '')::numeric DESC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+      return `substring(j->>'thc_pct' from '([0-9]+(?:\\.[0-9]+)?)')::numeric DESC NULLS LAST, ${valueExpr} ASC NULLS LAST, id`;
     case 'distance':
-      return `distance_miles ASC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+      return `distance_miles ASC NULLS LAST, ${valueExpr} ASC NULLS LAST, id`;
     case 'discount':
-      return `CASE WHEN (NULLIF(j->>'regular_price','')::numeric) > (NULLIF(j->>'effective_price','')::numeric) AND (NULLIF(j->>'regular_price','')::numeric) > 0 THEN (((NULLIF(j->>'regular_price','')::numeric) - (NULLIF(j->>'effective_price','')::numeric)) / (NULLIF(j->>'regular_price','')::numeric)) ELSE 0 END DESC NULLS LAST, (j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, id`;
+      return `CASE WHEN (NULLIF(j->>'regular_price','')::numeric) > (NULLIF(j->>'effective_price','')::numeric) AND (NULLIF(j->>'regular_price','')::numeric) > 0 THEN (((NULLIF(j->>'regular_price','')::numeric) - (NULLIF(j->>'effective_price','')::numeric)) / (NULLIF(j->>'regular_price','')::numeric)) ELSE 0 END DESC NULLS LAST, ${valueExpr} ASC NULLS LAST, id`;
     case 'value':
     default:
-      return `(j->>'effective_price')::numeric / nullif((j->>'weight_grams')::numeric, 0) ASC NULLS LAST, round(distance_miles::numeric,3) ASC, id`;
+      return `${valueExpr} ASC NULLS LAST, round(distance_miles::numeric,3) ASC, id`;
   }
 }
 

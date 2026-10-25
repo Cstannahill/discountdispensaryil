@@ -129,9 +129,9 @@ describe('SORT_OPTIONS and sortOrderClause', () => {
   });
 
   it('generates safe SQL clauses for all options', () => {
-    assert.match(sortOrderClause('value'), /effective_price.*weight_grams.*ASC/);
-    assert.match(sortOrderClause('price'), /effective_price.*ASC/);
-    assert.match(sortOrderClause('thc'), /thc_pct.*DESC/);
+    assert.match(sortOrderClause('value'), /NULLIF\(j->>'effective_price',\s*''\)::numeric.*NULLIF\(j->>'weight_grams',\s*''\)::numeric.*ASC/);
+    assert.match(sortOrderClause('price'), /NULLIF\(j->>'effective_price',\s*''\)::numeric.*ASC/);
+    assert.match(sortOrderClause('thc'), /substring\(j->>'thc_pct'\s+from\s+'\(\[0-9\]\+\(\?:\\\.\[0-9\]\+\)\?\)'\)::numeric.*DESC/);
     assert.match(sortOrderClause('distance'), /distance_miles.*ASC/);
     assert.match(sortOrderClause('discount'), /regular_price.*effective_price.*DESC/);
     assert.match(sortOrderClause(undefined as unknown as SortOption), /effective_price.*weight_grams/);

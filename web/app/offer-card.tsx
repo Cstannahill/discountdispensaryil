@@ -240,7 +240,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
         </span>
       </div>
 
-      <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
+      <div className="flex items-center gap-1.5 text-[10px] text-slate-400" suppressHydrationWarning>
         {relTime.isLive ? (
           <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold" title={relTime.full}>
             <span className="relative flex h-2 w-2" aria-hidden="true">
