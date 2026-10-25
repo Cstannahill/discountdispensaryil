@@ -64,3 +64,33 @@ export function calculateOtd(input: {
     outTheDoorPerGram: outTheDoorTotal / weight,
   };
 }
+
+export function calculateSavings(
+  regularPrice?: number | string | null,
+  effectivePrice?: number | string | null
+): {
+  hasDiscount: boolean;
+  savingsDollars: number;
+  savingsPct: number;
+} {
+  if (
+    regularPrice == null ||
+    regularPrice === '' ||
+    effectivePrice == null ||
+    effectivePrice === ''
+  ) {
+    return { hasDiscount: false, savingsDollars: 0, savingsPct: 0 };
+  }
+  const reg = Number(regularPrice);
+  const eff = Number(effectivePrice);
+  if (!Number.isFinite(reg) || !Number.isFinite(eff) || reg <= 0 || eff < 0 || reg <= eff) {
+    return { hasDiscount: false, savingsDollars: 0, savingsPct: 0 };
+  }
+  const savingsDollars = reg - eff;
+  const savingsPct = Math.round((savingsDollars / reg) * 100);
+  return {
+    hasDiscount: true,
+    savingsDollars,
+    savingsPct,
+  };
+}

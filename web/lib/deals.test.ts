@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { strainBucket, parseSize, sizeForCategory, strainClause } from './deals.ts';
-import { calculateOtd, inferTaxRate } from './calculator.ts';
+import { calculateOtd, inferTaxRate, calculateSavings } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
 
 describe('strainBucket and strainClause consistency', () => {
@@ -78,6 +78,29 @@ describe('OTD calculator and Illinois tax inference', () => {
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'vapes', thc_pct: null }), 32);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'infused', thc_pct: '30' }), 32);
     assert.equal(inferTaxRate({ license_type: 'recreational', category: 'flower', flower_grade: 'whole', thc_pct: '24' }), 22);
+  });
+});
+
+describe('calculateSavings', () => {
+  it('calculates savings percentage and dollar difference accurately', () => {
+    const s1 = calculateSavings('50', '35');
+    assert.equal(s1.hasDiscount, true);
+    assert.equal(s1.savingsDollars, 15);
+    assert.equal(s1.savingsPct, 30);
+
+    const s2 = calculateSavings(60, 45);
+    assert.equal(s2.hasDiscount, true);
+    assert.equal(s2.savingsDollars, 15);
+    assert.equal(s2.savingsPct, 25);
+  });
+
+  it('returns hasDiscount false when regular price is less than or equal to effective price or invalid', () => {
+    assert.equal(calculateSavings('35', '35').hasDiscount, false);
+    assert.equal(calculateSavings('30', '40').hasDiscount, false);
+    assert.equal(calculateSavings(null, '30').hasDiscount, false);
+    assert.equal(calculateSavings('50', null).hasDiscount, false);
+    assert.equal(calculateSavings('0', '0').hasDiscount, false);
+    assert.equal(calculateSavings('abc', '20').hasDiscount, false);
   });
 });
 
