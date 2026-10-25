@@ -5,6 +5,7 @@ import { showToast } from './toast';
 import { toggleSaveDeal, getSavedDeals, SAVED_EVENT } from './saved-modal';
 import { calculateSavings } from '@/lib/calculator';
 import { strainBucket, type Offer } from '@/lib/deals';
+import { formatRelativeTime } from '@/lib/time';
 
 const BUCKETS = ['Indica', 'Sativa', 'Hybrid', 'Unspecified'] as const;
 
@@ -19,13 +20,6 @@ const money = (v: string | null | undefined) =>
   v == null || v === ''
     ? '—'
     : new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(v));
-
-const when = (v: string) =>
-  new Date(v).toLocaleString('en-US', {
-    timeZone: 'America/Chicago',
-    dateStyle: 'short',
-    timeStyle: 'short',
-  });
 
 const safeUrl = (v?: string | null) => {
   try {
@@ -116,6 +110,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
   }, [o.id]);
 
   const savings = calculateSavings(o.regular_price, o.effective_price);
+  const relTime = formatRelativeTime(o.last_seen_at);
 
   return (
     <article className="rounded-2xl border border-slate-700/60 hover:border-slate-600/80 bg-slate-900/90 p-3.5 space-y-2.5 transition-colors shadow-sm">
@@ -245,10 +240,20 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
         </span>
       </div>
 
-      <p className="text-[10px] text-slate-400">
-        Observed {when(o.last_seen_at)}
-        {o.conditional ? ' · Conditional promotion' : ''}
-      </p>
+      <div className="flex items-center gap-1.5 text-[10px] text-slate-400">
+        {relTime.isLive ? (
+          <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold" title={relTime.full}>
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span>Live · Updated {relTime.label}</span>
+          </span>
+        ) : (
+          <span title={relTime.full}>Updated {relTime.label}</span>
+        )}
+        {o.conditional ? <span>· Conditional promotion</span> : null}
+      </div>
 
       {/* Grouped Strains List */}
       {grouped && <StrainList o={o} />}

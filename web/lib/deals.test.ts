@@ -1,6 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { strainBucket, parseSize, sizeForCategory, strainClause, SORT_OPTIONS, type SortOption, sortOrderClause } from './deals.ts';
+import { formatRelativeTime } from './time.ts';
 import { calculateOtd, inferTaxRate, calculateSavings } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
 
@@ -137,4 +138,49 @@ describe('SORT_OPTIONS and sortOrderClause', () => {
     assert.match(sortOrderClause('invalid' as SortOption), /effective_price.*weight_grams/);
   });
 });
+
+describe('formatRelativeTime', () => {
+  it('returns "Just now" and isLive for recent stamps and future clock skew', () => {
+    const now = Date.parse('2026-10-25T12:00:00Z');
+    const res1 = formatRelativeTime('2026-10-25T11:59:30Z', now);
+    assert.equal(res1.label, 'Just now');
+    assert.equal(res1.isLive, true);
+
+    const res2 = formatRelativeTime('2026-10-25T12:00:15Z', now);
+    assert.equal(res2.label, 'Just now');
+    assert.equal(res2.isLive, true);
+  });
+
+  it('returns minutes and live flag for under 60m', () => {
+    const now = Date.parse('2026-10-25T12:00:00Z');
+    const res = formatRelativeTime('2026-10-25T11:35:00Z', now);
+    assert.equal(res.label, '25m ago');
+    assert.equal(res.isLive, true);
+  });
+
+  it('returns hours with isLive under 4h, not live >= 4h', () => {
+    const now = Date.parse('2026-10-25T12:00:00Z');
+    const res1 = formatRelativeTime('2026-10-25T10:00:00Z', now);
+    assert.equal(res1.label, '2h ago');
+    assert.equal(res1.isLive, true);
+
+    const res2 = formatRelativeTime('2026-10-25T06:00:00Z', now);
+    assert.equal(res2.label, '6h ago');
+    assert.equal(res2.isLive, false);
+  });
+
+  it('returns days for >= 24h', () => {
+    const now = Date.parse('2026-10-25T12:00:00Z');
+    const res = formatRelativeTime('2026-10-23T12:00:00Z', now);
+    assert.equal(res.label, '2d ago');
+    assert.equal(res.isLive, false);
+  });
+
+  it('handles invalid date strings gracefully', () => {
+    const res = formatRelativeTime('not-a-valid-date');
+    assert.equal(res.label, 'Recently observed');
+    assert.equal(res.isLive, false);
+  });
+});
+
 
