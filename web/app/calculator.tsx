@@ -60,6 +60,14 @@ export default function CalculatorModal() {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  const resetDefaults = () => {
+    setPrice('30');
+    setWeight('3.5');
+    setDiscount('0');
+    setTax('22');
+    setSeed(null);
+  };
+
   if (!open) return null;
 
   const result = calculateOtd({
@@ -80,6 +88,9 @@ export default function CalculatorModal() {
         aria-label="Out-The-Door Price and Tax Calculator"
         className="glass-card w-full sm:max-w-lg rounded-t-3xl sm:rounded-2xl p-5 space-y-4 max-h-[92dvh] overflow-y-auto border-t sm:border border-emerald-500/30"
       >
+        {/* Mobile Pull Handle */}
+        <div className="w-10 h-1 bg-slate-700/80 rounded-full mx-auto sm:hidden mb-1" aria-hidden="true" />
+
         <div className="flex items-start justify-between gap-3">
           <div>
             <span className="badge text-emerald-300 border-emerald-500/30 uppercase tracking-wider">Illinois OTD Estimator</span>
@@ -94,14 +105,24 @@ export default function CalculatorModal() {
               </p>
             )}
           </div>
-          <button
-            type="button"
-            className="btn px-2.5 py-1.5 text-slate-300"
-            aria-label="Close calculator"
-            onClick={() => setOpen(false)}
-          >
-            ✕
-          </button>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={resetDefaults}
+              className="text-xs text-slate-400 hover:text-white px-1.5 py-1"
+              title="Reset inputs to default values"
+            >
+              Reset
+            </button>
+            <button
+              type="button"
+              className="btn px-2.5 py-1.5 text-slate-300"
+              aria-label="Close calculator"
+              onClick={() => setOpen(false)}
+            >
+              ✕
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
@@ -230,6 +251,31 @@ export default function CalculatorModal() {
             Enter a non-negative price, a positive gram mass, and percentages between 0 and 100.
           </p>
         )}
+
+        {/* Illinois Tax Statutory Breakdown */}
+        <div className="pt-3 border-t border-slate-800/80 text-[11px] text-slate-400 space-y-1.5">
+          <div className="flex items-center justify-between">
+            <span className="font-semibold text-slate-300">Illinois Cannabis Tax Rates</span>
+            <span className="text-[10px] text-slate-500 font-mono">410 ILCS 705/65-10</span>
+          </div>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[10px] text-slate-400">
+            <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
+              • <strong className="text-slate-200">Medical:</strong> 1% state retail tax (excise exempt)
+            </li>
+            <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
+              • <strong className="text-slate-200">Rec Flower (≤35% THC):</strong> 10% excise + sales tax ≈ 22%
+            </li>
+            <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
+              • <strong className="text-slate-200">Rec Infused Products:</strong> 20% excise + sales tax ≈ 32%
+            </li>
+            <li className="bg-slate-950/50 rounded-lg p-1.5 border border-slate-800/60">
+              • <strong className="text-slate-200">Rec Concentrates / &gt;35% THC:</strong> 25% excise + sales tax ≈ 37%
+            </li>
+          </ul>
+          <p className="text-[10px] text-slate-500 leading-tight">
+            *Combined rates reflect state excise + 6.25% state sales + standard local sales taxes (~10–12%). Municipal cannabis retailer add-ons may vary ±2% by town.
+          </p>
+        </div>
       </section>
     </div>
   );

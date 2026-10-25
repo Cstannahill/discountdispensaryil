@@ -2,6 +2,7 @@
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { openCalculator } from './calculator';
+import { openSavedDeals, getSavedDeals, SAVED_EVENT } from './saved-modal';
 
 const KEY = 'terpscout.origin';
 const RKEY = 'terpscout.radius';
@@ -58,6 +59,16 @@ export default function LocationControl({
   const [busy, setBusy] = useState(false);
   const [text, setText] = useState('');
   const [activeCategory, setActiveCategory] = useState('flower');
+  const [savedCount, setSavedCount] = useState(0);
+
+  useEffect(() => {
+    setSavedCount(getSavedDeals().length);
+    const onSaved = () => {
+      setSavedCount(getSavedDeals().length);
+    };
+    window.addEventListener(SAVED_EVENT, onSaved);
+    return () => window.removeEventListener(SAVED_EVENT, onSaved);
+  }, []);
 
   useEffect(() => {
     try {
@@ -261,6 +272,21 @@ export default function LocationControl({
           >
             <span aria-hidden="true">🧮</span>
             <span className="hidden sm:inline">OTD Calc</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => openSavedDeals()}
+            className={`pill !py-1 sm:!py-1.5 !px-2 sm:!px-2.5 transition-colors shrink-0 ${
+              savedCount > 0
+                ? 'text-amber-300 border-amber-500/40 hover:border-amber-400 bg-amber-500/10'
+                : 'text-slate-400 border-slate-700/80 hover:text-slate-200'
+            }`}
+            aria-label="View saved deals shortlist"
+            title="View your saved deals shortlist"
+          >
+            <span aria-hidden="true">⭐</span>
+            <span className="font-mono text-[10px] sm:text-[11px] font-bold">{savedCount}</span>
           </button>
         </div>
       </div>

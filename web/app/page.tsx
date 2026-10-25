@@ -3,6 +3,8 @@ import FilterStrip from './filters';
 import CategoryGrid from './categories';
 import OfferCard from './offer-card';
 import CalculatorModal from './calculator';
+import SavedModal from './saved-modal';
+import ToastContainer from './toast';
 import { parseOrigin } from '@/lib/origin';
 import {
   CATEGORIES,
@@ -99,6 +101,14 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         cats.map((c) => [`p_${c}`, c === category ? String(page) : String(pages[c])])
       ),
     }).forEach(([k, v]) => {
+      if (v) u.set(k, v);
+    });
+    return `/?${u.toString()}`;
+  };
+
+  const makeUrl = (overrides: Record<string, string | null>) => {
+    const u = new URLSearchParams();
+    Object.entries({ ...base, ...overrides }).forEach(([k, v]) => {
       if (v) u.set(k, v);
     });
     return `/?${u.toString()}`;
@@ -215,13 +225,40 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
               <div className="p-3 space-y-2.5">
                 {r.items.length === 0 ? (
-                  <div className="text-center py-8 px-4 space-y-2">
-                    <p className="text-xs font-semibold text-slate-300">
-                      No comparable {category} offers match these filters.
-                    </p>
-                    <p className="text-[11px] text-slate-500">
-                      Try widening your search radius, switching package size to Any Size, or clearing active filters.
-                    </p>
+                  <div className="text-center py-8 px-4 space-y-3">
+                    <div className="space-y-1">
+                      <p className="text-xs font-semibold text-slate-300">
+                        No comparable {category} offers match these filters.
+                      </p>
+                      <p className="text-[11px] text-slate-500">
+                        Try one of these quick adjustments:
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
+                      {(q || strain || size !== 'any' || grade !== 'whole' || bogo || stale || unverified) && (
+                        <a
+                          href={makeUrl({ q: null, strain: null, size: null, grade: null, promo: null, stale: null, unverified: null })}
+                          className="btn-primary !py-1.5 !px-3 text-xs"
+                        >
+                          ✕ Clear all filters
+                        </a>
+                      )}
+                      {size !== 'any' && (
+                        <a href={makeUrl({ size: null })} className="btn !py-1.5 !px-3 text-xs">
+                          Switch to Any Size
+                        </a>
+                      )}
+                      {strain && (
+                        <a href={makeUrl({ strain: null })} className="btn !py-1.5 !px-3 text-xs">
+                          Show All Strains
+                        </a>
+                      )}
+                      {Number(region?.radius_miles ?? 50) < 50 && (
+                        <a href={makeUrl({ radius: '50' })} className="btn !py-1.5 !px-3 text-xs">
+                          Expand range to 50 mi
+                        </a>
+                      )}
+                    </div>
                   </div>
                 ) : (
                   r.items.map((o, idx) => (
@@ -264,6 +301,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
       </CategoryGrid>
 
       <CalculatorModal />
+      <SavedModal />
+      <ToastContainer />
     </main>
   );
 }
