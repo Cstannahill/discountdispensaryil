@@ -197,7 +197,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
         <div className="text-right shrink-0 bg-slate-950/80 border border-slate-800/90 rounded-xl px-2.5 py-1.5 flex flex-col items-end">
           {savings.hasDiscount && (
             <span className="badge bg-emerald-500/20 text-emerald-300 border-emerald-400/50 font-extrabold font-mono mb-1 text-[9px]">
-              {savings.savingsPct}% OFF · SAVE ${savings.savingsDollars.toFixed(0)}
+              {savings.savingsPct}% OFF · SAVE {savings.savingsDollars % 1 === 0 ? `$${savings.savingsDollars.toFixed(0)}` : `$${savings.savingsDollars.toFixed(2)}`}
             </span>
           )}
           <p className="text-lg sm:text-xl font-extrabold font-mono text-emerald-400 leading-none">
@@ -272,10 +272,11 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
         <button
           type="button"
           onClick={async () => {
+            const cardTitle = grouped ? `${o.brand || 'Assorted'} · ${o.variants!.length} strains` : o.name;
             const shareData = {
-              title: `TerpScout: ${o.name}`,
-              text: `${o.name} (${massLabel}) at ${o.store_name} for ${money(o.effective_price)} (${money(o.price_per_gram)}/g)`,
-              url: href || window.location.href,
+              title: `TerpScout: ${cardTitle}`,
+              text: `${cardTitle} (${massLabel}) at ${o.store_name} for ${money(o.effective_price)} (${money(o.price_per_gram)}/g)`,
+              url: href || (typeof window !== 'undefined' ? window.location.href : ''),
             };
             if (typeof navigator !== 'undefined' && navigator.share) {
               try {

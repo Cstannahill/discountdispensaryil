@@ -35,7 +35,9 @@ export function getSavedDeals(): SavedDeal[] {
   if (typeof window === 'undefined') return [];
   try {
     const raw = localStorage.getItem(SAVED_STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
   } catch {
     return [];
   }
@@ -66,6 +68,15 @@ const money = (v: string | null | undefined) =>
   v == null || v === ''
     ? '—'
     : new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(v));
+
+const safeUrl = (v?: string | null) => {
+  try {
+    const u = new URL(v ?? '');
+    return ['https:', 'http:'].includes(u.protocol) ? u.href : undefined;
+  } catch {
+    return undefined;
+  }
+};
 
 export default function SavedModal() {
   const [open, setOpen] = useState(false);
@@ -116,6 +127,9 @@ export default function SavedModal() {
   };
 
   const clearAll = () => {
+    if (typeof window !== 'undefined' && !window.confirm('Clear all saved deals from your shortlist?')) {
+      return;
+    }
     try {
       setItems([]);
       localStorage.removeItem(SAVED_STORAGE_KEY);
@@ -181,63 +195,65 @@ export default function SavedModal() {
             <span className="text-3xl block">🔖</span>
             <p className="text-sm font-semibold text-slate-200">No deals pinned yet</p>
             <p className="text-xs text-slate-400 max-w-sm mx-auto">
-              Tap the <strong className="text-emerald-300 font-mono">🔖</strong> button on any deal card to pin it to your shortlist for side-by-side comparison.
+              Tap the <strong className="text-emerald-300 font-mono">☆ Save</strong> button on any deal card to pin it to your shortlist for side-by-side comparison.
             </p>
           </div>
         ) : (
           <div className="space-y-3">
-            {items.map((item) => (
-              <article
-                key={item.id}
-                className="rounded-xl border border-slate-700/70 bg-slate-900/90 p-3 space-y-2"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="badge uppercase tracking-wider text-emerald-400 border-emerald-500/30">
-                        {item.category}
-                      </span>
-                      {item.brand && (
-                        <span className="text-[11px] font-bold text-slate-300 truncate">
-                          {item.brand}
+            {items.map((item) => {
+              const menuHref = safeUrl(item.source_url);
+              return (
+                <article
+                  key={item.id}
+                  className="rounded-xl border border-slate-700/70 bg-slate-900/90 p-3 space-y-2"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="badge uppercase tracking-wider text-emerald-400 border-emerald-500/30">
+                          {item.category}
                         </span>
-                      )}
-                      <span className="badge text-slate-400 bg-slate-950/80">{item.massLabel}</span>
-                    </div>
-                    <h3 className="text-xs sm:text-sm font-bold text-white mt-1 leading-snug break-words">
-                      {item.name}
-                    </h3>
-                    <p className="text-[11px] text-slate-400 mt-0.5">
-                      📍 {item.store_name} · {item.distance_miles.toFixed(1)} mi
-                    </p>
-                  </div>
-
-                  <div className="text-right shrink-0 bg-slate-950/80 border border-slate-800 rounded-lg px-2 py-1">
-                    {item.price_per_gram && (
-                      <p className="text-sm font-extrabold font-mono text-emerald-400 leading-none">
-                        {money(item.price_per_gram)}/g
+                        {item.brand && (
+                          <span className="text-[11px] font-bold text-slate-300 truncate">
+                            {item.brand}
+                          </span>
+                        )}
+                        <span className="badge text-slate-400 bg-slate-950/80">{item.massLabel}</span>
+                      </div>
+                      <h3 className="text-xs sm:text-sm font-bold text-white mt-1 leading-snug break-words">
+                        {item.name}
+                      </h3>
+                      <p className="text-[11px] text-slate-400 mt-0.5">
+                        📍 {item.store_name} · {typeof item.distance_miles === 'number' ? `${item.distance_miles.toFixed(1)} mi` : 'distance unknown'}
                       </p>
-                    )}
-                    <p className="text-[11px] font-mono text-slate-200 mt-0.5">
-                      {money(item.effective_price)}
-                    </p>
-                  </div>
-                </div>
+                    </div>
 
-                <div className="flex items-center gap-2 pt-1 border-t border-slate-800/80">
-                  {item.source_url ? (
-                    <a
-                      href={item.source_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center gap-1 text-xs font-semibold text-emerald-300 hover:text-emerald-200 py-1"
-                    >
-                      <span>Menu</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                  ) : (
-                    <span className="flex-1 text-[11px] text-slate-500">No link</span>
-                  )}
+                    <div className="text-right shrink-0 bg-slate-950/80 border border-slate-800 rounded-lg px-2 py-1">
+                      {item.price_per_gram && (
+                        <p className="text-sm font-extrabold font-mono text-emerald-400 leading-none">
+                          {money(item.price_per_gram)}/g
+                        </p>
+                      )}
+                      <p className="text-[11px] font-mono text-slate-200 mt-0.5">
+                        {money(item.effective_price)}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2 pt-1 border-t border-slate-800/80">
+                    {menuHref ? (
+                      <a
+                        href={menuHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 inline-flex items-center justify-center gap-1 text-xs font-semibold text-emerald-300 hover:text-emerald-200 py-1"
+                      >
+                        <span>Menu</span>
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ) : (
+                      <span className="flex-1 text-[11px] text-slate-500">No link</span>
+                    )}
 
                   <button
                     type="button"
@@ -270,7 +286,8 @@ export default function SavedModal() {
                   </button>
                 </div>
               </article>
-            ))}
+            );
+          })}
           </div>
         )}
       </section>

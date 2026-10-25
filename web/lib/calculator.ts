@@ -88,9 +88,10 @@ export function calculateSavings(
   }
   const savingsDollars = reg - eff;
   const savingsPct = Math.round((savingsDollars / reg) * 100);
+  const hasDiscount = savingsDollars >= 0.5 && savingsPct >= 1;
   return {
-    hasDiscount: true,
-    savingsDollars,
-    savingsPct,
+    hasDiscount,
+    savingsDollars: hasDiscount ? savingsDollars : 0,
+    savingsPct: hasDiscount ? savingsPct : 0,
   };
 }

@@ -230,9 +230,15 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
                       <p className="text-xs font-semibold text-slate-300">
                         No comparable {category} offers match these filters.
                       </p>
-                      <p className="text-[11px] text-slate-500">
-                        Try one of these quick adjustments:
-                      </p>
+                      {(q || strain || size !== 'any' || grade !== 'whole' || bogo || stale || unverified || Number(region?.radius_miles ?? 50) < 50) ? (
+                        <p className="text-[11px] text-slate-500">
+                          Try one of these quick adjustments:
+                        </p>
+                      ) : (
+                        <p className="text-[11px] text-slate-500">
+                          Try widening your search radius or exploring another category.
+                        </p>
+                      )}
                     </div>
                     <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
                       {(q || strain || size !== 'any' || grade !== 'whole' || bogo || stale || unverified) && (
@@ -254,7 +260,22 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
                         </a>
                       )}
                       {Number(region?.radius_miles ?? 50) < 50 && (
-                        <a href={makeUrl({ radius: '50' })} className="btn !py-1.5 !px-3 text-xs">
+                        <a
+                          href={
+                            origin
+                              ? makeUrl({ radius: '50' })
+                              : region && 'latitude' in region && typeof region.latitude === 'number'
+                              ? makeUrl({
+                                  lat: String(region.latitude),
+                                  lon: String(region.longitude),
+                                  radius: '50',
+                                  place: region.label,
+                                  region: null,
+                                })
+                              : makeUrl({ radius: '50' })
+                          }
+                          className="btn !py-1.5 !px-3 text-xs"
+                        >
                           Expand range to 50 mi
                         </a>
                       )}

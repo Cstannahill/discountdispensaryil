@@ -42,7 +42,7 @@ export default function ToastContainer() {
       aria-live="polite"
       className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-200 ease-out"
     >
-      <div className="glass-card px-4 py-2.5 rounded-full border border-emerald-400/60 shadow-xl shadow-black/80 flex items-center gap-2 text-xs font-semibold text-emerald-300">
+      <div className="glass-card px-4 py-2.5 rounded-full border border-emerald-400/60 shadow-xl shadow-black/80 flex items-center gap-2 text-xs font-semibold text-emerald-300 max-w-[90vw] text-center">
         <span aria-hidden="true">✨</span>
         <span>{msg}</span>
       </div>

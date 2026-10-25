@@ -102,6 +102,16 @@ describe('calculateSavings', () => {
     assert.equal(calculateSavings('0', '0').hasDiscount, false);
     assert.equal(calculateSavings('abc', '20').hasDiscount, false);
   });
+
+  it('returns hasDiscount false for trivial discounts under $0.50 or under 1%', () => {
+    assert.equal(calculateSavings('30.00', '29.99').hasDiscount, false);
+    assert.equal(calculateSavings('100.00', '99.60').hasDiscount, false);
+    assert.equal(calculateSavings('20.00', '19.80').hasDiscount, false);
+    const s = calculateSavings('30.00', '29.00');
+    assert.equal(s.hasDiscount, true);
+    assert.equal(s.savingsDollars, 1);
+    assert.equal(s.savingsPct, 3);
+  });
 });
 
 describe('parseOrigin', () => {
