@@ -3,20 +3,11 @@ import { useEffect, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { openCalculator } from './calculator';
 import { openSavedDeals, getSavedDeals, SAVED_EVENT } from './saved-modal';
+import { QUICK_HUBS } from '@/lib/deals';
 
 const KEY = 'terpscout.origin';
 const RKEY = 'terpscout.radius';
 type Pick = { lat: number; lon: number; place: string };
-
-const QUICK_HUBS: readonly [string, string][] = [
-  ['Peoria', '61602'],
-  ['Normal', '61761'],
-  ['Champaign', '61820'],
-  ['Springfield', '62701'],
-  ['Chicago', '60601'],
-  ['Rockford', '61101'],
-  ['Streator', '61358'],
-];
 
 const RADII = [5, 10, 25, 50, 100, 200] as const;
 

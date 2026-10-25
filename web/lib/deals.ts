@@ -10,6 +10,21 @@ export const FLOWER_ONLY_SIZES = new Set(['3.5', '7', '14', '28']);
 export const SORT_OPTIONS = ['value', 'price', 'thc', 'distance', 'discount'] as const;
 export type SortOption = (typeof SORT_OPTIONS)[number];
 
+export const QUICK_HUBS: readonly (readonly [string, string])[] = [
+  ['Chicago', '60601'],
+  ['Naperville', '60540'],
+  ['Joliet', '60431'],
+  ['Rockford', '61101'],
+  ['Quad Cities', '61265'],
+  ['Peoria', '61602'],
+  ['Normal', '61761'],
+  ['Champaign', '61820'],
+  ['Springfield', '62701'],
+  ['Streator', '61358'],
+  ['Metro East', '62234'],
+  ['Carbondale', '62901'],
+] as const;
+
 export function sortOrderClause(sort?: SortOption | string | null): string {
   switch (sort) {
     case 'price':

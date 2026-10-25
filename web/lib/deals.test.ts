@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { strainBucket, parseSize, sizeForCategory, strainClause, SORT_OPTIONS, type SortOption, sortOrderClause } from './deals.ts';
+import { strainBucket, parseSize, sizeForCategory, strainClause, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS } from './deals.ts';
 import { formatRelativeTime } from './time.ts';
 import { calculateOtd, inferTaxRate, calculateSavings } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
@@ -182,5 +182,22 @@ describe('formatRelativeTime', () => {
     assert.equal(res.isLive, false);
   });
 });
+
+describe('QUICK_HUBS validity', () => {
+  it('contains all 12 target Illinois locations with valid 5-digit ZIPs', () => {
+    assert.equal(QUICK_HUBS.length, 12);
+    const expectedNames = [
+      'Chicago', 'Naperville', 'Joliet', 'Rockford', 'Quad Cities',
+      'Peoria', 'Normal', 'Champaign', 'Springfield', 'Streator',
+      'Metro East', 'Carbondale'
+    ];
+    assert.deepEqual(QUICK_HUBS.map(([name]) => name), expectedNames);
+    for (const [name, zip] of QUICK_HUBS) {
+      assert.match(zip, /^\d{5}$/, `${name} ZIP must be 5 digits`);
+      assert.match(zip, /^6[0-2]/, `${name} ZIP must be in Illinois (60xxx-62xxx)`);
+    }
+  });
+});
+
 
 
