@@ -302,5 +302,25 @@ class AdapterTests(unittest.TestCase):
         self.assertFalse(result['complete'])
 
 
+class MultiStoreJanePageTests(unittest.TestCase):
+    def test_a_jane_storefront_that_opened_on_no_single_store_needs_its_picker_driven(self):
+        from backend.adapters import multi_store_jane_page
+        self.assertTrue(multi_store_jane_page({'provider': 'generic'}, '<script src="https://dmerch.iheartjane.com/v2/smartpage"></script>'))
+        self.assertFalse(multi_store_jane_page({'provider': 'jane'}, 'dmerch.iheartjane.com'))
+        self.assertFalse(multi_store_jane_page({'provider': 'generic'}, '<html>no jane here</html>'))
+
+    def test_a_partner_hosted_jane_config_with_unquoted_keys_names_its_store_and_license(self):
+        from types import SimpleNamespace
+        from backend.adapters import _detect_endpoint
+        page = ('<script src="https://iheartjane.com/assets/app.js"></script><script>window.JANE = {isPartnerHosted: true, '
+                'storeId: 2758, partnerHostedPath: `addison-rec`};</script>')
+        url = 'https://menu.example.test/addison-rec/menu'
+        response = SimpleNamespace(url=url, body=page.encode(), evidence_id='e', fetched_at='t', status_code=200)
+        endpoint = _detect_endpoint(url, response)
+        self.assertEqual(('jane', '2758', 'recreational'), (endpoint['provider'], endpoint['provider_store_id'], endpoint['license_type']))
+        two = SimpleNamespace(url=url, body=page.replace('};', ', storeId: 99};').encode(), evidence_id='e', fetched_at='t', status_code=200)
+        self.assertEqual('unsupported', _detect_endpoint(url, two)['provider'])
+
+
 if __name__ == '__main__':
     unittest.main()

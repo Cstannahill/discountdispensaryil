@@ -145,11 +145,21 @@ def _detect_endpoint(url, response, store=None):
             types = set(re.findall(r'"store_types"\s*:\s*\[([^\]]*)\]', text.replace('\\', '')))
             license_type = 'medicinal' if types == {'"medical"'} else 'recreational' if types and all('"recreational"' in t for t in types) else 'unknown'
             return {'url': response.url or url, 'provider': 'jane', 'provider_store_id': ids.pop(), 'license_type': license_type, 'resolution_evidence': dict(evidence, method='Jane storefront records name one store', **located)}
-    match = re.search(r'[\"\']storeId[\"\']\s*:\s*(\d+)', text)
-    if match and 'iheartjane.com' in text:
-        return {'url': url, 'provider': 'jane', 'provider_store_id': match[1], 'license_type': 'recreational' if 'adult-use' in url else 'unknown', 'resolution_evidence': dict(evidence, method='Jane partner hosted storeId; traversal unsupported')}
+    # Quoted JSON keys, or the unquoted keys of a partner-hosted Jane config (`isPartnerHosted: true, storeId: 2758, partnerHostedPath: `addison-rec``).
+    found = set(re.findall(r'(?<![\w])["\']?storeId["\']?\s*:\s*(\d+)', text))
+    if len(found) == 1 and 'iheartjane.com' in text:
+        hosted_path = (re.search(r'partnerHostedPath\s*:\s*[`"\']([^`"\']+)', text) or [None, ''])[1]
+        context = ' '.join((url, hosted_path)).lower()
+        license_type = 'recreational' if re.search(r'adult-use|(?<![a-z])rec(?:reational)?(?![a-z])', context) else 'medicinal' if re.search(r'(?<![a-z])med(?:ical|icinal)?(?![a-z])', context) else 'unknown'
+        return {'url': url, 'provider': 'jane', 'provider_store_id': found.pop(), 'license_type': license_type, 'resolution_evidence': dict(evidence, method='Jane partner hosted storeId; the Jane reader proves the branch by location')}
     provider = 'sweed' if 'sweedpos.com' in text else 'cresco' if 'cloud9dispensaries.shop' in url else 'unsupported'
     return {'url': url, 'provider': provider, 'provider_store_id': None, 'license_type': 'unknown', 'resolution_evidence': dict(evidence, method='Unresolved provider contract')}
+
+
+def multi_store_jane_page(observed, text):
+    """A retailer-hosted Jane storefront that opened on no single store (the page names several or none): its store picker
+    must be driven for the registry branch, as for any other multi-branch menu, before the page can name a Jane store."""
+    return observed.get('provider') in ('generic','unsupported') and 'dmerch.iheartjane.com' in text
 
 
 def _observed_endpoint(url, response, store=None):
@@ -291,7 +301,7 @@ def resolve_menu(store, fetcher):
             if identity['identity_status']=='conflict':
                 failures.append(dict(url=url,provider='generic',provider_store_id=None,license_type='recreational',status='identity_conflict',reason='Branch page names a different street address/locality',resolution_evidence=identity))
             observed=_observed_endpoint(url,response,store)
-            if (identity['identity_status'] in ('candidate','conflict') or provider_address_matches(store,observed) is False) and hasattr(fetcher,'render') and fetcher.browser_options.get('enabled',True) and url not in fetcher._branch_render_cache and len(fetcher._branch_render_cache)<2:
+            if (identity['identity_status'] in ('candidate','conflict') or provider_address_matches(store,observed) is False or multi_store_jane_page(observed,_text(response))) and hasattr(fetcher,'render') and fetcher.browser_options.get('enabled',True) and url not in fetcher._branch_render_cache and len(fetcher._branch_render_cache)<2:
                 # A wrong default branch is a reason to select the requested
                 # location first, rather than immediately reject the retailer.
                 fetcher._branch_render_cache[url]=None
