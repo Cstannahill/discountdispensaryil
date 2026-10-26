@@ -321,6 +321,19 @@ class MultiStoreJanePageTests(unittest.TestCase):
         two = SimpleNamespace(url=url, body=page.replace('};', ', storeId: 99};').encode(), evidence_id='e', fetched_at='t', status_code=200)
         self.assertEqual('unsupported', _detect_endpoint(url, two)['provider'])
 
+    def test_a_town_named_directory_listing_with_one_dutchie_embed_gives_a_lead_for_the_reader_to_prove(self):
+        from types import SimpleNamespace
+        from backend.adapters import directory_dutchie_lead
+        def page(url, ids):
+            body = ''.join(f'<script src="https://dutchie.com/api/v2/embedded-menu/{i}.js"></script>' for i in ids)
+            return SimpleNamespace(url=url, body=body.encode(), evidence_id='e')
+        store = {'city': 'Oswego'}
+        one = 'a' * 24
+        lead = directory_dutchie_lead(store, page('https://www.jointcommerce.com/dispensaries/cloud-9-oswego', [one]))
+        self.assertEqual(('dutchie', one), (lead['provider'], lead['provider_store_id']))
+        self.assertIsNone(directory_dutchie_lead(store, page('https://www.jointcommerce.com/dispensaries/cloud-9-oswego', [one, 'b' * 24])))
+        self.assertIsNone(directory_dutchie_lead(store, page('https://www.jointcommerce.com/dispensaries/cloud-9-aurora', [one])))
+
 
 if __name__ == '__main__':
     unittest.main()

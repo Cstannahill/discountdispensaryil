@@ -156,6 +156,20 @@ def _detect_endpoint(url, response, store=None):
     return {'url': url, 'provider': provider, 'provider_store_id': None, 'license_type': 'unknown', 'resolution_evidence': dict(evidence, method='Unresolved provider contract')}
 
 
+def directory_dutchie_lead(store, response, seed=None):
+    """A Dutchie endpoint to try from a directory listing whose own URL names the store's town and embeds exactly one Dutchie
+    menu. The listing is not the menu: the Dutchie reader then proves the branch by the platform's street address and point."""
+    embedded = set(re.findall(r'dutchie\.com/(?:api/v2/)?embedded-menu/([0-9a-f]{24})', _text(response)))
+    town = set(re.findall(r'[a-z0-9]+', (store.get('city') or '').lower()))
+    if len(embedded) != 1 or not town or not town <= set(re.findall(r'[a-z0-9]+', response.url.lower())):
+        return None
+    found = embedded.pop()
+    return dict(url='https://dutchie.com/embedded-menu/' + found, provider='dutchie', provider_store_id=found, license_type='recreational',
+                license_basis='directory_embed', identity_confidence=None, platforms=['dutchie'], locator_evidence=(seed or {}).get('evidence', []),
+                resolution_evidence=dict(url=response.url, evidence_id=response.evidence_id,
+                                         method='Directory listing for this town embeds one Dutchie menu; the Dutchie reader proves the branch by address and location'))
+
+
 def multi_store_jane_page(observed, text):
     """A retailer-hosted Jane storefront that opened on no single store (the page names several or none): its store picker
     must be driven for the registry branch, as for any other multi-branch menu, before the page can name a Jane store."""
@@ -287,6 +301,10 @@ def resolve_menu(store, fetcher):
                 # substitute for its authoritative menu, even with an address.
                 for official in retailer_links_from_directory(_text(response),response.url):
                     pending.insert(0,(official,0,dict(seed,reason='Website link observed on directory listing'),False))
+                # A listing whose own URL names the store's town and embeds exactly one Dutchie menu gives that id as a lead the
+                # Dutchie reader then proves (platform street address and point against the registry); the listing is not the menu.
+                lead=directory_dutchie_lead(store,response,seed)
+                if lead:results.append(lead)
                 failures.append(dict(url=url,provider='generic',provider_store_id=None,license_type='recreational',status='unresolved',
                                      reason='Third-party directory is a discovery lead, not a retailer menu',resolution_evidence=dict(url=response.url,evidence_id=response.evidence_id)))
                 continue
