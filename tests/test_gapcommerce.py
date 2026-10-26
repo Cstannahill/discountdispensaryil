@@ -100,6 +100,18 @@ class BranchRecordTests(unittest.TestCase):
 
 
 class SearchTraversalTests(unittest.TestCase):
+    def test_an_adult_use_customer_type_scope_is_still_the_whole_catalog_but_other_scopes_are_not(self):
+        def request(*customer):
+            must = [{'bool': {'filter': {'range': {'customMinPrice': {'gte': 0.01, 'lte': 500000}}}}},
+                    {'bool': {'should': [{'match': {'isAboveThreshold': True}}]}}]
+            if customer:
+                must.append({'bool': {'should': [{'match': {'customCustomerType': value}} for value in customer]}})
+            return {'query': {'bool': {'must': must}}}
+        self.assertTrue(gapcommerce.catalog_request(request()))
+        self.assertTrue(gapcommerce.catalog_request(request('BOTH', 'ADULT')))
+        self.assertFalse(gapcommerce.catalog_request(request('MEDICAL')))
+        self.assertFalse(gapcommerce.catalog_request(request('BOTH', 'MEDICAL')))
+
     def test_both_id_orders_reconcile_to_the_hit_total_and_the_menu_is_complete(self):
         with tempfile.TemporaryDirectory() as folder:
             storefront = Storefront(folder, both_orders(three_variants()))
