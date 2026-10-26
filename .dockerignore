@@ -1,0 +1,14 @@
+.git
+.worktrees
+.env
+.env.*
+!.env.example
+.venv
+**/node_modules
+web
+data
+terpscout.db*
+**/__pycache__
+*.pyc
+PROJECT_STATUS_REPORT.md
+docs/site-maps
