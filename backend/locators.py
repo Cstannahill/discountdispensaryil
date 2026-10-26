@@ -49,7 +49,7 @@ _ROUTE = re.compile(r'\b(?:(?:il|us|state)\s+)?(?:(?:il|us|state)\s+)?(?:rt|rte|
 
 def _street(value):
     """Street tokens with the spellings platforms vary on unified: IL-121 / State Route 121 / Rte 121, Circle / Cir."""
-    text = ' '.join({'circle': 'cir', 'rte': 'rt', 'highway': 'hwy', 'illinois': 'il'}.get(token, token) for token in _tokens(value))
+    text = ' '.join({'circle': 'cir', 'rte': 'rt', 'highway': 'hwy', 'illinois': 'il', 'northwest': 'nw', 'northeast': 'ne', 'southwest': 'sw', 'southeast': 'se'}.get(token, token) for token in _tokens(value))
     return _ROUTE.sub(lambda match: 'rt ' + (match[1] or match[2]), text).split()
 
 
@@ -180,44 +180,80 @@ def _known_menu_candidates(store, fetcher):
         return [dict(status='failed', url=root, reason=str(exc), evidence=[dict(url=root, evidence_id=getattr(exc, 'evidence_id', None))])]
 
 
-def _pinned(store, coords):
-    """The platform's own pin for a branch at the registry point proves it when the registry street is mistyped."""
-    from .providers.jane import MAX_MILES, _miles
-    if not isinstance(coords, dict) or store.get('latitude') is None or store.get('longitude') is None:
-        return False
-    if not all(isinstance(coords.get(key), (int, float)) for key in ('lat', 'lng')):
-        return False
-    return _miles(float(store['latitude']), float(store['longitude']), coords['lat'], coords['lng']) <= MAX_MILES
+def _pinned(store, coords):
+
+    """The platform's own pin for a branch at the registry point proves it when the registry street is mistyped."""
+
+    from .providers.jane import MAX_MILES, _miles
+
+    if not isinstance(coords, dict) or store.get('latitude') is None or store.get('longitude') is None:
+
+        return False
+
+    if not all(isinstance(coords.get(key), (int, float)) for key in ('lat', 'lng')):
+
+        return False
+
+    return _miles(float(store['latitude']), float(store['longitude']), coords['lat'], coords['lng']) <= MAX_MILES
 
 
-_STORE_SITEMAP=re.compile(r'dispensar|location|stores?\b|shops?\b',re.I)
-
-
-def _sitemap_branches(root,store,fetcher):
-    """Branch pages the retailer lists in its own store sitemap (a robots.txt `Sitemap:` named for dispensaries,
-    locations or stores). Sitemaps sit outside age gates, so they name branches a gated home page hides. A page
-    qualifies when its path names the store's state and its last segment names the city or the street."""
-    from .site_discovery import _STATES,_STREET_NOISE
-    state=(store.get('state') or 'IL').upper()
-    names={'-'.join(_tokens(name)):code for code,name in _STATES.items()}
-    city=' '.join(t for t in _tokens(store.get('city','')) if t not in ('n','s','e','w'))
-    street={t for t in _tokens(re.split(r'\b(?:unit|suite|ste)\b|#',store.get('address',''),flags=re.I)[0]) if not t.isdigit() and t not in _STREET_NOISE}
-    def text(url):
-        try:return _get(fetcher,url).body.decode('utf-8',errors='replace')
-        except Exception:return ''
-    sitemaps=[url for url in re.findall(r'(?im)^\s*sitemap:\s*(\S+)',text(urljoin(root,'/robots.txt'))) if _STORE_SITEMAP.search(urlsplit(url).path)][:2]
-    found=[]
-    for sitemap in sitemaps:
-        for loc in re.findall(r'<loc>\s*([^<\s]+)\s*</loc>',text(sitemap)):
-            url=re.sub(r'/sitemap[^/]*\.xml$','',html.unescape(loc))
-            segments=[s for s in urlsplit(url).path.lower().split('/') if s]
-            if not segments or url.endswith('.xml') or urlsplit(url).hostname!=urlsplit(root).hostname:continue
-            last=_tokens(segments[-1])
-            # A state-name segment (/shop/illinois/) must be the store's; without one the slug must carry its code.
-            states={names[s] for s in segments if s in names}
-            if (states!={state}) if states else state.lower() not in last:continue
-            if (city and ' '+city+' ' in ' '+' '.join(last)+' ') or (street and street<=set(last)):found.append(url)
-    return list(dict.fromkeys(found))[:3]
+
+_STORE_SITEMAP=re.compile(r'dispensar|location|stores?\b|shops?\b',re.I)
+
+
+
+
+
+def _sitemap_branches(root,store,fetcher):
+
+    """Branch pages the retailer lists in its own store sitemap (a robots.txt `Sitemap:` named for dispensaries,
+
+    locations or stores). Sitemaps sit outside age gates, so they name branches a gated home page hides. A page
+
+    qualifies when its path names the store's state and its last segment names the city or the street."""
+
+    from .site_discovery import _STATES,_STREET_NOISE
+
+    state=(store.get('state') or 'IL').upper()
+
+    names={'-'.join(_tokens(name)):code for code,name in _STATES.items()}
+
+    city=' '.join(t for t in _tokens(store.get('city','')) if t not in ('n','s','e','w'))
+
+    street={t for t in _tokens(re.split(r'\b(?:unit|suite|ste)\b|#',store.get('address',''),flags=re.I)[0]) if not t.isdigit() and t not in _STREET_NOISE}
+
+    def text(url):
+
+        try:return _get(fetcher,url).body.decode('utf-8',errors='replace')
+
+        except Exception:return ''
+
+    sitemaps=[url for url in re.findall(r'(?im)^\s*sitemap:\s*(\S+)',text(urljoin(root,'/robots.txt'))) if _STORE_SITEMAP.search(urlsplit(url).path)][:2]
+
+    found=[]
+
+    for sitemap in sitemaps:
+
+        for loc in re.findall(r'<loc>\s*([^<\s]+)\s*</loc>',text(sitemap)):
+
+            url=re.sub(r'/sitemap[^/]*\.xml$','',html.unescape(loc))
+
+            segments=[s for s in urlsplit(url).path.lower().split('/') if s]
+
+            if not segments or url.endswith('.xml') or urlsplit(url).hostname!=urlsplit(root).hostname:continue
+
+            last=_tokens(segments[-1])
+
+            # A state-name segment (/shop/illinois/) must be the store's; without one the slug must carry its code.
+
+            states={names[s] for s in segments if s in names}
+
+            if (states!={state}) if states else state.lower() not in last:continue
+
+            if (city and ' '+city+' ' in ' '+' '.join(last)+' ') or (street and street<=set(last)):found.append(url)
+
+    return list(dict.fromkeys(found))[:3]
+
 
 
 def _embedded_store_list(text):
