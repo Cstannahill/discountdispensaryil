@@ -26,6 +26,9 @@ QUERY = {'bool': {'must': [
 DIRECTIONS = ('asc', 'desc')
 # The storefront's base filters. A catalog traversal may use only these; a category or promotion query narrows the catalog.
 BASE_FIELDS = frozenset(('customMinPrice', 'isAboveThreshold', 'isHideFromMenu'))
+# The storefront also scopes its catalog to the customer type it serves; adult-use (and BOTH) rows are the recreational menu.
+CUSTOMER_TYPE = 'customCustomerType'
+ADULT_USE = frozenset(('BOTH', 'ADULT'))
 STRUCTURE = frozenset(('bool', 'filter', 'range', 'should', 'must', 'match', 'gte', 'lte'))
 
 
@@ -88,8 +91,15 @@ def catalog_request(request):
     must = ((request.get('query') or {}).get('bool') or {}).get('must')
     if not isinstance(must, list) or not must:
         return False
-    names = [set(re.findall(r'"([^"]+)"', json.dumps(clause))) - STRUCTURE for clause in must]
-    return all(clause_names and clause_names <= BASE_FIELDS for clause_names in names)
+    for clause in must:
+        names = set(re.findall(r'"([^"]+)"', json.dumps(clause))) - STRUCTURE
+        if CUSTOMER_TYPE in names:
+            # Scoping to adult-use rows keeps the catalog whole; any other customer type (or value) narrows it.
+            if names - {CUSTOMER_TYPE} - ADULT_USE:
+                return False
+        elif not names or not names <= BASE_FIELDS:
+            return False
+    return True
 
 
 def search_responses(evidence_dir, render_evidence_id):

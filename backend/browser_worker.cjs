@@ -314,7 +314,9 @@ async function replayGapSearch(page,captures,entity,deadline){
  const summary={templates:0,fetched:0,errors:0,sorts:[]};
  // The catalog query is the one whose filters are only the storefront's base filters; category and promotion queries narrow it.
  const baseClause=/^(?:customMinPrice|isAboveThreshold|isHideFromMenu)$/;
- const isCatalogQuery=value=>{try{const body=JSON.parse(value.body);const must=body.query&&body.query.bool&&body.query.bool.must;return Array.isArray(must)&&must.every(clause=>JSON.stringify(clause).split('"').some(word=>baseClause.test(word)))&&!value.body.includes('"_source":false');}catch{return false;}};
+ // An adult-use customer-type scope (BOTH/ADULT) keeps the catalog whole; any other value narrows it.
+ const customerClause=clause=>{const words=JSON.stringify(clause).split('"');return words.includes('customCustomerType')&&words.every(word=>!/^(?:MEDICAL|[A-Z]{3,})$/.test(word)||/^(?:BOTH|ADULT)$/.test(word));};
+ const isCatalogQuery=value=>{try{const body=JSON.parse(value.body);const must=body.query&&body.query.bool&&body.query.bool.must;return Array.isArray(must)&&must.every(clause=>customerClause(clause)||JSON.stringify(clause).split('"').some(word=>baseClause.test(word)))&&!value.body.includes('"_source":false');}catch{return false;}};
  const template=[...gapTemplates].reverse().find(value=>value.entity===entity&&value.body.includes('"collapse"')&&isCatalogQuery(value));
  if(!template)return summary;
  let base;try{base=JSON.parse(template.body);}catch{return summary;}
