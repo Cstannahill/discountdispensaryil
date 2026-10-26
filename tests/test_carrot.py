@@ -86,7 +86,7 @@ class CarrotTests(unittest.TestCase):
             self.assertEqual((len(docs), len(docs)), (outcome['expected_count'], outcome['source_product_count']))
             self.assertEqual(dict(carrot_search=True, carrot_loc='2', await_menu=False, scroll_menu=False), {k: v for k, v in storefront.renders[0].items() if k != 'target_store'})
             first = outcome['items'][0]
-            self.assertEqual(('3.5', '30', True), (str(first['weight_grams']), str(first['regular_price']), first['conditional']))
+            self.assertEqual(('3.5', '30', False), (str(first['weight_grams']), str(first['regular_price']), first['conditional']))
 
     def test_a_missing_page_or_a_total_that_does_not_reconcile_stays_incomplete(self):
         with tempfile.TemporaryDirectory() as folder:

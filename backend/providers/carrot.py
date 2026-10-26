@@ -110,8 +110,8 @@ def traversals(calls, loc):
 
 
 def normalize(document, endpoint):
-    """One offer per priced option of the product. `qty` is the product's stock count; the menu does not state whether its prices
-    carry tax, so no price is treated as a comparable pre-tax price."""
+    """One offer per priced option of the product. `qty` is the product's stock count. Menu prices are pre-tax: the storefront's own
+    purchase script (store/settings) sums "item price times quantity, excluding tax and order fees" and reports tax as a separate field."""
     from backend.adapters import _decimal
     if document.get('id') is None or not document.get('name'):
         raise ValueError('Carrot product identity/name missing')
@@ -133,7 +133,7 @@ def normalize(document, endpoint):
         items.append(dict(source_id=str(document['id']), variant_id=f"{document['id']}:{index}", name=document['name'], brand=document.get('brand'),
                           category=category_of(category) or 'other', source_category=category, subcategory=document.get('carrotSubcategory'),
                           strain_type=(str(document.get('strain') or '').title() or None), thc_pct=_decimal(document['thcPercentage']) if document.get('thcPercentage') else None,
-                          weight_grams=grams, weight_label=label, regular_price=value, effective_price=value, conditional=True,
+                          weight_grams=grams, weight_label=label, regular_price=value, effective_price=value, conditional=False,
                           available=stock is None or (isinstance(stock, (int, float)) and stock > 0), source_url=endpoint['url'],
                           raw=dict(product={k: v for k, v in document.items() if k not in ('embedding',) and not re.match(r'option\d+(?:Name|Price|Points)$', k)},
                                    option=dict(index=index, name=label, price=price))))
@@ -149,7 +149,7 @@ def fetch(endpoint, fetcher):
     import copy
     result = dict(provider='carrot', adapter_version=VERSION, items=[], complete=False, expected_count=None, source_product_count=None, pages=[],
                   errors=[], evidence=[], authoritative_zero=False, limits=dict(page_size=PAGE, verification_passes=2),
-                  count_semantics='search found = product documents; expected_count is the priced options observed', price_basis='unstated')
+                  count_semantics='search found = product documents; expected_count is the priced options observed', price_basis='tax_exclusive')
     try:
         loc = str(endpoint.get('provider_store_id') or '')
         if not loc.isdigit():
