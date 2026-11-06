@@ -8,6 +8,7 @@ import SavedModal from './saved-modal';
 import ToastContainer from './toast';
 import BackToTop from './back-to-top';
 import HiddenStores from './hidden-stores';
+import { CITIES } from '@/lib/cities';
 import { parseOrigin } from '@/lib/origin';
 import { cachedDeals, cachedRegions, cachedStoresInArea } from '@/lib/cached';
 import { parseHidden, HIDE_PARAM } from '@/lib/hidden';
@@ -354,6 +355,19 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
           );
         })}
       </CategoryGrid>
+
+      <nav aria-label="Browse by city" className="px-1 pt-2">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Cheapest weed by Illinois city</h2>
+        <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+          {CITIES.map((c) => (
+            <li key={c.slug}>
+              <a href={`/dispensary-deals/${c.slug}`} className="text-slate-400 hover:text-emerald-300">
+                {c.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <CalculatorModal />
       <SavedModal />
