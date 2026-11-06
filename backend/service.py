@@ -29,6 +29,8 @@ def _full_workers():
     except ValueError:return 4
 # A saved endpoint no run has accepted, on a store that already has an accepted menu, is re-read at most this often after a failed read.
 SAVED_BACKOFF_HOURS = 24
+# A store with no accepted menu is rediscovered (website search/crawl) at most this often; a forced run (resolve_sources) always rediscovers.
+RESOLUTION_COOLDOWN_HOURS = 24
 
 
 def discovery_source(endpoint, leads):
@@ -336,7 +338,10 @@ class SyncService:
             saved_ok=import_target(endpoint,'saved_endpoint') and saved_ok
         if saved:stages.append(dict(stage='saved_refresh',targets=len(saved),complete=saved_ok))
 
-        if not retained or not retained_ok or force_resolution:
+        last_resolution=store.get('resolution') or {}
+        cooled=bool(not retained and not sample and not force_resolution and last_resolution.get('created_at') and age_hours(last_resolution['created_at'],utcnow())<RESOLUTION_COOLDOWN_HOURS)
+        if cooled:stages.append(dict(stage='resolution_cooldown'))
+        if (not retained or not retained_ok or force_resolution) and not cooled:
             # The weekly LLM check is for a store the programmatic pull cannot vouch for: no saved menu both loaded and
             # proved its branch. A saved endpoint that still reads items and proved its branch needs no search.
             vouched=any(endpoint['id'] in read_ok and endpoint.get('identity_confidence') in ('matched','name_locality') for endpoint in saved)

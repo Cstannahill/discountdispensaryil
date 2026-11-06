@@ -183,6 +183,43 @@ class ServiceTests(unittest.TestCase):
         read,result=self._read_urls(region)
         self.assertEqual(read,['https://example.com/menu'])
 
+    def _resolver_calls(self,region,**payload):
+        calls=[]
+        def resolver(store,fetcher):calls.append(store['id']);return []
+        service=SyncService(self.db,FixtureFetcher(),resolver=resolver,menu_fetcher=lambda e,f:dict(items=[],complete=False,expected_count=None,errors=[],source_count=None,pages=[]))
+        try:
+            job=self.db.enqueue(dict(region_id=region['id'],discover=False,**payload))
+            service.run(job['id']);return calls,self.db.job(job['id'])
+        finally:
+            if not service.stop_requested.is_set():service.close()
+
+    def _backdate_resolution(self,hours):
+        from datetime import datetime,timedelta
+        with self.db.connection() as conn:conn.execute("UPDATE live_resolutions SET created_at=?",((datetime.fromisoformat(utcnow())-timedelta(hours=hours)).isoformat(),))
+
+    def test_full_run_does_not_rediscover_an_unaccepted_store_resolved_within_the_cooldown(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.record_resolution(shop['id'],'unresolved','No corroborated public menu endpoint was found')
+        calls,result=self._resolver_calls(region)
+        self.assertEqual(calls,[])
+        summary=next(e for e in result['results'] if e.get('stage')=='store_summary')
+        self.assertTrue(any(x.get('stage')=='resolution_cooldown' for x in summary['stages']))
+
+    def test_full_run_rediscovers_an_unaccepted_store_after_the_cooldown(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.record_resolution(shop['id'],'unresolved','x');self._backdate_resolution(30)
+        calls,result=self._resolver_calls(region)
+        self.assertEqual(calls,[shop['id']])
+
+    def test_forced_run_rediscovers_inside_the_cooldown(self):
+        self.db.import_registry([observation()],'source');region=self.db.create_region(40.9844,-89.0388,'61358',50)
+        shop=self.db.stores_in_region(region['id'])[0]
+        self.db.record_resolution(shop['id'],'unresolved','x')
+        calls,result=self._resolver_calls(region,resolve_sources=True)
+        self.assertEqual(calls,[shop['id']])
+
     def test_full_run_rereads_a_failed_unaccepted_endpoint_after_the_backoff_window(self):
         region,good,junk=self._store_with_retained_and_saved(30)
         read,result=self._read_urls(region)
