@@ -79,7 +79,7 @@ export interface Variant { id: string; name: string; strain_type: string | null;
 export interface Origin { latitude: number; longitude: number; radius_miles: number }
 export interface DealQuery {
   region_id?: string; origin?: Origin; license_type?: string; category?: string; q?: string; include_stale?: boolean; include_unverified?: boolean;
-  flower_grade?: string; strain_type?: string; size?: string; promo?: string; group?: boolean; sort?: SortOption; page?: number; page_size?: number;
+  flower_grade?: string; strain_type?: string; size?: string; promo?: string; exclude_stores?: string[]; group?: boolean; sort?: SortOption; page?: number; page_size?: number;
 }
 export interface Page<T> { items: T[]; total: number; page: number; page_size: number; data_version: string }
 
@@ -141,6 +141,7 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
     // price_outlier is stamped by the mirror (backend/matching.py): far under the same product at other stores.
     if (!q.include_unverified) where.push(`completeness='A'`, `(j->>'price_outlier') IS DISTINCT FROM 'true'`);
   }
+  if (q.exclude_stores?.length) where.push(`NOT (store_id = ANY(${arg(q.exclude_stores)}::text[]))`);
   if (q.category && q.category !== 'all') where.push(`(j->>'category')=${arg(q.category)}`);
   const sClause = strainClause(q.strain_type, arg);
   if (sClause) where.push(sClause);
@@ -210,4 +211,30 @@ FROM f JOIN pg USING (gk) ORDER BY ord, f.id`;
   }
   for (const o of items) if ((o.variants?.length ?? 0) < 2) delete o.variants; // a lone strain is an ordinary card
   return { items, total: data[0] ? Number(data[0].total) : 0, page, page_size: size, data_version: version };
+}
+
+export interface AreaStore { id: string; name: string; distance_miles: number }
+
+// Dispensaries with a live endpoint of this license inside the search area, nearest first, for the "hide dispensaries" picker.
+export async function storesInArea(a: { region_id?: string; origin?: Origin; license_type?: string }): Promise<AreaStore[]> {
+  const p: unknown[] = [];
+  const arg = (v: unknown) => (p.push(v), `$${p.length}`);
+  const o = a.origin;
+  const rsel = o
+    ? `SELECT ${arg(o.latitude)}::float8 AS latitude, ${arg(o.longitude)}::float8 AS longitude, ${arg(o.radius_miles)}::float8 AS radius_miles`
+    : `SELECT latitude, longitude, radius_miles FROM live_regions WHERE id=${arg(a.region_id ?? '')}`;
+  const lic = a.license_type ? `AND e.license_type=${arg(a.license_type)}` : '';
+  const text = `
+WITH r AS (${rsel}),
+st AS (
+  SELECT s.id, coalesce((SELECT i.name FROM live_store_identity i WHERE i.store_id=s.id AND i.kind='rebrand' ORDER BY i.id DESC LIMIT 1), s.name) AS name,
+         3958.8*2*asin(sqrt(least(1,greatest(0, power(sin(radians(s.latitude-r.latitude)/2),2)
+           +cos(radians(r.latitude))*cos(radians(s.latitude))*power(sin(radians(s.longitude-r.longitude)/2),2))))) AS distance_miles
+  FROM live_stores s CROSS JOIN r WHERE s.latitude IS NOT NULL AND s.longitude IS NOT NULL)
+SELECT st.id, st.name, st.distance_miles FROM st
+WHERE st.distance_miles <= (SELECT radius_miles FROM r)
+  AND EXISTS (SELECT 1 FROM live_endpoints e WHERE e.store_id=st.id AND e.status<>'superseded' ${lic})
+ORDER BY st.distance_miles, st.name`;
+  const data = await rows<{ id: string; name: string; distance_miles: number }>(text, p);
+  return data.map((d) => ({ id: String(d.id), name: d.name, distance_miles: Math.round(Number(d.distance_miles) * 10) / 10 }));
 }

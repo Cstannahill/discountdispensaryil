@@ -1,5 +1,5 @@
 import { unstable_cache } from 'next/cache';
-import { dataVersion, queryDeals, regions, type DealQuery } from './deals.ts';
+import { dataVersion, queryDeals, regions, storesInArea, type DealQuery } from './deals.ts';
 
 // Offers only change when a sync pushes a new data_version (about 4 times a day), but every page view used to
 // re-run three full Postgres ranking queries against Neon. These wrappers keep the results in Vercel's data cache.
@@ -18,4 +18,15 @@ const dealsForVersion = unstable_cache(
 // Keyed by data_version, so a new sync is picked up within a minute and old entries are simply never read again.
 export async function cachedDeals(q: DealQuery) {
   return dealsForVersion(await cachedVersion(), q);
+}
+
+const storesForVersion = unstable_cache(
+  (_version: string, a: Parameters<typeof storesInArea>[0]) => storesInArea(a),
+  ['stores-in-area'],
+  { revalidate: 3600 }
+);
+
+// The hide-dispensaries picker list; same version key as the deals.
+export async function cachedStoresInArea(a: Parameters<typeof storesInArea>[0]) {
+  return storesForVersion(await cachedVersion(), a);
 }
