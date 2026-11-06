@@ -1,7 +1,12 @@
 import { rows } from './db.ts';
 import { withProductUrl } from './product-links.ts';
 
-export const CATEGORIES = ['concentrate', 'flower', 'vapes'] as const;
+export const CATEGORIES = ['concentrate', 'flower', 'vapes', 'edibles'] as const;
+// Edibles are priced per 10 mg THC (one Illinois serving) from the package's total dose; everything else per gram.
+export const SERVING_MG = 10;
+export const unitLabel = (category: string) => (category === 'edibles' ? '10mg' : 'g');
+export const perUnit = (o: { category: string; price_per_gram: string | null; price_per_10mg?: string | null }) =>
+  o.category === 'edibles' ? o.price_per_10mg ?? null : o.price_per_gram;
 export const GRADES = ['whole', 'smalls', 'shake', 'infused', 'all'] as const;
 export const LICENSES = ['recreational', 'medicinal'] as const;
 export const STRAINS = ['Indica', 'Sativa', 'Hybrid'] as const;
@@ -26,7 +31,8 @@ export const QUICK_HUBS: readonly (readonly [string, string])[] = [
 ] as const;
 
 export function sortOrderClause(sort?: SortOption | string | null): string {
-  const valueExpr = `NULLIF(j->>'effective_price', '')::numeric / nullif(NULLIF(j->>'weight_grams', '')::numeric, 0)`;
+  const perGram = `NULLIF(j->>'effective_price', '')::numeric / nullif(NULLIF(j->>'weight_grams', '')::numeric, 0)`;
+  const valueExpr = `CASE WHEN j->>'category'='edibles' THEN NULLIF(j->>'effective_price', '')::numeric / nullif(NULLIF(j->>'dose_mg', '')::numeric, 0) * ${SERVING_MG} ELSE ${perGram} END`;
   switch (sort) {
     case 'price':
       return `NULLIF(j->>'effective_price', '')::numeric ASC NULLS LAST, ${valueExpr} ASC NULLS LAST, id`;
@@ -52,6 +58,7 @@ export function sizeForCategory(category: string, size?: string | null): string 
   const n = parseSize(size);
   if (n == null) return undefined;
   const key = String(size).trim();
+  if (category === 'edibles') return undefined; // package size in grams does not describe an edible
   if (FLOWER_ONLY_SIZES.has(key) && category !== 'flower' && category !== 'all') return undefined;
   return key;
 }
@@ -70,7 +77,7 @@ export interface Offer {
   id: string; endpoint_id: string; store_id: string; store_name: string; license_type: string; name: string;
   brand?: string | null; category: string; strain_type?: string | null; thc_pct?: string | null;
   weight_grams: string | null; weight_label?: string | null; regular_price: string | null; effective_price: string | null;
-  price_per_gram: string | null; conditional?: boolean; promo?: string | null; completeness: string; freshness: string;
+  price_per_gram: string | null; dose_mg?: string | null; pack_count?: number | null; price_per_10mg?: string | null; conditional?: boolean; promo?: string | null; completeness: string; freshness: string;
   flower_grade: string | null; distance_miles: number; last_seen_at: string; last_diff_action: string; source_url?: string | null;
   variants?: Variant[];
 }
@@ -126,7 +133,7 @@ export async function dataVersion(): Promise<string> {
 }
 
 // Mirrors StoreDB.query_offers: eligible, active, fresh (12h), grade A and not a price outlier unless include_unverified, whole flower unless asked,
-// ranked by effective price per gram then distance. Filtering, ranking and paging all happen in Postgres.
+// ranked by effective price per gram (per 10 mg THC for edibles) then distance. Filtering, ranking and paging all happen in Postgres.
 export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
   const page = Math.max(1, q.page ?? 1);
   const size = Math.min(200, Math.max(1, q.page_size ?? 20));
@@ -142,13 +149,15 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
     // Conditional BOGO promotions: their own list, never ranked with comparable deals.
     where.push(`j->>'promo'='bogo'`, `fresh`, `completeness='A'`, `(j->>'category') IN ('flower','concentrate','vapes')`);
   } else {
-    where.push(`(j->>'eligible')='true'`, `NULLIF(j->>'weight_grams','')::numeric > 0`, `NULLIF(j->>'effective_price','') IS NOT NULL`);
+    where.push(`(j->>'eligible')='true'`, `(CASE WHEN j->>'category'='edibles' THEN NULLIF(j->>'dose_mg','')::numeric ELSE NULLIF(j->>'weight_grams','')::numeric END) > 0`, `NULLIF(j->>'effective_price','') IS NOT NULL`);
     if (!q.include_stale) where.push('fresh');
     // price_outlier is stamped by the mirror (backend/matching.py): far under the same product at other stores.
     if (!q.include_unverified) where.push(`completeness='A'`, `(j->>'price_outlier') IS DISTINCT FROM 'true'`);
   }
   if (q.exclude_stores?.length) where.push(`NOT (store_id = ANY(${arg(q.exclude_stores)}::text[]))`);
+  // A mixed list is ranked per gram, so edibles (per 10 mg) appear only when asked for by category.
   if (q.category && q.category !== 'all') where.push(`(j->>'category')=${arg(q.category)}`);
+  else if (q.promo !== 'bogo') where.push(`(j->>'category') IS DISTINCT FROM 'edibles'`);
   const sClause = strainClause(q.strain_type, arg);
   if (sClause) where.push(sClause);
   const sz = parseSize(q.size);
@@ -184,7 +193,7 @@ e AS (
          coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(split_part(coalesce(j->>'name',''), ' - ', 1)), '${LINE_RE}', 'g') m), '') AS lw
   FROM d WHERE ${where.join(' AND ')}),
 e2 AS (
-  SELECT e.*, concat_ws('|', store_id, license_type, j->>'category', b, j->>'weight_grams', j->>'effective_price', coalesce(fgrade,''),
+  SELECT e.*, concat_ws('|', store_id, license_type, j->>'category', b, j->>'weight_grams', j->>'dose_mg', j->>'effective_price', coalesce(fgrade,''),
            lower(coalesce(j->>'subcategory','')), coalesce(j->>'promo',''), coalesce(j->>'conditional',''), lw) AS gkey
   FROM e),
 f AS (SELECT e2.*, ${q.group ? `CASE WHEN ${groupCollapseClause('count(*) OVER (PARTITION BY gkey)')} THEN gkey ELSE id END` : 'id'} AS gk FROM e2),

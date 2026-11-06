@@ -18,7 +18,9 @@ import {
   STRAINS,
   SORT_OPTIONS,
   type SortOption,
+  perUnit,
   sizeForCategory,
+  unitLabel,
 } from '@/lib/deals';
 
 export const dynamic = 'force-dynamic';
@@ -28,6 +30,7 @@ const ACCENT: Record<string, string> = {
   concentrate: '#fbbf24',
   flower: '#34d399',
   vapes: '#c084fc',
+  edibles: '#fb7185',
 };
 type Search = Record<string, string | string[] | undefined>;
 
@@ -188,7 +191,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
               <div
                 className="category-art relative h-24 sm:h-28"
                 style={{
-                  backgroundImage: `linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),url('/${category}.webp')`,
+                  backgroundImage:
+                    category === 'edibles'
+                      ? 'linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),linear-gradient(135deg,#9f1239,#7c3aed 60%,#0f766e)'
+                      : `linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),url('/${category}.webp')`,
                 }}
               >
                 <div className="absolute inset-x-4 bottom-3 flex items-end justify-between gap-2">
@@ -200,7 +206,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
                       >
                         {category}
                       </span>
-                      {activeSize && (
+                      {activeSize && category !== 'edibles' && (
                         <span className="badge text-emerald-300 border-emerald-500/40">
                           {activeSize}g
                         </span>
@@ -214,16 +220,16 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
                     </h2>
                   </div>
 
-                  {topDeal?.price_per_gram && (
+                  {topDeal && perUnit(topDeal) && (
                     <div className="text-right bg-slate-950/85 border border-slate-800 rounded-xl px-2.5 py-1">
                       <span className="block text-[9px] uppercase tracking-wider text-slate-400">
-                        Best $/g
+                        Best $/{unitLabel(category)}
                       </span>
                       <span
                         className="font-mono font-extrabold text-sm"
                         style={{ color: ACCENT[category] }}
                       >
-                        {money(topDeal.price_per_gram)}/g
+                        {money(perUnit(topDeal))}/{unitLabel(category)}
                       </span>
                     </div>
                   )}
@@ -232,7 +238,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
               <div className="px-4 py-2 bg-slate-900/95 border-b border-slate-800/90 flex items-center justify-between text-[11px] text-slate-400">
                 <span>
-                  Ranked by <strong style={{ color: ACCENT[category] }}>price / gram</strong>
+                  Ranked by{' '}
+                  <strong style={{ color: ACCENT[category] }}>
+                    {category === 'edibles' ? 'price / 10 mg THC' : 'price / gram'}
+                  </strong>
                 </span>
                 <span className="font-mono">
                   {r.total} {r.total === 1 ? 'listing' : 'listings'}

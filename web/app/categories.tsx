@@ -6,7 +6,7 @@ export const CATEGORY_STORAGE_KEY = 'terpscout.category';
 
 export type CategoryChip = { id: string; label: string; total: number; color: string };
 
-// Below the lg breakpoint the three category columns stack; the active category (defaulting to flower)
+// Below the lg breakpoint the category columns stack; the active category (defaulting to flower)
 // or all at a time is displayed based on data-active. Desktop always shows every column.
 export default function CategoryGrid({
   chips,
@@ -33,7 +33,7 @@ export default function CategoryGrid({
   }, []);
 
   return (
-    <div className="cat-grid grid gap-4 lg:grid-cols-3 items-start" data-active={active}>
+    <div className="cat-grid grid gap-4 lg:grid-cols-2 items-start" data-active={active}>
       {children}
     </div>
   );
