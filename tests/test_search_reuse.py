@@ -71,6 +71,8 @@ class ServiceSearchTests(unittest.TestCase):
             return []
         self.run_sync(first, identity='candidate')
         self.assertIn(('https://new-owner.example/menu', 'search'), [(l['url'], l['source']) for l in self.db.leads(self.shop['id'])])
+        with self.db.connection() as conn:
+            conn.execute("UPDATE live_resolutions SET created_at='2000-01-01T00:00:00+00:00'")  # the next run is past the rediscovery cooldown
         seen = []
         self.run_sync(lambda s, f: seen.append(s) or [], identity='candidate')
         self.assertIn('https://new-owner.example/menu', seen[0]['lead_urls'])
