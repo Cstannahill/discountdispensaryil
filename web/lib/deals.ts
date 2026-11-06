@@ -94,6 +94,12 @@ const gradeOf = (col: string) =>
 
 // Smallest group that collapses: below this, equal price and size at one brand is more likely coincidence than one product line.
 export const MIN_GROUP = 3;
+// A pair is enough when the key carries both a brand and a product-line word (e.g. "&Shine ... Disposable"): same brand, line, size and price is one product in two strains.
+export const MIN_GROUP_BRANDED_LINE = 2;
+/** SQL predicate on the window count `n`, the brand column `b` and the line-word column `lw` of a candidate group. */
+export function groupCollapseClause(n = 'n', b = 'b', lw = 'lw'): string {
+  return `${n} >= CASE WHEN ${b} <> '' AND ${lw} <> '' THEN ${MIN_GROUP_BRANDED_LINE} ELSE ${MIN_GROUP} END`;
+}
 // Product-line words that stay in the group key, so "Live Resin Cart" and "Distillate Cart" at one price never merge.
 const LINE_RE = String.raw`\y(?:live resin|live rosin|rosin|resin|distillate|diamonds?|badder|batter|budder|crumble|shatter|wax|kief|cartridge|cart|pod|disposable|pre-?rolls?|infused|solventless)\y`;
 
@@ -174,11 +180,14 @@ d AS (
   SELECT c.*, coalesce(extract(epoch FROM now()-(CASE WHEN completeness='B' THEN last_converged_at ELSE last_success_at END)::timestamptz)/3600, 1e9) < 12 AS fresh
   FROM c),
 e AS (
-  SELECT d.*, concat_ws('|', store_id, license_type, j->>'category', lower(trim(coalesce(j->>'brand',''))), j->>'weight_grams', j->>'effective_price', coalesce(fgrade,''),
-           lower(coalesce(j->>'subcategory','')), coalesce(j->>'promo',''), coalesce(j->>'conditional',''),
-           coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(split_part(coalesce(j->>'name',''), ' - ', 1)), '${LINE_RE}', 'g') m), '')) AS gkey
+  SELECT d.*, lower(trim(coalesce(j->>'brand',''))) AS b,
+         coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(split_part(coalesce(j->>'name',''), ' - ', 1)), '${LINE_RE}', 'g') m), '') AS lw
   FROM d WHERE ${where.join(' AND ')}),
-f AS (SELECT e.*, ${q.group ? `CASE WHEN count(*) OVER (PARTITION BY gkey) >= ${MIN_GROUP} THEN gkey ELSE id END` : 'id'} AS gk FROM e),
+e2 AS (
+  SELECT e.*, concat_ws('|', store_id, license_type, j->>'category', b, j->>'weight_grams', j->>'effective_price', coalesce(fgrade,''),
+           lower(coalesce(j->>'subcategory','')), coalesce(j->>'promo',''), coalesce(j->>'conditional',''), lw) AS gkey
+  FROM e),
+f AS (SELECT e2.*, ${q.group ? `CASE WHEN ${groupCollapseClause('count(*) OVER (PARTITION BY gkey)')} THEN gkey ELSE id END` : 'id'} AS gk FROM e2),
 reps AS (SELECT DISTINCT ON (gk) gk, j, distance_miles, id FROM f ORDER BY gk, ${sortOrderClause(q.sort)}),
 pg AS (
   SELECT gk, row_number() OVER (ORDER BY ${sortOrderClause(q.sort)}) AS ord, count(*) OVER() AS total

@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { strainBucket, parseSize, sizeForCategory, strainClause, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS } from './deals.ts';
+import { strainBucket, parseSize, sizeForCategory, strainClause, groupCollapseClause, MIN_GROUP, MIN_GROUP_BRANDED_LINE, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS } from './deals.ts';
 import { formatRelativeTime } from './time.ts';
 import { calculateOtd, inferTaxRate, calculateSavings, parseThc } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
@@ -222,5 +222,14 @@ describe('hidden dispensary list', async () => {
     assert.deepEqual(parseHidden(null), []);
     assert.equal(serializeHidden(['x', 'y', 'x']), 'x,y');
     assert.equal(parseHidden(Array.from({ length: 150 }, (_, i) => `s${i}`).join(',')).length, 100);
+  });
+});
+
+describe('strain grouping threshold', () => {
+  it('collapses a pair only when brand and a product-line word are both present', () => {
+    assert.equal(MIN_GROUP_BRANDED_LINE, 2);
+    assert.equal(MIN_GROUP, 3);
+    const c = groupCollapseClause('n', 'b', 'lw');
+    assert.equal(c, "n >= CASE WHEN b <> '' AND lw <> '' THEN 2 ELSE 3 END");
   });
 });
