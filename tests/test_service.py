@@ -5,6 +5,7 @@ import threading
 import time
 import unittest
 
+from backend.domain import utcnow
 from backend.service import SyncService
 from backend.storage import Store, REGISTRY_URL
 from backend.network import FetchResult
@@ -173,6 +174,14 @@ class ServiceTests(unittest.TestCase):
         self.assertEqual(read,['https://example.com/menu'])
         summary=next(e for e in result['results'] if e.get('stage')=='store_summary')
         self.assertTrue(any(s.get('stage')=='saved_backoff' and s.get('skipped')==1 for s in summary['stages']))
+
+    def test_full_run_skips_a_failed_generic_endpoint_when_a_native_sibling_converged(self):
+        region,good,junk=self._store_with_retained_and_saved(2)
+        with self.db.connection() as conn:
+            conn.execute("UPDATE live_endpoints SET last_success_at=NULL,last_converged_at=?,status='converged' WHERE id=?",(utcnow(),good['id']))
+            conn.execute("UPDATE live_endpoints SET provider='generic',provider_store_id=NULL WHERE id=?",(junk['id'],))
+        read,result=self._read_urls(region)
+        self.assertEqual(read,['https://example.com/menu'])
 
     def test_full_run_rereads_a_failed_unaccepted_endpoint_after_the_backoff_window(self):
         region,good,junk=self._store_with_retained_and_saved(30)

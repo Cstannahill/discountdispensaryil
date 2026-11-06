@@ -250,8 +250,10 @@ class SyncService:
         # Saved menus no run has accepted yet (pending, partial, converged) are read on every run, as accepted ones are.
         saved=[endpoint for endpoint in (self.store.endpoint(found['id']) for found in store['endpoints'] if not found.get('last_success_at')) if has_menu_contract(endpoint)]
         sample=getattr(self._contexts,'sample_pages',None)
-        if retained and not sample:
-            # A failed read of a never-accepted sibling endpoint is not repeated every run while the store already has an accepted menu.
+        covered=retained or [e for e in saved if e.get('last_converged_at') and e.get('provider')!='generic']
+        if covered and not sample:
+            # A failed read of a never-accepted sibling endpoint is not repeated every run while the store already has an accepted
+            # menu or a converged native one (a chain's crawl-found category pages behind a location/age gate otherwise cost minutes per store).
             fresh=[e for e in saved if e.get('status') in ('partial','failed') and e.get('last_attempt_at') and age_hours(e['last_attempt_at'],utcnow())<SAVED_BACKOFF_HOURS]
             if fresh:saved=[e for e in saved if e not in fresh];stages.append(dict(stage='saved_backoff',skipped=len(fresh)))
         if sample and not retained:
