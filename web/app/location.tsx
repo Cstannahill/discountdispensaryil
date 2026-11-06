@@ -10,6 +10,8 @@ const RKEY = 'terpscout.radius';
 type Pick = { lat: number; lon: number; place: string };
 
 const RADII = [5, 10, 25, 50, 100, 200] as const;
+const MIN_RADIUS = 1;
+const MAX_RADIUS = 200;
 
 export type CategoryChip = {
   id: string;
@@ -49,6 +51,7 @@ export default function LocationControl({
   const [msg, setMsg] = useState('');
   const [busy, setBusy] = useState(false);
   const [text, setText] = useState('');
+  const [custom, setCustom] = useState('');
   const [activeCategory, setActiveCategory] = useState('flower');
   const [savedCount, setSavedCount] = useState(0);
 
@@ -161,6 +164,18 @@ export default function LocationControl({
     u.set('radius', v);
     try { localStorage.setItem(RKEY, v); } catch {}
     pushUrl(u);
+  };
+
+  const applyCustom = (e: React.FormEvent) => {
+    e.preventDefault();
+    const n = Number(custom);
+    if (!/^\d+$/.test(custom) || n < MIN_RADIUS || n > MAX_RADIUS) {
+      setMsg(`Enter a distance from ${MIN_RADIUS} to ${MAX_RADIUS} miles.`);
+      return;
+    }
+    setMsg('');
+    setCustom('');
+    setRadius(String(n));
   };
 
   const setLicense = (nextLicense: 'recreational' | 'medicinal') => {
@@ -389,6 +404,22 @@ export default function LocationControl({
                   </option>
                 ))}
               </select>
+              <form onSubmit={applyCustom} className="flex items-center gap-1.5">
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={3}
+                  aria-label={`Custom range in miles (${MIN_RADIUS} to ${MAX_RADIUS})`}
+                  placeholder="Custom"
+                  className="!py-1.5 !px-2.5 !rounded-lg font-mono w-20 text-[16px] sm:text-[12px]"
+                  value={custom}
+                  onChange={(e) => setCustom(e.target.value.replace(/\D/g, '').slice(0, 3))}
+                />
+                <button type="submit" className="btn !py-1.5 !px-2.5 text-[11px]" disabled={!custom}>
+                  Set mi
+                </button>
+              </form>
               {active && (
                 <button type="button" className="btn !py-1.5 !px-2.5 text-[11px]" onClick={clear}>
                   Reset
