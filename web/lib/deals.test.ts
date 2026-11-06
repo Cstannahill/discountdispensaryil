@@ -214,3 +214,13 @@ describe('parseThc', () => {
     assert.equal(parseThc('n/a'), null);
   });
 });
+
+describe('hidden dispensary list', async () => {
+  const { parseHidden, serializeHidden } = await import('./hidden.ts');
+  it('keeps valid unique ids and drops junk', () => {
+    assert.deepEqual(parseHidden('a1, b2,a1,,bad id,c3;'), ['a1', 'b2']);
+    assert.deepEqual(parseHidden(null), []);
+    assert.equal(serializeHidden(['x', 'y', 'x']), 'x,y');
+    assert.equal(parseHidden(Array.from({ length: 150 }, (_, i) => `s${i}`).join(',')).length, 100);
+  });
+});
