@@ -6,7 +6,9 @@ import CalculatorModal from './calculator';
 import SavedModal from './saved-modal';
 import ToastContainer from './toast';
 import BackToTop from './back-to-top';
+import HiddenStores from './hidden-stores';
 import { parseOrigin } from '@/lib/origin';
+import { parseHidden, HIDE_PARAM } from '@/lib/hidden';
 import {
   CATEGORIES,
   GRADES,
@@ -17,6 +19,7 @@ import {
   type SortOption,
   queryDeals,
   regions,
+  storesInArea,
   sizeForCategory,
 } from '@/lib/deals';
 
@@ -58,6 +61,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     cats.map((c) => [c, Math.max(1, Number(one(sp[`p_${c}`])) || 1)])
   );
 
+  const hidden = parseHidden(one(sp[HIDE_PARAM]));
+  const areaStores = await storesInArea({ region_id: regionId, origin: origin ?? undefined, license_type: license }).catch(() => []);
+
   const results = await Promise.all(
     cats.map((category) =>
       queryDeals({
@@ -72,6 +78,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         strain_type: strain || undefined,
         size: sizeForCategory(category, size),
         promo: bogo ? 'bogo' : undefined,
+        exclude_stores: hidden,
         group: true,
         sort,
         page: pages[category],
@@ -98,6 +105,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     unverified: unverified ? '1' : '',
     promo: bogo ? 'bogo' : '',
     sort: sort !== 'value' ? sort : '',
+    [HIDE_PARAM]: hidden.join(','),
   };
 
   const link = (category: string, page: number) => {
@@ -153,6 +161,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         unverified={unverified}
         sort={sort}
       />
+
+      <HiddenStores stores={areaStores} hidden={hidden} />
 
       {region && (
         <p className="text-[11px] text-slate-400 px-1">
