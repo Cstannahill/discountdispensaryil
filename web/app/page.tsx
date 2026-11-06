@@ -8,6 +8,7 @@ import ToastContainer from './toast';
 import BackToTop from './back-to-top';
 import HiddenStores from './hidden-stores';
 import { parseOrigin } from '@/lib/origin';
+import { cachedDeals, cachedRegions, cachedStoresInArea } from '@/lib/cached';
 import { parseHidden, HIDE_PARAM } from '@/lib/hidden';
 import {
   CATEGORIES,
@@ -17,9 +18,6 @@ import {
   STRAINS,
   SORT_OPTIONS,
   type SortOption,
-  queryDeals,
-  regions,
-  storesInArea,
   sizeForCategory,
 } from '@/lib/deals';
 
@@ -41,7 +39,7 @@ const money = (v: string | null | undefined) =>
 
 export default async function Home({ searchParams }: { searchParams: Promise<Search> }) {
   const sp = await searchParams;
-  const reg = await regions();
+  const reg = await cachedRegions();
   const regionId = one(sp.region) || reg.active_region_id || reg.items[0]?.id || '';
   const origin = parseOrigin((k) => one(sp[k]) || null);
   const license = LICENSES.includes(one(sp.license) as never) ? one(sp.license) : 'recreational';
@@ -62,11 +60,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   );
 
   const hidden = parseHidden(one(sp[HIDE_PARAM]));
-  const areaStores = await storesInArea({ region_id: regionId, origin: origin ?? undefined, license_type: license }).catch(() => []);
+  const areaStores = await cachedStoresInArea({ region_id: regionId, origin: origin ?? undefined, license_type: license }).catch(() => []);
 
   const results = await Promise.all(
     cats.map((category) =>
-      queryDeals({
+      cachedDeals({
         region_id: regionId,
         origin: origin ?? undefined,
         license_type: license,
@@ -190,7 +188,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
               <div
                 className="category-art relative h-24 sm:h-28"
                 style={{
-                  backgroundImage: `linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),url('/${category}.jpg')`,
+                  backgroundImage: `linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),url('/${category}.webp')`,
                 }}
               >
                 <div className="absolute inset-x-4 bottom-3 flex items-end justify-between gap-2">
