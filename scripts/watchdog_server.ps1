@@ -10,5 +10,7 @@ $python = Join-Path $root '.venv\Scripts\python.exe'
 $out = Join-Path $logs 'uvicorn.log'
 # Created through WMI so the server is not a child of this task and survives it ending.
 $cmd = "cmd /c `"cd /d $root && `"$python`" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 >> `"$out`" 2>&1`""
-$r = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{ CommandLine = $cmd; CurrentDirectory = $root }
+# ShowWindow 0 (hidden): a visible console would pop up on screen and killing it would kill the server.
+$startup = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ ShowWindow = [uint16]0 }
+$r = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{ CommandLine = $cmd; CurrentDirectory = $root; ProcessStartupInformation = $startup }
 Add-Content (Join-Path $logs 'watchdog.log') "$stamp started pid $($r.ProcessId) rc $($r.ReturnValue)"
