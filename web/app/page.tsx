@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import LocationControl from './location';
 import FilterStrip from './filters';
 import CategoryGrid from './categories';
@@ -24,6 +25,14 @@ import {
 } from '@/lib/deals';
 
 export const dynamic = 'force-dynamic';
+
+// Every filter, location and pagination variant canonicalises to "/" and stays out of the index, so crawlers
+// see one strong page instead of thousands of near-duplicate query URLs.
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Search> }): Promise<Metadata> {
+  const sp = await searchParams;
+  if (Object.keys(sp).length === 0) return {};
+  return { alternates: { canonical: '/' }, robots: { index: false, follow: true } };
+}
 
 const PAGE_SIZE = 20;
 const ACCENT: Record<string, string> = {
