@@ -221,7 +221,7 @@ export default function LocationControl({
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <h1 className="font-extrabold text-sm sm:text-lg tracking-tight text-white leading-none">TerpScout</h1>
+              <h1 className="font-extrabold text-sm sm:text-lg tracking-tight text-white leading-none">TerpScout<span className="sr-only">: cheapest cannabis price per gram at Illinois dispensaries</span></h1>
               <span className="badge text-emerald-300 border-emerald-500/30 hidden xs:inline-flex">$/g</span>
               {isPending && <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" aria-label="Updating deals" />}
             </div>
