@@ -2,6 +2,7 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from html.parser import HTMLParser
+import os
 import re
 import copy
 import threading
@@ -21,8 +22,13 @@ from .runtime import PIPELINE_VERSION, PipelineInterrupted
 NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'gapcommerce', 'joint', 'jane', 'verano', 'leafly', 'dutchie', 'carrot')
 # Sample runs stop a store's discovery crawl after this many seconds; full runs never budget discovery.
 SAMPLE_DISCOVERY_SECONDS = 120
-# Sample runs process this many stores at once; full runs stay sequential.
+# Sample runs and full runs process this many stores at once (TERPSCOUT_SYNC_WORKERS overrides the full-run count; 1 is sequential).
 SAMPLE_WORKERS = 4
+def _full_workers():
+    try:return max(1,int(os.environ.get('TERPSCOUT_SYNC_WORKERS','4')))
+    except ValueError:return 4
+# A saved endpoint no run has accepted, on a store that already has an accepted menu, is re-read at most this often after a failed read.
+SAVED_BACKOFF_HOURS = 24
 
 
 def discovery_source(endpoint, leads):
@@ -244,6 +250,10 @@ class SyncService:
         # Saved menus no run has accepted yet (pending, partial, converged) are read on every run, as accepted ones are.
         saved=[endpoint for endpoint in (self.store.endpoint(found['id']) for found in store['endpoints'] if not found.get('last_success_at')) if has_menu_contract(endpoint)]
         sample=getattr(self._contexts,'sample_pages',None)
+        if retained and not sample:
+            # A failed read of a never-accepted sibling endpoint is not repeated every run while the store already has an accepted menu.
+            fresh=[e for e in saved if e.get('status') in ('partial','failed') and e.get('last_attempt_at') and age_hours(e['last_attempt_at'],utcnow())<SAVED_BACKOFF_HOURS]
+            if fresh:saved=[e for e in saved if e not in fresh];stages.append(dict(stage='saved_backoff',skipped=len(fresh)))
         if sample and not retained:
             # A sample reads any saved endpoint that is a menu contract before it pays for discovery; discovery runs only if none reads.
             retained,saved=saved,[]
@@ -439,8 +449,8 @@ class SyncService:
             self.store.update_job(job_id,"running",results)
         return failed
 
-    def _run_sample_stores(self,job_id,stores,results,payload):
-        # Sample runs process several stores at once. Each worker gets its own fetcher client and job context, as the job thread
+    def _run_stores_parallel(self,job_id,stores,results,payload,workers=SAMPLE_WORKERS):
+        # Sample and full runs process several stores at once. Each worker gets its own fetcher client and job context, as the job thread
         # has, and stores of one chain never overlap, because chains share hosts and rate limits.
         job_fetcher=self.fetcher;lock=threading.Lock();chain_locks={}
         def work(store):
@@ -454,7 +464,7 @@ class SyncService:
             finally:
                 if callable(fork):self._contexts.fetcher.close()
                 del self._contexts.fetcher,self._contexts.job_id
-        with ThreadPoolExecutor(max_workers=SAMPLE_WORKERS,thread_name_prefix='terpscout-sample') as pool:
+        with ThreadPoolExecutor(max_workers=workers,thread_name_prefix='terpscout-sample') as pool:
             return any(list(pool.map(work,stores)))
 
     def _run(self,job_id):
@@ -491,7 +501,9 @@ class SyncService:
                     had_failure = True
                     results.append(dict(stage="coverage", status="unresolved", error="No registry candidates have been resolved in this region"))
                 if payload.get('sample_pages'):
-                    had_failure=self._run_sample_stores(job_id,stores,results,payload) or had_failure
+                    had_failure=self._run_stores_parallel(job_id,stores,results,payload) or had_failure
+                elif _full_workers()>1 and len(stores)>1:
+                    had_failure=self._run_stores_parallel(job_id,stores,results,payload,_full_workers()) or had_failure
                 else:
                     for store in stores:
                         self._check_stop()
