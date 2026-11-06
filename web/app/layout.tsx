@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 
 const sans = Plus_Jakarta_Sans({
@@ -31,7 +32,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`dark ${sans.variable} ${mono.variable}`}>
-      <body className="font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">{children}</body>
+      <body className="font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">{children}
+        <Analytics />
+      </body>
     </html>
   );
 }
