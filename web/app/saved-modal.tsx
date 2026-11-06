@@ -12,6 +12,7 @@ export interface SavedDeal {
   brand?: string | null;
   store_name: string;
   price_per_gram?: string | null;
+  price_per_10mg?: string | null;
   effective_price?: string | null;
   regular_price?: string | null;
   massLabel: string;
@@ -229,6 +230,11 @@ export default function SavedModal() {
                     </div>
 
                     <div className="text-right shrink-0 bg-slate-950/80 border border-slate-800 rounded-lg px-2 py-1">
+                      {item.category === 'edibles' && item.price_per_10mg && (
+                        <p className="text-sm font-extrabold font-mono text-emerald-400 leading-none">
+                          {money(item.price_per_10mg)}/10mg
+                        </p>
+                      )}
                       {item.price_per_gram && (
                         <p className="text-sm font-extrabold font-mono text-emerald-400 leading-none">
                           {money(item.price_per_gram)}/g

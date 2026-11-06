@@ -94,7 +94,8 @@
 @media (max-width: 1023px) {
   .cat-grid[data-active="concentrate"] > section:not([data-cat="concentrate"]),
   .cat-grid[data-active="flower"] > section:not([data-cat="flower"]),
-  .cat-grid[data-active="vapes"] > section:not([data-cat="vapes"]) {
+  .cat-grid[data-active="vapes"] > section:not([data-cat="vapes"]),
+  .cat-grid[data-active="edibles"] > section:not([data-cat="edibles"]) {
     display: none;
   }
 }

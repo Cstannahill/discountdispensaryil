@@ -3,7 +3,7 @@ import { useEffect, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { openCalculator } from './calculator';
 import { openSavedDeals, getSavedDeals, SAVED_EVENT } from './saved-modal';
-import { QUICK_HUBS } from '@/lib/deals';
+import { CATEGORIES, QUICK_HUBS } from '@/lib/deals';
 
 const KEY = 'terpscout.origin';
 const RKEY = 'terpscout.radius';
@@ -24,6 +24,7 @@ const ICONS: Record<string, string> = {
   flower: '🌿',
   concentrate: '🍯',
   vapes: '💨',
+  edibles: '🍬',
   all: '⚡',
 };
 
@@ -88,7 +89,7 @@ export default function LocationControl({
   };
 
   const pushUrl = (u: URLSearchParams) => {
-    ['p_concentrate', 'p_flower', 'p_vapes'].forEach((k) => u.delete(k));
+    CATEGORIES.map((c) => `p_${c}`).forEach((k) => u.delete(k));
     startTransition(() => {
       router.push(`/?${u.toString()}`);
     });

@@ -51,6 +51,8 @@ describe('package size parsing and category scoping', () => {
     assert.equal(sizeForCategory('concentrate', '1'), '1');
     assert.equal(sizeForCategory('vapes', '0.5'), '0.5');
     assert.equal(sizeForCategory('flower', 'any'), undefined);
+    assert.equal(sizeForCategory('edibles', '1'), undefined);
+    assert.equal(sizeForCategory('edibles', '3.5'), undefined);
   });
 });
 
@@ -134,6 +136,7 @@ describe('SORT_OPTIONS and sortOrderClause', () => {
   });
 
   it('generates safe SQL clauses for all options', () => {
+    assert.match(sortOrderClause('value'), /edibles.*dose_mg.*\* 10 ELSE/);
     assert.match(sortOrderClause('value'), /NULLIF\(j->>'effective_price',\s*''\)::numeric.*NULLIF\(j->>'weight_grams',\s*''\)::numeric.*ASC/);
     assert.match(sortOrderClause('price'), /NULLIF\(j->>'effective_price',\s*''\)::numeric.*ASC/);
     assert.match(sortOrderClause('thc'), /substring\(j->>'thc_pct'\s+from\s+'\(\[0-9\]\+\(\?:\\\.\[0-9\]\+\)\?\)'\)::numeric.*DESC/);

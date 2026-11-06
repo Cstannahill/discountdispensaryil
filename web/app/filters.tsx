@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { GRADES, STRAINS, SORT_OPTIONS, type SortOption } from '@/lib/deals';
+import { CATEGORIES, GRADES, STRAINS, SORT_OPTIONS, type SortOption } from '@/lib/deals';
 
 const SORT_LABELS: Record<SortOption, string> = {
   value: 'Best $/g',
@@ -79,7 +79,7 @@ export default function FilterStrip({
         u.set(k, v);
       }
     }
-    ['p_concentrate', 'p_flower', 'p_vapes'].forEach((k) => u.delete(k));
+    CATEGORIES.map((c) => `p_${c}`).forEach((k) => u.delete(k));
     startTransition(() => {
       router.push(`/?${u.toString()}`);
     });

@@ -4,7 +4,7 @@ import { openCalculator } from './calculator';
 import { showToast } from './toast';
 import { toggleSaveDeal, getSavedDeals, SAVED_EVENT } from './saved-modal';
 import { calculateSavings } from '@/lib/calculator';
-import { strainBucket, type Offer } from '@/lib/deals';
+import { perUnit, strainBucket, unitLabel, type Offer } from '@/lib/deals';
 import { formatRelativeTime } from '@/lib/time';
 
 const BUCKETS = ['Indica', 'Sativa', 'Hybrid', 'Unspecified'] as const;
@@ -93,7 +93,12 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
   const href = safeUrl(o.source_url);
   const grouped = (o.variants?.length ?? 0) > 1;
   const bucket = strainBucket(o.strain_type);
-  const massLabel = o.weight_label || (o.weight_grams ? `${o.weight_grams}g` : 'mass unknown');
+  const edible = o.category === 'edibles';
+  const massLabel = edible
+    ? `${o.dose_mg ?? '?'} mg THC${o.pack_count ? ` · ${o.pack_count} pc` : ''}`
+    : o.weight_label || (o.weight_grams ? `${o.weight_grams}g` : 'mass unknown');
+  const unitPrice = perUnit(o);
+  const unit = unitLabel(o.category);
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
@@ -138,6 +143,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
                   brand: o.brand,
                   store_name: o.store_name,
                   price_per_gram: o.price_per_gram,
+                  price_per_10mg: o.price_per_10mg,
                   effective_price: o.effective_price,
                   regular_price: o.regular_price,
                   massLabel,
@@ -196,8 +202,8 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
             </span>
           )}
           <p className="text-lg sm:text-xl font-extrabold font-mono text-emerald-400 leading-none">
-            {money(o.price_per_gram)}
-            <span className="text-[10px] font-normal text-slate-400">/g</span>
+            {money(unitPrice)}
+            <span className="text-[10px] font-normal text-slate-400">/{unit}</span>
           </p>
           <p className="text-[11px] font-mono text-slate-200 mt-1">
             {savings.hasDiscount && (
@@ -280,7 +286,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
             const cardTitle = grouped ? `${o.brand || 'Assorted'} · ${o.variants!.length} strains` : o.name;
             const shareData = {
               title: `TerpScout: ${cardTitle}`,
-              text: `${cardTitle} (${massLabel}) at ${o.store_name} for ${money(o.effective_price)} (${money(o.price_per_gram)}/g)`,
+              text: `${cardTitle} (${massLabel}) at ${o.store_name} for ${money(o.effective_price)} (${money(unitPrice)}/${unit})`,
               url: href || (typeof window !== 'undefined' ? window.location.href : ''),
             };
             if (typeof navigator !== 'undefined' && navigator.share) {
@@ -306,6 +312,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
           <span className="hidden sm:inline">Share</span>
         </button>
 
+        {!edible && (
         <button
           type="button"
           onClick={() =>
@@ -327,6 +334,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
         >
           🧮 OTD
         </button>
+        )}
       </div>
     </article>
   );

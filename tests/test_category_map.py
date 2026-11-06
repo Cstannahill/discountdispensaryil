@@ -15,7 +15,7 @@ def offer(**changes):
 class CategoryMap(unittest.TestCase):
     def test_provider_labels_land_in_their_category(self):
         for category, rows in LABELS.items():
-            if category in ("vapes", "concentrate", "other"):
+            if category in ("vapes", "concentrate", "edibles", "other"):
                 for provider, label in rows:
                     for given in (("other", label) if category != "other" else ("other",)):
                         with self.subTest(provider=provider, label=label, given=given):
