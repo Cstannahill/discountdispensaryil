@@ -1,6 +1,6 @@
 import { ImageResponse } from 'next/og';
 
-export const alt = 'TerpScout: cheapest cannabis price per gram at Illinois dispensaries';
+export const alt = 'DiscountDispensaryIL: cheapest cannabis price per gram at Illinois dispensaries';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -19,7 +19,7 @@ export default function Image() {
           color: '#fff',
         }}
       >
-        <div style={{ fontSize: 40, color: '#34d399', fontWeight: 700, letterSpacing: 4 }}>TERPSCOUT</div>
+        <div style={{ fontSize: 40, color: '#34d399', fontWeight: 700, letterSpacing: 2 }}>DISCOUNTDISPENSARYIL</div>
         <div style={{ fontSize: 76, fontWeight: 800, marginTop: 24, lineHeight: 1.1 }}>
           Cheapest cannabis $/g in Illinois
         </div>
