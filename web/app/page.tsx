@@ -9,6 +9,7 @@ import ToastContainer from './toast';
 import BackToTop from './back-to-top';
 import HiddenStores from './hidden-stores';
 import { CITIES } from '@/lib/cities';
+import { SEO_CATEGORIES } from '@/lib/seo';
 import { parseOrigin } from '@/lib/origin';
 import { cachedDeals, cachedRegions, cachedStoresInArea } from '@/lib/cached';
 import { parseHidden, HIDE_PARAM } from '@/lib/hidden';
@@ -366,6 +367,19 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
               </a>
             </li>
           ))}
+        </ul>
+        <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs mt-2">
+          <li><a href="/illinois-dispensary-price-comparison" className="text-slate-400 hover:text-emerald-300">Illinois dispensary price comparison</a></li>
+          {['peoria', 'normal', 'champaign', 'chicago'].flatMap((slug) =>
+            SEO_CATEGORIES.slice(0, 3).map((k) => {
+              const c = CITIES.find((x) => x.slug === slug)!;
+              return (
+                <li key={`${slug}-${k.slug}`}>
+                  <a href={`/dispensary-deals/${slug}/${k.slug}`} className="text-slate-400 hover:text-emerald-300">Cheapest {k.label.toLowerCase()} in {c.name}</a>
+                </li>
+              );
+            })
+          )}
         </ul>
       </nav>
 
