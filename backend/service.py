@@ -22,11 +22,11 @@ from .runtime import PIPELINE_VERSION, PipelineInterrupted
 NATIVE_PROVIDERS = ('blaze', 'sweed', 'dispense', 'treez', 'gapcommerce', 'joint', 'jane', 'verano', 'leafly', 'dutchie', 'carrot')
 # Sample runs stop a store's discovery crawl after this many seconds; full runs never budget discovery.
 SAMPLE_DISCOVERY_SECONDS = 120
-# Sample runs and full runs process this many stores at once (TERPSCOUT_SYNC_WORKERS overrides the full-run count; 1 is sequential).
+# Sample runs and full runs process this many stores at once (TERPSCOUT_SYNC_WORKERS overrides the full-run count, default 8; 1 is sequential).
 SAMPLE_WORKERS = 4
 def _full_workers():
-    try:return max(1,int(os.environ.get('TERPSCOUT_SYNC_WORKERS','4')))
-    except ValueError:return 4
+    try:return max(1,int(os.environ.get('TERPSCOUT_SYNC_WORKERS','8')))
+    except ValueError:return 8
 # A saved endpoint no run has accepted, on a store that already has an accepted menu, is re-read at most this often after a failed read.
 SAVED_BACKOFF_HOURS = 24
 # A store with no accepted menu is rediscovered (website search/crawl) at most this often; a forced run (resolve_sources) always rediscovers.
