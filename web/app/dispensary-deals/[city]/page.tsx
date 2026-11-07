@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { CITIES, cityBySlug } from '@/lib/cities';
 import { cachedDeals } from '@/lib/cached';
 import { CATEGORIES, perUnit, unitLabel, type Offer } from '@/lib/deals';
+import { SEO_CATEGORIES } from '@/lib/seo';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 // Rendered on first request, then re-generated at most hourly (offers refresh a few times a day).
@@ -141,6 +142,15 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
           </section>
         );
       })}
+
+      <nav aria-label="Cheapest by category" className="space-y-2">
+        <h2 className="text-base font-extrabold text-white">Cheapest by category in {city.name}</h2>
+        <ul className="flex flex-wrap gap-2">
+          {SEO_CATEGORIES.map((k) => (
+            <li key={k.slug}><Link href={`/dispensary-deals/${city.slug}/${k.slug}`} className="btn !py-1.5 !px-3 text-xs">Cheapest {k.label.toLowerCase()} in {city.name}</Link></li>
+          ))}
+        </ul>
+      </nav>
 
       <section aria-labelledby="h-more" className="space-y-2">
         <h2 id="h-more" className="text-base font-extrabold text-white">Other Illinois cities</h2>
