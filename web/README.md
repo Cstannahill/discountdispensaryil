@@ -1,4 +1,4 @@
-# TerpScout web (Next.js, reads Neon)
+# DiscountDispensaryIL web (Next.js, reads Neon)
 
 Read-only deals app for Vercel. The PC scrapes into SQLite and `scripts/mirror_to_neon.py` mirrors into Neon; this app only reads.
 

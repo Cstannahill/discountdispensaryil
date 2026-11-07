@@ -285,7 +285,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
           onClick={async () => {
             const cardTitle = grouped ? `${o.brand || 'Assorted'} · ${o.variants!.length} strains` : o.name;
             const shareData = {
-              title: `TerpScout: ${cardTitle}`,
+              title: `DiscountDispensaryIL: ${cardTitle}`,
               text: `${cardTitle} (${massLabel}) at ${o.store_name} for ${money(o.effective_price)} (${money(unitPrice)}/${unit})`,
               url: href || (typeof window !== 'undefined' ? window.location.href : ''),
             };

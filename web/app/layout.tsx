@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image', title: SITE_TITLE, description: SITE_DESCRIPTION },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
-  icons: { icon: '/favicon.svg' },
 };
 
 const jsonLd = {
