@@ -127,8 +127,8 @@ export default function FilterStrip({
   return (
     <section aria-label="Deal filters" className="glass-card rounded-2xl p-3 space-y-2.5">
       {/* Row 1: Search Input + Advanced Filters Button */}
-      <div className="flex items-center gap-2">
-        <div className="relative flex-1 min-w-0">
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="relative w-full sm:w-auto sm:flex-1 min-w-0">
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" aria-hidden="true">
             🔍
           </span>
@@ -163,12 +163,12 @@ export default function FilterStrip({
         </div>
 
         {/* Compact Sort Selector */}
-        <div className="relative shrink-0">
+        <div className="relative flex-1 sm:flex-none sm:shrink-0">
           <select
             aria-label="Sort deals by"
             value={sort || 'value'}
             onChange={(e) => updateParams({ sort: e.target.value === 'value' ? null : e.target.value })}
-            className={`btn !py-2 !px-2.5 text-xs appearance-none pr-6 cursor-pointer font-medium ${
+            className={`btn w-full !py-2 !px-2.5 text-xs appearance-none pr-6 cursor-pointer font-medium ${
               sort && sort !== 'value'
                 ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15'
                 : 'text-slate-300 bg-slate-900/90 border-slate-700/80 hover:border-slate-600'
@@ -189,7 +189,7 @@ export default function FilterStrip({
           type="button"
           aria-expanded={drawerOpen}
           onClick={() => setDrawerOpen((v) => !v)}
-          className={`btn shrink-0 !py-2 ${extraFilterCount > 0 || drawerOpen ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15' : ''}`}
+          className={`btn flex-1 sm:flex-none justify-center shrink-0 !py-2 ${extraFilterCount > 0 || drawerOpen ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15' : ''}`}
         >
           <span>⚙ Filters</span>
           {extraFilterCount > 0 && (
@@ -206,7 +206,7 @@ export default function FilterStrip({
             className="btn shrink-0 !py-2 text-slate-400 hover:text-white inline-flex text-xs"
             aria-label="Reset all filters"
           >
-            ✕ Reset
+            ✕<span className="hidden sm:inline"> Reset</span>
           </button>
         )}
       </div>
