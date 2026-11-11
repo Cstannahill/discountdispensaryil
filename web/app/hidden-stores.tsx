@@ -73,12 +73,12 @@ export default function HiddenStores({ stores, hidden }: { stores: Store[]; hidd
   return (
     <>
       <div className="flex items-center justify-between gap-2 px-1">
-        <button type="button" className="btn !py-1.5 !px-3 text-xs" onClick={() => setOpen(true)}>
+        <button type="button" title="See and hide dispensaries in this area" className="btn !py-1.5 !px-3 text-xs" onClick={() => setOpen(true)}>
           🏪 Dispensaries in this area ({stores.length})
           {hiddenHere > 0 && <span className="ml-1.5 badge text-rose-300 border-rose-500/40">{hiddenHere} hidden</span>}
         </button>
         {hidden.length > 0 && (
-          <button type="button" className="text-xs text-slate-400 hover:text-emerald-300 px-2 py-1" onClick={() => apply([])}>
+          <button type="button" title="Unhide every dispensary" className="text-xs text-slate-400 hover:text-emerald-300 px-2 py-1" onClick={() => apply([])}>
             Show all
           </button>
         )}

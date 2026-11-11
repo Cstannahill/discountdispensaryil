@@ -266,6 +266,7 @@ export default function LocationControl({
             type="button"
             aria-expanded={open}
             aria-label="Change search location and distance radius"
+            title="Change location and distance"
             onClick={() => setOpen((v) => !v)}
             className={`pill !py-1.5 !px-2.5 max-w-none sm:max-w-xs min-w-0 !shrink flex-1 sm:flex-none justify-start ${open ? 'pill-active' : ''}`}
           >
@@ -289,6 +290,7 @@ export default function LocationControl({
                   key={l}
                   type="button"
                   aria-pressed={selected}
+                  title={l === 'recreational' ? 'Show recreational (adult-use) menus' : 'Show medical menus'}
                   onClick={() => setLicense(l)}
                   className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
                     selected ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:text-white'
@@ -305,6 +307,7 @@ export default function LocationControl({
             onClick={() => openCalculator()}
             className="pill !py-1.5 !px-2.5 text-emerald-300 border-emerald-500/30 hover:border-emerald-400 shrink-0"
             aria-label="Open Out-The-Door tax and $/g calculator"
+            title="Out-the-door price calculator (tax and $/g)"
           >
             <span aria-hidden="true">🧮</span>
             <span className="hidden sm:inline">OTD Calc</span>
@@ -340,6 +343,7 @@ export default function LocationControl({
                 key={c.id}
                 type="button"
                 aria-pressed={isSelected}
+                title={`Show ${c.label} deals`}
                 onClick={() => pickCategory(c.id)}
                 style={isSelected ? { borderColor: c.color } : undefined}
                 className={`btn shrink-0 capitalize !py-1 !px-2.5 rounded-xl text-xs transition-all ${
@@ -377,6 +381,7 @@ export default function LocationControl({
             </label>
             <input
               id="loc-text"
+              title="Type a ZIP code or city; results update as you type"
               className="min-w-0 flex-1 !py-2"
               placeholder="ZIP or city, e.g. 61602 or Peoria"
               autoComplete="postal-code"
@@ -393,6 +398,7 @@ export default function LocationControl({
             <button
               type="button"
               disabled={busy}
+              title="Use your device's location"
               onClick={gps}
               className={`pill !px-2.5 !py-1 !text-[11px] shrink-0 font-semibold ${
                 place === 'Your location (GPS)' ? 'pill-active' : 'text-emerald-300 border-emerald-500/40'
@@ -405,6 +411,7 @@ export default function LocationControl({
                 key={zip}
                 type="button"
                 disabled={busy}
+                title={`Search near ${label}`}
                 onClick={() => {
                   setText('');
                   void resolveQuery(zip);
@@ -423,6 +430,7 @@ export default function LocationControl({
             <select
               id="radius-select"
               aria-label="Search distance in miles"
+              title="How far to search"
               className="!py-1.5 !px-2.5 !rounded-lg min-w-0 flex-1 sm:flex-none sm:w-44"
               value={showCustom ? 'custom' : radius}
               onChange={(e) => pickRange(e.target.value)}
@@ -448,7 +456,7 @@ export default function LocationControl({
               />
             )}
             {active && (
-              <button type="button" className="btn !py-1.5 !px-2.5 text-[11px] shrink-0 ml-auto" onClick={clear}>
+              <button type="button" title="Clear location and go back to the default view" className="btn !py-1.5 !px-2.5 text-[11px] shrink-0 ml-auto" onClick={clear}>
                 Reset
               </button>
             )}

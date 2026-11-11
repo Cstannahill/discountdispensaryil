@@ -151,6 +151,7 @@ export default function FilterStrip({
             <button
               type="button"
               aria-label="Clear search"
+              title="Clear search"
               onClick={() => {
                 setSearch('');
                 updateParams({ q: null });
@@ -166,6 +167,7 @@ export default function FilterStrip({
         <div className="relative flex-1 sm:flex-none sm:shrink-0">
           <select
             aria-label="Sort deals by"
+            title="Sort deals"
             value={sort || 'value'}
             onChange={(e) => updateParams({ sort: e.target.value === 'value' ? null : e.target.value })}
             className={`btn w-full !py-2 !px-2.5 text-xs appearance-none pr-6 cursor-pointer font-medium ${
@@ -188,10 +190,12 @@ export default function FilterStrip({
         <button
           type="button"
           aria-expanded={drawerOpen}
+          aria-label="More filters"
+          title="More filters (grade, deals, stale menus)"
           onClick={() => setDrawerOpen((v) => !v)}
           className={`btn flex-1 sm:flex-none justify-center shrink-0 !py-2 ${extraFilterCount > 0 || drawerOpen ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15' : ''}`}
         >
-          <span>⚙ Filters</span>
+          <span aria-hidden="true">⚙</span>
           {extraFilterCount > 0 && (
             <span className="rounded-full bg-emerald-400 text-slate-950 px-1.5 py-0.5 text-[10px] font-extrabold font-mono">
               {extraFilterCount}
@@ -205,6 +209,7 @@ export default function FilterStrip({
             onClick={resetAll}
             className="btn shrink-0 !py-2 text-slate-400 hover:text-white inline-flex text-xs"
             aria-label="Reset all filters"
+            title="Reset all filters"
           >
             ✕<span className="hidden sm:inline"> Reset</span>
           </button>
@@ -222,6 +227,7 @@ export default function FilterStrip({
           type="button"
           aria-pressed={!strain}
           onClick={() => updateParams({ strain: null })}
+          title="Show all strain types"
           className={`pill !py-1 !px-2.5 !text-[11px] shrink-0 ${!strain ? 'pill-active' : ''}`}
         >
           All Strains
@@ -233,6 +239,7 @@ export default function FilterStrip({
               key={s}
               type="button"
               aria-pressed={active}
+              title={active ? `Remove ${s} filter` : `Only show ${s}`}
               onClick={() => updateParams({ strain: active ? null : s })}
               className={`pill !py-1 !px-2.5 !text-[11px] shrink-0 ${active ? STRAIN_STYLES[s] + ' font-bold' : ''}`}
             >
@@ -253,6 +260,7 @@ export default function FilterStrip({
               key={opt.value}
               type="button"
               aria-pressed={active}
+              title={opt.value === 'any' ? 'Any package size' : `Only ${opt.label} packages`}
               onClick={() => updateParams({ size: opt.value === 'any' ? null : opt.value })}
               className={`pill !py-1 !px-2.5 !text-[11px] font-mono shrink-0 ${active ? 'pill-active' : ''}`}
             >
@@ -316,7 +324,7 @@ export default function FilterStrip({
             </div>
 
             {hasAnyFilter && (
-              <button type="button" onClick={resetAll} className="btn !py-1.5 !px-3 text-xs">
+              <button type="button" onClick={resetAll} title="Clear search, sort and every filter" className="btn !py-1.5 !px-3 text-xs">
                 Reset all filters
               </button>
             )}
