@@ -211,18 +211,19 @@ export default function LocationControl({
   return (
     <header className="glass-header sticky top-0 z-40 -mx-3 px-3 sm:mx-0 sm:px-4 sm:rounded-2xl sm:border sm:border-white/10 py-2 sm:py-2.5">
       {/* Row 1: Unified Single-Line Command Bar */}
-      <div className="flex items-center justify-between gap-1.5 sm:gap-2 min-w-0">
+      <div className="flex items-center justify-between gap-2 min-w-0">
         {/* Brand Identity */}
-        <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink">
-          <div className="brand-icon !w-7 !h-7 !rounded-lg sm:!w-9 sm:!h-9 sm:!rounded-xl" aria-hidden="true">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 min-w-0 shrink-0 sm:shrink">
+          <div className="brand-icon shrink-0 !w-9 !h-9 !rounded-xl" aria-hidden="true">
             <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2.3" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18c-3.5 3-6 6.5-6 10.5A6 6 0 0012 19.5a6 6 0 006-6C18 9.5 15.5 6 12 3z" />
             </svg>
           </div>
-          <div className="min-w-0">
+          <h1 className="sr-only sm:hidden">DiscountDispensaryIL</h1>
+          <div className="min-w-0 hidden sm:block">
             <div className="flex items-center gap-1.5">
               <h1 className="font-extrabold text-sm sm:text-lg tracking-tight text-white leading-none">DiscountDispensaryIL<span className="sr-only">: cheapest cannabis price per gram at Illinois dispensaries</span></h1>
-              <span className="badge text-emerald-300 border-emerald-500/30 hidden xs:inline-flex">$/g</span>
+              <span className="badge text-emerald-300 border-emerald-500/30 hidden sm:inline-flex">$/g</span>
               {isPending && <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" aria-label="Updating deals" />}
             </div>
             <p className="text-[10px] text-slate-400 truncate hidden sm:block">
@@ -232,17 +233,17 @@ export default function LocationControl({
         </div>
 
         {/* Interactive Controls: Location Pill + Rec/Med Switch + OTD Calc */}
-        <div className="flex items-center gap-1 sm:gap-1.5 ml-auto min-w-0">
+        <div className="flex items-center gap-1.5 ml-auto min-w-0 flex-1 justify-end">
           <button
             type="button"
             aria-expanded={open}
             aria-label="Change search location and distance radius"
             onClick={() => setOpen((v) => !v)}
-            className={`pill !py-1 sm:!py-1.5 !px-2 sm:!px-2.5 max-w-[125px] sm:max-w-xs min-w-0 !shrink ${open ? 'pill-active' : ''}`}
+            className={`pill !py-1.5 !px-2.5 max-w-none sm:max-w-xs min-w-0 !shrink flex-1 sm:flex-none justify-start ${open ? 'pill-active' : ''}`}
           >
             <span aria-hidden="true">📍</span>
-            <span className="truncate min-w-0 font-semibold text-white text-xs max-w-[55px] sm:max-w-none">
-              {place ? place.replace(/, USA$/, '') : 'Set location'}
+            <span className="truncate min-w-0 font-semibold text-white text-xs sm:max-w-none">
+              {place ? place.replace(/, USA$/, '').replace(/ \(GPS\)$/, '') : 'Set location'}
             </span>
             <span className="font-mono text-[10px] sm:text-[11px] text-emerald-300 shrink-0">· {radius}mi</span>
             <span className="text-[10px] text-slate-400 shrink-0">{open ? '▴' : '▾'}</span>
@@ -261,7 +262,7 @@ export default function LocationControl({
                   type="button"
                   aria-pressed={selected}
                   onClick={() => setLicense(l)}
-                  className={`rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-bold transition-colors ${
+                  className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
                     selected ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:text-white'
                   }`}
                 >
@@ -274,7 +275,7 @@ export default function LocationControl({
           <button
             type="button"
             onClick={() => openCalculator()}
-            className="pill !py-1 sm:!py-1.5 !px-2 sm:!px-2.5 text-emerald-300 border-emerald-500/30 hover:border-emerald-400 shrink-0"
+            className="pill !py-1.5 !px-2.5 text-emerald-300 border-emerald-500/30 hover:border-emerald-400 shrink-0"
             aria-label="Open Out-The-Door tax and $/g calculator"
           >
             <span aria-hidden="true">🧮</span>
@@ -284,7 +285,7 @@ export default function LocationControl({
           <button
             type="button"
             onClick={() => openSavedDeals()}
-            className={`pill !py-1 sm:!py-1.5 !px-2 sm:!px-2.5 transition-colors shrink-0 ${
+            className={`pill !py-1.5 !px-2.5 transition-colors shrink-0 ${
               savedCount > 0
                 ? 'text-amber-300 border-amber-500/40 hover:border-amber-400 bg-amber-500/10'
                 : 'text-slate-400 border-slate-700/80 hover:text-slate-200'
