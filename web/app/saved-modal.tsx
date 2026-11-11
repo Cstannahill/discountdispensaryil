@@ -183,6 +183,7 @@ export default function SavedModal() {
               type="button"
               className="btn !py-1 !px-2.5 text-slate-300"
               aria-label="Close saved deals modal"
+              title="Close"
               onClick={() => setOpen(false)}
             >
               ✕

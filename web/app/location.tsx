@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState, useTransition } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { openCalculator } from './calculator';
 import { openSavedDeals, getSavedDeals, SAVED_EVENT } from './saved-modal';
@@ -95,7 +95,7 @@ export default function LocationControl({
     });
   };
 
-  const go = (o: Pick) => {
+  const go = (o: Pick, keepOpen = false) => {
     try { localStorage.setItem(KEY, JSON.stringify(o)); } catch {}
     const u = new URLSearchParams(sp.toString());
     u.set('lat', o.lat.toFixed(5));
@@ -106,7 +106,7 @@ export default function LocationControl({
       const r = localStorage.getItem(RKEY);
       if (r && !u.get('radius')) u.set('radius', r);
     } catch {}
-    setOpen(false);
+    if (!keepOpen) setOpen(false);
     pushUrl(u);
   };
 
@@ -139,16 +139,18 @@ export default function LocationControl({
     );
   };
 
-  const resolveQuery = async (query: string) => {
+  const lastQuery = useRef('');
+  const resolveQuery = async (query: string, keepOpen = false) => {
     const trimmed = query.trim();
     if (!trimmed) return;
+    lastQuery.current = trimmed;
     setMsg('');
     setBusy(true);
     try {
       const r = await fetch(`/api/v1/geocode?q=${encodeURIComponent(trimmed)}`);
       const j = await r.json();
       if (!r.ok) setMsg(j?.detail?.message || 'Lookup failed');
-      else go({ lat: j.latitude, lon: j.longitude, place: j.label });
+      else go({ lat: j.latitude, lon: j.longitude, place: j.label }, keepOpen);
     } catch {
       setMsg('Lookup failed; try again');
     }
@@ -160,6 +162,15 @@ export default function LocationControl({
     await resolveQuery(text);
   };
 
+  // Typing a ZIP or city applies itself after a short pause (Enter applies at once).
+  useEffect(() => {
+    const t = text.trim();
+    if (t.length < 3 || t === lastQuery.current) return;
+    const timer = setTimeout(() => void resolveQuery(t, true), 700);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [text]);
+
   const setRadius = (v: string) => {
     const u = new URLSearchParams(sp.toString());
     u.set('radius', v);
@@ -167,16 +178,35 @@ export default function LocationControl({
     pushUrl(u);
   };
 
-  const applyCustom = (e: React.FormEvent) => {
-    e.preventDefault();
-    const n = Number(custom);
-    if (!/^\d+$/.test(custom) || n < MIN_RADIUS || n > MAX_RADIUS) {
-      setMsg(`Enter a distance from ${MIN_RADIUS} to ${MAX_RADIUS} miles.`);
+  const [customMode, setCustomMode] = useState(false);
+  const showCustom = customMode || !(RADII as readonly number[]).includes(radius);
+
+  // A typed custom distance applies itself after a short pause.
+  useEffect(() => {
+    if (!custom) return;
+    const timer = setTimeout(() => {
+      const n = Number(custom);
+      if (!/^\d+$/.test(custom) || n < MIN_RADIUS || n > MAX_RADIUS) {
+        setMsg(`Enter a distance from ${MIN_RADIUS} to ${MAX_RADIUS} miles.`);
+        return;
+      }
+      setMsg('');
+      if (n !== radius) setRadius(String(n));
+    }, 600);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [custom]);
+
+  const pickRange = (v: string) => {
+    if (v === 'custom') {
+      setCustomMode(true);
+      setCustom(String(radius));
       return;
     }
-    setMsg('');
+    setCustomMode(false);
     setCustom('');
-    setRadius(String(n));
+    setMsg('');
+    setRadius(v);
   };
 
   const setLicense = (nextLicense: 'recreational' | 'medicinal') => {
@@ -192,8 +222,6 @@ export default function LocationControl({
       router.push('/');
     });
   };
-
-  const allRadii = [...new Set([...RADII, radius])].sort((a, b) => a - b);
 
   const orderedChips = chips
     ? [
@@ -238,12 +266,13 @@ export default function LocationControl({
             type="button"
             aria-expanded={open}
             aria-label="Change search location and distance radius"
+            title="Change location and distance"
             onClick={() => setOpen((v) => !v)}
             className={`pill !py-1.5 !px-2.5 max-w-none sm:max-w-xs min-w-0 !shrink flex-1 sm:flex-none justify-start ${open ? 'pill-active' : ''}`}
           >
             <span aria-hidden="true">📍</span>
             <span className="truncate min-w-0 font-semibold text-white text-xs sm:max-w-none">
-              {place ? place.replace(/, USA$/, '').replace(/ \(GPS\)$/, '') : 'Set location'}
+              {place ? place.replace(/, USA$/, '').replace(/^Your location \(GPS\)$/, 'Near me') : 'Set location'}
             </span>
             <span className="font-mono text-[10px] sm:text-[11px] text-emerald-300 shrink-0">· {radius}mi</span>
             <span className="text-[10px] text-slate-400 shrink-0">{open ? '▴' : '▾'}</span>
@@ -261,6 +290,7 @@ export default function LocationControl({
                   key={l}
                   type="button"
                   aria-pressed={selected}
+                  title={l === 'recreational' ? 'Show recreational (adult-use) menus' : 'Show medical menus'}
                   onClick={() => setLicense(l)}
                   className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
                     selected ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:text-white'
@@ -277,6 +307,7 @@ export default function LocationControl({
             onClick={() => openCalculator()}
             className="pill !py-1.5 !px-2.5 text-emerald-300 border-emerald-500/30 hover:border-emerald-400 shrink-0"
             aria-label="Open Out-The-Door tax and $/g calculator"
+            title="Out-the-door price calculator (tax and $/g)"
           >
             <span aria-hidden="true">🧮</span>
             <span className="hidden sm:inline">OTD Calc</span>
@@ -312,6 +343,7 @@ export default function LocationControl({
                 key={c.id}
                 type="button"
                 aria-pressed={isSelected}
+                title={`Show ${c.label} deals`}
                 onClick={() => pickCategory(c.id)}
                 style={isSelected ? { borderColor: c.color } : undefined}
                 className={`btn shrink-0 capitalize !py-1 !px-2.5 rounded-xl text-xs transition-all ${
@@ -343,91 +375,91 @@ export default function LocationControl({
           aria-label="Search location"
           className="mt-3 pt-3 border-t border-slate-800/90 space-y-3"
         >
-          <div className="flex flex-col sm:flex-row gap-2">
+          <form onSubmit={lookup} className="flex gap-2">
+            <label htmlFor="loc-text" className="sr-only">
+              Enter a ZIP code or city
+            </label>
+            <input
+              id="loc-text"
+              title="Type a ZIP code or city; results update as you type"
+              className="min-w-0 flex-1 !py-2"
+              placeholder="ZIP or city, e.g. 61602 or Peoria"
+              autoComplete="postal-code"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </form>
+
+          <div
+            className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5"
+            role="group"
+            aria-label="Quick locations"
+          >
             <button
               type="button"
-              className="btn-primary py-2.5 text-xs sm:w-auto shrink-0"
-              onClick={gps}
               disabled={busy}
+              title="Use your device's location"
+              onClick={gps}
+              className={`pill !px-2.5 !py-1 !text-[11px] shrink-0 font-semibold ${
+                place === 'Your location (GPS)' ? 'pill-active' : 'text-emerald-300 border-emerald-500/40'
+              }`}
             >
-              {busy ? 'Locating…' : '📍 Use my current location'}
+              {busy ? 'Locating…' : '📍 Current location'}
             </button>
-
-            <form onSubmit={lookup} className="flex gap-2 flex-1">
-              <label htmlFor="loc-text" className="sr-only">
-                Or enter a ZIP code or city
-              </label>
-              <input
-                id="loc-text"
-                className="min-w-0 flex-1 !py-2"
-                placeholder="Enter ZIP or City (e.g. 61602 or Peoria, IL)"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              />
-              <button type="submit" className="btn-primary px-4" disabled={busy || !text.trim()}>
-                Set
+            {QUICK_HUBS.map(([label, zip]) => (
+              <button
+                key={zip}
+                type="button"
+                disabled={busy}
+                title={`Search near ${label}`}
+                onClick={() => {
+                  setText('');
+                  void resolveQuery(zip);
+                }}
+                className="pill !px-2.5 !py-1 !text-[11px] shrink-0"
+              >
+                {label}
               </button>
-            </form>
+            ))}
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-              <span className="text-[11px] font-semibold text-slate-400 shrink-0">Quick IL Hubs:</span>
-              {QUICK_HUBS.map(([label, zip]) => (
-                <button
-                  key={zip}
-                  type="button"
-                  disabled={busy}
-                  onClick={() => {
-                    setText(zip);
-                    void resolveQuery(zip);
-                  }}
-                  className="pill !px-2.5 !py-1 !text-[11px]"
-                >
-                  {label}
-                </button>
+          <div className="flex items-center gap-2">
+            <label htmlFor="radius-select" className="text-[11px] font-semibold text-slate-400 shrink-0">
+              Distance
+            </label>
+            <select
+              id="radius-select"
+              aria-label="Search distance in miles"
+              title="How far to search"
+              className="!py-1.5 !px-2.5 !rounded-lg min-w-0 flex-1 sm:flex-none sm:w-44"
+              value={showCustom ? 'custom' : radius}
+              onChange={(e) => pickRange(e.target.value)}
+            >
+              {RADII.map((m) => (
+                <option key={m} value={m}>
+                  Within {m} miles
+                </option>
               ))}
-            </div>
-
-            <div className="flex items-center gap-1.5 flex-wrap">
-              <label htmlFor="radius-select" className="text-[11px] font-semibold text-slate-400">
-                Range:
-              </label>
-              <select
-                id="radius-select"
-                aria-label="Search range in miles"
-                className="!py-1.5 !px-2.5 !rounded-lg font-mono"
-                value={radius}
-                onChange={(e) => setRadius(e.target.value)}
-              >
-                {allRadii.map((m) => (
-                  <option key={m} value={m}>
-                    Within {m} miles
-                  </option>
-                ))}
-              </select>
-              <form onSubmit={applyCustom} className="flex items-center gap-1.5">
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  maxLength={3}
-                  aria-label={`Custom range in miles (${MIN_RADIUS} to ${MAX_RADIUS})`}
-                  placeholder="Custom"
-                  className="!py-1.5 !px-2.5 !rounded-lg font-mono w-20 text-[16px] sm:text-[12px]"
-                  value={custom}
-                  onChange={(e) => setCustom(e.target.value.replace(/\D/g, '').slice(0, 3))}
-                />
-                <button type="submit" className="btn !py-1.5 !px-2.5 text-[11px]" disabled={!custom}>
-                  Set mi
-                </button>
-              </form>
-              {active && (
-                <button type="button" className="btn !py-1.5 !px-2.5 text-[11px]" onClick={clear}>
-                  Reset
-                </button>
-              )}
-            </div>
+              <option value="custom">Custom…</option>
+            </select>
+            {showCustom && (
+              <input
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={3}
+                aria-label={`Custom distance in miles (${MIN_RADIUS} to ${MAX_RADIUS})`}
+                placeholder="miles"
+                className="!py-1.5 !px-2.5 !rounded-lg w-20 shrink-0 text-[16px] sm:text-[12px]"
+                value={custom}
+                onChange={(e) => setCustom(e.target.value.replace(/\D/g, '').slice(0, 3))}
+              />
+            )}
+            {active && (
+              <button type="button" title="Clear location and go back to the default view" className="btn !py-1.5 !px-2.5 text-[11px] shrink-0 ml-auto" onClick={clear}>
+                Reset
+              </button>
+            )}
           </div>
 
           {msg && (

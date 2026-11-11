@@ -121,6 +121,7 @@ export default function CalculatorModal() {
               type="button"
               className="btn px-2.5 py-1.5 text-slate-300"
               aria-label="Close calculator"
+              title="Close"
               onClick={() => setOpen(false)}
             >
               ✕
