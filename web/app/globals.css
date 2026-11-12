@@ -101,3 +101,15 @@
 }
 
 .cat-grid > section { min-width: 0; }
+
+
+@keyframes pending-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.pending-bar-fill { animation: pending-slide 1s ease-in-out infinite; }
+#results { transition: opacity 0.15s ease; }
+html[data-pending='1'] #results { opacity: 0.45; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  .pending-bar-fill { animation: none; width: 100%; }
+}

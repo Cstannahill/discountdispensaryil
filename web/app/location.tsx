@@ -101,6 +101,27 @@ export default function LocationControl({
   const [now, setNow] = useState(0);
   const [moved, setMoved] = useState<Pick | null>(null);
   const checking = useRef(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onDown = (e: Event) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false); };
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('pointerdown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [menuOpen]);
+
+  // Tell the page shell when listings are refreshing so it can show a progress bar.
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('terpscout:pending', { detail: { source: 'location', pending: isPending } }));
+  }, [isPending]);
 
   useEffect(() => {
     setSavedCount(getSavedDeals().length);
@@ -419,55 +440,73 @@ export default function LocationControl({
             </button>
           )}
 
-          <div
-            role="group"
-            aria-label="License channel"
-            className="inline-flex rounded-full bg-slate-950/90 border border-slate-700/80 p-0.5 text-xs shrink-0"
-          >
-            {(['recreational', 'medicinal'] as const).map((l) => {
-              const selected = license === l;
-              return (
+          <div ref={menuRef} className="relative shrink-0">
+            <button
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded={menuOpen}
+              aria-label="More options: license, calculator, saved deals"
+              title="More"
+              onClick={() => setMenuOpen((v) => !v)}
+              className={`pill !py-1.5 !px-2.5 relative ${menuOpen ? 'pill-active' : ''}`}
+            >
+              <span aria-hidden="true" className="text-base leading-none">⋯</span>
+              {license === 'medicinal' && (
+                <span className="text-[10px] font-bold text-amber-300">Med</span>
+              )}
+              {savedCount > 0 && (
+                <span className="absolute -top-1 -right-1 min-w-4 h-4 px-1 rounded-full bg-amber-400 text-slate-950 text-[9px] font-extrabold flex items-center justify-center">
+                  {savedCount}
+                </span>
+              )}
+            </button>
+            {menuOpen && (
+              <div
+                role="menu"
+                aria-label="More options"
+                className="absolute right-0 top-full mt-2 w-56 rounded-2xl border border-slate-700/80 bg-slate-950/98 shadow-xl shadow-black/60 p-2 z-50 space-y-1"
+              >
+                <div role="group" aria-label="License channel" className="flex rounded-xl bg-slate-900 border border-slate-700/80 p-0.5 text-xs">
+                  {(['recreational', 'medicinal'] as const).map((l) => {
+                    const selected = license === l;
+                    return (
+                      <button
+                        key={l}
+                        type="button"
+                        role="menuitemradio"
+                        aria-checked={selected}
+                        onClick={() => { setLicense(l); setMenuOpen(false); }}
+                        className={`flex-1 rounded-[10px] px-2 py-2 text-[12px] font-bold transition-colors ${
+                          selected ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:text-white'
+                        }`}
+                      >
+                        {l === 'recreational' ? 'Recreational' : 'Medical'}
+                      </button>
+                    );
+                  })}
+                </div>
                 <button
-                  key={l}
                   type="button"
-                  aria-pressed={selected}
-                  title={l === 'recreational' ? 'Show recreational (adult-use) menus' : 'Show medical menus'}
-                  onClick={() => setLicense(l)}
-                  className={`rounded-full px-2.5 py-1 text-[11px] font-bold transition-colors ${
-                    selected ? 'bg-emerald-500 text-slate-950' : 'text-slate-400 hover:text-white'
-                  }`}
+                  role="menuitem"
+                  onClick={() => { setMenuOpen(false); openCalculator(); }}
+                  className="w-full flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm text-slate-200 hover:bg-slate-800/80 text-left"
                 >
-                  {l === 'recreational' ? 'Rec' : 'Med'}
+                  <span aria-hidden="true">🧮</span>
+                  <span>Out-the-door calculator</span>
                 </button>
-              );
-            })}
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={() => { setMenuOpen(false); openSavedDeals(); }}
+                  className="w-full flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm text-slate-200 hover:bg-slate-800/80 text-left"
+                >
+                  <span aria-hidden="true">⭐</span>
+                  <span className="flex-1">Saved deals</span>
+                  <span className="font-mono text-[11px] text-amber-300">{savedCount}</span>
+                </button>
+              </div>
+            )}
           </div>
-
-          <button
-            type="button"
-            onClick={() => openCalculator()}
-            className="pill !py-1.5 !px-2.5 text-emerald-300 border-emerald-500/30 hover:border-emerald-400 shrink-0"
-            aria-label="Open Out-The-Door tax and $/g calculator"
-            title="Out-the-door price calculator (tax and $/g)"
-          >
-            <span aria-hidden="true">🧮</span>
-            <span className="hidden sm:inline">OTD Calc</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => openSavedDeals()}
-            className={`pill !py-1.5 !px-2.5 transition-colors shrink-0 ${
-              savedCount > 0
-                ? 'text-amber-300 border-amber-500/40 hover:border-amber-400 bg-amber-500/10'
-                : 'text-slate-400 border-slate-700/80 hover:text-slate-200'
-            }`}
-            aria-label="View saved deals shortlist"
-            title="View your saved deals shortlist"
-          >
-            <span aria-hidden="true">⭐</span>
-            <span className="font-mono text-[10px] sm:text-[11px] font-bold">{savedCount}</span>
-          </button>
         </div>
       </div>
 

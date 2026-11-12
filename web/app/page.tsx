@@ -6,6 +6,7 @@ import OfferCard from './offer-card';
 import CalculatorModal from './calculator';
 import SavedModal from './saved-modal';
 import ToastContainer from './toast';
+import PendingBar from './pending';
 import BackToTop from './back-to-top';
 import HiddenStores from './hidden-stores';
 import { CITIES } from '@/lib/cities';
@@ -184,6 +185,14 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         </p>
       )}
 
+      {region && !stale && results.every((r) => r.total === 0) && areaStores.length > 0 && (
+        <p role="status" className="text-xs text-amber-200 bg-amber-500/10 border border-amber-500/30 rounded-xl px-3 py-2">
+          No menus fresher than 12 hours for this area right now.{' '}
+          <a href={makeUrl({ stale: '1' })} className="underline font-semibold">Show older menus</a>
+        </p>
+      )}
+
+      <div id="results">
       <CategoryGrid chips={categoryChips}>
         {cats.map((category, i) => {
           const r = results[i];
@@ -356,6 +365,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
           );
         })}
       </CategoryGrid>
+      </div>
 
       <nav aria-label="Browse by city" className="px-1 pt-2">
         <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Cheapest weed by Illinois city</h2>
@@ -383,6 +393,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         </ul>
       </nav>
 
+      <PendingBar />
       <CalculatorModal />
       <SavedModal />
       <ToastContainer />
