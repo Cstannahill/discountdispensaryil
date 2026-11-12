@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-// Listens for 'terpscout:pending' events from the location and filter controls and shows a top progress bar,
+// Listens for 'terpscout:pending' events from the location and filter controls and shows a spinner
 // and marks <html data-pending="1"> so the results can dim (see globals.css) while listings reload.
 export default function PendingBar() {
   const [on, setOn] = useState(false);
@@ -32,14 +32,11 @@ export default function PendingBar() {
 
   if (!on) return null;
   return (
-    <div role="status" aria-live="polite" className="fixed inset-x-0 top-0 z-[60]">
-      <span className="sr-only">Updating deals</span>
-      <div className="pending-bar h-1 w-full overflow-hidden bg-emerald-950/60">
-        <div className="pending-bar-fill h-full w-1/3 bg-emerald-400" />
+    <div role="status" aria-live="polite" className="pointer-events-none fixed inset-x-0 top-20 z-[60] flex justify-center">
+      <div className="flex items-center gap-2 rounded-full border border-emerald-500/40 bg-slate-950/95 px-3.5 py-2 shadow-lg shadow-black/50">
+        <span className="pending-spinner h-4 w-4 rounded-full border-2 border-emerald-400/30 border-t-emerald-400" aria-hidden="true" />
+        <span className="text-xs font-semibold text-emerald-300">Updating deals…</span>
       </div>
-      <p className="mx-auto mt-2 w-fit rounded-full border border-emerald-500/40 bg-slate-950/95 px-3 py-1 text-[11px] font-semibold text-emerald-300 shadow-lg">
-        Updating deals…
-      </p>
     </div>
   );
 }
