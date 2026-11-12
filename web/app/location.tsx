@@ -120,8 +120,9 @@ export default function LocationControl({
 
   // Tell the page shell when listings are refreshing so it can show a progress bar.
   useEffect(() => {
-    window.dispatchEvent(new CustomEvent('terpscout:pending', { detail: { source: 'location', pending: isPending } }));
-  }, [isPending]);
+    // busy covers the GPS fix and ZIP/city lookup; isPending covers the listings reload that follows.
+    window.dispatchEvent(new CustomEvent('terpscout:pending', { detail: { source: 'location', pending: isPending || busy } }));
+  }, [isPending, busy]);
 
   useEffect(() => {
     setSavedCount(getSavedDeals().length);
