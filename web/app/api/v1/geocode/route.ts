@@ -6,6 +6,23 @@ const fail = (status: number, code: string, message: string) => NextResponse.jso
 
 // Resolves a US ZIP or "City, ST" to coordinates so people can set their own origin when GPS is unavailable.
 export async function GET(req: NextRequest) {
+  // Reverse lookup: ?lat=&lon= returns a "City, ST" label for a GPS point.
+  const rl = req.nextUrl.searchParams.get('lat'), ro = req.nextUrl.searchParams.get('lon');
+  if (rl && ro) {
+    const lat = Number(rl), lon = Number(ro);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return fail(400, 'bad_coordinates', 'Invalid coordinates');
+    try {
+      const r = await fetch('https://nominatim.openstreetmap.org/reverse?' + new URLSearchParams({ lat: lat.toFixed(4), lon: lon.toFixed(4), format: 'jsonv2', zoom: '10', addressdetails: '1' }),
+        { cache: 'no-store', headers: { 'User-Agent': 'terpscout-web/0.1 (location lookup)' } });
+      const a = r.ok ? (await r.json())?.address : null;
+      const city = a?.city || a?.town || a?.village || a?.hamlet || a?.municipality || a?.county;
+      const st = typeof a?.['ISO3166-2-lvl4'] === 'string' ? a['ISO3166-2-lvl4'].replace(/^US-/, '') : a?.state;
+      if (!city) return fail(404, 'not_found', 'No place name for these coordinates');
+      return NextResponse.json({ label: st ? `${city}, ${st}` : String(city) });
+    } catch {
+      return fail(502, 'lookup_failed', 'Location lookup failed');
+    }
+  }
   const q = (req.nextUrl.searchParams.get('q') || '').trim().slice(0, 120);
   if (!q) return fail(400, 'query_required', 'Enter a ZIP or city');
   try {
