@@ -89,6 +89,8 @@ function StrainList({ o }: { o: Offer }) {
   );
 }
 
+const ageLabel = (h?: number | null) => (h == null ? 'date unknown' : h < 48 ? `${h}h ago` : `${Math.round(h / 24)}d ago`);
+
 export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
   const href = safeUrl(o.source_url);
   const grouped = (o.variants?.length ?? 0) > 1;
@@ -242,7 +244,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
               : 'text-emerald-300 border-emerald-500/30'
           }`}
         >
-          {o.completeness === 'B' ? 'unverified total' : o.freshness}
+          {o.completeness === 'B' ? 'unverified total' : o.freshness === 'fresh' ? 'fresh' : `last menu ${ageLabel(o.menu_age_hours)}`}
         </span>
       </div>
 

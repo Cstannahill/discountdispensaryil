@@ -181,14 +181,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         <p className="text-[11px] text-slate-400 px-1">
           Showing <strong className="text-slate-200">{license}</strong> deals within{' '}
           <strong className="text-slate-200">{region.radius_miles} miles</strong> of{' '}
-          <strong className="text-emerald-400">{region.label}</strong>. Pre-tax observed menu prices; menus older than 12h hidden unless included.
-        </p>
-      )}
-
-      {region && !stale && results.every((r) => r.total === 0) && areaStores.length > 0 && (
-        <p role="status" className="text-xs text-amber-200 bg-amber-500/10 border border-amber-500/30 rounded-xl px-3 py-2">
-          No menus fresher than 12 hours for this area right now.{' '}
-          <a href={makeUrl({ stale: '1' })} className="underline font-semibold">Show older menus</a>
+          <strong className="text-emerald-400">{region.label}</strong>. Pre-tax observed menu prices; a dispensary whose latest sync found no menu shows its last good menu, labelled with its age.
         </p>
       )}
 
