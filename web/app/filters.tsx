@@ -61,6 +61,10 @@ export default function FilterStrip({
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
+    window.dispatchEvent(new CustomEvent('terpscout:pending', { detail: { source: 'filters', pending: isPending } }));
+  }, [isPending]);
+
+  useEffect(() => {
     setSearch(q);
   }, [q]);
 
