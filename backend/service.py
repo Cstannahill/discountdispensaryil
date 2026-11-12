@@ -519,6 +519,8 @@ class SyncService:
                 if not payload.get('sample_pages'):neon_mirror.mirror_async(self.store.db_path)
             except PipelineInterrupted as exc:
                 self.store.update_job(job_id,'interrupted',results,str(exc))
+                if not payload.get('sample_pages'):neon_mirror.mirror_async(self.store.db_path)  # menus refreshed before the stop must still reach the hosted site
             except Exception as exc:
                 self.store.update_job(job_id, "failed", results, str(exc))
+                if not payload.get('sample_pages'):neon_mirror.mirror_async(self.store.db_path)
             return self.store.job(job_id)

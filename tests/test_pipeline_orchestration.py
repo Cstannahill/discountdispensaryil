@@ -3,7 +3,7 @@ from pathlib import Path
 import tempfile
 import unittest
 import threading
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
 from backend.service import SyncService
 from backend.storage import Store
@@ -141,6 +141,18 @@ class PipelineOrchestrationTests(unittest.TestCase):
         job=self.run_job()
         self.assertEqual(job['status'],'interrupted')
         self.assertEqual(self.store.menu_products(endpoint['id'])['items'][0]['source_id'],'accepted')
+
+    def test_interrupted_run_still_asks_for_a_neon_mirror(self):
+        endpoint=self.store.save_endpoint(self.shop['id'],self.endpoint())
+        self.store.apply_snapshot(endpoint['id'],snapshot([item('accepted')]))
+        def interrupt(e,f):
+            self.service.stop_requested.set()
+            return snapshot([item('uncommitted')])
+        self.service=SyncService(self.store,FixtureFetcher(),resolver=lambda s,f:[],menu_fetcher=interrupt)
+        with patch('backend.service.neon_mirror.mirror_async') as mirror:
+            job=self.run_job()
+        self.assertEqual(job['status'],'interrupted')
+        mirror.assert_called_once()
 
 
 class AttemptTelemetryTests(PipelineOrchestrationTests):

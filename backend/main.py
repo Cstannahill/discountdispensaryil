@@ -16,6 +16,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
+from . import neon_mirror
 from .network import PublicFetcher
 from .service import SyncService, llm_verifier
 from .storage import Store
@@ -131,6 +132,7 @@ def create_app(*, db_path=None, evidence_dir=None, fetcher=None, enable_schedule
             app.state.fetcher = fetcher or PublicFetcher(evidence_dir)
             app.state.service = SyncService(app.state.store, app.state.fetcher, verifier=None if fetcher else llm_verifier(app.state.store))
             app.state.store.recover_jobs()
+            if enable_scheduler:neon_mirror.mirror_async(db_path)  # a run cut off by a crash or restart never mirrored; publish what the database already holds
             frequency = app.state.store.setting("frequency_per_day", 4)
             if enable_scheduler:
                 scheduler.add_job(enqueue_scheduled, trigger(frequency), id="menu-sync", replace_existing=True, max_instances=1, coalesce=True, misfire_grace_time=3600)
