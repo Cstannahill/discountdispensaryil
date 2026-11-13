@@ -96,7 +96,7 @@ const GRADE_RE = {
   shake: String.raw`\y(?:shake|trim|(?:pre[ _-]?)?ground|milled)\y`,
   smalls: String.raw`\y(?:popcorn|smalls|mini ?buds?|budlets|littles|lil ?buds|mixed buds|small buds)\y`,
 };
-const gradeOf = (col: string) =>
+export const gradeOf = (col: string) =>
   `CASE WHEN ${col} ~* '${GRADE_RE.infused}' THEN 'infused' WHEN ${col} ~* '${GRADE_RE.shake}' THEN 'shake' WHEN ${col} ~* '${GRADE_RE.smalls}' THEN 'smalls' END`;
 
 // Smallest group that collapses: below this, equal price and size at one brand is more likely coincidence than one product line.
