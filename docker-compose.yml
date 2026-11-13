@@ -1,0 +1,25 @@
+services:
+  backend:
+    build: .
+    image: terpscout-backend
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      TERPSCOUT_DB: /data/terpscout.db
+      TERPSCOUT_EVIDENCE: /data/evidence
+      # The WebSearch MCP runs on another machine (Christian's PC today), not in this stack.
+      # Point this at it, or leave it unreachable: search falls through to OpenRouter.
+      TERPSCOUT_WEBSEARCH_MCP_URL: ${TERPSCOUT_WEBSEARCH_MCP_URL:-http://host.docker.internal:9565/mcp}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      # No authentication: keep it on localhost, or put it behind a VPN / reverse proxy with auth.
+      - "${TERPSCOUT_BIND:-127.0.0.1}:8000:8000"
+    volumes:
+      - terpscout-data:/data
+    shm_size: 1gb   # Chromium needs more than Docker's 64 MB default /dev/shm
+
+volumes:
+  terpscout-data:

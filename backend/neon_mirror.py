@@ -75,7 +75,7 @@ def outlier_ids(sconn):
     offers = []
     for oid, store, payload in sconn.execute("SELECT o.id,e.store_id,o.payload_json FROM live_offers o JOIN live_endpoints e ON e.id=o.endpoint_id WHERE o.status='active' AND e.status!='superseded'"):
         item = json.loads(payload)
-        if item.get("eligible") and item.get("completeness", "A") == "A":
+        if item.get("eligible") and item.get("completeness", "A") == "A" and item.get("effective_price") is not None and float(item.get("weight_grams") or 0) > 0:
             offers.append(dict(id=oid, store_id=store, name=item.get("name"), brand=item.get("brand"), category=item.get("category"), subcategory=item.get("subcategory"),
                                weight_grams=item.get("weight_grams"), dose_mg=item.get("dose_mg"), effective_price=item.get("effective_price"), flower_grade=flower_grade(item)))
     return {o["id"] for o in flag_outliers(offers) if o["price_outlier"]}

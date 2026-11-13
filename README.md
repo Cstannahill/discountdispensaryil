@@ -66,3 +66,35 @@ In Menu Sync, **Website discovery & browser fallback** controls JavaScript rende
 Store cards show actual diagnostic messages and provide a targeted retry. The run API also accepts `store_ids` so troubleshooting one location does not rescan an entire region. `GET /api/v1/menus/{id}/observations` exposes the latest partial extraction separately from accepted products. `GET/PATCH /api/v1/settings/browser` controls browser behavior.
 
 `data/expanded-app-acceptance.json` records the targeted application run; `data/dispense-live-acceptance.json` records the independent Dispense probe. `scripts/scan_website_candidates.py --region-id <saved-region-id> --inspect` audits all previously unconfigured brands and saves website leads/platform evidence. Its results are candidate discovery, not inventory imports. See `docs/DISCOVERY_FALLBACK_RESULTS.md` for measured results and remaining limits.
+
+## Run in Docker (Linux host)
+
+The image bundles Python 3.13, Node 22 and Playwright's Chromium, so the browser worker needs nothing from `web/node_modules`. The `web/` site stays on Vercel.
+
+```bash
+cp .env.example .env        # fill in OPENROUTER_API_KEY, NEON_DATABASE_URL (never commit .env)
+docker compose up -d --build
+docker compose logs -f backend
+# API docs: http://127.0.0.1:8000/docs
+docker compose run --rm backend python -m unittest discover -s tests   # tests (browser tests skip without TERPSCOUT_BROWSER_TEST=1)
+```
+
+- State lives in the `terpscout-data` volume mounted at `/data`: `terpscout.db`, `data/evidence/` (as `/data/evidence`) and `browser-sessions/`. Back it up as a whole.
+- Run exactly one container/worker per database. The port is bound to `127.0.0.1` because the API has no authentication; set `TERPSCOUT_BIND` only behind a VPN or an authenticating proxy.
+- The WebSearch MCP is a separate service on the PC. `TERPSCOUT_WEBSEARCH_MCP_URL` defaults to `http://host.docker.internal:9565/mcp`; set it to the PC's LAN address (and make the MCP listen on it), or ignore it: search falls through to OpenRouter.
+- Scheduler times are America/Chicago and independent of the host clock.
+
+### Moving the data over from the Windows PC
+
+1. Pause the scheduler (`PATCH /api/v1/settings/scheduler {"enabled": false}`) and stop the PC server so the SQLite file is quiescent (this also checkpoints `terpscout.db-wal`).
+2. Copy `terpscout.db` and `data/evidence/` (and `data/browser-sessions/` if wanted) to the Linux box, e.g. into a `./import` folder.
+3. Load them into the volume before first start:
+
+```bash
+docker compose create backend
+docker run --rm -v discountdispensaryil_terpscout-data:/data -v "$PWD/import:/import:ro" --user 0 terpscout-backend \
+  sh -c 'cp /import/terpscout.db /data/ && cp -r /import/evidence /data/evidence && { [ ! -d /import/browser-sessions ] || cp -r /import/browser-sessions /data/; } && chown -R 1000 /data'
+docker compose up -d
+```
+
+The volume name is `<compose project>_terpscout-data` (check with `docker volume ls`). Re-enable the scheduler afterwards. Do not run both servers against the Neon mirror at once.
