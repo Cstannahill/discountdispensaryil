@@ -77,7 +77,7 @@ export interface Offer {
   id: string; endpoint_id: string; store_id: string; store_name: string; license_type: string; name: string;
   brand?: string | null; category: string; strain_type?: string | null; thc_pct?: string | null;
   weight_grams: string | null; weight_label?: string | null; regular_price: string | null; effective_price: string | null;
-  price_per_gram: string | null; dose_mg?: string | null; pack_count?: number | null; price_per_10mg?: string | null; conditional?: boolean; promo?: string | null; completeness: string; freshness: string;
+  price_per_gram: string | null; dose_mg?: string | null; pack_count?: number | null; price_per_10mg?: string | null; conditional?: boolean; promo?: string | null; completeness: string; freshness: string; menu_as_of?: string | null; menu_age_hours?: number | null;
   flower_grade: string | null; distance_miles: number; last_seen_at: string; last_diff_action: string; source_url?: string | null;
   variants?: Variant[];
 }
@@ -147,10 +147,11 @@ export async function queryDeals(q: DealQuery): Promise<Page<Offer>> {
   if (q.license_type) where.push(`license_type=${arg(q.license_type)}`);
   if (q.promo === 'bogo') {
     // Conditional BOGO promotions: their own list, never ranked with comparable deals.
-    where.push(`j->>'promo'='bogo'`, `fresh`, `completeness='A'`, `(j->>'category') IN ('flower','concentrate','vapes')`);
+    where.push(`j->>'promo'='bogo'`, `(fresh OR NOT store_fresh)`, `completeness='A'`, `(j->>'category') IN ('flower','concentrate','vapes')`);
   } else {
     where.push(`(j->>'eligible')='true'`, `(CASE WHEN j->>'category'='edibles' THEN NULLIF(j->>'dose_mg','')::numeric ELSE NULLIF(j->>'weight_grams','')::numeric END) > 0`, `NULLIF(j->>'effective_price','') IS NOT NULL`);
-    if (!q.include_stale) where.push('fresh');
+    // Per-store fallback: a store (and license) with no fresh menu keeps showing its last accepted one, labelled with its age.
+    if (!q.include_stale) where.push('(fresh OR NOT store_fresh)');
     // price_outlier is stamped by the mirror (backend/matching.py): far under the same product at other stores.
     if (!q.include_unverified) where.push(`completeness='A'`, `(j->>'price_outlier') IS DISTINCT FROM 'true'`);
   }
@@ -174,7 +175,7 @@ st AS MATERIALIZED (
   SELECT s.id, coalesce((SELECT i.name FROM live_store_identity i WHERE i.store_id=s.id AND i.kind='rebrand' ORDER BY i.id DESC LIMIT 1), s.name) AS name, s.latitude AS lat, s.longitude AS lon,
          3958.8*2*asin(sqrt(least(1,greatest(0, power(sin(radians(s.latitude-r.latitude)/2),2)
            +cos(radians(r.latitude))*cos(radians(s.latitude))*power(sin(radians(s.longitude-r.longitude)/2),2))))) AS distance_miles
-  FROM live_stores s CROSS JOIN r WHERE s.latitude IS NOT NULL AND s.longitude IS NOT NULL),
+  FROM live_stores s CROSS JOIN r WHERE s.latitude IS NOT NULL AND s.longitude IS NOT NULL AND coalesce(s.operating_status,'') <> 'closed'),
 b AS MATERIALIZED (
   SELECT o.id, o.endpoint_id, o.status, o.last_diff_action, o.last_seen_at, o.snapshot_id, o.payload_json::jsonb AS j,
          e.store_id, e.license_type, e.status AS ep_status, e.url AS endpoint_url, e.provider, e.last_success_at, e.last_converged_at,
@@ -185,9 +186,13 @@ c AS MATERIALIZED (
   SELECT b.*, coalesce(j->>'completeness','A') AS completeness,
          CASE WHEN j->>'category'='flower' THEN coalesce(${gradeOf(`(j->>'subcategory')`)}, ${gradeOf(`(j->>'name')`)}, 'whole') END AS fgrade
   FROM b),
-d AS (
-  SELECT c.*, coalesce(extract(epoch FROM now()-(CASE WHEN completeness='B' THEN last_converged_at ELSE last_success_at END)::timestamptz)/3600, 1e9) < 12 AS fresh
+d0 AS (
+  SELECT c.*, (CASE WHEN completeness='B' THEN last_converged_at ELSE last_success_at END) AS as_of,
+         coalesce(extract(epoch FROM now()-(CASE WHEN completeness='B' THEN last_converged_at ELSE last_success_at END)::timestamptz)/3600, 1e9) AS age_h
   FROM c),
+d AS (
+  SELECT d0.*, age_h < 12 AS fresh, coalesce(bool_or(age_h < 12) OVER (PARTITION BY store_id, license_type), false) AS store_fresh
+  FROM d0),
 e AS (
   SELECT d.*, lower(trim(coalesce(j->>'brand',''))) AS b,
          coalesce((SELECT string_agg(m[1], ',' ORDER BY m[1]) FROM regexp_matches(lower(split_part(coalesce(j->>'name',''), ' - ', 1)), '${LINE_RE}', 'g') m), '') AS lw
@@ -202,7 +207,7 @@ pg AS (
   SELECT gk, row_number() OVER (ORDER BY ${sortOrderClause(q.sort)}) AS ord, count(*) OVER() AS total
   FROM reps ORDER BY ord LIMIT ${arg(size)} OFFSET ${arg((page - 1) * size)})
 SELECT f.id, endpoint_id, last_diff_action, last_seen_at, snapshot_id, j, store_id, license_type, store_name, endpoint_url, provider,
-       completeness, fgrade, distance_miles, fresh, gk, total
+       completeness, fgrade, distance_miles, fresh, as_of, age_h, gk, total
 FROM f JOIN pg USING (gk) ORDER BY ord, f.id`;
   const [data, version] = await Promise.all([rows<Record<string, any>>(text, p), dataVersion()]);
   const offers = data.map((r) => {
@@ -212,7 +217,7 @@ FROM f JOIN pg USING (gk) ORDER BY ord, f.id`;
       id: r.id, endpoint_id: r.endpoint_id, store_id: r.store_id, license_type: r.license_type, status: 'active',
       last_diff_action: r.last_diff_action, last_seen_at: r.last_seen_at, snapshot_id: r.snapshot_id,
       store_name: r.store_name, distance_miles: Math.round(Number(r.distance_miles) * 1000) / 1000,
-      completeness: r.completeness, freshness: r.fresh ? 'fresh' : 'stale', flower_grade: r.fgrade,
+      completeness: r.completeness, freshness: r.fresh ? 'fresh' : 'stale', menu_as_of: r.as_of ?? null, menu_age_hours: r.age_h < 1e8 ? Math.round(Number(r.age_h)) : null, flower_grade: r.fgrade,
       source_url: withProductUrl(r.j, r.provider, r.endpoint_url, r.license_type),
       gk: r.gk,
     };
@@ -248,7 +253,7 @@ st AS (
   SELECT s.id, coalesce((SELECT i.name FROM live_store_identity i WHERE i.store_id=s.id AND i.kind='rebrand' ORDER BY i.id DESC LIMIT 1), s.name) AS name,
          3958.8*2*asin(sqrt(least(1,greatest(0, power(sin(radians(s.latitude-r.latitude)/2),2)
            +cos(radians(r.latitude))*cos(radians(s.latitude))*power(sin(radians(s.longitude-r.longitude)/2),2))))) AS distance_miles
-  FROM live_stores s CROSS JOIN r WHERE s.latitude IS NOT NULL AND s.longitude IS NOT NULL)
+  FROM live_stores s CROSS JOIN r WHERE s.latitude IS NOT NULL AND s.longitude IS NOT NULL AND coalesce(s.operating_status,'') <> 'closed')
 SELECT st.id, st.name, st.distance_miles FROM st
 WHERE st.distance_miles <= (SELECT radius_miles FROM r)
   AND EXISTS (SELECT 1 FROM live_endpoints e WHERE e.store_id=st.id AND e.status<>'superseded' ${lic})

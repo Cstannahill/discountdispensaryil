@@ -323,7 +323,7 @@ export default function FilterStrip({
                   checked={stale}
                   onChange={(e) => updateParams({ stale: e.target.checked ? '1' : null })}
                 />
-                <span>Include stale menus (&gt;12h)</span>
+                <span>Also show older menus from stores that have a newer one</span>
               </label>
             </div>
 
