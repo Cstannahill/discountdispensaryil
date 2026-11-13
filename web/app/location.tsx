@@ -368,6 +368,10 @@ export default function LocationControl({
 
   const stale = src === 'gps' && fixAt > 0 && now - fixAt > STALE_MS;
 
+  // Highlight only the chip that matches the active location: a hub's ZIP ends its geocoded label ("Chicago, IL 60601").
+  const activeZip = active && src !== 'gps' ? (place.match(/\b(\d{5})$/)?.[1] ?? '') : '';
+  const gpsActive = active && src === 'gps';
+
   const orderedChips = chips
     ? [
         ...chips.filter((c) => c.id === 'flower'),
@@ -592,8 +596,9 @@ export default function LocationControl({
               title="Use your device's location"
               onClick={gps}
               className={`pill !px-2.5 !py-1 !text-[11px] shrink-0 font-semibold ${
-                src === 'gps' ? 'pill-active' : 'text-emerald-300 border-emerald-500/40'
+                gpsActive ? 'pill-active' : ''
               }`}
+              aria-pressed={gpsActive}
             >
               {busy ? 'Locating…' : '📍 Current location'}
             </button>
@@ -607,7 +612,8 @@ export default function LocationControl({
                   setText('');
                   void resolveQuery(zip);
                 }}
-                className="pill !px-2.5 !py-1 !text-[11px] shrink-0"
+                aria-pressed={activeZip === zip}
+                className={`pill !px-2.5 !py-1 !text-[11px] shrink-0 ${activeZip === zip ? 'pill-active' : ''}`}
               >
                 {label}
               </button>
