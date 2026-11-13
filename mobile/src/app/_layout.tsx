@@ -27,6 +27,10 @@ export default function RootLayout() {
           <NativeTabs.Trigger.Label>Deals</NativeTabs.Trigger.Label>
           <NativeTabs.Trigger.Icon sf={{ default: 'tag', selected: 'tag.fill' }} md="sell" />
         </NativeTabs.Trigger>
+        <NativeTabs.Trigger name="map">
+          <NativeTabs.Trigger.Label>Map</NativeTabs.Trigger.Label>
+          <NativeTabs.Trigger.Icon sf={{ default: 'map', selected: 'map.fill' }} md="map" />
+        </NativeTabs.Trigger>
         <NativeTabs.Trigger name="saved">
           <NativeTabs.Trigger.Label>Saved</NativeTabs.Trigger.Label>
           <NativeTabs.Trigger.Icon sf={{ default: 'star', selected: 'star.fill' }} md="star" />

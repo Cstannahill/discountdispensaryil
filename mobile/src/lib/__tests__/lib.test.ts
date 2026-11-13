@@ -1,10 +1,11 @@
-import { dealParams, savedLookupParams } from '../api';
+import { dealParams, mapParams, savedLookupParams } from '../api';
 import { cacheKey } from '../cache';
 import { calculateOtd, inferTaxRate } from '../calculator';
-import { freshnessLabel, massLabel, money, relativeTime, safeUrl, shareText } from '../format';
-import { miles, moveAction, placeLabel, shouldRecheck, RECHECK_MS } from '../geo';
+import { directionsUrl, freshnessLabel, massLabel, money, relativeTime, safeUrl, shareText } from '../format';
+import { miles, moveAction, placeLabel, regionFor, shouldRecheck, RECHECK_MS } from '../geo';
+import { cheapest } from '../map';
 import { findCurrent, watchStatus } from '../price-watch';
-import { DEFAULT_FILTERS, sizesFor, type Offer, type Origin, type SavedDeal } from '../types';
+import { DEFAULT_FILTERS, sizesFor, type MapStore, type Offer, type Origin, type SavedDeal } from '../types';
 
 jest.mock('@react-native-async-storage/async-storage', () => ({}));
 
@@ -116,5 +117,37 @@ describe('formatting', () => {
     expect(inferTaxRate({ license_type: 'medicinal' })).toBe(1);
     expect(inferTaxRate({ category: 'concentrate' })).toBe(37);
     expect(calculateOtd({ price: 40, weight: 3.5, discountPct: 25, taxPct: 22 }).outTheDoorTotal).toBeCloseTo(36.6);
+  });
+});
+
+describe('map', () => {
+  const store = (id: string, unit: string | null, lat = 40.7, lon = -89.6): MapStore => ({
+    id, name: id, address: '1 Main St', city: 'Peoria', state: 'IL', latitude: lat, longitude: lon, distance_miles: 1, deals: unit ? 3 : 0,
+    best: unit ? { offer_id: 'o', name: 'n', brand: null, unit_price: unit, effective_price: '10', weight_grams: '3.5', dose_mg: null, freshness: 'fresh', menu_age_hours: 1 } : null,
+  });
+  test('asks the API for the same area, license and category as the deal list', () => {
+    expect(mapParams(origin, 25, 'recreational', 'vapes')).toEqual({ lat: '41.8781', lon: '-87.6298', radius: '25', license_type: 'recreational', category: 'vapes' });
+  });
+  test('the cheapest store ignores hidden stores and stores without deals', () => {
+    const stores = [store('a', '9.00'), store('b', '4.50'), store('c', null), store('d', '10.00')];
+    expect(cheapest(stores, [])?.id).toBe('b');
+    expect(cheapest(stores, ['b'])?.id).toBe('a'); // compared as numbers: 9.00 is below 10.00
+    expect(cheapest([store('c', null)], [])).toBeNull();
+  });
+  test('the region covers the search centre and every pin', () => {
+    const c = { lat: 40.7, lon: -89.6 };
+    const r = regionFor(c, 50, [store('a', '1', 41.2, -89.0), store('b', '1', 40.5, -90.1)]);
+    expect(r.latitude - r.latitudeDelta / 2).toBeLessThan(40.5);
+    expect(r.latitude + r.latitudeDelta / 2).toBeGreaterThan(41.2);
+    expect(r.longitude - r.longitudeDelta / 2).toBeLessThan(-90.1);
+    expect(r.longitude + r.longitudeDelta / 2).toBeGreaterThan(-89.0);
+    const empty = regionFor(c, 50, []);
+    expect(empty.latitudeDelta).toBeCloseTo(100 / 69);
+    expect(regionFor(c, 50, [store('a', '1', 40.7, -89.6)]).latitudeDelta).toBe(0.02); // one pin on the centre still gets a usable zoom
+  });
+  test('directions use the street address when there is one', () => {
+    expect(decodeURIComponent(directionsUrl('Green Leaf', { address: '1 Main St', city: 'Peoria', state: 'IL' }))).toContain('query=Green Leaf, 1 Main St, Peoria, IL');
+    expect(decodeURIComponent(directionsUrl('Green Leaf', { address: ' ' }))).toContain('query=Green Leaf dispensary Illinois');
+    expect(decodeURIComponent(directionsUrl('Green Leaf'))).toContain('query=Green Leaf dispensary Illinois');
   });
 });

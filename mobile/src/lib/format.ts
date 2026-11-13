@@ -47,8 +47,12 @@ export function safeUrl(v?: string | null): string | undefined {
   return m ? m[0] : undefined;
 }
 
-export const directionsUrl = (storeName: string) =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${storeName} dispensary Illinois`)}`;
+/** A maps link: the street address when we have one (exact), else a name search. */
+export function directionsUrl(storeName: string, place?: { address?: string | null; city?: string | null; state?: string | null }): string {
+  const street = place?.address?.trim();
+  const query = street ? [storeName, street, place?.city, place?.state || 'IL'].filter(Boolean).join(', ') : `${storeName} dispensary Illinois`;
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
 
 export function shareText(o: Offer): string {
   const unit = unitLabel(o.category);

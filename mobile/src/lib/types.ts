@@ -37,6 +37,15 @@ export interface Offer {
 }
 export interface Page<T> { items: T[]; total: number; page: number; page_size: number; data_version: string }
 export interface AreaStore { id: string; name: string; distance_miles: number }
+/** A dispensary on the map, from /api/v1/stores/map (web/lib/store-map.ts). */
+export interface MapStore {
+  id: string; name: string; address: string | null; city: string | null; state: string | null;
+  latitude: number; longitude: number; distance_miles: number; deals: number;
+  best: null | {
+    offer_id: string; name: string; brand: string | null; unit_price: string; effective_price: string | null;
+    weight_grams: string | null; dose_mg: string | null; freshness: 'fresh' | 'stale'; menu_age_hours: number | null;
+  };
+}
 
 export interface Origin { lat: number; lon: number; place: string; src: 'gps' | 'manual'; at: number }
 

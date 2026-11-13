@@ -20,7 +20,7 @@ export async function openMenu(url: string) {
   catch { Linking.openURL(url).catch(() => toast('Could not open the menu')); }
 }
 
-export const openDirections = (store: string) => { Linking.openURL(directionsUrl(store)).catch(() => toast('Could not open maps')); };
+export const openDirections = (store: string, place?: Parameters<typeof directionsUrl>[1]) => { Linking.openURL(directionsUrl(store, place)).catch(() => toast('Could not open maps')); };
 
 export function shareOffer(o: Offer) {
   const url = safeUrl(o.source_url);

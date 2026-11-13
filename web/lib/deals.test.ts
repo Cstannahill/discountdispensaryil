@@ -236,3 +236,28 @@ describe('strain grouping threshold', () => {
     assert.equal(c, "n >= CASE WHEN b <> '' AND lw <> '' THEN 2 ELSE 3 END");
   });
 });
+
+describe('store map query (mobile app)', async () => {
+  const { storeMapQuery, mapRow } = await import('./store-map.ts');
+  const origin = { latitude: 40.6936, longitude: -89.589, radius_miles: 50 };
+
+  it('binds every value as a parameter and falls back to flower for an unknown category', () => {
+    const q = storeMapQuery({ origin, license_type: 'recreational', category: "x'; DROP TABLE live_stores;--" });
+    assert.deepEqual(q.params, [40.6936, -89.589, 50, 'recreational', 'flower']);
+    assert.ok(!q.text.includes('DROP TABLE'));
+    assert.ok(q.text.includes("coalesce(s.operating_status,'') <> 'closed'"));
+    assert.deepEqual(storeMapQuery({ origin, category: 'edibles' }).params, [40.6936, -89.589, 50, 'edibles']);
+  });
+
+  it('shapes a row with a best deal and a row without one', () => {
+    const base = { id: 's1', name: 'Store', address: '1 Main St', city: 'Peoria', state: 'IL', lat: '40.7', lon: '-89.6', distance_miles: '2.345' };
+    const withDeal = mapRow({ ...base, deals: '4', offer_id: 'o1', offer_name: 'Blue Dream', brand: '', unit_price: '8.5714', effective_price: '30', weight_grams: '3.5', dose_mg: null, fresh: false, age_h: '71.6' });
+    assert.deepEqual(withDeal.best, { offer_id: 'o1', name: 'Blue Dream', brand: null, unit_price: '8.57', effective_price: '30', weight_grams: '3.5', dose_mg: null, freshness: 'stale', menu_age_hours: 72 });
+    assert.equal(withDeal.distance_miles, 2.3);
+    assert.equal(withDeal.latitude, 40.7);
+    const none = mapRow({ ...base, address: '', deals: 0, offer_id: null, unit_price: null });
+    assert.equal(none.best, null);
+    assert.equal(none.address, null);
+    assert.equal(none.deals, 0);
+  });
+});

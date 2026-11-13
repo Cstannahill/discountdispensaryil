@@ -30,8 +30,11 @@ export default function DealsScreen() {
   const link = useLocalSearchParams<{ q?: string; category?: string }>();
   useEffect(() => {
     const category = CATEGORIES.includes(link.category as Category) ? (link.category as Category) : undefined;
-    if (link.q != null || category) { setFilters({ ...(link.q != null ? { q: link.q } : {}), ...(category ? { category } : {}) }); if (link.q != null) setText(link.q); }
+    if (link.q != null || category) setFilters({ ...(link.q != null ? { q: link.q.trim() } : {}), ...(category ? { category } : {}) });
   }, [link.q, link.category]);
+
+  // A search set elsewhere (the map's "See deals", a deep link) shows up in the box.
+  useEffect(() => { setText((t) => (t.trim() === filters.q ? t : filters.q)); }, [filters.q]);
 
   // Search as you type, after a short pause.
   useEffect(() => {

@@ -35,3 +35,17 @@ export function placeLabel(a?: { city?: string | null; subregion?: string | null
   const st = region.length === 2 ? region.toUpperCase() : US_STATES[region.toLowerCase()] ?? region;
   return st ? `${city}, ${st}` : city;
 }
+
+export interface Region { latitude: number; longitude: number; latitudeDelta: number; longitudeDelta: number }
+
+/** A map region that shows the search centre and every pin, with a margin; falls back to the search radius when there are no pins. */
+export function regionFor(center: Point, radiusMiles: number, pins: readonly { latitude: number; longitude: number }[]): Region {
+  const milesPerLat = 69, milesPerLon = Math.max(1, 69 * Math.cos(center.lat * Math.PI / 180));
+  if (!pins.length) return { latitude: center.lat, longitude: center.lon, latitudeDelta: (radiusMiles * 2) / milesPerLat, longitudeDelta: (radiusMiles * 2) / milesPerLon };
+  const lats = [center.lat, ...pins.map((p) => p.latitude)], lons = [center.lon, ...pins.map((p) => p.longitude)];
+  const minLat = Math.min(...lats), maxLat = Math.max(...lats), minLon = Math.min(...lons), maxLon = Math.max(...lons);
+  return {
+    latitude: (minLat + maxLat) / 2, longitude: (minLon + maxLon) / 2,
+    latitudeDelta: Math.max(0.02, (maxLat - minLat) * 1.3), longitudeDelta: Math.max(0.02, (maxLon - minLon) * 1.3),
+  };
+}

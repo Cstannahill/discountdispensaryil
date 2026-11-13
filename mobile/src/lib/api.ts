@@ -1,5 +1,5 @@
 import { API_BASE, PAGE_SIZE } from './config';
-import type { AreaStore, Filters, Offer, Origin, Page, SavedDeal } from './types';
+import type { AreaStore, Filters, MapStore, Offer, Origin, Page, SavedDeal } from './types';
 
 export class ApiError extends Error {
   constructor(message: string, readonly status: number, readonly code?: string) { super(message); }
@@ -47,6 +47,10 @@ export const fetchDeals = (params: Record<string, string | undefined>, signal?: 
 
 export const fetchStores = (o: Origin, radius: number, license: string, signal?: AbortSignal) =>
   get<{ items: AreaStore[]; total: number }>('/api/v1/stores', { ...originParams(o, radius), license_type: license }, signal).then((r) => r.items);
+
+export const mapParams = (o: Origin, radius: number, license: string, category: string) => ({ ...originParams(o, radius), license_type: license, category });
+export const fetchMapStores = (params: Record<string, string | undefined>, signal?: AbortSignal) =>
+  get<{ items: MapStore[]; total: number }>('/api/v1/stores/map', params, signal).then((r) => r.items);
 
 export const geocode = (q: string) => get<{ label: string; latitude: number; longitude: number }>('/api/v1/geocode', { q });
 
