@@ -192,6 +192,8 @@ const READ_HEADERS=['accept','content-type','apollo-require-preflight','x-apollo
 const pagedQueries=[],replayed=new Set();
 // The storefront's own product-search POSTs (GapCommerce). Kept so the page's request can be replayed from the page.
 const gapTemplates=[];
+// The storefront's own product-search POSTs (Carrot, a Typesense multi-search). Kept so the page's request can be replayed from the page.
+const carrotTemplates=[];
 // Context/presentation keys of a Dutchie product filter; anything else narrows the result set (staffPicks, brand, ids...).
 const benignFilterKeys=/^(?:dispensaryId|pricingType|strainTypes|subcategories|Status|types|useCache|isDefaultSort|sortBy|sortDirection|bypassOnlineThresholds|ignoreQuantityThresholds|isKioskMenu|removeProductsBelowOptionThresholds|platformType|preOrderType)$/;
 // Dutchie FilteredProducts requests the page itself made (any category, however few products). They carry the persisted-query
@@ -341,6 +343,40 @@ async function replayGapSearch(page,captures,entity,deadline){
    if(from+100>=total||!result.hits)break;
   }
   summary.sorts.push(direction);
+ }
+ return summary;
+}
+// Replays the storefront's own whole-menu search (Carrot: Typesense multi-search) from inside the page for one location: the page's
+// unfiltered request, 250 products per page, twice through. Every response is captured like any other page response.
+async function replayCarrotSearch(page,captures,locId,deadline){
+ const summary={templates:0,fetched:0,errors:0,passes:0};
+ const isWhole=value=>{try{const body=JSON.parse(value.body);const searches=body.searches;return new URL(value.url).searchParams.get('locId')===String(locId)&&Array.isArray(searches)&&searches.length===1&&searches[0].q==='*'&&!searches[0].filter_by;}catch{return false;}};
+ const template=[...carrotTemplates].reverse().find(isWhole);
+ if(!template)return summary;
+ let base;try{base=JSON.parse(template.body).searches[0];}catch{return summary;}
+ summary.templates=1;
+ delete base.facet_by;delete base.max_facet_values;
+ for(let pass=0;pass<2;pass++){
+  let total=null;
+  for(let number=1;number<=200&&Date.now()<deadline;number++){
+   const body={searches:[{...base,per_page:250,page:number}]};
+   const seen=captures.length;
+   const result=await retried(()=>page.evaluate(async ({url,headers,body})=>{
+    try{
+     const response=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});
+     const value=await response.json().catch(()=>null);
+     const first=value&&value.results&&value.results[0];
+     return {status:response.status,total:first&&Number.isInteger(first.found)?first.found:null,hits:first&&first.hits?first.hits.length:0};
+    }catch(error){return {status:0,total:null,hits:0,error:String(error&&error.message||error).slice(0,200)};}
+   },{url:template.url,headers:template.headers,body}));
+   if(result.status!==200||!Number.isInteger(result.total)){summary.errors++;summary.error=result.error||('status '+result.status);break;}
+   summary.fetched++;
+   await waitForCapture(page,captures,seen,8000);
+   if(total===null)total=result.total;
+   if(result.total!==total){summary.errors++;break;}
+   if(number*250>=total||!result.hits)break;
+  }
+  summary.passes++;
  }
  return summary;
 }
@@ -614,6 +650,11 @@ async function run({url,options,storage_state,native_proxy}){
      // Only headers a page script may set are kept; the browser drops the rest of a replay's headers anyway.
      gapTemplates.push({url:response.url(),headers:Object.fromEntries(['content-type','accept','entity-id','org-id','x-api-key'].filter(key=>all[key]).map(key=>[key,all[key]])),body:req.postData()||'',entity:all['entity-id']||''});
     }
+    if(req.method()==='POST'&&response.status()===200&&/\.getcarrot\.io$/.test(new URL(response.url()).hostname)&&new URL(response.url()).pathname==='/api/v1/store/search-products'&&carrotTemplates.length<50){
+     const all=await req.allHeaders();
+     // Only headers a page script may set are kept; the browser supplies the rest of a replay's headers itself.
+     carrotTemplates.push({url:response.url(),headers:Object.fromEntries(Object.entries(all).filter(([key])=>!/^(?:cookie|host|content-length|origin|referer|user-agent|accept-encoding|connection|sec-.*|:.*)$/i.test(key))),body:req.postData()||''});
+    }
     if(req.method()==='GET'&&response.status()===200&&(responseHeaders['content-type']||'').includes('json')){
      // Replays run inside the page and carry the request's own app headers (Cresco: the bundle's public key and the store/app ids).
      const keep=['accept','content-type','apollo-require-preflight','x-apollo-operation-name','apollographql-client-name','apollographql-client-version','x-api-key','x-client-version','store_id','ordering_app_id'],all=await req.allHeaders();
@@ -719,6 +760,11 @@ async function run({url,options,storage_state,native_proxy}){
    while(!gapTemplates.some(value=>value.entity===options.gap_entity)&&Date.now()<templateDeadline)await page.waitForTimeout(250);
    // Reported with the scroll summary: the render result carries that field to the evidence record.
    diagnostics.scroll=await replayGapSearch(page,captures,options.gap_entity,Date.now()+150000);
+  }
+  if(options.carrot_search){
+   const templateDeadline=Date.now()+30000;
+   while(!carrotTemplates.some(value=>value.url.includes('locId='+options.carrot_loc)&&!value.body.includes('filter_by'))&&Date.now()<templateDeadline)await page.waitForTimeout(250);
+   diagnostics.scroll=await replayCarrotSearch(page,captures,options.carrot_loc,Date.now()+150000);
   }
   if(native_proxy)await page.waitForLoadState('networkidle',{timeout:5000}).catch(()=>{});
   await progress('menu_readiness');

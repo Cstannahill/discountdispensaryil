@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import LocationControl from './location';
 import FilterStrip from './filters';
 import CategoryGrid from './categories';
@@ -5,8 +6,14 @@ import OfferCard from './offer-card';
 import CalculatorModal from './calculator';
 import SavedModal from './saved-modal';
 import ToastContainer from './toast';
+import PendingBar from './pending';
 import BackToTop from './back-to-top';
+import HiddenStores from './hidden-stores';
+import { CITIES } from '@/lib/cities';
+import { SEO_CATEGORIES } from '@/lib/seo';
 import { parseOrigin } from '@/lib/origin';
+import { cachedDeals, cachedRegions, cachedStoresInArea } from '@/lib/cached';
+import { parseHidden, HIDE_PARAM } from '@/lib/hidden';
 import {
   CATEGORIES,
   GRADES,
@@ -15,18 +22,27 @@ import {
   STRAINS,
   SORT_OPTIONS,
   type SortOption,
-  queryDeals,
-  regions,
+  perUnit,
   sizeForCategory,
+  unitLabel,
 } from '@/lib/deals';
 
 export const dynamic = 'force-dynamic';
+
+// Every filter, location and pagination variant canonicalises to "/" and stays out of the index, so crawlers
+// see one strong page instead of thousands of near-duplicate query URLs.
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Search> }): Promise<Metadata> {
+  const sp = await searchParams;
+  if (Object.keys(sp).length === 0) return {};
+  return { alternates: { canonical: '/' }, robots: { index: false, follow: true } };
+}
 
 const PAGE_SIZE = 20;
 const ACCENT: Record<string, string> = {
   concentrate: '#fbbf24',
   flower: '#34d399',
   vapes: '#c084fc',
+  edibles: '#fb7185',
 };
 type Search = Record<string, string | string[] | undefined>;
 
@@ -38,7 +54,7 @@ const money = (v: string | null | undefined) =>
 
 export default async function Home({ searchParams }: { searchParams: Promise<Search> }) {
   const sp = await searchParams;
-  const reg = await regions();
+  const reg = await cachedRegions();
   const regionId = one(sp.region) || reg.active_region_id || reg.items[0]?.id || '';
   const origin = parseOrigin((k) => one(sp[k]) || null);
   const license = LICENSES.includes(one(sp.license) as never) ? one(sp.license) : 'recreational';
@@ -58,9 +74,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     cats.map((c) => [c, Math.max(1, Number(one(sp[`p_${c}`])) || 1)])
   );
 
+  const hidden = parseHidden(one(sp[HIDE_PARAM]));
+  const areaStores = await cachedStoresInArea({ region_id: regionId, origin: origin ?? undefined, license_type: license }).catch(() => []);
+
   const results = await Promise.all(
     cats.map((category) =>
-      queryDeals({
+      cachedDeals({
         region_id: regionId,
         origin: origin ?? undefined,
         license_type: license,
@@ -72,6 +91,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         strain_type: strain || undefined,
         size: sizeForCategory(category, size),
         promo: bogo ? 'bogo' : undefined,
+        exclude_stores: hidden,
         group: true,
         sort,
         page: pages[category],
@@ -98,6 +118,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     unverified: unverified ? '1' : '',
     promo: bogo ? 'bogo' : '',
     sort: sort !== 'value' ? sort : '',
+    [HIDE_PARAM]: hidden.join(','),
   };
 
   const link = (category: string, page: number) => {
@@ -154,14 +175,17 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         sort={sort}
       />
 
+      <HiddenStores stores={areaStores} hidden={hidden} />
+
       {region && (
         <p className="text-[11px] text-slate-400 px-1">
           Showing <strong className="text-slate-200">{license}</strong> deals within{' '}
           <strong className="text-slate-200">{region.radius_miles} miles</strong> of{' '}
-          <strong className="text-emerald-400">{region.label}</strong>. Pre-tax observed menu prices; menus older than 12h hidden unless included.
+          <strong className="text-emerald-400">{region.label}</strong>. Pre-tax observed menu prices; a dispensary whose latest sync found no menu shows its last good menu, labelled with its age.
         </p>
       )}
 
+      <div id="results">
       <CategoryGrid chips={categoryChips}>
         {cats.map((category, i) => {
           const r = results[i];
@@ -180,7 +204,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
               <div
                 className="category-art relative h-24 sm:h-28"
                 style={{
-                  backgroundImage: `linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),url('/${category}.jpg')`,
+                  backgroundImage:
+                    category === 'edibles'
+                      ? 'linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),linear-gradient(135deg,#9f1239,#7c3aed 60%,#0f766e)'
+                      : `linear-gradient(to top,#060a0d 8%,rgba(6,10,13,.35)),url('/${category}.webp')`,
                 }}
               >
                 <div className="absolute inset-x-4 bottom-3 flex items-end justify-between gap-2">
@@ -192,7 +219,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
                       >
                         {category}
                       </span>
-                      {activeSize && (
+                      {activeSize && category !== 'edibles' && (
                         <span className="badge text-emerald-300 border-emerald-500/40">
                           {activeSize}g
                         </span>
@@ -206,16 +233,16 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
                     </h2>
                   </div>
 
-                  {topDeal?.price_per_gram && (
+                  {topDeal && perUnit(topDeal) && (
                     <div className="text-right bg-slate-950/85 border border-slate-800 rounded-xl px-2.5 py-1">
                       <span className="block text-[9px] uppercase tracking-wider text-slate-400">
-                        Best $/g
+                        Best $/{unitLabel(category)}
                       </span>
                       <span
                         className="font-mono font-extrabold text-sm"
                         style={{ color: ACCENT[category] }}
                       >
-                        {money(topDeal.price_per_gram)}/g
+                        {money(perUnit(topDeal))}/{unitLabel(category)}
                       </span>
                     </div>
                   )}
@@ -224,7 +251,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
               <div className="px-4 py-2 bg-slate-900/95 border-b border-slate-800/90 flex items-center justify-between text-[11px] text-slate-400">
                 <span>
-                  Ranked by <strong style={{ color: ACCENT[category] }}>price / gram</strong>
+                  Ranked by{' '}
+                  <strong style={{ color: ACCENT[category] }}>
+                    {category === 'edibles' ? 'price / 10 mg THC' : 'price / gram'}
+                  </strong>
                 </span>
                 <span className="font-mono">
                   {r.total} {r.total === 1 ? 'listing' : 'listings'}
@@ -328,7 +358,35 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
           );
         })}
       </CategoryGrid>
+      </div>
 
+      <nav aria-label="Browse by city" className="px-1 pt-2">
+        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Cheapest weed by Illinois city</h2>
+        <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+          {CITIES.map((c) => (
+            <li key={c.slug}>
+              <a href={`/dispensary-deals/${c.slug}`} className="text-slate-400 hover:text-emerald-300">
+                {c.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs mt-2">
+          <li><a href="/illinois-dispensary-price-comparison" className="text-slate-400 hover:text-emerald-300">Illinois dispensary price comparison</a></li>
+          {['peoria', 'normal', 'champaign', 'chicago'].flatMap((slug) =>
+            SEO_CATEGORIES.slice(0, 3).map((k) => {
+              const c = CITIES.find((x) => x.slug === slug)!;
+              return (
+                <li key={`${slug}-${k.slug}`}>
+                  <a href={`/dispensary-deals/${slug}/${k.slug}`} className="text-slate-400 hover:text-emerald-300">Cheapest {k.label.toLowerCase()} in {c.name}</a>
+                </li>
+              );
+            })
+          )}
+        </ul>
+      </nav>
+
+      <PendingBar />
       <CalculatorModal />
       <SavedModal />
       <ToastContainer />

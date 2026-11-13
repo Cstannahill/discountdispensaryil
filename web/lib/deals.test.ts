@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { strainBucket, parseSize, sizeForCategory, strainClause, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS } from './deals.ts';
+import { strainBucket, parseSize, sizeForCategory, strainClause, groupCollapseClause, MIN_GROUP, MIN_GROUP_BRANDED_LINE, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS } from './deals.ts';
 import { formatRelativeTime } from './time.ts';
 import { calculateOtd, inferTaxRate, calculateSavings, parseThc } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
@@ -51,6 +51,8 @@ describe('package size parsing and category scoping', () => {
     assert.equal(sizeForCategory('concentrate', '1'), '1');
     assert.equal(sizeForCategory('vapes', '0.5'), '0.5');
     assert.equal(sizeForCategory('flower', 'any'), undefined);
+    assert.equal(sizeForCategory('edibles', '1'), undefined);
+    assert.equal(sizeForCategory('edibles', '3.5'), undefined);
   });
 });
 
@@ -134,6 +136,7 @@ describe('SORT_OPTIONS and sortOrderClause', () => {
   });
 
   it('generates safe SQL clauses for all options', () => {
+    assert.match(sortOrderClause('value'), /edibles.*dose_mg.*\* 10 ELSE/);
     assert.match(sortOrderClause('value'), /NULLIF\(j->>'effective_price',\s*''\)::numeric.*NULLIF\(j->>'weight_grams',\s*''\)::numeric.*ASC/);
     assert.match(sortOrderClause('price'), /NULLIF\(j->>'effective_price',\s*''\)::numeric.*ASC/);
     assert.match(sortOrderClause('thc'), /substring\(j->>'thc_pct'\s+from\s+'\(\[0-9\]\+\(\?:\\\.\[0-9\]\+\)\?\)'\)::numeric.*DESC/);
@@ -212,5 +215,24 @@ describe('parseThc', () => {
     assert.equal(parseThc(''), null);
     assert.equal(parseThc(null), null);
     assert.equal(parseThc('n/a'), null);
+  });
+});
+
+describe('hidden dispensary list', async () => {
+  const { parseHidden, serializeHidden } = await import('./hidden.ts');
+  it('keeps valid unique ids and drops junk', () => {
+    assert.deepEqual(parseHidden('a1, b2,a1,,bad id,c3;'), ['a1', 'b2']);
+    assert.deepEqual(parseHidden(null), []);
+    assert.equal(serializeHidden(['x', 'y', 'x']), 'x,y');
+    assert.equal(parseHidden(Array.from({ length: 150 }, (_, i) => `s${i}`).join(',')).length, 100);
+  });
+});
+
+describe('strain grouping threshold', () => {
+  it('collapses a pair only when brand and a product-line word are both present', () => {
+    assert.equal(MIN_GROUP_BRANDED_LINE, 2);
+    assert.equal(MIN_GROUP, 3);
+    const c = groupCollapseClause('n', 'b', 'lw');
+    assert.equal(c, "n >= CASE WHEN b <> '' AND lw <> '' THEN 2 ELSE 3 END");
   });
 });

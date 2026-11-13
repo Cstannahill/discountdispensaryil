@@ -14,7 +14,7 @@ BLAZE_API = 'https://ecom-api.blaze.me/api/v1/products/'
 
 
 def provider_capabilities(provider):
-    native=provider in ('blaze','sweed','dispense','treez','gapcommerce','joint','jane','verano','leafly','dutchie')
+    native=provider in ('blaze','sweed','dispense','treez','gapcommerce','joint','jane','verano','leafly','dutchie','carrot')
     structured=provider in ('generic','jane','dutchie','cresco')
     return dict(native_full_menu=native,structured_fallback=structured,
                 support='native_full_menu' if native else 'conditional_structured_fallback' if structured else 'unsupported')
@@ -105,6 +105,10 @@ def _detect_endpoint(url, response, store=None):
         from backend.providers.treez import observe
         observed=observe(url,response)
         if observed:return observed
+    if 'carrot-store-root' in text and 'getcarrot.io' in text:
+        from backend.providers.carrot import observe as observe_carrot
+        endpoint=observe_carrot(url,response)
+        if endpoint:return endpoint
     if 'treezStores' in text:
         # Treez Ecommerce storefront that lists its branches: the GapCommerce search reads the registry branch's record.
         from backend.providers.gapcommerce import observe as observe_gapcommerce
@@ -437,6 +441,9 @@ def fetch_menu(endpoint, fetcher):
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'leafly':
         from backend.providers.leafly import fetch
+        return fetch(endpoint,fetcher)
+    if endpoint.get('provider') == 'carrot' and endpoint.get('provider_store_id'):
+        from backend.providers.carrot import fetch
         return fetch(endpoint,fetcher)
     if endpoint.get('provider') == 'jane' and endpoint.get('provider_store_id'):
         from backend.providers.jane import fetch

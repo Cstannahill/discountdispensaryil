@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { GRADES, STRAINS, SORT_OPTIONS, type SortOption } from '@/lib/deals';
+import { CATEGORIES, GRADES, STRAINS, SORT_OPTIONS, type SortOption } from '@/lib/deals';
 
 const SORT_LABELS: Record<SortOption, string> = {
   value: 'Best $/g',
@@ -61,6 +61,10 @@ export default function FilterStrip({
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffect(() => {
+    window.dispatchEvent(new CustomEvent('terpscout:pending', { detail: { source: 'filters', pending: isPending } }));
+  }, [isPending]);
+
+  useEffect(() => {
     setSearch(q);
   }, [q]);
 
@@ -79,7 +83,7 @@ export default function FilterStrip({
         u.set(k, v);
       }
     }
-    ['p_concentrate', 'p_flower', 'p_vapes'].forEach((k) => u.delete(k));
+    CATEGORIES.map((c) => `p_${c}`).forEach((k) => u.delete(k));
     startTransition(() => {
       router.push(`/?${u.toString()}`);
     });
@@ -127,8 +131,8 @@ export default function FilterStrip({
   return (
     <section aria-label="Deal filters" className="glass-card rounded-2xl p-3 space-y-2.5">
       {/* Row 1: Search Input + Advanced Filters Button */}
-      <div className="flex items-center gap-2">
-        <div className="relative flex-1 min-w-0">
+      <div className="flex flex-wrap items-center gap-2">
+        <div className="relative w-full sm:w-auto sm:flex-1 min-w-0">
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" aria-hidden="true">
             🔍
           </span>
@@ -151,6 +155,7 @@ export default function FilterStrip({
             <button
               type="button"
               aria-label="Clear search"
+              title="Clear search"
               onClick={() => {
                 setSearch('');
                 updateParams({ q: null });
@@ -163,12 +168,13 @@ export default function FilterStrip({
         </div>
 
         {/* Compact Sort Selector */}
-        <div className="relative shrink-0">
+        <div className="relative flex-1 sm:flex-none sm:shrink-0">
           <select
             aria-label="Sort deals by"
+            title="Sort deals"
             value={sort || 'value'}
             onChange={(e) => updateParams({ sort: e.target.value === 'value' ? null : e.target.value })}
-            className={`btn !py-2 !px-2.5 text-xs appearance-none pr-6 cursor-pointer font-medium ${
+            className={`btn w-full !py-2 !px-2.5 text-xs appearance-none pr-6 cursor-pointer font-medium ${
               sort && sort !== 'value'
                 ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15'
                 : 'text-slate-300 bg-slate-900/90 border-slate-700/80 hover:border-slate-600'
@@ -188,10 +194,12 @@ export default function FilterStrip({
         <button
           type="button"
           aria-expanded={drawerOpen}
+          aria-label="More filters"
+          title="More filters (grade, deals, stale menus)"
           onClick={() => setDrawerOpen((v) => !v)}
-          className={`btn shrink-0 !py-2 ${extraFilterCount > 0 || drawerOpen ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15' : ''}`}
+          className={`btn flex-1 sm:flex-none justify-center shrink-0 !py-2 ${extraFilterCount > 0 || drawerOpen ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15' : ''}`}
         >
-          <span>⚙ Filters</span>
+          <span aria-hidden="true">⚙</span>
           {extraFilterCount > 0 && (
             <span className="rounded-full bg-emerald-400 text-slate-950 px-1.5 py-0.5 text-[10px] font-extrabold font-mono">
               {extraFilterCount}
@@ -205,8 +213,9 @@ export default function FilterStrip({
             onClick={resetAll}
             className="btn shrink-0 !py-2 text-slate-400 hover:text-white inline-flex text-xs"
             aria-label="Reset all filters"
+            title="Reset all filters"
           >
-            ✕ Reset
+            ✕<span className="hidden sm:inline"> Reset</span>
           </button>
         )}
       </div>
@@ -222,6 +231,7 @@ export default function FilterStrip({
           type="button"
           aria-pressed={!strain}
           onClick={() => updateParams({ strain: null })}
+          title="Show all strain types"
           className={`pill !py-1 !px-2.5 !text-[11px] shrink-0 ${!strain ? 'pill-active' : ''}`}
         >
           All Strains
@@ -233,6 +243,7 @@ export default function FilterStrip({
               key={s}
               type="button"
               aria-pressed={active}
+              title={active ? `Remove ${s} filter` : `Only show ${s}`}
               onClick={() => updateParams({ strain: active ? null : s })}
               className={`pill !py-1 !px-2.5 !text-[11px] shrink-0 ${active ? STRAIN_STYLES[s] + ' font-bold' : ''}`}
             >
@@ -253,6 +264,7 @@ export default function FilterStrip({
               key={opt.value}
               type="button"
               aria-pressed={active}
+              title={opt.value === 'any' ? 'Any package size' : `Only ${opt.label} packages`}
               onClick={() => updateParams({ size: opt.value === 'any' ? null : opt.value })}
               className={`pill !py-1 !px-2.5 !text-[11px] font-mono shrink-0 ${active ? 'pill-active' : ''}`}
             >
@@ -311,12 +323,12 @@ export default function FilterStrip({
                   checked={stale}
                   onChange={(e) => updateParams({ stale: e.target.checked ? '1' : null })}
                 />
-                <span>Include stale menus (&gt;12h)</span>
+                <span>Also show older menus from stores that have a newer one</span>
               </label>
             </div>
 
             {hasAnyFilter && (
-              <button type="button" onClick={resetAll} className="btn !py-1.5 !px-3 text-xs">
+              <button type="button" onClick={resetAll} title="Clear search, sort and every filter" className="btn !py-1.5 !px-3 text-xs">
                 Reset all filters
               </button>
             )}

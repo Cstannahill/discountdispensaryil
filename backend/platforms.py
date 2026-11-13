@@ -8,6 +8,7 @@ import re
 # Menu/commerce platforms only. Marketing, loyalty, chat and analytics widgets (AlpineIQ, Springbig, HighQ, ...) appear
 # on many storefronts and say nothing about where the menu comes from, so they are deliberately absent.
 SIGNATURES = {
+    'carrot': r'getcarrot\.io|carrot-store-root',
     'jane': r'iheartjane\.com|jane-frame|janeroot',
     'dutchie': r'dutchie\.com|dutchieplus',
     'joint': r'jointEcommerce|/wp-content/plugins/joint-ecommerce/',

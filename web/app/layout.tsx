@@ -1,5 +1,7 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 
 const sans = Plus_Jakarta_Sans({
@@ -17,9 +19,49 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'TerpScout — Cheapest Cannabis $/g Near You',
-  description: 'Lowest observed price per gram for flower, concentrates and vapes at Illinois dispensaries, from full menu imports.',
-  icons: { icon: '/favicon.svg' },
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: `%s | ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: ['cheap weed Illinois', 'cheapest cannabis price per gram', 'Illinois dispensary prices', 'dispensary deals Illinois', 'cheap flower Chicago'],
+  alternates: { canonical: '/' },
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'en_US',
+    url: '/',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: { card: 'summary_large_image', title: SITE_TITLE, description: SITE_DESCRIPTION },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
+      name: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'WebApplication',
+      '@id': `${SITE_URL}/#app`,
+      url: `${SITE_URL}/`,
+      name: SITE_NAME,
+      description: SITE_DESCRIPTION,
+      applicationCategory: 'ShoppingApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript',
+      areaServed: { '@type': 'State', name: 'Illinois' },
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+    },
+  ],
 };
 
 export const viewport: Viewport = {
@@ -31,7 +73,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`dark ${sans.variable} ${mono.variable}`}>
-      <body className="font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">{children}</body>
+      <body className="font-sans antialiased selection:bg-emerald-500 selection:text-slate-950">{children}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }} />
+        <Analytics />
+      </body>
     </html>
   );
 }

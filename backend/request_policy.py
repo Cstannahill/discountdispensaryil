@@ -12,7 +12,7 @@ POLICIES = ('strict', 'platform_reads', 'diagnostic_posts')
 MAX_BODY_BYTES = 64 * 1024
 # Registrable domains of menu platforms whose storefronts load or initialise inventory with POST requests.
 PLATFORM_FAMILIES = ('iheartjane.com', 'dutchie.com', 'sweedpos.com', 'gapcommerceapi.com', 'dispenseapp.com',
-                     'blaze.me', 'treez.io', 'algolia.net', 'algolianet.com')
+                     'blaze.me', 'treez.io', 'algolia.net', 'algolianet.com', 'getcarrot.io')
 _DENIED_PATH = re.compile(r'(?:^|[/_-])(?:login|log-in|signin|sign-in|signup|sign-up|register|password|checkout|payment|payments|cart|carts|order|orders|account|accounts|token|oauth|subscribe|newsletter)(?:$|[/_.-])', re.I)
 # Analytics and impression beacons are never needed to read a menu; refuse them even on platform hosts.
 _TELEMETRY_PATH = re.compile(r'(?:^|/)(?:events?|track(?:ing)?|capture|record|collect|beacon|analytics|metrics|telemetry|log|logs|identify|pixel)(?:$|[/_.-]|\d)', re.I)

@@ -12,7 +12,7 @@ import uuid
 from .completeness import grade_for, valid_convergence
 from .product_links import with_product_url
 from .matching import flag_outliers, group_offers
-from .domain import age_hours, digest, distance_miles, flower_grade, instant, normalize_offer, utcnow
+from .domain import age_hours, digest, distance_miles, flower_grade, instant, normalize_offer, unit_value, utcnow
 
 REGISTRY_URL = "https://public.data.illinois.gov/t/Public/views/DispensaryMap/Map.csv?:showVizHome=no"
 # Registry map points corrected from a store's public address. The registry row keeps its own address; the point is restored
@@ -751,14 +751,14 @@ class Store:
             items = self._comparable_offers(region_id, license_type, include_stale, include_unverified, now)
         if flower_grade and flower_grade != "all":
             items = [r for r in items if r["flower_grade"] in (None, flower_grade)]
-        if category and category != "all":
-            items = [r for r in items if r["category"] == category]
+        # Edibles rank per 10 mg THC, not per gram, so they only appear when asked for by category.
+        items = [r for r in items if r["category"] == category] if category and category != "all" else [r for r in items if r["category"] != "edibles"]
         if q:
             items = [r for r in items if q.casefold() in " ".join(str(r.get(k) or "") for k in ("name", "brand", "store_name", "subcategory")).casefold()]
         items = self._filter_changes(items, strain_type, action)
-        if size and size != "any":
+        if size and size != "any" and category != "edibles":
             items = [r for r in items if abs(Decimal(r["weight_grams"])-Decimal(size)) <= Decimal(size)*Decimal("0.03")]
-        items.sort(key=lambda r: (Decimal(r["effective_price"])/Decimal(r["weight_grams"]), r["distance_miles"], r["id"]))
+        items.sort(key=lambda r: (unit_value(r), r["distance_miles"], r["id"]))
         result = self._paginate(items, page, page_size, data_version)
         if result["data_version"] != version_before:
             raise ValueError("refresh_required")
@@ -775,8 +775,7 @@ class Store:
         items = self._comparable_offers(region_id, license_type, include_stale, include_unverified, now)
         if flower_grade and flower_grade != "all":
             items = [r for r in items if r["flower_grade"] in (None, flower_grade)]
-        if category and category != "all":
-            items = [r for r in items if r["category"] == category]
+        items = [r for r in items if r["category"] == category] if category and category != "all" else [r for r in items if r["category"] != "edibles"]
         if q:
             items = [r for r in items if q.casefold() in " ".join(str(r.get(k) or "") for k in ("name", "brand", "subcategory")).casefold()]
         result = self._paginate(group_offers(items, min_stores), page, page_size, data_version)
@@ -812,7 +811,7 @@ class Store:
     def benchmark(self, region_id=None, license_type=None, include_stale=False):
         version = str(self.setting('data_version',0))
         items = [r for r in self._offer_rows(region_id,license_type) if r['status']=='active' and r['eligible'] and
-                 r['completeness']=='A' and (include_stale or r['freshness']=='fresh') and r['flower_grade'] in (None,'whole')]
+                 r['completeness']=='A' and r['category']!='edibles' and (include_stale or r['freshness']=='fresh') and r['flower_grade'] in (None,'whole')]
         groups = {}
         for offer in items:
             key = (offer['store_id'],offer['category'])

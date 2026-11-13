@@ -1,5 +1,6 @@
 """Cross-store product identity and price sanity, on offers already normalized (pure functions, no storage access)."""
 from decimal import Decimal
+from .domain import unit_value
 import html
 import re
 
@@ -25,11 +26,11 @@ def product_key(item):
     name = _MASS.sub(" ", html.unescape(str(item.get("name") or "")))
     words = {t for t in _tokens(name) if t not in drop and len(t) > 1}
     if not words or words <= _GENERIC: return None
-    return (str(item.get("category") or ""), str(item.get("weight_grams") or ""), str(item.get("flower_grade") or ""), " ".join(brand), " ".join(sorted(words)))
+    return (str(item.get("category") or ""), str(item.get("weight_grams") or ""), str(item.get("dose_mg") or ""), str(item.get("flower_grade") or ""), " ".join(brand), " ".join(sorted(words)))
 
 
 def _ppg(item):
-    return Decimal(item["effective_price"]) / Decimal(item["weight_grams"])
+    return unit_value(item)
 
 
 def _median(values):
@@ -77,7 +78,7 @@ def group_offers(offers, min_stores=2):
         if len(ranked) < min_stores: continue
         low, high = _ppg(ranked[0]), _ppg(ranked[-1])
         best = ranked[0]
-        groups.append(dict(id="|".join(key), name=best["name"], brand=best.get("brand"), category=best["category"], weight_grams=best["weight_grams"],
+        groups.append(dict(id="|".join(key), name=best["name"], brand=best.get("brand"), category=best["category"], weight_grams=best["weight_grams"], dose_mg=best.get("dose_mg"),
                            flower_grade=best.get("flower_grade"), store_count=len(ranked), best=best, offers=ranked,
                            savings_vs_highest_pct=float(round((high-low)/high*100, 1)) if high else 0.0))
     groups.sort(key=lambda g: (_ppg(g["best"]), g["id"]))

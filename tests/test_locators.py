@@ -76,6 +76,8 @@ class LocatorTests(unittest.TestCase):
     def test_street_abbreviations_match_but_house_numbers_do_not(self):
         self.assertTrue(addresses_match('50 Gore Rd', '50 Gore Road, Morris, Illinois'))
         self.assertTrue(addresses_match('3929 W. War Memorial Dr', '3929 West War Memorial Drive, Peoria IL'))
+        self.assertTrue(addresses_match('20 Northwest Hwy', '20 NW HWY'))
+        self.assertFalse(addresses_match('20 Northwest Hwy', '20 NE HWY'))
         self.assertFalse(addresses_match('1210 W Glen Ave', '1204 West Glen Avenue'))
 
     def test_new_unknown_brand_is_an_explicit_discovery_gap(self):
