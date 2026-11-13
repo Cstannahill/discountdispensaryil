@@ -1,0 +1,120 @@
+import { dealParams, savedLookupParams } from '../api';
+import { cacheKey } from '../cache';
+import { calculateOtd, inferTaxRate } from '../calculator';
+import { freshnessLabel, massLabel, money, relativeTime, safeUrl, shareText } from '../format';
+import { miles, moveAction, placeLabel, shouldRecheck, RECHECK_MS } from '../geo';
+import { findCurrent, watchStatus } from '../price-watch';
+import { DEFAULT_FILTERS, sizesFor, type Offer, type Origin, type SavedDeal } from '../types';
+
+jest.mock('@react-native-async-storage/async-storage', () => ({}));
+
+const origin: Origin = { lat: 41.8781, lon: -87.6298, place: 'Chicago, IL', src: 'gps', at: 0 };
+const offer = (o: Partial<Offer> = {}): Offer => ({
+  id: 'o1', endpoint_id: 'e1', store_id: 's1', store_name: 'Green Leaf', license_type: 'recreational', name: 'Blue Dream', brand: 'Acme', category: 'flower',
+  weight_grams: '3.5', regular_price: '40', effective_price: '30', price_per_gram: '8.57', completeness: 'A', freshness: 'fresh', flower_grade: 'whole',
+  distance_miles: 4.2, last_seen_at: '2026-11-13T12:00:00Z', ...o,
+});
+const saved = (d: Partial<SavedDeal> = {}): SavedDeal => ({
+  id: 'o1', store_id: 's1', name: 'Blue Dream', match_name: 'Blue Dream', store_name: 'Green Leaf', effective_price: '30', massLabel: '3.5g', category: 'flower',
+  distance_miles: 4.2, saved_at: 0, weight_grams: '3.5', license_type: 'recreational', near: { lat: 41.8781, lon: -87.6298 }, ...d,
+});
+
+describe('deal query', () => {
+  test('sends the origin, license and grouping the web page sends', () => {
+    const p = dealParams(origin, DEFAULT_FILTERS, []);
+    expect(p).toMatchObject({ lat: '41.8781', lon: '-87.6298', radius: '50', license_type: 'recreational', category: 'flower', flower_grade: 'whole', group: 'true', page: '1', page_size: '20' });
+    expect(p.sort).toBeUndefined();
+    expect(p.hide).toBeUndefined();
+  });
+  test('drops gram sizes for edibles and the grade filter outside flower', () => {
+    const p = dealParams(origin, { ...DEFAULT_FILTERS, category: 'edibles', size: '3.5', grade: 'shake' }, ['a', 'b'], 3);
+    expect(p.size).toBeUndefined();
+    expect(p.flower_grade).toBe('all');
+    expect(p.hide).toBe('a,b');
+    expect(p.page).toBe('3');
+  });
+  test('cache key ignores the page and empty values', () => {
+    expect(cacheKey(dealParams(origin, DEFAULT_FILTERS, [], 1))).toBe(cacheKey(dealParams(origin, DEFAULT_FILTERS, [], 2)));
+    expect(cacheKey({ b: '2', a: '1', c: undefined })).toBe('a=1&b=2');
+  });
+  test('eighths and larger are offered only for flower', () => {
+    expect(sizesFor('flower')).toContain('3.5');
+    expect(sizesFor('vapes')).toEqual(['any', '0.5', '1']);
+    expect(sizesFor('edibles')).toEqual(['any']);
+  });
+});
+
+describe('location refresh', () => {
+  const chicago = { lat: 41.8781, lon: -87.6298 };
+  test('distance between Chicago and Peoria is about 130 miles', () => {
+    expect(miles(chicago, { lat: 40.6936, lon: -89.589 })).toBeGreaterThan(125);
+    expect(miles(chicago, { lat: 40.6936, lon: -89.589 })).toBeLessThan(135);
+  });
+  test('jitter is kept, a move across town swaps, a far move asks', () => {
+    expect(moveAction(chicago, { lat: 41.89, lon: -87.63 })).toBe('keep');
+    expect(moveAction(chicago, { lat: 41.7508, lon: -88.1535 })).toBe('ask'); // Naperville, about 28 mi
+    expect(moveAction(chicago, { lat: 42.0451, lon: -87.6877 })).toBe('swap'); // Evanston, about 12 mi
+  });
+  test('only an old GPS origin is re-checked; a typed place never is', () => {
+    expect(shouldRecheck({ src: 'gps', at: 0 }, RECHECK_MS)).toBe(true);
+    expect(shouldRecheck({ src: 'gps', at: 0 }, RECHECK_MS - 1)).toBe(false);
+    expect(shouldRecheck({ src: 'manual', at: 0 }, RECHECK_MS * 10)).toBe(false);
+    expect(shouldRecheck(null)).toBe(false);
+  });
+  test('device geocode results become City, ST', () => {
+    expect(placeLabel({ city: 'Peoria', region: 'IL' })).toBe('Peoria, IL');
+    expect(placeLabel({ city: 'Peoria', region: 'Illinois' })).toBe('Peoria, IL');
+    expect(placeLabel({ city: null, subregion: 'Woodford County', region: 'IL' })).toBe('Woodford County, IL');
+    expect(placeLabel({ city: null })).toBeNull();
+    expect(placeLabel(undefined)).toBeNull();
+  });
+});
+
+describe('saved deal price watch', () => {
+  test('finds the same offer by id, then by store, name and size', () => {
+    expect(findCurrent(saved(), [offer({ id: 'x', name: 'Other' }), offer()])?.id).toBe('o1');
+    expect(findCurrent(saved(), [offer({ id: 'new-id', name: ' blue dream ' })])?.id).toBe('new-id');
+    expect(findCurrent(saved(), [offer({ id: 'n', store_id: 's2' })])).toBeNull();
+    expect(findCurrent(saved(), [offer({ id: 'n', weight_grams: '7' })])).toBeNull();
+  });
+  test('reports drops, rises, no change and delisting', () => {
+    expect(watchStatus(saved(), offer({ effective_price: '25' }))).toEqual({ kind: 'drop', from: 30, to: 25 });
+    expect(watchStatus(saved(), offer({ effective_price: '35' }))).toEqual({ kind: 'rise', from: 30, to: 35 });
+    expect(watchStatus(saved(), offer({ effective_price: '30.004' }))).toEqual({ kind: 'same' });
+    expect(watchStatus(saved(), null)).toEqual({ kind: 'gone' });
+  });
+  test('looks the deal up from where it was saved, with a radius that still covers the store', () => {
+    expect(savedLookupParams(saved({ distance_miles: 12.3 }))).toMatchObject({ lat: '41.8781', radius: '18', q: 'Blue Dream', flower_grade: 'all', include_stale: 'true' });
+    expect(savedLookupParams(saved({ near: null }))).toBeNull();
+  });
+});
+
+describe('formatting', () => {
+  test('money', () => {
+    expect(money('8.5')).toBe('$8.50');
+    expect(money(1234.5)).toBe('$1,234.50');
+    expect(money(null)).toBe('—');
+    expect(money('abc')).toBe('—');
+  });
+  test('mass, freshness and share text', () => {
+    expect(massLabel(offer({ category: 'edibles', dose_mg: '100', pack_count: 10 }))).toBe('100 mg THC · 10 pc');
+    expect(massLabel(offer({ weight_label: null, weight_grams: null }))).toBe('mass unknown');
+    expect(freshnessLabel(offer())).toEqual({ text: 'fresh', ok: true });
+    expect(freshnessLabel(offer({ freshness: 'stale', menu_age_hours: 72 }))).toEqual({ text: 'last menu 3d ago', ok: false });
+    expect(freshnessLabel(offer({ completeness: 'B' })).text).toBe('unverified total');
+    expect(shareText(offer())).toBe('Blue Dream (3.5g) at Green Leaf for $30.00 ($8.57/g)');
+  });
+  test('relative time and link safety', () => {
+    expect(relativeTime(0, 30_000)).toBe('just now');
+    expect(relativeTime(0, 5 * 3_600_000)).toBe('5h ago');
+    expect(relativeTime('nope')).toBe('recently');
+    expect(safeUrl('https://example.com/menu?x=1')).toBe('https://example.com/menu?x=1');
+    expect(safeUrl('javascript:alert(1)')).toBeUndefined();
+    expect(safeUrl(null)).toBeUndefined();
+  });
+  test('out-the-door math matches the web calculator', () => {
+    expect(inferTaxRate({ license_type: 'medicinal' })).toBe(1);
+    expect(inferTaxRate({ category: 'concentrate' })).toBe(37);
+    expect(calculateOtd({ price: 40, weight: 3.5, discountPct: 25, taxPct: 22 }).outTheDoorTotal).toBeCloseTo(36.6);
+  });
+});

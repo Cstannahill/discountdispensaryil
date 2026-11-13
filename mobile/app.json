@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "DiscountDispensaryIL",
+    "slug": "discountdispensaryil",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "discountdispensaryil",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#080d13",
+    "ios": {
+      "bundleIdentifier": "com.tannahillsystems.discountdispensaryil",
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.tannahillsystems.discountdispensaryil",
+      "adaptiveIcon": {
+        "backgroundColor": "#080d13",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#080d13",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 120
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "DiscountDispensaryIL uses your location to rank dispensary deals by distance from you."
+        }
+      ],
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
