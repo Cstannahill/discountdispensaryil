@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { openCalculator } from './calculator';
+import UnitBadge from './unit-badge';
 
 export const SAVED_STORAGE_KEY = 'terpscout.saved';
 export const SAVED_EVENT = 'terpscout:saved-change';
@@ -231,19 +232,15 @@ export default function SavedModal() {
                     </div>
 
                     <div className="text-right shrink-0 bg-slate-950/80 border border-slate-800 rounded-lg px-2 py-1">
-                      {item.category === 'edibles' && item.price_per_10mg && (
-                        <p className="text-sm font-extrabold font-mono text-emerald-400 leading-none">
-                          {money(item.price_per_10mg)}/10mg
-                        </p>
-                      )}
-                      {item.price_per_gram && (
-                        <p className="text-sm font-extrabold font-mono text-emerald-400 leading-none">
-                          {money(item.price_per_gram)}/g
-                        </p>
-                      )}
-                      <p className="text-[11px] font-mono text-slate-200 mt-0.5">
+                      <p className="text-base font-extrabold font-mono text-emerald-400 leading-none">
                         {money(item.effective_price)}
                       </p>
+                      {item.category === 'edibles' && item.price_per_10mg && (
+                        <UnitBadge price={money(item.price_per_10mg)} unit="10mg" className="mt-1" />
+                      )}
+                      {item.price_per_gram && (
+                        <UnitBadge price={money(item.price_per_gram)} unit="g" className="mt-1" />
+                      )}
                     </div>
                   </div>
 

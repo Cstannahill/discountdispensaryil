@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { strainBucket, parseSize, sizeForCategory, strainClause, groupCollapseClause, MIN_GROUP, MIN_GROUP_BRANDED_LINE, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS } from './deals.ts';
+import { strainBucket, parseSize, sizeForCategory, strainClause, groupCollapseClause, MIN_GROUP, MIN_GROUP_BRANDED_LINE, SORT_OPTIONS, type SortOption, sortOrderClause, QUICK_HUBS, sizeLabel } from './deals.ts';
 import { formatRelativeTime } from './time.ts';
 import { calculateOtd, inferTaxRate, calculateSavings, parseThc } from './calculator.ts';
 import { parseOrigin } from './origin.ts';
@@ -259,5 +259,18 @@ describe('store map query (mobile app)', async () => {
     assert.equal(none.best, null);
     assert.equal(none.address, null);
     assert.equal(none.deals, 0);
+  });
+});
+
+describe('sizeLabel', () => {
+  it('writes sizes as short gram chips whatever wording the store used', () => {
+    assert.equal(sizeLabel({ weight_grams: '1.0000', weight_label: 'gram' }), '1G');
+    assert.equal(sizeLabel({ weight_grams: '2', weight_label: 'two gram' }), '2G');
+    assert.equal(sizeLabel({ weight_grams: '3.5', weight_label: '1/8 oz' }), '3.5G');
+    assert.equal(sizeLabel({ weight_grams: '0.5', weight_label: 'half gram' }), '0.5G');
+  });
+  it('falls back to the store label when grams are unknown', () => {
+    assert.equal(sizeLabel({ weight_grams: null, weight_label: '2pk' }), '2pk');
+    assert.equal(sizeLabel({ weight_grams: null, weight_label: null }), null);
   });
 });

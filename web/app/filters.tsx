@@ -13,12 +13,12 @@ const SORT_LABELS: Record<SortOption, string> = {
 
 const SIZE_OPTIONS: readonly { value: string; label: string }[] = [
   { value: 'any', label: 'Any Size' },
-  { value: '0.5', label: '0.5g' },
-  { value: '1', label: '1g' },
-  { value: '3.5', label: '3.5g (⅛)' },
-  { value: '7', label: '7g (¼)' },
-  { value: '14', label: '14g (½)' },
-  { value: '28', label: '28g (1 oz)' },
+  { value: '0.5', label: '0.5G' },
+  { value: '1', label: '1G' },
+  { value: '3.5', label: '3.5G (⅛)' },
+  { value: '7', label: '7G (¼)' },
+  { value: '14', label: '14G (½)' },
+  { value: '28', label: '28G (1 oz)' },
 ];
 
 const GRADE_LABELS: Record<string, string> = {

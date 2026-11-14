@@ -3,6 +3,7 @@ import { useState } from 'react';
 import OfferCard from './offer-card';
 import { perUnit, strainBucket, type Offer } from '@/lib/deals';
 import { offerFacts } from '@/lib/offer-facts';
+import UnitBadge from './unit-badge';
 
 const money = (v: string | null | undefined) =>
   v == null || v === ''
@@ -36,7 +37,7 @@ export default function DealRow({
   const off = f.savings.hasDiscount ? (
     <span className="rounded bg-emerald-500/20 text-emerald-300 px-1 py-px font-mono text-[10px] font-bold">-{f.savings.savingsPct}%</span>
   ) : null;
-  const label = `${f.title}, ${money(f.unitPrice)} per ${f.unit} at ${o.store_name}. ${open ? 'Hide' : 'Show'} details`;
+  const label = `${f.title}, ${money(o.effective_price)}, ${money(f.unitPrice)} per ${f.unit} at ${o.store_name}. ${open ? 'Hide' : 'Show'} details`;
 
   if (open) {
     return (
@@ -78,17 +79,14 @@ export default function DealRow({
           </span>
         </span>
         <span className="shrink-0 text-right">
-          <span className="block text-lg font-extrabold text-emerald-400 leading-tight">
-            {money(f.unitPrice)}
-            <span className="text-[11px] font-semibold text-slate-400">/{f.unit}</span>
-          </span>
-          <span className="block text-xs font-bold text-slate-200">
-            {f.savings.hasDiscount && <s className="font-normal text-slate-500 mr-1">{money(o.regular_price)}</s>}
-            {money(o.effective_price)}
-          </span>
+          <span className="block text-xl font-extrabold text-emerald-400 leading-tight">{money(o.effective_price)}</span>
           {f.savings.hasDiscount && (
-            <span className="inline-block mt-1 rounded-md bg-amber-500/15 text-amber-300 px-1.5 py-px text-[10px] font-extrabold">{f.savings.savingsPct}% off</span>
+            <span className="block text-[11px] leading-tight">
+              <s className="text-slate-500 mr-1">{money(o.regular_price)}</s>
+              <span className="font-extrabold text-amber-300">{f.savings.savingsPct}% off</span>
+            </span>
           )}
+          {f.unitPrice && <UnitBadge price={money(f.unitPrice)} unit={f.unit} className="mt-1" />}
         </span>
       </button>
     );
@@ -111,10 +109,13 @@ export default function DealRow({
           </span>
         </span>
         <span className="shrink-0 text-right font-mono">
-          <span className="block text-[13px] font-bold" style={{ color: accent }}>
-            {money(f.unitPrice)}
+          <span className="block text-sm font-bold" style={{ color: accent }}>
+            {money(o.effective_price)}
           </span>
-          <span className="block text-[10px] text-slate-400">{money(o.effective_price)}</span>
+          <span className="block text-[10px] font-semibold text-slate-300">
+            {money(f.unitPrice)}
+            <span className="font-normal text-slate-400">/{f.unit}</span>
+          </span>
         </span>
       </button>
     );
@@ -154,20 +155,21 @@ export default function DealRow({
       <span className="hidden lg:block text-right font-mono text-[11px] text-slate-500">
         {f.savings.hasDiscount ? <s>{money(o.regular_price)}</s> : ''}
       </span>
-      <span className="hidden lg:flex items-center justify-end gap-1.5 font-mono text-slate-100">
+      <span className="hidden lg:flex items-center justify-end gap-1.5 font-mono text-[15px] font-bold text-emerald-400">
         {off}
         {money(o.effective_price)}
       </span>
       <span className="text-right">
-        <span className="block font-mono text-[15px] font-bold text-emerald-400 leading-tight">
-          {money(f.unitPrice)}
-          <span className="text-[10px] font-medium text-slate-400">/{f.unit}</span>
-        </span>
-        <span className="block font-mono text-[11px] text-slate-200 lg:hidden">
-          {f.savings.hasDiscount && <s className="text-slate-500 mr-1">{money(o.regular_price)}</s>}
+        <span className="block font-mono text-[15px] font-bold text-emerald-400 leading-tight lg:hidden">
           {money(o.effective_price)}
         </span>
-        {off && <span className="lg:hidden">{off}</span>}
+        {f.savings.hasDiscount && (
+          <span className="block font-mono text-[11px] lg:hidden">
+            <s className="text-slate-500 mr-1">{money(o.regular_price)}</s>
+            {off}
+          </span>
+        )}
+        {f.unitPrice && <UnitBadge price={money(f.unitPrice)} unit={f.unit} className="mt-0.5 lg:mt-0" />}
       </span>
       <span className="hidden lg:block text-slate-500 text-[10px]" aria-hidden="true">▾</span>
     </button>

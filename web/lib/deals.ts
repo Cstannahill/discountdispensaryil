@@ -261,3 +261,11 @@ ORDER BY st.distance_miles, st.name`;
   const data = await rows<{ id: string; name: string; distance_miles: number }>(text, p);
   return data.map((d) => ({ id: String(d.id), name: d.name, distance_miles: Math.round(Number(d.distance_miles) * 10) / 10 }));
 }
+
+/** Package size as a short chip: "1G", "3.5G". Stores word sizes differently ("gram", "two gram", "1/8 oz"),
+    so the measured grams win and the store's own wording is only the fallback. */
+export function sizeLabel(o: Pick<Offer, 'weight_grams' | 'weight_label'>): string | null {
+  const g = Number(o.weight_grams);
+  if (o.weight_grams != null && o.weight_grams !== '' && Number.isFinite(g) && g > 0) return `${+g.toFixed(2)}G`;
+  return o.weight_label?.trim() || null;
+}

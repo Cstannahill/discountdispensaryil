@@ -152,7 +152,7 @@ export default function StoreMap({
                       <p className="flex justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950 px-2.5 py-1.5">
                         <span className="truncate text-slate-200">
                           {s.best.name}
-                          {category === 'edibles' ? (s.best.dose_mg ? ` · ${s.best.dose_mg}mg` : '') : s.best.weight_grams ? ` · ${s.best.weight_grams}g` : ''}
+                          {category === 'edibles' ? (s.best.dose_mg ? ` · ${s.best.dose_mg}mg` : '') : s.best.weight_grams ? ` · ${+Number(s.best.weight_grams).toFixed(2)}G` : ''}
                         </span>
                         <strong className="shrink-0 font-mono text-emerald-400">{money(s.best.effective_price)}</strong>
                       </p>

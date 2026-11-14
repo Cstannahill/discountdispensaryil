@@ -4,7 +4,8 @@ import { openCalculator } from './calculator';
 import { showToast } from './toast';
 import { toggleSaveDeal, getSavedDeals, SAVED_EVENT } from './saved-modal';
 import { calculateSavings } from '@/lib/calculator';
-import { perUnit, strainBucket, unitLabel, type Offer } from '@/lib/deals';
+import { perUnit, sizeLabel, strainBucket, unitLabel, type Offer } from '@/lib/deals';
+import UnitBadge from './unit-badge';
 import { formatRelativeTime } from '@/lib/time';
 
 const BUCKETS = ['Indica', 'Sativa', 'Hybrid', 'Unspecified'] as const;
@@ -98,7 +99,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
   const edible = o.category === 'edibles';
   const massLabel = edible
     ? `${o.dose_mg ?? '?'} mg THC${o.pack_count ? ` · ${o.pack_count} pc` : ''}`
-    : o.weight_label || (o.weight_grams ? `${o.weight_grams}g` : 'mass unknown');
+    : sizeLabel(o) ?? 'mass unknown';
   const unitPrice = perUnit(o);
   const unit = unitLabel(o.category);
   const [isSaved, setIsSaved] = useState(false);
@@ -121,7 +122,7 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
 
   return (
     <article className="rounded-2xl border border-slate-700/60 hover:border-slate-600/80 bg-slate-900/90 p-3.5 space-y-2.5 transition-colors shadow-sm">
-      {/* Top Row: Identity & Hero $/g Metric */}
+      {/* Top Row: Identity & Price */}
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1 space-y-1">
           <div className="flex items-center justify-between gap-2">
@@ -203,16 +204,13 @@ export default function OfferCard({ o, rank }: { o: Offer; rank?: number }) {
               {savings.savingsPct}% OFF · SAVE {savings.savingsDollars % 1 === 0 ? `$${savings.savingsDollars.toFixed(0)}` : `$${savings.savingsDollars.toFixed(2)}`}
             </span>
           )}
-          <p className="text-lg sm:text-xl font-extrabold font-mono text-emerald-400 leading-none">
-            {money(unitPrice)}
-            <span className="text-[10px] font-normal text-slate-400">/{unit}</span>
-          </p>
-          <p className="text-[11px] font-mono text-slate-200 mt-1">
+          <p className="font-mono leading-none">
             {savings.hasDiscount && (
-              <s className="text-slate-500 mr-1 text-[10px]">{money(o.regular_price)}</s>
+              <s className="text-slate-500 mr-1.5 text-[11px]">{money(o.regular_price)}</s>
             )}
-            <span className="font-bold">{money(o.effective_price)}</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-emerald-400">{money(o.effective_price)}</span>
           </p>
+          {unitPrice && <UnitBadge price={money(unitPrice)} unit={unit} className="mt-1.5" />}
         </div>
       </div>
 
