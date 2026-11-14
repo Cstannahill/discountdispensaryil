@@ -18,8 +18,8 @@ npm test
 The API host defaults to `https://discountdispensaryil.tannahillsystems.com`. Point it elsewhere (for example a local
 `web` dev server reachable from the phone) with `EXPO_PUBLIC_API_URL=http://192.168.1.x:3000 npx expo start`.
 
-`npm run web` is only a developer preview. The site's API sends no CORS headers, so a browser preview needs a local API
-host or mocked responses. Phones are not affected.
+`npm run web` is a developer preview in a browser. It works against the live site because `/api/v1/*` allows any origin
+(set in `web/next.config.mjs`). The native map is replaced by a list there. Phone builds never needed those headers.
 
 ## What the first slice does
 
