@@ -32,6 +32,7 @@ host or mocked responses. Phones are not affected.
 | Offline | The last result of each of the 12 most recent searches is stored on the phone. The list shows it at once on launch and, with no signal, says how old it is. |
 | Map | A pin per dispensary showing its best $/g in the chosen category, the cheapest one highlighted. Tap a pin for the address, the best deal, exact-address directions, its deals, or to hide it. Uses Apple Maps on iPhone and Google Maps on Android. Needs `/api/v1/stores/map` to be deployed; until then the tab says so. |
 | Saved deals | Save from any card. Opening the Saved tab re-reads each deal from today's menu and flags price drops, rises and delisted products. |
+| Price-drop alerts | A switch on the Saved tab. When on, the phone re-checks saved deals in the background (at most every 3 hours; the operating system picks the moment) and posts a notification for each new drop, once per price. Tapping it opens Saved. No server, no account, nothing stored outside the phone. Needs a development or store build; Expo Go may not run background tasks. |
 | Dispensaries | Stores in the search area with a show/hide switch (also long-press a store name on a card). Hidden stores are filtered by the API, as on the web. |
 | Out the door | The web calculator's Illinois tax math (`src/lib/calculator.ts` is a copy of `web/lib/calculator.ts`), prefilled from a card's OTD button. |
 | Native touches | Haptics on selection, save and refresh; system share sheet; menus open in the in-app browser; directions open the maps app; native tab bar; deep links `discountdispensaryil://`, `discountdispensaryil://saved`, `discountdispensaryil://?q=rosin&category=concentrate`. |
@@ -47,7 +48,7 @@ host or mocked responses. Phones are not affected.
 ## Roadmap
 
 1. **Done.** Everything in the table above, including the map.
-2. **Price-drop push notifications.** A watch on saved deals and on searches ("flower under $5/g within 25 mi"), delivered as push after each sync, with a deep link to the deal.
+2. **Server push (optional upgrade to the on-device alerts).** Alerts sent right after each sync, and watches on searches ("flower under $5/g within 25 mi").
 3. **Store pages and history.** A dispensary screen (all its deals, call, directions) and a price-history sparkline per product.
 4. **Polish for release.** Home-screen widget with today's best deal, age gate (21+), store listing, EAS build profiles, TestFlight and Play internal testing.
 

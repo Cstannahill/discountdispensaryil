@@ -1,4 +1,4 @@
-import { DarkTheme, ThemeProvider } from 'expo-router';
+import { DarkTheme, ThemeProvider, router } from 'expo-router';
 import { NativeTabs } from 'expo-router/native-tabs';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -6,10 +6,12 @@ import { useEffect } from 'react';
 
 import { ToastHost } from '@/components/ui';
 import { useLocationRefresh } from '@/hooks/use-location-refresh';
+import { defineAlertTask, onAlertTap } from '@/lib/alerts';
 import { C } from '@/lib/theme';
 import { hydrate, useAppState } from '@/state/store';
 
 SplashScreen.preventAutoHideAsync();
+defineAlertTask();
 
 const theme = { ...DarkTheme, colors: { ...DarkTheme.colors, background: C.bg, card: C.card, primary: C.accent, text: C.text, border: C.borderSoft } };
 
@@ -18,6 +20,7 @@ export default function RootLayout() {
   const savedCount = useAppState((s) => s.saved.length);
   useEffect(() => { hydrate().finally(() => SplashScreen.hideAsync()); }, []);
   useLocationRefresh();
+  useEffect(() => (ready ? onAlertTap(() => router.navigate('/saved')) : undefined), [ready]);
   if (!ready) return null;
   return (
     <ThemeProvider value={theme}>

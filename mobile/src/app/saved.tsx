@@ -1,29 +1,17 @@
 import { useFocusEffect } from 'expo-router';
 import { useCallback, useRef, useState } from 'react';
-import { Alert, FlatList, RefreshControl, StyleSheet, Text, View } from 'react-native';
+import { Alert, FlatList, RefreshControl, StyleSheet, Switch, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { openDirections, openMenu } from '@/components/offer-card';
 import { Badge, Button, toast } from '@/components/ui';
-import { fetchDeals, savedLookupParams } from '@/lib/api';
+import { alertsSupported, disableAlerts, enableAlerts, markSeen } from '@/lib/alerts';
 import { money, perUnit, relativeTime, unitLabel } from '@/lib/format';
 import { success, tap } from '@/lib/haptics';
-import { findCurrent, watchStatus, type WatchStatus } from '@/lib/price-watch';
+import { checkSaved, type Check } from '@/lib/saved-check';
 import { C, MONO, WEB_TOP } from '@/lib/theme';
-import type { Offer, SavedDeal } from '@/lib/types';
-import { getState, refreshSaved, removeSaved, useAppState } from '@/state/store';
-
-type Check = { status: WatchStatus; current: Offer | null };
-const MAX_CHECKS = 30;
-
-async function checkOne(d: SavedDeal): Promise<Check | null> {
-  const params = savedLookupParams(d);
-  if (!params) return null;
-  try {
-    const current = findCurrent(d, (await fetchDeals(params)).items);
-    return { status: watchStatus(d, current), current };
-  } catch { return null; } // unknown, not "gone"
-}
+import type { SavedDeal } from '@/lib/types';
+import { getState, refreshSaved, removeSaved, setAlerts, useAppState } from '@/state/store';
 
 export default function SavedScreen() {
   const saved = useAppState((s) => s.saved);
@@ -31,20 +19,27 @@ export default function SavedScreen() {
   const [checking, setChecking] = useState(false);
   const [checkedAt, setCheckedAt] = useState<number | null>(null);
   const busy = useRef(false);
+  const alerts = useAppState((s) => s.alerts);
+  const canAlert = alertsSupported();
+
+  const toggleAlerts = async (on: boolean) => {
+    tap();
+    if (!on) { setAlerts(false); await disableAlerts(); return; }
+    const r = await enableAlerts();
+    if (r === 'on') { setAlerts(true); success(); toast('We will notify you when a saved deal drops in price'); }
+    else toast(r === 'denied' ? 'Notifications are off for this app. Allow them in Settings.' : r === 'restricted' ? 'Background refresh is off for this app. Turn it on in Settings.' : 'Alerts are not available in this build of the app');
+  };
 
   const recheck = useCallback(async (announce: boolean) => {
-    const list = getState().saved.slice(0, MAX_CHECKS);
+    const list = getState().saved;
     if (busy.current || !list.length) return;
     busy.current = true; setChecking(true);
-    const out: Record<string, Check> = {};
-    let any = false;
-    for (let i = 0; i < list.length; i += 4) {
-      const res = await Promise.all(list.slice(i, i + 4).map(checkOne));
-      res.forEach((r, j) => { if (r) { out[list[i + j].id] = r; any = true; } });
-    }
+    const out = await checkSaved(list);
+    const any = Object.keys(out).length > 0;
     busy.current = false; setChecking(false);
     if (!any) { if (announce) toast('Could not check prices. Are you offline?'); return; }
     setChecks(out); setCheckedAt(Date.now());
+    markSeen(list, out); // seen here, so the background check will not notify about the same drop
     const drops = Object.values(out).filter((c) => c.status.kind === 'drop').length;
     if (drops) { success(); toast(`${drops} saved ${drops === 1 ? 'deal' : 'deals'} dropped in price`); }
     else if (announce) toast('Prices checked');
@@ -104,6 +99,15 @@ export default function SavedScreen() {
             <Text style={s.meta}>
               {saved.length ? (checking ? 'Checking today’s prices…' : checkedAt ? `Prices checked ${relativeTime(checkedAt)}. Pull down to check again.` : 'Pull down to check today’s prices.') : ''}
             </Text>
+            {canAlert && (
+              <View style={s.alertRow}>
+                <View style={{ flex: 1 }}>
+                  <Text style={s.alertLabel}>Price-drop alerts</Text>
+                  <Text style={s.meta}>Checks your saved deals a few times a day, even when the app is closed.</Text>
+                </View>
+                <Switch value={alerts} onValueChange={toggleAlerts} trackColor={{ true: C.accentStrong, false: C.border }} accessibilityLabel="Price-drop alerts" />
+              </View>
+            )}
             {saved.length > 1 && (
               <Button kind="ghost" label="Clear all" style={{ alignSelf: 'flex-start', marginTop: 6 }} onPress={() => Alert.alert('Clear saved deals?', `This removes all ${saved.length} saved deals.`, [{ text: 'Cancel', style: 'cancel' }, { text: 'Clear all', style: 'destructive', onPress: () => saved.forEach((d) => removeSaved(d.id)) }])} />
             )}
@@ -131,6 +135,8 @@ const s = StyleSheet.create({
   price: { color: C.accent, fontSize: 19, fontWeight: '800', fontFamily: MONO, fontVariant: ['tabular-nums'] },
   unit: { color: C.textMuted, fontSize: 11, fontWeight: '400' },
   total: { color: C.textSoft, fontSize: 12, fontWeight: '700', fontFamily: MONO, marginTop: 3 },
+  alertRow: { flexDirection: 'row', alignItems: 'center', gap: 12, marginTop: 8, padding: 12, borderRadius: 14, borderWidth: 1, borderColor: C.border, backgroundColor: C.card },
+  alertLabel: { color: C.text, fontSize: 15, fontWeight: '700' },
   empty: { alignItems: 'center', gap: 10, paddingVertical: 48, paddingHorizontal: 24 },
   emptyTitle: { color: C.text, fontSize: 18, fontWeight: '800' },
   emptyText: { color: C.textMuted, fontSize: 14, lineHeight: 20, textAlign: 'center' },
