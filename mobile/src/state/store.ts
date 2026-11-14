@@ -14,16 +14,18 @@ export interface AppState {
   hiddenNames: Record<string, string>;
   saved: SavedDeal[];
   calc: CalcPrefill | null;
+  /** Price-drop notifications for saved deals are switched on. */
+  alerts: boolean;
 }
 
 const KEY = 'ddil.state.v1';
 const MAX_HIDDEN = 100; // the API accepts at most 100 hidden ids
-let state: AppState = { ready: false, origin: null, filters: DEFAULT_FILTERS, hidden: [], hiddenNames: {}, saved: [], calc: null };
+let state: AppState = { ready: false, origin: null, filters: DEFAULT_FILTERS, hidden: [], hiddenNames: {}, saved: [], calc: null, alerts: false };
 const listeners = new Set<() => void>();
 
 function persist() {
-  const { origin, filters, hidden, hiddenNames, saved } = state;
-  AsyncStorage.setItem(KEY, JSON.stringify({ origin, filters: { ...filters, q: '' }, hidden, hiddenNames, saved })).catch(() => {});
+  const { origin, filters, hidden, hiddenNames, saved, alerts } = state;
+  AsyncStorage.setItem(KEY, JSON.stringify({ origin, filters: { ...filters, q: '' }, hidden, hiddenNames, saved, alerts })).catch(() => {});
 }
 
 function set(patch: Partial<AppState>, save = true) {
@@ -43,6 +45,7 @@ export async function hydrate(): Promise<void> {
     hidden: Array.isArray(stored.hidden) ? stored.hidden : [],
     hiddenNames: stored.hiddenNames ?? {},
     saved: Array.isArray(stored.saved) ? stored.saved : [],
+    alerts: stored.alerts === true,
   }, false);
 }
 
@@ -93,3 +96,5 @@ export const refreshSaved = (id: string, o: Offer) =>
   set({ saved: state.saved.map((s) => (s.id === id ? { ...savedFromOffer(o), name: s.name, saved_at: s.saved_at, near: s.near, distance_miles: s.distance_miles } : s)) });
 
 export const openCalculatorWith = (c: Omit<CalcPrefill, 'nonce'>) => set({ calc: { ...c, nonce: Date.now() } }, false);
+
+export const setAlerts = (alerts: boolean) => set({ alerts });

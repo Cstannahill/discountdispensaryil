@@ -5,6 +5,7 @@ import { directionsUrl, freshnessLabel, massLabel, money, relativeTime, safeUrl,
 import { miles, moveAction, placeLabel, regionFor, shouldRecheck, RECHECK_MS } from '../geo';
 import { cheapest } from '../map';
 import { findCurrent, watchStatus } from '../price-watch';
+import { dropsToAnnounce, type Check } from '../saved-check';
 import { DEFAULT_FILTERS, sizesFor, type MapStore, type Offer, type Origin, type SavedDeal } from '../types';
 
 jest.mock('@react-native-async-storage/async-storage', () => ({}));
@@ -149,5 +150,25 @@ describe('map', () => {
     expect(decodeURIComponent(directionsUrl('Green Leaf', { address: '1 Main St', city: 'Peoria', state: 'IL' }))).toContain('query=Green Leaf, 1 Main St, Peoria, IL');
     expect(decodeURIComponent(directionsUrl('Green Leaf', { address: ' ' }))).toContain('query=Green Leaf dispensary Illinois');
     expect(decodeURIComponent(directionsUrl('Green Leaf'))).toContain('query=Green Leaf dispensary Illinois');
+  });
+});
+
+describe('price-drop alerts', () => {
+  const drop = (to: number): Check => ({ status: { kind: 'drop', from: 30, to }, current: null });
+  const a = saved({ id: 'a', name: 'Blue Dream' }), b = saved({ id: 'b', name: 'Gelato' });
+  test('a drop is announced once per price', () => {
+    const first = dropsToAnnounce([a, b], { a: drop(25), b: { status: { kind: 'same' }, current: null } }, {});
+    expect(first.alerts).toEqual([{ id: 'a', title: 'Price drop: Blue Dream', body: 'Now $25.00 at Green Leaf, down $5.00 from $30.00.' }]);
+    expect(first.notified).toEqual({ a: '25.00' });
+    expect(dropsToAnnounce([a, b], { a: drop(25) }, first.notified).alerts).toEqual([]);
+  });
+  test('a further drop is announced again, and a recovered price is forgotten', () => {
+    expect(dropsToAnnounce([a], { a: drop(22) }, { a: '25.00' }).alerts).toHaveLength(1);
+    const back = dropsToAnnounce([a], { a: { status: { kind: 'same' }, current: null } }, { a: '25.00' });
+    expect(back).toEqual({ alerts: [], notified: {} });
+    expect(dropsToAnnounce([a], { a: drop(25) }, back.notified).alerts).toHaveLength(1);
+  });
+  test('a deal that could not be checked keeps its record, and removed deals are dropped', () => {
+    expect(dropsToAnnounce([a], {}, { a: '25.00', gone: '9.00' })).toEqual({ alerts: [], notified: { a: '25.00' } });
   });
 });

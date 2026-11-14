@@ -44,7 +44,9 @@
           "locationWhenInUsePermission": "DiscountDispensaryIL uses your location to rank dispensary deals by distance from you."
         }
       ],
-      "expo-web-browser"
+      "expo-web-browser",
+      "expo-notifications",
+      "expo-background-task"
     ],
     "experiments": {
       "typedRoutes": true,
