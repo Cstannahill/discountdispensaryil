@@ -5,6 +5,7 @@ import DealRow from '../deal-row';
 import { offerFacts } from '@/lib/offer-facts';
 import AppNav from '../app-nav';
 import StoreMap from '../store-map';
+import UnitBadge from '../unit-badge';
 import type { MapStore } from '@/lib/store-map';
 import { perUnit, unitLabel, type Offer, type Page } from '@/lib/deals';
 
@@ -167,9 +168,9 @@ function BestDeal({ category, o, total, accent }: { category: string; o?: Offer;
       </span>
       {o && perUnit(o) ? (
         <>
-          <span className="block mt-1.5 font-mono text-2xl font-bold text-white tracking-tight">
-            {money(perUnit(o))}
-            <span className="text-xs font-medium text-slate-400">/{unitLabel(category)}</span>
+          <span className="mt-1.5 flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
+            <span className="font-mono text-2xl font-bold text-white tracking-tight">{money(o.effective_price)}</span>
+            <UnitBadge price={money(perUnit(o))} unit={unitLabel(category)} />
           </span>
           <span className="block truncate text-xs font-bold text-slate-100 mt-0.5">{offerFacts(o).title}</span>
           <span className="block truncate text-[11px] text-slate-400">{o.store_name} · {o.distance_miles.toFixed(1)} mi</span>
