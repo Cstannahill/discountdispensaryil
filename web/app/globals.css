@@ -5,12 +5,12 @@
 @layer base {
   * { box-sizing: border-box; }
   body {
-    background-color: #060a0d;
-    background-image:
+    background-color: var(--page-bg, #060a0d);
+    background-image: var(--page-glow,
       radial-gradient(ellipse 90% 45% at 50% -10%, rgba(16, 185, 129, 0.14), transparent 70%),
-      radial-gradient(ellipse 60% 35% at 85% 0%, rgba(52, 211, 153, 0.06), transparent 60%);
+      radial-gradient(ellipse 60% 35% at 85% 0%, rgba(52, 211, 153, 0.06), transparent 60%));
     background-attachment: fixed;
-    color: #f1f5f9;
+    color: var(--page-fg, #f1f5f9);
     margin: 0;
     /* Safety net: never allow a sideways page scroll. clip (unlike hidden) keeps sticky working. */
     overflow-x: clip;
@@ -30,15 +30,15 @@
 
 @layer components {
   .glass-card {
-    background: rgba(13, 21, 27, 0.86);
+    background: var(--card-bg, rgba(13, 21, 27, 0.86));
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
+    box-shadow: var(--card-shadow, 0 10px 30px -10px rgba(0, 0, 0, 0.5));
   }
   .glass-header {
-    background: rgba(6, 10, 13, 0.88);
+    background: var(--header-bg, rgba(6, 10, 13, 0.88));
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
   }
   .btn {
     @apply inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 px-3.5 py-2 text-xs font-semibold text-slate-200 transition-all hover:bg-slate-700/90 hover:border-slate-600 active:scale-[0.99];
@@ -111,4 +111,108 @@
 html[data-pending='1'] #results { opacity: 0.45; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) {
   .pending-spinner { animation-duration: 2.5s; }
+}
+
+/* ---- Selectable layouts (lib/layouts.ts). "classic" uses none of the rules below. ---- */
+
+/* Layouts that show one category at a time at every width (classic only does so below lg). */
+.cat-solo[data-active="concentrate"] > section:not([data-cat="concentrate"]),
+.cat-solo[data-active="flower"] > section:not([data-cat="flower"]),
+.cat-solo[data-active="vapes"] > section:not([data-cat="vapes"]),
+.cat-solo[data-active="edibles"] > section:not([data-cat="edibles"]) {
+  display: none;
+}
+
+/* Price board: one shared column template so the header and every row line up. */
+.board-cols {
+  align-items: center;
+  column-gap: 0.75rem;
+  grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+}
+@media (min-width: 1024px) {
+  .board-cols {
+    grid-template-columns: 2rem minmax(0, 2.4fr) 4.5rem 4rem minmax(0, 1.6fr) 4.5rem 4.5rem 7.5rem 6rem 1.25rem;
+  }
+}
+
+/* App style: a light theme. The palettes are CSS variables (tailwind.config.cjs), so flipping the slate
+   scale and darkening the accent text shades re-themes every shared component at once. */
+html:has(main[data-layout="app"]),
+html:has(main[data-layout="map"]) {
+  --page-bg: #f4f6f1;
+  --page-glow: none;
+  --page-fg: #14201a;
+  --card-bg: #ffffff;
+  --card-border: #e1e6dd;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --header-bg: rgba(244, 246, 241, 0.92);
+  --c-white: 20 32 26;
+  --c-slate-50: 20 32 26;
+  --c-slate-100: 20 32 26;
+  --c-slate-200: 38 52 45;
+  --c-slate-300: 58 72 64;
+  --c-slate-400: 92 106 98;
+  --c-slate-500: 122 135 127;
+  --c-slate-600: 176 186 179;
+  --c-slate-700: 205 213 206;
+  --c-slate-800: 225 230 221;
+  --c-slate-900: 240 243 237;
+  --c-slate-950: 255 255 255;
+  --c-emerald-100: 6 78 59;
+  --c-emerald-200: 6 95 70;
+  --c-emerald-300: 4 108 78;
+  --c-emerald-400: 15 122 79;
+  --c-emerald-500: 15 122 79;
+  --c-emerald-950: 6 78 59;
+  --c-amber-200: 133 77 14;
+  --c-amber-300: 146 84 9;
+  --c-amber-400: 180 83 9;
+  --c-purple-300: 109 40 217;
+  --c-rose-300: 190 18 60;
+}
+main:is([data-layout="app"], [data-layout="map"]) :is(.shadow-emerald-950\/50, .shadow-emerald-950\/60, .shadow-emerald-950\/70) {
+  --tw-shadow-color: transparent;
+}
+
+/* Map layout: price pins drawn as Leaflet div icons (app/store-map.tsx). */
+.store-map { background: #e9eee4; font-family: inherit; }
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  margin-top: -6px;
+  white-space: nowrap;
+  border-radius: 999px;
+  background: #fff;
+  color: #14201a;
+  border: 1.5px solid #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  padding: 3px 9px;
+  font: 800 12px/1.3 var(--font-sans), system-ui, sans-serif;
+  cursor: pointer;
+}
+.map-pin small { font-weight: 600; opacity: 0.65; font-size: 10px; }
+.map-pin::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 9px;
+  height: 9px;
+  background: inherit;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 2px;
+}
+.map-pin-best { background: #0f7a4f; border-color: #0f7a4f; color: #fff; font-size: 14px; padding: 5px 11px; }
+.map-pin-sel { background: #14201a; border-color: #14201a; color: #fff; }
+.map-pin-none { width: 12px; height: 12px; padding: 0; margin-top: 6px; background: #94a3a0; border: 2px solid #fff; }
+.map-pin-none::after { display: none; }
+.map-me {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.15);
 }

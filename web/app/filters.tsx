@@ -44,6 +44,7 @@ export default function FilterStrip({
   stale,
   unverified,
   sort = 'value',
+  compact = false,
 }: {
   q: string;
   grade: string;
@@ -53,6 +54,8 @@ export default function FilterStrip({
   stale: boolean;
   unverified: boolean;
   sort?: string;
+  /** Keep search, sort and the filter button on one row on phones (dense layouts). */
+  compact?: boolean;
 }) {
   const router = useRouter();
   const sp = useSearchParams();
@@ -132,7 +135,7 @@ export default function FilterStrip({
     <section aria-label="Deal filters" className="glass-card rounded-2xl p-3 space-y-2.5">
       {/* Row 1: Search Input + Advanced Filters Button */}
       <div className="flex flex-wrap items-center gap-2">
-        <div className="relative w-full sm:w-auto sm:flex-1 min-w-0">
+        <div className={`relative min-w-0 ${compact ? 'flex-1 basis-32' : 'w-full sm:w-auto sm:flex-1'}`}>
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" aria-hidden="true">
             🔍
           </span>
@@ -147,7 +150,7 @@ export default function FilterStrip({
                 updateParams({ q: search.trim() || null });
               }
             }}
-            placeholder="Search strain, brand, or dispensary…"
+            placeholder={compact ? 'Search deals…' : 'Search strain, brand, or dispensary…'}
             maxLength={300}
             className="w-full !pl-8 !pr-8 !py-2"
           />
@@ -168,7 +171,7 @@ export default function FilterStrip({
         </div>
 
         {/* Compact Sort Selector */}
-        <div className="relative flex-1 sm:flex-none sm:shrink-0">
+        <div className={`relative ${compact ? 'flex-none' : 'flex-1 sm:flex-none sm:shrink-0'}`}>
           <select
             aria-label="Sort deals by"
             title="Sort deals"
@@ -197,7 +200,7 @@ export default function FilterStrip({
           aria-label="More filters"
           title="More filters (grade, deals, stale menus)"
           onClick={() => setDrawerOpen((v) => !v)}
-          className={`btn flex-1 sm:flex-none justify-center shrink-0 !py-2 ${extraFilterCount > 0 || drawerOpen ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15' : ''}`}
+          className={`btn ${compact ? 'flex-none' : 'flex-1 sm:flex-none'} justify-center shrink-0 !py-2 ${extraFilterCount > 0 || drawerOpen ? 'border-emerald-400/60 text-emerald-300 bg-emerald-500/15' : ''}`}
         >
           <span aria-hidden="true">⚙</span>
           {extraFilterCount > 0 && (

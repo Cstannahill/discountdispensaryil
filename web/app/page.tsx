@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import LocationControl from './location';
 import FilterStrip from './filters';
 import CategoryGrid from './categories';
@@ -12,8 +13,10 @@ import HiddenStores from './hidden-stores';
 import { CITIES } from '@/lib/cities';
 import { SEO_CATEGORIES } from '@/lib/seo';
 import { parseOrigin } from '@/lib/origin';
-import { cachedDeals, cachedRegions, cachedStoresInArea } from '@/lib/cached';
+import { cachedDeals, cachedRegions, cachedStoreMap, cachedStoresInArea } from '@/lib/cached';
 import { parseHidden, HIDE_PARAM } from '@/lib/hidden';
+import { LAYOUT_COOKIE, parseLayout } from '@/lib/layouts';
+import { AppView, BoardView, DashboardView, MapView } from './layouts/views';
 import {
   CATEGORIES,
   GRADES,
@@ -73,6 +76,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const pages = Object.fromEntries(
     cats.map((c) => [c, Math.max(1, Number(one(sp[`p_${c}`])) || 1)])
   );
+
+  const layout = parseLayout((await cookies()).get(LAYOUT_COOKIE)?.value);
 
   const hidden = parseHidden(one(sp[HIDE_PARAM]));
   const areaStores = await cachedStoresInArea({ region_id: regionId, origin: origin ?? undefined, license_type: license }).catch(() => []);
@@ -153,6 +158,151 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
     color: ACCENT[c],
   }));
 
+  // The biggest markdowns across categories, for the overview layout only.
+  const drops =
+    layout === 'dashboard' && !bogo
+      ? (
+          await Promise.all(
+            cats.map((category) =>
+              cachedDeals({
+                region_id: regionId,
+                origin: origin ?? undefined,
+                license_type: license,
+                category,
+                q,
+                include_stale: stale,
+                include_unverified: unverified,
+                flower_grade: grade,
+                strain_type: strain || undefined,
+                size: sizeForCategory(category, size),
+                exclude_stores: hidden,
+                group: true,
+                sort: 'discount',
+                page: 1,
+                page_size: 2,
+              }).catch(() => null)
+            )
+          )
+        )
+          .flatMap((r) => r?.items ?? [])
+          .filter((o) => Number(o.regular_price) > Number(o.effective_price))
+          .sort((a, b) => Number(a.effective_price) / Number(a.regular_price) - Number(b.effective_price) / Number(b.regular_price))
+          .slice(0, 4)
+      : [];
+
+  // Map layout: every store in range with its best deal, per category. A saved region supplies the center
+  // when the visitor has not set a location.
+  const center = origin ?? (region && 'latitude' in region ? { latitude: region.latitude, longitude: region.longitude, radius_miles: region.radius_miles } : null);
+  const mapStores: Record<string, Awaited<ReturnType<typeof cachedStoreMap>>> = {};
+  if (layout === 'map' && center) {
+    const lists = await Promise.all(
+      cats.map((category) =>
+        cachedStoreMap({
+          origin: { latitude: Math.round(center.latitude * 1000) / 1000, longitude: Math.round(center.longitude * 1000) / 1000, radius_miles: center.radius_miles },
+          license_type: license,
+          category,
+        }).catch(() => [])
+      )
+    );
+    cats.forEach((category, i) => {
+      mapStores[category] = lists[i].filter((s) => !hidden.includes(s.id));
+    });
+  }
+
+  const summary = region && (
+    <p className="text-[11px] text-slate-400 px-1">
+      Showing <strong className="text-slate-200">{license}</strong> deals within{' '}
+      <strong className="text-slate-200">{region.radius_miles} miles</strong> of{' '}
+      <strong className="text-emerald-400">{region.label}</strong>. Pre-tax observed menu prices; a dispensary whose latest sync found no menu shows its last good menu, labelled with its age.
+    </p>
+  );
+
+  const cityLinks = (
+    <nav aria-label="Browse by city" className="px-1 pt-2">
+      <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Cheapest weed by Illinois city</h2>
+      <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
+        {CITIES.map((c) => (
+          <li key={c.slug}>
+            <a href={`/dispensary-deals/${c.slug}`} className="text-slate-400 hover:text-emerald-300">
+              {c.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs mt-2">
+        <li><a href="/illinois-dispensary-price-comparison" className="text-slate-400 hover:text-emerald-300">Illinois dispensary price comparison</a></li>
+        {['peoria', 'normal', 'champaign', 'chicago'].flatMap((slug) =>
+          SEO_CATEGORIES.slice(0, 3).map((k) => {
+            const c = CITIES.find((x) => x.slug === slug)!;
+            return (
+              <li key={`${slug}-${k.slug}`}>
+                <a href={`/dispensary-deals/${slug}/${k.slug}`} className="text-slate-400 hover:text-emerald-300">Cheapest {k.label.toLowerCase()} in {c.name}</a>
+              </li>
+            );
+          })
+        )}
+      </ul>
+    </nav>
+  );
+
+  const overlays = (
+    <>
+      <PendingBar />
+      <CalculatorModal />
+      <SavedModal />
+      <ToastContainer />
+      <BackToTop />
+    </>
+  );
+
+  if (layout !== 'classic') {
+    const hasFilter = Boolean(q || strain || size !== 'any' || grade !== 'whole' || bogo || stale || unverified);
+    const view = {
+      cats,
+      results,
+      pages,
+      pageSize: PAGE_SIZE,
+      chips: categoryChips,
+      accent: ACCENT,
+      link,
+      clearUrl: hasFilter ? makeUrl({ q: null, strain: null, size: null, grade: null, promo: null, stale: null, unverified: null }) : null,
+      bogo,
+      placeLabel: (region?.label ?? 'you').replace(/, USA$/, '').replace(/^Your location.*$/, 'you'),
+      summary,
+      controls: (
+        <>
+          <LocationControl
+            active={!!origin}
+            radius={region?.radius_miles ?? 50}
+            place={region?.label ?? ''}
+            license={license}
+            dataVersion={results[0]?.data_version}
+            layout={layout}
+          />
+          <FilterStrip q={q} grade={grade} strain={strain} size={size} bogo={bogo} stale={stale} unverified={unverified} sort={sort} compact />
+          <HiddenStores stores={areaStores} hidden={hidden} />
+        </>
+      ),
+    };
+    return (
+      <main data-layout={layout} className="max-w-7xl mx-auto px-3 sm:px-5 pb-12 sm:py-4 space-y-3">
+        {layout === 'board' && <BoardView {...view} />}
+        {layout === 'app' && <AppView {...view} />}
+        {layout === 'dashboard' && <DashboardView {...view} drops={drops} />}
+        {layout === 'map' && (
+          <MapView
+            {...view}
+            mapStores={mapStores}
+            center={center ? { latitude: center.latitude, longitude: center.longitude } : null}
+            baseQuery={makeUrl({ q: null }).slice(2)}
+          />
+        )}
+        {cityLinks}
+        {overlays}
+      </main>
+    );
+  }
+
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-5 pb-12 sm:py-4 space-y-3">
       <LocationControl
@@ -162,6 +312,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
         license={license}
         dataVersion={results[0]?.data_version}
         chips={categoryChips}
+        layout={layout}
       />
 
       <FilterStrip
@@ -177,13 +328,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
 
       <HiddenStores stores={areaStores} hidden={hidden} />
 
-      {region && (
-        <p className="text-[11px] text-slate-400 px-1">
-          Showing <strong className="text-slate-200">{license}</strong> deals within{' '}
-          <strong className="text-slate-200">{region.radius_miles} miles</strong> of{' '}
-          <strong className="text-emerald-400">{region.label}</strong>. Pre-tax observed menu prices; a dispensary whose latest sync found no menu shows its last good menu, labelled with its age.
-        </p>
-      )}
+      {summary}
 
       <div id="results">
       <CategoryGrid chips={categoryChips}>
@@ -360,37 +505,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
       </CategoryGrid>
       </div>
 
-      <nav aria-label="Browse by city" className="px-1 pt-2">
-        <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Cheapest weed by Illinois city</h2>
-        <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs">
-          {CITIES.map((c) => (
-            <li key={c.slug}>
-              <a href={`/dispensary-deals/${c.slug}`} className="text-slate-400 hover:text-emerald-300">
-                {c.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <ul className="flex flex-wrap gap-x-4 gap-y-1 text-xs mt-2">
-          <li><a href="/illinois-dispensary-price-comparison" className="text-slate-400 hover:text-emerald-300">Illinois dispensary price comparison</a></li>
-          {['peoria', 'normal', 'champaign', 'chicago'].flatMap((slug) =>
-            SEO_CATEGORIES.slice(0, 3).map((k) => {
-              const c = CITIES.find((x) => x.slug === slug)!;
-              return (
-                <li key={`${slug}-${k.slug}`}>
-                  <a href={`/dispensary-deals/${slug}/${k.slug}`} className="text-slate-400 hover:text-emerald-300">Cheapest {k.label.toLowerCase()} in {c.name}</a>
-                </li>
-              );
-            })
-          )}
-        </ul>
-      </nav>
-
-      <PendingBar />
-      <CalculatorModal />
-      <SavedModal />
-      <ToastContainer />
-      <BackToTop />
+      {cityLinks}
+      {overlays}
     </main>
   );
 }

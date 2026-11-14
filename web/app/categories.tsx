@@ -11,9 +11,15 @@ export type CategoryChip = { id: string; label: string; total: number; color: st
 export default function CategoryGrid({
   chips,
   children,
+  className = 'grid gap-4 lg:grid-cols-2 items-start',
+  solo = false,
 }: {
   chips?: readonly CategoryChip[];
   children: ReactNode;
+  /** Grid classes for the category sections; the default is the classic two-column layout. */
+  className?: string;
+  /** Show only the active category at every width (classic does so only below lg). */
+  solo?: boolean;
 }) {
   const [active, setActive] = useState('flower');
 
@@ -33,7 +39,7 @@ export default function CategoryGrid({
   }, []);
 
   return (
-    <div className="cat-grid grid gap-4 lg:grid-cols-2 items-start" data-active={active}>
+    <div className={`cat-grid ${solo ? 'cat-solo ' : ''}${className}`} data-active={active}>
       {children}
     </div>
   );

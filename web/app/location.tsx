@@ -5,6 +5,8 @@ import { openCalculator } from './calculator';
 import { showToast } from './toast';
 import { openSavedDeals, getSavedDeals, SAVED_EVENT } from './saved-modal';
 import { CATEGORIES, QUICK_HUBS } from '@/lib/deals';
+import LayoutPicker from './layout-picker';
+import { DEFAULT_LAYOUT, type LayoutId } from '@/lib/layouts';
 
 const KEY = 'terpscout.origin';
 const RKEY = 'terpscout.radius';
@@ -78,6 +80,7 @@ export default function LocationControl({
   license = 'recreational',
   dataVersion,
   chips,
+  layout = DEFAULT_LAYOUT,
 }: {
   active: boolean;
   radius: number;
@@ -85,6 +88,7 @@ export default function LocationControl({
   license?: string;
   dataVersion?: string;
   chips?: readonly CategoryChip[];
+  layout?: LayoutId;
 }) {
   const router = useRouter();
   const sp = useSearchParams();
@@ -450,7 +454,7 @@ export default function LocationControl({
               type="button"
               aria-haspopup="menu"
               aria-expanded={menuOpen}
-              aria-label="More options: license, calculator, saved deals"
+              aria-label="More options: license, calculator, saved deals, layout"
               title="More"
               onClick={() => setMenuOpen((v) => !v)}
               className={`pill !py-1.5 !px-2.5 relative ${menuOpen ? 'pill-active' : ''}`}
@@ -469,7 +473,7 @@ export default function LocationControl({
               <div
                 role="menu"
                 aria-label="More options"
-                className="absolute right-0 top-full mt-2 w-56 rounded-2xl border border-slate-700/80 bg-slate-950/98 shadow-xl shadow-black/60 p-2 z-50 space-y-1"
+                className="absolute right-0 top-full mt-2 w-60 max-h-[80vh] overflow-y-auto rounded-2xl border border-slate-700/80 bg-slate-950 shadow-xl shadow-black/60 p-2 z-50 space-y-1"
               >
                 <div role="group" aria-label="License channel" className="flex rounded-xl bg-slate-900 border border-slate-700/80 p-0.5 text-xs">
                   {(['recreational', 'medicinal'] as const).map((l) => {
@@ -509,6 +513,7 @@ export default function LocationControl({
                   <span className="flex-1">Saved deals</span>
                   <span className="font-mono text-[11px] text-amber-300">{savedCount}</span>
                 </button>
+                <LayoutPicker current={layout} onPicked={() => setMenuOpen(false)} />
               </div>
             )}
           </div>
